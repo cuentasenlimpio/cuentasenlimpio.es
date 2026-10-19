@@ -13,7 +13,9 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js" defer></script>
+  <script src="ec.js" defer></script>
   <script src="ingresos.js" defer></script>
 </head>
 <body>
@@ -59,6 +61,7 @@
     <section class="grafico" aria-labelledby="e-titulo">
       <h2 class="grafico-titulo" id="e-titulo">¿Cómo ha cambiado cada ingreso desde 1995?</h2>
       <p class="grafico-explica">El punto marca el año elegido; la cifra junto a cada nombre es su valor ese año.</p>
+      <div id="periodo"></div>
       <div class="multiples" id="evolucion"></div>
       <p class="fuente-grafico" id="evolucion-fuente"></p>
     </section>

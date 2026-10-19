@@ -13,7 +13,9 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js" defer></script>
+  <script src="ec.js" defer></script>
   <script src="graficos.js" defer></script>
 </head>
 <body>
@@ -45,6 +47,8 @@
       <button type="button" data-unidad="habitante" aria-pressed="false">Por habitante</button>
     </div>
     <p class="unidad-explicada" id="unidad-explicada" aria-live="polite"></p>
+    <div id="periodo"></div>
+    <p class="ayuda-grafico">El periodo vale para los tres gráficos de evolución. Para acercarte también puedes arrastrar los extremos de la barra bajo cada gráfico, pellizcar en el móvil o usar la rueda con la tecla Ctrl. Pasa el dedo o el ratón por un gráfico, o usa las flechas, para leer cada año.</p>
 
     <section class="grafico" aria-labelledby="g1-titulo">
       <h2 class="grafico-titulo" id="g1-titulo">Ingresos y gastos de cada año</h2>

@@ -21,7 +21,7 @@ function pintar(g, aapp, sel) {
   const esc = ESCALA[u];
   const paneles = g.funciones.map((f) => ({ nombre: f.nombre, valores: f[u].map((v) => (v === null ? null : v * esc)) }));
   dibujarMultiples(document.getElementById("evolucion"), paneles, g.años, i,
-    { formato: FORMATO[u], unidadEje: texto(UNIDADES[u].eje, g.año_base_constantes) });
+    { formato: FORMATO[u], unidadEje: texto(UNIDADES[u].eje, g.año_base_constantes), periodo: sel.periodo });
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];
   lineaFuente(document.getElementById("evolucion-fuente"), {
     fuentes: aapp.fuentes, tablas: [["gov_10a_exp", "gasto de las administraciones públicas por funciones"], ...extra],
@@ -75,6 +75,7 @@ function pintar(g, aapp, sel) {
 async function arrancar() {
   const [g, aapp] = await Promise.all([fetch("datos/gasto.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
   const sel = montarSelectores({ años: g.años, alCambiar: (s) => pintar(g, aapp, s) });
+  sel.periodo = EC.periodo(document.getElementById("periodo"), aapp, g.años);
   pintar(g, aapp, sel);
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_exp");

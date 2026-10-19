@@ -13,72 +13,87 @@ const marcaAño = (d, i) => `${marcaVigencia(d.vigencia[i])}${d.avance[i] ? "a" 
 const fuenteAño = (d, i) => (d.avance[i] ? [`ejec_dic_${d.años[i]}`, `ejecución del presupuesto del Estado a 31 de diciembre de ${d.años[i]} (avance)`]
   : [`liq_estado_${d.años[i]}`, `liquidación del presupuesto del Estado de ${d.años[i]}`]);
 
-// Columnas agrupadas: tres por año, desde cero. El año elegido se resalta y se lee arriba.
+// Columnas agrupadas: tres por año, desde cero. Cada año ocupa su banda, centrada en el año; el elegido se resalta y
+// se lee arriba. Al pasar el ratón o el dedo se elige el año.
 function dibujarTotales(contenedor, d, sel, alCambiar) {
-  const ancho = contenedor.clientWidth;
-  const estrecho = ancho < 520;
-  const alto = estrecho ? 240 : 300;
-  const m = { izq: estrecho ? 40 : 48, der: 8, arr: 12, aba: 30 };
-  const iw = ancho - m.izq - m.der, ih = alto - m.arr - m.aba;
-  const n = d.años.length;
-  const banda = iw / n;
-  const grosor = Math.min(18, (banda - 6) / 3);
-  const maximo = Math.max(...d.totales.flatMap((t) => SERIES.map((s) => t[s.clave] / 1000)));
-  const ticks = pasos(maximo, 4);
-  const ymax = ticks.at(-1);
-  const Y = (v) => m.arr + ih - (v / ymax) * ih;
-  contenedor.textContent = "";
-  const svg = el("svg", { width: ancho, height: alto, viewBox: `0 0 ${ancho} ${alto}`, "aria-hidden": "true" }, contenedor);
-  const resalte = el("rect", { y: m.arr, height: ih, width: banda, class: "resalte-año" }, svg);
-  const rejilla = el("g", { class: "rejilla" }, svg);
-  for (const t of ticks) {
-    el("line", { x1: m.izq, x2: ancho - m.der, y1: Y(t), y2: Y(t), class: t === 0 ? "base" : "" }, rejilla);
-    const et = el("text", { x: m.izq - 6, y: Y(t) + 4, "text-anchor": "end", class: "eje-texto" }, rejilla);
-    et.textContent = numero(t, 0);
-  }
-  d.años.forEach((a, i) => {
-    const x0 = m.izq + i * banda + (banda - 3 * grosor - 4) / 2;
-    SERIES.forEach((s, k) => {
-      const v = d.totales[i][s.clave] / 1000;
-      el("rect", { x: x0 + k * (grosor + 2), y: Y(v), width: grosor, height: Y(0) - Y(v), class: s.clase }, svg);
-    });
-    // Todos los años, también en móvil (con dos cifras): las marcas de prórroga no pueden quedar ocultas.
-    const t = el("text", { x: m.izq + i * banda + banda / 2, y: alto - 10, "text-anchor": "middle", class: "eje-texto" }, svg);
-    t.textContent = `${estrecho ? String(a).slice(2) : a}${marcaAño(d, i)}`;
-  });
-  const marcar = (i) => {
-    resalte.setAttribute("x", m.izq + i * banda);
-    const c = document.getElementById("t-lectura");
-    c.textContent = "";
-    const año = document.createElement("strong");
-    año.className = "lectura-anio";
-    año.textContent = `${d.años[i]}${marcaAño(d, i)}${d.avance[i] ? " · avance" : ""}`;
-    c.appendChild(año);
-    for (const s of SERIES) {
-      const f = document.createElement("span");
-      f.className = "lectura-fila";
-      const k = document.createElement("span");
-      k.className = `clave-barra ${s.clase}`;
-      f.appendChild(k);
-      const b = document.createElement("b");
-      b.textContent = milM(d.totales[i][s.clave]);
-      f.appendChild(b);
-      f.appendChild(document.createTextNode(` ${s.nombre}`));
-      c.appendChild(f);
-    }
-  };
-  marcar(sel.indice);
-  const elegir = (ev) => {
-    const r = svg.getBoundingClientRect();
-    const i = Math.max(0, Math.min(n - 1, Math.floor((ev.clientX - r.left - m.izq) / banda)));
-    if (i !== sel.indice) {
+  const estrecho = contenedor.clientWidth < 520;
+  const alto = estrecho ? 260 : 320;
+  if (!contenedor.cuentasGrafico) {
+    contenedor.cuentasGrafico = EC.crear(contenedor, alto);
+    EC.alPasar(contenedor.cuentasGrafico, (x) => {
+      const i = Math.max(0, Math.min(d.años.length - 1, Math.round(x) - d.años[0]));
+      if (i === sel.indice) return;
       sel.indice = i;
       document.getElementById("selector-año").value = d.años[i];
       alCambiar(sel);
-    }
+    });
+  }
+  const g = contenedor.cuentasGrafico;
+  if (contenedor.style.height !== `${alto}px`) {
+    contenedor.style.height = `${alto}px`;
+    g.resize();
+  }
+  const maximo = Math.max(...d.totales.flatMap((t) => SERIES.map((s) => t[s.clave] / 1000)));
+  const ticks = pasos(maximo, 4);
+  const colores = SERIES.map((s) => EC.css(`--${s.clase}`));
+  const opciones = EC.tiempo({
+    min: d.años[0] - 0.5, max: d.años.at(-1) + 0.5, slider: false, marcasArriba: false, zoom: false,
+    aria: `${contenedor.getAttribute("aria-label")} En miles de millones de euros.`,
+  });
+  // Todos los años, también en móvil (con dos cifras): las marcas de prórroga no pueden quedar ocultas.
+  opciones.xAxis.axisLabel = {
+    ...opciones.xAxis.axisLabel, hideOverlap: false, customValues: d.años,
+    formatter: (v) => {
+      const i = d.años.indexOf(v);
+      return i < 0 ? "" : `${estrecho ? String(v).slice(2) : v}${marcaAño(d, i)}`;
+    },
   };
-  svg.addEventListener("pointermove", elegir);
-  svg.addEventListener("pointerdown", elegir);
+  // El año elegido va como banda resaltada, no como línea.
+  opciones.xAxis.axisPointer = { show: true, type: "shadow", snap: false, status: "show", value: d.años[sel.indice], label: { show: false }, shadowStyle: { color: EC.css("--hueco") } };
+  opciones.yAxis = EC.ejeY({ formato: (v) => numero(v, 0), min: 0, max: ticks.at(-1) });
+  opciones.yAxis.interval = ticks[1];
+  opciones.yAxis.name = null;
+  opciones.series = [{
+    id: "columnas", type: "custom", silent: true, clip: true,
+    data: d.años.map((a, i) => [a, i]), encode: { x: 0 },
+    renderItem: (_p, api) => {
+      const i = api.value(1);
+      const banda = api.size([1, 0])[0];
+      const grosor = Math.min(18, (banda - 6) / 3);
+      const centro = api.coord([api.value(0), 0])[0];
+      const x0 = centro - (3 * grosor + 4) / 2;
+      return {
+        type: "group",
+        children: SERIES.map((s, k) => {
+          const v = d.totales[i][s.clave] / 1000;
+          const [, y] = api.coord([0, v]);
+          const [, y0] = api.coord([0, 0]);
+          return { type: "rect", shape: { x: x0 + k * (grosor + 2), y, width: grosor, height: y0 - y }, style: { fill: colores[k] } };
+        }),
+      };
+    },
+  }];
+  g.setOption(opciones, { notMerge: true });
+
+  const c = document.getElementById("t-lectura");
+  const i = sel.indice;
+  c.textContent = "";
+  const año = document.createElement("strong");
+  año.className = "lectura-anio";
+  año.textContent = `${d.años[i]}${marcaAño(d, i)}${d.avance[i] ? " · avance" : ""}`;
+  c.appendChild(año);
+  for (const s of SERIES) {
+    const f = document.createElement("span");
+    f.className = "lectura-fila";
+    const k = document.createElement("span");
+    k.className = `clave-barra ${s.clase}`;
+    f.appendChild(k);
+    const b = document.createElement("b");
+    b.textContent = milM(d.totales[i][s.clave]);
+    f.appendChild(b);
+    f.appendChild(document.createTextNode(` ${s.nombre}`));
+    c.appendChild(f);
+  }
 }
 
 function pintar(d, aapp, sel) {

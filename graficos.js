@@ -1,5 +1,5 @@
 // Cuentas en limpio: gráficos de ingresos, gastos y deuda.
-// Sin librerías: SVG a mano. Todo el texto entra con textContent; los números salen de datos/aapp.json.
+// Dibujados con Apache ECharts (ec.js); todo el texto entra con textContent; los números salen de datos/aapp.json.
 "use strict";
 
 const FORMULAS = {
@@ -9,124 +9,57 @@ const FORMULAS = {
   habitante: "Lectura. Valor en euros ÷ población media del año (tabla nama_10_pe).",
 };
 
-const estado = { datos: null, unidad: "pib", indice: null, indicadorUE: "deuda" };
+// `graficos`: las instancias de ECharts; `marcar`: qué hace cada uno cuando cambia el año elegido.
+const estado = { datos: null, unidad: "pib", indice: null, indicadorUE: "deuda", graficos: {}, marcar: {}, periodo: null };
 
-function dibujar(contenedor, { series, hueco, alto, alPasar, conNombres }) {
+const estrecho = () => document.querySelector("main").clientWidth < 520;
+
+// Elige un año desde un gráfico (al pasar por encima): `x` es la posición en el eje, y cada año está en su entero.
+function elegirDesde(x) {
+  const años = estado.datos.años;
+  const i = Math.max(0, Math.min(años.length - 1, Math.round(x) - años[0]));
+  if (i === estado.indice) return;
+  estado.indice = i;
+  redibujarCruces();
+}
+
+// Ingresos y gastos (con el hueco entre los dos) o la deuda: líneas sobre las legislaturas y los acontecimientos.
+function graficoLineas(id, { series, hueco, alto, alMarcar }) {
   const d = estado.datos;
-  const años = d.años;
-  const ancho = contenedor.clientWidth;
-  const estrecho = ancho < 520;
-  const m = { izq: estrecho ? 40 : 48, der: 18, arr: TIRA, aba: 28 };
-  const iw = ancho - m.izq - m.der;
-  const ih = alto - m.arr - m.aba;
   const u = UNIDADES[estado.unidad];
-
-  const valores = series.flatMap((s) => s.valores).filter((v) => v !== null).map((v) => v * u.escala);
-  const ticks = pasos(Math.max(...valores), estrecho ? 4 : 5);
-  const ymax = ticks.at(-1);
-  const X = (i) => m.izq + (i / (años.length - 1)) * iw;
-  const Y = (v) => m.arr + ih - ((v * u.escala) / ymax) * ih;
-
-  contenedor.textContent = "";
-  const svg = el("svg", { width: ancho, height: alto, viewBox: `0 0 ${ancho} ${alto}`, "aria-hidden": "true" }, contenedor);
-
-  // Legislaturas: franjas alternas desde cada sesión constitutiva. Un valor anual se sitúa a mitad de su año, así
-  // que el 1 de enero de un año cae medio paso antes de su punto.
-  const posicion = (iso) => {
-    const a = Number(iso.slice(0, 4));
-    const dia = (Date.parse(iso) - Date.parse(`${a}-01-01`)) / 864e5;
-    return a - años[0] - 0.5 + dia / 365.25;
+  const años = d.años;
+  const min = años[0], max = años.at(-1);
+  const g = estado.graficos[id] || (estado.graficos[id] = EC.crear(document.getElementById(id), alto));
+  const puntosDe = (s) => años.map((a, i) => [a, s.valores[i] === null ? null : s.valores[i] * u.escala]);
+  const lineas = series.map((s) => ({ ...s, datos: puntosDe(s), color: EC.css(`--serie-${s.clase}`) }));
+  const opciones = {
+    ...EC.tiempo({ min, max, aria: `${document.getElementById(id).getAttribute("aria-label")} En ${texto(u.eje, d.año_base_constantes)}.` }),
+    yAxis: EC.ejeY({ nombre: texto(u.eje, d.año_base_constantes), formato: (v) => numero(v, 0), min: 0 }),
+    series: [
+      ...lineas.map((s) => EC.linea(s.clase, s.datos, s.color)),
+      EC.marcas(d, { min, max, resaltada: estado.periodo?.resaltada() }),
+    ],
   };
-  const legs = d.legislaturas;
-  const franjas = el("g", { class: "franjas" }, svg);
-  legs.forEach((l, k) => {
-    const desde = Math.max(0, posicion(l.inicio));
-    const hasta = Math.min(años.length - 1, k + 1 < legs.length ? posicion(legs[k + 1].inicio) : Infinity);
-    if (hasta <= desde) return;
-    const x0 = X(desde), x1 = X(hasta);
-    el("rect", { x: x0, y: m.arr, width: x1 - x0, height: ih, class: k % 2 ? "franja impar" : "franja par" }, franjas);
-    if (conNombres && x1 - x0 >= 22) {
-      const t = el("text", { x: (x0 + x1) / 2, y: 14, "text-anchor": "middle", class: "franja-texto" }, franjas);
-      t.textContent = l.nombre;
-    }
-  });
-
-  marcarAcontecimientos(svg, (iso) => {
-    const p = posicion(iso);
-    return p < 0 || p > años.length - 1 ? null : X(p);
-  }, m.arr, m.arr + ih);
-
-  // Rejilla y eje vertical
-  const rejilla = el("g", { class: "rejilla" }, svg);
-  for (const t of ticks) {
-    const y = m.arr + ih - (t / ymax) * ih;
-    el("line", { x1: m.izq, x2: ancho - m.der, y1: y, y2: y, class: t === 0 ? "base" : "" }, rejilla);
-    const et = el("text", { x: m.izq - 6, y: y + 4, "text-anchor": "end", class: "eje-texto" }, rejilla);
-    et.textContent = estado.unidad === "pib" ? numero(t, 0) : numero(t, t < 10 && t % 1 ? 1 : 0);
-  }
-
-  // Eje horizontal: años
-  const cada = estrecho ? 10 : 5;
-  años.forEach((a, i) => {
-    if ((a - años[0]) % cada !== 0 && i !== años.length - 1) return;
-    if (i === años.length - 1 && (a - años[0]) % cada !== 0 && (a - años[0]) % cada < cada / 2) return;
-    const ancla = i === años.length - 1 ? "end" : i === 0 ? "start" : "middle";
-    const t = el("text", { x: X(i) + (ancla === "end" ? 6 : ancla === "start" ? -6 : 0), y: alto - 8, "text-anchor": ancla, class: "eje-texto" }, svg);
-    t.textContent = a;
-  });
-
-  // Hueco entre ingresos y gastos
   if (hueco) {
-    const [a, b] = hueco.map((k) => series.find((s) => s.clave === k).valores);
-    const ida = a.map((v, i) => `${X(i)},${Y(v)}`);
-    const vuelta = b.map((v, i) => `${X(i)},${Y(v)}`).reverse();
-    el("polygon", { points: [...ida, ...vuelta].join(" "), class: "hueco" }, svg);
-    // Una sola etiqueta, donde el hueco es más ancho
-    // La etiqueta ocupa unos 50 px: todos los años que tapa deben tener hueco de sobra.
-    const hueco_px = (i) => Math.abs(Y(b[i]) - Y(a[i]));
-    const radio = Math.ceil(28 / (iw / (años.length - 1)));
-    let mejor = -1;
-    a.forEach((v, i) => {
-      if (i < radio || i > a.length - 1 - radio) return;
-      const holgura = Math.min(...a.slice(i - radio, i + radio + 1).map((_, k) => hueco_px(i - radio + k)));
-      if (holgura > 20 && (mejor < 0 || hueco_px(i) > hueco_px(mejor))) mejor = i;
+    // Hueco entre las dos líneas: un polígono que va por la primera y vuelve por la segunda.
+    const [a, b] = hueco.map((k) => lineas.find((s) => s.clave === k).datos);
+    const contorno = [...a, ...[...b].reverse()].filter(([, v]) => v !== null);
+    opciones.series.push({
+      id: "hueco", type: "custom", data: [0], silent: true, clip: true, z: 2,
+      renderItem: (_p, api) => ({ type: "polygon", shape: { points: contorno.map((p) => api.coord(p)) }, style: { fill: EC.css("--hueco") } }),
     });
-    if (mejor >= 0) {
-      const t = el("text", { x: X(mejor), y: (Y(a[mejor]) + Y(b[mejor])) / 2 + 4, "text-anchor": "middle", class: "hueco-texto" }, svg);
-      t.textContent = b[mejor] > a[mejor] ? "déficit" : "superávit";
-    }
   }
-
-  for (const s of series) {
-    const camino = s.valores.map((v, i) => `${i ? "L" : "M"}${X(i)},${Y(v)}`).join("");
-    el("path", { d: camino, class: `linea ${s.clase}` }, svg);
+  g.setOption(opciones, { notMerge: true });
+  if (!g.cuentasListo) {
+    g.cuentasListo = true;
+    EC.alPasar(g, elegirDesde);
+    estado.periodo.sumar(g, { ejeMin: min, ejeMax: max, marcas: { min, max } });
   }
-
-  // Cruz: línea vertical y puntos del año elegido
-  const cruz = el("g", { class: "cruz" }, svg);
-  function marcar(i) {
-    cruz.textContent = "";
-    el("line", { x1: X(i), x2: X(i), y1: m.arr, y2: m.arr + ih }, cruz);
-    for (const s of series) {
-      if (s.valores[i] === null) continue;
-      el("circle", { cx: X(i), cy: Y(s.valores[i]), r: 4.5, class: `punto ${s.clase}` }, cruz);
-    }
-    alPasar(i);
-  }
-  marcar(estado.indice);
-
-  const elegir = (ev) => {
-    const r = svg.getBoundingClientRect();
-    const x = ev.clientX - r.left;
-    const i = Math.max(0, Math.min(años.length - 1, Math.round(((x - m.izq) / iw) * (años.length - 1))));
-    if (i !== estado.indice) {
-      estado.indice = i;
-      redibujarCruces();
-    }
+  estado.marcar[id] = (i) => {
+    g.setOption({ series: [EC.puntos("año", lineas.map((s) => s.datos[i]).filter(([, v]) => v !== null), lineas.map((s) => s.color))] });
+    EC.fijar(g, años[i]);
+    alMarcar(i);
   };
-  svg.addEventListener("pointermove", elegir);
-  svg.addEventListener("pointerdown", elegir);
-  contenedor.marcar = marcar;
 }
 
 const COMPONENTES = [
@@ -144,20 +77,17 @@ function conSigno(v, unidad) {
 }
 
 // Barras apiladas con signo: lo que suma deuda, hacia arriba; lo que la resta, hacia abajo. El punto es la
-// variación total del año, que es exactamente la suma de las barras.
-function dibujarBarras(contenedor) {
+// variación total del año, que es exactamente la suma de las barras. Cada año ocupa su banda, centrada en el año.
+function graficoBarras() {
+  const id = "g3";
   const d = estado.datos;
   const u = estado.unidad;
   const datos = d.cambio_deuda[u];
   const comps = COMPONENTES.filter((c) => !c.soloPib || u === "pib");
   const años = d.años;
-  const ancho = contenedor.clientWidth;
-  const estrecho = ancho < 520;
-  const alto = estrecho ? 330 : 390;
-  const m = { izq: estrecho ? 44 : 52, der: 18, arr: TIRA, aba: 28 };
-  const iw = ancho - m.izq - m.der;
-  const ih = alto - m.arr - m.aba;
+  const min = años[0] - 0.5, max = años.at(-1) + 0.5;
   const esc = u === "pib" ? 1 : UNIDADES[u].escala;
+  const g = estado.graficos[id] || (estado.graficos[id] = EC.crear(document.getElementById(id), estrecho() ? 360 : 420));
 
   let maximo = 0, minimo = 0;
   años.forEach((_, i) => {
@@ -170,93 +100,66 @@ function dibujarBarras(contenedor) {
     maximo = Math.max(maximo, pos, (datos.variacion[i] ?? 0) * esc);
     minimo = Math.min(minimo, neg, (datos.variacion[i] ?? 0) * esc);
   });
-  const paso = pasos(Math.max(maximo, -minimo), estrecho ? 3 : 4)[1];
-  const ymin = Math.floor(minimo / paso) * paso;
-  const ymax = Math.ceil(maximo / paso) * paso;
-  const X = (i) => m.izq + ((i + 0.5) / años.length) * iw;
-  const Y = (v) => m.arr + ((ymax - v) / (ymax - ymin)) * ih;
-  const banda = iw / años.length;
-  const grosor = Math.min(24, banda * 0.72);
+  const paso = pasos(Math.max(maximo, -minimo), estrecho() ? 3 : 4)[1];
+  const colores = Object.fromEntries(comps.map((c) => [c.clave, EC.css(`--${c.clase}`)]));
+  const superficie = EC.css("--superficie"), tinta = EC.css("--tinta");
 
-  contenedor.textContent = "";
-  const svg = el("svg", { width: ancho, height: alto, viewBox: `0 0 ${ancho} ${alto}`, "aria-hidden": "true" }, contenedor);
-
-  // Legislaturas, con la misma regla que los otros gráficos pero sobre bandas de año
-  const posicion = (iso) => {
-    const a = Number(iso.slice(0, 4));
-    const dia = (Date.parse(iso) - Date.parse(`${a}-01-01`)) / 864e5;
-    return a - años[0] + dia / 365.25;
+  const conSignoEje = (v) => {
+    const valor = Math.abs(v) < paso / 1000 ? 0 : v;
+    return (valor > 0 ? "+" : valor < 0 ? "−" : "") + numero(Math.abs(valor), paso < 1 ? 1 : 0);
   };
-  const legs = d.legislaturas;
-  const franjas = el("g", { class: "franjas" }, svg);
-  legs.forEach((l, k) => {
-    const desde = Math.max(0, posicion(l.inicio));
-    const hasta = Math.min(años.length, k + 1 < legs.length ? posicion(legs[k + 1].inicio) : Infinity);
-    if (hasta <= desde) return;
-    const x0 = m.izq + (desde / años.length) * iw, x1 = m.izq + (hasta / años.length) * iw;
-    el("rect", { x: x0, y: m.arr, width: x1 - x0, height: ih, class: k % 2 ? "franja impar" : "franja par" }, franjas);
-    if (x1 - x0 >= 22) {
-      const t = el("text", { x: (x0 + x1) / 2, y: 14, "text-anchor": "middle", class: "franja-texto" }, franjas);
-      t.textContent = l.nombre;
-    }
-  });
-
-  const rejilla = el("g", { class: "rejilla" }, svg);
-  for (let t = ymin; t <= ymax + paso / 1000; t += paso) {
-    el("line", { x1: m.izq, x2: ancho - m.der, y1: Y(t), y2: Y(t), class: Math.abs(t) < paso / 1000 ? "base" : "" }, rejilla);
-    const et = el("text", { x: m.izq - 6, y: Y(t) + 4, "text-anchor": "end", class: "eje-texto" }, rejilla);
-    const valor = Math.abs(t) < paso / 1000 ? 0 : t;
-    et.textContent = (valor > 0 ? "+" : valor < 0 ? "−" : "") + numero(Math.abs(valor), paso < 1 ? 1 : 0);
+  g.setOption({
+    ...EC.tiempo({ min, max, silueta: false, aria: `${document.getElementById(id).getAttribute("aria-label")} En ${u === "pib" ? "puntos del PIB" : texto(UNIDADES[u].eje, d.año_base_constantes)}.` }),
+    yAxis: EC.ejeY({
+      nombre: u === "pib" ? "puntos del PIB" : texto(UNIDADES[u].eje, d.año_base_constantes),
+      formato: conSignoEje,
+      min: Math.floor(minimo / paso) * paso, max: Math.ceil(maximo / paso) * paso,
+    }),
+    series: [
+      EC.marcas(d, { min, max, desplazamiento: -0.5, resaltada: estado.periodo?.resaltada() }),
+      {
+        id: "barras", type: "custom", clip: true, silent: true, z: 3,
+        data: años.map((a, i) => [a, i]),
+        encode: { x: 0 },
+        renderItem: (_p, api) => {
+          const i = api.value(1);
+          const x = api.coord([api.value(0), 0])[0];
+          const grosor = Math.min(24, api.size([1, 0])[0] * 0.72);
+          const hijos = [];
+          let arriba = 0, abajo = 0;
+          for (const c of comps) {
+            const v = datos[c.clave][i];
+            if (v === null || v === 0) continue;
+            const desde = v > 0 ? arriba : abajo;
+            const hasta = desde + v * esc;
+            const y0 = api.coord([0, desde])[1], y1 = api.coord([0, hasta])[1];
+            const alto_px = Math.abs(y1 - y0);
+            const hueco = alto_px > 3 ? 1 : 0;  // 2 px de superficie entre segmentos: 1 arriba y 1 abajo
+            hijos.push({
+              type: "rect",
+              shape: { x: x - grosor / 2, y: Math.min(y0, y1) + hueco, width: grosor, height: Math.max(0.5, alto_px - 2 * hueco) },
+              style: { fill: colores[c.clave] },
+            });
+            if (v > 0) arriba = hasta; else abajo = hasta;
+          }
+          if (datos.variacion[i] !== null) {
+            const [cx, cy] = api.coord([api.value(0), datos.variacion[i] * esc]);
+            hijos.push({ type: "circle", shape: { cx, cy, r: Math.min(4.5, grosor / 2.5 + 1) }, style: { fill: tinta, stroke: superficie, lineWidth: 2 }, z2: 10 });
+          }
+          return { type: "group", children: hijos };
+        },
+      },
+    ],
+  }, { notMerge: true });
+  if (!g.cuentasListo) {
+    g.cuentasListo = true;
+    EC.alPasar(g, elegirDesde);
+    estado.periodo.sumar(g, { desplazamiento: -0.5, ejeMin: min, ejeMax: max, marcas: { min, max, desplazamiento: -0.5 } });
   }
-  const cada = estrecho ? 10 : 5;
-  años.forEach((a, i) => {
-    if ((a - años[0]) % cada !== 0 && i !== años.length - 1) return;
-    if (i === años.length - 1 && (a - años[0]) % cada !== 0 && (a - años[0]) % cada < cada / 2) return;
-    const t = el("text", { x: X(i), y: alto - 8, "text-anchor": "middle", class: "eje-texto" }, svg);
-    t.textContent = a;
-  });
-
-  marcarAcontecimientos(svg, (iso) => {
-    const p = posicion(iso);
-    return p < 0 || p > años.length ? null : m.izq + (p / años.length) * iw;
-  }, m.arr, m.arr + ih);
-
-  const barras = el("g", {}, svg);
-  años.forEach((_, i) => {
-    const g = el("g", {}, barras);
-    let arriba = 0, abajo = 0;
-    for (const c of comps) {
-      const v = datos[c.clave][i];
-      if (v === null || v === 0) continue;
-      const alto_px = Math.abs(Y(0) - Y(Math.abs(v) * esc));
-      const hueco = alto_px > 3 ? 1 : 0;  // 2 px de superficie entre segmentos: 1 arriba y 1 abajo
-      const y = v > 0 ? Y(arriba + v * esc) : Y(abajo);
-      el("rect", { x: X(i) - grosor / 2, y: y + hueco, width: grosor, height: Math.max(0.5, alto_px - 2 * hueco), class: c.clase }, g);
-      if (v > 0) arriba += v * esc; else abajo += v * esc;
-    }
-    if (datos.variacion[i] !== null) {
-      el("circle", { cx: X(i), cy: Y(datos.variacion[i] * esc), r: Math.min(4.5, grosor / 2.5 + 1), class: "punto-total" }, g);
-    }
-  });
-
-  const resalte = el("rect", { y: m.arr, height: ih, width: banda, class: "resalte-año" });
-  barras.before(resalte);
-  function marcar(i) {
-    resalte.setAttribute("x", m.izq + i * banda);
+  estado.marcar[id] = (i) => {
+    EC.fijar(g, años[i]);
     lecturaBarras(i, comps);
-  }
-  marcar(estado.indice);
-  const elegir = (ev) => {
-    const r = svg.getBoundingClientRect();
-    const i = Math.max(0, Math.min(años.length - 1, Math.floor(((ev.clientX - r.left - m.izq) / iw) * años.length)));
-    if (i !== estado.indice) {
-      estado.indice = i;
-      redibujarCruces();
-    }
   };
-  svg.addEventListener("pointermove", elegir);
-  svg.addEventListener("pointerdown", elegir);
-  contenedor.marcar = marcar;
 }
 
 function lecturaBarras(i, comps) {
@@ -323,7 +226,9 @@ const INDICADORES_UE = {
 };
 
 // España frente a la UE: un punto por país en el año elegido, ordenados de mayor a menor.
-function dibujarUE(contenedor) {
+function graficoUE() {
+  const id = "g4";
+  const contenedor = document.getElementById(id);
   const d = estado.datos;
   const i = estado.indice;
   const ind = estado.indicadorUE;
@@ -331,61 +236,75 @@ function dibujarUE(contenedor) {
   const paises = Object.keys(d.ue.paises).filter((p) => p !== "EU27_2020" && valores[p][i] !== null);
   paises.sort((a, b) => valores[b][i] - valores[a][i]);
   const media = valores.EU27_2020[i];
-
-  const ancho = contenedor.clientWidth;
-  const estrecho = ancho < 520;
   const fila = 19;
-  const m = { izq: estrecho ? 92 : 112, der: 56, arr: 26, aba: 24 };
-  const alto = m.arr + m.aba + Math.max(1, paises.length) * fila;
-  const iw = ancho - m.izq - m.der;
-  contenedor.textContent = "";
-  const svg = el("svg", { width: ancho, height: alto, viewBox: `0 0 ${ancho} ${alto}`, "aria-hidden": "true" }, contenedor);
+  const alto = 34 + 28 + Math.max(1, paises.length) * fila;
+  if (!estado.graficos[id]) {
+    estado.graficos[id] = EC.crear(contenedor, alto);
+    const g = estado.graficos[id];
+    // La fila entera bajo el puntero, no solo el punto: así se lee el país sin apuntar a un círculo de 9 px.
+    g.getZr().on("mousemove", (e) => {
+      const lista = g.cuentasPaises || [];
+      const [, k] = g.convertFromPixel({ gridIndex: 0 }, [e.offsetX, e.offsetY]);
+      const p = lista[Math.round(k)];
+      if (g.containPixel({ gridIndex: 0 }, [e.offsetX, e.offsetY]) && p) lecturaUE(p, g.cuentasMedia, lista);
+      else lecturaUE(null, g.cuentasMedia, lista);
+    });
+    g.getZr().on("globalout", () => lecturaUE(null, g.cuentasMedia, g.cuentasPaises || []));
+  }
+  const g = estado.graficos[id];
+  contenedor.style.height = `${alto}px`;
+  g.resize();
+  g.cuentasPaises = paises;
+  g.cuentasMedia = media;
   if (!paises.length) {
-    const t = el("text", { x: m.izq, y: m.arr + 12, class: "eje-texto" }, svg);
-    t.textContent = `Eurostat no tiene este dato para ${d.años[i]}.`;
+    g.clear();
+    g.setOption({ title: { text: `Eurostat no tiene este dato para ${d.años[i]}.`, textStyle: { fontSize: 13, fontWeight: 400, color: EC.css("--tinta-suave") } } });
     lecturaUE(null, media, paises);
     return;
   }
   const lista = paises.map((p) => valores[p][i]).concat(media === null ? [] : [media], [0]);
   const lo = Math.min(...lista), hi = Math.max(...lista);
-  const paso = pasos(Math.max(Math.abs(lo), Math.abs(hi)), estrecho ? 3 : 5)[1];
-  const xmin = Math.floor(lo / paso) * paso, xmax = Math.ceil(hi / paso) * paso;
-  const X = (v) => m.izq + ((v - xmin) / (xmax - xmin)) * iw;
-  const Y = (k) => m.arr + k * fila + fila / 2;
-
-  const rejilla = el("g", { class: "rejilla" }, svg);
-  for (let t = xmin; t <= xmax + paso / 1000; t += paso) {
-    el("line", { x1: X(t), x2: X(t), y1: m.arr, y2: alto - m.aba, class: Math.abs(t) < paso / 1000 ? "base" : "" }, rejilla);
-    const et = el("text", { x: X(t), y: alto - 6, "text-anchor": "middle", class: "eje-texto" }, rejilla);
-    et.textContent = `${t < 0 ? "−" : ""}${numero(Math.abs(t), 0)} %`;
-  }
-  if (media !== null) {
-    el("line", { x1: X(media), x2: X(media), y1: m.arr - 4, y2: alto - m.aba, class: "media-ue" }, svg);
-    const t = el("text", { x: X(media), y: m.arr - 10, "text-anchor": "middle", class: "media-ue-texto" }, svg);
-    t.textContent = `UE-27: ${media < 0 ? "−" : ""}${numero(Math.abs(media), 1)} %`;
-  }
-  const filas = paises.map((p, k) => {
-    const g = el("g", { class: "pais-fila" }, svg);
-    const espana = p === "ES";
-    const n = el("text", { x: m.izq - 8, y: Y(k) + 4, "text-anchor": "end", class: `pais-texto${espana ? " espana" : ""}` }, g);
-    n.textContent = d.ue.paises[p];
-    el("circle", { cx: X(valores[p][i]), cy: Y(k), r: espana ? 6 : 4.5, class: `pais-punto${espana ? " espana" : ""}` }, g);
-    if (espana) {
-      const v = el("text", { x: X(valores[p][i]) + 10, y: Y(k) + 4, class: "pais-texto espana" }, g);
-      v.textContent = `${valores[p][i] < 0 ? "−" : ""}${numero(Math.abs(valores[p][i]), 1)} %`;
-    }
-    el("rect", { x: 0, y: Y(k) - fila / 2, width: ancho, height: fila, fill: "transparent" }, g);
-    g.addEventListener("pointerenter", () => {
-      filas.forEach((f) => f.classList.remove("activa"));
-      g.classList.add("activa");
-      lecturaUE(p, media, paises);
-    });
-    return g;
-  });
-  svg.addEventListener("pointerleave", () => {
-    filas.forEach((f) => f.classList.remove("activa"));
-    lecturaUE(null, media, paises);
-  });
+  const paso = pasos(Math.max(Math.abs(lo), Math.abs(hi)), estrecho() ? 3 : 5)[1];
+  const suave = EC.css("--tinta-suave"), tinta = EC.css("--tinta"), acento = EC.css("--acento");
+  const conSigno = (v, dec) => `${v < 0 ? "−" : ""}${numero(Math.abs(v), dec)} %`;
+  g.setOption({
+    animationDurationUpdate: 300,
+    textStyle: { fontFamily: getComputedStyle(document.body).fontFamily, color: suave },
+    aria: { enabled: true, label: { description: `${INDICADORES_UE[ind]} en ${d.años[i]}, en % del PIB: ${paises.map((p) => `${d.ue.paises[p]}, ${conSigno(valores[p][i], 1)}`).join("; ")}.` } },
+    grid: { left: 4, right: 56, top: 34, bottom: 28, containLabel: true },
+    xAxis: {
+      type: "value", min: Math.floor(lo / paso) * paso, max: Math.ceil(hi / paso) * paso, interval: paso,
+      axisLabel: { color: suave, formatter: (v) => conSigno(v, 0) },
+      splitLine: { lineStyle: { color: EC.css("--linea") } },
+    },
+    yAxis: {
+      type: "category", inverse: true, data: paises.map((p) => d.ue.paises[p]),
+      axisLine: { show: false }, axisTick: { show: false },
+      axisLabel: {
+        fontSize: 12, color: suave,
+        formatter: (v) => (v === d.ue.paises.ES ? `{es|${v}}` : v),
+        rich: { es: { color: tinta, fontWeight: 600, fontSize: 12 } },
+      },
+    },
+    series: [{
+      id: "paises", type: "scatter", silent: true, animation: false,
+      data: paises.map((p) => {
+        const es = p === "ES";
+        return {
+          value: [valores[p][i], d.ue.paises[p]],
+          symbolSize: es ? 12 : 9,
+          itemStyle: es ? { color: acento, borderColor: EC.css("--fondo"), borderWidth: 2 } : { color: EC.css("--linea-fuerte") },
+          label: es ? { show: true, position: "right", distance: 8, formatter: conSigno(valores[p][i], 1), color: tinta, fontWeight: 600, fontSize: 12 } : { show: false },
+        };
+      }),
+      markLine: media === null ? undefined : {
+        silent: true, symbol: "none", animation: false,
+        lineStyle: { color: tinta, type: [4, 3], width: 1 },
+        label: { position: "start", formatter: `UE-27: ${conSigno(media, 1)}`, color: tinta, fontSize: 12, distance: 6 },
+        data: [{ xAxis: media }],
+      },
+    }],
+  }, { notMerge: true });
   lecturaUE(null, media, paises);
 }
 
@@ -449,11 +368,8 @@ function pintarAcontecimientos() {
 }
 
 function redibujarCruces() {
-  dibujarUE(document.getElementById("g4"));
-  for (const id of ["g1", "g2", "g3"]) {
-    const c = document.getElementById(id);
-    if (c.marcar) c.marcar(estado.indice);
-  }
+  graficoUE();
+  for (const id of ["g1", "g2", "g3"]) estado.marcar[id]?.(estado.indice);
 }
 
 function lectura(contenedor, i, filas) {
@@ -502,17 +418,15 @@ function pintar() {
   const d = estado.datos;
   const u = estado.unidad;
   const s = d.series;
-  const ancho = document.querySelector("main").clientWidth;
 
-  dibujar(document.getElementById("g1"), {
+  graficoLineas("g1", {
     series: [
       { clave: "gastos", clase: "gastos", valores: s.gastos[u] },
       { clave: "ingresos", clase: "ingresos", valores: s.ingresos[u] },
     ],
     hueco: ["ingresos", "gastos"],
-    conNombres: true,
-    alto: ancho < 520 ? 320 : 380,
-    alPasar: (i) => {
+    alto: estrecho() ? 360 : 430,
+    alMarcar: (i) => {
       const saldo = s.saldo[u][i];
       lectura(document.getElementById("g1-lectura"), i, [
         { clase: "ingresos", nombre: "ingresos", valor: formatear(s.ingresos[u][i], u), provisional: s.ingresos.provisional[u][i] },
@@ -527,12 +441,11 @@ function pintar() {
     },
   });
 
-  dibujar(document.getElementById("g2"), {
+  graficoLineas("g2", {
     series: [{ clave: "deuda", clase: "deuda", valores: s.deuda[u] }],
     hueco: null,
-    conNombres: true,
-    alto: ancho < 520 ? 260 : 300,
-    alPasar: (i) => {
+    alto: estrecho() ? 320 : 380,
+    alMarcar: (i) => {
       lectura(document.getElementById("g2-lectura"), i, [
         { clase: "deuda", nombre: "de deuda", valor: formatear(s.deuda[u][i], u), provisional: s.deuda.provisional[u][i] },
       ]);
@@ -549,8 +462,10 @@ function pintar() {
   explicada.appendChild(document.createTextNode(" " + texto(un.explica, d.año_base_constantes)));
 
   pintarLeyendaBarras();
-  dibujarBarras(document.getElementById("g3"));
-  dibujarUE(document.getElementById("g4"));
+  graficoBarras();
+  // Cambiar de unidad no mueve el periodo elegido.
+  estado.periodo.reaplicar();
+  redibujarCruces();
   pintarFuenteUE();
   pintarFuente("g1-fuente", "gov_10a_main");
   pintarFuente("g2-fuente", "gov_10dd_edpt1");
@@ -770,6 +685,15 @@ async function arrancar() {
   const r = await fetch("datos/aapp.json");
   estado.datos = await r.json();
   estado.indice = estado.datos.años.length - 1;
+  // Si el periodo elegido deja fuera el año que se está leyendo, se pasa al último año del periodo.
+  estado.periodo = EC.periodo(document.getElementById("periodo"), estado.datos, estado.datos.años, {
+    alCambiar: (desde, hasta) => {
+      const año = estado.datos.años[estado.indice];
+      if (año >= desde && año <= hasta) return;
+      estado.indice = Math.max(0, Math.min(estado.datos.años.length - 1, hasta - estado.datos.años[0]));
+      if (estado.marcar.g1) redibujarCruces();
+    },
+  });
 
   for (const b of document.querySelectorAll("[data-unidad]")) {
     b.addEventListener("click", () => {
@@ -783,7 +707,7 @@ async function arrancar() {
     b.addEventListener("click", () => {
       estado.indicadorUE = b.dataset.ue;
       for (const o of document.querySelectorAll("[data-ue]")) o.setAttribute("aria-pressed", String(o === b));
-      dibujarUE(document.getElementById("g4"));
+      graficoUE();
       pintarFuenteUE();
     });
   }
@@ -791,10 +715,15 @@ async function arrancar() {
   pintar();
   pintarFicha();
   pintarAcontecimientos();
-  let pendiente = null;
+  // En móvil y en escritorio cambian la altura de los gráficos y los pasos del eje: se repintan al cruzar ese ancho.
+  let eraEstrecho = estrecho();
   window.addEventListener("resize", () => {
-    clearTimeout(pendiente);
-    pendiente = setTimeout(pintar, 120);
+    if (estrecho() === eraEstrecho) return;
+    eraEstrecho = estrecho();
+    for (const [id, alto] of [["g1", eraEstrecho ? 360 : 430], ["g2", eraEstrecho ? 320 : 380], ["g3", eraEstrecho ? 360 : 420]]) {
+      document.getElementById(id).style.height = `${alto}px`;
+    }
+    pintar();
   });
 }
 
