@@ -1024,6 +1024,9 @@ def main():
     presupuesto, comprobaciones_presupuesto = construir_presupuesto(descargas)
     presupuesto["comprobaciones"] = comprobaciones_presupuesto
     (WEB / "datos" / "presupuesto.json").write_text(json.dumps(presupuesto, ensure_ascii=False, separators=(",", ":")))
+    # Documentos de promesas: el catálogo tal cual (los PDF no se publican; se enlazan el original y la copia del archivo).
+    documentos = json.loads((CODIGO / "promesas" / "documentos.json").read_text())
+    (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

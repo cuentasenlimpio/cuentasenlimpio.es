@@ -9,6 +9,8 @@
   <title>Promesas · Cuentas en limpio</title>
   <meta name="description" content="Cómo seguimos las promesas electorales: el texto literal de cada promesa y los hechos documentados que vinieron después, sin veredicto.">
   <link rel="stylesheet" href="estilo.css">
+  <script src="comun.js" defer></script>
+  <script src="promesas.js" defer></script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -39,6 +41,7 @@
     <nav class="indice" aria-label="Contenido de esta página">
       <ol>
         <li><a href="#que">Qué legislatura y qué documentos</a></li>
+        <li><a href="#documentos">Los documentos, uno por uno</a></li>
         <li><a href="#promesa">Qué cuenta como promesa</a></li>
         <li><a href="#hechos">Qué hechos se muestran</a></li>
         <li><a href="#relacion">Cómo se relaciona un hecho con una promesa</a></li>
@@ -58,6 +61,14 @@
       </ul>
       <p>Las promesas del Gobierno (las de su programa, su acuerdo de coalición y sus acuerdos de investidura) y las de los partidos de la oposición se muestran por separado: quien gobierna tiene en su mano aprobar normas y presupuestos; la oposición, no.</p>
       <p>De cada documento enlazamos la publicación original del partido y una copia en un archivo web público, con su huella digital, para que se pueda comprobar que nadie lo ha cambiado. La cita literal de cada promesa lleva la página del documento.</p>
+    </section>
+
+    <section id="documentos">
+      <h2>Los documentos, uno por uno</h2>
+      <p>Estos son los documentos de los que saldrán las promesas. De cada uno damos dónde lo publicó el partido, si sigue ahí, una copia en el <a href="https://web.archive.org/">Internet Archive</a> y su huella sha256: si alguien descarga la copia y su huella coincide, tiene exactamente el mismo fichero que nosotros. Cada día comprobamos que nuestras copias siguen coincidiendo.</p>
+      <p>No volvemos a publicar los documentos: son de cada partido. Los enlazamos.</p>
+      <div id="lista-documentos"><p>Cargando la lista…</p></div>
+      <p class="fuente-grafico" id="documentos-fuente"></p>
     </section>
 
     <section id="promesa">

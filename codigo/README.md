@@ -8,6 +8,8 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `descargar.py` | Descarga cada fuente oficial (Eurostat, IGAE, Banco de España, INE, Hacienda, Congreso) tal como se publica, y apunta en un manifiesto la dirección, la fecha y la huella sha256 de cada fichero. |
 | `construir.py` | Lee esas descargas, calcula las cifras de cada página, hace las comprobaciones cruzadas y escribe los JSON y CSV de `datos/`. |
 | `xlsx.py` | Lee las hojas de cálculo de la IGAE y de Hacienda solo con la biblioteca estándar de Python. |
+| `descargar_documentos.py` | Descarga los programas y acuerdos de la página de promesas desde su copia en el Internet Archive y comprueba que su huella sha256 es la verificada. |
+| `promesas/documentos.json` | El catálogo de esos documentos: partido, título, páginas, dirección original, copia del archivo, huella y notas. |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
 
 Solo usan la biblioteca estándar de Python 3.12 o posterior: no hay que instalar nada.
