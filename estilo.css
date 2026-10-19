@@ -367,3 +367,21 @@ table.presupuesto th { white-space: normal; }
 .ultimo-año strong { color: var(--tinta); }
 
 .borrador { background: var(--acento-tenue); border-left: 3px solid var(--acento); border-radius: 0 6px 6px 0; padding: 0.6rem 0.9rem; font-size: 0.9375rem; margin: 1rem 0 0; }
+
+/* ---- Prototipo de gráficos interactivos (Apache ECharts) ---- */
+.filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin: 0 0 0.75rem; }
+.filtros .selector { margin: 0; }
+.filtro { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--tinta-suave); }
+.filtro select { font: inherit; font-size: 0.9375rem; color: var(--tinta); background: var(--superficie); border: 1px solid var(--linea-fuerte); border-radius: 6px; padding: 0.3rem 0.4rem; max-width: 16rem; }
+.filtro select:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.clave-hito { display: inline-grid; place-items: center; width: 1.1rem; height: 1.1rem; border-radius: 50%; background: var(--tinta); color: var(--superficie); font-size: 0.6875rem; font-weight: 600; }
+.ayuda-grafico { font-size: 0.8125rem; color: var(--tinta-suave); margin: 0 0 0.25rem; }
+.lienzo-ec { width: 100%; height: 440px; }
+@media (max-width: 520px) { .lienzo-ec { height: 360px; } }
+.tooltip-ec .tt { background: var(--superficie); border: 1px solid var(--linea-fuerte); border-radius: 6px; padding: 0.55rem 0.7rem; font: 0.8125rem/1.45 var(--sans); color: var(--tinta); min-width: 13rem; }
+.tooltip-ec .tt-año { font-weight: 600; margin-bottom: 0.25rem; }
+.tooltip-ec .tt-fila { display: grid; grid-template-columns: 1.1rem 1fr auto; gap: 0.5rem; align-items: center; }
+.tooltip-ec .tt-fila strong { font-variant-numeric: tabular-nums; }
+.tooltip-ec .tt-saldo { border-top: 1px solid var(--linea); margin-top: 0.2rem; padding-top: 0.2rem; }
+.tooltip-ec .tt-nota { color: var(--tinta-suave); margin-top: 0.2rem; font-size: 0.75rem; }
+.nota-tabla, .nota-prototipo { font-size: 0.875rem; color: var(--tinta-suave); }
