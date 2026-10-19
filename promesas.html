@@ -34,9 +34,36 @@
   </header>
 
   <main>
-    <p class="borrador"><strong>Borrador del método.</strong> Todavía no hay ninguna promesa publicada: primero se publica cómo se van a tratar, y solo después los datos.</p>
+    <p class="borrador"><strong>Primera versión.</strong> Ya están las promesas de los 17 documentos de la XV Legislatura. Los hechos que vinieron después (pactos, Consejo de Ministros, votaciones, BOE) se irán añadiendo.</p>
     <h1>Promesas: qué se prometió y qué pasó después</h1>
     <p class="entradilla">Para cada promesa electoral, el texto literal de quien la hizo y, al lado, los hechos documentados que vinieron después: si se pactó, si el Gobierno la aprobó, cómo se votó, si llegó al BOE y qué dicen los datos. No decimos si una promesa se cumplió: ponemos la promesa y los hechos, y cada cual saca su conclusión.</p>
+
+    <section id="buscador" aria-labelledby="buscador-titulo">
+      <h2 id="buscador-titulo">Las promesas</h2>
+      <p id="promesas-resumen" class="promesas-resumen">Cargando las promesas…</p>
+      <div class="filtros filtros-promesas" role="search">
+        <label class="filtro filtro-texto">Buscar <input type="search" id="p-texto" placeholder="vivienda, IVA, pensiones…" autocomplete="off"></label>
+        <div class="selector" role="group" aria-label="De quién">
+          <button type="button" data-quien="" aria-pressed="true">Todas</button>
+          <button type="button" data-quien="gobierno" aria-pressed="false">Gobierno</button>
+          <button type="button" data-quien="otros" aria-pressed="false">Demás partidos</button>
+        </div>
+        <label class="filtro">Documento <select id="p-doc"><option value="">Todos</option></select></label>
+        <label class="filtro filtro-casilla"><input type="checkbox" id="p-repes"> Mostrar también las repeticiones</label>
+      </div>
+      <p class="ayuda-grafico">«Gobierno» reúne lo que prometieron los partidos que lo formaron (los programas de PSOE y Sumar y su acuerdo de coalición) y lo que el PSOE pactó en los acuerdos de investidura. Dentro de cada bloque, los documentos van por orden alfabético. La etiqueta en negrita es nuestra; lo que vale es la cita literal.</p>
+      <p class="promesas-cuenta" id="promesas-cuenta" aria-live="polite"></p>
+      <ol class="promesas" id="promesas-lista"></ol>
+      <button type="button" class="mas" id="promesas-mas" hidden>Mostrar más</button>
+      <p class="fuente-grafico" id="promesas-fuente"></p>
+    </section>
+
+    <section id="recuento" aria-labelledby="recuento-titulo">
+      <h2 id="recuento-titulo">Cuántas promesas tiene cada documento</h2>
+      <p>Cada documento se divide en frases y cada frase se clasifica con las reglas de abajo. Aquí está cuántas resultaron promesa y por qué se descartaron las demás.</p>
+      <div class="tabla"><table id="recuento-tabla"></table></div>
+      <p class="fuente-grafico" id="recuento-fuente"></p>
+    </section>
 
     <nav class="indice" aria-label="Contenido de esta página">
       <ol>

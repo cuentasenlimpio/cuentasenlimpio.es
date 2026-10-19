@@ -860,6 +860,44 @@ def inyectar(ruta, valores):
     ruta.write_text(html)
 
 
+# Promesas: el resultado final de la extracción (doble clasificación y arbitraje) de cada documento, con su cita literal
+# y su página. Quien gobierna (programas de PSOE y Sumar, acuerdo de coalición y acuerdos de investidura) va aparte de
+# los demás partidos. Si la extracción no está (por ejemplo, en una copia del código público), no se genera.
+DOCS_GOBIERNO = {"psoe-programa", "sumar-programa", "coalicion-psoe-sumar"}
+
+
+def construir_promesas(documentos):
+    carpeta = CODIGO / "promesas" / "extraccion"
+    if not carpeta.exists():
+        print("Promesas: no hay extracción en esta copia; no se genera datos/promesas.json")
+        return
+    docs, filas = [], []
+    for d in documentos["documentos"]:
+        if not d["en_alcance"]:
+            continue
+        r = json.loads((carpeta / ("bildu_resultado.json" if d["id"] == "bildu-compromiso" else f"{d['id']}_resultado.json")).read_text())
+        gobierno = d["id"] in DOCS_GOBIERNO or d["tipo"] in ("coalicion", "investidura")
+        docs.append({k: d[k] for k in ("id", "tipo", "partidos", "titulo", "idioma", "paginas", "original", "archivo", "archivo_crudo", "sha256")}
+                    | {"gobierno": gobierno, "frases": sum(v for k, v in r["cuenta_frases"].items() if k != "titulo"),
+                       "cuenta_frases": {k: v for k, v in r["cuenta_frases"].items() if k != "titulo"},
+                       "promesas": r["promesas_total"], "distintas": r["promesas_distintas"]})
+        for p in r["promesas"]:
+            filas.append({"d": d["id"], "id": p["id"], "p": p["pagina"], "e": p["etiqueta"], "v": p["verbo"], "c": p["cita"],
+                          "x": p["contexto"], "n": p["nota"], "r": p["repite"]})
+    fiab = json.loads((carpeta / "fiabilidad.json").read_text())
+    salida = {"fiabilidad": fiab,
+              "clases": json.loads((carpeta / ("bildu_resultado.json")).read_text())["clases"], "documentos": docs, "promesas": filas}
+    (WEB / "datos" / "promesas.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
+    nombre = {d["id"]: d for d in docs}
+    with open(WEB / "datos" / "promesas.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["documento", "partidos", "id", "página", "etiqueta (nuestra)", "verbo literal", "cita literal",
+                    "frase que abre la lista", "nota", "repite (id)"])
+        for x in filas:
+            w.writerow([nombre[x["d"]]["titulo"], " – ".join(nombre[x["d"]]["partidos"]), x["id"], x["p"], x["e"], x["v"], x["c"], x["x"], x["n"], x["r"]])
+    print(f"Promesas: {len(filas)} de {len(docs)} documentos; web/datos/promesas.json y promesas.csv escritos")
+
+
 def main():
     descargas = ultimas_descargas()
     tablas = {}
@@ -1027,6 +1065,7 @@ def main():
     # Documentos de promesas: el catálogo tal cual (los PDF no se publican; se enlazan el original y la copia del archivo).
     documentos = json.loads((CODIGO / "promesas" / "documentos.json").read_text())
     (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
+    construir_promesas(documentos)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:
