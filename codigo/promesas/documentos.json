@@ -1,7 +1,7 @@
 {
  "legislatura": "XV",
  "comprobado": "2026-10-19",
- "criterio": "Programas de las elecciones generales del 23/07/2023 de las candidaturas con grupo propio en el Congreso, el acuerdo de coalición del Gobierno y los acuerdos de investidura que firmó el PSOE. Cada documento, en su publicación original y en una copia del Internet Archive con su huella sha256.",
+ "criterio": "Programas de las elecciones generales del 23/07/2023 de todas las candidaturas con diputados en el Congreso al empezar la legislatura (las de grupo propio y las tres del Grupo Mixto: BNG, Coalición Canaria y UPN), el acuerdo de coalición del Gobierno y los acuerdos de investidura que firmó el PSOE. Cada documento, en su publicación original y en una copia del Internet Archive con su huella sha256.",
  "documentos": [
   {
    "id": "pp-programa",
@@ -190,8 +190,8 @@
    "original_estado": "disponible",
    "archivo": "https://web.archive.org/web/20230713120301/https://www.bng.gal/media/bnggaliza/files/2023/07/05/23_bng_xerais_programa.pdf",
    "archivo_crudo": "https://web.archive.org/web/20230713120301id_/https://www.bng.gal/media/bnggaliza/files/2023/07/05/23_bng_xerais_programa.pdf",
-   "en_alcance": false,
-   "nota": "El BNG está en el Grupo Mixto: su programa queda fuera del alcance acordado. Se guarda por si se amplía."
+   "en_alcance": true,
+   "nota": "El BNG está en el Grupo Mixto, con un diputado."
   },
   {
    "id": "upn-programa",
@@ -209,12 +209,12 @@
    "original_estado": "disponible",
    "archivo": "https://web.archive.org/web/20230727191605/https://www.upn.org/wp-content/uploads/2023/07/Programa-Generales-23J_V2-1.pdf",
    "archivo_crudo": "https://web.archive.org/web/20230727191605id_/https://www.upn.org/wp-content/uploads/2023/07/Programa-Generales-23J_V2-1.pdf",
-   "en_alcance": false,
-   "nota": "UPN está en el Grupo Mixto: su programa queda fuera del alcance acordado. Se guarda por si se amplía."
+   "en_alcance": true,
+   "nota": "UPN está en el Grupo Mixto, con un diputado. Es un programa breve, de 6 páginas."
   },
   {
    "id": "cc-manifiesto",
-   "tipo": "manifiesto",
+   "tipo": "programa",
    "partidos": [
     "Coalición Canaria"
    ],
@@ -228,8 +228,8 @@
    "original_estado": "disponible",
    "archivo": "https://web.archive.org/web/20230930233746/https://coalicioncanaria.org/wp-content/uploads/cc-pdf/programas-electorales/00_COALICION%20POR%20CANARIAS.pdf",
    "archivo_crudo": "https://web.archive.org/web/20230930233746id_/https://coalicioncanaria.org/wp-content/uploads/cc-pdf/programas-electorales/00_COALICION%20POR%20CANARIAS.pdf",
-   "en_alcance": false,
-   "nota": "No es un programa electoral: CC no publicó programa propio para el 23J. Además, está en el Grupo Mixto."
+   "en_alcance": true,
+   "nota": "Coalición Canaria (en el Grupo Mixto, con una diputada) no publicó un programa propio para el 23J: este manifiesto conjunto, del 26/06/2023, es su único documento electoral. Se trata igual que los programas, con esa advertencia."
   },
   {
    "id": "coalicion-psoe-sumar",
@@ -423,7 +423,19 @@
   },
   {
    "que": "Programa de Coalición Canaria para el 23J",
-   "detalle": "No publicó programa propio; solo un manifiesto conjunto, que se guarda pero no se trata como programa."
+   "detalle": "No publicó programa propio; su único documento electoral es un manifiesto conjunto, que se incluye con esa advertencia."
   }
- ]
+ ],
+ "grupo_mixto": {
+  "fuente": "Congreso de los Diputados, datos abiertos de diputados de la XV Legislatura (fecha de alta y baja en cada grupo), descargados el 19/10/2026",
+  "url": "https://www.congreso.es/es/opendata/diputados",
+  "inicio": "El 28/08/2023 el Grupo Mixto lo formaban tres diputados: uno del BNG, una de Coalición Canaria y uno de UPN.",
+  "despues": [
+   "05/12/2023: cinco diputados elegidos en las listas de Sumar",
+   "27/02/2024: un diputado elegido en las listas del PSOE",
+   "03/07/2025: una diputada elegida en las listas de Sumar",
+   "17/07/2026: un diputado elegido en las listas de Vox"
+  ],
+  "regla": "Quien cambia de grupo no cambia de programa: sus promesas son las del programa con el que fue elegido."
+ }
 }

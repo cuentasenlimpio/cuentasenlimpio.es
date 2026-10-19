@@ -362,3 +362,7 @@ table.presupuesto th { white-space: normal; }
 .documento-meta, .documento-enlaces { font-size: 0.875rem; color: var(--tinta-suave); }
 .documento-nota { font-size: 0.875rem; color: var(--tinta-suave); margin-top: 0.35rem !important; }
 .documento .huella { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.8125rem; }
+.nota-mixto { background: var(--nota); border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1.25rem; font-size: 0.9375rem; }
+.nota-mixto p { margin: 0 0 0.4rem; }
+.nota-mixto ul { margin: 0 0 0.4rem; }
+.nota-mixto .fuente-grafico { margin: 0.4rem 0 0; }

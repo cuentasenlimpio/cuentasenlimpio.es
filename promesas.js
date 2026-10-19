@@ -69,9 +69,23 @@ async function arrancar() {
   }
 
   nuevo("h3", { textContent: `Guardados, pero de los que no se sacan promesas (${fuera.length})` }, c);
-  nuevo("p", { textContent: "Otras versiones o copias de los mismos documentos, que sirven para contrastar, y documentos de partidos fuera del alcance acordado (los del Grupo Mixto). Se guardan igual, con su huella." }, c);
+  nuevo("p", { textContent: "Otras versiones o copias de los mismos documentos, que sirven para contrastar. Se guardan igual, con su huella." }, c);
   const ul = nuevo("ul", { className: "documentos" }, c);
   for (const d of fuera) documento(d, ul);
+
+  // El Grupo Mixto: quién lo formaba al empezar y quién pasó a él después, con la regla que se aplica.
+  const gm = datos.grupo_mixto;
+  const m = document.getElementById("grupo-mixto");
+  m.textContent = "";
+  nuevo("p", {}, m).appendChild(nuevo("strong", { textContent: "El Grupo Mixto. " }));
+  m.firstChild.appendChild(document.createTextNode(`Reúne a los diputados de partidos que no llegan a formar grupo propio. ${gm.inicio} Después pasaron a él diputados elegidos en otras listas:`));
+  const ulm = nuevo("ul", {}, m);
+  for (const t of gm.despues) nuevo("li", { textContent: t }, ulm);
+  nuevo("p", { textContent: gm.regla }, m);
+  const fm = nuevo("p", { className: "fuente-grafico", textContent: "Fuente: " }, m);
+  enlace(gm.url, gm.fuente, fm);
+  fm.appendChild(document.createTextNode(". "));
+  nuevo("span", { className: "etiqueta-tipo dato", textContent: "dato" }, fm);
 
   const f = document.getElementById("documentos-fuente");
   f.textContent = `Fuente: la web de cada partido (o el medio que se indica, cuando el partido no lo publicó) y su captura en el Internet Archive. Direcciones, estado y huellas comprobados el ${fecha(datos.comprobado)}. `;
