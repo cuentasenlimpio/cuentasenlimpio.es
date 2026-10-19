@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>En qué se gasta · Cuentas en limpio</title>
+  <meta name="description" content="En qué gastan las administraciones públicas españolas desde 1995 y qué parte paga cada nivel de administración, con la fuente de cada cifra.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js" defer></script>
+  <script src="gasto.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="./">Inicio</a>
+      <a href="cuentas.html">Cuentas</a>
+      <a href="gasto.html" aria-current="page">En qué se gasta</a>
+      <a href="ingresos.html">De dónde sale</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="como-se-miente.html">Cómo se miente</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="metodologia.html">Metodología</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>¿En qué se gasta el dinero público, y quién lo gasta?</h1>
+    <p class="entradilla">El gasto de todas las administraciones públicas repartido en las diez grandes finalidades que usan todos los países de la UE, y qué parte de cada una paga el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos.</p>
+    <p class="contabilidad">Contabilidad nacional (SEC 2010), todas las administraciones consolidadas. <a href="como-se-miente.html#contabilidades">Qué significa</a>.</p>
+
+    <p class="ultimo-año" id="ultimo-año"></p>
+    <div class="controles">
+      <label>Año <select id="selector-año"></select></label>
+      <div class="selector" role="group" aria-label="Unidad de los gráficos de evolución">
+        <span class="selector-etiqueta">Ver la evolución en</span>
+        <button type="button" data-unidad="pib" aria-pressed="true">% del PIB</button>
+        <button type="button" data-unidad="corrientes" aria-pressed="false">Euros</button>
+        <button type="button" data-unidad="constantes" aria-pressed="false">Euros sin inflación</button>
+        <button type="button" data-unidad="habitante" aria-pressed="false">Por habitante</button>
+      </div>
+    </div>
+
+    <section class="grafico" aria-labelledby="r-titulo">
+      <h2 class="grafico-titulo" id="r-titulo">De cada 100 € de gasto público en <span class="año-elegido"></span></h2>
+      <p class="grafico-explica">Los intereses de la deuda se cuentan oficialmente dentro de «servicios públicos generales»; aquí van aparte para que se vean.</p>
+      <div class="lienzo" id="reparto" role="img" aria-label="Reparto del gasto público por funciones en el año elegido"></div>
+      <p class="fuente-grafico" id="reparto-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="e-titulo">
+      <h2 class="grafico-titulo" id="e-titulo">¿Cómo ha cambiado cada partida desde 1995?</h2>
+      <p class="grafico-explica">El punto marca el año elegido; la cifra junto a cada nombre es su valor ese año.</p>
+      <div class="multiples" id="evolucion"></div>
+      <p class="fuente-grafico" id="evolucion-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="q-titulo">
+      <h2 class="grafico-titulo" id="q-titulo">¿Quién paga cada partida en <span class="año-elegido"></span>?</h2>
+      <p class="grafico-explica">Qué parte del gasto de cada función hace cada nivel de administración. A cada nivel se le quitan las transferencias generales que hace a otros (como la financiación de las comunidades autónomas), porque las gasta quien las recibe. Aun así, las filas pueden sumar algo más de 100: otras transferencias entre niveles cuentan en los dos.</p>
+      <div class="tabla"><table class="matriz" id="quien"></table></div>
+      <p class="fuente-grafico" id="quien-fuente"></p>
+    </section>
+
+    <div class="no-dice">
+      <strong>Lo que esta página no dice</strong>
+      <ul>
+        <li>No dice si el dinero se gasta bien o mal: solo en qué y quién.</li>
+        <li>No dice quién decidió cada gasto. Una comunidad autónoma gasta en sanidad dinero que en parte le transfiere el Estado.</li>
+        <li>Las pensiones van dentro de «protección social», junto con el desempleo y otras prestaciones.</li>
+      </ul>
+    </div>
+
+    <details class="plegable ficha" open>
+      <summary>Comprobaciones</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+      <p><a href="datos/gasto.csv" download>Todos los números de esta página (CSV)</a></p>
+    </details>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

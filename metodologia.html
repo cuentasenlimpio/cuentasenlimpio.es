@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Metodología · Cuentas en limpio</title>
+  <meta name="description" content="De dónde sale cada cifra, cómo se trata, qué es dato y qué es lectura, cómo se comprueba y qué decisiones de método tomamos.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="./">Inicio</a>
+      <a href="cuentas.html">Cuentas</a>
+      <a href="gasto.html">En qué se gasta</a>
+      <a href="ingresos.html">De dónde sale</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="como-se-miente.html">Cómo se miente</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="metodologia.html" aria-current="page">Metodología</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Metodología</h1>
+    <p class="entradilla">Cada cifra de esta web sale de un fichero oficial descargado tal cual, se calcula con reglas publicadas aquí y se contrasta con una segunda fuente cuando existe. Esta página explica todo el proceso para que cualquiera pueda rehacerlo.</p>
+
+    <nav class="indice" aria-label="Contenido de esta página">
+      <ol>
+        <li><a href="#fuentes">De dónde salen los datos</a></li>
+        <li><a href="#proceso">Cómo se tratan</a></li>
+        <li><a href="#dato-lectura">Dato y lectura</a></li>
+        <li><a href="#decisiones">Decisiones de método</a></li>
+        <li><a href="#comprobaciones">Cómo se comprueban</a></li>
+        <li><a href="#limites">Lo que esta web no hace</a></li>
+        <li><a href="#errores">Errores y correcciones</a></li>
+        <li><a href="#independencia">Quién la hace e independencia</a></li>
+      </ol>
+    </nav>
+
+    <section id="fuentes">
+      <h2>1. De dónde salen los datos</h2>
+      <p>Solo usamos fuentes oficiales. Cada gráfico dice debajo qué tabla exacta usa, cuándo la actualizó la fuente y cuándo la descargamos, y enlaza al fichero descargado.</p>
+      <div class="tabla">
+        <table>
+          <thead><tr><th scope="col">Institución</th><th scope="col">Qué tomamos</th><th scope="col">Condiciones de reutilización</th></tr></thead>
+          <tbody>
+            <tr><td>Eurostat</td><td>Ingresos, gastos, saldo, deuda y su variación, gasto por funciones, PIB, población, tipos de cambio y la comparación europea. Es la fuente principal.</td><td><a href="https://ec.europa.eu/eurostat/en/help/copyright-notice">CC BY 4.0</a>: reutilización libre, también comercial, citando la fuente.</td></tr>
+            <tr><td>Intervención General de la Administración del Estado (IGAE), Ministerio de Hacienda</td><td>Cuentas anuales de las administraciones públicas y gasto por funciones, para comprobar las de Eurostat. Liquidación anual del presupuesto del Estado: lo aprobado, lo modificado y lo gastado por políticas de gasto; mientras no se publica, su ejecución a 31 de diciembre, marcada como avance.</td><td><a href="https://www.hacienda.gob.es/es-ES/Paginas/Avisolegal.aspx">Aviso legal de Hacienda</a> (Ley 37/2007): no desnaturalizar, citar «Origen de los datos: Ministerio de Hacienda» y la fecha de actualización, no sugerir patrocinio.</td></tr>
+            <tr><td>Ministerio de Hacienda (Secretaría de Estado de Presupuestos y Gastos)</td><td>Estadísticas del presupuesto del Estado por capítulos, para comprobar lo aprobado de cada año.</td><td><a href="https://www.hacienda.gob.es/es-ES/Paginas/Avisolegal.aspx">Aviso legal de Hacienda</a> (Ley 37/2007), como la IGAE.</td></tr>
+            <tr><td>Banco de España</td><td>Deuda según el Procedimiento de Déficit Excesivo, para comprobar la de Eurostat.</td><td><a href="https://www.bde.es/wbe/en/pie/aviso-legal/">Aviso legal del Banco de España</a>: reproducción permitida sin alterar el contenido, citando la fuente y la fecha.</td></tr>
+            <tr><td>Instituto Nacional de Estadística (INE)</td><td>PIB y población, para comprobar los de Eurostat.</td><td><a href="https://ine.es/dyngs/AYU/index.htm?cid=125">CC BY 4.0</a>: citar «Elaboración propia con datos extraídos del sitio web del INE», indicar la fecha de actualización y no sugerir patrocinio.</td></tr>
+            <tr><td>Congreso de los Diputados</td><td>Fechas de las sesiones constitutivas de cada legislatura.</td><td><a href="https://www.congreso.es/es/datos-abiertos">Datos abiertos del Congreso</a>: no alterar el contenido y citar la fuente y la fecha.</td></tr>
+            <tr><td>Boletín Oficial del Estado (BOE)</td><td>Leyes de presupuestos y sus fechas.</td><td><a href="https://www.boe.es/datosabiertos/api/api.php">Condiciones del BOE</a>: uso libre citando «Fuente de los datos: Agencia Estatal BOE».</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente-grafico">Fuente: avisos legales y condiciones de reutilización de cada institución, enlazados en la tabla y consultados el 19 de octubre de 2026.</p>
+    </section>
+
+    <section id="proceso">
+      <h2>2. Cómo se tratan</h2>
+      <ol>
+        <li><strong>Descarga literal.</strong> Cada día descargamos todas las fuentes y guardamos cada fichero tal cual, con la fecha, la dirección exacta y su huella digital (SHA-256). Un fichero idéntico al del día anterior no se guarda dos veces. Nunca se edita un fichero descargado.</li>
+        <li><strong>Construcción.</strong> Un programa lee los ficheros descargados y prepara las series que dibujan los gráficos. No hay ningún número escrito a mano: hasta las cifras dentro de los diagramas salen de los datos.</li>
+        <li><strong>Comprobación.</strong> El mismo programa contrasta las cifras con otras fuentes y consigo mismas (ver el punto 5). El resultado se publica en cada página, cuadre o no.</li>
+        <li><strong>Publicación.</strong> La web solo cambia si cambian los datos, la fecha de actualización de una fuente o el propio cálculo. Si solo cambia la fecha de descarga, se anota la revisión y la web se queda igual.</li>
+        <li><strong>Trazabilidad.</strong> Junto a cada gráfico se puede descargar el fichero oficial exacto que se usó, y todos los números de la página en CSV.</li>
+        <li><strong>Historial público.</strong> La web se publica desde un <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es">repositorio público</a> en el que cada publicación es un cambio con fecha. Ahí se puede ver qué decía la web cualquier día.</li>
+      </ol>
+    </section>
+
+    <section id="dato-lectura">
+      <h2>3. Dato y lectura</h2>
+      <p>Toda cifra lleva una de estas dos etiquetas:</p>
+      <ul>
+        <li><span class="etiqueta-tipo dato">dato</span> lo publica la fuente oficial tal cual. Solo cambiamos la unidad de presentación (por ejemplo, de millones a miles de millones).</li>
+        <li><span class="etiqueta-tipo lectura">lectura</span> es un cálculo nuestro sobre datos oficiales. Siempre va con su fórmula.</li>
+      </ul>
+      <div class="tabla">
+        <table>
+          <thead><tr><th scope="col">Lectura</th><th scope="col">Cómo se calcula</th></tr></thead>
+          <tbody>
+            <tr><td>Euros sin inflación</td><td>Valor en euros × deflactor del PIB del último año ÷ deflactor del PIB del año. El deflactor es el índice de precios de toda la economía (Eurostat, nama_10_gdp).</td></tr>
+            <tr><td>Por habitante</td><td>Valor en euros ÷ población media del año (Eurostat, nama_10_pe).</td></tr>
+            <tr><td>Déficit sin intereses</td><td>Déficit − intereses pagados, los dos de la misma notificación oficial.</td></tr>
+            <tr><td>Efecto del crecimiento del PIB sobre la deuda</td><td>− deuda del año anterior en % del PIB × crecimiento del PIB ÷ (1 + crecimiento). Es la parte de la variación del porcentaje de deuda que se debe solo a que el PIB cambia.</td></tr>
+            <tr><td>Qué parte de cada gasto hace cada nivel de administración</td><td>Gasto del nivel en esa función ÷ gasto de todas las administraciones en esa función (Eurostat, gov_10a_exp). En servicios generales y en el total, sin las transferencias generales entre administraciones (grupo 01.8), que gasta quien las recibe.</td></tr>
+            <tr><td>Intereses dentro de «de cada 100 € de gasto»</td><td>Gasto en operaciones de deuda pública (grupo 01.7) ÷ gasto total × 100; el resto de servicios generales es el porcentaje publicado menos los intereses.</td></tr>
+            <tr><td>«De cada 100 € que ingresan las administraciones»</td><td>Cada tipo de impuesto, las cotizaciones y los otros ingresos ÷ ingresos totales × 100 (Eurostat, gov_10a_taxag y gov_10a_main).</td></tr>
+            <tr><td>Modificaciones y % gastado del presupuesto</td><td>Modificaciones = créditos definitivos − créditos iniciales. % gastado = obligaciones reconocidas ÷ créditos definitivos × 100 (liquidación del presupuesto del Estado, IGAE).</td></tr>
+            <tr><td>Otros ingresos</td><td>Ingresos totales − impuestos y cotizaciones. Algunas categorías de impuestos también son restas de datos publicados; la fórmula de cada una está en el CSV de su página.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente-grafico">Fuente: elaboración propia. Las tablas de Eurostat citadas se enlazan en cada gráfico que las usa.</p>
+    </section>
+
+    <section id="decisiones">
+      <h2>4. Decisiones de método</h2>
+      <p>Toda web de datos toma decisiones. Estas son las nuestras, y por qué:</p>
+      <ul>
+        <li><strong>Contabilidad nacional, salvo para el presupuesto.</strong> Usamos las reglas europeas comunes (SEC 2010), las que fijan el déficit y la deuda oficiales y permiten comparar años y países. La única excepción es la página de <a href="presupuesto.html">presupuesto</a>, que por su naturaleza usa la contabilidad presupuestaria y solo cubre al Estado; lo explicamos en <a href="como-se-miente.html#contabilidades">cómo se miente con datos</a>.</li>
+        <li><strong>Todas las administraciones juntas.</strong> Estado, Seguridad Social, comunidades autónomas y entidades locales, consolidadas: es el conjunto que cuenta para el déficit y la deuda oficiales.</li>
+        <li><strong>Desde 1995.</strong> Es el primer año de las series homogéneas con las reglas actuales. No empalmamos series antiguas calculadas con otras reglas.</li>
+        <li><strong>Pesetas al tipo fijo.</strong> Hasta 1998 las cifras estaban en pesetas. Las pasamos a euros al tipo fijo de 166,386 pesetas por euro, como el Banco de España y la IGAE, no al tipo de mercado de cada año. Así los años se pueden comparar.</li>
+        <li><strong>El porcentaje del PIB, tal como se publica.</strong> No lo recalculamos con el PIB más reciente, aunque se haya revisado después. Mostramos la diferencia como comprobación.</li>
+        <li><strong>Euros sin inflación con el deflactor del PIB.</strong> No usamos el IPC, que mide los precios de lo que compran los hogares, no los de toda la economía. El año base es el último disponible, para que las cifras se lean en euros de hoy.</li>
+        <li><strong>Legislaturas sin colores ni nombres.</strong> Cada franja empieza el día de la sesión constitutiva del Congreso y solo lleva su número. No calculamos medias por legislatura ni las ordenamos, porque mezclarían años de crisis y de bonanza.</li>
+        <li><strong>Acontecimientos.</strong> Solo golpes externos a la economía española, con fecha y documento oficial de una institución. Nunca decisiones de un Gobierno español: elegir cuáles marcar ya sería opinar.</li>
+        <li><strong>Avances, solo si se ha comprobado que valen.</strong> Un año sin liquidación del presupuesto se muestra con su ejecución a 31 de diciembre, marcada como avance, porque comprobamos cada día que el avance del último año liquidado coincide con su liquidación. Si deja de coincidir, el aviso salta.</li>
+        <li><strong>Sin adjetivos ni colores con carga.</strong> Los títulos son preguntas o hechos medidos, y el déficit no se pinta de rojo.</li>
+      </ul>
+    </section>
+
+    <section id="comprobaciones">
+      <h2>5. Cómo se comprueban</h2>
+      <p>Cada página enseña sus comprobaciones con el resultado del día. Son de tres tipos:</p>
+      <ul>
+        <li><strong>Contra otra fuente.</strong> La misma cifra publicada por dos instituciones: la deuda (Eurostat y Banco de España); el saldo, todas las operaciones de gasto y todas las de ingresos menos una (Eurostat e IGAE); el gasto por funciones (Eurostat e IGAE); lo aprobado del presupuesto (IGAE y Hacienda); el PIB y la población (Eurostat e INE).</li>
+        <li><strong>Contra sí misma.</strong> Las partes deben sumar el total: ingresos menos gastos da el saldo, y las causas de la variación de la deuda suman esa variación.</li>
+        <li><strong>Diferencias explicadas.</strong> Cuando dos cifras no coinciden, buscamos la causa y la contamos. Si no la encontramos, lo decimos y no damos por buena ninguna de las dos.</li>
+      </ul>
+      <p>Lo que todavía no tiene segunda fuente se dice en la página donde aparece.</p>
+    </section>
+
+    <section id="limites">
+      <h2>6. Lo que esta web no hace</h2>
+      <ul>
+        <li><strong>No atribuye causas.</strong> Que algo ocurra con un Gobierno no significa que lo haya provocado él. Solo citamos una causa cuando una institución oficial la ha cuantificado.</li>
+        <li><strong>No valora.</strong> No decimos si un déficit o una deuda son buenos o malos: damos las cifras y su contexto.</li>
+        <li><strong>No da veredictos sobre promesas.</strong> En <a href="promesas.html">promesas</a> pone el texto literal de cada una y los hechos documentados que vinieron después; la conclusión es del lector.</li>
+      </ul>
+    </section>
+
+    <section id="errores">
+      <h2>7. Errores y correcciones</h2>
+      <p>Todo error corregido queda en el <a href="correcciones.html">registro de correcciones</a>, con la fecha, lo que decía, lo que dice ahora y por qué. Un dato corregido no se borra sin dejar rastro.</p>
+    </section>
+
+    <section id="independencia">
+      <h2>8. Quién la hace e independencia</h2>
+      <p>Cuentas en limpio es un proyecto personal de Sendoa Sola. No está vinculado a ningún partido ni a ninguna de las instituciones cuyos datos usa, y ninguna de ellas lo patrocina ni lo respalda.</p>
+      <p>Todo lo necesario para rehacer los cálculos es público: el método completo en esta página, <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">el código que descarga las fuentes, calcula cada cifra y la comprueba</a>, los ficheros oficiales tal como se descargaron y todos los números de cada página en CSV.</p>
+    </section>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

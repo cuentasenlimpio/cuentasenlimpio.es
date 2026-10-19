@@ -1,0 +1,21 @@
+{
+  "criterio": "Solo golpes externos a la economía española, con fecha y documento oficial de una institución. Nunca decisiones de un Gobierno español: elegir cuáles marcar ya sería opinar.",
+  "lista": [
+    {"fecha": "2008-09-15", "corto": "Quiebra de Lehman Brothers",
+     "texto": "Quiebra del banco de inversión Lehman Brothers: según el Banco Central Europeo, convirtió las turbulencias financieras iniciadas en 2007 en una crisis abierta.",
+     "fuente": "Banco Central Europeo, discurso de L. Bini Smaghi, 20/10/2008",
+     "url": "https://www.ecb.europa.eu/press/key/date/2008/html/sp081020_1.en.html"},
+    {"fecha": "2020-03-11", "corto": "La OMS declara la pandemia",
+     "texto": "La Organización Mundial de la Salud califica la COVID-19 de pandemia.",
+     "fuente": "Organización Panamericana de la Salud (oficina regional de la OMS), nota del 11/03/2020",
+     "url": "https://www.paho.org/es/noticias/11-3-2020-oms-caracteriza-covid-19-como-pandemia"},
+    {"fecha": "2021-02-12", "corto": "Fondos europeos de recuperación",
+     "texto": "La UE aprueba el Mecanismo de Recuperación y Resiliencia, el centro de los fondos NextGenerationEU.",
+     "fuente": "Reglamento (UE) 2021/241, Diario Oficial de la UE",
+     "url": "https://eur-lex.europa.eu/eli/reg/2021/241/oj?locale=es"},
+    {"fecha": "2022-02-24", "corto": "Invasión rusa de Ucrania",
+     "texto": "Rusia invade Ucrania; la UE responde con sanciones que alcanzan, entre otros, al sector de la energía.",
+     "fuente": "Conclusiones del Consejo Europeo, 24/02/2022",
+     "url": "https://www.consilium.europa.eu/en/press/press-releases/2022/02/24/european-council-conclusions-24-february-2022/"}
+  ]
+}

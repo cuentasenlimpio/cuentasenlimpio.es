@@ -1,0 +1,1501 @@
+año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag y gov_10a_main)
+1995,evolución,IVA,% del PIB,5.0,dato,D211
+1996,evolución,IVA,% del PIB,5.1,dato,D211
+1997,evolución,IVA,% del PIB,5.3,dato,D211
+1998,evolución,IVA,% del PIB,5.6,dato,D211
+1999,evolución,IVA,% del PIB,5.9,dato,D211
+2000,evolución,IVA,% del PIB,5.8,dato,D211
+2001,evolución,IVA,% del PIB,5.7,dato,D211
+2002,evolución,IVA,% del PIB,5.6,dato,D211
+2003,evolución,IVA,% del PIB,5.7,dato,D211
+2004,evolución,IVA,% del PIB,6.0,dato,D211
+2005,evolución,IVA,% del PIB,6.2,dato,D211
+2006,evolución,IVA,% del PIB,6.2,dato,D211
+2007,evolución,IVA,% del PIB,5.8,dato,D211
+2008,evolución,IVA,% del PIB,4.7,dato,D211
+2009,evolución,IVA,% del PIB,3.4,dato,D211
+2010,evolución,IVA,% del PIB,5.1,dato,D211
+2011,evolución,IVA,% del PIB,5.1,dato,D211
+2012,evolución,IVA,% del PIB,5.3,dato,D211
+2013,evolución,IVA,% del PIB,5.9,dato,D211
+2014,evolución,IVA,% del PIB,6.2,dato,D211
+2015,evolución,IVA,% del PIB,6.4,dato,D211
+2016,evolución,IVA,% del PIB,6.4,dato,D211
+2017,evolución,IVA,% del PIB,6.5,dato,D211
+2018,evolución,IVA,% del PIB,6.5,dato,D211
+2019,evolución,IVA,% del PIB,6.5,dato,D211
+2020,evolución,IVA,% del PIB,6.3,dato,D211
+2021,evolución,IVA,% del PIB,6.8,dato,D211
+2022,evolución,IVA,% del PIB,6.8,dato,D211
+2023,evolución,IVA,% del PIB,6.4,dato,D211
+2024,evolución,IVA,% del PIB,6.4,dato,D211
+1995,evolución,IVA,millones de euros corrientes,22922.0,dato,D211
+1996,evolución,IVA,millones de euros corrientes,25012.0,dato,D211
+1997,evolución,IVA,millones de euros corrientes,27489.0,dato,D211
+1998,evolución,IVA,millones de euros corrientes,31070.0,dato,D211
+1999,evolución,IVA,millones de euros corrientes,35072.0,dato,D211
+2000,evolución,IVA,millones de euros corrientes,37785.0,dato,D211
+2001,evolución,IVA,millones de euros corrientes,40106.0,dato,D211
+2002,evolución,IVA,millones de euros corrientes,41673.0,dato,D211
+2003,evolución,IVA,millones de euros corrientes,45645.0,dato,D211
+2004,evolución,IVA,millones de euros corrientes,51272.0,dato,D211
+2005,evolución,IVA,millones de euros corrientes,57716.0,dato,D211
+2006,evolución,IVA,millones de euros corrientes,62365.0,dato,D211
+2007,evolución,IVA,millones de euros corrientes,62743.0,dato,D211
+2008,evolución,IVA,millones de euros corrientes,52347.0,dato,D211
+2009,evolución,IVA,millones de euros corrientes,36786.0,dato,D211
+2010,evolución,IVA,millones de euros corrientes,55318.0,dato,D211
+2011,evolución,IVA,millones de euros corrientes,54101.0,dato,D211
+2012,evolución,IVA,millones de euros corrientes,55021.0,dato,D211
+2013,evolución,IVA,millones de euros corrientes,60314.0,dato,D211
+2014,evolución,IVA,millones de euros corrientes,64091.0,dato,D211
+2015,evolución,IVA,millones de euros corrientes,69294.0,dato,D211
+2016,evolución,IVA,millones de euros corrientes,71753.0,dato,D211
+2017,evolución,IVA,millones de euros corrientes,75599.0,dato,D211
+2018,evolución,IVA,millones de euros corrientes,79239.0,dato,D211
+2019,evolución,IVA,millones de euros corrientes,80889.0,dato,D211
+2020,evolución,IVA,millones de euros corrientes,70669.0,dato,D211
+2021,evolución,IVA,millones de euros corrientes,83547.0,dato,D211
+2022,evolución,IVA,millones de euros corrientes,94140.0,dato,D211
+2023,evolución,IVA,millones de euros corrientes,96030.0,dato,D211
+2024,evolución,IVA,millones de euros corrientes,102495.0,dato,D211
+1995,evolución,IVA,millones de euros de 2024,46071.0,lectura,D211
+1996,evolución,IVA,millones de euros de 2024,48555.8,lectura,D211
+1997,evolución,IVA,millones de euros de 2024,52080.8,lectura,D211
+1998,evolución,IVA,millones de euros de 2024,57353.9,lectura,D211
+1999,evolución,IVA,millones de euros de 2024,63089.8,lectura,D211
+2000,evolución,IVA,millones de euros de 2024,65726.3,lectura,D211
+2001,evolución,IVA,millones de euros de 2024,66976.6,lectura,D211
+2002,evolución,IVA,millones de euros de 2024,66857.9,lectura,D211
+2003,evolución,IVA,millones de euros de 2024,70410.5,lectura,D211
+2004,evolución,IVA,millones de euros de 2024,76113.2,lectura,D211
+2005,evolución,IVA,millones de euros de 2024,82215.5,lectura,D211
+2006,evolución,IVA,millones de euros de 2024,85361.9,lectura,D211
+2007,evolución,IVA,millones de euros de 2024,82926.0,lectura,D211
+2008,evolución,IVA,millones de euros de 2024,67530.3,lectura,D211
+2009,evolución,IVA,millones de euros de 2024,47346.4,lectura,D211
+2010,evolución,IVA,millones de euros de 2024,70990.4,lectura,D211
+2011,evolución,IVA,millones de euros de 2024,69530.2,lectura,D211
+2012,evolución,IVA,millones de euros de 2024,70856.2,lectura,D211
+2013,evolución,IVA,millones de euros de 2024,77333.8,lectura,D211
+2014,evolución,IVA,millones de euros de 2024,82357.9,lectura,D211
+2015,evolución,IVA,millones de euros de 2024,88555.4,lectura,D211
+2016,evolución,IVA,millones de euros de 2024,91357.7,lectura,D211
+2017,evolución,IVA,millones de euros de 2024,95058.6,lectura,D211
+2018,evolución,IVA,millones de euros de 2024,98466.4,lectura,D211
+2019,evolución,IVA,millones de euros de 2024,99100.7,lectura,D211
+2020,evolución,IVA,millones de euros de 2024,85609.1,lectura,D211
+2021,evolución,IVA,millones de euros de 2024,98687.2,lectura,D211
+2022,evolución,IVA,millones de euros de 2024,106214.2,lectura,D211
+2023,evolución,IVA,millones de euros de 2024,101978.3,lectura,D211
+2024,evolución,IVA,millones de euros de 2024,105618.9,lectura,D211
+1995,evolución,IVA,euros por habitante,577,lectura,D211
+1996,evolución,IVA,euros por habitante,627,lectura,D211
+1997,evolución,IVA,euros por habitante,686,lectura,D211
+1998,evolución,IVA,euros por habitante,773,lectura,D211
+1999,evolución,IVA,euros por habitante,869,lectura,D211
+2000,evolución,IVA,euros por habitante,932,lectura,D211
+2001,evolución,IVA,euros por habitante,984,lectura,D211
+2002,evolución,IVA,euros por habitante,1006,lectura,D211
+2003,evolución,IVA,euros por habitante,1082,lectura,D211
+2004,evolución,IVA,euros por habitante,1196,lectura,D211
+2005,evolución,IVA,euros por habitante,1322,lectura,D211
+2006,evolución,IVA,euros por habitante,1406,lectura,D211
+2007,evolución,IVA,euros por habitante,1387,lectura,D211
+2008,evolución,IVA,euros por habitante,1138,lectura,D211
+2009,evolución,IVA,euros por habitante,793,lectura,D211
+2010,evolución,IVA,euros por habitante,1188,lectura,D211
+2011,evolución,IVA,euros por habitante,1158,lectura,D211
+2012,evolución,IVA,euros por habitante,1177,lectura,D211
+2013,evolución,IVA,euros por habitante,1295,lectura,D211
+2014,evolución,IVA,euros por habitante,1380,lectura,D211
+2015,evolución,IVA,euros por habitante,1494,lectura,D211
+2016,evolución,IVA,euros por habitante,1545,lectura,D211
+2017,evolución,IVA,euros por habitante,1625,lectura,D211
+2018,evolución,IVA,euros por habitante,1696,lectura,D211
+2019,evolución,IVA,euros por habitante,1718,lectura,D211
+2020,evolución,IVA,euros por habitante,1493,lectura,D211
+2021,evolución,IVA,euros por habitante,1765,lectura,D211
+2022,evolución,IVA,euros por habitante,1970,lectura,D211
+2023,evolución,IVA,euros por habitante,1986,lectura,D211
+2024,evolución,IVA,euros por habitante,2097,lectura,D211
+1995,de cada 100 €,IVA,euros de cada 100,13.34,lectura,(D211) ÷ TR × 100
+1996,de cada 100 €,IVA,euros de cada 100,13.83,lectura,(D211) ÷ TR × 100
+1997,de cada 100 €,IVA,euros de cada 100,14.08,lectura,(D211) ÷ TR × 100
+1998,de cada 100 €,IVA,euros de cada 100,14.59,lectura,(D211) ÷ TR × 100
+1999,de cada 100 €,IVA,euros de cada 100,15.22,lectura,(D211) ÷ TR × 100
+2000,de cada 100 €,IVA,euros de cada 100,15.38,lectura,(D211) ÷ TR × 100
+2001,de cada 100 €,IVA,euros de cada 100,15.08,lectura,(D211) ÷ TR × 100
+2002,de cada 100 €,IVA,euros de cada 100,14.51,lectura,(D211) ÷ TR × 100
+2003,de cada 100 €,IVA,euros de cada 100,14.98,lectura,(D211) ÷ TR × 100
+2004,de cada 100 €,IVA,euros de cada 100,15.41,lectura,(D211) ÷ TR × 100
+2005,de cada 100 €,IVA,euros de cada 100,15.67,lectura,(D211) ÷ TR × 100
+2006,de cada 100 €,IVA,euros de cada 100,15.32,lectura,(D211) ÷ TR × 100
+2007,de cada 100 €,IVA,euros de cada 100,14.18,lectura,(D211) ÷ TR × 100
+2008,de cada 100 €,IVA,euros de cada 100,12.8,lectura,(D211) ÷ TR × 100
+2009,de cada 100 €,IVA,euros de cada 100,9.84,lectura,(D211) ÷ TR × 100
+2010,de cada 100 €,IVA,euros de cada 100,14.13,lectura,(D211) ÷ TR × 100
+2011,de cada 100 €,IVA,euros de cada 100,13.97,lectura,(D211) ÷ TR × 100
+2012,de cada 100 €,IVA,euros de cada 100,14.08,lectura,(D211) ÷ TR × 100
+2013,de cada 100 €,IVA,euros de cada 100,15.21,lectura,(D211) ÷ TR × 100
+2014,de cada 100 €,IVA,euros de cada 100,15.82,lectura,(D211) ÷ TR × 100
+2015,de cada 100 €,IVA,euros de cada 100,16.59,lectura,(D211) ÷ TR × 100
+2016,de cada 100 €,IVA,euros de cada 100,16.87,lectura,(D211) ÷ TR × 100
+2017,de cada 100 €,IVA,euros de cada 100,17.03,lectura,(D211) ÷ TR × 100
+2018,de cada 100 €,IVA,euros de cada 100,16.78,lectura,(D211) ÷ TR × 100
+2019,de cada 100 €,IVA,euros de cada 100,16.56,lectura,(D211) ÷ TR × 100
+2020,de cada 100 €,IVA,euros de cada 100,15.09,lectura,(D211) ÷ TR × 100
+2021,de cada 100 €,IVA,euros de cada 100,15.79,lectura,(D211) ÷ TR × 100
+2022,de cada 100 €,IVA,euros de cada 100,16.4,lectura,(D211) ÷ TR × 100
+2023,de cada 100 €,IVA,euros de cada 100,15.24,lectura,(D211) ÷ TR × 100
+2024,de cada 100 €,IVA,euros de cada 100,15.21,lectura,(D211) ÷ TR × 100
+1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
+1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
+1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.9,lectura,D21 −D211
+1998,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.2,lectura,D21 −D211
+1999,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.3,lectura,D21 −D211
+2000,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.3,lectura,D21 −D211
+2001,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.1,lectura,D21 −D211
+2002,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.2,lectura,D21 −D211
+2003,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.5,lectura,D21 −D211
+2004,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.6,lectura,D21 −D211
+2005,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.8,lectura,D21 −D211
+2006,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.9,lectura,D21 −D211
+2007,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,4.5,lectura,D21 −D211
+2008,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.6,lectura,D21 −D211
+2009,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.4,lectura,D21 −D211
+2010,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.4,lectura,D21 −D211
+2011,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.1,lectura,D21 −D211
+2012,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.1,lectura,D21 −D211
+2013,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.2,lectura,D21 −D211
+2014,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.3,lectura,D21 −D211
+2015,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.3,lectura,D21 −D211
+2016,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.3,lectura,D21 −D211
+2017,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.3,lectura,D21 −D211
+2018,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.4,lectura,D21 −D211
+2019,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.2,lectura,D21 −D211
+2020,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.0,lectura,D21 −D211
+2021,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.2,lectura,D21 −D211
+2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.1,lectura,D21 −D211
+2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,2.8,lectura,D21 −D211
+2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.0,lectura,D21 −D211
+1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,17487.0,lectura,D21 −D211
+1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,18476.0,lectura,D21 −D211
+1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,20263.0,lectura,D21 −D211
+1998,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,23585.0,lectura,D21 −D211
+1999,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,25596.0,lectura,D21 −D211
+2000,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,27609.0,lectura,D21 −D211
+2001,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,28552.0,lectura,D21 −D211
+2002,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,31929.0,lectura,D21 −D211
+2003,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,36008.0,lectura,D21 −D211
+2004,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,40297.0,lectura,D21 −D211
+2005,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,44667.0,lectura,D21 −D211
+2006,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,48909.0,lectura,D21 −D211
+2007,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,48608.0,lectura,D21 −D211
+2008,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,39790.0,lectura,D21 −D211
+2009,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,36186.0,lectura,D21 −D211
+2010,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,36589.0,lectura,D21 −D211
+2011,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,33672.0,lectura,D21 −D211
+2012,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,31832.0,lectura,D21 −D211
+2013,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,33504.0,lectura,D21 −D211
+2014,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,34389.0,lectura,D21 −D211
+2015,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,36618.0,lectura,D21 −D211
+2016,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,37067.0,lectura,D21 −D211
+2017,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,39123.0,lectura,D21 −D211
+2018,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,40751.0,lectura,D21 −D211
+2019,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,40529.0,lectura,D21 −D211
+2020,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,34682.0,lectura,D21 −D211
+2021,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,40341.0,lectura,D21 −D211
+2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,42471.0,lectura,D21 −D211
+2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,42452.0,lectura,D21 −D211
+2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,47251.0,lectura,D21 −D211
+1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,35147.2,lectura,D21 −D211
+1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,35867.5,lectura,D21 −D211
+1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,38390.4,lectura,D21 −D211
+1998,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,43536.9,lectura,D21 −D211
+1999,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,46043.8,lectura,D21 −D211
+2000,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,48025.4,lectura,D21 −D211
+2001,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,47681.5,lectura,D21 −D211
+2002,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,51225.2,lectura,D21 −D211
+2003,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,55544.8,lectura,D21 −D211
+2004,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,59820.8,lectura,D21 −D211
+2005,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,63627.4,lectura,D21 −D211
+2006,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,66944.1,lectura,D21 −D211
+2007,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,64244.1,lectura,D21 −D211
+2008,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,51331.2,lectura,D21 −D211
+2009,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,46574.2,lectura,D21 −D211
+2010,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,46955.2,lectura,D21 −D211
+2011,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,43275.0,lectura,D21 −D211
+2012,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,40993.3,lectura,D21 −D211
+2013,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,42958.4,lectura,D21 −D211
+2014,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,44190.4,lectura,D21 −D211
+2015,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,46796.6,lectura,D21 −D211
+2016,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,47194.6,lectura,D21 −D211
+2017,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,49193.5,lectura,D21 −D211
+2018,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,50639.2,lectura,D21 −D211
+2019,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,49653.9,lectura,D21 −D211
+2020,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,42014.1,lectura,D21 −D211
+2021,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,47651.5,lectura,D21 −D211
+2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,47918.2,lectura,D21 −D211
+2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,45081.5,lectura,D21 −D211
+2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2024,48691.1,lectura,D21 −D211
+1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,440,lectura,D21 −D211
+1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,463,lectura,D21 −D211
+1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,506,lectura,D21 −D211
+1998,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,586,lectura,D21 −D211
+1999,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,634,lectura,D21 −D211
+2000,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,681,lectura,D21 −D211
+2001,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,700,lectura,D21 −D211
+2002,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,771,lectura,D21 −D211
+2003,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,853,lectura,D21 −D211
+2004,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,940,lectura,D21 −D211
+2005,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,1023,lectura,D21 −D211
+2006,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,1103,lectura,D21 −D211
+2007,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,1075,lectura,D21 −D211
+2008,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,865,lectura,D21 −D211
+2009,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,780,lectura,D21 −D211
+2010,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,786,lectura,D21 −D211
+2011,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,720,lectura,D21 −D211
+2012,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,681,lectura,D21 −D211
+2013,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,719,lectura,D21 −D211
+2014,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,741,lectura,D21 −D211
+2015,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,789,lectura,D21 −D211
+2016,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,798,lectura,D21 −D211
+2017,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,841,lectura,D21 −D211
+2018,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,872,lectura,D21 −D211
+2019,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,861,lectura,D21 −D211
+2020,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,733,lectura,D21 −D211
+2021,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,852,lectura,D21 −D211
+2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,889,lectura,D21 −D211
+2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,878,lectura,D21 −D211
+2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,967,lectura,D21 −D211
+1995,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.18,lectura,(D21 −D211) ÷ TR × 100
+1996,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.21,lectura,(D21 −D211) ÷ TR × 100
+1997,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.38,lectura,(D21 −D211) ÷ TR × 100
+1998,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,11.07,lectura,(D21 −D211) ÷ TR × 100
+1999,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,11.11,lectura,(D21 −D211) ÷ TR × 100
+2000,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,11.23,lectura,(D21 −D211) ÷ TR × 100
+2001,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.73,lectura,(D21 −D211) ÷ TR × 100
+2002,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,11.12,lectura,(D21 −D211) ÷ TR × 100
+2003,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,11.81,lectura,(D21 −D211) ÷ TR × 100
+2004,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,12.11,lectura,(D21 −D211) ÷ TR × 100
+2005,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,12.13,lectura,(D21 −D211) ÷ TR × 100
+2006,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,12.01,lectura,(D21 −D211) ÷ TR × 100
+2007,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.99,lectura,(D21 −D211) ÷ TR × 100
+2008,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,9.73,lectura,(D21 −D211) ÷ TR × 100
+2009,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,9.68,lectura,(D21 −D211) ÷ TR × 100
+2010,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,9.34,lectura,(D21 −D211) ÷ TR × 100
+2011,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.69,lectura,(D21 −D211) ÷ TR × 100
+2012,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.14,lectura,(D21 −D211) ÷ TR × 100
+2013,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.45,lectura,(D21 −D211) ÷ TR × 100
+2014,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.49,lectura,(D21 −D211) ÷ TR × 100
+2015,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.77,lectura,(D21 −D211) ÷ TR × 100
+2016,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.72,lectura,(D21 −D211) ÷ TR × 100
+2017,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.81,lectura,(D21 −D211) ÷ TR × 100
+2018,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.63,lectura,(D21 −D211) ÷ TR × 100
+2019,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,8.3,lectura,(D21 −D211) ÷ TR × 100
+2020,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.41,lectura,(D21 −D211) ÷ TR × 100
+2021,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.63,lectura,(D21 −D211) ÷ TR × 100
+2022,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.4,lectura,(D21 −D211) ÷ TR × 100
+2023,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,6.74,lectura,(D21 −D211) ÷ TR × 100
+2024,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.01,lectura,(D21 −D211) ÷ TR × 100
+1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+1998,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+1999,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+2000,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+2001,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+2002,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.1,dato,D29
+2003,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.0,dato,D29
+2004,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.0,dato,D29
+2005,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.1,dato,D29
+2006,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.1,dato,D29
+2007,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.1,dato,D29
+2008,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.1,dato,D29
+2009,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
+2010,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.3,dato,D29
+2011,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.4,dato,D29
+2012,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.8,dato,D29
+2013,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.8,dato,D29
+2014,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.9,dato,D29
+2015,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.9,dato,D29
+2016,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.8,dato,D29
+2017,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+2018,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+2019,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+2020,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.9,dato,D29
+2021,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.9,dato,D29
+2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.8,dato,D29
+2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,5611.0,dato,D29
+1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,5742.0,dato,D29
+1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,6152.0,dato,D29
+1998,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,6841.0,dato,D29
+1999,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,7146.0,dato,D29
+2000,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,7545.0,dato,D29
+2001,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,8068.0,dato,D29
+2002,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,8431.0,dato,D29
+2003,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,8297.0,dato,D29
+2004,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,8891.0,dato,D29
+2005,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,9875.0,dato,D29
+2006,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,10930.0,dato,D29
+2007,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,11488.0,dato,D29
+2008,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,12219.0,dato,D29
+2009,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,13136.0,dato,D29
+2010,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,14074.0,dato,D29
+2011,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,14668.0,dato,D29
+2012,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,18471.0,dato,D29
+2013,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,18926.0,dato,D29
+2014,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,19885.0,dato,D29
+2015,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,20437.0,dato,D29
+2016,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,19992.0,dato,D29
+2017,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,20345.0,dato,D29
+2018,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,21194.0,dato,D29
+2019,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,21640.0,dato,D29
+2020,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,21405.0,dato,D29
+2021,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,23065.0,dato,D29
+2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,23818.0,dato,D29
+2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,27383.0,dato,D29
+2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,27191.0,dato,D29
+1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,11277.6,lectura,D29
+1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,11146.9,lectura,D29
+1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,11655.6,lectura,D29
+1998,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,12628.2,lectura,D29
+1999,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,12854.7,lectura,D29
+2000,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,13124.4,lectura,D29
+2001,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,13473.5,lectura,D29
+2002,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,13526.2,lectura,D29
+2003,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,12798.7,lectura,D29
+2004,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,13198.7,lectura,D29
+2005,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,14066.8,lectura,D29
+2006,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,14960.4,lectura,D29
+2007,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,15183.4,lectura,D29
+2008,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,15763.1,lectura,D29
+2009,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,16907.0,lectura,D29
+2010,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,18061.4,lectura,D29
+2011,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,18851.2,lectura,D29
+2012,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,23787.0,lectura,D29
+2013,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,24266.7,lectura,D29
+2014,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,25552.5,lectura,D29
+2015,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,26117.8,lectura,D29
+2016,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,25454.3,lectura,D29
+2017,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,25581.9,lectura,D29
+2018,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,26336.7,lectura,D29
+2019,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,26512.1,lectura,D29
+2020,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,25930.2,lectura,D29
+2021,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,27244.8,lectura,D29
+2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,26872.8,lectura,D29
+2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,29079.1,lectura,D29
+2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2024,28019.7,lectura,D29
+1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,141,lectura,D29
+1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,144,lectura,D29
+1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,154,lectura,D29
+1998,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,170,lectura,D29
+1999,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,177,lectura,D29
+2000,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,186,lectura,D29
+2001,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,198,lectura,D29
+2002,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,204,lectura,D29
+2003,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,197,lectura,D29
+2004,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,207,lectura,D29
+2005,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,226,lectura,D29
+2006,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,246,lectura,D29
+2007,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,254,lectura,D29
+2008,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,266,lectura,D29
+2009,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,283,lectura,D29
+2010,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,302,lectura,D29
+2011,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,314,lectura,D29
+2012,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,395,lectura,D29
+2013,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,406,lectura,D29
+2014,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,428,lectura,D29
+2015,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,441,lectura,D29
+2016,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,431,lectura,D29
+2017,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,437,lectura,D29
+2018,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,454,lectura,D29
+2019,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,460,lectura,D29
+2020,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,452,lectura,D29
+2021,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,487,lectura,D29
+2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,498,lectura,D29
+2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,566,lectura,D29
+2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,556,lectura,D29
+1995,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.27,lectura,(D29) ÷ TR × 100
+1996,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.17,lectura,(D29) ÷ TR × 100
+1997,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.15,lectura,(D29) ÷ TR × 100
+1998,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.21,lectura,(D29) ÷ TR × 100
+1999,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.1,lectura,(D29) ÷ TR × 100
+2000,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.07,lectura,(D29) ÷ TR × 100
+2001,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.03,lectura,(D29) ÷ TR × 100
+2002,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.94,lectura,(D29) ÷ TR × 100
+2003,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.72,lectura,(D29) ÷ TR × 100
+2004,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.67,lectura,(D29) ÷ TR × 100
+2005,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.68,lectura,(D29) ÷ TR × 100
+2006,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.68,lectura,(D29) ÷ TR × 100
+2007,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.6,lectura,(D29) ÷ TR × 100
+2008,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,2.99,lectura,(D29) ÷ TR × 100
+2009,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.51,lectura,(D29) ÷ TR × 100
+2010,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.59,lectura,(D29) ÷ TR × 100
+2011,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.79,lectura,(D29) ÷ TR × 100
+2012,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.73,lectura,(D29) ÷ TR × 100
+2013,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.77,lectura,(D29) ÷ TR × 100
+2014,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.91,lectura,(D29) ÷ TR × 100
+2015,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.89,lectura,(D29) ÷ TR × 100
+2016,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.7,lectura,(D29) ÷ TR × 100
+2017,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.58,lectura,(D29) ÷ TR × 100
+2018,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.49,lectura,(D29) ÷ TR × 100
+2019,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.43,lectura,(D29) ÷ TR × 100
+2020,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.57,lectura,(D29) ÷ TR × 100
+2021,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.36,lectura,(D29) ÷ TR × 100
+2022,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.15,lectura,(D29) ÷ TR × 100
+2023,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.35,lectura,(D29) ÷ TR × 100
+2024,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.04,lectura,(D29) ÷ TR × 100
+1995,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.5,dato,D51A_C1
+1996,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.3,dato,D51A_C1
+1997,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.9,dato,D51A_C1
+1998,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.9,dato,D51A_C1
+1999,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.7,dato,D51A_C1
+2000,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.4,dato,D51A_C1
+2001,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.6,dato,D51A_C1
+2002,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.7,dato,D51A_C1
+2003,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.3,dato,D51A_C1
+2004,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.3,dato,D51A_C1
+2005,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.6,dato,D51A_C1
+2006,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.0,dato,D51A_C1
+2007,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.5,dato,D51A_C1
+2008,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.1,dato,D51A_C1
+2009,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.6,dato,D51A_C1
+2010,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.9,dato,D51A_C1
+2011,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.2,dato,D51A_C1
+2012,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.5,dato,D51A_C1
+2013,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.6,dato,D51A_C1
+2014,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.7,dato,D51A_C1
+2015,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.3,dato,D51A_C1
+2016,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.2,dato,D51A_C1
+2017,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.4,dato,D51A_C1
+2018,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.7,dato,D51A_C1
+2019,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.9,dato,D51A_C1
+2020,evolución,Impuestos sobre la renta de los hogares,% del PIB,8.8,dato,D51A_C1
+2021,evolución,Impuestos sobre la renta de los hogares,% del PIB,8.6,dato,D51A_C1
+2022,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.0,dato,D51A_C1
+2023,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.0,dato,D51A_C1
+2024,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.1,dato,D51A_C1
+1995,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,34383.0,dato,D51A_C1
+1996,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,35538.0,dato,D51A_C1
+1997,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,35809.0,dato,D51A_C1
+1998,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,38601.0,dato,D51A_C1
+1999,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,39800.0,dato,D51A_C1
+2000,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,41248.0,dato,D51A_C1
+2001,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,46002.0,dato,D51A_C1
+2002,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,50313.0,dato,D51A_C1
+2003,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,50390.0,dato,D51A_C1
+2004,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,54121.0,dato,D51A_C1
+2005,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,61115.0,dato,D51A_C1
+2006,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,70442.0,dato,D51A_C1
+2007,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,81241.0,dato,D51A_C1
+2008,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,78445.0,dato,D51A_C1
+2009,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,71309.0,dato,D51A_C1
+2010,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,74847.0,dato,D51A_C1
+2011,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,76814.0,dato,D51A_C1
+2012,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,77395.0,dato,D51A_C1
+2013,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,77662.0,dato,D51A_C1
+2014,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,79928.0,dato,D51A_C1
+2015,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,79442.0,dato,D51A_C1
+2016,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,81224.0,dato,D51A_C1
+2017,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,86735.0,dato,D51A_C1
+2018,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,93248.0,dato,D51A_C1
+2019,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,99033.0,dato,D51A_C1
+2020,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,98960.0,dato,D51A_C1
+2021,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,106648.0,dato,D51A_C1
+2022,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,123399.0,dato,D51A_C1
+2023,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,134371.0,dato,D51A_C1
+2024,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,145873.0,dato,D51A_C1
+1995,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,69106.6,lectura,D51A_C1
+1996,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,68989.9,lectura,D51A_C1
+1997,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,67843.9,lectura,D51A_C1
+1998,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,71255.8,lectura,D51A_C1
+1999,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,71594.8,lectura,D51A_C1
+2000,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,71750.2,lectura,D51A_C1
+2001,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,76822.8,lectura,D51A_C1
+2002,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,80719.5,lectura,D51A_C1
+2003,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,77730.0,lectura,D51A_C1
+2004,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,80342.5,lectura,D51A_C1
+2005,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,87057.4,lectura,D51A_C1
+2006,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,96417.3,lectura,D51A_C1
+2007,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,107374.4,lectura,D51A_C1
+2008,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,101198.1,lectura,D51A_C1
+2009,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,91780.2,lectura,D51A_C1
+2010,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,96052.2,lectura,D51A_C1
+2011,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,98720.8,lectura,D51A_C1
+2012,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,99669.5,lectura,D51A_C1
+2013,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,99577.2,lectura,D51A_C1
+2014,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,102708.7,lectura,D51A_C1
+2015,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,101524.2,lectura,D51A_C1
+2016,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,103416.4,lectura,D51A_C1
+2017,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,109061.1,lectura,D51A_C1
+2018,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,115874.6,lectura,D51A_C1
+2019,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,121329.7,lectura,D51A_C1
+2020,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,119881.1,lectura,D51A_C1
+2021,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,125974.5,lectura,D51A_C1
+2022,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,139225.8,lectura,D51A_C1
+2023,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,142694.2,lectura,D51A_C1
+2024,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2024,150319.0,lectura,D51A_C1
+1995,evolución,Impuestos sobre la renta de los hogares,euros por habitante,866,lectura,D51A_C1
+1996,evolución,Impuestos sobre la renta de los hogares,euros por habitante,891,lectura,D51A_C1
+1997,evolución,Impuestos sobre la renta de los hogares,euros por habitante,894,lectura,D51A_C1
+1998,evolución,Impuestos sobre la renta de los hogares,euros por habitante,960,lectura,D51A_C1
+1999,evolución,Impuestos sobre la renta de los hogares,euros por habitante,986,lectura,D51A_C1
+2000,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1017,lectura,D51A_C1
+2001,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1128,lectura,D51A_C1
+2002,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1215,lectura,D51A_C1
+2003,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1194,lectura,D51A_C1
+2004,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1263,lectura,D51A_C1
+2005,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1400,lectura,D51A_C1
+2006,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1588,lectura,D51A_C1
+2007,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1796,lectura,D51A_C1
+2008,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1706,lectura,D51A_C1
+2009,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1538,lectura,D51A_C1
+2010,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1607,lectura,D51A_C1
+2011,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1644,lectura,D51A_C1
+2012,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1656,lectura,D51A_C1
+2013,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1667,lectura,D51A_C1
+2014,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1721,lectura,D51A_C1
+2015,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1713,lectura,D51A_C1
+2016,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1749,lectura,D51A_C1
+2017,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1865,lectura,D51A_C1
+2018,evolución,Impuestos sobre la renta de los hogares,euros por habitante,1996,lectura,D51A_C1
+2019,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2103,lectura,D51A_C1
+2020,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2090,lectura,D51A_C1
+2021,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2252,lectura,D51A_C1
+2022,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2582,lectura,D51A_C1
+2023,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2779,lectura,D51A_C1
+2024,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2985,lectura,D51A_C1
+1995,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,20.01,lectura,(D51A_C1) ÷ TR × 100
+1996,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.65,lectura,(D51A_C1) ÷ TR × 100
+1997,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,18.34,lectura,(D51A_C1) ÷ TR × 100
+1998,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,18.12,lectura,(D51A_C1) ÷ TR × 100
+1999,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,17.27,lectura,(D51A_C1) ÷ TR × 100
+2000,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,16.78,lectura,(D51A_C1) ÷ TR × 100
+2001,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,17.29,lectura,(D51A_C1) ÷ TR × 100
+2002,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,17.52,lectura,(D51A_C1) ÷ TR × 100
+2003,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,16.53,lectura,(D51A_C1) ÷ TR × 100
+2004,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,16.27,lectura,(D51A_C1) ÷ TR × 100
+2005,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,16.6,lectura,(D51A_C1) ÷ TR × 100
+2006,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,17.3,lectura,(D51A_C1) ÷ TR × 100
+2007,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,18.36,lectura,(D51A_C1) ÷ TR × 100
+2008,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.18,lectura,(D51A_C1) ÷ TR × 100
+2009,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.08,lectura,(D51A_C1) ÷ TR × 100
+2010,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.11,lectura,(D51A_C1) ÷ TR × 100
+2011,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.83,lectura,(D51A_C1) ÷ TR × 100
+2012,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.8,lectura,(D51A_C1) ÷ TR × 100
+2013,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.58,lectura,(D51A_C1) ÷ TR × 100
+2014,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.73,lectura,(D51A_C1) ÷ TR × 100
+2015,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.02,lectura,(D51A_C1) ÷ TR × 100
+2016,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.1,lectura,(D51A_C1) ÷ TR × 100
+2017,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.53,lectura,(D51A_C1) ÷ TR × 100
+2018,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.75,lectura,(D51A_C1) ÷ TR × 100
+2019,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,20.28,lectura,(D51A_C1) ÷ TR × 100
+2020,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.13,lectura,(D51A_C1) ÷ TR × 100
+2021,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,20.16,lectura,(D51A_C1) ÷ TR × 100
+2022,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.5,lectura,(D51A_C1) ÷ TR × 100
+2023,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.32,lectura,(D51A_C1) ÷ TR × 100
+2024,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.65,lectura,(D51A_C1) ÷ TR × 100
+1995,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.6,dato,D51B_C2
+1996,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.8,dato,D51B_C2
+1997,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.4,dato,D51B_C2
+1998,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.5,dato,D51B_C2
+1999,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.6,dato,D51B_C2
+2000,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.9,dato,D51B_C2
+2001,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.7,dato,D51B_C2
+2002,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.0,dato,D51B_C2
+2003,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.0,dato,D51B_C2
+2004,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.3,dato,D51B_C2
+2005,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.8,dato,D51B_C2
+2006,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,4.0,dato,D51B_C2
+2007,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,4.6,dato,D51B_C2
+2008,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.8,dato,D51B_C2
+2009,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.2,dato,D51B_C2
+2010,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.8,dato,D51B_C2
+2011,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.8,dato,D51B_C2
+2012,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.1,dato,D51B_C2
+2013,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.0,dato,D51B_C2
+2014,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.0,dato,D51B_C2
+2015,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.2,dato,D51B_C2
+2016,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.2,dato,D51B_C2
+2017,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.2,dato,D51B_C2
+2018,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.4,dato,D51B_C2
+2019,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.1,dato,D51B_C2
+2020,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.0,dato,D51B_C2
+2021,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.6,dato,D51B_C2
+2022,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.7,dato,D51B_C2
+2023,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.9,dato,D51B_C2
+2024,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.0,dato,D51B_C2
+1995,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,7565.0,dato,D51B_C2
+1996,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,8777.0,dato,D51B_C2
+1997,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,12695.0,dato,D51B_C2
+1998,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,14062.0,dato,D51B_C2
+1999,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,15587.0,dato,D51B_C2
+2000,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,18897.0,dato,D51B_C2
+2001,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,18696.0,dato,D51B_C2
+2002,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,22508.0,dato,D51B_C2
+2003,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,23963.0,dato,D51B_C2
+2004,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,28793.0,dato,D51B_C2
+2005,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,35244.0,dato,D51B_C2
+2006,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,40364.0,dato,D51B_C2
+2007,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,49362.0,dato,D51B_C2
+2008,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,30634.0,dato,D51B_C2
+2009,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,23681.0,dato,D51B_C2
+2010,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,19680.0,dato,D51B_C2
+2011,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,18890.0,dato,D51B_C2
+2012,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,22127.0,dato,D51B_C2
+2013,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,20434.0,dato,D51B_C2
+2014,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,20573.0,dato,D51B_C2
+2015,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,23761.0,dato,D51B_C2
+2016,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,24678.0,dato,D51B_C2
+2017,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,25996.0,dato,D51B_C2
+2018,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,29688.0,dato,D51B_C2
+2019,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,25714.0,dato,D51B_C2
+2020,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,22065.0,dato,D51B_C2
+2021,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,32331.0,dato,D51B_C2
+2022,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,36628.0,dato,D51B_C2
+2023,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,43520.0,dato,D51B_C2
+2024,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,47452.0,dato,D51B_C2
+1995,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,15204.9,lectura,D51B_C2
+1996,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,17038.8,lectura,D51B_C2
+1997,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,24052.0,lectura,D51B_C2
+1998,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,25957.9,lectura,D51B_C2
+1999,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,28038.9,lectura,D51B_C2
+2000,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,32871.0,lectura,D51B_C2
+2001,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,31222.1,lectura,D51B_C2
+2002,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,36110.6,lectura,D51B_C2
+2003,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,36964.6,lectura,D51B_C2
+2004,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,42743.2,lectura,D51B_C2
+2005,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,50204.5,lectura,D51B_C2
+2006,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,55248.1,lectura,D51B_C2
+2007,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,65240.6,lectura,D51B_C2
+2008,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,39519.4,lectura,D51B_C2
+2009,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,30479.3,lectura,D51B_C2
+2010,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,25255.6,lectura,D51B_C2
+2011,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,24277.3,lectura,D51B_C2
+2012,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,28495.2,lectura,D51B_C2
+2013,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,26200.2,lectura,D51B_C2
+2014,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,26436.6,lectura,D51B_C2
+2015,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,30365.8,lectura,D51B_C2
+2016,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,31420.6,lectura,D51B_C2
+2017,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,32687.5,lectura,D51B_C2
+2018,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,36891.8,lectura,D51B_C2
+2019,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,31503.3,lectura,D51B_C2
+2020,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,26729.8,lectura,D51B_C2
+2021,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,38190.0,lectura,D51B_C2
+2022,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,41325.8,lectura,D51B_C2
+2023,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,46215.7,lectura,D51B_C2
+2024,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2024,48898.3,lectura,D51B_C2
+1995,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,190,lectura,D51B_C2
+1996,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,220,lectura,D51B_C2
+1997,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,317,lectura,D51B_C2
+1998,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,350,lectura,D51B_C2
+1999,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,386,lectura,D51B_C2
+2000,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,466,lectura,D51B_C2
+2001,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,459,lectura,D51B_C2
+2002,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,543,lectura,D51B_C2
+2003,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,568,lectura,D51B_C2
+2004,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,672,lectura,D51B_C2
+2005,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,807,lectura,D51B_C2
+2006,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,910,lectura,D51B_C2
+2007,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,1091,lectura,D51B_C2
+2008,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,666,lectura,D51B_C2
+2009,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,511,lectura,D51B_C2
+2010,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,423,lectura,D51B_C2
+2011,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,404,lectura,D51B_C2
+2012,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,473,lectura,D51B_C2
+2013,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,439,lectura,D51B_C2
+2014,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,443,lectura,D51B_C2
+2015,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,512,lectura,D51B_C2
+2016,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,532,lectura,D51B_C2
+2017,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,559,lectura,D51B_C2
+2018,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,636,lectura,D51B_C2
+2019,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,546,lectura,D51B_C2
+2020,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,466,lectura,D51B_C2
+2021,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,683,lectura,D51B_C2
+2022,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,767,lectura,D51B_C2
+2023,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,900,lectura,D51B_C2
+2024,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,971,lectura,D51B_C2
+1995,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.4,lectura,(D51B_C2) ÷ TR × 100
+1996,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.85,lectura,(D51B_C2) ÷ TR × 100
+1997,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.5,lectura,(D51B_C2) ÷ TR × 100
+1998,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.6,lectura,(D51B_C2) ÷ TR × 100
+1999,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.77,lectura,(D51B_C2) ÷ TR × 100
+2000,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.69,lectura,(D51B_C2) ÷ TR × 100
+2001,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.03,lectura,(D51B_C2) ÷ TR × 100
+2002,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.84,lectura,(D51B_C2) ÷ TR × 100
+2003,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.86,lectura,(D51B_C2) ÷ TR × 100
+2004,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,8.65,lectura,(D51B_C2) ÷ TR × 100
+2005,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,9.57,lectura,(D51B_C2) ÷ TR × 100
+2006,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,9.92,lectura,(D51B_C2) ÷ TR × 100
+2007,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,11.16,lectura,(D51B_C2) ÷ TR × 100
+2008,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.49,lectura,(D51B_C2) ÷ TR × 100
+2009,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.34,lectura,(D51B_C2) ÷ TR × 100
+2010,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.03,lectura,(D51B_C2) ÷ TR × 100
+2011,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.88,lectura,(D51B_C2) ÷ TR × 100
+2012,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.66,lectura,(D51B_C2) ÷ TR × 100
+2013,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.15,lectura,(D51B_C2) ÷ TR × 100
+2014,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.08,lectura,(D51B_C2) ÷ TR × 100
+2015,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.69,lectura,(D51B_C2) ÷ TR × 100
+2016,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.8,lectura,(D51B_C2) ÷ TR × 100
+2017,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.85,lectura,(D51B_C2) ÷ TR × 100
+2018,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.29,lectura,(D51B_C2) ÷ TR × 100
+2019,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,5.27,lectura,(D51B_C2) ÷ TR × 100
+2020,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.71,lectura,(D51B_C2) ÷ TR × 100
+2021,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.11,lectura,(D51B_C2) ÷ TR × 100
+2022,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.38,lectura,(D51B_C2) ÷ TR × 100
+2023,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.91,lectura,(D51B_C2) ÷ TR × 100
+2024,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.04,lectura,(D51B_C2) ÷ TR × 100
+1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+1998,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.5,lectura,D5 −D51A_C1 −D51B_C2
+1999,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2000,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2001,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2002,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2003,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2004,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2005,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2006,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2007,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2008,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2009,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2010,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2011,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.2,lectura,D5 −D51A_C1 −D51B_C2
+2012,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2013,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2014,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2015,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2016,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2017,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2018,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2019,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2020,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2021,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
+2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1670.0,lectura,D5 −D51A_C1 −D51B_C2
+1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1778.0,lectura,D5 −D51A_C1 −D51B_C2
+1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1902.0,lectura,D5 −D51A_C1 −D51B_C2
+1998,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2206.0,lectura,D5 −D51A_C1 −D51B_C2
+1999,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2473.0,lectura,D5 −D51A_C1 −D51B_C2
+2000,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2737.0,lectura,D5 −D51A_C1 −D51B_C2
+2001,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2822.0,lectura,D5 −D51A_C1 −D51B_C2
+2002,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2915.0,lectura,D5 −D51A_C1 −D51B_C2
+2003,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3028.0,lectura,D5 −D51A_C1 −D51B_C2
+2004,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3166.0,lectura,D5 −D51A_C1 −D51B_C2
+2005,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3522.0,lectura,D5 −D51A_C1 −D51B_C2
+2006,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3896.0,lectura,D5 −D51A_C1 −D51B_C2
+2007,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4397.0,lectura,D5 −D51A_C1 −D51B_C2
+2008,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4837.0,lectura,D5 −D51A_C1 −D51B_C2
+2009,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2631.0,lectura,D5 −D51A_C1 −D51B_C2
+2010,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2720.0,lectura,D5 −D51A_C1 −D51B_C2
+2011,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,2669.0,lectura,D5 −D51A_C1 −D51B_C2
+2012,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3451.0,lectura,D5 −D51A_C1 −D51B_C2
+2013,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4137.0,lectura,D5 −D51A_C1 −D51B_C2
+2014,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3894.0,lectura,D5 −D51A_C1 −D51B_C2
+2015,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,3904.0,lectura,D5 −D51A_C1 −D51B_C2
+2016,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4100.0,lectura,D5 −D51A_C1 −D51B_C2
+2017,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4207.0,lectura,D5 −D51A_C1 −D51B_C2
+2018,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4348.0,lectura,D5 −D51A_C1 −D51B_C2
+2019,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4370.0,lectura,D5 −D51A_C1 −D51B_C2
+2020,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4323.0,lectura,D5 −D51A_C1 −D51B_C2
+2021,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4506.0,lectura,D5 −D51A_C1 −D51B_C2
+2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4743.0,lectura,D5 −D51A_C1 −D51B_C2
+2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,5228.0,lectura,D5 −D51A_C1 −D51B_C2
+2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,5386.0,lectura,D5 −D51A_C1 −D51B_C2
+1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3356.5,lectura,D5 −D51A_C1 −D51B_C2
+1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3451.6,lectura,D5 −D51A_C1 −D51B_C2
+1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3603.5,lectura,D5 −D51A_C1 −D51B_C2
+1998,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4072.2,lectura,D5 −D51A_C1 −D51B_C2
+1999,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4448.6,lectura,D5 −D51A_C1 −D51B_C2
+2000,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4761.0,lectura,D5 −D51A_C1 −D51B_C2
+2001,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4712.7,lectura,D5 −D51A_C1 −D51B_C2
+2002,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4676.7,lectura,D5 −D51A_C1 −D51B_C2
+2003,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4670.9,lectura,D5 −D51A_C1 −D51B_C2
+2004,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4699.9,lectura,D5 −D51A_C1 −D51B_C2
+2005,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5017.0,lectura,D5 −D51A_C1 −D51B_C2
+2006,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5332.6,lectura,D5 −D51A_C1 −D51B_C2
+2007,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5811.4,lectura,D5 −D51A_C1 −D51B_C2
+2008,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,6240.0,lectura,D5 −D51A_C1 −D51B_C2
+2009,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3386.3,lectura,D5 −D51A_C1 −D51B_C2
+2010,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3490.6,lectura,D5 −D51A_C1 −D51B_C2
+2011,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,3430.2,lectura,D5 −D51A_C1 −D51B_C2
+2012,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4444.2,lectura,D5 −D51A_C1 −D51B_C2
+2013,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5304.4,lectura,D5 −D51A_C1 −D51B_C2
+2014,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5003.9,lectura,D5 −D51A_C1 −D51B_C2
+2015,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,4989.2,lectura,D5 −D51A_C1 −D51B_C2
+2016,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5220.2,lectura,D5 −D51A_C1 −D51B_C2
+2017,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5289.9,lectura,D5 −D51A_C1 −D51B_C2
+2018,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5403.0,lectura,D5 −D51A_C1 −D51B_C2
+2019,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5353.9,lectura,D5 −D51A_C1 −D51B_C2
+2020,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5236.9,lectura,D5 −D51A_C1 −D51B_C2
+2021,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5322.6,lectura,D5 −D51A_C1 −D51B_C2
+2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5351.3,lectura,D5 −D51A_C1 −D51B_C2
+2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5551.8,lectura,D5 −D51A_C1 −D51B_C2
+2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2024,5550.2,lectura,D5 −D51A_C1 −D51B_C2
+1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,42,lectura,D5 −D51A_C1 −D51B_C2
+1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,45,lectura,D5 −D51A_C1 −D51B_C2
+1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,47,lectura,D5 −D51A_C1 −D51B_C2
+1998,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,55,lectura,D5 −D51A_C1 −D51B_C2
+1999,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,61,lectura,D5 −D51A_C1 −D51B_C2
+2000,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,67,lectura,D5 −D51A_C1 −D51B_C2
+2001,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,69,lectura,D5 −D51A_C1 −D51B_C2
+2002,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,70,lectura,D5 −D51A_C1 −D51B_C2
+2003,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,72,lectura,D5 −D51A_C1 −D51B_C2
+2004,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,74,lectura,D5 −D51A_C1 −D51B_C2
+2005,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,81,lectura,D5 −D51A_C1 −D51B_C2
+2006,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,88,lectura,D5 −D51A_C1 −D51B_C2
+2007,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,97,lectura,D5 −D51A_C1 −D51B_C2
+2008,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,105,lectura,D5 −D51A_C1 −D51B_C2
+2009,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,57,lectura,D5 −D51A_C1 −D51B_C2
+2010,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,58,lectura,D5 −D51A_C1 −D51B_C2
+2011,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,57,lectura,D5 −D51A_C1 −D51B_C2
+2012,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,74,lectura,D5 −D51A_C1 −D51B_C2
+2013,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,89,lectura,D5 −D51A_C1 −D51B_C2
+2014,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,84,lectura,D5 −D51A_C1 −D51B_C2
+2015,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,84,lectura,D5 −D51A_C1 −D51B_C2
+2016,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,88,lectura,D5 −D51A_C1 −D51B_C2
+2017,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,90,lectura,D5 −D51A_C1 −D51B_C2
+2018,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,93,lectura,D5 −D51A_C1 −D51B_C2
+2019,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,93,lectura,D5 −D51A_C1 −D51B_C2
+2020,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,91,lectura,D5 −D51A_C1 −D51B_C2
+2021,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,95,lectura,D5 −D51A_C1 −D51B_C2
+2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,99,lectura,D5 −D51A_C1 −D51B_C2
+2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,108,lectura,D5 −D51A_C1 −D51B_C2
+2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,110,lectura,D5 −D51A_C1 −D51B_C2
+1995,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.97,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+1996,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.98,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+1997,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.97,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+1998,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.04,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+1999,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.07,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2000,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.11,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2001,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.06,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2002,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.02,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2003,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.99,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2004,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.95,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2005,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.96,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2006,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.96,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2007,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.99,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2008,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.18,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2009,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.7,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2010,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.69,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2011,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.69,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2012,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.88,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2013,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,1.04,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2014,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.96,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2015,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.93,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2016,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.96,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2017,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.95,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2018,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.92,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2019,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.89,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2020,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.92,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2021,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.85,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2022,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.83,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2023,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.83,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2024,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.8,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.3,dato,D91
+1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.3,dato,D91
+1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+1998,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+1999,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2000,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2001,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2002,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2003,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2004,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2005,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2006,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2007,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2008,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2009,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2010,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2011,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2012,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2013,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2014,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2015,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.6,dato,D91
+2016,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.6,dato,D91
+2017,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2018,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2019,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2020,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2021,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
+2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,1498.0,dato,D91
+1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,1660.0,dato,D91
+1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2453.0,dato,D91
+1998,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2004.0,dato,D91
+1999,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2206.0,dato,D91
+2000,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2487.0,dato,D91
+2001,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2514.0,dato,D91
+2002,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2755.0,dato,D91
+2003,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,3121.0,dato,D91
+2004,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,3610.0,dato,D91
+2005,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4316.0,dato,D91
+2006,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4858.0,dato,D91
+2007,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5348.0,dato,D91
+2008,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4844.0,dato,D91
+2009,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4311.0,dato,D91
+2010,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4221.0,dato,D91
+2011,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,3892.0,dato,D91
+2012,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,3881.0,dato,D91
+2013,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5071.0,dato,D91
+2014,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5647.0,dato,D91
+2015,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,6344.0,dato,D91
+2016,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,6429.0,dato,D91
+2017,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5716.0,dato,D91
+2018,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5595.0,dato,D91
+2019,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5510.0,dato,D91
+2020,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,4664.0,dato,D91
+2021,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,6193.0,dato,D91
+2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5577.0,dato,D91
+2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5551.0,dato,D91
+2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5694.0,dato,D91
+1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,3010.8,lectura,D91
+1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,3222.6,lectura,D91
+1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4647.5,lectura,D91
+1998,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,3699.3,lectura,D91
+1999,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,3968.3,lectura,D91
+2000,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4326.1,lectura,D91
+2001,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4198.4,lectura,D91
+2002,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4420.0,lectura,D91
+2003,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4814.4,lectura,D91
+2004,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5359.0,lectura,D91
+2005,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6148.1,lectura,D91
+2006,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6649.4,lectura,D91
+2007,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,7068.3,lectura,D91
+2008,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6249.0,lectura,D91
+2009,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5548.6,lectura,D91
+2010,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5416.9,lectura,D91
+2011,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5002.0,lectura,D91
+2012,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,4998.0,lectura,D91
+2013,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6502.0,lectura,D91
+2014,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,7256.5,lectura,D91
+2015,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,8107.4,lectura,D91
+2016,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,8185.6,lectura,D91
+2017,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,7187.3,lectura,D91
+2018,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6952.6,lectura,D91
+2019,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6750.5,lectura,D91
+2020,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5650.0,lectura,D91
+2021,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,7315.3,lectura,D91
+2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,6292.3,lectura,D91
+2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5894.8,lectura,D91
+2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2024,5867.5,lectura,D91
+1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,38,lectura,D91
+1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,42,lectura,D91
+1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,61,lectura,D91
+1998,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,50,lectura,D91
+1999,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,55,lectura,D91
+2000,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,61,lectura,D91
+2001,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,62,lectura,D91
+2002,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,67,lectura,D91
+2003,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,74,lectura,D91
+2004,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,84,lectura,D91
+2005,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,99,lectura,D91
+2006,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,110,lectura,D91
+2007,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,118,lectura,D91
+2008,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,105,lectura,D91
+2009,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,93,lectura,D91
+2010,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,91,lectura,D91
+2011,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,83,lectura,D91
+2012,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,83,lectura,D91
+2013,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,109,lectura,D91
+2014,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,122,lectura,D91
+2015,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,137,lectura,D91
+2016,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,138,lectura,D91
+2017,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,123,lectura,D91
+2018,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,120,lectura,D91
+2019,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,117,lectura,D91
+2020,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,99,lectura,D91
+2021,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,131,lectura,D91
+2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,117,lectura,D91
+2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,115,lectura,D91
+2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,117,lectura,D91
+1995,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.87,lectura,(D91) ÷ TR × 100
+1996,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.92,lectura,(D91) ÷ TR × 100
+1997,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.26,lectura,(D91) ÷ TR × 100
+1998,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.94,lectura,(D91) ÷ TR × 100
+1999,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.96,lectura,(D91) ÷ TR × 100
+2000,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.01,lectura,(D91) ÷ TR × 100
+2001,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.95,lectura,(D91) ÷ TR × 100
+2002,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.96,lectura,(D91) ÷ TR × 100
+2003,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.02,lectura,(D91) ÷ TR × 100
+2004,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.08,lectura,(D91) ÷ TR × 100
+2005,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.17,lectura,(D91) ÷ TR × 100
+2006,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.19,lectura,(D91) ÷ TR × 100
+2007,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.21,lectura,(D91) ÷ TR × 100
+2008,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.18,lectura,(D91) ÷ TR × 100
+2009,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.15,lectura,(D91) ÷ TR × 100
+2010,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.08,lectura,(D91) ÷ TR × 100
+2011,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.0,lectura,(D91) ÷ TR × 100
+2012,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.99,lectura,(D91) ÷ TR × 100
+2013,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.28,lectura,(D91) ÷ TR × 100
+2014,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.39,lectura,(D91) ÷ TR × 100
+2015,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.52,lectura,(D91) ÷ TR × 100
+2016,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.51,lectura,(D91) ÷ TR × 100
+2017,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.29,lectura,(D91) ÷ TR × 100
+2018,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.18,lectura,(D91) ÷ TR × 100
+2019,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.13,lectura,(D91) ÷ TR × 100
+2020,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.0,lectura,(D91) ÷ TR × 100
+2021,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.17,lectura,(D91) ÷ TR × 100
+2022,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.97,lectura,(D91) ÷ TR × 100
+2023,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.88,lectura,(D91) ÷ TR × 100
+2024,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.85,lectura,(D91) ÷ TR × 100
+1995,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
+1996,evolución,Cotizaciones sociales,% del PIB,12.0,dato,D61
+1997,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
+1998,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
+1999,evolución,Cotizaciones sociales,% del PIB,12.4,dato,D61
+2000,evolución,Cotizaciones sociales,% del PIB,12.4,dato,D61
+2001,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2002,evolución,Cotizaciones sociales,% del PIB,12.5,dato,D61
+2003,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2004,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2005,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2006,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2007,evolución,Cotizaciones sociales,% del PIB,12.6,dato,D61
+2008,evolución,Cotizaciones sociales,% del PIB,12.7,dato,D61
+2009,evolución,Cotizaciones sociales,% del PIB,12.9,dato,D61
+2010,evolución,Cotizaciones sociales,% del PIB,12.7,dato,D61
+2011,evolución,Cotizaciones sociales,% del PIB,12.7,dato,D61
+2012,evolución,Cotizaciones sociales,% del PIB,12.5,dato,D61
+2013,evolución,Cotizaciones sociales,% del PIB,12.4,dato,D61
+2014,evolución,Cotizaciones sociales,% del PIB,12.4,dato,D61
+2015,evolución,Cotizaciones sociales,% del PIB,12.1,dato,D61
+2016,evolución,Cotizaciones sociales,% del PIB,12.1,dato,D61
+2017,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
+2018,evolución,Cotizaciones sociales,% del PIB,12.3,dato,D61
+2019,evolución,Cotizaciones sociales,% del PIB,12.8,dato,D61
+2020,evolución,Cotizaciones sociales,% del PIB,14.4,dato,D61
+2021,evolución,Cotizaciones sociales,% del PIB,13.9,dato,D61
+2022,evolución,Cotizaciones sociales,% del PIB,13.1,dato,D61
+2023,evolución,Cotizaciones sociales,% del PIB,13.2,dato,D61
+2024,evolución,Cotizaciones sociales,% del PIB,13.2,dato,D61
+1995,evolución,Cotizaciones sociales,millones de euros corrientes,56187.0,dato,D61
+1996,evolución,Cotizaciones sociales,millones de euros corrientes,58634.0,dato,D61
+1997,evolución,Cotizaciones sociales,millones de euros corrientes,63111.0,dato,D61
+1998,evolución,Cotizaciones sociales,millones de euros corrientes,67929.0,dato,D61
+1999,evolución,Cotizaciones sociales,millones de euros corrientes,73986.0,dato,D61
+2000,evolución,Cotizaciones sociales,millones de euros corrientes,80509.0,dato,D61
+2001,evolución,Cotizaciones sociales,millones de euros corrientes,88138.0,dato,D61
+2002,evolución,Cotizaciones sociales,millones de euros corrientes,94039.0,dato,D61
+2003,evolución,Cotizaciones sociales,millones de euros corrientes,101025.0,dato,D61
+2004,evolución,Cotizaciones sociales,millones de euros corrientes,108469.0,dato,D61
+2005,evolución,Cotizaciones sociales,millones de euros corrientes,116666.0,dato,D61
+2006,evolución,Cotizaciones sociales,millones de euros corrientes,126296.0,dato,D61
+2007,evolución,Cotizaciones sociales,millones de euros corrientes,135643.0,dato,D61
+2008,evolución,Cotizaciones sociales,millones de euros corrientes,140997.0,dato,D61
+2009,evolución,Cotizaciones sociales,millones de euros corrientes,138190.0,dato,D61
+2010,evolución,Cotizaciones sociales,millones de euros corrientes,136975.0,dato,D61
+2011,evolución,Cotizaciones sociales,millones de euros corrientes,135458.0,dato,D61
+2012,evolución,Cotizaciones sociales,millones de euros corrientes,129823.0,dato,D61
+2013,evolución,Cotizaciones sociales,millones de euros corrientes,126856.0,dato,D61
+2014,evolución,Cotizaciones sociales,millones de euros corrientes,128966.0,dato,D61
+2015,evolución,Cotizaciones sociales,millones de euros corrientes,131508.0,dato,D61
+2016,evolución,Cotizaciones sociales,millones de euros corrientes,135573.0,dato,D61
+2017,evolución,Cotizaciones sociales,millones de euros corrientes,142430.0,dato,D61
+2018,evolución,Cotizaciones sociales,millones de euros corrientes,149450.0,dato,D61
+2019,evolución,Cotizaciones sociales,millones de euros corrientes,160656.0,dato,D61
+2020,evolución,Cotizaciones sociales,millones de euros corrientes,162174.0,dato,D61
+2021,evolución,Cotizaciones sociales,millones de euros corrientes,171687.0,dato,D61
+2022,evolución,Cotizaciones sociales,millones de euros corrientes,180086.0,dato,D61
+2023,evolución,Cotizaciones sociales,millones de euros corrientes,197003.0,dato,D61
+2024,evolución,Cotizaciones sociales,millones de euros corrientes,210337.0,dato,D61
+1995,evolución,Cotizaciones sociales,millones de euros de 2024,112930.5,lectura,D61
+1996,evolución,Cotizaciones sociales,millones de euros de 2024,113826.2,lectura,D61
+1997,evolución,Cotizaciones sociales,millones de euros de 2024,119570.4,lectura,D61
+1998,evolución,Cotizaciones sociales,millones de euros de 2024,125394.1,lectura,D61
+1999,evolución,Cotizaciones sociales,millones de euros de 2024,133090.9,lectura,D61
+2000,evolución,Cotizaciones sociales,millones de euros de 2024,140044.0,lectura,D61
+2001,evolución,Cotizaciones sociales,millones de euros de 2024,147189.5,lectura,D61
+2002,evolución,Cotizaciones sociales,millones de euros de 2024,150871.1,lectura,D61
+2003,evolución,Cotizaciones sociales,millones de euros de 2024,155838.0,lectura,D61
+2004,evolución,Cotizaciones sociales,millones de euros de 2024,161022.0,lectura,D61
+2005,evolución,Cotizaciones sociales,millones de euros de 2024,166188.9,lectura,D61
+2006,evolución,Cotizaciones sociales,millones de euros de 2024,172867.3,lectura,D61
+2007,evolución,Cotizaciones sociales,millones de euros de 2024,179276.3,lectura,D61
+2008,evolución,Cotizaciones sociales,millones de euros de 2024,181893.4,lectura,D61
+2009,evolución,Cotizaciones sociales,millones de euros de 2024,177861.2,lectura,D61
+2010,evolución,Cotizaciones sociales,millones de euros de 2024,175781.9,lectura,D61
+2011,evolución,Cotizaciones sociales,millones de euros de 2024,174089.7,lectura,D61
+2012,evolución,Cotizaciones sociales,millones de euros de 2024,167186.4,lectura,D61
+2013,evolución,Cotizaciones sociales,millones de euros de 2024,162653.1,lectura,D61
+2014,evolución,Cotizaciones sociales,millones de euros de 2024,165723.3,lectura,D61
+2015,evolución,Cotizaciones sociales,millones de euros de 2024,168062.8,lectura,D61
+2016,evolución,Cotizaciones sociales,millones de euros de 2024,172614.9,lectura,D61
+2017,evolución,Cotizaciones sociales,millones de euros de 2024,179092.3,lectura,D61
+2018,evolución,Cotizaciones sociales,millones de euros de 2024,185714.1,lectura,D61
+2019,evolución,Cotizaciones sociales,millones de euros de 2024,196826.7,lectura,D61
+2020,evolución,Cotizaciones sociales,millones de euros de 2024,196459.2,lectura,D61
+2021,evolución,Cotizaciones sociales,millones de euros de 2024,202799.8,lectura,D61
+2022,evolución,Cotizaciones sociales,millones de euros de 2024,203183.4,lectura,D61
+2023,evolución,Cotizaciones sociales,millones de euros de 2024,209205.7,lectura,D61
+2024,evolución,Cotizaciones sociales,millones de euros de 2024,216747.8,lectura,D61
+1995,evolución,Cotizaciones sociales,euros por habitante,1415,lectura,D61
+1996,evolución,Cotizaciones sociales,euros por habitante,1470,lectura,D61
+1997,evolución,Cotizaciones sociales,euros por habitante,1576,lectura,D61
+1998,evolución,Cotizaciones sociales,euros por habitante,1689,lectura,D61
+1999,evolución,Cotizaciones sociales,euros por habitante,1833,lectura,D61
+2000,evolución,Cotizaciones sociales,euros por habitante,1985,lectura,D61
+2001,evolución,Cotizaciones sociales,euros por habitante,2162,lectura,D61
+2002,evolución,Cotizaciones sociales,euros por habitante,2270,lectura,D61
+2003,evolución,Cotizaciones sociales,euros por habitante,2394,lectura,D61
+2004,evolución,Cotizaciones sociales,euros por habitante,2531,lectura,D61
+2005,evolución,Cotizaciones sociales,euros por habitante,2672,lectura,D61
+2006,evolución,Cotizaciones sociales,euros por habitante,2847,lectura,D61
+2007,evolución,Cotizaciones sociales,euros por habitante,2999,lectura,D61
+2008,evolución,Cotizaciones sociales,euros por habitante,3066,lectura,D61
+2009,evolución,Cotizaciones sociales,euros por habitante,2980,lectura,D61
+2010,evolución,Cotizaciones sociales,euros por habitante,2942,lectura,D61
+2011,evolución,Cotizaciones sociales,euros por habitante,2898,lectura,D61
+2012,evolución,Cotizaciones sociales,euros por habitante,2777,lectura,D61
+2013,evolución,Cotizaciones sociales,euros por habitante,2723,lectura,D61
+2014,evolución,Cotizaciones sociales,euros por habitante,2777,lectura,D61
+2015,evolución,Cotizaciones sociales,euros por habitante,2835,lectura,D61
+2016,evolución,Cotizaciones sociales,euros por habitante,2920,lectura,D61
+2017,evolución,Cotizaciones sociales,euros por habitante,3062,lectura,D61
+2018,evolución,Cotizaciones sociales,euros por habitante,3199,lectura,D61
+2019,evolución,Cotizaciones sociales,euros por habitante,3412,lectura,D61
+2020,evolución,Cotizaciones sociales,euros por habitante,3425,lectura,D61
+2021,evolución,Cotizaciones sociales,euros por habitante,3626,lectura,D61
+2022,evolución,Cotizaciones sociales,euros por habitante,3769,lectura,D61
+2023,evolución,Cotizaciones sociales,euros por habitante,4074,lectura,D61
+2024,evolución,Cotizaciones sociales,euros por habitante,4304,lectura,D61
+1995,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.71,lectura,(D61) ÷ TR × 100
+1996,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.41,lectura,(D61) ÷ TR × 100
+1997,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.32,lectura,(D61) ÷ TR × 100
+1998,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.89,lectura,(D61) ÷ TR × 100
+1999,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.11,lectura,(D61) ÷ TR × 100
+2000,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.76,lectura,(D61) ÷ TR × 100
+2001,de cada 100 €,Cotizaciones sociales,euros de cada 100,33.13,lectura,(D61) ÷ TR × 100
+2002,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.75,lectura,(D61) ÷ TR × 100
+2003,de cada 100 €,Cotizaciones sociales,euros de cada 100,33.15,lectura,(D61) ÷ TR × 100
+2004,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.6,lectura,(D61) ÷ TR × 100
+2005,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.68,lectura,(D61) ÷ TR × 100
+2006,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.02,lectura,(D61) ÷ TR × 100
+2007,de cada 100 €,Cotizaciones sociales,euros de cada 100,30.66,lectura,(D61) ÷ TR × 100
+2008,de cada 100 €,Cotizaciones sociales,euros de cada 100,34.47,lectura,(D61) ÷ TR × 100
+2009,de cada 100 €,Cotizaciones sociales,euros de cada 100,36.97,lectura,(D61) ÷ TR × 100
+2010,de cada 100 €,Cotizaciones sociales,euros de cada 100,34.98,lectura,(D61) ÷ TR × 100
+2011,de cada 100 €,Cotizaciones sociales,euros de cada 100,34.97,lectura,(D61) ÷ TR × 100
+2012,de cada 100 €,Cotizaciones sociales,euros de cada 100,33.22,lectura,(D61) ÷ TR × 100
+2013,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.99,lectura,(D61) ÷ TR × 100
+2014,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.83,lectura,(D61) ÷ TR × 100
+2015,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.49,lectura,(D61) ÷ TR × 100
+2016,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.88,lectura,(D61) ÷ TR × 100
+2017,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.08,lectura,(D61) ÷ TR × 100
+2018,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.65,lectura,(D61) ÷ TR × 100
+2019,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.9,lectura,(D61) ÷ TR × 100
+2020,de cada 100 €,Cotizaciones sociales,euros de cada 100,34.63,lectura,(D61) ÷ TR × 100
+2021,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.46,lectura,(D61) ÷ TR × 100
+2022,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.37,lectura,(D61) ÷ TR × 100
+2023,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.26,lectura,(D61) ÷ TR × 100
+2024,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.22,lectura,(D61) ÷ TR × 100
+1995,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+1996,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+1997,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+1998,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+1999,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2000,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2001,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2002,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2003,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2004,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2005,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2006,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2007,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2008,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2009,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2010,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2011,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2012,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2013,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2014,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2015,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2016,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2017,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2018,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2019,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2020,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2021,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2022,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2023,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2024,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+1995,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+1996,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+1997,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+1998,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+1999,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2000,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2001,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2002,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2003,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2004,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2005,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2006,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2007,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2008,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2009,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2010,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2011,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2012,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2013,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2014,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2015,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2016,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2017,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2018,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2019,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2020,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2021,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2022,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2023,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2024,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+1995,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+1996,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+1997,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+1998,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+1999,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2000,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2001,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2002,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2003,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2004,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2005,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2006,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2007,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2008,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2009,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2010,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2011,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2012,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2013,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2014,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2015,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2016,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2017,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2018,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2019,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2020,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2021,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2022,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2023,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+2024,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2024,0.0,lectura,−D995
+1995,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+1996,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+1997,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+1998,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+1999,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2000,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2001,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2002,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2003,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2004,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2005,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2006,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2007,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2008,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2009,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2010,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2011,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2012,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2013,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2014,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2015,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2016,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2017,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2018,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2019,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2020,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2021,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2022,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2023,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2024,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+1995,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+1996,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+1997,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+1998,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+1999,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2000,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2001,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2002,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2003,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2004,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2005,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2006,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2007,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2008,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2009,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2010,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2011,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2012,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2013,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2014,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2015,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2016,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2017,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2018,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2019,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2020,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2021,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2022,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2023,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2024,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.3,lectura,TR − impuestos y cotizaciones
+1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.2,lectura,TR − impuestos y cotizaciones
+1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.9,lectura,TR − impuestos y cotizaciones
+1998,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.8,lectura,TR − impuestos y cotizaciones
+1999,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.8,lectura,TR − impuestos y cotizaciones
+2000,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.1,lectura,TR − impuestos y cotizaciones
+2001,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.4,lectura,TR − impuestos y cotizaciones
+2002,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.3,lectura,TR − impuestos y cotizaciones
+2003,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.2,lectura,TR − impuestos y cotizaciones
+2004,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.0,lectura,TR − impuestos y cotizaciones
+2005,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,3.8,lectura,TR − impuestos y cotizaciones
+2006,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,3.9,lectura,TR − impuestos y cotizaciones
+2007,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.1,lectura,TR − impuestos y cotizaciones
+2008,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.1,lectura,TR − impuestos y cotizaciones
+2009,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.4,lectura,TR − impuestos y cotizaciones
+2010,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.4,lectura,TR − impuestos y cotizaciones
+2011,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.4,lectura,TR − impuestos y cotizaciones
+2012,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.7,lectura,TR − impuestos y cotizaciones
+2013,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.9,lectura,TR − impuestos y cotizaciones
+2014,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.6,lectura,TR − impuestos y cotizaciones
+2015,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.2,lectura,TR − impuestos y cotizaciones
+2016,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.0,lectura,TR − impuestos y cotizaciones
+2017,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,3.7,lectura,TR − impuestos y cotizaciones
+2018,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.1,lectura,TR − impuestos y cotizaciones
+2019,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.0,lectura,TR − impuestos y cotizaciones
+2020,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.4,lectura,TR − impuestos y cotizaciones
+2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.9,lectura,TR − impuestos y cotizaciones
+2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.6,lectura,TR − impuestos y cotizaciones
+2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.3,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.2,lectura,TR − impuestos y cotizaciones
+1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,24472.0,lectura,TR − impuestos y cotizaciones
+1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,25280.0,lectura,TR − impuestos y cotizaciones
+1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,25397.0,lectura,TR − impuestos y cotizaciones
+1998,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,26705.0,lectura,TR − impuestos y cotizaciones
+1999,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,28531.0,lectura,TR − impuestos y cotizaciones
+2000,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,26930.0,lectura,TR − impuestos y cotizaciones
+2001,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,31108.0,lectura,TR − impuestos y cotizaciones
+2002,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,32608.0,lectura,TR − impuestos y cotizaciones
+2003,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,33310.0,lectura,TR − impuestos y cotizaciones
+2004,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,34106.0,lectura,TR − impuestos y cotizaciones
+2005,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,35085.0,lectura,TR − impuestos y cotizaciones
+2006,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,39019.0,lectura,TR − impuestos y cotizaciones
+2007,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,43621.0,lectura,TR − impuestos y cotizaciones
+2008,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,44969.0,lectura,TR − impuestos y cotizaciones
+2009,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,47547.0,lectura,TR − impuestos y cotizaciones
+2010,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,47200.0,lectura,TR − impuestos y cotizaciones
+2011,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,47169.0,lectura,TR − impuestos y cotizaciones
+2012,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,48841.0,lectura,TR − impuestos y cotizaciones
+2013,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,49689.0,lectura,TR − impuestos y cotizaciones
+2014,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,47752.0,lectura,TR − impuestos y cotizaciones
+2015,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,46337.0,lectura,TR − impuestos y cotizaciones
+2016,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,44500.0,lectura,TR − impuestos y cotizaciones
+2017,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,43854.0,lectura,TR − impuestos y cotizaciones
+2018,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,48737.0,lectura,TR − impuestos y cotizaciones
+2019,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,50006.0,lectura,TR − impuestos y cotizaciones
+2020,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,49325.0,lectura,TR − impuestos y cotizaciones
+2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,60632.0,lectura,TR − impuestos y cotizaciones
+2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,63150.0,lectura,TR − impuestos y cotizaciones
+2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,78660.0,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,82055.0,lectura,TR − impuestos y cotizaciones
+1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,49186.4,lectura,TR − impuestos y cotizaciones
+1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,49076.1,lectura,TR − impuestos y cotizaciones
+1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,48117.3,lectura,TR − impuestos y cotizaciones
+1998,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,49296.3,lectura,TR − impuestos y cotizaciones
+1999,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,51323.4,lectura,TR − impuestos y cotizaciones
+2000,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,46844.2,lectura,TR − impuestos y cotizaciones
+2001,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,51950.0,lectura,TR − impuestos y cotizaciones
+2002,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,52314.5,lectura,TR − impuestos y cotizaciones
+2003,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,51383.0,lectura,TR − impuestos y cotizaciones
+2004,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,50630.3,lectura,TR − impuestos y cotizaciones
+2005,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,49978.0,lectura,TR − impuestos y cotizaciones
+2006,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,53407.2,lectura,TR − impuestos y cotizaciones
+2007,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,57652.9,lectura,TR − impuestos y cotizaciones
+2008,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,58012.3,lectura,TR − impuestos y cotizaciones
+2009,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,61196.7,lectura,TR − impuestos y cotizaciones
+2010,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,60572.4,lectura,TR − impuestos y cotizaciones
+2011,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,60621.3,lectura,TR − impuestos y cotizaciones
+2012,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,62897.6,lectura,TR − impuestos y cotizaciones
+2013,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,63710.6,lectura,TR − impuestos y cotizaciones
+2014,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,61362.1,lectura,TR − impuestos y cotizaciones
+2015,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,59217.1,lectura,TR − impuestos y cotizaciones
+2016,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,56658.5,lectura,TR − impuestos y cotizaciones
+2017,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,55142.3,lectura,TR − impuestos y cotizaciones
+2018,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,60563.0,lectura,TR − impuestos y cotizaciones
+2019,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,61264.5,lectura,TR − impuestos y cotizaciones
+2020,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,59752.8,lectura,TR − impuestos y cotizaciones
+2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,71619.6,lectura,TR − impuestos y cotizaciones
+2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,71249.5,lectura,TR − impuestos y cotizaciones
+2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,83532.3,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2024,84555.9,lectura,TR − impuestos y cotizaciones
+1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,616,lectura,TR − impuestos y cotizaciones
+1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,634,lectura,TR − impuestos y cotizaciones
+1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,634,lectura,TR − impuestos y cotizaciones
+1998,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,664,lectura,TR − impuestos y cotizaciones
+1999,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,707,lectura,TR − impuestos y cotizaciones
+2000,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,664,lectura,TR − impuestos y cotizaciones
+2001,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,763,lectura,TR − impuestos y cotizaciones
+2002,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,787,lectura,TR − impuestos y cotizaciones
+2003,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,789,lectura,TR − impuestos y cotizaciones
+2004,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,796,lectura,TR − impuestos y cotizaciones
+2005,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,804,lectura,TR − impuestos y cotizaciones
+2006,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,880,lectura,TR − impuestos y cotizaciones
+2007,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,964,lectura,TR − impuestos y cotizaciones
+2008,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,978,lectura,TR − impuestos y cotizaciones
+2009,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1025,lectura,TR − impuestos y cotizaciones
+2010,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1014,lectura,TR − impuestos y cotizaciones
+2011,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1009,lectura,TR − impuestos y cotizaciones
+2012,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1045,lectura,TR − impuestos y cotizaciones
+2013,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1067,lectura,TR − impuestos y cotizaciones
+2014,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1028,lectura,TR − impuestos y cotizaciones
+2015,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,999,lectura,TR − impuestos y cotizaciones
+2016,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,958,lectura,TR − impuestos y cotizaciones
+2017,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,943,lectura,TR − impuestos y cotizaciones
+2018,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1043,lectura,TR − impuestos y cotizaciones
+2019,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1062,lectura,TR − impuestos y cotizaciones
+2020,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1042,lectura,TR − impuestos y cotizaciones
+2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1281,lectura,TR − impuestos y cotizaciones
+2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1322,lectura,TR − impuestos y cotizaciones
+2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1627,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1679,lectura,TR − impuestos y cotizaciones
+1995,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,14.24,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+1996,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,13.97,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+1997,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,13.01,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+1998,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.54,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+1999,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.38,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2000,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.96,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2001,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.69,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2002,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.35,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2003,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.93,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2004,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.25,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2005,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,9.53,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2006,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,9.59,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2007,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,9.86,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2008,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.99,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2009,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.72,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2010,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.05,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2011,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.18,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2012,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.5,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2013,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.53,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2014,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.79,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2015,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.09,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2016,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.46,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2017,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,9.88,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2018,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.32,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2019,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.24,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2020,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,10.53,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2021,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.46,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2022,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.0,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2023,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.48,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2024,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.18,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100

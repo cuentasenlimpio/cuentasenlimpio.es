@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Cómo se miente con datos verdaderos · Cuentas en limpio</title>
+  <meta name="description" content="Cinco distinciones para leer cifras públicas sin que te engañen: contabilidades, perímetro, presupuesto frente a ejecución, unidades y causalidad.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="./">Inicio</a>
+      <a href="cuentas.html">Cuentas</a>
+      <a href="gasto.html">En qué se gasta</a>
+      <a href="ingresos.html">De dónde sale</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="como-se-miente.html" aria-current="page">Cómo se miente</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="metodologia.html">Metodología</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Cómo se miente con datos verdaderos</h1>
+    <p class="entradilla">Casi ninguna cifra política engañosa es falsa. Lo que hace es mezclar conceptos que parecen iguales y no lo son. Estas cinco distinciones bastan para desactivar la mayoría de los engaños con cifras públicas, vengan de quien vengan.</p>
+
+    <p>Detrás de cada distinción verás un recuadro <strong>«En esta web»</strong>: es la regla que nos aplicamos a nosotros mismos para no caer en lo que explicamos. Al final de cada sección están las fuentes.</p>
+
+    <!-- 1 -->
+    <section id="contabilidades">
+      <h2><span class="numero">Distinción 1</span><br>Tres formas de contar, tres cifras distintas y correctas</h2>
+      <p>Una misma administración cuenta su dinero de tres maneras. Ninguna miente: cada una responde a una pregunta diferente.</p>
+
+      <div class="tabla">
+        <table>
+          <thead><tr><th scope="col">Contabilidad</th><th scope="col">Qué pregunta responde</th><th scope="col">Quién la publica</th></tr></thead>
+          <tbody>
+            <tr><td>Presupuestaria</td><td>¿Cuánto autorizó el Parlamento a gastar y cuánto se comprometió de verdad?</td><td>Ministerio de Hacienda (los presupuestos) e Intervención General del Estado, IGAE (lo ejecutado)</td></tr>
+            <tr><td>Nacional</td><td>¿Cuánto ingresó y gastó el sector público en sentido económico? Es la que fija el déficit y la deuda oficiales ante la Unión Europea. Sigue unas normas comunes europeas llamadas SEC 2010.</td><td>IGAE, Banco de España, INE y Eurostat</td></tr>
+            <tr><td>De caja</td><td>¿Cuánto dinero entró y salió de la tesorería, y cuándo?</td><td>Tesoro Público e IGAE</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente-grafico">Fuente: elaboración propia (explica conceptos; no contiene datos). Cada contabilidad se publica en: <a href="https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/Presupuestos/PGE/PresupuestosEjerciciosAnteriores/Paginas/presupuestosejerciciosanteriores.aspx">Hacienda, presupuestos</a> · <a href="https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/EjecucionPresupuestaria/Paginas/imejecucionpresupuesto.aspx">IGAE, ejecución presupuestaria</a> · <a href="https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Paginas/Publicaciones.aspx">IGAE, contabilidad nacional</a> · <a href="https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales">Tesoro Público</a>.</p>
+
+      <div class="ejemplo">
+        <p><strong>Un ejemplo.</strong> Un gasto aprobado en diciembre y pagado en enero cae en años distintos según la contabilidad que se use. Por eso dos titulares pueden dar «el déficit» con cifras diferentes sin que ninguno mienta: están contando cosas distintas.</p>
+      </div>
+
+      <div class="regla">
+        <strong>En esta web</strong>
+        <p>Cada cifra lleva una etiqueta con la contabilidad de la que sale. Un mismo gráfico nunca mezcla dos contabilidades.</p>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section id="perimetro">
+      <h2><span class="numero">Distinción 2</span><br>«El Estado» no es «las administraciones públicas»</h2>
+      <p>Cuando se dice «el Gobierno gasta», se mezclan niveles que en las estadísticas van por separado. Las cuentas oficiales de España suman cuatro:</p>
+
+      <figure class="perimetro" aria-label="Las administraciones públicas suman cuatro niveles">
+        <div class="perimetro-total">
+          <strong>Administraciones públicas (AAPP), consolidadas</strong>
+          <span>Es el conjunto que cuenta para el déficit y la deuda oficiales</span>
+        </div>
+        <ul class="perimetro-niveles">
+          <li><strong>Administración Central</strong><span>El Estado y sus organismos</span></li>
+          <li><strong>Seguridad Social</strong><span>Hace el <!--d:ss_vejez-->82,3<!--/d--> % del gasto público en vejez y el <!--d:ss_desempleo-->98,1<!--/d--> % del de desempleo</span></li>
+          <li><strong>Comunidades autónomas</strong><span>Hacen el <!--d:ccaa_sanidad-->93,6<!--/d--> % del gasto público en sanidad y el <!--d:ccaa_educacion-->90,7<!--/d--> % del de educación</span></li>
+          <li><strong>Entidades locales</strong><span>Ayuntamientos, diputaciones, cabildos</span></li>
+        </ul>
+        <figcaption>Lo que un nivel transfiere a otro (del Estado a una comunidad, por ejemplo) se cuenta una sola vez al sumar. A eso se le llama <em>consolidar</em>.</figcaption>
+
+      </figure>
+      <p class="fuente-grafico">Fuente: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=es" data-d="@exp_navegador">gasto de las administraciones públicas por funciones y nivel de administración</a> (tabla gov_10a_exp, actualizada el <!--d:exp_actualizada-->16 de septiembre de 2026<!--/d-->), año <!--d:perimetro_año-->2023<!--/d-->, el último definitivo. Porcentajes: <span class="etiqueta-tipo lectura">lectura</span> gasto del nivel ÷ gasto de todas las administraciones en esa función. <a href="crudo/gov_10a_exp-2026-10-19-c39d77b54ad8.json.gz" data-d="@exp_copia">Fichero descargado</a>.</p>
+
+      <p>De esta distinción salen tres trampas habituales:</p>
+      <ul>
+        <li><strong>Contar dos veces.</strong> Los Presupuestos Generales del Estado incluyen el dinero que el Estado transfiere a la Seguridad Social y a las comunidades. Si a eso se le suma lo que esas administraciones gastan, el mismo euro aparece dos veces.</li>
+        <li><strong>Atribuir al nivel equivocado.</strong> Felicitar o culpar al Gobierno central por la sanidad o la educación es casi siempre un error: más del 90 % de ese gasto lo hacen las comunidades autónomas, como muestra el diagrama.</li>
+        <li><strong>Olvidar los regímenes forales.</strong> El País Vasco y Navarra recaudan sus propios impuestos. Lo que recauda la Agencia Tributaria no es, por tanto, lo que se recauda en toda España.</li>
+      </ul>
+
+      <div class="regla">
+        <strong>En esta web</strong>
+        <p>Cada cifra dice a qué nivel de administración se refiere. Para los totales del país usamos siempre las cifras ya consolidadas que publican la IGAE o Eurostat; nunca sumamos a mano.</p>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section id="presupuesto">
+      <h2><span class="numero">Distinción 3</span><br>Presupuestado no es gastado, y a veces no hay presupuesto nuevo</h2>
+      <p>Los Presupuestos Generales del Estado son un <em>permiso</em> para gastar hasta cierto límite, no el gasto real. Entre lo aprobado y lo gastado hay dinero que no se llega a usar, cambios a lo largo del año y pagos que se retrasan a ejercicios siguientes.</p>
+      <p>Además, si el 1 de enero no hay una ley de presupuestos nueva, la Constitución (artículo 134) prorroga automáticamente la del año anterior. Pasa más a menudo de lo que parece:</p>
+
+      <figure class="tira-años">
+        <figcaption class="solo-lectores">Situación del presupuesto del Estado de 1996 a 2026</figcaption>
+      <ul class="anios">
+        <li class="prorroga" title="Prorrogados todo el año: los de 1995">1996</li>
+        <li>1997</li><li>1998</li><li>1999</li><li>2000</li><li>2001</li><li>2002</li><li>2003</li><li>2004</li><li>2005</li><li>2006</li><li>2007</li><li>2008</li><li>2009</li><li>2010</li><li>2011</li>
+        <li class="parcial" title="Ley 2/2012, de 29 de junio; hasta entonces, prorrogados los de 2011">2012</li>
+        <li>2013</li><li>2014</li><li>2015</li><li>2016</li>
+        <li class="parcial" title="Ley 3/2017, de 27 de junio; hasta entonces, prorrogados los de 2016">2017</li>
+        <li class="parcial" title="Ley 6/2018, de 3 de julio; hasta entonces, prorrogados los de 2017">2018</li>
+        <li class="prorroga" title="Prorrogados todo el año: los de 2018">2019</li>
+        <li class="prorroga" title="Prorrogados todo el año: los de 2018">2020</li>
+        <li>2021</li><li>2022</li><li>2023</li>
+        <li class="prorroga" title="Prorrogados todo el año: los de 2023">2024</li>
+        <li class="prorroga" title="Prorrogados todo el año: los de 2023">2025</li>
+        <li class="prorroga" title="Prorrogados todo el año: los de 2023">2026</li>
+      </ul>
+      </figure>
+      <ul class="leyenda">
+        <li><span class="muestra"></span>Presupuesto propio desde el 1 de enero</li>
+        <li><span class="muestra parcial"></span>Prorrogado hasta que entró en vigor el nuevo, a mitad de año</li>
+        <li><span class="muestra prorroga"></span>Prorrogado todo el año</li>
+      </ul>
+
+      <div class="tabla">
+        <table>
+          <thead><tr><th scope="col">Año</th><th scope="col">Presupuesto con el que se gastó</th></tr></thead>
+          <tbody>
+            <tr><td>1996</td><td>Los de 1995 (Ley 41/1994), prorrogados todo el año</td></tr>
+            <tr><td>2012</td><td>Los de 2011, hasta que entró en vigor la ley de presupuestos de 2012 (Ley 2/2012, de 29 de junio)</td></tr>
+            <tr><td>2017</td><td>Los de 2016, hasta que entró en vigor la de 2017 (Ley 3/2017, de 27 de junio)</td></tr>
+            <tr><td>2018</td><td>Los de 2017, hasta que entró en vigor la de 2018 (Ley 6/2018, de 3 de julio)</td></tr>
+            <tr><td>2019 y 2020</td><td>Los de 2018 (Ley 6/2018), prorrogados</td></tr>
+            <tr><td>2024, 2025 y 2026</td><td>Los de 2023 (Ley 31/2022), prorrogados</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="fuente-grafico">Fuente: Boletín Oficial del Estado, leyes de Presupuestos Generales del Estado: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-1994-28967">Ley 41/1994</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2010-19703">Ley 39/2010</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2012-8745">Ley 2/2012</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2015-11644">Ley 48/2015</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2017-7387">Ley 3/2017</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2018-9268">Ley 6/2018</a> · <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2022-22128">Ley 31/2022</a>. Los años sin ley propia, por el artículo 134.4 de la Constitución y la <a href="https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2025/20251223-NP-CM-PRORROGA-PGE.aspx">prórroga de 2026</a>.</p>
+
+      <p>La consecuencia es importante: a menudo un Gobierno gasta con un presupuesto que diseñó otro Gobierno o que aprobó otro Parlamento.</p>
+
+      <div class="regla">
+        <strong>En esta web</strong>
+        <p>En la página de <a href="presupuesto.html">presupuesto</a> mostramos, para cada año, si había ley propia o si el presupuesto estaba prorrogado. Y separamos siempre lo presupuestado de lo ejecutado.</p>
+      </div>
+
+      <div class="fuentes">
+        <strong>De dónde sale esto</strong>
+        <ul>
+          <li>Leyes de presupuestos y sus fechas: <a href="https://www.boe.es/datosabiertos/api/api.php">BOE, datos abiertos</a> y <a href="https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/Presupuestos/PGE/PresupuestosEjerciciosAnteriores/Paginas/presupuestosejerciciosanteriores.aspx">Ministerio de Hacienda, presupuestos de ejercicios anteriores</a>.</li>
+          <li>Prórroga de 2026: <a href="https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2025/20251223-NP-CM-PRORROGA-PGE.aspx">Ministerio de Hacienda, 23/12/2025</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section id="unidades">
+      <h2><span class="numero">Distinción 4</span><br>La unidad cambia la historia</h2>
+      <p>La misma serie de datos cuenta historias opuestas según la unidad en la que se exprese:</p>
+
+      <div class="tabla">
+        <table>
+          <thead><tr><th scope="col">Unidad</th><th scope="col">Qué responde</th><th scope="col">La trampa típica</th></tr></thead>
+          <tbody>
+            <tr><td>Euros corrientes</td><td>¿Cuántos euros de cada año?</td><td>Con inflación, casi cualquier partida bate un «récord histórico» cada año.</td></tr>
+            <tr><td>Euros constantes</td><td>¿Cuánto, descontando la subida de precios?</td><td>El resultado depende del índice de precios elegido y del año que se tome como base.</td></tr>
+            <tr><td>% del PIB</td><td>¿Qué peso tiene sobre el tamaño de la economía?</td><td>Si la economía se encoge, como en una crisis, el porcentaje sube aunque el gasto no cambie.</td></tr>
+            <tr><td>Por habitante</td><td>¿Cuánto supone por persona?</td><td>Es una media: no es lo que paga ni lo que recibe nadie en concreto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fuente-grafico">Fuente: elaboración propia (explica conceptos; no contiene datos).</p>
+
+      <div class="ejemplo">
+        <p><strong>Los datos del pasado también cambian.</strong> El INE revisa periódicamente la forma de medir la economía. En la revisión de septiembre de 2024 rehízo toda la serie desde 1995, y el PIB de 2021 pasó a ser un 1,1&nbsp;% mayor que el publicado antes. Cualquier «porcentaje del PIB» de esos años cambió con ella.</p>
+      </div>
+
+      <div class="regla">
+        <strong>En esta web</strong>
+        <p>Los gráficos de evolución permiten cambiar de unidad, y cada gráfico dice en cuál está. Guardamos cada fichero descargado con su fecha, y el historial público de la web muestra qué decía cada día desde que se publica.</p>
+      </div>
+
+      <div class="fuentes">
+        <strong>De dónde sale esto</strong>
+        <ul>
+          <li>Revisión estadística de 2024: <a href="https://www.ine.es/dyngs/Prensa/CNA2023.pdf">INE, nota de prensa del 18/09/2024</a> y <a href="https://ine.es/daco/daco42/cne24/impacto_RE2024.pdf">desglose de su impacto</a>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section id="causa">
+      <h2><span class="numero">Distinción 5</span><br>Coincidir en el tiempo no es causar</h2>
+      <p>Que algo ocurra durante una legislatura no significa que lo haya causado su Gobierno. Hay cuatro razones:</p>
+      <ul>
+        <li><strong>Los efectos llegan tarde.</strong> Una reforma fiscal aprobada un año puede no notarse en la recaudación hasta el siguiente. Una subida de pensiones pesa durante años.</li>
+        <li><strong>El ciclo económico manda.</strong> En una recesión sube el gasto en desempleo y baja la recaudación sin que nadie lo decida. Los economistas lo llaman <em>estabilizadores automáticos</em>.</li>
+        <li><strong>Hay golpes externos.</strong> Tras la crisis financiera de 2008, en 2009 tuvieron déficit <!--d:ue_deficit_2009-->27<!--/d--> de los <!--d:ue_paises_2009-->27<!--/d--> países de la UE; en 2020, con la pandemia, <!--d:ue_deficit_2020-->26<!--/d--> de <!--d:ue_paises_2020-->27<!--/d-->, gobernara quien gobernara en cada uno. Se puede ver en la <a href="cuentas.html">comparación europea</a> (Eurostat, gov_10a_main).</li>
+        <li><strong>Algunas cifras son estimaciones, no medidas.</strong> El llamado <em>déficit estructural</em> (el que quedaría si la economía no estuviera ni en crisis ni en auge) no se mide: se calcula con modelos, y cambia cuando se revisan.</li>
+      </ul>
+
+      <div class="regla">
+        <strong>En esta web</strong>
+        <p>Mostramos qué pasó y cuándo, y dejamos las conclusiones al lector. Solo atribuimos una causa cuando una fuente oficial la ha cuantificado, y entonces la citamos. Las estimaciones van marcadas como <strong>lectura</strong>, nunca como dato.</p>
+      </div>
+    </section>
+
+    <h2>En resumen</h2>
+    <p>Antes de creerte una cifra pública, de quien sea, hazte cinco preguntas:</p>
+    <ol>
+      <li>¿De qué contabilidad sale?</li>
+      <li>¿A qué administración se refiere?</li>
+      <li>¿Es lo presupuestado o lo gastado? ¿Había presupuesto nuevo ese año?</li>
+      <li>¿En qué unidad está, y cambiaría la historia en otra?</li>
+      <li>¿Se está presentando una coincidencia como si fuera una causa?</li>
+    </ol>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

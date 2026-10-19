@@ -1,0 +1,29 @@
+# El código que calcula las cifras
+
+Estos son los programas que descargan las fuentes oficiales, calculan cada cifra de la web y la comprueban contra
+otras fuentes. Son exactamente los que han construido la versión publicada en este mismo commit.
+
+| Fichero | Qué hace |
+|---|---|
+| `descargar.py` | Descarga cada fuente oficial (Eurostat, IGAE, Banco de España, INE, Hacienda, Congreso) tal como se publica, y apunta en un manifiesto la dirección, la fecha y la huella sha256 de cada fichero. |
+| `construir.py` | Lee esas descargas, calcula las cifras de cada página, hace las comprobaciones cruzadas y escribe los JSON y CSV de `datos/`. |
+| `xlsx.py` | Lee las hojas de cálculo de la IGAE y de Hacienda solo con la biblioteca estándar de Python. |
+| `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
+
+Solo usan la biblioteca estándar de Python 3.12 o posterior: no hay que instalar nada.
+
+## Rehacer los cálculos
+
+Desde una copia de este repositorio:
+
+```sh
+mkdir -p /tmp/cuentas/datos && cp -r . /tmp/cuentas/web
+CUENTAS_DATOS=/tmp/cuentas/datos python3 codigo/descargar.py
+CUENTAS_DATOS=/tmp/cuentas/datos CUENTAS_WEB=/tmp/cuentas/web python3 codigo/construir.py
+```
+
+`descargar.py` baja las fuentes de hoy. Si alguna ha publicado datos nuevos desde la fecha de este commit, los números
+pueden cambiar; los ficheros exactos que se usaron están en `crudo/`, con su dirección, su fecha de descarga y su huella sha256 en el
+apartado `fuentes` de `datos/aapp.json`.
+
+El método, explicado sin código, está en la [metodología](https://cuentasenlimpio.es/metodologia.html).

@@ -1,0 +1,369 @@
+/* Cuentas en limpio — estilo común. Solo tema claro.
+   Paleta neutra a propósito: ningún color de partido. El único acento es un ocre. */
+
+:root {
+  --fondo: #faf9f6;
+  --superficie: #ffffff;
+  --tinta: #1d1d1b;
+  --tinta-suave: #5c5b57;
+  --linea: #dedbd3;
+  --linea-fuerte: #b9b5aa;
+  --acento: #8a5a12;
+  --acento-tenue: #f3eadb;
+  --nota: #f1efe9;
+  --serie-ingresos: #00879f;
+  --serie-gastos: #a8680f;
+  --serie-deuda: #1d1d1b;
+  --hueco: rgba(29, 29, 27, 0.07);
+  --franja: rgba(29, 29, 27, 0.035);
+  --c-primario: #a8680f;
+  --c-intereses: #00879f;
+  --c-activos: #8a6d00;
+  --c-ajustes: #9a4d7a;
+  --c-crecimiento: #5a7d00;
+  --ancho: 46rem;
+  --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: 1.0625rem/1.65 var(--sans);
+}
+
+a { color: var(--acento); text-underline-offset: 0.15em; }
+a:hover { text-decoration-thickness: 2px; }
+
+.aviso-preliminar {
+  background: var(--acento-tenue);
+  color: var(--tinta);
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--linea);
+}
+
+header.sitio, footer.sitio {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 1.25rem 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+header.sitio .marca {
+  font: 600 1.125rem/1.2 var(--serif);
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+header.sitio nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; font-size: 0.9375rem; }
+header.sitio nav a { color: var(--tinta-suave); text-decoration: none; }
+header.sitio nav a[aria-current="page"] { color: var(--tinta); font-weight: 600; }
+
+main {
+  max-width: var(--ancho);
+  margin: 0 auto;
+  padding: 1rem 1rem 4rem;
+}
+
+h1, h2, h3 { font-family: var(--serif); line-height: 1.2; font-weight: 600; }
+h1 { font-size: clamp(2rem, 6vw, 2.75rem); margin: 1.5rem 0 1rem; letter-spacing: -0.01em; }
+h2 { font-size: 1.625rem; margin: 3.5rem 0 0.75rem; padding-top: 1.5rem; border-top: 1px solid var(--linea); }
+h3 { font-size: 1.1875rem; margin: 2rem 0 0.5rem; }
+
+.entradilla { font-size: 1.25rem; line-height: 1.5; color: var(--tinta-suave); margin: 0 0 2rem; }
+
+.numero {
+  display: inline-block;
+  font: 600 0.8125rem/1 var(--sans);
+  color: var(--acento);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+p, ul, ol { margin: 0 0 1rem; }
+li { margin-bottom: 0.35rem; }
+
+/* Tablas: se desplazan solas en pantallas estrechas, la página no. */
+.tabla { overflow-x: auto; margin: 1.25rem 0 1.5rem; border: 1px solid var(--linea); border-radius: 8px; background: var(--superficie); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; line-height: 1.45; }
+th, td { text-align: left; vertical-align: top; padding: 0.65rem 0.8rem; border-bottom: 1px solid var(--linea); }
+th { font-weight: 600; background: var(--nota); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 600; min-width: 8rem; }
+
+/* «En esta web»: la regla que nos aplicamos tras cada distinción. */
+.regla {
+  border-left: 3px solid var(--acento);
+  background: var(--superficie);
+  padding: 0.9rem 1.1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 8px 8px 0;
+}
+.regla > strong:first-child { display: block; font-size: 0.8125rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--acento); margin-bottom: 0.25rem; }
+.regla p:last-child { margin-bottom: 0; }
+
+.ejemplo { background: var(--nota); padding: 0.9rem 1.1rem; border-radius: 8px; margin: 1.25rem 0; }
+.ejemplo p:last-child { margin-bottom: 0; }
+
+/* De dónde sale esto: cada sección cierra con sus fuentes. */
+.fuentes { font-size: 0.875rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea-fuerte); padding-top: 0.75rem; margin-top: 1.5rem; }
+.fuentes strong { color: var(--tinta); }
+.fuentes ul { margin: 0.25rem 0 0; padding-left: 1.1rem; }
+
+figure { margin: 1.5rem 0; }
+figure svg { width: 100%; height: auto; display: block; }
+figcaption { font-size: 0.875rem; color: var(--tinta-suave); margin-top: 0.5rem; }
+
+/* Perímetro de las AAPP: el total arriba, los cuatro niveles debajo; en móvil, dos por fila. */
+.perimetro-total { background: var(--acento-tenue); border: 2px solid var(--acento); border-radius: 8px; padding: 0.8rem 1rem; text-align: center; }
+.perimetro-total strong, .perimetro-niveles strong { display: block; font-weight: 600; }
+.perimetro-total span, .perimetro-niveles span { display: block; font-size: 0.875rem; color: var(--tinta-suave); line-height: 1.4; margin-top: 0.15rem; }
+.perimetro-niveles { list-style: none; padding: 1.1rem 0 0; margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.6rem; position: relative; }
+.perimetro-niveles::before { content: ""; position: absolute; top: 0; left: 50%; height: 0.55rem; border-left: 1.5px solid var(--linea-fuerte); }
+.perimetro-niveles::after { content: ""; position: absolute; top: 0.55rem; left: 12.5%; right: 12.5%; border-top: 1.5px solid var(--linea-fuerte); }
+.perimetro-niveles li { position: relative; margin: 0; background: var(--superficie); border: 1px solid var(--linea-fuerte); border-radius: 8px; padding: 0.7rem 0.8rem; font-size: 0.9375rem; line-height: 1.3; }
+.perimetro-niveles li::before { content: ""; position: absolute; top: calc(-0.55rem - 1px); left: 50%; height: 0.55rem; border-left: 1.5px solid var(--linea-fuerte); }
+@media (max-width: 40rem) {
+  .perimetro-niveles { grid-template-columns: repeat(2, 1fr); }
+  .perimetro-niveles li:nth-child(n+3)::before { display: none; }
+  .perimetro-niveles::after { left: 25%; right: 25%; }
+}
+
+/* Tira de años: presupuesto propio, prórroga parcial o prórroga todo el año. */
+.anios { display: grid; grid-template-columns: repeat(auto-fill, minmax(3.1rem, 1fr)); gap: 4px; margin: 1rem 0 0.75rem; padding: 0; list-style: none; }
+.anios li { margin: 0; font: 600 0.75rem/1 var(--sans); text-align: center; padding: 0.55rem 0; border-radius: 4px; border: 1px solid var(--linea-fuerte); color: var(--tinta-suave); background: var(--superficie); }
+.anios li.prorroga { background: var(--acento); border-color: var(--acento); color: var(--fondo); }
+.anios li.parcial { border: 2px dashed var(--acento); color: var(--tinta); padding: calc(0.55rem - 1px) 0; }
+.leyenda { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.875rem; color: var(--tinta-suave); margin: 0 0 1rem; padding: 0; list-style: none; }
+.leyenda li { display: flex; align-items: center; gap: 0.4rem; margin: 0; }
+.leyenda .muestra { width: 1.1rem; height: 0.8rem; border-radius: 2px; border: 1px solid var(--linea-fuerte); background: var(--superficie); }
+.leyenda .muestra.prorroga { background: var(--acento); border-color: var(--acento); }
+.leyenda .muestra.parcial { border: 2px dashed var(--acento); }
+
+/* Portada */
+.principios { list-style: none; padding: 0; counter-reset: p; }
+.principios li { counter-increment: p; position: relative; padding: 0 0 0 2.5rem; margin-bottom: 1.25rem; }
+.principios li::before { content: counter(p); position: absolute; left: 0; top: 0.1rem; width: 1.75rem; height: 1.75rem; border-radius: 50%; border: 1px solid var(--acento); color: var(--acento); font: 600 0.875rem/1.75rem var(--sans); text-align: center; }
+.principios strong { display: block; }
+
+.tarjeta { display: block; text-decoration: none; color: inherit; background: var(--superficie); border: 1px solid var(--linea); border-radius: 10px; padding: 1.25rem 1.4rem; margin: 1.5rem 0; }
+.tarjeta:hover { border-color: var(--acento); }
+.tarjeta .titulo { font: 600 1.25rem/1.3 var(--serif); color: var(--tinta); display: block; margin-bottom: 0.35rem; }
+.tarjeta .mas { color: var(--acento); font-weight: 600; font-size: 0.9375rem; }
+
+footer.sitio { border-top: 1px solid var(--linea); font-size: 0.8125rem; color: var(--tinta-suave); }
+
+@media (max-width: 30rem) {
+  body { font-size: 1rem; }
+  h2 { font-size: 1.4rem; }
+  td:first-child { min-width: 6.5rem; }
+}
+
+/* Página de cuentas: selector de unidad, gráficos, lectura del año, ficha de procedencia. */
+.selector { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem; margin: 1.5rem 0 0.5rem; }
+.selector-etiqueta { font-size: 0.875rem; color: var(--tinta-suave); margin-right: 0.25rem; }
+.selector button { font: inherit; font-size: 0.9375rem; padding: 0.4rem 0.8rem; border-radius: 999px; border: 1px solid var(--linea-fuerte); background: var(--superficie); color: var(--tinta); cursor: pointer; }
+.selector button:hover { border-color: var(--acento); }
+.selector button[aria-pressed="true"] { background: var(--tinta); color: var(--fondo); border-color: var(--tinta); }
+.selector button:focus-visible, .lienzo:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.unidad-explicada { font-size: 0.9375rem; color: var(--tinta-suave); margin: 0 0 1rem; min-height: 3em; }
+.etiqueta-tipo { display: inline-block; font: 600 0.6875rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.45rem; border-radius: 4px; vertical-align: 0.1em; }
+.etiqueta-tipo.dato { background: var(--tinta); color: var(--fondo); }
+.etiqueta-tipo.lectura { border: 1px solid var(--tinta-suave); color: var(--tinta); }
+
+.grafico { margin: 2rem 0 1rem; }
+h2.grafico-titulo { font-size: 1.25rem; margin: 0 0 0.5rem; padding: 0; border: 0; }
+.leyenda-series { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; padding: 0; margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--tinta-suave); }
+.leyenda-series li { display: flex; align-items: center; gap: 0.45rem; margin: 0; }
+.clave-linea { display: inline-block; width: 1.1rem; height: 0; border-top: 2px solid; vertical-align: middle; }
+.clave-linea.ingresos { border-color: var(--serie-ingresos); }
+.clave-linea.gastos { border-color: var(--serie-gastos); }
+.clave-linea.deuda { border-color: var(--serie-deuda); }
+.clave-area { display: inline-block; width: 1.1rem; height: 0.8rem; background: var(--hueco); border-radius: 2px; }
+
+.lectura-año { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 1rem; min-height: 1.8rem; font-size: 0.9375rem; color: var(--tinta-suave); font-variant-numeric: tabular-nums; }
+.lectura-anio { color: var(--tinta); font-size: 1rem; }
+.lectura-fila { display: inline-flex; align-items: baseline; gap: 0.35rem; }
+.lectura-fila .clave-linea { align-self: center; }
+.lectura-fila b { color: var(--tinta); font-weight: 600; }
+.lectura-provisional { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; border: 1px solid var(--linea-fuerte); border-radius: 4px; padding: 0.1rem 0.35rem; }
+
+.lienzo { width: 100%; touch-action: pan-y; cursor: crosshair; border-radius: 4px; }
+.lienzo svg { display: block; overflow: visible; }
+.rejilla line { stroke: var(--linea); stroke-width: 1; }
+.rejilla line.base { stroke: var(--linea-fuerte); }
+.eje-texto { fill: var(--tinta-suave); font: 12px var(--sans); font-variant-numeric: tabular-nums; }
+.linea { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.linea.ingresos { stroke: var(--serie-ingresos); }
+.linea.gastos { stroke: var(--serie-gastos); }
+.linea.deuda { stroke: var(--serie-deuda); }
+.hueco { fill: var(--hueco); }
+.hueco-texto { fill: var(--tinta-suave); font: italic 12px var(--sans); }
+.cruz line { stroke: var(--linea-fuerte); stroke-width: 1; }
+.punto { stroke: var(--fondo); stroke-width: 2; }
+.punto.ingresos { fill: var(--serie-ingresos); }
+.punto.gastos { fill: var(--serie-gastos); }
+.punto.deuda { fill: var(--serie-deuda); }
+
+.no-dice { background: var(--nota); border-radius: 8px; padding: 1rem 1.2rem; margin: 2rem 0 1.5rem; }
+.no-dice strong:first-child { display: block; margin-bottom: 0.35rem; }
+.no-dice ul { margin: 0; padding-left: 1.1rem; }
+
+.plegable { border-top: 1px solid var(--linea); padding: 0.75rem 0; }
+.plegable summary { cursor: pointer; font-weight: 600; font-family: var(--serif); font-size: 1.125rem; }
+.plegable .tabla { max-height: 28rem; overflow: auto; }
+.plegable caption { caption-side: top; text-align: left; font-size: 0.8125rem; color: var(--tinta-suave); padding: 0.6rem 0.8rem; }
+#tabla td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+#tabla td:first-child { min-width: 0; }
+#tabla sup { color: var(--tinta-suave); }
+
+.ficha-datos { display: grid; grid-template-columns: 9rem 1fr; gap: 0.6rem 1.25rem; margin: 1rem 0 0; font-size: 0.9375rem; }
+.ficha-datos dt { font-weight: 600; }
+.ficha-datos dd { margin: 0; }
+.lista-fuentes, .lista-comprobaciones { list-style: none; padding: 0; margin: 0; }
+.lista-fuentes li, .lista-comprobaciones li { margin-bottom: 0.6rem; }
+.lista-fuentes code { font-size: 0.8125rem; color: var(--tinta-suave); }
+.huella { font: 0.75rem ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--tinta-suave); }
+.lista-comprobaciones li { padding-left: 1.6rem; position: relative; }
+.lista-comprobaciones .marca { position: absolute; left: 0; top: 0.1rem; width: 1.1rem; height: 1.1rem; border-radius: 50%; font: 700 0.75rem/1.1rem var(--sans); text-align: center; }
+.lista-comprobaciones .ok .marca { border: 1px solid var(--tinta-suave); color: var(--tinta); }
+.lista-comprobaciones .aviso .marca { background: var(--acento); color: var(--fondo); }
+.pendiente { font-size: 0.875rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea-fuerte); padding-top: 0.75rem; margin-top: 2rem; }
+.pendiente strong { color: var(--tinta); display: block; margin-bottom: 0.25rem; }
+.pendiente ul { margin: 0; padding-left: 1.1rem; }
+
+@media (max-width: 40rem) {
+  .lectura-año { flex-direction: column; align-items: flex-start; gap: 0.1rem; min-height: 5.6rem; }
+  .ficha-datos { grid-template-columns: 1fr; gap: 0.2rem; }
+  .ficha-datos dd { margin-bottom: 0.6rem; }
+}
+
+/* Fuente bajo cada gráfico, tabla o diagrama: siempre visible, nunca plegada. */
+.fuente-grafico { font-size: 0.8125rem; line-height: 1.5; color: var(--tinta-suave); margin: 0.5rem 0 1.5rem; }
+.fuente-grafico a { color: var(--tinta-suave); }
+.fuente-grafico .etiqueta-tipo { font-size: 0.625rem; padding: 0.15rem 0.35rem; }
+figure .fuente-grafico { margin-bottom: 0; }
+
+/* Legislaturas: franjas neutras alternas, sin color de partido. */
+.franja.par { fill: var(--franja); }
+.franja.impar { fill: transparent; }
+.franja-texto { fill: var(--tinta-suave); font: 600 10.5px var(--sans); letter-spacing: 0.04em; }
+.clave-franja { display: inline-block; width: 1.1rem; height: 0.8rem; background: var(--franja); border: 1px solid var(--linea); border-radius: 2px; }
+.lectura-legislatura { font-size: 0.8125rem; }
+
+/* ¿Por qué cambió la deuda? Barras apiladas con signo y un punto con la variación total. */
+.grafico-explica { font-size: 0.9375rem; color: var(--tinta-suave); margin: 0 0 0.75rem; }
+.clave-barra { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; vertical-align: middle; }
+.clave-punto { display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--tinta); vertical-align: middle; }
+.c-primario { fill: var(--c-primario); background: var(--c-primario); }
+.c-intereses { fill: var(--c-intereses); background: var(--c-intereses); }
+.c-activos { fill: var(--c-activos); background: var(--c-activos); }
+.c-ajustes { fill: var(--c-ajustes); background: var(--c-ajustes); }
+.c-crecimiento { fill: var(--c-crecimiento); background: var(--c-crecimiento); }
+.punto-total { fill: var(--tinta); stroke: var(--fondo); stroke-width: 2; }
+.resalte-año { fill: var(--hueco); }
+.lectura-fila b { white-space: nowrap; }
+
+/* España frente a la UE: un punto por país; España en el acento, el resto en gris. */
+.selector-pequeno { margin: 0.25rem 0 0.75rem; }
+.selector-pequeno button { font-size: 0.875rem; padding: 0.3rem 0.7rem; }
+.pais-texto { fill: var(--tinta-suave); font: 12px var(--sans); }
+.pais-texto.espana { fill: var(--tinta); font-weight: 600; }
+.pais-punto { fill: var(--linea-fuerte); }
+.pais-punto.espana { fill: var(--acento); stroke: var(--fondo); stroke-width: 2; }
+.pais-fila:hover .pais-texto, .pais-fila.activa .pais-texto { fill: var(--tinta); }
+.pais-fila.activa .pais-punto:not(.espana) { fill: var(--tinta-suave); }
+.media-ue { stroke: var(--tinta); stroke-width: 1.25; }
+.media-ue-texto { fill: var(--tinta); font: 600 11px var(--sans); }
+
+/* Acontecimientos: línea fina y número en un círculo; la lista con sus fuentes va bajo el primer gráfico. */
+.acontecimiento line { stroke: var(--tinta-suave); stroke-width: 1; opacity: 0.5; }
+.acontecimiento circle { fill: var(--superficie); stroke: var(--tinta-suave); stroke-width: 1; }
+.acontecimiento text { fill: var(--tinta); font: 600 10.5px var(--sans); }
+.acontecimientos { font-size: 0.875rem; color: var(--tinta-suave); background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1.5rem; }
+.acontecimientos p { margin: 0 0 0.4rem; }
+.acontecimientos ol { margin: 0; padding-left: 1.3rem; }
+.acontecimientos li { margin-bottom: 0.3rem; }
+.acontecimientos strong { color: var(--tinta); }
+
+/* Metodología, glosario y correcciones */
+.indice { background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; padding: 0.8rem 1rem; margin: 0 0 1rem; font-size: 0.9375rem; }
+.indice ol { margin: 0; padding-left: 1.2rem; columns: 2; column-gap: 2rem; }
+.indice li { margin: 0 0 0.25rem; break-inside: avoid; }
+.glosario dt { font: 600 1.0625rem/1.3 var(--serif); margin-top: 1.25rem; scroll-margin-top: 1rem; }
+.glosario dd { margin: 0.25rem 0 0; }
+.glosario dt:target { color: var(--acento); }
+table.correcciones td:first-child { min-width: 6.5rem; white-space: nowrap; }
+table.correcciones td { min-width: 9rem; }
+footer.sitio { flex-direction: column; align-items: flex-start; gap: 0.35rem; }
+footer.sitio a { color: var(--tinta-suave); }
+.independencia { font-size: 0.75rem; }
+@media (max-width: 40rem) { .indice ol { columns: 1; } }
+
+/* Páginas de gasto e ingresos */
+.controles { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin: 1.5rem 0 0.5rem; }
+.controles label { font-size: 0.875rem; color: var(--tinta-suave); display: flex; align-items: center; gap: 0.5rem; }
+.controles select { font: inherit; font-size: 0.9375rem; color: var(--tinta); background: var(--superficie); border: 1px solid var(--linea-fuerte); border-radius: 6px; padding: 0.3rem 0.5rem; }
+.controles .selector { margin: 0; }
+.barra-nombre { fill: var(--tinta); font: 13px var(--sans); }
+.barra-valor { fill: var(--tinta); font: 600 12.5px var(--sans); font-variant-numeric: tabular-nums; }
+.barra-h { fill: var(--c-primario); }
+.multiples { display: grid; grid-template-columns: repeat(auto-fill, minmax(12.5rem, 1fr)); gap: 1rem 1.25rem; }
+.multiple { margin: 0; }
+.multiple figcaption { display: flex; justify-content: space-between; gap: 0.5rem; font-size: 0.8125rem; color: var(--tinta-suave); line-height: 1.3; min-height: 2.7em; margin: 0 0 0.25rem; }
+.multiple figcaption b { color: var(--tinta); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.multiple svg { display: block; overflow: visible; }
+.rejilla-linea { stroke: var(--linea); stroke-width: 1; }
+.rejilla-base { stroke: var(--linea-fuerte); stroke-width: 1; }
+.eje-pequeno { font-size: 10.5px; }
+.linea-multiple { stroke: var(--c-primario); }
+.punto-multiple { fill: var(--c-primario); stroke: var(--fondo); stroke-width: 2; }
+.nota-multiples { grid-column: 1 / -1; font-size: 0.8125rem; color: var(--tinta-suave); margin: 0; }
+table.matriz td:first-child { min-width: 11rem; }
+table.matriz th:not(:first-child) { font-size: 0.8125rem; }
+.celda-barra { position: relative; min-width: 6.5rem; }
+.celda-barra .relleno { position: absolute; left: 0.8rem; bottom: 0.45rem; height: 4px; max-width: calc(100% - 1.6rem); background: var(--c-primario); opacity: 0.55; border-radius: 2px; }
+.celda-barra .cifra { font-variant-numeric: tabular-nums; }
+.fila-total td { font-weight: 600; border-top: 1px solid var(--linea-fuerte); }
+
+/* Presupuesto y ejecución: tres pasos del mismo proceso, en tres tonos de un mismo color (validados, claro y oscuro). */
+:root { --p-aprobado: #6cbccb; --p-definitivo: #2595a9; --p-gastado: #00606f; }
+.p-aprobado { fill: var(--p-aprobado); background: var(--p-aprobado); }
+.p-definitivo { fill: var(--p-definitivo); background: var(--p-definitivo); }
+.p-gastado { fill: var(--p-gastado); background: var(--p-gastado); }
+.explica-pasos { background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 1rem 0 1.5rem; font-size: 0.9375rem; }
+.explica-pasos ol { margin: 0.3rem 0 0; padding-left: 1.2rem; }
+.explica-pasos .clave-barra { margin-right: 0.35rem; }
+.nota-años { font-size: 0.8125rem; color: var(--tinta-suave); margin: 0.25rem 0 0; }
+.nota-años span { font-weight: 700; color: var(--tinta); }
+.vigencia { font-size: 0.875rem; color: var(--tinta-suave); }
+table.presupuesto td:not(:first-child), table.presupuesto th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.presupuesto { font-size: 0.875rem; }
+table.presupuesto td:first-child { min-width: 10rem; font-weight: 400; }
+table.presupuesto th { white-space: normal; }
+.fila-area td { font-weight: 600 !important; background: var(--nota); }
+
+.contabilidad { font-size: 0.875rem; color: var(--tinta-suave); margin: -1rem 0 1rem; }
+
+.solo-lectores { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.tira-años { margin: 1rem 0 0.75rem; }
+.tira-años .anios { margin: 0; }
+
+.ultimo-año { font-size: 0.875rem; color: var(--tinta-suave); background: var(--nota); border-radius: 6px; padding: 0.5rem 0.75rem; margin: 0 0 1rem; }
+.ultimo-año strong { color: var(--tinta); }
+
+.borrador { background: var(--acento-tenue); border-left: 3px solid var(--acento); border-radius: 0 6px 6px 0; padding: 0.6rem 0.9rem; font-size: 0.9375rem; margin: 1rem 0 0; }

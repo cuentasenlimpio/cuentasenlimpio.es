@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Ingresos, gastos y deuda desde 1995 · Cuentas en limpio</title>
+  <meta name="description" content="Cuánto ingresan, cuánto gastan y cuánto deben las administraciones públicas españolas desde 1995, con datos de Eurostat y la procedencia de cada cifra.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js" defer></script>
+  <script src="graficos.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="./">Inicio</a>
+      <a href="cuentas.html" aria-current="page">Cuentas</a>
+      <a href="gasto.html">En qué se gasta</a>
+      <a href="ingresos.html">De dónde sale</a>
+      <a href="presupuesto.html">Presupuesto</a>
+      <a href="como-se-miente.html">Cómo se miente</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="metodologia.html">Metodología</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>¿Cuánto ingresan, cuánto gastan y cuánto deben las administraciones públicas?</h1>
+    <p class="entradilla">Desde 1995, sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. Cuando el gasto supera al ingreso, la diferencia es el <strong>déficit</strong>, y se cubre pidiendo prestado: eso es lo que hace crecer la <strong>deuda</strong>.</p>
+
+    <div class="selector" role="group" aria-label="Unidad de los gráficos">
+      <span class="selector-etiqueta">Ver en</span>
+      <button type="button" data-unidad="pib" aria-pressed="true">% del PIB</button>
+      <button type="button" data-unidad="corrientes" aria-pressed="false">Euros</button>
+      <button type="button" data-unidad="constantes" aria-pressed="false">Euros sin inflación</button>
+      <button type="button" data-unidad="habitante" aria-pressed="false">Por habitante</button>
+    </div>
+    <p class="unidad-explicada" id="unidad-explicada" aria-live="polite"></p>
+
+    <section class="grafico" aria-labelledby="g1-titulo">
+      <h2 class="grafico-titulo" id="g1-titulo">Ingresos y gastos de cada año</h2>
+      <ul class="leyenda-series">
+        <li><span class="clave-linea ingresos"></span>Ingresos</li>
+        <li><span class="clave-linea gastos"></span>Gastos</li>
+        <li><span class="clave-area"></span>Hueco entre los dos: déficit (o superávit, si los ingresos quedan por encima)</li>
+        <li><span class="clave-franja"></span>Franjas: legislaturas, desde la sesión constitutiva del Congreso</li>
+      </ul>
+      <div class="lectura-año" id="g1-lectura" aria-live="polite"></div>
+      <div class="lienzo" id="g1" tabindex="0" role="img" aria-label="Ingresos y gastos de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+      <div class="acontecimientos" id="acontecimientos"></div>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-titulo">
+      <h2 class="grafico-titulo" id="g2-titulo">Deuda acumulada al final de cada año</h2>
+      <div class="lectura-año" id="g2-lectura" aria-live="polite"></div>
+      <div class="lienzo" id="g2" tabindex="0" role="img" aria-label="Deuda de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-titulo">
+      <h2 class="grafico-titulo" id="g3-titulo">¿Por qué cambió la deuda cada año?</h2>
+      <p class="grafico-explica">La deuda sube si las administraciones gastan más de lo que ingresan (el déficit, que aquí separamos en intereses y resto), y también cuando prestan, depositan o invierten dinero: eso no cuenta como gasto, pero hay que financiarlo. En porcentaje del PIB, además, la deuda pesa menos cuando la economía crece y más cuando se encoge.</p>
+      <ul class="leyenda-series" id="g3-leyenda"></ul>
+      <div class="lectura-año" id="g3-lectura" aria-live="polite"></div>
+      <div class="lienzo" id="g3" tabindex="0" role="img" aria-label="Componentes de la variación anual de la deuda de las administraciones públicas. Usa las flechas para recorrer los años."></div>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g4-titulo">
+      <h2 class="grafico-titulo" id="g4-titulo">España frente a los demás países de la UE</h2>
+      <p class="grafico-explica">Los 27 países de la Unión Europea medidos con las mismas reglas, en porcentaje de su PIB. El año es el que elijas en los gráficos de arriba.</p>
+      <div class="selector selector-pequeno" role="group" aria-label="Qué comparar">
+        <button type="button" data-ue="ingresos" aria-pressed="false">Ingresos</button>
+        <button type="button" data-ue="gastos" aria-pressed="false">Gastos</button>
+        <button type="button" data-ue="saldo" aria-pressed="false">Saldo</button>
+        <button type="button" data-ue="deuda" aria-pressed="true">Deuda</button>
+      </div>
+      <div class="lectura-año" id="g4-lectura" aria-live="polite"></div>
+      <div class="lienzo" id="g4" tabindex="0" role="img" aria-label="Comparación de España con los países de la Unión Europea. Usa las flechas para cambiar de año."></div>
+      <p class="fuente-grafico" id="g4-fuente"></p>
+    </section>
+
+    <div class="no-dice">
+      <strong>Lo que estos gráficos no dicen</strong>
+      <ul>
+        <li>No dicen quién causó cada subida o bajada. Que algo ocurra con un Gobierno no significa que lo haya provocado él: lo explicamos en <a href="como-se-miente.html#causa">coincidir en el tiempo no es causar</a>.</li>
+        <li>No son las cuentas del Gobierno central: incluyen a todas las administraciones, y buena parte del gasto lo hacen las comunidades autónomas.</li>
+        <li>El porcentaje del PIB baja cuando la economía crece, aunque no cambie nada más. Prueba a cambiar de unidad arriba.</li>
+        <li>Comprar activos financieros no es perder el dinero: puede recuperarse, o no. El gráfico dice cuánto se compró, no cuánto se recuperó después.</li>
+      </ul>
+    </div>
+
+    <details class="plegable">
+      <summary>Ver los números en una tabla</summary>
+      <div class="tabla"><table id="tabla"><thead></thead><tbody></tbody></table></div>
+      <p class="fuente-grafico">Fuente: Eurostat, tablas gov_10a_main (ingresos, gastos y saldo) y gov_10dd_edpt1 (deuda); para las lecturas, nama_10_gdp (deflactor) y nama_10_pe (población). Enlaces y fechas, en «De dónde sale cada número».</p>
+    </details>
+
+    <details class="plegable ficha" open>
+      <summary>De dónde sale cada número</summary>
+      <dl class="ficha-datos">
+        <dt>Fuente</dt>
+        <dd>Eurostat, la oficina estadística de la Unión Europea. Publica los datos que le envían el INE, el Banco de España y la Intervención General del Estado, con reglas comunes a todos los países.</dd>
+        <dt>Contabilidad</dt>
+        <dd>Nacional (SEC 2010): la que fija el déficit y la deuda oficiales. No es el presupuesto del Estado. <a href="como-se-miente.html#contabilidades">Por qué importa</a>.</dd>
+        <dt>Qué administraciones</dt>
+        <dd>Todas, consolidadas: Administración Central, Seguridad Social, comunidades autónomas y entidades locales (código S13). <a href="como-se-miente.html#perimetro">Por qué importa</a>.</dd>
+        <dt>Legislaturas</dt>
+        <dd>Cada franja empieza el día de la sesión constitutiva del Congreso. Solo llevan su número: ni el partido ni el color de quien gobernaba. Un año puede tocar varias legislaturas; la lectura del año las nombra todas.</dd>
+        <dt>Deuda</dt>
+        <dd>Deuda bruta consolidada según el Procedimiento de Déficit Excesivo: la definición oficial que se usa en toda la UE. La comprobamos con la del Banco de España (ver «Comprobaciones»).</dd>
+        <dt>Dato o lectura</dt>
+        <dd id="ficha-unidades"></dd>
+        <dt>Tablas usadas</dt>
+        <dd><ul id="ficha-fuentes" class="lista-fuentes"></ul></dd>
+        <dt>Comprobaciones</dt>
+        <dd><ul id="ficha-comprobaciones" class="lista-comprobaciones"></ul></dd>
+        <dt>Descargar</dt>
+        <dd><a href="datos/aapp.csv" download>Todos los números de esta página (CSV)</a>. Cada fila dice si es dato o lectura, si es provisional y de qué tabla sale.</dd>
+      </dl>
+    </details>
+
+        <div class="pendiente">
+      <strong>Lo que todavía no está contrastado con una segunda fuente</strong>
+      <ul>
+        <li>Los pagos por la producción no de mercado (P.131), en torno al 1 % de los ingresos: la IGAE no los publica por separado, así que solo tenemos la cifra de Eurostat.</li>
+        <li>Las fechas de las legislaturas: solo las del Congreso. El segundo origen sería cada real decreto de convocatoria del BOE, que fija el día de la sesión constitutiva.</li>
+        <li>Los demás países de la UE: Eurostat es la única fuente que los mide a todos con las mismas reglas. Las cifras de España de esa comparación son las mismas que las de arriba, ya contrastadas.</li>
+      </ul>
+    </div>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar · <span id="pie-generado"></span></span>
+    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

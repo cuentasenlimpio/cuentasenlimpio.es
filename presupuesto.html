@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Presupuesto y ejecución · Cuentas en limpio</title>
+  <meta name="description" content="El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto, con la fuente de cada cifra.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js" defer></script>
+  <script src="presupuesto.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="./">Inicio</a>
+      <a href="cuentas.html">Cuentas</a>
+      <a href="gasto.html">En qué se gasta</a>
+      <a href="ingresos.html">De dónde sale</a>
+      <a href="presupuesto.html" aria-current="page">Presupuesto</a>
+      <a href="como-se-miente.html">Cómo se miente</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="metodologia.html">Metodología</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>¿Se gastó lo que se aprobó?</h1>
+    <p class="entradilla">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Aquí solo está el presupuesto del Estado en sentido estricto: los ministerios y los órganos constitucionales. Los organismos autónomos, la Seguridad Social, las comunidades autónomas y los ayuntamientos tienen presupuestos propios y no están. Contabilidad presupuestaria, no la nacional del resto de la web.</p>
+
+    <div class="explica-pasos">
+      <p><strong>Cómo se lee.</strong> Un presupuesto pasa por tres momentos:</p>
+      <ol>
+        <li><span class="clave-barra p-aprobado"></span><strong>Aprobado:</strong> lo que autoriza la ley de presupuestos al empezar el año (los «créditos iniciales»). Si no hay ley nueva, es el presupuesto prorrogado.</li>
+        <li><span class="clave-barra p-definitivo"></span><strong>Autorizado al final:</strong> lo aprobado más las modificaciones que se hacen durante el año (ampliaciones, créditos extraordinarios, bajas…).</li>
+        <li><span class="clave-barra p-gastado"></span><strong>Gastado:</strong> lo que el Estado se comprometió a pagar de verdad ese año (las «obligaciones reconocidas»).</li>
+      </ol>
+    </div>
+
+    <section class="grafico" aria-labelledby="t-titulo">
+      <h2 class="grafico-titulo" id="t-titulo">Aprobado, autorizado y gastado cada año, en miles de millones de euros</h2>
+      <div class="lectura-año" id="t-lectura" aria-live="polite"></div>
+      <div class="lienzo" id="totales" tabindex="0" role="img" aria-label="Presupuesto aprobado, autorizado y gastado del Estado por año. Usa las flechas para recorrer los años."></div>
+      <p class="nota-años"><span>*</span> presupuesto prorrogado todo el año · <span>†</span> prorrogado hasta que se aprobó la ley, a mitad de año; en esos años, «aprobado» es lo que fijó esa ley, que es lo que recoge la liquidación · <span>a</span> avance: ejecución a 31 de diciembre, a falta de la liquidación definitiva · <span>?</span> por confirmar en el BOE si hubo presupuesto propio</p>
+      <p class="fuente-grafico" id="totales-fuente"></p>
+    </section>
+
+    <p class="ultimo-año" id="ultimo-año"></p>
+    <div class="controles">
+      <label>Año <select id="selector-año"></select></label>
+      <span class="vigencia" id="vigencia"></span>
+    </div>
+
+    <section class="grafico" aria-labelledby="e-titulo">
+      <h2 class="grafico-titulo" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>?</h2>
+      <p class="grafico-explica">Gastado ÷ autorizado al final del año, por política de gasto. Gastar menos de lo autorizado no es por sí bueno ni malo: puede ser ahorro, retraso o un programa que no arrancó.</p>
+      <div class="lienzo" id="ejecucion" role="img" aria-label="Porcentaje gastado de lo autorizado por política de gasto en el año elegido"></div>
+      <p class="fuente-grafico" id="ejecucion-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="d-titulo">
+      <h2 class="grafico-titulo" id="d-titulo">Todas las cifras de <span class="año-elegido"></span>, en millones de euros</h2>
+      <div class="tabla"><table class="presupuesto" id="detalle"></table></div>
+      <p class="fuente-grafico" id="detalle-fuente"></p>
+    </section>
+
+    <div class="no-dice">
+      <strong>Lo que esta página no dice</strong>
+      <ul>
+        <li>No es todo el gasto público: solo el del Estado. El gasto de todas las administraciones está en <a href="cuentas.html">Cuentas</a> y <a href="gasto.html">En qué se gasta</a>, y se mide con otra contabilidad (ver <a href="como-se-miente.html#contabilidades">por qué</a>).</li>
+        <li>«Deuda pública» incluye devolver la deuda que vence, no solo pagar sus intereses. Por eso es la política más grande.</li>
+        <li>«Transferencias internas» y «transferencias a otras administraciones» son dinero que el Estado pasa a la Seguridad Social, a sus organismos o a comunidades y ayuntamientos, que lo gastan después.</li>
+        <li>Gastado no es pagado: una parte de lo comprometido se paga al año siguiente.</li>
+      </ul>
+    </div>
+
+    <details class="plegable ficha" open>
+      <summary>Comprobaciones</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+      <p><a href="datos/presupuesto.csv" download>Todos los números de esta página (CSV)</a></p>
+    </details>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

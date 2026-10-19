@@ -1,0 +1,1142 @@
+año,serie,unidad,valor,tipo,provisional,tabla_eurostat
+1995,ingresos,% del PIB,37.3,dato,no,gov_10a_main
+1996,ingresos,% del PIB,37.0,dato,no,gov_10a_main
+1997,ingresos,% del PIB,37.6,dato,no,gov_10a_main
+1998,ingresos,% del PIB,38.3,dato,no,gov_10a_main
+1999,ingresos,% del PIB,38.7,dato,no,gov_10a_main
+2000,ingresos,% del PIB,37.9,dato,no,gov_10a_main
+2001,ingresos,% del PIB,37.9,dato,no,gov_10a_main
+2002,ingresos,% del PIB,38.3,dato,no,gov_10a_main
+2003,ingresos,% del PIB,38.0,dato,no,gov_10a_main
+2004,ingresos,% del PIB,38.7,dato,no,gov_10a_main
+2005,ingresos,% del PIB,39.7,dato,no,gov_10a_main
+2006,ingresos,% del PIB,40.5,dato,no,gov_10a_main
+2007,ingresos,% del PIB,41.1,dato,no,gov_10a_main
+2008,ingresos,% del PIB,36.8,dato,no,gov_10a_main
+2009,ingresos,% del PIB,34.8,dato,no,gov_10a_main
+2010,ingresos,% del PIB,36.4,dato,no,gov_10a_main
+2011,ingresos,% del PIB,36.2,dato,no,gov_10a_main
+2012,ingresos,% del PIB,37.7,dato,no,gov_10a_main
+2013,ingresos,% del PIB,38.7,dato,no,gov_10a_main
+2014,ingresos,% del PIB,39.0,dato,no,gov_10a_main
+2015,ingresos,% del PIB,38.4,dato,no,gov_10a_main
+2016,ingresos,% del PIB,37.9,dato,no,gov_10a_main
+2017,ingresos,% del PIB,37.9,dato,no,gov_10a_main
+2018,ingresos,% del PIB,39.0,dato,no,gov_10a_main
+2019,ingresos,% del PIB,39.0,dato,no,gov_10a_main
+2020,ingresos,% del PIB,41.5,dato,no,gov_10a_main
+2021,ingresos,% del PIB,42.8,dato,no,gov_10a_main
+2022,ingresos,% del PIB,41.7,dato,no,gov_10a_main
+2023,ingresos,% del PIB,42.1,dato,no,gov_10a_main
+2024,ingresos,% del PIB,42.3,dato,no,gov_10a_main
+2025,ingresos,% del PIB,42.9,dato,no,gov_10a_main
+1995,ingresos,millones de euros corrientes,171795.0,dato,no,gov_10a_main
+1996,ingresos,millones de euros corrientes,180897.0,dato,no,gov_10a_main
+1997,ingresos,millones de euros corrientes,195271.0,dato,no,gov_10a_main
+1998,ingresos,millones de euros corrientes,213003.0,dato,no,gov_10a_main
+1999,ingresos,millones de euros corrientes,230397.0,dato,no,gov_10a_main
+2000,ingresos,millones de euros corrientes,245747.0,dato,no,gov_10a_main
+2001,ingresos,millones de euros corrientes,266006.0,dato,no,gov_10a_main
+2002,ingresos,millones de euros corrientes,287171.0,dato,no,gov_10a_main
+2003,ingresos,millones de euros corrientes,304787.0,dato,no,gov_10a_main
+2004,ingresos,millones de euros corrientes,332725.0,dato,no,gov_10a_main
+2005,ingresos,millones de euros corrientes,368206.0,dato,no,gov_10a_main
+2006,ingresos,millones de euros corrientes,407079.0,dato,no,gov_10a_main
+2007,ingresos,millones de euros corrientes,442451.0,dato,no,gov_10a_main
+2008,ingresos,millones de euros corrientes,409082.0,dato,no,gov_10a_main
+2009,ingresos,millones de euros corrientes,373777.0,dato,no,gov_10a_main
+2010,ingresos,millones de euros corrientes,391624.0,dato,no,gov_10a_main
+2011,ingresos,millones de euros corrientes,387333.0,dato,no,gov_10a_main
+2012,ingresos,millones de euros corrientes,390842.0,dato,no,gov_10a_main
+2013,ingresos,millones de euros corrientes,396593.0,dato,no,gov_10a_main
+2014,ingresos,millones de euros corrientes,405125.0,dato,no,gov_10a_main
+2015,ingresos,millones de euros corrientes,417645.0,dato,no,gov_10a_main
+2016,ingresos,millones de euros corrientes,425316.0,dato,no,gov_10a_main
+2017,ingresos,millones de euros corrientes,444005.0,dato,no,gov_10a_main
+2018,ingresos,millones de euros corrientes,472250.0,dato,no,gov_10a_main
+2019,ingresos,millones de euros corrientes,488347.0,dato,no,gov_10a_main
+2020,ingresos,millones de euros corrientes,468267.0,dato,no,gov_10a_main
+2021,ingresos,millones de euros corrientes,528950.0,dato,no,gov_10a_main
+2022,ingresos,millones de euros corrientes,574012.0,dato,no,gov_10a_main
+2023,ingresos,millones de euros corrientes,630198.0,dato,no,gov_10a_main
+2024,ingresos,millones de euros corrientes,673734.0,dato,no,gov_10a_main
+2025,ingresos,millones de euros corrientes,724554.0,dato,no,gov_10a_main
+1995,ingresos,millones de euros de 2025,345291.6,lectura,no,gov_10a_main
+1996,ingresos,millones de euros de 2025,351175.3,lectura,no,gov_10a_main
+1997,ingresos,millones de euros de 2025,369961.3,lectura,no,gov_10a_main
+1998,ingresos,millones de euros de 2025,393194.6,lectura,no,gov_10a_main
+1999,ingresos,millones de euros de 2025,414453.2,lectura,no,gov_10a_main
+2000,ingresos,millones de euros de 2025,427472.5,lectura,no,gov_10a_main
+2001,ingresos,millones de euros de 2025,444227.1,lectura,no,gov_10a_main
+2002,ingresos,millones de euros de 2025,460721.8,lectura,no,gov_10a_main
+2003,ingresos,millones de euros de 2025,470154.9,lectura,no,gov_10a_main
+2004,ingresos,millones de euros de 2025,493929.7,lectura,no,gov_10a_main
+2005,ingresos,millones de euros de 2025,524503.7,lectura,no,gov_10a_main
+2006,ingresos,millones de euros de 2025,557188.4,lectura,no,gov_10a_main
+2007,ingresos,millones de euros de 2025,584777.6,lectura,no,gov_10a_main
+2008,ingresos,millones de euros de 2025,527736.9,lectura,no,gov_10a_main
+2009,ingresos,millones de euros de 2025,481079.9,lectura,no,gov_10a_main
+2010,ingresos,millones de euros de 2025,502576.6,lectura,no,gov_10a_main
+2011,ingresos,millones de euros de 2025,497797.6,lectura,no,gov_10a_main
+2012,ingresos,millones de euros de 2025,503327.3,lectura,no,gov_10a_main
+2013,ingresos,millones de euros de 2025,508506.3,lectura,no,gov_10a_main
+2014,ingresos,millones de euros de 2025,520592.0,lectura,no,gov_10a_main
+2015,ingresos,millones de euros de 2025,533736.3,lectura,no,gov_10a_main
+2016,ingresos,millones de euros de 2025,541523.0,lectura,no,gov_10a_main
+2017,ingresos,millones de euros de 2025,558294.5,lectura,no,gov_10a_main
+2018,ingresos,millones de euros de 2025,586841.6,lectura,no,gov_10a_main
+2019,ingresos,millones de euros de 2025,598295.3,lectura,no,gov_10a_main
+2020,ingresos,millones de euros de 2025,567263.3,lectura,no,gov_10a_main
+2021,ingresos,millones de euros de 2025,624805.3,lectura,no,gov_10a_main
+2022,ingresos,millones de euros de 2025,647633.3,lectura,no,gov_10a_main
+2023,ingresos,millones de euros de 2025,669233.5,lectura,no,gov_10a_main
+2024,ingresos,millones de euros de 2025,694268.5,lectura,sí,gov_10a_main
+2025,ingresos,millones de euros de 2025,724554.0,lectura,sí,gov_10a_main
+1995,ingresos,euros por habitante,4325,lectura,no,gov_10a_main
+1996,ingresos,euros por habitante,4536,lectura,no,gov_10a_main
+1997,ingresos,euros por habitante,4876,lectura,no,gov_10a_main
+1998,ingresos,euros por habitante,5297,lectura,no,gov_10a_main
+1999,ingresos,euros por habitante,5707,lectura,no,gov_10a_main
+2000,ingresos,euros por habitante,6060,lectura,no,gov_10a_main
+2001,ingresos,euros por habitante,6525,lectura,no,gov_10a_main
+2002,ingresos,euros por habitante,6933,lectura,no,gov_10a_main
+2003,ingresos,euros por habitante,7223,lectura,no,gov_10a_main
+2004,ingresos,euros por habitante,7763,lectura,no,gov_10a_main
+2005,ingresos,euros por habitante,8433,lectura,no,gov_10a_main
+2006,ingresos,euros por habitante,9177,lectura,no,gov_10a_main
+2007,ingresos,euros por habitante,9781,lectura,no,gov_10a_main
+2008,ingresos,euros por habitante,8896,lectura,no,gov_10a_main
+2009,ingresos,euros por habitante,8061,lectura,no,gov_10a_main
+2010,ingresos,euros por habitante,8411,lectura,no,gov_10a_main
+2011,ingresos,euros por habitante,8288,lectura,no,gov_10a_main
+2012,ingresos,euros por habitante,8360,lectura,no,gov_10a_main
+2013,ingresos,euros por habitante,8514,lectura,no,gov_10a_main
+2014,ingresos,euros por habitante,8725,lectura,no,gov_10a_main
+2015,ingresos,euros por habitante,9004,lectura,no,gov_10a_main
+2016,ingresos,euros por habitante,9161,lectura,no,gov_10a_main
+2017,ingresos,euros por habitante,9546,lectura,no,gov_10a_main
+2018,ingresos,euros por habitante,10109,lectura,no,gov_10a_main
+2019,ingresos,euros por habitante,10371,lectura,no,gov_10a_main
+2020,ingresos,euros por habitante,9891,lectura,no,gov_10a_main
+2021,ingresos,euros por habitante,11172,lectura,no,gov_10a_main
+2022,ingresos,euros por habitante,12012,lectura,no,gov_10a_main
+2023,ingresos,euros por habitante,13033,lectura,no,gov_10a_main
+2024,ingresos,euros por habitante,13785,lectura,sí,gov_10a_main
+2025,ingresos,euros por habitante,14678,lectura,sí,gov_10a_main
+1995,gastos,% del PIB,44.1,dato,no,gov_10a_main
+1996,gastos,% del PIB,42.9,dato,no,gov_10a_main
+1997,gastos,% del PIB,41.5,dato,no,gov_10a_main
+1998,gastos,% del PIB,41.0,dato,no,gov_10a_main
+1999,gastos,% del PIB,39.9,dato,no,gov_10a_main
+2000,gastos,% del PIB,39.1,dato,no,gov_10a_main
+2001,gastos,% del PIB,38.4,dato,no,gov_10a_main
+2002,gastos,% del PIB,38.6,dato,no,gov_10a_main
+2003,gastos,% del PIB,38.3,dato,no,gov_10a_main
+2004,gastos,% del PIB,38.8,dato,no,gov_10a_main
+2005,gastos,% del PIB,38.4,dato,no,gov_10a_main
+2006,gastos,% del PIB,38.4,dato,no,gov_10a_main
+2007,gastos,% del PIB,39.2,dato,no,gov_10a_main
+2008,gastos,% del PIB,41.3,dato,no,gov_10a_main
+2009,gastos,% del PIB,46.1,dato,no,gov_10a_main
+2010,gastos,% del PIB,45.8,dato,no,gov_10a_main
+2011,gastos,% del PIB,45.9,dato,no,gov_10a_main
+2012,gastos,% del PIB,49.2,dato,no,gov_10a_main
+2013,gastos,% del PIB,46.2,dato,no,gov_10a_main
+2014,gastos,% del PIB,45.0,dato,no,gov_10a_main
+2015,gastos,% del PIB,43.7,dato,no,gov_10a_main
+2016,gastos,% del PIB,42.1,dato,no,gov_10a_main
+2017,gastos,% del PIB,41.0,dato,no,gov_10a_main
+2018,gastos,% del PIB,41.5,dato,no,gov_10a_main
+2019,gastos,% del PIB,42.0,dato,no,gov_10a_main
+2020,gastos,% del PIB,51.4,dato,no,gov_10a_main
+2021,gastos,% del PIB,49.5,dato,no,gov_10a_main
+2022,gastos,% del PIB,46.3,dato,no,gov_10a_main
+2023,gastos,% del PIB,45.4,dato,no,gov_10a_main
+2024,gastos,% del PIB,45.5,dato,no,gov_10a_main
+2025,gastos,% del PIB,45.3,dato,no,gov_10a_main
+1995,gastos,millones de euros corrientes,203062.0,dato,no,gov_10a_main
+1996,gastos,millones de euros corrientes,209578.0,dato,no,gov_10a_main
+1997,gastos,millones de euros corrientes,215299.0,dato,no,gov_10a_main
+1998,gastos,millones de euros corrientes,227597.0,dato,no,gov_10a_main
+1999,gastos,millones de euros corrientes,237779.0,dato,no,gov_10a_main
+2000,gastos,millones de euros corrientes,253267.0,dato,no,gov_10a_main
+2001,gastos,millones de euros corrientes,269195.0,dato,no,gov_10a_main
+2002,gastos,millones de euros corrientes,289527.0,dato,no,gov_10a_main
+2003,gastos,millones de euros corrientes,307796.0,dato,no,gov_10a_main
+2004,gastos,millones de euros corrientes,333666.0,dato,no,gov_10a_main
+2005,gastos,millones de euros corrientes,356785.0,dato,no,gov_10a_main
+2006,gastos,millones de euros corrientes,385757.0,dato,no,gov_10a_main
+2007,gastos,millones de euros corrientes,422164.0,dato,no,gov_10a_main
+2008,gastos,millones de euros corrientes,459813.0,dato,no,gov_10a_main
+2009,gastos,millones de euros corrientes,494353.0,dato,no,gov_10a_main
+2010,gastos,millones de euros corrientes,493817.0,dato,no,gov_10a_main
+2011,gastos,millones de euros corrientes,490908.0,dato,no,gov_10a_main
+2012,gastos,millones de euros corrientes,509936.0,dato,no,gov_10a_main
+2013,gastos,millones de euros corrientes,473398.0,dato,no,gov_10a_main
+2014,gastos,millones de euros corrientes,467841.0,dato,no,gov_10a_main
+2015,gastos,millones de euros corrientes,474893.0,dato,no,gov_10a_main
+2016,gastos,millones de euros corrientes,472717.0,dato,no,gov_10a_main
+2017,gastos,millones de euros corrientes,479908.0,dato,no,gov_10a_main
+2018,gastos,millones de euros corrientes,503193.0,dato,no,gov_10a_main
+2019,gastos,millones de euros corrientes,526769.0,dato,no,gov_10a_main
+2020,gastos,millones de euros corrientes,580164.0,dato,no,gov_10a_main
+2021,gastos,millones de euros corrientes,611124.0,dato,no,gov_10a_main
+2022,gastos,millones de euros corrientes,637117.0,dato,no,gov_10a_main
+2023,gastos,millones de euros corrientes,680225.0,dato,no,gov_10a_main
+2024,gastos,millones de euros corrientes,725001.0,dato,no,gov_10a_main
+2025,gastos,millones de euros corrientes,764884.0,dato,no,gov_10a_main
+1995,gastos,millones de euros de 2025,408135.3,lectura,no,gov_10a_main
+1996,gastos,millones de euros de 2025,406853.8,lectura,no,gov_10a_main
+1997,gastos,millones de euros de 2025,407906.4,lectura,no,gov_10a_main
+1998,gastos,millones de euros de 2025,420134.5,lectura,no,gov_10a_main
+1999,gastos,millones de euros de 2025,427732.4,lectura,no,gov_10a_main
+2000,gastos,millones de euros de 2025,440553.4,lectura,no,gov_10a_main
+2001,gastos,millones de euros de 2025,449552.7,lectura,no,gov_10a_main
+2002,gastos,millones de euros de 2025,464501.6,lectura,no,gov_10a_main
+2003,gastos,millones de euros de 2025,474796.5,lectura,no,gov_10a_main
+2004,gastos,millones de euros de 2025,495326.6,lectura,no,gov_10a_main
+2005,gastos,millones de euros de 2025,508234.7,lectura,no,gov_10a_main
+2006,gastos,millones de euros de 2025,528003.9,lectura,no,gov_10a_main
+2007,gastos,millones de euros de 2025,557964.7,lectura,no,gov_10a_main
+2008,gastos,millones de euros de 2025,593182.5,lectura,no,gov_10a_main
+2009,gastos,millones de euros de 2025,636270.5,lectura,no,gov_10a_main
+2010,gastos,millones de euros de 2025,633722.3,lectura,no,gov_10a_main
+2011,gastos,millones de euros de 2025,630911.5,lectura,no,gov_10a_main
+2012,gastos,millones de euros de 2025,656696.8,lectura,no,gov_10a_main
+2013,gastos,millones de euros de 2025,606984.6,lectura,no,gov_10a_main
+2014,gastos,millones de euros de 2025,601183.0,lectura,no,gov_10a_main
+2015,gastos,millones de euros de 2025,606897.3,lectura,no,gov_10a_main
+2016,gastos,millones de euros de 2025,601875.1,lectura,no,gov_10a_main
+2017,gastos,millones de euros de 2025,603439.2,lectura,no,gov_10a_main
+2018,gastos,millones de euros de 2025,625292.9,lectura,no,gov_10a_main
+2019,gastos,millones de euros de 2025,645367.8,lectura,no,gov_10a_main
+2020,gastos,millones de euros de 2025,702816.5,lectura,no,gov_10a_main
+2021,gastos,millones de euros de 2025,721870.7,lectura,no,gov_10a_main
+2022,gastos,millones de euros de 2025,718832.0,lectura,no,gov_10a_main
+2023,gastos,millones de euros de 2025,722359.3,lectura,no,gov_10a_main
+2024,gastos,millones de euros de 2025,747098.0,lectura,sí,gov_10a_main
+2025,gastos,millones de euros de 2025,764884.0,lectura,sí,gov_10a_main
+1995,gastos,euros por habitante,5112,lectura,no,gov_10a_main
+1996,gastos,euros por habitante,5255,lectura,no,gov_10a_main
+1997,gastos,euros por habitante,5376,lectura,no,gov_10a_main
+1998,gastos,euros por habitante,5660,lectura,no,gov_10a_main
+1999,gastos,euros por habitante,5890,lectura,no,gov_10a_main
+2000,gastos,euros por habitante,6245,lectura,no,gov_10a_main
+2001,gastos,euros por habitante,6603,lectura,no,gov_10a_main
+2002,gastos,euros por habitante,6989,lectura,no,gov_10a_main
+2003,gastos,euros por habitante,7294,lectura,no,gov_10a_main
+2004,gastos,euros por habitante,7785,lectura,no,gov_10a_main
+2005,gastos,euros por habitante,8171,lectura,no,gov_10a_main
+2006,gastos,euros por habitante,8696,lectura,no,gov_10a_main
+2007,gastos,euros por habitante,9332,lectura,no,gov_10a_main
+2008,gastos,euros por habitante,10000,lectura,no,gov_10a_main
+2009,gastos,euros por habitante,10662,lectura,no,gov_10a_main
+2010,gastos,euros por habitante,10605,lectura,no,gov_10a_main
+2011,gastos,euros por habitante,10504,lectura,no,gov_10a_main
+2012,gastos,euros por habitante,10908,lectura,no,gov_10a_main
+2013,gastos,euros por habitante,10163,lectura,no,gov_10a_main
+2014,gastos,euros por habitante,10076,lectura,no,gov_10a_main
+2015,gastos,euros por habitante,10238,lectura,no,gov_10a_main
+2016,gastos,euros por habitante,10182,lectura,no,gov_10a_main
+2017,gastos,euros por habitante,10318,lectura,no,gov_10a_main
+2018,gastos,euros por habitante,10771,lectura,no,gov_10a_main
+2019,gastos,euros por habitante,11187,lectura,no,gov_10a_main
+2020,gastos,euros por habitante,12254,lectura,no,gov_10a_main
+2021,gastos,euros por habitante,12907,lectura,no,gov_10a_main
+2022,gastos,euros por habitante,13333,lectura,no,gov_10a_main
+2023,gastos,euros por habitante,14068,lectura,no,gov_10a_main
+2024,gastos,euros por habitante,14834,lectura,sí,gov_10a_main
+2025,gastos,euros por habitante,15495,lectura,sí,gov_10a_main
+1995,saldo,% del PIB,-6.8,dato,no,gov_10a_main
+1996,saldo,% del PIB,-5.9,dato,no,gov_10a_main
+1997,saldo,% del PIB,-3.9,dato,no,gov_10a_main
+1998,saldo,% del PIB,-2.6,dato,no,gov_10a_main
+1999,saldo,% del PIB,-1.2,dato,no,gov_10a_main
+2000,saldo,% del PIB,-1.2,dato,no,gov_10a_main
+2001,saldo,% del PIB,-0.5,dato,no,gov_10a_main
+2002,saldo,% del PIB,-0.3,dato,no,gov_10a_main
+2003,saldo,% del PIB,-0.4,dato,no,gov_10a_main
+2004,saldo,% del PIB,-0.1,dato,no,gov_10a_main
+2005,saldo,% del PIB,1.2,dato,no,gov_10a_main
+2006,saldo,% del PIB,2.1,dato,no,gov_10a_main
+2007,saldo,% del PIB,1.9,dato,no,gov_10a_main
+2008,saldo,% del PIB,-4.6,dato,no,gov_10a_main
+2009,saldo,% del PIB,-11.2,dato,no,gov_10a_main
+2010,saldo,% del PIB,-9.5,dato,no,gov_10a_main
+2011,saldo,% del PIB,-9.7,dato,no,gov_10a_main
+2012,saldo,% del PIB,-11.5,dato,no,gov_10a_main
+2013,saldo,% del PIB,-7.5,dato,no,gov_10a_main
+2014,saldo,% del PIB,-6.0,dato,no,gov_10a_main
+2015,saldo,% del PIB,-5.3,dato,no,gov_10a_main
+2016,saldo,% del PIB,-4.2,dato,no,gov_10a_main
+2017,saldo,% del PIB,-3.1,dato,no,gov_10a_main
+2018,saldo,% del PIB,-2.6,dato,no,gov_10a_main
+2019,saldo,% del PIB,-3.1,dato,no,gov_10a_main
+2020,saldo,% del PIB,-9.9,dato,no,gov_10a_main
+2021,saldo,% del PIB,-6.7,dato,no,gov_10a_main
+2022,saldo,% del PIB,-4.6,dato,no,gov_10a_main
+2023,saldo,% del PIB,-3.3,dato,no,gov_10a_main
+2024,saldo,% del PIB,-3.2,dato,no,gov_10a_main
+2025,saldo,% del PIB,-2.4,dato,no,gov_10a_main
+1995,saldo,millones de euros corrientes,-31267.0,dato,no,gov_10a_main
+1996,saldo,millones de euros corrientes,-28681.0,dato,no,gov_10a_main
+1997,saldo,millones de euros corrientes,-20028.0,dato,no,gov_10a_main
+1998,saldo,millones de euros corrientes,-14594.0,dato,no,gov_10a_main
+1999,saldo,millones de euros corrientes,-7382.0,dato,no,gov_10a_main
+2000,saldo,millones de euros corrientes,-7520.0,dato,no,gov_10a_main
+2001,saldo,millones de euros corrientes,-3189.0,dato,no,gov_10a_main
+2002,saldo,millones de euros corrientes,-2356.0,dato,no,gov_10a_main
+2003,saldo,millones de euros corrientes,-3009.0,dato,no,gov_10a_main
+2004,saldo,millones de euros corrientes,-941.0,dato,no,gov_10a_main
+2005,saldo,millones de euros corrientes,11421.0,dato,no,gov_10a_main
+2006,saldo,millones de euros corrientes,21322.0,dato,no,gov_10a_main
+2007,saldo,millones de euros corrientes,20287.0,dato,no,gov_10a_main
+2008,saldo,millones de euros corrientes,-50731.0,dato,no,gov_10a_main
+2009,saldo,millones de euros corrientes,-120576.0,dato,no,gov_10a_main
+2010,saldo,millones de euros corrientes,-102193.0,dato,no,gov_10a_main
+2011,saldo,millones de euros corrientes,-103575.0,dato,no,gov_10a_main
+2012,saldo,millones de euros corrientes,-119094.0,dato,no,gov_10a_main
+2013,saldo,millones de euros corrientes,-76805.0,dato,no,gov_10a_main
+2014,saldo,millones de euros corrientes,-62716.0,dato,no,gov_10a_main
+2015,saldo,millones de euros corrientes,-57248.0,dato,no,gov_10a_main
+2016,saldo,millones de euros corrientes,-47401.0,dato,no,gov_10a_main
+2017,saldo,millones de euros corrientes,-35903.0,dato,no,gov_10a_main
+2018,saldo,millones de euros corrientes,-30943.0,dato,no,gov_10a_main
+2019,saldo,millones de euros corrientes,-38422.0,dato,no,gov_10a_main
+2020,saldo,millones de euros corrientes,-111897.0,dato,no,gov_10a_main
+2021,saldo,millones de euros corrientes,-82174.0,dato,no,gov_10a_main
+2022,saldo,millones de euros corrientes,-63105.0,dato,no,gov_10a_main
+2023,saldo,millones de euros corrientes,-50027.0,dato,no,gov_10a_main
+2024,saldo,millones de euros corrientes,-51267.0,dato,no,gov_10a_main
+2025,saldo,millones de euros corrientes,-40330.0,dato,no,gov_10a_main
+1995,saldo,millones de euros de 2025,-62843.7,lectura,no,gov_10a_main
+1996,saldo,millones de euros de 2025,-55678.4,lectura,no,gov_10a_main
+1997,saldo,millones de euros de 2025,-37945.1,lectura,no,gov_10a_main
+1998,saldo,millones de euros de 2025,-26939.9,lectura,no,gov_10a_main
+1999,saldo,millones de euros de 2025,-13279.2,lectura,no,gov_10a_main
+2000,saldo,millones de euros de 2025,-13080.9,lectura,no,gov_10a_main
+2001,saldo,millones de euros de 2025,-5325.6,lectura,no,gov_10a_main
+2002,saldo,millones de euros de 2025,-3779.8,lectura,no,gov_10a_main
+2003,saldo,millones de euros de 2025,-4641.6,lectura,no,gov_10a_main
+2004,saldo,millones de euros de 2025,-1396.9,lectura,no,gov_10a_main
+2005,saldo,millones de euros de 2025,16269.0,lectura,no,gov_10a_main
+2006,saldo,millones de euros de 2025,29184.4,lectura,no,gov_10a_main
+2007,saldo,millones de euros de 2025,26812.9,lectura,no,gov_10a_main
+2008,saldo,millones de euros de 2025,-65445.6,lectura,no,gov_10a_main
+2009,saldo,millones de euros de 2025,-155190.6,lectura,no,gov_10a_main
+2010,saldo,millones de euros de 2025,-131145.7,lectura,no,gov_10a_main
+2011,saldo,millones de euros de 2025,-133113.9,lectura,no,gov_10a_main
+2012,saldo,millones de euros de 2025,-153369.5,lectura,no,gov_10a_main
+2013,saldo,millones de euros de 2025,-98478.3,lectura,no,gov_10a_main
+2014,saldo,millones de euros de 2025,-80591.0,lectura,no,gov_10a_main
+2015,saldo,millones de euros de 2025,-73161.0,lectura,no,gov_10a_main
+2016,saldo,millones de euros de 2025,-60352.1,lectura,no,gov_10a_main
+2017,saldo,millones de euros de 2025,-45144.6,lectura,no,gov_10a_main
+2018,saldo,millones de euros de 2025,-38451.3,lectura,no,gov_10a_main
+2019,saldo,millones de euros de 2025,-47072.5,lectura,no,gov_10a_main
+2020,saldo,millones de euros de 2025,-135553.1,lectura,no,gov_10a_main
+2021,saldo,millones de euros de 2025,-97065.4,lectura,no,gov_10a_main
+2022,saldo,millones de euros de 2025,-71198.7,lectura,no,gov_10a_main
+2023,saldo,millones de euros de 2025,-53125.8,lectura,no,gov_10a_main
+2024,saldo,millones de euros de 2025,-52829.5,lectura,sí,gov_10a_main
+2025,saldo,millones de euros de 2025,-40330.0,lectura,sí,gov_10a_main
+1995,saldo,euros por habitante,-787,lectura,no,gov_10a_main
+1996,saldo,euros por habitante,-719,lectura,no,gov_10a_main
+1997,saldo,euros por habitante,-500,lectura,no,gov_10a_main
+1998,saldo,euros por habitante,-363,lectura,no,gov_10a_main
+1999,saldo,euros por habitante,-183,lectura,no,gov_10a_main
+2000,saldo,euros por habitante,-185,lectura,no,gov_10a_main
+2001,saldo,euros por habitante,-78,lectura,no,gov_10a_main
+2002,saldo,euros por habitante,-57,lectura,no,gov_10a_main
+2003,saldo,euros por habitante,-71,lectura,no,gov_10a_main
+2004,saldo,euros por habitante,-22,lectura,no,gov_10a_main
+2005,saldo,euros por habitante,262,lectura,no,gov_10a_main
+2006,saldo,euros por habitante,481,lectura,no,gov_10a_main
+2007,saldo,euros por habitante,448,lectura,no,gov_10a_main
+2008,saldo,euros por habitante,-1103,lectura,no,gov_10a_main
+2009,saldo,euros por habitante,-2600,lectura,no,gov_10a_main
+2010,saldo,euros por habitante,-2195,lectura,no,gov_10a_main
+2011,saldo,euros por habitante,-2216,lectura,no,gov_10a_main
+2012,saldo,euros por habitante,-2548,lectura,no,gov_10a_main
+2013,saldo,euros por habitante,-1649,lectura,no,gov_10a_main
+2014,saldo,euros por habitante,-1351,lectura,no,gov_10a_main
+2015,saldo,euros por habitante,-1234,lectura,no,gov_10a_main
+2016,saldo,euros por habitante,-1021,lectura,no,gov_10a_main
+2017,saldo,euros por habitante,-772,lectura,no,gov_10a_main
+2018,saldo,euros por habitante,-662,lectura,no,gov_10a_main
+2019,saldo,euros por habitante,-816,lectura,no,gov_10a_main
+2020,saldo,euros por habitante,-2363,lectura,no,gov_10a_main
+2021,saldo,euros por habitante,-1736,lectura,no,gov_10a_main
+2022,saldo,euros por habitante,-1321,lectura,no,gov_10a_main
+2023,saldo,euros por habitante,-1035,lectura,no,gov_10a_main
+2024,saldo,euros por habitante,-1049,lectura,sí,gov_10a_main
+2025,saldo,euros por habitante,-817,lectura,sí,gov_10a_main
+1995,deuda,% del PIB,61.6,dato,no,gov_10dd_edpt1
+1996,deuda,% del PIB,65.4,dato,no,gov_10dd_edpt1
+1997,deuda,% del PIB,64.3,dato,no,gov_10dd_edpt1
+1998,deuda,% del PIB,62.4,dato,no,gov_10dd_edpt1
+1999,deuda,% del PIB,60.9,dato,no,gov_10dd_edpt1
+2000,deuda,% del PIB,57.8,dato,no,gov_10dd_edpt1
+2001,deuda,% del PIB,54.1,dato,no,gov_10dd_edpt1
+2002,deuda,% del PIB,51.2,dato,no,gov_10dd_edpt1
+2003,deuda,% del PIB,47.7,dato,no,gov_10dd_edpt1
+2004,deuda,% del PIB,45.3,dato,no,gov_10dd_edpt1
+2005,deuda,% del PIB,42.4,dato,no,gov_10dd_edpt1
+2006,deuda,% del PIB,39.0,dato,no,gov_10dd_edpt1
+2007,deuda,% del PIB,35.7,dato,no,gov_10dd_edpt1
+2008,deuda,% del PIB,39.6,dato,no,gov_10dd_edpt1
+2009,deuda,% del PIB,53.1,dato,no,gov_10dd_edpt1
+2010,deuda,% del PIB,60.3,dato,no,gov_10dd_edpt1
+2011,deuda,% del PIB,69.5,dato,no,gov_10dd_edpt1
+2012,deuda,% del PIB,89.6,dato,no,gov_10dd_edpt1
+2013,deuda,% del PIB,100.0,dato,no,gov_10dd_edpt1
+2014,deuda,% del PIB,104.4,dato,no,gov_10dd_edpt1
+2015,deuda,% del PIB,102.5,dato,no,gov_10dd_edpt1
+2016,deuda,% del PIB,102.0,dato,no,gov_10dd_edpt1
+2017,deuda,% del PIB,101.2,dato,no,gov_10dd_edpt1
+2018,deuda,% del PIB,99.8,dato,no,gov_10dd_edpt1
+2019,deuda,% del PIB,97.7,dato,no,gov_10dd_edpt1
+2020,deuda,% del PIB,119.3,dato,no,gov_10dd_edpt1
+2021,deuda,% del PIB,115.7,dato,no,gov_10dd_edpt1
+2022,deuda,% del PIB,109.3,dato,no,gov_10dd_edpt1
+2023,deuda,% del PIB,105.2,dato,no,gov_10dd_edpt1
+2024,deuda,% del PIB,101.6,dato,no,gov_10dd_edpt1
+2025,deuda,% del PIB,100.7,dato,no,gov_10dd_edpt1
+1995,deuda,millones de euros corrientes,283457.3,dato,no,gov_10dd_edpt1
+1996,deuda,millones de euros corrientes,319975.8,dato,no,gov_10dd_edpt1
+1997,deuda,millones de euros corrientes,333627.3,dato,no,gov_10dd_edpt1
+1998,deuda,millones de euros corrientes,346417.0,dato,no,gov_10dd_edpt1
+1999,deuda,millones de euros corrientes,362223.5,dato,no,gov_10dd_edpt1
+2000,deuda,millones de euros corrientes,374557.2,dato,no,gov_10dd_edpt1
+2001,deuda,millones de euros corrientes,378883.4,dato,no,gov_10dd_edpt1
+2002,deuda,millones de euros corrientes,384145.3,dato,no,gov_10dd_edpt1
+2003,deuda,millones de euros corrientes,382775.0,dato,no,gov_10dd_edpt1
+2004,deuda,millones de euros corrientes,389887.9,dato,no,gov_10dd_edpt1
+2005,deuda,millones de euros corrientes,393479.1,dato,no,gov_10dd_edpt1
+2006,deuda,millones de euros corrientes,392132.2,dato,no,gov_10dd_edpt1
+2007,deuda,millones de euros corrientes,384662.0,dato,no,gov_10dd_edpt1
+2008,deuda,millones de euros corrientes,440621.0,dato,no,gov_10dd_edpt1
+2009,deuda,millones de euros corrientes,569535.4,dato,no,gov_10dd_edpt1
+2010,deuda,millones de euros corrientes,649152.5,dato,no,gov_10dd_edpt1
+2011,deuda,millones de euros corrientes,743043.2,dato,no,gov_10dd_edpt1
+2012,deuda,millones de euros corrientes,927813.3,dato,no,gov_10dd_edpt1
+2013,deuda,millones de euros corrientes,1025805.2,dato,no,gov_10dd_edpt1
+2014,deuda,millones de euros corrientes,1085165.4,dato,no,gov_10dd_edpt1
+2015,deuda,millones de euros corrientes,1114129.0,dato,no,gov_10dd_edpt1
+2016,deuda,millones de euros corrientes,1145655.0,dato,no,gov_10dd_edpt1
+2017,deuda,millones de euros corrientes,1184148.3,dato,no,gov_10dd_edpt1
+2018,deuda,millones de euros corrientes,1209741.8,dato,no,gov_10dd_edpt1
+2019,deuda,millones de euros corrientes,1224363.8,dato,no,gov_10dd_edpt1
+2020,deuda,millones de euros corrientes,1346916.4,dato,no,gov_10dd_edpt1
+2021,deuda,millones de euros corrientes,1429403.6,dato,no,gov_10dd_edpt1
+2022,deuda,millones de euros corrientes,1504105.1,dato,no,gov_10dd_edpt1
+2023,deuda,millones de euros corrientes,1575376.7,dato,no,gov_10dd_edpt1
+2024,deuda,millones de euros corrientes,1620573.4,dato,no,gov_10dd_edpt1
+2025,deuda,millones de euros corrientes,1698224.6,dato,no,gov_10dd_edpt1
+1995,deuda,millones de euros de 2025,569722.3,lectura,no,gov_10dd_edpt1
+1996,deuda,millones de euros de 2025,621169.0,lectura,no,gov_10dd_edpt1
+1997,deuda,millones de euros de 2025,632091.7,lectura,no,gov_10dd_edpt1
+1998,deuda,millones de euros de 2025,639471.3,lectura,no,gov_10dd_edpt1
+1999,deuda,millones de euros de 2025,651591.4,lectura,no,gov_10dd_edpt1
+2000,deuda,millones de euros de 2025,651535.5,lectura,no,gov_10dd_edpt1
+2001,deuda,millones de euros de 2025,632731.1,lectura,no,gov_10dd_edpt1
+2002,deuda,millones de euros de 2025,616302.2,lectura,no,gov_10dd_edpt1
+2003,deuda,millones de euros de 2025,590456.7,lectura,no,gov_10dd_edpt1
+2004,deuda,millones de euros de 2025,578787.9,lectura,no,gov_10dd_edpt1
+2005,deuda,millones de euros de 2025,560504.8,lectura,no,gov_10dd_edpt1
+2006,deuda,millones de euros de 2025,536730.0,lectura,no,gov_10dd_edpt1
+2007,deuda,millones de euros de 2025,508399.1,lectura,no,gov_10dd_edpt1
+2008,deuda,millones de euros de 2025,568423.8,lectura,no,gov_10dd_edpt1
+2009,deuda,millones de euros de 2025,733036.1,lectura,no,gov_10dd_edpt1
+2010,deuda,millones de euros de 2025,833066.5,lectura,no,gov_10dd_edpt1
+2011,deuda,millones de euros de 2025,954953.9,lectura,no,gov_10dd_edpt1
+2012,deuda,millones de euros de 2025,1194840.2,lectura,no,gov_10dd_edpt1
+2013,deuda,millones de euros de 2025,1315273.8,lectura,no,gov_10dd_edpt1
+2014,deuda,millones de euros de 2025,1394454.6,lectura,no,gov_10dd_edpt1
+2015,deuda,millones de euros de 2025,1423819.5,lectura,no,gov_10dd_edpt1
+2016,deuda,millones de euros de 2025,1458676.7,lectura,no,gov_10dd_edpt1
+2017,deuda,millones de euros de 2025,1488955.1,lectura,no,gov_10dd_edpt1
+2018,deuda,millones de euros de 2025,1503285.9,lectura,no,gov_10dd_edpt1
+2019,deuda,millones de euros de 2025,1500021.8,lectura,no,gov_10dd_edpt1
+2020,deuda,millones de euros de 2025,1631668.0,lectura,no,gov_10dd_edpt1
+2021,deuda,millones de euros de 2025,1688437.4,lectura,no,gov_10dd_edpt1
+2022,deuda,millones de euros de 2025,1697017.8,lectura,no,gov_10dd_edpt1
+2023,deuda,millones de euros de 2025,1672958.2,lectura,no,gov_10dd_edpt1
+2024,deuda,millones de euros de 2025,1669966.2,lectura,sí,gov_10dd_edpt1
+2025,deuda,millones de euros de 2025,1698224.6,lectura,sí,gov_10dd_edpt1
+1995,deuda,euros por habitante,7137,lectura,no,gov_10dd_edpt1
+1996,deuda,euros por habitante,8023,lectura,no,gov_10dd_edpt1
+1997,deuda,euros por habitante,8330,lectura,no,gov_10dd_edpt1
+1998,deuda,euros por habitante,8614,lectura,no,gov_10dd_edpt1
+1999,deuda,euros por habitante,8973,lectura,no,gov_10dd_edpt1
+2000,deuda,euros por habitante,9236,lectura,no,gov_10dd_edpt1
+2001,deuda,euros por habitante,9294,lectura,no,gov_10dd_edpt1
+2002,deuda,euros por habitante,9274,lectura,no,gov_10dd_edpt1
+2003,deuda,euros por habitante,9071,lectura,no,gov_10dd_edpt1
+2004,deuda,euros por habitante,9097,lectura,no,gov_10dd_edpt1
+2005,deuda,euros por habitante,9012,lectura,no,gov_10dd_edpt1
+2006,deuda,euros por habitante,8840,lectura,no,gov_10dd_edpt1
+2007,deuda,euros por habitante,8503,lectura,no,gov_10dd_edpt1
+2008,deuda,euros por habitante,9582,lectura,no,gov_10dd_edpt1
+2009,deuda,euros por habitante,12283,lectura,no,gov_10dd_edpt1
+2010,deuda,euros por habitante,13942,lectura,no,gov_10dd_edpt1
+2011,deuda,euros por habitante,15899,lectura,no,gov_10dd_edpt1
+2012,deuda,euros por habitante,19847,lectura,no,gov_10dd_edpt1
+2013,deuda,euros por habitante,22022,lectura,no,gov_10dd_edpt1
+2014,deuda,euros por habitante,23371,lectura,no,gov_10dd_edpt1
+2015,deuda,euros por habitante,24019,lectura,no,gov_10dd_edpt1
+2016,deuda,euros por habitante,24676,lectura,no,gov_10dd_edpt1
+2017,deuda,euros por habitante,25460,lectura,no,gov_10dd_edpt1
+2018,deuda,euros por habitante,25896,lectura,no,gov_10dd_edpt1
+2019,deuda,euros por habitante,26002,lectura,no,gov_10dd_edpt1
+2020,deuda,euros por habitante,28449,lectura,no,gov_10dd_edpt1
+2021,deuda,euros por habitante,30190,lectura,no,gov_10dd_edpt1
+2022,deuda,euros por habitante,31476,lectura,no,gov_10dd_edpt1
+2023,deuda,euros por habitante,32581,lectura,no,gov_10dd_edpt1
+2024,deuda,euros por habitante,33158,lectura,sí,gov_10dd_edpt1
+2025,deuda,euros por habitante,34403,lectura,sí,gov_10dd_edpt1
+1996,cambio_deuda.deficit_primario,puntos del PIB,0.83,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.deficit_primario,puntos del PIB,-0.68,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.deficit_primario,puntos del PIB,-1.44,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.deficit_primario,puntos del PIB,-2.17,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.deficit_primario,puntos del PIB,-2.0,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.deficit_primario,puntos del PIB,-2.51,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.deficit_primario,puntos del PIB,-2.31,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.deficit_primario,puntos del PIB,-1.92,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.deficit_primario,puntos del PIB,-1.88,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.deficit_primario,puntos del PIB,-2.98,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.deficit_primario,puntos del PIB,-3.73,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.deficit_primario,puntos del PIB,-3.46,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.deficit_primario,puntos del PIB,2.98,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.deficit_primario,puntos del PIB,9.53,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.deficit_primario,puntos del PIB,7.59,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.deficit_primario,puntos del PIB,7.21,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.deficit_primario,puntos del PIB,8.47,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.deficit_primario,puntos del PIB,3.92,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.deficit_primario,puntos del PIB,2.5,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.deficit_primario,puntos del PIB,2.2,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.deficit_primario,puntos del PIB,1.44,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.deficit_primario,puntos del PIB,0.54,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.deficit_primario,puntos del PIB,0.11,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.deficit_primario,puntos del PIB,0.81,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.deficit_primario,puntos del PIB,7.68,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.deficit_primario,puntos del PIB,4.53,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.deficit_primario,puntos del PIB,2.28,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.deficit_primario,puntos del PIB,0.97,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,puntos del PIB,0.78,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,puntos del PIB,0.0,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.intereses,puntos del PIB,5.03,lectura,no,gov_10dd_edpt1
+1997,cambio_deuda.intereses,puntos del PIB,4.54,lectura,no,gov_10dd_edpt1
+1998,cambio_deuda.intereses,puntos del PIB,4.07,lectura,no,gov_10dd_edpt1
+1999,cambio_deuda.intereses,puntos del PIB,3.41,lectura,no,gov_10dd_edpt1
+2000,cambio_deuda.intereses,puntos del PIB,3.16,lectura,no,gov_10dd_edpt1
+2001,cambio_deuda.intereses,puntos del PIB,2.97,lectura,no,gov_10dd_edpt1
+2002,cambio_deuda.intereses,puntos del PIB,2.63,lectura,no,gov_10dd_edpt1
+2003,cambio_deuda.intereses,puntos del PIB,2.3,lectura,no,gov_10dd_edpt1
+2004,cambio_deuda.intereses,puntos del PIB,1.99,lectura,no,gov_10dd_edpt1
+2005,cambio_deuda.intereses,puntos del PIB,1.75,lectura,no,gov_10dd_edpt1
+2006,cambio_deuda.intereses,puntos del PIB,1.61,lectura,no,gov_10dd_edpt1
+2007,cambio_deuda.intereses,puntos del PIB,1.58,lectura,no,gov_10dd_edpt1
+2008,cambio_deuda.intereses,puntos del PIB,1.58,lectura,no,gov_10dd_edpt1
+2009,cambio_deuda.intereses,puntos del PIB,1.71,lectura,no,gov_10dd_edpt1
+2010,cambio_deuda.intereses,puntos del PIB,1.9,lectura,no,gov_10dd_edpt1
+2011,cambio_deuda.intereses,puntos del PIB,2.49,lectura,no,gov_10dd_edpt1
+2012,cambio_deuda.intereses,puntos del PIB,3.03,lectura,no,gov_10dd_edpt1
+2013,cambio_deuda.intereses,puntos del PIB,3.56,lectura,no,gov_10dd_edpt1
+2014,cambio_deuda.intereses,puntos del PIB,3.53,lectura,no,gov_10dd_edpt1
+2015,cambio_deuda.intereses,puntos del PIB,3.07,lectura,no,gov_10dd_edpt1
+2016,cambio_deuda.intereses,puntos del PIB,2.78,lectura,no,gov_10dd_edpt1
+2017,cambio_deuda.intereses,puntos del PIB,2.53,lectura,no,gov_10dd_edpt1
+2018,cambio_deuda.intereses,puntos del PIB,2.44,lectura,no,gov_10dd_edpt1
+2019,cambio_deuda.intereses,puntos del PIB,2.25,lectura,no,gov_10dd_edpt1
+2020,cambio_deuda.intereses,puntos del PIB,2.23,lectura,no,gov_10dd_edpt1
+2021,cambio_deuda.intereses,puntos del PIB,2.12,lectura,no,gov_10dd_edpt1
+2022,cambio_deuda.intereses,puntos del PIB,2.31,lectura,no,gov_10dd_edpt1
+2023,cambio_deuda.intereses,puntos del PIB,2.37,lectura,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,puntos del PIB,2.43,lectura,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,puntos del PIB,2.39,lectura,no,gov_10dd_edpt1
+1996,cambio_deuda.activos,puntos del PIB,1.57,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.activos,puntos del PIB,-1.47,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.activos,puntos del PIB,0.27,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.activos,puntos del PIB,1.53,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.activos,puntos del PIB,1.48,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.activos,puntos del PIB,-0.23,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.activos,puntos del PIB,1.39,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.activos,puntos del PIB,-0.48,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.activos,puntos del PIB,1.27,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.activos,puntos del PIB,2.33,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.activos,puntos del PIB,3.01,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.activos,puntos del PIB,2.16,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.activos,puntos del PIB,1.04,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.activos,puntos del PIB,2.23,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.activos,puntos del PIB,-1.44,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.activos,puntos del PIB,-0.3,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.activos,puntos del PIB,4.42,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.activos,puntos del PIB,-0.06,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.activos,puntos del PIB,0.23,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.activos,puntos del PIB,-1.49,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.activos,puntos del PIB,-1.29,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.activos,puntos del PIB,1.02,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.activos,puntos del PIB,0.54,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.activos,puntos del PIB,-0.99,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.activos,puntos del PIB,1.1,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.activos,puntos del PIB,3.0,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.activos,puntos del PIB,1.12,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,puntos del PIB,0.5,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,puntos del PIB,0.64,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,puntos del PIB,1.65,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.ajustes,puntos del PIB,0.03,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.ajustes,puntos del PIB,0.24,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.ajustes,puntos del PIB,-0.59,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.ajustes,puntos del PIB,-0.12,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.ajustes,puntos del PIB,-0.74,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.ajustes,puntos del PIB,0.4,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.ajustes,puntos del PIB,-1.01,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.ajustes,puntos del PIB,-0.06,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.ajustes,puntos del PIB,-0.55,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.ajustes,puntos del PIB,-0.71,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.ajustes,puntos del PIB,-1.02,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.ajustes,puntos del PIB,-0.97,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.ajustes,puntos del PIB,-0.57,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.ajustes,puntos del PIB,-1.45,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.ajustes,puntos del PIB,-0.65,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.ajustes,puntos del PIB,-0.61,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.ajustes,puntos del PIB,1.92,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.ajustes,puntos del PIB,2.12,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.ajustes,puntos del PIB,-0.56,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.ajustes,puntos del PIB,-1.11,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.ajustes,puntos del PIB,-0.13,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.ajustes,puntos del PIB,-0.8,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.ajustes,puntos del PIB,-0.98,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.ajustes,puntos del PIB,-0.9,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.ajustes,puntos del PIB,-0.16,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.ajustes,puntos del PIB,-2.97,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.ajustes,puntos del PIB,-0.28,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,puntos del PIB,0.92,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,puntos del PIB,-1.02,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,puntos del PIB,0.56,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.variacion,puntos del PIB,3.86,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.variacion,puntos del PIB,-1.16,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.variacion,puntos del PIB,-1.93,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.variacion,puntos del PIB,-1.5,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.variacion,puntos del PIB,-3.01,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.variacion,puntos del PIB,-3.79,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.variacion,puntos del PIB,-2.82,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.variacion,puntos del PIB,-3.55,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.variacion,puntos del PIB,-2.35,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.variacion,puntos del PIB,-2.94,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.variacion,puntos del PIB,-3.38,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.variacion,puntos del PIB,-3.32,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.variacion,puntos del PIB,3.91,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.variacion,puntos del PIB,13.47,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.variacion,puntos del PIB,7.19,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.variacion,puntos del PIB,9.26,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.variacion,puntos del PIB,20.03,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.variacion,puntos del PIB,10.45,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.variacion,puntos del PIB,4.43,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.variacion,puntos del PIB,-1.96,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.variacion,puntos del PIB,-0.46,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.variacion,puntos del PIB,-0.81,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.variacion,puntos del PIB,-1.42,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.variacion,puntos del PIB,-2.13,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.variacion,puntos del PIB,21.62,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.variacion,puntos del PIB,-3.58,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.variacion,puntos del PIB,-6.38,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.variacion,puntos del PIB,-4.14,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,puntos del PIB,-3.54,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,puntos del PIB,-0.99,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.crecimiento,puntos del PIB,-3.61,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.crecimiento,puntos del PIB,-3.79,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.crecimiento,puntos del PIB,-4.23,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.crecimiento,puntos del PIB,-4.16,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.crecimiento,puntos del PIB,-4.92,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.crecimiento,puntos del PIB,-4.41,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.crecimiento,puntos del PIB,-3.52,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.crecimiento,puntos del PIB,-3.38,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.crecimiento,puntos del PIB,-3.18,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.crecimiento,puntos del PIB,-3.32,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.crecimiento,puntos del PIB,-3.24,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.crecimiento,puntos del PIB,-2.63,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.crecimiento,puntos del PIB,-1.12,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.crecimiento,puntos del PIB,1.46,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.crecimiento,puntos del PIB,-0.2,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.crecimiento,puntos del PIB,0.48,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.crecimiento,puntos del PIB,2.2,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.crecimiento,puntos del PIB,0.9,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.crecimiento,puntos del PIB,-1.28,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.crecimiento,puntos del PIB,-4.63,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.crecimiento,puntos del PIB,-3.27,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.crecimiento,puntos del PIB,-4.1,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.crecimiento,puntos del PIB,-3.53,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.crecimiento,puntos del PIB,-3.3,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.crecimiento,puntos del PIB,10.77,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.crecimiento,puntos del PIB,-10.26,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.crecimiento,puntos del PIB,-11.81,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.crecimiento,puntos del PIB,-8.9,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.crecimiento,puntos del PIB,-6.37,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.crecimiento,puntos del PIB,-5.59,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.deficit_primario,millones de euros corrientes,8527.0,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.deficit_primario,millones de euros corrientes,4081.0,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.deficit_primario,millones de euros corrientes,-3515.0,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.deficit_primario,millones de euros corrientes,-7995.0,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.deficit_primario,millones de euros corrientes,-12925.0,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.deficit_primario,millones de euros corrientes,-12965.0,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.deficit_primario,millones de euros corrientes,-17626.0,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.deficit_primario,millones de euros corrientes,-17356.0,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.deficit_primario,millones de euros corrientes,-15450.0,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.deficit_primario,millones de euros corrientes,-16163.0,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.deficit_primario,millones de euros corrientes,-27622.0,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.deficit_primario,millones de euros corrientes,-37490.0,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.deficit_primario,millones de euros corrientes,-37296.0,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.deficit_primario,millones de euros corrientes,33189.0,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.deficit_primario,millones de euros corrientes,102221.0,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.deficit_primario,millones de euros corrientes,81756.0,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.deficit_primario,millones de euros corrientes,77013.0,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.deficit_primario,millones de euros corrientes,87741.0,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.deficit_primario,millones de euros corrientes,40252.0,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.deficit_primario,millones de euros corrientes,26010.0,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.deficit_primario,millones de euros corrientes,23880.0,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.deficit_primario,millones de euros corrientes,16175.0,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.deficit_primario,millones de euros corrientes,6290.0,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.deficit_primario,millones de euros corrientes,1350.0,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.deficit_primario,millones de euros corrientes,10191.0,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.deficit_primario,millones de euros corrientes,86770.0,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.deficit_primario,millones de euros corrientes,56004.0,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.deficit_primario,millones de euros corrientes,31330.0,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.deficit_primario,millones de euros corrientes,14476.0,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,millones de euros corrientes,12474.0,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,millones de euros corrientes,16.0,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.intereses,millones de euros corrientes,22740.0,dato,no,gov_10dd_edpt1
+1996,cambio_deuda.intereses,millones de euros corrientes,24600.0,dato,no,gov_10dd_edpt1
+1997,cambio_deuda.intereses,millones de euros corrientes,23543.0,dato,no,gov_10dd_edpt1
+1998,cambio_deuda.intereses,millones de euros corrientes,22589.0,dato,no,gov_10dd_edpt1
+1999,cambio_deuda.intereses,millones de euros corrientes,20307.0,dato,no,gov_10dd_edpt1
+2000,cambio_deuda.intereses,millones de euros corrientes,20485.0,dato,no,gov_10dd_edpt1
+2001,cambio_deuda.intereses,millones de euros corrientes,20815.0,dato,no,gov_10dd_edpt1
+2002,cambio_deuda.intereses,millones de euros corrientes,19712.0,dato,no,gov_10dd_edpt1
+2003,cambio_deuda.intereses,millones de euros corrientes,18459.0,dato,no,gov_10dd_edpt1
+2004,cambio_deuda.intereses,millones de euros corrientes,17104.0,dato,no,gov_10dd_edpt1
+2005,cambio_deuda.intereses,millones de euros corrientes,16201.0,dato,no,gov_10dd_edpt1
+2006,cambio_deuda.intereses,millones de euros corrientes,16168.0,dato,no,gov_10dd_edpt1
+2007,cambio_deuda.intereses,millones de euros corrientes,17009.0,dato,no,gov_10dd_edpt1
+2008,cambio_deuda.intereses,millones de euros corrientes,17542.0,dato,no,gov_10dd_edpt1
+2009,cambio_deuda.intereses,millones de euros corrientes,18355.0,dato,no,gov_10dd_edpt1
+2010,cambio_deuda.intereses,millones de euros corrientes,20437.0,dato,no,gov_10dd_edpt1
+2011,cambio_deuda.intereses,millones de euros corrientes,26562.0,dato,no,gov_10dd_edpt1
+2012,cambio_deuda.intereses,millones de euros corrientes,31353.0,dato,no,gov_10dd_edpt1
+2013,cambio_deuda.intereses,millones de euros corrientes,36553.0,dato,no,gov_10dd_edpt1
+2014,cambio_deuda.intereses,millones de euros corrientes,36706.0,dato,no,gov_10dd_edpt1
+2015,cambio_deuda.intereses,millones de euros corrientes,33368.0,dato,no,gov_10dd_edpt1
+2016,cambio_deuda.intereses,millones de euros corrientes,31226.0,dato,no,gov_10dd_edpt1
+2017,cambio_deuda.intereses,millones de euros corrientes,29613.0,dato,no,gov_10dd_edpt1
+2018,cambio_deuda.intereses,millones de euros corrientes,29593.0,dato,no,gov_10dd_edpt1
+2019,cambio_deuda.intereses,millones de euros corrientes,28231.0,dato,no,gov_10dd_edpt1
+2020,cambio_deuda.intereses,millones de euros corrientes,25127.0,dato,no,gov_10dd_edpt1
+2021,cambio_deuda.intereses,millones de euros corrientes,26170.0,dato,no,gov_10dd_edpt1
+2022,cambio_deuda.intereses,millones de euros corrientes,31775.0,dato,no,gov_10dd_edpt1
+2023,cambio_deuda.intereses,millones de euros corrientes,35551.0,dato,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,millones de euros corrientes,38793.0,dato,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,millones de euros corrientes,40314.0,dato,no,gov_10dd_edpt1
+1995,cambio_deuda.activos,millones de euros corrientes,323.5,dato,no,gov_10dd_edpt3
+1996,cambio_deuda.activos,millones de euros corrientes,7699.3,dato,no,gov_10dd_edpt3
+1997,cambio_deuda.activos,millones de euros corrientes,-7635.7,dato,no,gov_10dd_edpt3
+1998,cambio_deuda.activos,millones de euros corrientes,1479.1,dato,no,gov_10dd_edpt3
+1999,cambio_deuda.activos,millones de euros corrientes,9122.1,dato,no,gov_10dd_edpt3
+2000,cambio_deuda.activos,millones de euros corrientes,9609.9,dato,no,gov_10dd_edpt3
+2001,cambio_deuda.activos,millones de euros corrientes,-1643.1,dato,no,gov_10dd_edpt3
+2002,cambio_deuda.activos,millones de euros corrientes,10452.2,dato,no,gov_10dd_edpt3
+2003,cambio_deuda.activos,millones de euros corrientes,-3887.5,dato,no,gov_10dd_edpt3
+2004,cambio_deuda.activos,millones de euros corrientes,10904.4,dato,no,gov_10dd_edpt3
+2005,cambio_deuda.activos,millones de euros corrientes,21587.8,dato,no,gov_10dd_edpt3
+2006,cambio_deuda.activos,millones de euros corrientes,30254.9,dato,no,gov_10dd_edpt3
+2007,cambio_deuda.activos,millones de euros corrientes,23269.7,dato,no,gov_10dd_edpt3
+2008,cambio_deuda.activos,millones de euros corrientes,11522.5,dato,no,gov_10dd_edpt3
+2009,cambio_deuda.activos,millones de euros corrientes,23900.3,dato,no,gov_10dd_edpt3
+2010,cambio_deuda.activos,millones de euros corrientes,-15554.2,dato,no,gov_10dd_edpt3
+2011,cambio_deuda.activos,millones de euros corrientes,-3216.5,dato,no,gov_10dd_edpt3
+2012,cambio_deuda.activos,millones de euros corrientes,45760.2,dato,no,gov_10dd_edpt3
+2013,cambio_deuda.activos,millones de euros corrientes,-591.8,dato,no,gov_10dd_edpt3
+2014,cambio_deuda.activos,millones de euros corrientes,2424.8,dato,no,gov_10dd_edpt3
+2015,cambio_deuda.activos,millones de euros corrientes,-16223.3,dato,no,gov_10dd_edpt3
+2016,cambio_deuda.activos,millones de euros corrientes,-14438.8,dato,no,gov_10dd_edpt3
+2017,cambio_deuda.activos,millones de euros corrientes,11893.2,dato,no,gov_10dd_edpt3
+2018,cambio_deuda.activos,millones de euros corrientes,6514.5,dato,no,gov_10dd_edpt3
+2019,cambio_deuda.activos,millones de euros corrientes,-12473.4,dato,no,gov_10dd_edpt3
+2020,cambio_deuda.activos,millones de euros corrientes,12422.9,dato,no,gov_10dd_edpt3
+2021,cambio_deuda.activos,millones de euros corrientes,37019.6,dato,no,gov_10dd_edpt3
+2022,cambio_deuda.activos,millones de euros corrientes,15400.2,dato,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,millones de euros corrientes,7504.8,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,millones de euros corrientes,10262.1,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,millones de euros corrientes,27847.3,dato,no,gov_10dd_edpt3
+1995,cambio_deuda.ajustes,millones de euros corrientes,2359.3,dato,no,gov_10dd_edpt3
+1996,cambio_deuda.ajustes,millones de euros corrientes,138.3,dato,no,gov_10dd_edpt3
+1997,cambio_deuda.ajustes,millones de euros corrientes,1259.2,dato,no,gov_10dd_edpt3
+1998,cambio_deuda.ajustes,millones de euros corrientes,-3283.4,dato,no,gov_10dd_edpt3
+1999,cambio_deuda.ajustes,millones de euros corrientes,-697.6,dato,no,gov_10dd_edpt3
+2000,cambio_deuda.ajustes,millones de euros corrientes,-4796.2,dato,no,gov_10dd_edpt3
+2001,cambio_deuda.ajustes,millones de euros corrientes,2780.2,dato,no,gov_10dd_edpt3
+2002,cambio_deuda.ajustes,millones de euros corrientes,-7546.3,dato,no,gov_10dd_edpt3
+2003,cambio_deuda.ajustes,millones de euros corrientes,-491.8,dato,no,gov_10dd_edpt3
+2004,cambio_deuda.ajustes,millones de euros corrientes,-4732.5,dato,no,gov_10dd_edpt3
+2005,cambio_deuda.ajustes,millones de euros corrientes,-6575.6,dato,no,gov_10dd_edpt3
+2006,cambio_deuda.ajustes,millones de euros corrientes,-10279.9,dato,no,gov_10dd_edpt3
+2007,cambio_deuda.ajustes,millones de euros corrientes,-10452.9,dato,no,gov_10dd_edpt3
+2008,cambio_deuda.ajustes,millones de euros corrientes,-6294.5,dato,no,gov_10dd_edpt3
+2009,cambio_deuda.ajustes,millones de euros corrientes,-15561.9,dato,no,gov_10dd_edpt3
+2010,cambio_deuda.ajustes,millones de euros corrientes,-7021.7,dato,no,gov_10dd_edpt3
+2011,cambio_deuda.ajustes,millones de euros corrientes,-6467.9,dato,no,gov_10dd_edpt3
+2012,cambio_deuda.ajustes,millones de euros corrientes,19916.0,dato,no,gov_10dd_edpt3
+2013,cambio_deuda.ajustes,millones de euros corrientes,21778.8,dato,no,gov_10dd_edpt3
+2014,cambio_deuda.ajustes,millones de euros corrientes,-5780.6,dato,no,gov_10dd_edpt3
+2015,cambio_deuda.ajustes,millones de euros corrientes,-12061.1,dato,no,gov_10dd_edpt3
+2016,cambio_deuda.ajustes,millones de euros corrientes,-1436.1,dato,no,gov_10dd_edpt3
+2017,cambio_deuda.ajustes,millones de euros corrientes,-9302.9,dato,no,gov_10dd_edpt3
+2018,cambio_deuda.ajustes,millones de euros corrientes,-11864.0,dato,no,gov_10dd_edpt3
+2019,cambio_deuda.ajustes,millones de euros corrientes,-11326.6,dato,no,gov_10dd_edpt3
+2020,cambio_deuda.ajustes,millones de euros corrientes,-1767.3,dato,no,gov_10dd_edpt3
+2021,cambio_deuda.ajustes,millones de euros corrientes,-36706.3,dato,no,gov_10dd_edpt3
+2022,cambio_deuda.ajustes,millones de euros corrientes,-3803.8,dato,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,millones de euros corrientes,13739.8,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,millones de euros corrientes,-16332.4,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,millones de euros corrientes,9474.0,dato,no,gov_10dd_edpt3
+1995,cambio_deuda.variacion,millones de euros corrientes,33949.7,dato,no,gov_10dd_edpt3
+1996,cambio_deuda.variacion,millones de euros corrientes,36518.5,dato,no,gov_10dd_edpt3
+1997,cambio_deuda.variacion,millones de euros corrientes,13651.4,dato,no,gov_10dd_edpt3
+1998,cambio_deuda.variacion,millones de euros corrientes,12789.7,dato,no,gov_10dd_edpt3
+1999,cambio_deuda.variacion,millones de euros corrientes,15806.5,dato,no,gov_10dd_edpt3
+2000,cambio_deuda.variacion,millones de euros corrientes,12333.8,dato,no,gov_10dd_edpt3
+2001,cambio_deuda.variacion,millones de euros corrientes,4326.2,dato,no,gov_10dd_edpt3
+2002,cambio_deuda.variacion,millones de euros corrientes,5261.9,dato,no,gov_10dd_edpt3
+2003,cambio_deuda.variacion,millones de euros corrientes,-1370.3,dato,no,gov_10dd_edpt3
+2004,cambio_deuda.variacion,millones de euros corrientes,7112.9,dato,no,gov_10dd_edpt3
+2005,cambio_deuda.variacion,millones de euros corrientes,3591.2,dato,no,gov_10dd_edpt3
+2006,cambio_deuda.variacion,millones de euros corrientes,-1346.9,dato,no,gov_10dd_edpt3
+2007,cambio_deuda.variacion,millones de euros corrientes,-7470.2,dato,no,gov_10dd_edpt3
+2008,cambio_deuda.variacion,millones de euros corrientes,55959.0,dato,no,gov_10dd_edpt3
+2009,cambio_deuda.variacion,millones de euros corrientes,128914.4,dato,no,gov_10dd_edpt3
+2010,cambio_deuda.variacion,millones de euros corrientes,79617.2,dato,no,gov_10dd_edpt3
+2011,cambio_deuda.variacion,millones de euros corrientes,93890.6,dato,no,gov_10dd_edpt3
+2012,cambio_deuda.variacion,millones de euros corrientes,184770.1,dato,no,gov_10dd_edpt3
+2013,cambio_deuda.variacion,millones de euros corrientes,97991.9,dato,no,gov_10dd_edpt3
+2014,cambio_deuda.variacion,millones de euros corrientes,59360.2,dato,no,gov_10dd_edpt3
+2015,cambio_deuda.variacion,millones de euros corrientes,28963.6,dato,no,gov_10dd_edpt3
+2016,cambio_deuda.variacion,millones de euros corrientes,31526.0,dato,no,gov_10dd_edpt3
+2017,cambio_deuda.variacion,millones de euros corrientes,38493.3,dato,no,gov_10dd_edpt3
+2018,cambio_deuda.variacion,millones de euros corrientes,25593.5,dato,no,gov_10dd_edpt3
+2019,cambio_deuda.variacion,millones de euros corrientes,14622.0,dato,no,gov_10dd_edpt3
+2020,cambio_deuda.variacion,millones de euros corrientes,122552.7,dato,no,gov_10dd_edpt3
+2021,cambio_deuda.variacion,millones de euros corrientes,82487.3,dato,no,gov_10dd_edpt3
+2022,cambio_deuda.variacion,millones de euros corrientes,74701.4,dato,no,gov_10dd_edpt3
+2023,cambio_deuda.variacion,millones de euros corrientes,71271.7,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,millones de euros corrientes,45196.6,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,millones de euros corrientes,77651.3,dato,no,gov_10dd_edpt3
+1995,cambio_deuda.deficit_primario,millones de euros de 2025,17138.5,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.deficit_primario,millones de euros de 2025,7922.4,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.deficit_primario,millones de euros de 2025,-6659.5,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.deficit_primario,millones de euros de 2025,-14758.4,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.deficit_primario,millones de euros de 2025,-23250.3,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.deficit_primario,millones de euros de 2025,-22552.4,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.deficit_primario,millones de euros de 2025,-29435.2,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.deficit_primario,millones de euros de 2025,-27845.0,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.deficit_primario,millones de euros de 2025,-23832.7,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.deficit_primario,millones de euros de 2025,-23993.9,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.deficit_primario,millones de euros de 2025,-39347.1,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.deficit_primario,millones de euros de 2025,-51314.3,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.deficit_primario,millones de euros de 2025,-49293.3,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.deficit_primario,millones de euros de 2025,42815.5,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.deficit_primario,millones de euros de 2025,131566.3,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.deficit_primario,millones de euros de 2025,104918.6,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.deficit_primario,millones de euros de 2025,98976.6,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.deficit_primario,millones de euros de 2025,112993.1,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.deficit_primario,millones de euros de 2025,51610.6,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.deficit_primario,millones de euros de 2025,33423.3,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.deficit_primario,millones de euros de 2025,30517.8,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.deficit_primario,millones de euros de 2025,20594.4,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.deficit_primario,millones de euros de 2025,7909.1,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.deficit_primario,millones de euros de 2025,1677.6,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.deficit_primario,millones de euros de 2025,12485.4,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.deficit_primario,millones de euros de 2025,105114.0,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.deficit_primario,millones de euros de 2025,66152.9,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.deficit_primario,millones de euros de 2025,35348.3,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.deficit_primario,millones de euros de 2025,15372.7,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,millones de euros de 2025,12854.2,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,millones de euros de 2025,16.0,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.intereses,millones de euros de 2025,45705.2,lectura,no,gov_10dd_edpt1
+1996,cambio_deuda.intereses,millones de euros de 2025,47756.0,lectura,no,gov_10dd_edpt1
+1997,cambio_deuda.intereses,millones de euros de 2025,44604.7,lectura,no,gov_10dd_edpt1
+1998,cambio_deuda.intereses,millones de euros de 2025,41698.3,lectura,no,gov_10dd_edpt1
+1999,cambio_deuda.intereses,millones de euros de 2025,36529.6,lectura,no,gov_10dd_edpt1
+2000,cambio_deuda.intereses,millones de euros de 2025,35633.3,lectura,no,gov_10dd_edpt1
+2001,cambio_deuda.intereses,millones de euros de 2025,34760.8,lectura,no,gov_10dd_edpt1
+2002,cambio_deuda.intereses,millones de euros de 2025,31624.9,lectura,no,gov_10dd_edpt1
+2003,cambio_deuda.intereses,millones de euros de 2025,28474.3,lectura,no,gov_10dd_edpt1
+2004,cambio_deuda.intereses,millones de euros de 2025,25390.9,lectura,no,gov_10dd_edpt1
+2005,cambio_deuda.intereses,millones de euros de 2025,23078.1,lectura,no,gov_10dd_edpt1
+2006,cambio_deuda.intereses,millones de euros de 2025,22129.9,lectura,no,gov_10dd_edpt1
+2007,cambio_deuda.intereses,millones de euros de 2025,22480.4,lectura,no,gov_10dd_edpt1
+2008,cambio_deuda.intereses,millones de euros de 2025,22630.1,lectura,no,gov_10dd_edpt1
+2009,cambio_deuda.intereses,millones de euros de 2025,23624.3,lectura,no,gov_10dd_edpt1
+2010,cambio_deuda.intereses,millones de euros de 2025,26227.1,lectura,no,gov_10dd_edpt1
+2011,cambio_deuda.intereses,millones de euros de 2025,34137.3,lectura,no,gov_10dd_edpt1
+2012,cambio_deuda.intereses,millones de euros de 2025,40376.5,lectura,no,gov_10dd_edpt1
+2013,cambio_deuda.intereses,millones de euros de 2025,46867.8,lectura,no,gov_10dd_edpt1
+2014,cambio_deuda.intereses,millones de euros de 2025,47167.8,lectura,no,gov_10dd_edpt1
+2015,cambio_deuda.intereses,millones de euros de 2025,42643.2,lectura,no,gov_10dd_edpt1
+2016,cambio_deuda.intereses,millones de euros de 2025,39757.7,lectura,no,gov_10dd_edpt1
+2017,cambio_deuda.intereses,millones de euros de 2025,37235.6,lectura,no,gov_10dd_edpt1
+2018,cambio_deuda.intereses,millones de euros de 2025,36773.7,lectura,no,gov_10dd_edpt1
+2019,cambio_deuda.intereses,millones de euros de 2025,34587.0,lectura,no,gov_10dd_edpt1
+2020,cambio_deuda.intereses,millones de euros de 2025,30439.1,lectura,no,gov_10dd_edpt1
+2021,cambio_deuda.intereses,millones de euros de 2025,30912.5,lectura,no,gov_10dd_edpt1
+2022,cambio_deuda.intereses,millones de euros de 2025,35850.4,lectura,no,gov_10dd_edpt1
+2023,cambio_deuda.intereses,millones de euros de 2025,37753.1,lectura,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,millones de euros de 2025,39975.4,lectura,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,millones de euros de 2025,40314.0,lectura,no,gov_10dd_edpt1
+1995,cambio_deuda.activos,millones de euros de 2025,650.2,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.activos,millones de euros de 2025,14946.7,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.activos,millones de euros de 2025,-14466.6,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.activos,millones de euros de 2025,2730.4,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.activos,millones de euros de 2025,16409.4,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.activos,millones de euros de 2025,16716.2,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.activos,millones de euros de 2025,-2744.0,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.activos,millones de euros de 2025,16769.0,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.activos,millones de euros de 2025,-5996.7,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.activos,millones de euros de 2025,16187.6,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.activos,millones de euros de 2025,30751.5,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.activos,millones de euros de 2025,41411.3,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.activos,millones de euros de 2025,30755.0,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.activos,millones de euros de 2025,14864.6,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.activos,millones de euros de 2025,30761.5,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.activos,millones de euros de 2025,-19960.9,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.activos,millones de euros de 2025,-4133.8,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.activos,millones de euros de 2025,58930.1,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.activos,millones de euros de 2025,-758.8,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.activos,millones de euros de 2025,3115.9,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.activos,millones de euros de 2025,-20732.8,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.activos,millones de euros de 2025,-18383.8,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.activos,millones de euros de 2025,14954.6,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.activos,millones de euros de 2025,8095.2,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.activos,millones de euros de 2025,-15281.7,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.activos,millones de euros de 2025,15049.2,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.activos,millones de euros de 2025,43728.2,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.activos,millones de euros de 2025,17375.4,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,millones de euros de 2025,7969.7,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,millones de euros de 2025,10574.9,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,millones de euros de 2025,27847.3,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.ajustes,millones de euros de 2025,4742.0,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.ajustes,millones de euros de 2025,268.5,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.ajustes,millones de euros de 2025,2385.7,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.ajustes,millones de euros de 2025,-6061.0,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.ajustes,millones de euros de 2025,-1254.9,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.ajustes,millones de euros de 2025,-8342.9,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.ajustes,millones de euros de 2025,4642.9,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.ajustes,millones de euros de 2025,-12106.9,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.ajustes,millones de euros de 2025,-758.6,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.ajustes,millones de euros de 2025,-7025.4,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.ajustes,millones de euros de 2025,-9366.8,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.ajustes,millones de euros de 2025,-14070.6,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.ajustes,millones de euros de 2025,-13815.4,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.ajustes,millones de euros de 2025,-8120.2,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.ajustes,millones de euros de 2025,-20029.4,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.ajustes,millones de euros de 2025,-9011.0,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.ajustes,millones de euros de 2025,-8312.5,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.ajustes,millones de euros de 2025,25647.9,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.ajustes,millones de euros de 2025,27924.5,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.ajustes,millones de euros de 2025,-7428.2,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.ajustes,millones de euros de 2025,-15413.7,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.ajustes,millones de euros de 2025,-1828.5,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.ajustes,millones de euros de 2025,-11697.5,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.ajustes,millones de euros de 2025,-14742.8,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.ajustes,millones de euros de 2025,-13876.7,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.ajustes,millones de euros de 2025,-2140.9,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.ajustes,millones de euros de 2025,-43358.1,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.ajustes,millones de euros de 2025,-4291.7,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,millones de euros de 2025,14590.9,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,millones de euros de 2025,-16830.2,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,millones de euros de 2025,9474.0,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.variacion,millones de euros de 2025,68235.7,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.variacion,millones de euros de 2025,70893.4,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.variacion,millones de euros de 2025,25864.0,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.variacion,millones de euros de 2025,23609.3,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.variacion,millones de euros de 2025,28433.8,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.variacion,millones de euros de 2025,21454.4,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.variacion,millones de euros de 2025,7224.7,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.variacion,millones de euros de 2025,8441.9,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.variacion,millones de euros de 2025,-2113.8,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.variacion,millones de euros de 2025,10559.1,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.variacion,millones de euros de 2025,5115.6,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.variacion,millones de euros de 2025,-1843.6,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.variacion,millones de euros de 2025,-9873.2,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.variacion,millones de euros de 2025,72190.0,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.variacion,millones de euros de 2025,165922.8,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.variacion,millones de euros de 2025,102173.9,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.variacion,millones de euros de 2025,120667.5,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.variacion,millones de euros de 2025,237947.4,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.variacion,millones de euros de 2025,125643.9,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.variacion,millones de euros de 2025,76278.8,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.variacion,millones de euros de 2025,37014.5,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.variacion,millones de euros de 2025,40139.7,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.variacion,millones de euros de 2025,48401.7,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.variacion,millones de euros de 2025,31803.8,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.variacion,millones de euros de 2025,17914.1,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.variacion,millones de euros de 2025,148461.6,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.variacion,millones de euros de 2025,97435.5,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.variacion,millones de euros de 2025,84282.4,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.variacion,millones de euros de 2025,75686.4,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,millones de euros de 2025,46574.1,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,millones de euros de 2025,77651.3,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.deficit_primario,euros por habitante,215,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.deficit_primario,euros por habitante,102,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.deficit_primario,euros por habitante,-88,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.deficit_primario,euros por habitante,-199,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.deficit_primario,euros por habitante,-320,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.deficit_primario,euros por habitante,-320,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.deficit_primario,euros por habitante,-432,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.deficit_primario,euros por habitante,-419,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.deficit_primario,euros por habitante,-366,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.deficit_primario,euros por habitante,-377,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.deficit_primario,euros por habitante,-633,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.deficit_primario,euros por habitante,-845,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.deficit_primario,euros por habitante,-824,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.deficit_primario,euros por habitante,722,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.deficit_primario,euros por habitante,2205,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.deficit_primario,euros por habitante,1756,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.deficit_primario,euros por habitante,1648,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.deficit_primario,euros por habitante,1877,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.deficit_primario,euros por habitante,864,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.deficit_primario,euros por habitante,560,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.deficit_primario,euros por habitante,515,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.deficit_primario,euros por habitante,348,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.deficit_primario,euros por habitante,135,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.deficit_primario,euros por habitante,29,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.deficit_primario,euros por habitante,216,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.deficit_primario,euros por habitante,1833,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.deficit_primario,euros por habitante,1183,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.deficit_primario,euros por habitante,656,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.deficit_primario,euros por habitante,299,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,euros por habitante,255,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,euros por habitante,0,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.intereses,euros por habitante,573,lectura,no,gov_10dd_edpt1
+1996,cambio_deuda.intereses,euros por habitante,617,lectura,no,gov_10dd_edpt1
+1997,cambio_deuda.intereses,euros por habitante,588,lectura,no,gov_10dd_edpt1
+1998,cambio_deuda.intereses,euros por habitante,562,lectura,no,gov_10dd_edpt1
+1999,cambio_deuda.intereses,euros por habitante,503,lectura,no,gov_10dd_edpt1
+2000,cambio_deuda.intereses,euros por habitante,505,lectura,no,gov_10dd_edpt1
+2001,cambio_deuda.intereses,euros por habitante,511,lectura,no,gov_10dd_edpt1
+2002,cambio_deuda.intereses,euros por habitante,476,lectura,no,gov_10dd_edpt1
+2003,cambio_deuda.intereses,euros por habitante,437,lectura,no,gov_10dd_edpt1
+2004,cambio_deuda.intereses,euros por habitante,399,lectura,no,gov_10dd_edpt1
+2005,cambio_deuda.intereses,euros por habitante,371,lectura,no,gov_10dd_edpt1
+2006,cambio_deuda.intereses,euros por habitante,364,lectura,no,gov_10dd_edpt1
+2007,cambio_deuda.intereses,euros por habitante,376,lectura,no,gov_10dd_edpt1
+2008,cambio_deuda.intereses,euros por habitante,381,lectura,no,gov_10dd_edpt1
+2009,cambio_deuda.intereses,euros por habitante,396,lectura,no,gov_10dd_edpt1
+2010,cambio_deuda.intereses,euros por habitante,439,lectura,no,gov_10dd_edpt1
+2011,cambio_deuda.intereses,euros por habitante,568,lectura,no,gov_10dd_edpt1
+2012,cambio_deuda.intereses,euros por habitante,671,lectura,no,gov_10dd_edpt1
+2013,cambio_deuda.intereses,euros por habitante,785,lectura,no,gov_10dd_edpt1
+2014,cambio_deuda.intereses,euros por habitante,791,lectura,no,gov_10dd_edpt1
+2015,cambio_deuda.intereses,euros por habitante,719,lectura,no,gov_10dd_edpt1
+2016,cambio_deuda.intereses,euros por habitante,673,lectura,no,gov_10dd_edpt1
+2017,cambio_deuda.intereses,euros por habitante,637,lectura,no,gov_10dd_edpt1
+2018,cambio_deuda.intereses,euros por habitante,633,lectura,no,gov_10dd_edpt1
+2019,cambio_deuda.intereses,euros por habitante,600,lectura,no,gov_10dd_edpt1
+2020,cambio_deuda.intereses,euros por habitante,531,lectura,no,gov_10dd_edpt1
+2021,cambio_deuda.intereses,euros por habitante,553,lectura,no,gov_10dd_edpt1
+2022,cambio_deuda.intereses,euros por habitante,665,lectura,no,gov_10dd_edpt1
+2023,cambio_deuda.intereses,euros por habitante,735,lectura,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,euros por habitante,794,lectura,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,euros por habitante,817,lectura,no,gov_10dd_edpt1
+1995,cambio_deuda.activos,euros por habitante,8,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.activos,euros por habitante,193,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.activos,euros por habitante,-191,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.activos,euros por habitante,37,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.activos,euros por habitante,226,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.activos,euros por habitante,237,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.activos,euros por habitante,-40,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.activos,euros por habitante,252,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.activos,euros por habitante,-92,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.activos,euros por habitante,254,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.activos,euros por habitante,494,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.activos,euros por habitante,682,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.activos,euros por habitante,514,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.activos,euros por habitante,251,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.activos,euros por habitante,515,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.activos,euros por habitante,-334,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.activos,euros por habitante,-69,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.activos,euros por habitante,979,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.activos,euros por habitante,-13,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.activos,euros por habitante,52,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.activos,euros por habitante,-350,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.activos,euros por habitante,-311,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.activos,euros por habitante,256,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.activos,euros por habitante,139,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.activos,euros por habitante,-265,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.activos,euros por habitante,262,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.activos,euros por habitante,782,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.activos,euros por habitante,322,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,euros por habitante,155,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,euros por habitante,210,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,euros por habitante,564,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.ajustes,euros por habitante,59,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.ajustes,euros por habitante,3,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.ajustes,euros por habitante,31,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.ajustes,euros por habitante,-82,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.ajustes,euros por habitante,-17,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.ajustes,euros por habitante,-118,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.ajustes,euros por habitante,68,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.ajustes,euros por habitante,-182,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.ajustes,euros por habitante,-12,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.ajustes,euros por habitante,-110,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.ajustes,euros por habitante,-151,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.ajustes,euros por habitante,-232,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.ajustes,euros por habitante,-231,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.ajustes,euros por habitante,-137,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.ajustes,euros por habitante,-336,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.ajustes,euros por habitante,-151,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.ajustes,euros por habitante,-138,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.ajustes,euros por habitante,426,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.ajustes,euros por habitante,468,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.ajustes,euros por habitante,-124,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.ajustes,euros por habitante,-260,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.ajustes,euros por habitante,-31,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.ajustes,euros por habitante,-200,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.ajustes,euros por habitante,-254,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.ajustes,euros por habitante,-241,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.ajustes,euros por habitante,-37,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.ajustes,euros por habitante,-775,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.ajustes,euros por habitante,-80,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,euros por habitante,284,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,euros por habitante,-334,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,euros por habitante,192,lectura,no,gov_10dd_edpt3
+1995,cambio_deuda.variacion,euros por habitante,855,lectura,no,gov_10dd_edpt3
+1996,cambio_deuda.variacion,euros por habitante,916,lectura,no,gov_10dd_edpt3
+1997,cambio_deuda.variacion,euros por habitante,341,lectura,no,gov_10dd_edpt3
+1998,cambio_deuda.variacion,euros por habitante,318,lectura,no,gov_10dd_edpt3
+1999,cambio_deuda.variacion,euros por habitante,392,lectura,no,gov_10dd_edpt3
+2000,cambio_deuda.variacion,euros por habitante,304,lectura,no,gov_10dd_edpt3
+2001,cambio_deuda.variacion,euros por habitante,106,lectura,no,gov_10dd_edpt3
+2002,cambio_deuda.variacion,euros por habitante,127,lectura,no,gov_10dd_edpt3
+2003,cambio_deuda.variacion,euros por habitante,-32,lectura,no,gov_10dd_edpt3
+2004,cambio_deuda.variacion,euros por habitante,166,lectura,no,gov_10dd_edpt3
+2005,cambio_deuda.variacion,euros por habitante,82,lectura,no,gov_10dd_edpt3
+2006,cambio_deuda.variacion,euros por habitante,-30,lectura,no,gov_10dd_edpt3
+2007,cambio_deuda.variacion,euros por habitante,-165,lectura,no,gov_10dd_edpt3
+2008,cambio_deuda.variacion,euros por habitante,1217,lectura,no,gov_10dd_edpt3
+2009,cambio_deuda.variacion,euros por habitante,2780,lectura,no,gov_10dd_edpt3
+2010,cambio_deuda.variacion,euros por habitante,1710,lectura,no,gov_10dd_edpt3
+2011,cambio_deuda.variacion,euros por habitante,2009,lectura,no,gov_10dd_edpt3
+2012,cambio_deuda.variacion,euros por habitante,3952,lectura,no,gov_10dd_edpt3
+2013,cambio_deuda.variacion,euros por habitante,2104,lectura,no,gov_10dd_edpt3
+2014,cambio_deuda.variacion,euros por habitante,1278,lectura,no,gov_10dd_edpt3
+2015,cambio_deuda.variacion,euros por habitante,624,lectura,no,gov_10dd_edpt3
+2016,cambio_deuda.variacion,euros por habitante,679,lectura,no,gov_10dd_edpt3
+2017,cambio_deuda.variacion,euros por habitante,828,lectura,no,gov_10dd_edpt3
+2018,cambio_deuda.variacion,euros por habitante,548,lectura,no,gov_10dd_edpt3
+2019,cambio_deuda.variacion,euros por habitante,311,lectura,no,gov_10dd_edpt3
+2020,cambio_deuda.variacion,euros por habitante,2589,lectura,no,gov_10dd_edpt3
+2021,cambio_deuda.variacion,euros por habitante,1742,lectura,no,gov_10dd_edpt3
+2022,cambio_deuda.variacion,euros por habitante,1563,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.variacion,euros por habitante,1474,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,euros por habitante,925,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,euros por habitante,1573,lectura,no,gov_10dd_edpt3
