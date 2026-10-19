@@ -43,6 +43,7 @@
         <li><a href="#que">Qué legislatura y qué documentos</a></li>
         <li><a href="#documentos">Los documentos, uno por uno</a></li>
         <li><a href="#promesa">Qué cuenta como promesa</a></li>
+        <li><a href="#clasificacion">Quién clasifica y cómo se comprueba</a></li>
         <li><a href="#hechos">Qué hechos se muestran</a></li>
         <li><a href="#relacion">Cómo se relaciona un hecho con una promesa</a></li>
         <li><a href="#sin-veredicto">Por qué no hay veredicto</a></li>
@@ -96,6 +97,17 @@
         <li>Los casos dudosos se deciden con estas reglas y llevan una nota con el motivo, a la vista.</li>
       </ul>
       <p>La regla se aplica a todos los documentos completos, de principio a fin, antes de buscar ningún hecho. Publicamos cuántas promesas salen de cada documento y cuántas frases se descartaron, y por qué. Si alguien encuentra una promesa que falta o una que no lo es, puede comunicarlo y se corrige a la vista.</p>
+    </section>
+
+    <section id="clasificacion">
+      <h2>Quién clasifica y cómo se comprueba</h2>
+      <p>Las frases de los documentos las clasifican modelos de inteligencia artificial (Claude, de Anthropic), siguiendo unas <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/blob/main/codigo/promesas/INSTRUCCIONES.md">instrucciones escritas</a> que aplican estas reglas y que son las mismas para todos los documentos y todos los partidos. Para que el resultado no dependa de un solo clasificador, se hace así:</p>
+      <ul>
+        <li><strong>Doble clasificación.</strong> Cada frase se clasifica dos veces, por separado y sin que una clasificación vea la otra. En los 17 documentos de la XV Legislatura (14.295 frases y títulos) coincidieron en el 97,2 % de los casos sobre si una frase es o no una promesa (un índice kappa de 0,93, donde 1 es acuerdo total).</li>
+        <li><strong>Arbitraje.</strong> Los 401 desacuerdos los decidió un tercer clasificador que no sabía cuál era cada clasificación, aplicando las mismas reglas. Le dio la razón a la primera 191 veces, a la segunda 208 y a ninguna 2.</li>
+        <li><strong>Etiquetas.</strong> En el arbitraje también se corrigieron las etiquetas que no eran fieles a la frase, por ejemplo las que añadían un plazo o un adjetivo que el texto no dice.</li>
+      </ul>
+      <p>Un acuerdo alto no garantiza que no haya errores: los casos más difíciles están en la frontera entre una promesa y una frase demasiado general para comprobarla. Por eso cada promesa lleva su cita literal y su página, y cualquier error que se nos señale se corrige y queda registrado.</p>
     </section>
 
     <section id="hechos">
