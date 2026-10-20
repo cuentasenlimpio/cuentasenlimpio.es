@@ -11,10 +11,11 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `descargar_documentos.py` | Descarga los programas y acuerdos de la página de promesas desde su copia en el Internet Archive y comprueba que su huella sha256 es la verificada. |
 | `promesas/documentos.json` | El catálogo de esos documentos: partido, título, páginas, dirección original, copia del archivo, huella y notas. |
 | `promesas/INSTRUCCIONES.md` | Las reglas exactas con las que se clasifican las frases de esos documentos (promesa o no, y por qué). |
+| `px.py` | Lector de los ficheros PC-Axis de la Seguridad Social (afiliación), sin dependencias. |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
 | `previsiones.json` | De qué publicación sale cada previsión (AIReF, Banco de España, Comisión Europea, FMI) y cada objetivo del Gobierno, con su fichero y su página. Las que vienen de hojas de cálculo se comprueban solas contra el fichero. |
 | `explicaciones.json` | Los textos de los botones (i): qué implica cada indicador y cuánto tarda en notarse, con la fuente de cada afirmación. |
-| `certificados/` | El certificado intermedio de la FNMT que el servidor de la AIReF no envía; sin él, las descargas fallan. Es público. |
+| `certificados/` | El certificado intermedio de la FNMT que los servidores de la AIReF y del Tesoro no envían; sin él, las descargas fallan. Es público. |
 | `gobiernos.json` | Fechas de nombramiento de cada Presidente del Gobierno, con su Real Decreto en el BOE. Es una capa opcional de los gráficos: sitúa en el tiempo, no atribuye resultados. |
 
 Solo usan la biblioteca estándar de Python 3.12 o posterior: no hay que instalar nada.

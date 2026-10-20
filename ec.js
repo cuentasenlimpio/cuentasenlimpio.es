@@ -345,10 +345,10 @@ const EC = (() => {
 
   // ---- Barras horizontales ordenadas de mayor a menor, con el valor al final de cada barra ----
   // `filas`: [{nombre, valor}]. En pantallas estrechas el nombre va encima de la barra.
-  function barrasH(contenedor, filas, { formato, sufijo = "" }) {
+  function barrasH(contenedor, filas, { formato, sufijo = "", ordenar = true }) {
     const estrecho = contenedor.clientWidth < 520;
     const fila = estrecho ? 40 : 30;
-    const orden = [...filas].sort((a, b) => b.valor - a.valor);
+    const orden = ordenar ? [...filas].sort((a, b) => b.valor - a.valor) : [...filas];
     // Para lectores de pantalla: el gráfico es una imagen, así que su nombre lleva todas las partidas con su valor.
     const base = contenedor.dataset.etiqueta || (contenedor.dataset.etiqueta = contenedor.getAttribute("aria-label") || "");
     contenedor.setAttribute("aria-label", `${base}: ${orden.map((f) => `${f.nombre}, ${formato(f.valor)}${sufijo}`).join("; ")}.`);

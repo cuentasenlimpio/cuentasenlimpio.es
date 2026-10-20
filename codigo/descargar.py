@@ -70,6 +70,7 @@ SEPG = "https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/Presupuestos/acce
 
 
 # Otras fuentes (páginas y CSV): se guardan tal cual y el script de construcción extrae lo que necesita.
+SS_PX = "https://w6.seg-social.es/PXWeb/Resources/PX/Databases/Afiliados%20en%20alta%20laboral/"
 IGAE_CN = "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/"
 PAGINAS = [
     {"fuente": "Congreso de los Diputados", "tabla": "legislaturas",
@@ -121,6 +122,43 @@ PAGINAS = [
                    ("GGXWDG_NGDP", "deuda bruta de las administraciones públicas en % del PIB"),
                    ("GGR_NGDP", "ingresos de las administraciones públicas en % del PIB"),
                    ("GGX_NGDP", "gastos de las administraciones públicas en % del PIB"))],
+    # ---- La economía detrás de las cuentas (desde el 20/10/2026) ----
+    *[{"fuente": "INE", "tabla": f"ine_{c.lower()}", "opcional": True, "nombre": n,
+       "url": f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{c}?nult=5000", "extension": "json"}
+      for c, n in (("EPA387796", "EPA: ocupados (miles)"), ("EPA387800", "EPA: parados (miles)"),
+                   ("EPA423474", "EPA: tasa de paro (%)"), ("EPA388079", "EPA: tasa de actividad (%)"),
+                   ("EPA441060", "EPA: tasa de empleo (%)"),
+                   ("IPC290750", "IPC: índice general, variación anual (%)"),
+                   ("IPC292510", "IPC: subyacente, variación anual (%)"),
+                   ("CNTR6654", "PIB: índice de volumen encadenado, variación anual (ajustado de estacionalidad y calendario)"),
+                   ("CNTR6721", "PIB: índice de volumen encadenado, no ajustado"),
+                   ("IDB53241", "Tasa de dependencia (%)"), ("IDB53262", "Tasa de dependencia de mayores de 64 años (%)"),
+                   ("PROP7465", "Proyección de la tasa de dependencia (%)"),
+                   ("PROP7467", "Proyección de la tasa de dependencia de mayores de 64 años (%)"))],
+    {"fuente": "Seguridad Social", "tabla": "ss_afiliados_medios", "opcional": True,
+     "nombre": "Afiliados medios por sexo, edad y régimen (PX-Web, 01m)",
+     "url": SS_PX + "Afiliados%20Medios/01m.%20Por%20sexo,%20edad%20y%20regimen.px", "extension": "px"},
+    {"fuente": "Seguridad Social", "tabla": "ss_afiliados_desest", "opcional": True,
+     "nombre": "Afiliados medios desestacionalizados (PX-Web, 10mb25, desde enero de 2021)",
+     "url": SS_PX + "Afiliados%20Medios/10mb25.%20Afiliados%20medios%20DESESTACIONALIZADOS%20por%20dependencia%20laboral%20y%20sector%20de%20actividad%20CNAE%2025%20(desde%20ene-21).px",
+     "extension": "px"},
+    {"fuente": "Seguridad Social", "tabla": "ss_afiliados_desest_09", "opcional": True,
+     "nombre": "Afiliados medios desestacionalizados (PX-Web, 10mb09, de enero de 2008 a diciembre de 2025)",
+     "url": SS_PX + "Afiliados%20Medios/10mb09.%20Afiliados%20medios%20DESESTACIONALIZADOS%20por%20dependencia%20laboral%20y%20sector%20de%20actividad%20CNAE%2009%20(ene-08%20a%20dic-25).px",
+     "extension": "px"},
+    {"fuente": "BCE", "tabla": "bce_bono_10", "opcional": True,
+     "nombre": "Rentabilidad de la deuda pública a 10 años, España y Alemania (criterio de convergencia, media mensual)",
+     "url": "https://data-api.ecb.europa.eu/service/data/IRS/M.ES+DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&detail=dataonly",
+     "extension": "csv"},
+    {"fuente": "Tesoro Público", "tabla": "tesoro_tipo_medio_historico", "opcional": True,
+     "nombre": "Tipo de interés medio de la deuda del Estado en circulación, histórico mensual",
+     "url": "https://www.tesoro.es/documents/d/tesoro/historico_t-int-medio-xlsx", "extension": "xlsx"},
+    {"fuente": "Tesoro Público", "tabla": "tesoro_tipo_medio", "opcional": True,
+     "nombre": "Tipo de interés medio de la deuda del Estado en circulación (último año)",
+     "url": "https://www.tesoro.es/documents/d/tesoro/03-xlsx", "extension": "xlsx"},
+    {"fuente": "Tesoro Público", "tabla": "tesoro_vida_media", "opcional": True,
+     "nombre": "Vida media de la deuda del Estado",
+     "url": "https://www.tesoro.es/documents/d/tesoro/02-xlsx", "extension": "xlsx"},
     {"fuente": "IGAE", "tabla": "igae_cap_serie",
      "nombre": "Cuentas de las Administraciones públicas, serie anual desde 1995",
      "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/CAAP/CAP_Serie.xlsx",
@@ -128,13 +166,13 @@ PAGINAS = [
 ]
 
 
-# El servidor de la AIReF no envía el certificado intermedio de la FNMT («AC Componentes Informáticos») y Python
+# Los servidores de la AIReF y del Tesoro no envían el certificado intermedio de la FNMT («AC Componentes Informáticos») y Python
 # rechaza la conexión. Se añade ese intermedio (público, de http://www.cert.fnmt.es/certs/ACCOMP.crt) a los de
 # confianza del sistema solo para esas descargas: la cadena se sigue verificando hasta la raíz de la FNMT.
 def contexto_para(url):
     import ssl
     ctx = ssl.create_default_context()
-    if urllib.parse.urlparse(url).hostname.endswith("airef.es"):
+    if urllib.parse.urlparse(url).hostname.endswith(("airef.es", "tesoro.es")):
         ctx.load_verify_locations(cafile=str(pathlib.Path(__file__).resolve().parent / "certificados" / "fnmt-ac-componentes-informaticos.pem"))
     return ctx
 
@@ -187,6 +225,25 @@ def main():
             if pub.get("tabla"):
                 PAGINAS.append({"fuente": e["nombre"], "tabla": pub["tabla"], "opcional": True, "nombre": pub["titulo"],
                                 "url": pub["fichero"], "extension": pub["fichero"].rsplit(".", 1)[-1].lower()})
+
+    # Pensiones: el avance mensual de la Seguridad Social cambia de dirección cada mes; se busca en su página, que es fija.
+    try:
+        import html as html_
+        import re
+        pagina_pens = ("https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/"
+                       "EST23/ee1edbd1-84be-4848-91b1-f2e3e840dffe")
+        peticion = urllib.request.Request(pagina_pens, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"})
+        with urllib.request.urlopen(peticion, timeout=120) as r:
+            texto = r.read().decode("utf-8", errors="replace")
+        m = re.search(r'href="(/wps/wcm/connect/wss/[^"?]+_Avance\+mensual\.xlsx)\?', texto)
+        if m:
+            PAGINAS.append({"fuente": "Seguridad Social", "tabla": "ss_pensiones_avance", "opcional": True,
+                            "nombre": "Evolución mensual de las pensiones del sistema (avance mensual del INSS)",
+                            "url": "https://www.seg-social.es" + html_.unescape(m.group(1)) + "?MOD=AJPERES", "extension": "xlsx"})
+        else:
+            print("AVISO ss_pensiones_avance: no se encontró el enlace en la página")
+    except (urllib.error.URLError, TimeoutError) as error:
+        print(f"AVISO ss_pensiones_avance: no se pudo leer la página ({error})")
 
     for t in PAGINAS:
         peticion = urllib.request.Request(t["url"], headers={"User-Agent": "Mozilla/5.0 (cuentas del pais)"})

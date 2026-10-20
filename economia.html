@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>La economía detrás de las cuentas · Cuentas en limpio</title>
+  <meta name="description" content="Empleo, pensiones, precios, coste de la deuda, crecimiento y envejecimiento: los datos de la economía que mueven las cuentas públicas, con la fuente de cada cifra.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js" defer></script>
+  <script src="ec.js" defer></script>
+  <script src="economia.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="antetitulo">El dinero · el contexto</p>
+    <h1 class="pregunta">¿Qué pasa en la economía que mueve las cuentas?</h1>
+    <p class="respuesta">Las cotizaciones dependen de cuánta gente trabaja; el gasto en desempleo, del paro; las pensiones, de cuántas personas se jubilan; los intereses, de a cuánto se pide prestado; y la deuda en % del PIB, de cuánto crece la economía. Estos son esos datos, con la fuente de cada cifra.</p>
+    <p class="contabilidad">Son datos de registros y encuestas oficiales, no de contabilidad nacional. Coincidir en el tiempo no es causar: <a href="como-se-miente.html#causa">por qué</a>.</p>
+    <div id="capas"></div>
+    <div class="nota-capas" id="nota-capas"></div>
+
+    <section aria-labelledby="b1">
+      <h2 class="pregunta" id="b1">¿Cuánta gente trabaja?</h2>
+      <p class="respuesta" id="r-empleo"></p>
+      <section class="grafico" aria-labelledby="g-afi-t">
+        <h3 class="grafico-titulo" id="g-afi-t">Afiliados medios a la Seguridad Social, cada mes <button type="button" class="info" data-info="estacionalidad">i</button></h3>
+        <p class="grafico-explica">La línea gruesa es la serie oficial sin el efecto de la época del año; la fina, la cifra tal cual, que cae cada enero y cada agosto.</p>
+        <div class="lectura-año" id="g-afi-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-afi" role="img" aria-label="Afiliados medios a la Seguridad Social, cada mes"></div>
+        <p class="fuente-grafico" id="g-afi-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-epa-t">
+        <h3 class="grafico-titulo" id="g-epa-t">Tasas de la Encuesta de Población Activa, cada trimestre <button type="button" class="info" data-info="tres_cifras_empleo">i</button></h3>
+
+        <div class="lectura-año" id="g-epa-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-epa" role="img" aria-label="Tasas de la Encuesta de Población Activa, cada trimestre"></div>
+        <p class="fuente-grafico" id="g-epa-fuente"></p>
+      </section>
+
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Tres cifras de empleo que no miden lo mismo</h3>
+        <p>La <strong>afiliación</strong> cuenta relaciones laborales que cotizan a la Seguridad Social: quien tiene dos empleos por cuenta ajena cuenta dos veces. La <strong>EPA</strong> del INE es una encuesta que cuenta personas: está parado quien no trabaja, busca empleo y podría empezar en dos semanas, esté o no apuntado en una oficina. El <strong>paro registrado</strong> del SEPE cuenta las demandas de empleo inscritas, menos las que la norma excluye (por ejemplo, quien ya trabaja o busca un empleo de menos de 20 horas).</p>
+        <p>Por eso no cuadran entre sí, ni deben. El propio INE advierte de que las cifras que salen de registros administrativos dependen de normas que cambian y no forman series homogéneas.</p>
+      </div>
+      <div class="dos-columnas">
+      <section class="grafico" aria-labelledby="g-reg-t">
+        <h3 class="grafico-titulo" id="g-reg-t">Afiliados por régimen, último mes</h3>
+
+        <div class="lectura-año" id="g-reg-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-reg" role="img" aria-label="Afiliados por régimen, último mes"></div>
+        <p class="fuente-grafico" id="g-reg-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-edad-t">
+        <h3 class="grafico-titulo" id="g-edad-t">Afiliados por edad, último mes</h3>
+
+        <div class="lectura-año" id="g-edad-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-edad" role="img" aria-label="Afiliados por edad, último mes"></div>
+        <p class="fuente-grafico" id="g-edad-fuente"></p>
+      </section>
+
+      </div>
+      <div class="dos-columnas">
+      <section class="grafico" aria-labelledby="g-cruce-afi-t">
+        <h3 class="grafico-titulo" id="g-cruce-afi-t">Afiliados medios de cada año</h3>
+        <p class="grafico-explica">Media de los doce meses.</p>
+        <div class="lectura-año" id="g-cruce-afi-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-cruce-afi" role="img" aria-label="Afiliados medios de cada año"></div>
+        <p class="fuente-grafico" id="g-cruce-afi-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-cruce-cot-t">
+        <h3 class="grafico-titulo" id="g-cruce-cot-t">Cotizaciones sociales de cada año, sin inflación</h3>
+        <p class="grafico-explica">Las de la página «De dónde sale».</p>
+        <div class="lectura-año" id="g-cruce-cot-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-cruce-cot" role="img" aria-label="Cotizaciones sociales de cada año, sin inflación"></div>
+        <p class="fuente-grafico" id="g-cruce-cot-fuente"></p>
+      </section>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="b2">
+      <h2 class="pregunta" id="b2">¿Cuántas pensiones hay y cuánto cuestan?</h2>
+      <p class="respuesta" id="r-pensiones"></p>
+      <section class="grafico" aria-labelledby="g-pens-t">
+        <h3 class="grafico-titulo" id="g-pens-t">Número de pensiones contributivas</h3>
+        <p class="grafico-explica">En diciembre de cada año y, el último, mes a mes.</p>
+        <div class="lectura-año" id="g-pens-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-pens" role="img" aria-label="Número de pensiones contributivas"></div>
+        <p class="fuente-grafico" id="g-pens-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-afipen-t">
+        <h3 class="grafico-titulo" id="g-afipen-t">Afiliados por pensión <button type="button" class="info" data-info="afiliados_por_pension">i</button></h3>
+        <p class="grafico-explica">Afiliados medios del mes ÷ pensiones en vigor el día 1 de ese mes. Es un cálculo nuestro: no hay una cifra oficial.</p>
+        <div class="lectura-año" id="g-afipen-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-afipen" role="img" aria-label="Afiliados por pensión"></div>
+        <p class="fuente-grafico" id="g-afipen-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b3">
+      <h2 class="pregunta" id="b3">¿Suben los precios?</h2>
+      <p class="respuesta" id="r-ipc"></p>
+      <section class="grafico" aria-labelledby="g-ipc-t">
+        <h3 class="grafico-titulo" id="g-ipc-t">IPC: variación sobre el mismo mes del año anterior <button type="button" class="info" data-info="ipc">i</button></h3>
+
+        <div class="lectura-año" id="g-ipc-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-ipc" role="img" aria-label="IPC: variación sobre el mismo mes del año anterior"></div>
+        <p class="fuente-grafico" id="g-ipc-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b4">
+      <h2 class="pregunta" id="b4">¿Cuánto cuesta pedir prestado?</h2>
+      <p class="respuesta" id="r-deuda"></p>
+      <section class="grafico" aria-labelledby="g-bono-t">
+        <h3 class="grafico-titulo" id="g-bono-t">Rentabilidad del bono a 10 años, España y Alemania <button type="button" class="info" data-info="prima_riesgo">i</button></h3>
+
+        <div class="lectura-año" id="g-bono-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-bono" role="img" aria-label="Rentabilidad del bono a 10 años, España y Alemania"></div>
+        <p class="fuente-grafico" id="g-bono-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-prima-t">
+        <h3 class="grafico-titulo" id="g-prima-t">Prima de riesgo: diferencia entre los dos, en puntos básicos</h3>
+
+        <div class="lectura-año" id="g-prima-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-prima" role="img" aria-label="Prima de riesgo: diferencia entre los dos, en puntos básicos"></div>
+        <p class="fuente-grafico" id="g-prima-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-tesoro-t">
+        <h3 class="grafico-titulo" id="g-tesoro-t">Tipo de interés medio de toda la deuda viva del Estado <button type="button" class="info" data-info="tipo_medio">i</button></h3>
+        <p class="grafico-explica">Los tipos nuevos (las letras, a menos de un año) se mueven deprisa; el tipo medio de toda la deuda, despacio.</p>
+        <div class="lectura-año" id="g-tesoro-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-tesoro" role="img" aria-label="Tipo de interés medio de toda la deuda viva del Estado"></div>
+        <p class="fuente-grafico" id="g-tesoro-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b5">
+      <h2 class="pregunta" id="b5">¿Cuánto crece la economía?</h2>
+      <p class="respuesta" id="r-pib"></p>
+      <section class="grafico" aria-labelledby="g-pib-t">
+        <h3 class="grafico-titulo" id="g-pib-t">PIB en volumen: variación sobre el mismo trimestre del año anterior <button type="button" class="info" data-info="pib_real">i</button></h3>
+
+        <div class="lectura-año" id="g-pib-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-pib" role="img" aria-label="PIB en volumen: variación sobre el mismo trimestre del año anterior"></div>
+        <p class="fuente-grafico" id="g-pib-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b6">
+      <h2 class="pregunta" id="b6">¿Cómo envejece la población?</h2>
+      <p class="respuesta" id="r-dep"></p>
+      <section class="grafico" aria-labelledby="g-dep-t">
+        <h3 class="grafico-titulo" id="g-dep-t">Tasa de dependencia: menores de 16 y mayores de 64 por cada 100 personas de 16 a 64 <button type="button" class="info" data-info="dependencia">i</button></h3>
+        <p class="grafico-explica">Hasta el último año, dato; después, la proyección del INE (discontinua).</p>
+        <div class="lectura-año" id="g-dep-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-dep" role="img" aria-label="Tasa de dependencia: menores de 16 y mayores de 64 por cada 100 personas de 16 a 64"></div>
+        <p class="fuente-grafico" id="g-dep-fuente"></p>
+      </section>
+
+    </section>
+
+    <details class="plegable ficha" open>
+      <summary>Comprobaciones</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

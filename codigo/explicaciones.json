@@ -536,5 +536,142 @@
     "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_by_function_%E2%80%93_COFOG"
    }
   ]
+ },
+ "estacionalidad": {
+  "titulo": "Por qué cae la afiliación en enero y en agosto",
+  "texto": [
+   "Cada año, la afiliación baja en enero y en agosto y sube en primavera y a comienzos del verano: los factores estacionales oficiales de 2026 marcan enero como el mes más bajo y junio como el más alto. Es la época del año, no necesariamente un cambio de tendencia. En 2026, por ejemplo, agosto restó 162.840 afiliados medios y enero, 270.782.",
+   "Para ver la tendencia, la Seguridad Social publica una serie «desestacionalizada» que quita ese efecto con un método estadístico estándar (TRAMO-SEATS). Es la línea gruesa del gráfico; no la calculamos nosotros.",
+   "Los afiliados medios son la media de los días hábiles del mes; el último día del mes da otra cifra."
+  ],
+  "fuentes": [
+   {
+    "texto": "Seguridad Social, Informe Metodológico Estandarizado de afiliación (2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   },
+   {
+    "texto": "Seguridad Social, metodología del ajuste estacional (2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   }
+  ]
+ },
+ "tres_cifras_empleo": {
+  "titulo": "Afiliación, EPA y paro registrado",
+  "texto": [
+   "La afiliación cuenta situaciones que obligan a cotizar, no personas: «la misma persona se contabiliza tantas veces como situaciones de cotización tenga» (salvo autónomos, hogar y agrario por cuenta ajena, que cuentan personas). No incluye a quien cobra el paro ni a los fijos discontinuos inactivos.",
+   "La EPA es una encuesta trimestral a hogares. Está ocupado quien trabajó al menos una hora la semana de referencia, y parado quien no trabajó, buscó empleo y podría empezar en dos semanas. La tasa de actividad es el porcentaje de activos (ocupados más parados) sobre la población de 16 y más años; la de empleo, el de ocupados; la de paro, el de parados sobre los activos.",
+   "El paro registrado del SEPE cuenta las demandas de empleo pendientes el último día del mes, menos las que excluye una orden de 1985: entre otras, quien ya trabaja, quien busca un empleo de menos de tres meses o de menos de 20 horas y los estudiantes menores de 25 años. Por eso hay más demandantes (4,2 millones en septiembre de 2026) que parados registrados (2,4 millones)."
+  ],
+  "fuentes": [
+   {
+    "texto": "Seguridad Social, Informe Metodológico Estandarizado de afiliación (2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   },
+   {
+    "texto": "INE, resumen metodológico de la EPA",
+    "url": "https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf"
+   },
+   {
+    "texto": "SEPE, introducción a la estadística de empleo (septiembre de 2026)",
+    "url": "https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf"
+   }
+  ]
+ },
+ "afiliados_por_pension": {
+  "titulo": "Afiliados por pensión",
+  "texto": [
+   "No hay una cifra oficial de «afiliados por pensionista»: hay que calcularla, y el resultado depende de qué se divide entre qué. Aquí usamos afiliados medios del mes entre pensiones contributivas en vigor el día 1 de ese mes. Si se divide entre pensionistas (personas), sale más: en septiembre de 2026, 2,35 en lugar de 2,13, porque hay personas que cobran dos pensiones (de media, 1,11 por pensionista).",
+   "Es una forma sencilla de ver cuántos cotizantes hay por cada pensión, pero no es el equilibrio del sistema: las cotizaciones dependen de los salarios y de los tipos, las pensiones de su cuantía, y parte del gasto se paga con transferencias del Estado."
+  ],
+  "fuentes": [
+   {
+    "texto": "Seguridad Social, pensiones y pensionistas (resumen de datos, septiembre de 2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST23/EST24"
+   },
+   {
+    "texto": "Seguridad Social, Informe Metodológico Estandarizado de afiliación (2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   }
+  ]
+ },
+ "ipc": {
+  "titulo": "IPC general y subyacente",
+  "texto": [
+   "El IPC mide cómo cambian los precios de una cesta de lo que compran los hogares. La cifra habitual compara con el mismo mes del año anterior.",
+   "La subyacente es, en la etiqueta oficial del INE, el «general sin alimentos no elaborados ni productos energéticos»: quita lo que más sube y baja de un mes a otro, para ver la tendencia.",
+   "En las cuentas públicas, la inflación sube la recaudación aunque no cambie ninguna ley (ver «progresividad en frío») y encarece lo que compran las administraciones."
+  ],
+  "fuentes": [
+   {
+    "texto": "INE, IPC subyacente, tabla 76130",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/IPC292510?nult=1"
+   },
+   {
+    "texto": "Banco de España, Documento Ocasional 2422 (2024)",
+    "url": "https://repositorio.bde.es/bitstream/123456789/37393/4/do2422e.pdf"
+   }
+  ]
+ },
+ "prima_riesgo": {
+  "titulo": "Bono a 10 años y prima de riesgo",
+  "texto": [
+   "La rentabilidad del bono a 10 años es el interés que piden los inversores por prestar al Estado durante diez años. Usamos la serie del BCE para la convergencia del euro, que mide igual a todos los países (media mensual).",
+   "La prima de riesgo es la diferencia con Alemania, que se toma como referencia. No la publica ninguna institución como serie: la calculamos restando, por eso es una lectura. 100 puntos básicos son un punto porcentual."
+  ],
+  "decalaje": "Lo que se paga por la deuda nueva solo afecta a la parte que se emite o se renueva cada año. El tipo medio de toda la deuda se mueve mucho más despacio (gráfico de abajo).",
+  "fuentes": [
+   {
+    "texto": "BCE, estadísticas de tipos de interés a largo plazo",
+    "url": "https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/long_term_interest_rates/html/index.en.html"
+   }
+  ]
+ },
+ "tipo_medio": {
+  "titulo": "El tipo medio de la deuda viva",
+  "texto": [
+   "Es el interés medio de toda la deuda del Estado en circulación, con el tipo al que se emitió cada título. Como cada mes solo vence una parte, una subida de tipos tarda años en notarse entera: tras la subida del BCE, las letras pasaron del 0,73 % en 2022 al 3,48 % en 2023, y el tipo medio de toda la deuda solo del 1,73 % al 2,45 % hasta septiembre de 2026.",
+   "Es la deuda del Estado, no la de todas las administraciones; es la mayor parte, pero no toda."
+  ],
+  "decalaje": "La vida media de la deuda del Estado es de unos ocho años (7,85 en septiembre de 2026).",
+  "fuentes": [
+   {
+    "texto": "Tesoro Público, tipo de interés medio de la deuda del Estado",
+    "url": "https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales"
+   }
+  ]
+ },
+ "pib_real": {
+  "titulo": "PIB en volumen",
+  "texto": [
+   "Es el PIB descontando la subida de precios: cuánto más (o menos) produce la economía. La variación compara cada trimestre con el mismo del año anterior, con la serie ajustada de estacionalidad y calendario del INE.",
+   "En las cuentas públicas importa por partida doble: con más actividad se recauda más y se paga menos paro, y la deuda pesa menos sobre un PIB mayor (el efecto bola de nieve, en la página de cuentas)."
+  ],
+  "fuentes": [
+   {
+    "texto": "INE, Contabilidad Nacional Trimestral, PIB (índices de volumen encadenados)",
+    "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/CNTR6654?nult=1"
+   },
+   {
+    "texto": "BCE, Financial Stability Review, noviembre de 2021",
+    "url": "https://www.ecb.europa.eu/pub/financial-stability/fsr/focus/2021/html/ecb.fsrbox202111_01~f37aaca9fb.en.html"
+   }
+  ]
+ },
+ "dependencia": {
+  "titulo": "Tasa de dependencia",
+  "texto": [
+   "El INE la define como el cociente entre la población menor de 16 años o mayor de 64 y la población de 16 a 64 años, por cien. No dice cuántas personas trabajan: es una relación entre edades.",
+   "Importa para las cuentas porque el gasto en pensiones, sanidad y cuidados depende sobre todo de cuántas personas mayores hay. La proyección del INE supone que siguen las tendencias recientes; si cambian la natalidad o la migración, cambia la cifra."
+  ],
+  "fuentes": [
+   {
+    "texto": "INE, glosario: tasa de dependencia",
+    "url": "https://www.ine.es/DEFIne/es/concepto.htm?c=5098"
+   },
+   {
+    "texto": "Comisión Europea, 2024 Ageing Report, ficha de España",
+    "url": "https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf"
+   }
+  ]
  }
 }

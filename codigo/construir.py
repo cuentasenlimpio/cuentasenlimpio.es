@@ -21,6 +21,7 @@ import shutil
 import zipfile
 
 from xlsx import hojas
+from px import leer_px
 
 CODIGO = pathlib.Path(__file__).resolve().parent
 # Descargas y manifiesto: junto al código o en CUENTAS_DATOS. La web se escribe en CUENTAS_WEB (por defecto, web/ del
@@ -717,6 +718,200 @@ def ampliar_ingresos_igae(ingresos, descargas, pib, deflactor, base, poblacion):
     return comprobaciones
 
 
+# ---- La economía detrás de las cuentas (desde el 20/10/2026) ----
+MESES_CORTOS = {"Ene": 1, "Feb": 2, "Mar": 3, "Abr": 4, "May": 5, "Jun": 6, "Jul": 7, "Ago": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dic": 12}
+MESES_LARGOS = {m.capitalize(): i + 1 for i, m in enumerate(MESES)}
+
+
+def _ine(descargas, codigo):
+    """Serie del INE (Tempus): lista de (periodo, valor), con periodo «AAAA-MM», «AAAATn» o «AAAA»."""
+    k = f"ine_{codigo.lower()}"
+    if k not in descargas:
+        return []
+    d = json.loads((AQUI / descargas[k]["fichero"]).read_text())
+    salida = []
+    for x in d["Data"]:
+        if x.get("Valor") is None:
+            continue
+        p_, a = x["FK_Periodo"], x["Anyo"]
+        periodo = f"{a}-{p_:02d}" if 1 <= p_ <= 12 else f"{a}T{p_ - 18}" if 19 <= p_ <= 22 else str(a)
+        salida.append((periodo, x["Valor"]))
+    return sorted(salida)
+
+
+def construir_economia(descargas, ingresos):
+    comprobaciones = []
+    eco = {}
+
+    # 1. Afiliación: bruta (01m, desde 2012) y desestacionalizada oficial (10mb09 hasta 2020, 10mb25 desde 2021).
+    if "ss_afiliados_medios" in descargas:
+        px = leer_px(AQUI / descargas["ss_afiliados_medios"]["fichero"])
+        periodos = px["valores"]["Periodo"]
+        total = lambda per, reg="Todos los Regimenes", edad="Total Edad": px["celda"](
+            Periodo=per, **{"Tramos de edad": edad, "Regímenes": reg, "Sexo": "Total Sexo"})
+        bruta = {f"{p_[:4]}-{p_[4:]}": round(total(p_)) for p_ in periodos}
+        desest = {}
+        for clave in ("ss_afiliados_desest_09", "ss_afiliados_desest"):
+            if clave in descargas:
+                d_ = leer_px(AQUI / descargas[clave]["fichero"])
+                h = d_["variables"][2]
+                for p_ in d_["valores"]["Periodo"]:
+                    if clave == "ss_afiliados_desest_09" and int(p_[:4]) >= 2021:
+                        continue
+                    desest[f"{p_[:4]}-{p_[4:]}"] = round(d_["celda"](Periodo=p_, Sector="Total", **{h: "Total"}))
+        meses = sorted(set(bruta) | set(desest))
+        ult = periodos[-1]
+        regimenes = [("REGIMEN GENERAL", "Régimen general (sin agrario ni hogar)"), ("R.G.(S.E.AGRARIO)", "Agrario (dentro del general)"),
+                     ("R.G.(S.E. EM. HOGAR)", "Empleo del hogar (dentro del general)"), ("REG. ESP. AUTONOMOS", "Autónomos"),
+                     ("R.E.MAR(CUENTA AJENA)", "Mar, cuenta ajena"), ("R.E.MAR(C. PROPIA)", "Mar, cuenta propia"),
+                     ("R.E. MINERIA CARBON", "Minería del carbón")]
+        por_regimen = [{"nombre": n, "valor": round(total(ult, reg=r))} for r, n in regimenes]
+        suma = sum(x["valor"] for x in por_regimen)
+        edades = [e for e in px["valores"]["Tramos de edad"] if e != "Total Edad"]
+        por_edad = [{"nombre": e.replace("Entre ", "").replace("Mas de 64 años", "65 y más"), "valor": round(total(ult, edad=e))} for e in edades]
+        # Media anual (años completos), para cruzar con las cotizaciones.
+        anual = {}
+        for a in sorted({int(m[:4]) for m in bruta}):
+            vals = [bruta[f"{a}-{k:02d}"] for k in range(1, 13) if f"{a}-{k:02d}" in bruta]
+            if len(vals) == 12:
+                anual[a] = round(sum(vals) / 12)
+        eco["afiliacion"] = {
+            "meses": meses, "bruta": [bruta.get(m) for m in meses], "desest": [desest.get(m) for m in meses],
+            "ultimo": f"{ult[:4]}-{ult[4:]}", "por_regimen": por_regimen, "por_edad": por_edad,
+            "anual": {"años": list(anual), "afiliados": list(anual.values())},
+        }
+        comprobaciones.append({"que": "¿Los regímenes de la Seguridad Social suman el total de afiliados?",
+                               "resultado": "Sí" if abs(suma - round(total(ult))) <= len(regimenes) else f"No: {es(suma)} frente a {es(total(ult))}",
+                               "ok": abs(suma - round(total(ult))) <= len(regimenes)})
+        # Las dos series desestacionalizadas (CNAE 2009 y CNAE 2025) en sus años comunes.
+        if "ss_afiliados_desest_09" in descargas and "ss_afiliados_desest" in descargas:
+            a09 = leer_px(AQUI / descargas["ss_afiliados_desest_09"]["fichero"])
+            a25 = leer_px(AQUI / descargas["ss_afiliados_desest"]["fichero"])
+            comunes = sorted(set(a09["valores"]["Periodo"]) & set(a25["valores"]["Periodo"]))
+            dif = max(abs(a09["celda"](Periodo=p_, Sector="Total", **{a09["variables"][2]: "Total"}) -
+                          a25["celda"](Periodo=p_, Sector="Total", **{a25["variables"][2]: "Total"})) for p_ in comunes)
+            comprobaciones.append({"que": "¿Las dos series desestacionalizadas de la Seguridad Social enlazan bien?",
+                                   "resultado": f"Diferencia máxima de {es(dif)} afiliados en los {len(comunes)} meses comunes; usamos la nueva desde 2021",
+                                   "ok": dif < 50000})
+
+    # 2. EPA (INE), trimestral.
+    epa = {k: dict(_ine(descargas, c)) for k, c in (("ocupados", "EPA387796"), ("parados", "EPA387800"), ("tasa_paro", "EPA423474"),
+                                                    ("tasa_actividad", "EPA388079"), ("tasa_empleo", "EPA441060"))}
+    if epa["ocupados"]:
+        t_ = sorted(epa["ocupados"])
+        eco["epa"] = {"trimestres": t_, **{k: [round(v.get(x), 2) if v.get(x) is not None else None for x in t_] for k, v in epa.items()}}
+
+    # 3. Pensiones contributivas (avance mensual del INSS): diciembre de cada año desde 2016 y meses recientes.
+    if "ss_pensiones_avance" in descargas:
+        libro = hojas(AQUI / descargas["ss_pensiones_avance"]["fichero"])
+
+        def leer(hoja):
+            # La hoja trae debajo otras tablas con la misma forma (variaciones): vale la primera aparición de cada periodo.
+            filas, año, salida = libro[hoja], None, {}
+            for f in filas:
+                v = [x for x in f if x not in (None, "")]
+                if not v:
+                    continue
+                if isinstance(v[0], float) and 2000 < v[0] < 2100:
+                    año = int(v[0])
+                    if len(v) > 1 and isinstance(v[1], str) and v[1] in MESES_CORTOS:
+                        if len(v) >= 8:
+                            salida.setdefault(f"{año}-{MESES_CORTOS[v[1]]:02d}", v[7])
+                    elif len(v) >= 7:
+                        salida.setdefault(f"{año}", v[6])
+                elif isinstance(v[0], str) and v[0] in MESES_CORTOS and año and len(v) >= 7:
+                    salida.setdefault(f"{año}-{MESES_CORTOS[v[0]]:02d}", v[6])
+            return salida
+        numero, nomina, media = leer("Nº Pens. Clases"), leer("Importe €"), leer("P. Media €")
+        claves = sorted(k for k in numero if "-" in k)
+        años = sorted(int(k) for k in numero if "-" not in k)
+        afi = eco.get("afiliacion")
+        bruta_m = dict(zip(afi["meses"], afi["bruta"])) if afi else {}
+        por_pension = lambda mes: None if bruta_m.get(mes) is None else round(bruta_m[mes] / numero_mes(mes), 2)
+        numero_mes = lambda mes: numero[mes] if mes in numero else numero[mes[:4]]
+        eco["pensiones"] = {
+            "meses": claves, "numero": [numero[k] for k in claves], "nomina": [round(nomina[k] * 1000) for k in claves],
+            "media": [round(media[k], 2) for k in claves],
+            "años": años, "numero_anual": [numero[str(a)] for a in años], "nomina_anual": [round(nomina[str(a)] * 1000) for a in años],
+            "media_anual": [round(media[str(a)], 2) for a in años],
+            # Afiliados medios del mes ÷ pensiones en vigor a día 1 de ese mes; en los años, diciembre.
+            "afiliados_por_pension_meses": [por_pension(k) for k in claves],
+            "afiliados_por_pension_años": [None if bruta_m.get(f"{a}-12") is None else round(bruta_m[f"{a}-12"] / numero[str(a)], 2) for a in años],
+        }
+        peor = max(abs(numero[k] * media[k] - nomina[k] * 1000) / (nomina[k] * 1000) for k in claves)
+        comprobaciones.append({"que": "¿Número de pensiones × pensión media da la nómina mensual?",
+                               "resultado": "Sí, en todos los meses (diferencia por redondeo menor del 0,01 %)" if peor < 1e-4 else f"No del todo: diferencia máxima del {es(100 * peor, 3)} %",
+                               "ok": peor < 1e-4})
+
+    # 4. Precios (IPC), crecimiento (PIB real) y población (dependencia), del INE.
+    ipc_g, ipc_s = dict(_ine(descargas, "IPC290750")), dict(_ine(descargas, "IPC292510"))
+    if ipc_g:
+        m_ = sorted(k for k in ipc_g if k >= "2002-01")
+        eco["ipc"] = {"meses": m_, "general": [ipc_g[k] for k in m_], "subyacente": [ipc_s.get(k) for k in m_]}
+    pib = _ine(descargas, "CNTR6654")
+    if pib:
+        eco["pib"] = {"trimestres": [p_ for p_, _ in pib], "interanual": [round(v, 2) for _, v in pib]}
+    dep, may = dict(_ine(descargas, "IDB53241")), dict(_ine(descargas, "IDB53262"))
+    pdep, pmay = dict(_ine(descargas, "PROP7465")), dict(_ine(descargas, "PROP7467"))
+    if dep:
+        a_ = sorted(dep)
+        b_ = sorted(pdep)
+        eco["dependencia"] = {"años": [int(x) for x in a_], "total": [dep[x] for x in a_], "mayores": [may.get(x) for x in a_],
+                              "proyeccion": {"años": [int(x) for x in b_], "total": [pdep[x] for x in b_], "mayores": [pmay.get(x) for x in b_]}}
+
+    # 5. Coste de financiarse: bono a 10 años (BCE) y tipo medio de la deuda viva del Estado (Tesoro).
+    if "bce_bono_10" in descargas:
+        filas = list(csv.DictReader((AQUI / descargas["bce_bono_10"]["fichero"]).read_text().splitlines()))
+        es_ = {f["TIME_PERIOD"]: float(f["OBS_VALUE"]) for f in filas if f.get("KEY", "").startswith("IRS.M.ES") and f["OBS_VALUE"]}
+        de_ = {f["TIME_PERIOD"]: float(f["OBS_VALUE"]) for f in filas if f.get("KEY", "").startswith("IRS.M.DE") and f["OBS_VALUE"]}
+        m_ = sorted(set(es_) & set(de_))
+        eco["bono"] = {"meses": m_, "espana": [es_[k] for k in m_], "alemania": [de_[k] for k in m_],
+                       "prima_pb": [round(100 * (es_[k] - de_[k])) for k in m_]}
+    tipo = {}
+    for clave in ("tesoro_tipo_medio_historico", "tesoro_tipo_medio"):
+        if clave not in descargas:
+            continue
+        hoja = list(hojas(AQUI / descargas[clave]["fichero"]).values())[0]
+        año = None
+        for f in hoja:
+            v = [x for x in f if x not in (None, "")]
+            if not v:
+                continue
+            if isinstance(v[0], (float, str)) and str(v[0]).replace(".0", "").isdigit() and 1990 < float(v[0]) < 2100:
+                año = int(float(v[0]))
+                if len(v) >= 8 and clave == "tesoro_tipo_medio":
+                    tipo.setdefault(f"{año}", (v[1], v[7]))
+                continue
+            if isinstance(v[0], str) and v[0].strip() in MESES_LARGOS and año and len(v) >= 9:
+                tipo[f"{año}-{MESES_LARGOS[v[0].strip()]:02d}"] = (v[1], v[7])
+    if tipo:
+        m_ = sorted(k for k in tipo if "-" in k)
+        eco["tesoro"] = {"meses": m_, "total": [tipo[k][1] for k in m_], "letras": [tipo[k][0] for k in m_]}
+    if "tesoro_vida_media" in descargas:
+        hoja = list(hojas(AQUI / descargas["tesoro_vida_media"]["fichero"]).values())[0]
+        año, ultimo_vm = None, None
+        for f in hoja:
+            v = [x for x in f if x not in (None, "")]
+            if v and str(v[0]).strip().isdigit():
+                año = int(str(v[0]).strip())
+            elif v and isinstance(v[0], str) and v[0].strip() in MESES_LARGOS and año and len(v) == 10:
+                ultimo_vm = {"mes": f"{año}-{MESES_LARGOS[v[0].strip()]:02d}", "años": v[9]}
+        if ultimo_vm:
+            eco.setdefault("tesoro", {})["vida_media"] = ultimo_vm
+
+    # 6. Cruce: afiliados medios del año y cotizaciones sociales (las de la página de ingresos).
+    if "afiliacion" in eco:
+        k_ = next((p_ for p_ in ingresos["partes"] if p_["clave"] == "cotizaciones"), None)
+        if k_:
+            años_c = [a for a in eco["afiliacion"]["anual"]["años"] if a in ingresos["años"]]
+            eco["cruce_cotizaciones"] = {"años": años_c,
+                                         "afiliados": [eco["afiliacion"]["anual"]["afiliados"][eco["afiliacion"]["anual"]["años"].index(a)] for a in años_c],
+                                         "cotizaciones_constantes": [k_["constantes"][ingresos["años"].index(a)] for a in años_c],
+                                         "base_constantes": ingresos.get("año_base_constantes")}
+    eco["comprobaciones"] = comprobaciones
+    return eco
+
+
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
@@ -1324,7 +1519,8 @@ def main():
                    *[k for k in ("igae_t_aapp", "igae_a_aapp", "igae_a_aapp_imp", "bde_be1107", "ameco16", "ameco18",
                                  "fmi_weo_ggxcnl_ngdp", "fmi_weo_ggxwdg_ngdp", "fmi_weo_ggr_ngdp", "fmi_weo_ggx_ngdp",
                                  "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
-                                 "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas]):
+                                 "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
+                   *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -1357,6 +1553,15 @@ def main():
                "bde_proyecciones_2026t3": "Proyecciones del Banco de España (PDF; cifras copiadas del Cuadro 1).",
                "hacienda_objetivos_2027": "Objetivos de déficit y deuda del Gobierno (PDF; cifras copiadas de las páginas 7 y 9)."}.get(nombre) or \
               ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
+              ({"ss_afiliados_medios": "Afiliados medios por régimen y edad; con ellos se calculan los afiliados por pensión.",
+                "ss_afiliados_desest": "Serie desestacionalizada oficial desde 2021.",
+                "ss_afiliados_desest_09": "Serie desestacionalizada oficial de 2008 a 2020.",
+                "ss_pensiones_avance": "Número de pensiones, nómina y pensión media.",
+                "bce_bono_10": "Rentabilidad del bono a 10 años de España y de Alemania; la prima de riesgo es la resta.",
+                "tesoro_tipo_medio_historico": "Tipo de interés medio de la deuda viva del Estado desde 2001.",
+                "tesoro_tipo_medio": "Tipo de interés medio de los últimos meses.",
+                "tesoro_vida_media": "Vida media de la deuda del Estado."}.get(nombre)) or \
+              ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else
                "Avance: ejecución a 31 de diciembre por políticas de gasto (hoja GTOS 008)." if nombre.startswith("ejec_dic_") else None)
@@ -1412,6 +1617,10 @@ def main():
         for c_ in compr:
             print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     escribir_csv_paginas(gasto, ingresos)
+    economia = construir_economia(descargas, ingresos)
+    (WEB / "datos" / "economia.json").write_text(json.dumps(economia, ensure_ascii=False, separators=(",", ":")))
+    for c_ in economia["comprobaciones"]:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     presupuesto, comprobaciones_presupuesto = construir_presupuesto(descargas)
     presupuesto["comprobaciones"] = comprobaciones_presupuesto
     (WEB / "datos" / "presupuesto.json").write_text(json.dumps(presupuesto, ensure_ascii=False, separators=(",", ":")))
