@@ -163,10 +163,23 @@ function pintar(d, aapp, sel) {
     nota: (d.avance[i] ? "Créditos iniciales, definitivos y obligaciones reconocidas de la hoja GTOS 008 del avance;" : "Créditos iniciales y definitivos de la hoja LIQ 004, obligaciones reconocidas de la LIQ 007;") + " la columna de modificaciones y el porcentaje son restas y divisiones nuestras. Las áreas que tienen una sola política se muestran solo como área." });
 }
 
+// Respuesta corta: cuánto se gastó de lo autorizado el último año liquidado y cuántos años hubo prórroga.
+function pintarRespuesta(d) {
+  const k = d.años.findLastIndex((_, j) => !d.avance[j]);
+  const t = d.totales[k];
+  const p = document.getElementById("respuesta");
+  p.textContent = `En ${d.años[k]}, el Estado gastó `;
+  const b = document.createElement("strong");
+  b.textContent = `${numero(Math.round((100 * t.obligaciones) / t.definitivos), 0)} de cada 100 €`;
+  const prorroga = d.vigencia.filter((v) => v.tipo === "prorrogado" || v.tipo === "mitad").length;
+  p.append(b, ` que tenía autorizados al final del año. En ${numero(prorroga, 0)} de los ${numero(d.años.length, 0)} años desde ${d.años[0]}, el presupuesto estuvo prorrogado todo el año o parte de él.`);
+}
+
 async function arrancar() {
   const [d, aapp] = await Promise.all([fetch("datos/presupuesto.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
   const sel = montarSelectores({ años: d.años, alCambiar: (s) => pintar(d, aapp, s) });
   pintar(d, aapp, sel);
+  pintarRespuesta(d);
   pintarComprobaciones(document.getElementById("comprobaciones"), d.comprobaciones);
   const ultimoLiquidado = d.años.filter((_, k) => !d.avance[k]).at(-1);
   pintarUltimoAño(d.años, d.avance.at(-1)

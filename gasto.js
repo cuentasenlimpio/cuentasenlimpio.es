@@ -116,7 +116,7 @@ function pintarTipo(g, aapp, u) {
   const estrecho = caja.clientWidth < 520;
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, estrecho ? 280 : 340);
   const graf = caja.cuentasGrafico;
-  const algunaCapa = capas.gobiernos || capas.legislaturas || capas.acontecimientos;
+  const algunaCapa = EC.algunaCapa(capas);
   const op = EC.tiempo({ min: primero, max: ultimo, slider: false, zoom: false, marcasArriba: algunaCapa,
     aria: `Inversión pública de ${primero} a ${ultimo}, en ${texto(UNIDADES[u].eje, g.año_base_constantes)}: ` +
       rotulos.map((p) => `${fmt(p[1])} en ${p[0]}`).join(", ") + "." });
@@ -140,37 +140,7 @@ function pintarTipo(g, aapp, u) {
   ];
   graf.setOption(op, { notMerge: true });
 
-  // Nota de las capas: qué son y de dónde salen las fechas.
-  const nota = document.getElementById("nota-capas");
-  nota.textContent = "";
-  if (capas.gobiernos) {
-    const p = document.createElement("p");
-    p.textContent = `Líneas grises de puntos: ${aapp.gobiernos.criterio} `;
-    const d = document.createElement("details");
-    const s = document.createElement("summary");
-    s.textContent = "Los nombramientos, en el BOE";
-    const ul = document.createElement("ul");
-    for (const x of aapp.gobiernos.lista) {
-      const li = document.createElement("li");
-      const a = document.createElement("a");
-      a.href = x.url;
-      a.textContent = x.real_decreto;
-      li.append(`${fecha(x.fecha)}: ${x.persona} (`, a, `, ${x.fuente.replace(/, BOE-.*/, "")})`);
-      ul.appendChild(li);
-    }
-    d.append(s, ul);
-    nota.append(p, d);
-  }
-  if (capas.legislaturas) {
-    const p = document.createElement("p");
-    p.textContent = "Franjas: legislaturas, desde la sesión constitutiva del Congreso.";
-    nota.appendChild(p);
-  }
-  if (capas.acontecimientos) {
-    const p = document.createElement("p");
-    p.textContent = "Números: " + aapp.acontecimientos.lista.map((a, k) => `${k + 1}. ${a.corto} (${fecha(a.fecha)})`).join("; ") + `. ${aapp.acontecimientos.criterio}`;
-    nota.appendChild(p);
-  }
+  EC.notaCapas(document.getElementById("nota-capas"), aapp, capas);
 
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];
   lineaFuente(document.getElementById("inversion-fuente"), {
@@ -226,12 +196,7 @@ async function arrancar() {
   pintar(g, aapp, sel);
   pintarRespuesta(g);
   pintarTipo(g, aapp, sel.unidad);
-  for (const c of document.querySelectorAll("[data-capa]")) {
-    c.addEventListener("change", () => {
-      capas[c.dataset.capa] = c.checked;
-      pintarTipo(g, aapp, sel.unidad);
-    });
-  }
+  EC.capas(document.getElementById("capas"), capas, () => pintarTipo(g, aapp, sel.unidad));
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_exp");
   pintarUltimoAño(g.años, `Eurostat publica el reparto por funciones más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);

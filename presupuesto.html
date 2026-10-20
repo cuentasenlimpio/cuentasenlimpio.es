@@ -26,13 +26,14 @@
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="como-se-miente.html">Aprende</a>
+      <a href="aprende.html">Aprende</a>
     </nav>
   </header>
 
   <main>
-    <h1>¿Se gastó lo que se aprobó?</h1>
-    <p class="entradilla">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Aquí solo está el presupuesto del Estado en sentido estricto: los ministerios y los órganos constitucionales. Los organismos autónomos, la Seguridad Social, las comunidades autónomas y los ayuntamientos tienen presupuestos propios y no están. Contabilidad presupuestaria, no la nacional del resto de la web.</p>
+    <h1 class="pregunta">¿Se gastó lo que se aprobó?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Aquí solo está el presupuesto del Estado en sentido estricto: los ministerios y los órganos constitucionales. Los organismos autónomos, la Seguridad Social, las comunidades autónomas y los ayuntamientos tienen presupuestos propios y no están. Contabilidad presupuestaria, no la nacional del resto de la web.</p>
 
     <div class="explica-pasos">
       <p><strong>Cómo se lee.</strong> Un presupuesto pasa por tres momentos:</p>
@@ -44,11 +45,22 @@
     </div>
 
     <section class="grafico" aria-labelledby="t-titulo">
-      <h2 class="grafico-titulo" id="t-titulo">Aprobado, autorizado y gastado cada año, en miles de millones de euros</h2>
+      <h2 class="pregunta" id="t-titulo">¿Cuánto se aprobó, se autorizó y se gastó cada año?</h2>
+      <p class="grafico-explica">En miles de millones de euros.</p>
       <div class="lectura-año" id="t-lectura" aria-live="polite"></div>
       <div class="lienzo" id="totales" tabindex="0" role="img" aria-label="Presupuesto aprobado, autorizado y gastado del Estado por año. Usa las flechas para recorrer los años."></div>
       <p class="nota-años"><span>*</span> presupuesto prorrogado todo el año · <span>†</span> prorrogado hasta que se aprobó la ley, a mitad de año; en esos años, «aprobado» es lo que fijó esa ley, que es lo que recoge la liquidación · <span>a</span> avance: ejecución a 31 de diciembre, a falta de la liquidación definitiva · <span>?</span> por confirmar en el BOE si hubo presupuesto propio</p>
       <p class="fuente-grafico" id="totales-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Qué pasa cuando no se aprueba un presupuesto</h3>
+        <p>Si la ley de presupuestos no está aprobada el 1 de enero, la Constitución prorroga automáticamente la del año anterior hasta que se apruebe una nueva (artículo 134.4). El Estado sigue pagando nóminas, pensiones y deuda, pero con las cifras del año anterior: lo nuevo se tiene que hacer con modificaciones durante el año.</p>
+        <p>La distancia entre lo «aprobado» y lo «autorizado al final» mide cuánto se cambió el presupuesto sobre la marcha, sea prorrogado o no: el gráfico de arriba la enseña año a año.</p>
+        <details>
+          <summary>Un paso más: el presupuesto es un límite, no una obligación</summary>
+          <p>Los créditos de gasto son el máximo que se puede gastar en cada cosa, no lo que hay que gastar. Lo que queda sin gastar a final de año, en general, no pasa al siguiente.</p>
+        </details>
+      </div>
     </section>
 
     <p class="ultimo-año" id="ultimo-año"></p>
@@ -58,7 +70,7 @@
     </div>
 
     <section class="grafico" aria-labelledby="e-titulo">
-      <h2 class="grafico-titulo" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>?</h2>
+      <h2 class="pregunta" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>?</h2>
       <p class="grafico-explica">Gastado ÷ autorizado al final del año, por política de gasto. Gastar menos de lo autorizado no es por sí bueno ni malo: puede ser ahorro, retraso o un programa que no arrancó.</p>
       <div class="lienzo" id="ejecucion" role="img" aria-label="Porcentaje gastado de lo autorizado por política de gasto en el año elegido"></div>
       <p class="fuente-grafico" id="ejecucion-fuente"></p>

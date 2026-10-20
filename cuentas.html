@@ -26,13 +26,14 @@
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="como-se-miente.html">Aprende</a>
+      <a href="aprende.html">Aprende</a>
     </nav>
   </header>
 
   <main>
-    <h1>¿Cuánto ingresan, cuánto gastan y cuánto deben las administraciones públicas?</h1>
-    <p class="entradilla">Desde 1995, sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. Cuando el gasto supera al ingreso, la diferencia es el <strong>déficit</strong>, y se cubre pidiendo prestado: eso es lo que hace crecer la <strong>deuda</strong>.</p>
+    <h1 class="pregunta">¿Cuánto entra, cuánto sale y cuánto se debe?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">Desde 1995, sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos.</p>
 
     <div class="selector" role="group" aria-label="Unidad de los gráficos">
       <span class="selector-etiqueta">Ver en</span>
@@ -43,31 +44,47 @@
     </div>
     <p class="unidad-explicada" id="unidad-explicada" aria-live="polite"></p>
     <div id="periodo"></div>
+    <div id="capas"></div>
+    <div class="nota-capas" id="nota-capas"></div>
     <p class="ayuda-grafico">El periodo vale para los tres gráficos de evolución. Para acercarte también puedes arrastrar los extremos de la barra bajo cada gráfico, pellizcar en el móvil o usar la rueda con la tecla Ctrl. Pasa el dedo o el ratón por un gráfico, o usa las flechas, para leer cada año.</p>
 
     <section class="grafico" aria-labelledby="g1-titulo">
-      <h2 class="grafico-titulo" id="g1-titulo">Ingresos y gastos de cada año</h2>
+      <h2 class="pregunta" id="g1-titulo">¿Llega lo que ingresan para lo que gastan?</h2>
       <ul class="leyenda-series">
         <li><span class="clave-linea ingresos"></span>Ingresos</li>
         <li><span class="clave-linea gastos"></span>Gastos</li>
         <li><span class="clave-area"></span>Hueco entre los dos: déficit (o superávit, si los ingresos quedan por encima)</li>
-        <li><span class="clave-franja"></span>Franjas: legislaturas, desde la sesión constitutiva del Congreso</li>
       </ul>
       <div class="lectura-año" id="g1-lectura" aria-live="polite"></div>
       <div class="lienzo" id="g1" tabindex="0" role="img" aria-label="Ingresos y gastos de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
       <p class="fuente-grafico" id="g1-fuente"></p>
       <div class="acontecimientos" id="acontecimientos"></div>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Déficit no es deuda</h3>
+        <p>El <strong>déficit</strong> es lo que falta en un año: gastos menos ingresos. La <strong>deuda</strong> es todo lo que se debe, sumando los préstamos de todos los años que no se han devuelto. Un año con menos déficit que el anterior sigue haciendo crecer la deuda: solo crece menos.</p>
+        <details>
+          <summary>Un paso más: por qué casi siempre hay déficit</summary>
+          <p><span id="superavit"></span> Cuando la economía va mal, los ingresos caen (menos empleo, menos consumo) y algunos gastos suben solos (más prestaciones por desempleo): el déficit crece aunque nadie cambie ninguna ley.</p>
+        </details>
+      </div>
     </section>
 
     <section class="grafico" aria-labelledby="g2-titulo">
-      <h2 class="grafico-titulo" id="g2-titulo">Deuda acumulada al final de cada año</h2>
+      <h2 class="pregunta" id="g2-titulo">¿Cuánto deben al final de cada año?</h2>
       <div class="lectura-año" id="g2-lectura" aria-live="polite"></div>
       <div class="lienzo" id="g2" tabindex="0" role="img" aria-label="Deuda de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
       <p class="fuente-grafico" id="g2-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Deber el 100 % del PIB no es tener que pagarlo en un año</h3>
+        <p>La deuda pública se debe a quien compró bonos y letras (bancos, fondos, particulares, el Banco Central Europeo), y no se devuelve de golpe: cuando vence un bono, se suele pagar emitiendo otro. Lo que pesa en las cuentas de cada año son los <strong>intereses</strong>, que se ven separados en el gráfico siguiente.</p>
+        <p>Por eso importa tanto el tipo de interés como la cantidad: la misma deuda cuesta más o menos según a cuánto se pidió prestada.</p>
+      </div>
     </section>
 
     <section class="grafico" aria-labelledby="g3-titulo">
-      <h2 class="grafico-titulo" id="g3-titulo">¿Por qué cambió la deuda cada año?</h2>
+      <h2 class="pregunta" id="g3-titulo">¿Por qué cambió la deuda cada año?</h2>
       <p class="grafico-explica">La deuda sube si las administraciones gastan más de lo que ingresan (el déficit, que aquí separamos en intereses y resto), y también cuando prestan, depositan o invierten dinero: eso no cuenta como gasto, pero hay que financiarlo. En porcentaje del PIB, además, la deuda pesa menos cuando la economía crece y más cuando se encoge.</p>
       <ul class="leyenda-series" id="g3-leyenda"></ul>
       <div class="lectura-año" id="g3-lectura" aria-live="polite"></div>
@@ -76,7 +93,7 @@
     </section>
 
     <section class="grafico" aria-labelledby="g4-titulo">
-      <h2 class="grafico-titulo" id="g4-titulo">España frente a los demás países de la UE</h2>
+      <h2 class="pregunta" id="g4-titulo">¿Cómo queda España frente al resto de la UE?</h2>
       <p class="grafico-explica">Los 27 países de la Unión Europea medidos con las mismas reglas, en porcentaje de su PIB. El año es el que elijas en los gráficos de arriba.</p>
       <div class="selector selector-pequeno" role="group" aria-label="Qué comparar">
         <button type="button" data-ue="ingresos" aria-pressed="false">Ingresos</button>
@@ -114,6 +131,8 @@
         <dd>Nacional (SEC 2010): la que fija el déficit y la deuda oficiales. No es el presupuesto del Estado. <a href="como-se-miente.html#contabilidades">Por qué importa</a>.</dd>
         <dt>Qué administraciones</dt>
         <dd>Todas, consolidadas: Administración Central, Seguridad Social, comunidades autónomas y entidades locales (código S13). <a href="como-se-miente.html#perimetro">Por qué importa</a>.</dd>
+        <dt>Nombramientos del Presidente del Gobierno</dt>
+        <dd>Capa opcional, apagada al entrar: la fecha de cada Real Decreto de nombramiento publicado en el BOE, también cuando la misma persona repite. Sitúan en el tiempo; no atribuyen resultados.</dd>
         <dt>Legislaturas</dt>
         <dd>Cada franja empieza el día de la sesión constitutiva del Congreso. Solo llevan su número: ni el partido ni el color de quien gobernaba. Un año puede tocar varias legislaturas; la lectura del año las nombra todas.</dd>
         <dt>Deuda</dt>

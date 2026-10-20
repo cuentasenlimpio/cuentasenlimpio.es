@@ -26,7 +26,7 @@
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="como-se-miente.html">Aprende</a>
+      <a href="aprende.html">Aprende</a>
     </nav>
   </header>
 
@@ -60,12 +60,7 @@
 
       <section class="grafico" aria-labelledby="i-titulo">
         <h3 class="grafico-titulo" id="i-titulo">Inversión pública cada año, en <span class="unidad-elegida"></span></h3>
-        <div class="capas" role="group" aria-label="Contexto del gráfico">
-          <span class="selector-etiqueta">Añadir contexto:</span>
-          <label><input type="checkbox" data-capa="gobiernos"> Nombramientos del Presidente del Gobierno</label>
-          <label><input type="checkbox" data-capa="legislaturas"> Legislaturas</label>
-          <label><input type="checkbox" data-capa="acontecimientos"> Crisis externas</label>
-        </div>
+        <div id="capas"></div>
         <div class="lienzo" id="inversion" role="img" aria-label="Inversión pública de 1995 al último año disponible"></div>
         <div class="nota-capas" id="nota-capas"></div>
         <p class="fuente-grafico" id="inversion-fuente"></p>

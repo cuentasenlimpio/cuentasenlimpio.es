@@ -10,7 +10,8 @@ const FORMULAS = {
 };
 
 // `graficos`: las instancias de ECharts; `marcar`: qué hace cada uno cuando cambia el año elegido.
-const estado = { datos: null, unidad: "pib", indice: null, indicadorUE: "deuda", graficos: {}, marcar: {}, periodo: null };
+const estado = { datos: null, unidad: "pib", indice: null, indicadorUE: "deuda", graficos: {}, marcar: {}, periodo: null,
+  capas: { gobiernos: false, legislaturas: false, acontecimientos: false } };
 
 const estrecho = () => document.querySelector("main").clientWidth < 520;
 
@@ -33,11 +34,11 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
   const puntosDe = (s) => años.map((a, i) => [a, s.valores[i] === null ? null : s.valores[i] * u.escala]);
   const lineas = series.map((s) => ({ ...s, datos: puntosDe(s), color: EC.css(`--serie-${s.clase}`) }));
   const opciones = {
-    ...EC.tiempo({ min, max, aria: `${document.getElementById(id).getAttribute("aria-label")} En ${texto(u.eje, d.año_base_constantes)}.` }),
+    ...EC.tiempo({ min, max, marcasArriba: EC.algunaCapa(estado.capas), aria: `${document.getElementById(id).getAttribute("aria-label")} En ${texto(u.eje, d.año_base_constantes)}.` }),
     yAxis: EC.ejeY({ nombre: texto(u.eje, d.año_base_constantes), formato: (v) => numero(v, 0), min: 0 }),
     series: [
       ...lineas.map((s) => EC.linea(s.clase, s.datos, s.color)),
-      EC.marcas(d, { min, max, resaltada: estado.periodo?.resaltada() }),
+      EC.marcas(d, { min, max, resaltada: estado.periodo?.resaltada(), capas: estado.capas }),
     ],
   };
   if (hueco) {
@@ -53,7 +54,7 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
   if (!g.cuentasListo) {
     g.cuentasListo = true;
     EC.alPasar(g, elegirDesde);
-    estado.periodo.sumar(g, { ejeMin: min, ejeMax: max, marcas: { min, max } });
+    estado.periodo.sumar(g, { ejeMin: min, ejeMax: max, marcas: { min, max, capas: estado.capas } });
   }
   estado.marcar[id] = (i) => {
     g.setOption({ series: [EC.puntos("año", lineas.map((s) => s.datos[i]).filter(([, v]) => v !== null), lineas.map((s) => s.color))] });
@@ -109,14 +110,14 @@ function graficoBarras() {
     return (valor > 0 ? "+" : valor < 0 ? "−" : "") + numero(Math.abs(valor), paso < 1 ? 1 : 0);
   };
   g.setOption({
-    ...EC.tiempo({ min, max, silueta: false, aria: `${document.getElementById(id).getAttribute("aria-label")} En ${u === "pib" ? "puntos del PIB" : texto(UNIDADES[u].eje, d.año_base_constantes)}.` }),
+    ...EC.tiempo({ min, max, silueta: false, marcasArriba: EC.algunaCapa(estado.capas), aria: `${document.getElementById(id).getAttribute("aria-label")} En ${u === "pib" ? "puntos del PIB" : texto(UNIDADES[u].eje, d.año_base_constantes)}.` }),
     yAxis: EC.ejeY({
       nombre: u === "pib" ? "puntos del PIB" : texto(UNIDADES[u].eje, d.año_base_constantes),
       formato: conSignoEje,
       min: Math.floor(minimo / paso) * paso, max: Math.ceil(maximo / paso) * paso,
     }),
     series: [
-      EC.marcas(d, { min, max, desplazamiento: -0.5, resaltada: estado.periodo?.resaltada() }),
+      EC.marcas(d, { min, max, desplazamiento: -0.5, resaltada: estado.periodo?.resaltada(), capas: estado.capas }),
       {
         id: "barras", type: "custom", clip: true, silent: true, z: 3,
         data: años.map((a, i) => [a, i]),
@@ -154,7 +155,7 @@ function graficoBarras() {
   if (!g.cuentasListo) {
     g.cuentasListo = true;
     EC.alPasar(g, elegirDesde);
-    estado.periodo.sumar(g, { desplazamiento: -0.5, ejeMin: min, ejeMax: max, marcas: { min, max, desplazamiento: -0.5 } });
+    estado.periodo.sumar(g, { desplazamiento: -0.5, ejeMin: min, ejeMax: max, marcas: { min, max, desplazamiento: -0.5, capas: estado.capas } });
   }
   estado.marcar[id] = (i) => {
     EC.fijar(g, años[i]);
@@ -670,6 +671,33 @@ function pintarFicha() {
     .catch(() => {});
 }
 
+// Respuesta corta del último año y cuántos años hubo superávit (todo sale de los datos).
+function pintarRespuesta() {
+  const d = estado.datos, s = d.series, i = d.años.length - 1;
+  const v = (k) => numero(s[k].pib[i], 1);
+  const saldo = s.saldo.pib[i];
+  const p = document.getElementById("respuesta");
+  p.textContent = `En ${d.años[i]}, las administraciones ingresaron el ${v("ingresos")} % del PIB y gastaron el ${v("gastos")} %: `;
+  const b = document.createElement("strong");
+  b.textContent = saldo < 0 ? `faltó un ${numero(-saldo, 1)} %, el déficit` : `sobró un ${numero(saldo, 1)} %, el superávit`;
+  p.append(b, `. La deuda acumulada llegó al ${v("deuda")} % del PIB.`);
+  const con = d.años.filter((a, k) => s.saldo.pib[k] !== null && s.saldo.pib[k] >= 0);
+  const t = document.getElementById("superavit");
+  if (t) {
+    t.textContent = con.length
+      ? `En los ${d.años.length} años de la serie, las administraciones solo ingresaron al menos lo que gastaron en ${con.length === 1 ? "uno" : numero(con.length, 0)} (${con.length > 1 ? `${con.slice(0, -1).join(", ")} y ${con.at(-1)}` : con[0]}).`
+      : `En los ${d.años.length} años de la serie, las administraciones gastaron cada año más de lo que ingresaron.`;
+  }
+}
+
+// Encender o apagar una capa de contexto: se repintan los gráficos (cambia el hueco de arriba) y la nota.
+function cambiarCapas() {
+  pintar();
+  // Los acontecimientos ya tienen su lista detallada bajo el primer gráfico.
+  EC.notaCapas(document.getElementById("nota-capas"), estado.datos, estado.capas, { conAcontecimientos: false });
+  document.getElementById("acontecimientos").hidden = !estado.capas.acontecimientos;
+}
+
 function teclado(ev) {
   const n = estado.datos.años.length;
   if (ev.key === "ArrowLeft") estado.indice = Math.max(0, estado.indice - 1);
@@ -693,7 +721,15 @@ async function arrancar() {
       estado.indice = Math.max(0, Math.min(estado.datos.años.length - 1, hasta - estado.datos.años[0]));
       if (estado.marcar.g1) redibujarCruces();
     },
+    // Elegir una legislatura enciende su capa: si no, no se vería qué tramo es.
+    alResaltar: (nombre) => {
+      if (nombre && !estado.capas.legislaturas && estado.uiCapas) {
+        estado.uiCapas.poner("legislaturas", true);
+        setTimeout(cambiarCapas, 0);
+      }
+    },
   });
+  estado.uiCapas = EC.capas(document.getElementById("capas"), estado.capas, cambiarCapas);
 
   for (const b of document.querySelectorAll("[data-unidad]")) {
     b.addEventListener("click", () => {
@@ -712,9 +748,11 @@ async function arrancar() {
     });
   }
 
+  pintarRespuesta();
   pintar();
   pintarFicha();
   pintarAcontecimientos();
+  document.getElementById("acontecimientos").hidden = true;
   // En móvil y en escritorio cambian la altura de los gráficos y los pasos del eje: se repintan al cruzar ese ancho.
   let eraEstrecho = estrecho();
   window.addEventListener("resize", () => {

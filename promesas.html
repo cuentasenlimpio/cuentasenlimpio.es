@@ -24,14 +24,15 @@
     <nav aria-label="Principal">
       <a href="dinero.html">El dinero</a>
       <a href="promesas.html" aria-current="page">Promesas</a>
-      <a href="como-se-miente.html">Aprende</a>
+      <a href="aprende.html">Aprende</a>
     </nav>
   </header>
 
   <main>
     <p class="borrador"><strong>Primera versión.</strong> Ya están las promesas de los 17 documentos de la XV Legislatura. Los hechos que vinieron después (pactos, Consejo de Ministros, votaciones, BOE) se irán añadiendo.</p>
-    <h1>Promesas: qué se prometió y qué pasó después</h1>
-    <p class="entradilla">Para cada promesa electoral, el texto literal de quien la hizo y, al lado, los hechos documentados que vinieron después: si se pactó, si el Gobierno la aprobó, cómo se votó, si llegó al BOE y qué dicen los datos. No decimos si una promesa se cumplió: ponemos la promesa y los hechos, y cada cual saca su conclusión.</p>
+    <h1 class="pregunta">¿Qué se prometió en 2023?</h1>
+    <p class="respuesta" id="respuesta">Las promesas de los programas electorales, el acuerdo de coalición y los acuerdos de investidura de la XV Legislatura, con su cita literal.</p>
+    <p class="contabilidad">Para cada promesa electoral, el texto literal de quien la hizo y, al lado, los hechos documentados que vinieron después: si se pactó, si el Gobierno la aprobó, cómo se votó, si llegó al BOE y qué dicen los datos. No decimos si una promesa se cumplió: ponemos la promesa y los hechos, y cada cual saca su conclusión.</p>
 
     <section id="buscador" aria-labelledby="buscador-titulo">
       <h2 id="buscador-titulo">Las promesas</h2>
@@ -74,8 +75,21 @@
       </ol>
     </nav>
 
+    <div class="entender">
+      <p class="rotulo">Para entenderlo</p>
+      <h3>Una promesa no es una ley</h3>
+      <p>Un programa electoral dice lo que un partido quiere hacer. Para que pase, casi siempre hace falta algo más: que gobierne, que reúna votos suficientes en el Congreso para aprobar una ley, que haya dinero en el presupuesto o que lo acepten otras administraciones. Por eso separamos al Gobierno de los demás partidos, y por eso ponemos al lado de cada promesa los hechos, no un veredicto.</p>
+      <details>
+        <summary>Un paso más: promesas repetidas</summary>
+        <p>Un documento largo a veces repite la misma promesa en dos sitios, por ejemplo en el resumen y en su capítulo. Se registra la repetición, pero cuenta una sola vez, y el buscador la oculta salvo que pidas verla. Si la misma idea aparece en documentos distintos (un programa y un acuerdo de investidura), cuenta en cada uno: son compromisos distintos, con firmantes distintos.</p>
+      </details>
+    </div>
+
+    <h2 id="metodo">Cómo lo hacemos</h2>
+    <p>Las reglas completas, para que cualquiera pueda rehacer la lista y llegar al mismo resultado.</p>
+
     <section id="que">
-      <h2>1. Qué legislatura y qué documentos</h2>
+      <h3>1. Qué legislatura y qué documentos</h3>
       <p>Empezamos por la XV Legislatura (de la sesión constitutiva del 17 de agosto de 2023 a la disolución de las Cortes en octubre de 2026). Entran tres tipos de documentos, siempre en su versión original:</p>
       <ul>
         <li><strong>Programas electorales</strong> de las elecciones generales del 23 de julio de 2023 de todas las candidaturas que tuvieron diputados al empezar la legislatura: las ocho con grupo propio (PP, PSOE, Vox, Sumar, ERC, Junts, EH Bildu y PNV) y las tres que se sentaron en el Grupo Mixto (BNG, Coalición Canaria y UPN). Ver <a href="#grupo-mixto">el Grupo Mixto</a>.</li>
@@ -87,7 +101,7 @@
     </section>
 
     <section id="documentos">
-      <h2>Los documentos, uno por uno</h2>
+      <h3>Los documentos, uno por uno</h3>
       <p>Estos son los documentos de los que saldrán las promesas. De cada uno damos dónde lo publicó el partido, si sigue ahí, una copia en el <a href="https://web.archive.org/">Internet Archive</a> y su huella sha256: si alguien descarga la copia y su huella coincide, tiene exactamente el mismo fichero que nosotros. Cada día comprobamos que nuestras copias siguen coincidiendo.</p>
       <p>No volvemos a publicar los documentos: son de cada partido. Los enlazamos.</p>
       <div id="grupo-mixto" class="nota-mixto"></div>
@@ -96,7 +110,7 @@
     </section>
 
     <section id="promesa">
-      <h2>2. Qué cuenta como promesa</h2>
+      <h3>2. Qué cuenta como promesa</h3>
       <p>Una promesa es una frase del documento que compromete <strong>una acción futura concreta</strong>: aprobar, derogar, crear, subir, bajar, ampliar, construir o garantizar <strong>algo identificable</strong> (una ley, un impuesto, una cifra, un organismo, una prestación).</p>
       <p>No son promesas, y no se incluyen:</p>
       <ul>
@@ -122,7 +136,7 @@
     </section>
 
     <section id="clasificacion">
-      <h2>Quién clasifica y cómo se comprueba</h2>
+      <h3>Quién clasifica y cómo se comprueba</h3>
       <p>Las frases de los documentos las clasifican modelos de inteligencia artificial (Claude, de Anthropic), siguiendo unas <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/blob/main/codigo/promesas/INSTRUCCIONES.md">instrucciones escritas</a> que aplican estas reglas y que son las mismas para todos los documentos y todos los partidos. Para que el resultado no dependa de un solo clasificador, se hace así:</p>
       <ul>
         <li><strong>Doble clasificación.</strong> Cada frase se clasifica dos veces, por separado y sin que una clasificación vea la otra. En los 17 documentos de la XV Legislatura (14.295 frases y títulos) coincidieron en el 97,2 % de los casos sobre si una frase es o no una promesa (un índice kappa de 0,93, donde 1 es acuerdo total).</li>
@@ -133,7 +147,7 @@
     </section>
 
     <section id="hechos">
-      <h2>3. Qué hechos se muestran</h2>
+      <h3>3. Qué hechos se muestran</h3>
       <p>Para cada promesa, los hechos documentados que haya, en orden de fecha y cada uno con su documento oficial enlazado:</p>
       <div class="tabla">
         <table>
@@ -154,18 +168,18 @@
     </section>
 
     <section id="relacion">
-      <h2>4. Cómo se relaciona un hecho con una promesa</h2>
+      <h3>4. Cómo se relaciona un hecho con una promesa</h3>
       <p>Relacionar una ley con una promesa es una decisión nuestra, así que cada relación va con su motivo escrito en una frase y con lo que hemos buscado para encontrarla. El criterio: el documento oficial tiene que tratar <strong>la misma medida</strong> que la promesa, no solo el mismo tema. Una ley de vivienda no cumple ni incumple por sí sola una promesa sobre alquileres: se enlaza solo si regula lo que la promesa dice.</p>
     </section>
 
     <section id="sin-veredicto">
-      <h2>5. Por qué no hay veredicto</h2>
+      <h3>5. Por qué no hay veredicto</h3>
       <p>No etiquetamos promesas como «cumplida» o «incumplida» ni calculamos porcentajes de cumplimiento. Decidir si una ley cumple una promesa exige interpretar las dos, y esa interpretación es del lector. Lo que sí hacemos es que cada paso sea un hecho comprobable: si una norma se publicó en el BOE, eso no es opinable.</p>
       <p>Se puede filtrar por el último paso documentado (por ejemplo, «con norma en el BOE» o «sin hechos encontrados»), porque eso es un hecho, no una valoración.</p>
     </section>
 
     <section id="igualdad">
-      <h2>6. Las mismas reglas para todos</h2>
+      <h3>6. Las mismas reglas para todos</h3>
       <ul>
         <li>Todos los documentos pasan por el mismo proceso, completo, antes de buscar hechos de ninguno.</li>
         <li>Se busca con los mismos medios para todas las promesas: las mismas fuentes oficiales, con los mismos términos de búsqueda anotados.</li>
@@ -174,7 +188,7 @@
     </section>
 
     <section id="limites">
-      <h2>7. Límites</h2>
+      <h3>7. Límites</h3>
       <ul>
         <li>Muchas promesas no se pueden cumplir sin mayoría parlamentaria, y algunas dependen de comunidades autónomas o de la UE. Lo indicamos cuando la propia promesa lo implica.</li>
         <li>Contar promesas no dice cuáles importan más: derogar una ley grande pesa lo mismo que crear un observatorio. Por eso no damos totales en portada.</li>

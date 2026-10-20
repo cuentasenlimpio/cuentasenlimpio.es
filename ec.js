@@ -193,7 +193,7 @@ const EC = (() => {
 
   // ---- Periodo: botones, legislatura, acontecimiento y años, sobre el zoom de todos los gráficos sumados ----
   // `raiz` es un contenedor vacío; `años` son los años con datos de la página.
-  function periodo(raiz, d, años, { desde2007 = true, alCambiar = () => {} } = {}) {
+  function periodo(raiz, d, años, { desde2007 = true, alCambiar = () => {}, alResaltar = () => {} } = {}) {
     const graficos = [];
     let resaltada = null, moviendo = false;
     const min = años[0], max = años.at(-1);
@@ -258,6 +258,7 @@ const EC = (() => {
     }
     function resaltar(nombre) {
       resaltada = nombre || null;
+      alResaltar(resaltada);
       for (const x of graficos) if (x.marcas) x.g.setOption({ series: [marcas(d, { ...x.marcas, resaltada })] });
     }
     const soltar = (salvo = null) => {
@@ -440,7 +441,69 @@ const EC = (() => {
     });
   }
 
-  return { css, posicion, legislaturas, marcas, tiempo, ejeY, linea, puntos, crear, alPasar, fijar, periodo, barrasH, multiples };
+  // ---- Capas de contexto: casillas (apagadas por defecto) y la nota que explica lo que se ve ----
+  // `capas` es un objeto {gobiernos, legislaturas, acontecimientos} que comparten todos los gráficos de la página.
+  function capas(raiz, estadoCapas, alCambiar) {
+    raiz.classList.add("capas");
+    raiz.setAttribute("role", "group");
+    raiz.setAttribute("aria-label", "Contexto de los gráficos");
+    raiz.textContent = "";
+    const et = document.createElement("span");
+    et.className = "selector-etiqueta";
+    et.textContent = "Añadir contexto:";
+    raiz.appendChild(et);
+    const casillas = {};
+    for (const [clave, nombre] of [["gobiernos", "Nombramientos del Presidente del Gobierno"], ["legislaturas", "Legislaturas"], ["acontecimientos", "Crisis externas"]]) {
+      const l = document.createElement("label");
+      const c = document.createElement("input");
+      c.type = "checkbox";
+      c.checked = !!estadoCapas[clave];
+      c.addEventListener("change", () => {
+        estadoCapas[clave] = c.checked;
+        alCambiar();
+      });
+      casillas[clave] = c;
+      l.append(c, ` ${nombre}`);
+      raiz.appendChild(l);
+    }
+    return { poner(clave, v) { estadoCapas[clave] = v; casillas[clave].checked = v; } };
+  }
+
+  const algunaCapa = (c) => !!(c && (c.gobiernos || c.legislaturas || c.acontecimientos));
+
+  function notaCapas(nota, d, c, { conAcontecimientos = true } = {}) {
+    nota.textContent = "";
+    if (c.gobiernos) {
+      const p = document.createElement("p");
+      p.textContent = `Líneas grises de puntos: ${d.gobiernos.criterio}`;
+      const det = document.createElement("details");
+      const s = document.createElement("summary");
+      s.textContent = "Los nombramientos, en el BOE";
+      const ul = document.createElement("ul");
+      for (const x of d.gobiernos.lista) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = x.url;
+        a.textContent = x.real_decreto;
+        li.append(`${fecha(x.fecha)}: ${x.persona} (`, a, `, ${x.fuente.replace(/, BOE-.*/, "")})`);
+        ul.appendChild(li);
+      }
+      det.append(s, ul);
+      nota.append(p, det);
+    }
+    if (c.legislaturas) {
+      const p = document.createElement("p");
+      p.textContent = "Franjas: legislaturas, desde la sesión constitutiva del Congreso.";
+      nota.appendChild(p);
+    }
+    if (c.acontecimientos && conAcontecimientos) {
+      const p = document.createElement("p");
+      p.textContent = "Números: " + d.acontecimientos.lista.map((a, k) => `${k + 1}. ${a.corto} (${fecha(a.fecha)})`).join("; ") + `. ${d.acontecimientos.criterio}`;
+      nota.appendChild(p);
+    }
+  }
+
+  return { capas, algunaCapa, notaCapas, css, posicion, legislaturas, marcas, tiempo, ejeY, linea, puntos, crear, alPasar, fijar, periodo, barrasH, multiples };
 })();
 
 // Nombres que usan las páginas de gasto, ingresos y presupuesto.

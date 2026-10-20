@@ -29,11 +29,33 @@ function pintar(g, aapp, sel) {
   });
 }
 
+const NOMBRES_CORTOS = {
+  cotizaciones: "cotizaciones sociales", renta: "impuestos sobre la renta de los hogares (sobre todo el IRPF)", iva: "IVA",
+  otros_ingresos: "otros ingresos", productos: "otros impuestos sobre lo que se compra",
+  sociedades: "impuesto sobre los beneficios de las empresas", produccion: "otros impuestos sobre la producción",
+};
+
+// Respuesta corta: las tres mayores fuentes de ingresos del último año.
+function pintarRespuesta(g) {
+  const r = g.reparto.at(-1);
+  const top = Object.entries(r).filter(([k]) => NOMBRES_CORTOS[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const p = document.getElementById("respuesta");
+  p.textContent = `De cada 100 € que ingresaron las administraciones en ${g.años.at(-1)}, `;
+  top.forEach(([k, v], j) => {
+    if (j) p.append(j === 2 ? " y " : ", ");
+    const b = document.createElement("strong");
+    b.textContent = numero(Math.round(v), 0);
+    p.append(b, ` ${j ? "" : "salieron de "}${NOMBRES_CORTOS[k]}`);
+  });
+  p.append(".");
+}
+
 async function arrancar() {
   const [g, aapp] = await Promise.all([fetch("datos/ingresos.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
   const sel = montarSelectores({ años: g.años, alCambiar: (s) => pintar(g, aapp, s) });
   sel.periodo = EC.periodo(document.getElementById("periodo"), aapp, g.años);
   pintar(g, aapp, sel);
+  pintarRespuesta(g);
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_taxag");
   pintarUltimoAño(g.años, `Eurostat publica el detalle por impuestos más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);

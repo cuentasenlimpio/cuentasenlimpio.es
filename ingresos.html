@@ -26,14 +26,14 @@
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="como-se-miente.html">Aprende</a>
+      <a href="aprende.html">Aprende</a>
     </nav>
   </header>
 
   <main>
-    <h1>¿De dónde sale el dinero público?</h1>
-    <p class="entradilla">Lo que ingresan todas las administraciones públicas, repartido por tipo de impuesto, cotizaciones sociales y el resto de ingresos. Cuando lo que ingresan no llega para lo que gastan, la diferencia es el <a href="cuentas.html">déficit</a>.</p>
-    <p class="contabilidad">Contabilidad nacional (SEC 2010), todas las administraciones consolidadas. <a href="como-se-miente.html#contabilidades">Qué significa</a>.</p>
+    <h1 class="pregunta">¿De dónde sale el dinero público?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">Todas las administraciones juntas, en contabilidad nacional (SEC 2010). Cuando lo que ingresan no llega para lo que gastan, la diferencia es el <a href="cuentas.html">déficit</a>. <a href="como-se-miente.html#contabilidades">Qué significa contabilidad nacional</a>.</p>
 
     <p class="ultimo-año" id="ultimo-año"></p>
     <div class="controles">
@@ -53,8 +53,24 @@
       <p class="fuente-grafico" id="reparto-fuente"></p>
     </section>
 
+    <div class="entender">
+      <p class="rotulo">Para entenderlo</p>
+      <h3>Impuestos y cotizaciones no son lo mismo</h3>
+      <p>Un <strong>impuesto</strong> se paga sin recibir nada concreto a cambio: lo recaudado va a la caja común. Una <strong>cotización social</strong> se paga por trabajar (una parte la empresa y otra el trabajador) y da derecho a prestaciones concretas: pensión, desempleo, baja por enfermedad.</p>
+      <p>Entre los impuestos, los <strong>directos</strong> gravan lo que se gana o se tiene (el IRPF, el de sociedades) y los <strong>indirectos</strong>, lo que se compra o se produce (el IVA, los impuestos especiales sobre la gasolina, el tabaco o el alcohol). En los directos, lo que se paga puede depender de cuánto se gana; en los indirectos, depende de lo que se compra, no de quién lo compra.</p>
+      <details>
+        <summary>Un paso más: los «otros ingresos»</summary>
+        <p>No todo es impuestos: las administraciones también venden servicios (tasas, entradas, matrículas), cobran rentas de lo que poseen (intereses, dividendos, alquileres) y reciben transferencias, por ejemplo de la Unión Europea. Aquí van juntos como la resta entre los ingresos totales y los impuestos y cotizaciones.</p>
+      </details>
+    </div>
+
+    <div class="ojo">
+      <strong>Ojo con esto</strong>
+      <p>Que la recaudación suba no significa que hayan subido los impuestos: también sube cuando hay más empleo, más consumo o los precios suben, con las mismas leyes. Y al revés: puede bajar sin que nadie baje un impuesto. Para saber si cambió un impuesto hay que mirar la ley, no la recaudación.</p>
+    </div>
+
     <section class="grafico" aria-labelledby="e-titulo">
-      <h2 class="grafico-titulo" id="e-titulo">¿Cómo ha cambiado cada ingreso desde 1995?</h2>
+      <h2 class="pregunta" id="e-titulo">¿Cómo ha cambiado cada ingreso desde 1995?</h2>
       <p class="grafico-explica">El punto marca el año elegido; la cifra junto a cada nombre es su valor ese año.</p>
       <div id="periodo"></div>
       <div class="multiples" id="evolucion"></div>

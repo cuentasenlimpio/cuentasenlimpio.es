@@ -104,6 +104,16 @@ const plano = (t) => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const docNombre = (d) => `${d.partidos.join(" – ")} · ${d.tipo === "programa" ? "programa" : d.tipo === "coalicion" ? "acuerdo de coalición" : d.tipo === "investidura" ? "acuerdo de investidura" : d.tipo}`;
 const ordenAlfabetico = (a, b) => a.partidos.join(" ").localeCompare(b.partidos.join(" "), "es");
 
+// Respuesta corta: cuántas promesas distintas y de cuántos documentos.
+function pintarRespuesta(datos) {
+  const p = document.getElementById("respuesta");
+  const distintas = datos.documentos.reduce((t, d) => t + d.distintas, 0);
+  p.textContent = "";
+  const b = document.createElement("strong");
+  b.textContent = `${numero(distintas, 0)} promesas`;
+  p.append(b, ` en ${datos.documentos.length} documentos: los programas electorales del 23 de julio de 2023, el acuerdo de coalición y los acuerdos de investidura. Cada una, con su cita literal y la página donde está.`);
+}
+
 function pintarRecuento(datos) {
   const t = document.getElementById("recuento-tabla");
   t.textContent = "";
@@ -237,6 +247,7 @@ async function arrancarPromesas() {
   enlace("datos/promesas.csv", "Todas las promesas en CSV", f);
   f.appendChild(document.createTextNode("."));
   pintarRecuento(datos);
+  pintarRespuesta(datos);
 }
 
 arrancar();
