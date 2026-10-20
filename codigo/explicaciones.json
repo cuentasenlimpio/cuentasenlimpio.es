@@ -773,5 +773,130 @@
     "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/entregas-a-cuenta-2026.xlsx"
    }
   ]
+ },
+ "año_renta": {
+  "titulo": "Año de la encuesta y año de la renta",
+  "texto": [
+   "La encuesta se hace en primavera y pregunta por los ingresos del año natural anterior. El INE lo dice así: «las variables sobre ingresos de la encuesta de 2025 se refieren a 2024 mientras que las demás preguntas se refieren a 2025». Eurostat aplica la misma regla a todos los países.",
+   "Por eso un cambio en las pensiones o en una prestación aprobado un año aparece en estas cifras al menos un año después, y la OCDE, que etiqueta por año de renta, parece ir un año «por detrás»."
+  ],
+  "decalaje": "Un año entre la renta y la encuesta, más el tiempo de publicación (la encuesta de 2025 salió en febrero de 2026).",
+  "fuentes": [
+   {
+    "texto": "INE, Encuesta de Condiciones de Vida 2025, nota de prensa",
+    "url": "https://www.ine.es/dyngs/Prensa/ECV2025.htm"
+   },
+   {
+    "texto": "Eurostat, metadatos de EU-SILC",
+    "url": "https://ec.europa.eu/eurostat/cache/metadata/en/ilc_sieusilc.htm"
+   }
+  ]
+ },
+ "gini": {
+  "titulo": "El índice de Gini",
+  "texto": [
+   "Mide cuánto se aleja el reparto de la renta de un reparto perfectamente igual. Eurostat: «A coefficient of 0 expresses perfect equality where everyone has the same income, while a coefficient of 100 expresses full inequality where only one person has all the income». El Banco de España y la OCDE lo dan de 0 a 1.",
+   "Resume todo el reparto en un número: no dice dónde está la desigualdad (arriba, en medio o abajo). Para eso sirven el S80/S20 o las tasas de pobreza."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, glosario: Gini coefficient",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Gini_coefficient"
+   }
+  ]
+ },
+ "renta_equivalente": {
+  "titulo": "Renta equivalente y S80/S20",
+  "texto": [
+   "Para comparar hogares de distinto tamaño, la renta del hogar se divide entre «adultos equivalentes» con la escala de la OCDE modificada: 1 para el primer adulto, 0,5 para cada persona de 14 años o más y 0,3 para cada menor de 14. El resultado se asigna a cada miembro del hogar. El INE la llama «renta por unidad de consumo».",
+   "El S80/S20 divide la renta total del 20 % de la población con más renta entre la del 20 % con menos."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, glosario: Equivalised disposable income",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Equivalised_disposable_income"
+   },
+   {
+    "texto": "Eurostat, glosario: Income quintile share ratio",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Income_quintile_share_ratio"
+   }
+  ]
+ },
+ "antes_transferencias": {
+  "titulo": "«Antes de transferencias»",
+  "texto": [
+   "Son la misma renta de los hogares, quitando las transferencias sociales: pensiones de jubilación y viudedad, desempleo, familia, enfermedad e invalidez, educación, vivienda y asistencia social. Hay dos versiones: sin ninguna (tampoco pensiones) y con las pensiones como renta.",
+   "Eurostat advierte de que el indicador examina «the hypothetical non-existence of social transfers»: es un cálculo, no lo que pasaría de verdad sin ellas. Los impuestos ya están descontados en todas las versiones."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, glosario: At-risk-of-poverty rate",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate"
+   },
+   {
+    "texto": "Eurostat, glosario: Social transfers",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Social_transfers"
+   }
+  ]
+ },
+ "umbral_pobreza": {
+  "titulo": "El umbral de riesgo de pobreza",
+  "texto": [
+   "Está en el 60 % de la mediana de la renta disponible equivalente de cada país. En España, en la encuesta de 2025, 12.220 € al año para una persona sola.",
+   "Es relativo: si la renta de todos sube, el umbral sube. Por eso Eurostat aclara que «does not measure wealth or poverty, but low income in comparison to other residents in that country, which does not necessarily imply a low standard of living»."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, glosario: At-risk-of-poverty rate",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate"
+   },
+   {
+    "texto": "Eurostat, umbral de riesgo de pobreza (ilc_li01)",
+    "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_li01/default/table"
+   }
+  ]
+ },
+ "carencia_material": {
+  "titulo": "Pobreza relativa y carencia material",
+  "texto": [
+   "La pobreza relativa mira la renta frente a la de los demás. La carencia material y social severa mira si una persona no puede permitirse al menos 7 de 13 cosas: afrontar un gasto imprevisto, una semana de vacaciones, comer proteína cada dos días, mantener la casa a temperatura adecuada, pagar a tiempo, tener coche, internet, ropa, dos pares de zapatos, sustituir muebles, un pequeño gasto propio, ocio y reunirse con familia o amigos una vez al mes.",
+   "Por eso pueden moverse en sentidos distintos. El AROPE cuenta a quien cumple al menos uno de tres criterios: riesgo de pobreza, carencia severa o vivir en un hogar con muy poco trabajo."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, glosario: Severe material and social deprivation rate (SMSD)",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Severe_material_and_social_deprivation_rate_(SMSD)"
+   }
+  ]
+ },
+ "ocde_metodo": {
+  "titulo": "El método de la OCDE",
+  "texto": [
+   "Parte de la renta de mercado (salarios, rentas del trabajo por cuenta propia y del capital y, en su definición, algunas prestaciones de seguros ligados al empleo), le suma las transferencias públicas para llegar a la renta bruta y le resta los impuestos sobre la renta y las cotizaciones de los hogares para llegar a la disponible.",
+   "Usa otra forma de comparar hogares (la raíz cuadrada del número de miembros) y etiqueta los años por la renta, así que sus cifras no coinciden con las de Eurostat y no deben mezclarse. Como la descomposición es secuencial, cuánto se atribuye a cada paso depende del orden."
+  ],
+  "fuentes": [
+   {
+    "texto": "OCDE, Income Distribution Database: términos de referencia",
+    "url": "https://oecd.org/content/dam/oecd/en/data/datasets/income-and-wealth-distribution-databases/idd-tor-2012-onwards.pdf"
+   }
+  ]
+ },
+ "riqueza_dwa": {
+  "titulo": "Las cuentas distributivas de la riqueza",
+  "texto": [
+   "Combinan las cuentas nacionales con los datos de la Encuesta Financiera de las Familias del Banco de España para estimar, cada trimestre, cómo se reparte la riqueza neta de los hogares (lo que tienen menos lo que deben). Son una estadística experimental y se publican con unos cinco meses de retraso.",
+   "No es la misma cifra que la de la propia Encuesta Financiera de las Familias, que se hace cada dos años desde 2020."
+  ],
+  "fuentes": [
+   {
+    "texto": "BCE, cuentas distributivas de la riqueza (DWA)",
+    "url": "https://data-api.ecb.europa.eu/service/data/DWA/Q.ES.S14._Z._Z.NWA._Z.GI.S.N?format=csvdata"
+   },
+   {
+    "texto": "Banco de España, Encuesta Financiera de las Familias 2024",
+    "url": "https://www.bde.es/wbe/es/publicaciones/analisis-economico-investigacion/documentos-ocasionales/encuesta-financiera-de-las-familias-eff-2024-metodos-resultados-y-cambios-desde-2022.html"
+   }
+  ]
  }
 }

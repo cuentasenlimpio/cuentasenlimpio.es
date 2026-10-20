@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Las cuentas y la desigualdad · Cuentas en limpio</title>
+  <meta name="description" content="Desigualdad de renta y riqueza en España y la UE, y cuánto la reducen las pensiones, las prestaciones y los impuestos, con la fuente de cada cifra.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js" defer></script>
+  <script src="ec.js" defer></script>
+  <script src="desigualdad.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="antetitulo">El dinero · el reparto</p>
+    <h1 class="pregunta">¿Qué hacen las cuentas sobre la desigualdad?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">Datos de la encuesta europea de ingresos (en España, la Encuesta de Condiciones de Vida del INE). Cada encuesta pregunta por la renta del año anterior: la de 2025 habla de la renta de 2024. <button type="button" class="info" data-info="año_renta">i</button></p>
+
+    <section aria-labelledby="b1">
+      <h2 class="pregunta" id="b1">¿Cuánta desigualdad de renta hay?</h2>
+      <section class="grafico" aria-labelledby="g-gini-t">
+        <h3 class="grafico-titulo" id="g-gini-t">Índice de Gini de la renta disponible, España y UE <button type="button" class="info" data-info="gini">i</button></h3>
+        <p class="grafico-explica">0 sería que todos tienen la misma renta; 100, que una sola persona lo tiene todo.</p>
+        <div class="lectura-año" id="g-gini-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-gini" role="img" aria-label="Índice de Gini de la renta disponible, España y UE"></div>
+        <p class="fuente-grafico" id="g-gini-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-s80-t">
+        <h3 class="grafico-titulo" id="g-s80-t">Ratio S80/S20: renta del 20 % que más tiene ÷ la del 20 % que menos <button type="button" class="info" data-info="renta_equivalente">i</button></h3>
+
+        <div class="lectura-año" id="g-s80-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-s80" role="img" aria-label="Ratio S80/S20: renta del 20 % que más tiene ÷ la del 20 % que menos"></div>
+        <p class="fuente-grafico" id="g-s80-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b2">
+      <h2 class="pregunta" id="b2">¿Cuánto la reducen las pensiones y las prestaciones?</h2>
+      <p class="respuesta" id="r-transf"></p>
+      <section class="grafico" aria-labelledby="g-escalones-t">
+        <h3 class="grafico-titulo" id="g-escalones-t">Índice de Gini en España, en tres escalones <button type="button" class="info" data-info="antes_transferencias">i</button></h3>
+        <p class="grafico-explica">Arriba, sin ninguna transferencia social; en medio, con las pensiones pero sin el resto de prestaciones; abajo, con todas (la renta disponible).</p>
+        <div class="lectura-año" id="g-escalones-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-escalones" role="img" aria-label="Índice de Gini en España, en tres escalones"></div>
+        <p class="fuente-grafico" id="g-escalones-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-pob-esc-t">
+        <h3 class="grafico-titulo" id="g-pob-esc-t">Riesgo de pobreza en España, en tres escalones <button type="button" class="info" data-info="umbral_pobreza">i</button></h3>
+        <p class="grafico-explica">Porcentaje de personas por debajo del umbral, con el mismo umbral en los tres casos.</p>
+        <div class="lectura-año" id="g-pob-esc-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-pob-esc" role="img" aria-label="Riesgo de pobreza en España, en tres escalones"></div>
+        <p class="fuente-grafico" id="g-pob-esc-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-ocde-t">
+        <h3 class="grafico-titulo" id="g-ocde-t">Con el método de la OCDE: Gini de la renta de mercado, bruta y disponible <button type="button" class="info" data-info="ocde_metodo">i</button></h3>
+        <p class="grafico-explica">Separa las transferencias (de mercado a bruta) de los impuestos y cotizaciones (de bruta a disponible). Año de la renta, no de la encuesta, y otra escala: no se mezcla con los gráficos de arriba.</p>
+        <div class="lectura-año" id="g-ocde-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-ocde" role="img" aria-label="Con el método de la OCDE: Gini de la renta de mercado, bruta y disponible"></div>
+        <p class="fuente-grafico" id="g-ocde-fuente"></p>
+      </section>
+
+      <div class="ojo">
+        <strong>Ojo con esto</strong>
+        <p>«Sin transferencias» es un supuesto: Eurostat lo describe como la «inexistencia hipotética» de las transferencias. Resta las prestaciones sin cambiar nada más (ni siquiera el umbral de pobreza). Sirve para ver el tamaño de las transferencias, no para saber qué pasaría sin ellas.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="b3">
+      <h2 class="pregunta" id="b3">¿Cuánta gente está en riesgo de pobreza o con carencias?</h2>
+      <p class="respuesta" id="r-pobreza"></p>
+      <section class="grafico" aria-labelledby="g-pob-t">
+        <h3 class="grafico-titulo" id="g-pob-t">Riesgo de pobreza, pobreza o exclusión (AROPE) y carencia material severa, en España <button type="button" class="info" data-info="carencia_material">i</button></h3>
+
+        <div class="lectura-año" id="g-pob-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-pob" role="img" aria-label="Riesgo de pobreza, pobreza o exclusión (AROPE) y carencia material severa, en España"></div>
+        <p class="fuente-grafico" id="g-pob-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="b4">
+      <h2 class="pregunta" id="b4">¿Y la riqueza?</h2>
+      <p class="respuesta" id="r-riqueza"></p>
+      <section class="grafico" aria-labelledby="g-riq-t">
+        <h3 class="grafico-titulo" id="g-riq-t">Qué parte de la riqueza neta de los hogares tiene cada grupo <button type="button" class="info" data-info="riqueza_dwa">i</button></h3>
+        <p class="grafico-explica">Estadística experimental del BCE y el Banco de España, trimestral.</p>
+        <div class="lectura-año" id="g-riq-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-riq" role="img" aria-label="Qué parte de la riqueza neta de los hogares tiene cada grupo"></div>
+        <p class="fuente-grafico" id="g-riq-fuente"></p>
+      </section>
+
+    </section>
+
+    <details class="plegable ficha" open>
+      <summary>Comprobaciones</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

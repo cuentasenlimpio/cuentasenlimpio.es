@@ -1108,6 +1108,76 @@ def construir_territorio(descargas):
     return {"ccaa": [datos[s_] for s_, *_ in CCAA], "total": total, "comprobaciones": comprobaciones}
 
 
+# ---- Desigualdad (desde el 20/10/2026). En EU-SILC/ECV, el año es el de la encuesta; la renta, la del año anterior. ----
+def construir_desigualdad(descargas):
+    comprobaciones, out = [], {}
+
+    def eu(tabla, **filtro):
+        if tabla not in descargas:
+            return {}, {}
+        c, d = leer_jsonstat(AQUI / descargas[tabla]["fichero"])
+        return ({a: v for a, (v, _) in serie(c, d, geo="ES", **filtro).items() if v is not None},
+                {a: v for a, (v, _) in serie(c, d, geo="EU27_2020", **filtro).items() if v is not None} if "EU27_2020" in d["dimension"]["geo"]["category"]["index"] else {})
+
+    def bloque(es_, ue_, desde=2008):
+        a_ = sorted(a for a in es_ if a >= desde)
+        return {"años": a_, "es": [es_[a] for a in a_], "ue": [ue_.get(a) for a in a_]}
+
+    # Gini: Eurostat desde 2014 (la tabla se reestructuró en 2026) y el INE para 2008-2013 (las mismas cifras).
+    g_es, g_ue = eu("ilc_di12", age="TOTAL")
+    ine = dict((int(p_), v) for p_, v in _ine(descargas, "ECV7186")) if "ine_ecv7186" in descargas else {}
+    comunes = sorted(set(ine) & set(g_es))
+    peor = max((abs(ine[a] - g_es[a]) for a in comunes), default=0)
+    comprobaciones.append({"que": "¿El índice de Gini del INE y el de Eurostat son el mismo?",
+                           "resultado": f"Sí, en los {len(comunes)} años comunes; por eso usamos el del INE para 2008-{min(g_es) - 1}" if peor < 0.051
+                           else f"No: diferencia máxima de {es(peor, 1)} puntos", "ok": peor < 0.051})
+    for a, v in ine.items():
+        g_es.setdefault(a, v)
+    out["gini"] = bloque(g_es, g_ue)
+    for clave, tabla in (("gini_sin_transferencias", "ilc_di12b"), ("gini_solo_pensiones", "ilc_di12c")):
+        out[clave] = bloque(*eu(tabla))
+    for clave, tabla in (("pobreza", "ilc_li02"), ("pobreza_sin_transferencias", "ilc_li09"), ("pobreza_solo_pensiones", "ilc_li10")):
+        out[clave] = bloque(*eu(tabla, statinfo="MED_EI", rskpovth="B_60", unit="PC", sex="T", age="TOTAL"))
+    out["s80s20"] = bloque(*eu("ilc_di11", sex="T", age="TOTAL", unit="RAT"))
+    out["arope"] = bloque(*eu("ilc_peps01n", sex="T", age="TOTAL", unit="PC"), desde=2015)
+    out["carencia"] = bloque(*eu("ilc_mdsd11", sex="T", age="TOTAL", unit="PC"), desde=2015)
+    u_es, _ = eu("ilc_li01", statinfo="MED_EI", rskpovth="B_60", unit="EUR", hhcomp="A1")
+    out["umbral"] = bloque(u_es, {})
+    # Comprobación: la reducción de la pobreza por las transferencias (sin pensiones) se puede rehacer con dos tablas.
+    if out["pobreza"]["años"] and out["pobreza_solo_pensiones"]["años"]:
+        a = out["pobreza"]["años"][-1]
+        antes = out["pobreza_solo_pensiones"]["es"][out["pobreza_solo_pensiones"]["años"].index(a)]
+        despues = out["pobreza"]["es"][-1]
+        out["reduccion_pobreza"] = {"año": a, "pct": round(100 * (antes - despues) / antes, 1)}
+
+    # OCDE: Gini de la renta de mercado, bruta (con transferencias) y disponible (después de impuestos). Año de renta.
+    if "ocde_idd" in descargas:
+        filas = list(csv.DictReader((AQUI / descargas["ocde_idd"]["fichero"]).read_text().splitlines()))
+        m_ = {}
+        for f in filas:
+            if f["OBS_VALUE"]:
+                m_.setdefault(f["MEASURE"], {})[int(f["TIME_PERIOD"])] = round(float(f["OBS_VALUE"]), 3)
+        a_ = sorted(set(m_.get("INC_MRKT_GINI", {})) & set(m_.get("INC_DISP_GINI", {})) & set(m_.get("INC_GROSS_GINI", {})))
+        out["ocde"] = {"años_renta": a_, "mercado": [m_["INC_MRKT_GINI"][a] for a in a_], "bruta": [m_["INC_GROSS_GINI"][a] for a in a_],
+                       "disponible": [m_["INC_DISP_GINI"][a] for a in a_]}
+
+    # Riqueza: cuentas distributivas (BCE y Banco de España), trimestrales, experimentales.
+    riq = {}
+    for k in ("gini", "top10", "bottom50"):
+        if f"bce_dwa_{k}" in descargas:
+            filas = list(csv.DictReader((AQUI / descargas[f"bce_dwa_{k}"]["fichero"]).read_text().splitlines()))
+            riq[k] = {f["TIME_PERIOD"].replace("-Q", "T"): round(float(f["OBS_VALUE"]), 2) for f in filas if f.get("OBS_VALUE")}
+    if riq.get("gini"):
+        t_ = sorted(riq["gini"])
+        out["riqueza"] = {"trimestres": t_, **{k: [v.get(x) for x in t_] for k, v in riq.items()}}
+        u = t_[-1]
+        if riq.get("top10") and riq.get("bottom50"):
+            comprobaciones.append({"que": "¿Las partes de la riqueza son coherentes (el 10 % más rico más el 50 % menos rico no pasan de 100)?",
+                                   "resultado": "Sí" if riq["top10"][u] + riq["bottom50"][u] < 100 else "No", "ok": riq["top10"][u] + riq["bottom50"][u] < 100})
+    out["comprobaciones"] = comprobaciones
+    return out
+
+
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
@@ -1717,7 +1787,7 @@ def main():
                                  "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
-                                                       "hacienda_liquidacion_", "bde_be13", "ine_ecp11")))):
+                                                       "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -1767,6 +1837,11 @@ def main():
               ("Gasto por funciones de cada comunidad autónoma." if nombre.startswith("igae_cofog_ccaa_") else None) or \
               ("Financiación por habitante ajustado de cada comunidad de régimen común." if nombre.startswith("hacienda_liquidacion_") else None) or \
               ("Población de una comunidad autónoma." if nombre.startswith("ine_ecp11") else None) or \
+              ("Indicador de desigualdad o pobreza de la encuesta europea de ingresos (EU-SILC)." if nombre.startswith("ilc_") else None) or \
+              ({"ine_ecv7186": "Índice de Gini del INE, para los años en que Eurostat ya no lo da (2008-2013).",
+                "ocde_idd": "Gini antes y después de transferencias e impuestos, con el método de la OCDE.",
+                "bce_dwa_gini": "Reparto de la riqueza (estadística experimental).", "bce_dwa_top10": "Reparto de la riqueza (estadística experimental).",
+                "bce_dwa_bottom50": "Reparto de la riqueza (estadística experimental)."}.get(nombre)) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else
@@ -1823,6 +1898,10 @@ def main():
         for c_ in compr:
             print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     escribir_csv_paginas(gasto, ingresos)
+    desigualdad = construir_desigualdad(descargas)
+    (WEB / "datos" / "desigualdad.json").write_text(json.dumps(desigualdad, ensure_ascii=False, separators=(",", ":")))
+    for c_ in desigualdad["comprobaciones"]:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     territorio = construir_territorio(descargas)
     (WEB / "datos" / "territorio.json").write_text(json.dumps(territorio, ensure_ascii=False, separators=(",", ":")))
     for c_ in territorio["comprobaciones"]:
