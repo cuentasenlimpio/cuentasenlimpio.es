@@ -335,6 +335,61 @@ def construir_gasto(descargas, tabla_main, deflactor, base, poblacion):
             "niveles": [{"codigo": n, "nombre": t} for n, t in NIVELES]}, comprobaciones
 
 
+# Gasto por tipo (clasificación económica de gov_10a_main). Las ocho partes suman exactamente el gasto total (TE);
+# el gasto de capital es P.5 + NP + D.9 (definición del SEC 2010) y el corriente, todo lo demás.
+TIPOS = [
+    ("sueldos", "Sueldos de los empleados públicos", [("D1PAY", 1)]),
+    ("compras", "Compras de bienes y servicios", [("P2", 1)]),
+    ("prestaciones", "Pensiones y otras prestaciones sociales (también en especie, como las recetas)", [("D62PAY", 1), ("D632PAY", 1)]),
+    ("intereses", "Intereses de la deuda", [("D41PAY", 1)]),
+    ("subvenciones", "Subvenciones a empresas", [("D3PAY", 1)]),
+    ("otros_corrientes", "Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",
+     [("D29PAY", 1), ("D4PAY", 1), ("D41PAY", -1), ("D5PAY", 1), ("D7PAY", 1), ("D8", 1)]),
+    ("inversion", "Inversión: obras, edificios, equipos y programas", [("P51G", 1)]),
+    ("otros_capital", "Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",
+     [("P5", 1), ("P51G", -1), ("NP", 1), ("D9PAY", 1)]),
+]
+CAPITAL = ("inversion", "otros_capital")
+
+
+def construir_tipo(tabla_main, años, deflactor, base, poblacion):
+    """Gasto corriente frente a gasto de capital e inversión, 1995–último año (gov_10a_main)."""
+    mc, md = tabla_main
+
+    def s(item, unidad="MIO_NAC"):
+        return serie(mc, md, geo="ES", sector="S13", na_item=item, unit=unidad)
+
+    codigos = {c for _, _, f in TIPOS for c, _ in f}
+    m = {c: s(c) for c in codigos | {"TE"}}
+    te_pib = s("TE", "PC_GDP")
+    años = [a for a in años if all(m[c].get(a, (None,))[0] is not None for c in m)]
+    partes = {}
+    for clave, _, formula in TIPOS:
+        partes[clave] = {a: sum(sg * m[c][a][0] for c, sg in formula) for a in años}
+    descuadre = max(abs(sum(partes[k][a] for k in partes) - m["TE"][a][0]) for a in años)
+
+    def como_serie(f):
+        return {a: (round(f(a), 1), None) for a in años}
+
+    corriente = como_serie(lambda a: m["TE"][a][0] - sum(partes[k][a] for k in CAPITAL))
+    # % del PIB del gasto corriente: su parte del gasto total por el % del PIB que publica Eurostat para el total.
+    corriente_pib = {a: (round(corriente[a][0] / m["TE"][a][0] * te_pib[a][0], 1), None) for a in años}
+    salida = {
+        "años": años,
+        "corriente": en_unidades(corriente, corriente_pib, años, deflactor, base, poblacion),
+        "inversion": en_unidades(m["P51G"], s("P51G", "PC_GDP"), años, deflactor, base, poblacion),
+        "partes": [{"clave": k, "nombre": n, "formula": " ".join(("+ " if sg > 0 else "− ") + c for c, sg in f).lstrip("+ "),
+                    "de_cada_100": [round(100 * partes[k][a] / m["TE"][a][0], 2) for a in años]} for k, n, f in TIPOS],
+    }
+    comprobacion = {
+        "que": "¿Las ocho partes del gasto por tipo suman exactamente el gasto total?",
+        "resultado": f"Sí, en los {len(años)} años ({años[0]}–{años[-1]})" if descuadre < 1
+        else f"No: diferencia máxima de {es(descuadre)} millones",
+        "ok": descuadre < 1,
+    }
+    return salida, comprobacion
+
+
 INGRESOS_PARTES = [
     # clave, nombre, fórmula sobre gov_10a_taxag (S13): lista de (código, signo)
     ("iva", "IVA", [("D211", 1)]),
@@ -411,7 +466,7 @@ def construir_ingresos(descargas, tabla_main, deflactor, base, poblacion):
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
-                "constantes": f"millones de euros de {gasto['años'][-1]}", "habitante": "euros por habitante"}
+                "constantes": f"millones de euros de {gasto['año_base_constantes']}", "habitante": "euros por habitante"}
     with open(WEB / "datos" / "gasto.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["año", "pieza", "partida", "unidad", "valor", "tipo", "fórmula o código (Eurostat gov_10a_exp)"])
@@ -432,6 +487,17 @@ def escribir_csv_paginas(gasto, ingresos):
                                 f"% pagado por {dict(NIVELES)[nivel]}", valor, "lectura",
                                 (f"({codigo} − GF0108) de {nivel} ÷ ({codigo} − GF0108) de S13 × 100" if codigo in ("GF01", "TOTAL")
                                  else f"{codigo} de {nivel} ÷ {codigo} de S13 × 100")])
+        t = gasto["tipo"]
+        for clave, nombre in (("corriente", "Gasto corriente"), ("inversion", "Inversión")):
+            for u, nombre_u in unidades.items():
+                for i, a in enumerate(t["años"]):
+                    dato = u == "corrientes" or (u == "pib" and clave == "inversion")
+                    w.writerow([a, "gasto por tipo", nombre, nombre_u, t[clave][u][i], "dato" if dato else "lectura",
+                                "P51G (gov_10a_main)" if clave == "inversion" else "TE − P5 − NP − D9PAY (gov_10a_main)"])
+        for p_ in t["partes"]:
+            for i, a in enumerate(t["años"]):
+                w.writerow([a, "gasto por tipo, de cada 100 €", p_["nombre"], "euros de cada 100", p_["de_cada_100"][i],
+                            "lectura", f"({p_['formula']}) ÷ TE × 100 (gov_10a_main)"])
     with open(WEB / "datos" / "ingresos.csv", "w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["año", "pieza", "partida", "unidad", "valor", "tipo", "fórmula o código (Eurostat gov_10a_taxag y gov_10a_main)"])
@@ -888,6 +954,9 @@ def construir_promesas(documentos):
     salida = {"fiabilidad": fiab,
               "clases": json.loads((carpeta / ("bildu_resultado.json")).read_text())["clases"], "documentos": docs, "promesas": filas}
     (WEB / "datos" / "promesas.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
+    # Resumen ligero para la portada (promesas.json pesa varios MB).
+    resumen = {"documentos": len(docs), "distintas": sum(d["distintas"] for d in docs), "legislatura": documentos["legislatura"]}
+    (WEB / "datos" / "promesas-resumen.json").write_text(json.dumps(resumen, ensure_ascii=False, separators=(",", ":")))
     nombre = {d["id"]: d for d in docs}
     with open(WEB / "datos" / "promesas.csv", "w", newline="") as f:
         w = csv.writer(f)
@@ -1045,12 +1114,15 @@ def main():
         "legislaturas": construir_legislaturas(descargas),
         "cambio_deuda": cambio,
         "acontecimientos": json.loads((CODIGO / "acontecimientos.json").read_text()),
+        "gobiernos": json.loads((CODIGO / "gobiernos.json").read_text()),
         "ue": ue,
         "comprobaciones": comprobaciones,
     }
     (WEB / "datos").mkdir(parents=True, exist_ok=True)
     (WEB / "datos" / "aapp.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
     gasto, comprobaciones_gasto = construir_gasto(descargas, tablas["gov_10a_main"], deflactor, base, poblacion)
+    gasto["tipo"], comprobacion_tipo = construir_tipo(tablas["gov_10a_main"], años, deflactor, base, poblacion)
+    comprobaciones_gasto.append(comprobacion_tipo)
     ingresos, comprobaciones_ingresos = construir_ingresos(descargas, tablas["gov_10a_main"], deflactor, base, poblacion)
     for nombre, cuerpo, compr in (("gasto", gasto, comprobaciones_gasto), ("ingresos", ingresos, comprobaciones_ingresos)):
         cuerpo["comprobaciones"] = compr

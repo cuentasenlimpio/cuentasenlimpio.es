@@ -1,0 +1,95 @@
+{
+ "criterio": "Fecha del Real Decreto de nombramiento de cada Presidente del Gobierno, también cuando repite tras unas elecciones o tras una moción de censura. Sitúan en el tiempo; no atribuyen resultados: los datos de un año dependen también de decisiones anteriores, de otras administraciones y de la economía.",
+ "lista": [
+  {
+   "fecha": "1993-07-09",
+   "persona": "Felipe González Márquez",
+   "corto": "González",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 1106/1993",
+   "fuente": "BOE de 10/07/1993, BOE-A-1993-18045",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-1993-18045"
+  },
+  {
+   "fecha": "1996-05-04",
+   "persona": "José María Aznar López",
+   "corto": "Aznar",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 757/1996",
+   "fuente": "BOE de 05/05/1996, BOE-A-1996-9942",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-1996-9942"
+  },
+  {
+   "fecha": "2000-04-26",
+   "persona": "José María Aznar López",
+   "corto": "Aznar",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 555/2000",
+   "fuente": "BOE de 27/04/2000, BOE-A-2000-7840",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2000-7840"
+  },
+  {
+   "fecha": "2004-04-16",
+   "persona": "José Luis Rodríguez Zapatero",
+   "corto": "Rodríguez Zapatero",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 552/2004",
+   "fuente": "BOE de 17/04/2004, BOE-A-2004-6855",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2004-6855"
+  },
+  {
+   "fecha": "2008-04-11",
+   "persona": "José Luis Rodríguez Zapatero",
+   "corto": "Rodríguez Zapatero",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 431/2008",
+   "fuente": "BOE de 12/04/2008, BOE-A-2008-6470",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2008-6470"
+  },
+  {
+   "fecha": "2011-12-20",
+   "persona": "Mariano Rajoy Brey",
+   "corto": "Rajoy",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 1822/2011",
+   "fuente": "BOE de 21/12/2011, BOE-A-2011-19861",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2011-19861"
+  },
+  {
+   "fecha": "2016-10-30",
+   "persona": "Mariano Rajoy Brey",
+   "corto": "Rajoy",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 414/2016",
+   "fuente": "BOE de 31/10/2016, BOE-A-2016-9962",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2016-9962"
+  },
+  {
+   "fecha": "2018-06-01",
+   "persona": "Pedro Sánchez Pérez-Castejón",
+   "corto": "Sánchez",
+   "tipo": "mocion_de_censura",
+   "real_decreto": "Real Decreto 354/2018",
+   "fuente": "BOE de 02/06/2018, BOE-A-2018-7400",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2018-7400"
+  },
+  {
+   "fecha": "2020-01-07",
+   "persona": "Pedro Sánchez Pérez-Castejón",
+   "corto": "Sánchez",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 1/2020",
+   "fuente": "BOE de 08/01/2020, BOE-A-2020-231",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2020-231"
+  },
+  {
+   "fecha": "2023-11-16",
+   "persona": "Pedro Sánchez Pérez-Castejón",
+   "corto": "Sánchez",
+   "tipo": "investidura",
+   "real_decreto": "Real Decreto 828/2023",
+   "fuente": "BOE de 17/11/2023, BOE-A-2023-23302",
+   "url": "https://www.boe.es/diario_boe/txt.php?id=BOE-A-2023-23302"
+  }
+ ]
+}

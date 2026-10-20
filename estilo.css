@@ -70,7 +70,8 @@ header.sitio .marca {
 
 header.sitio nav { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; font-size: 0.9375rem; }
 header.sitio nav a { color: var(--tinta-suave); text-decoration: none; }
-header.sitio nav a[aria-current="page"] { color: var(--tinta); font-weight: 600; }
+header.sitio nav a[aria-current] { color: var(--tinta); font-weight: 600; }
+header.sitio nav { font-size: 1rem; gap: 0.35rem 1.4rem; }
 
 main {
   max-width: var(--ancho);
@@ -186,7 +187,7 @@ footer.sitio { border-top: 1px solid var(--linea); font-size: 0.8125rem; color: 
 .etiqueta-tipo.lectura { border: 1px solid var(--tinta-suave); color: var(--tinta); }
 
 .grafico { margin: 2rem 0 1rem; }
-h2.grafico-titulo { font-size: 1.25rem; margin: 0 0 0.5rem; padding: 0; border: 0; }
+h2.grafico-titulo, h3.grafico-titulo { font-family: var(--sans); font-size: 1.125rem; margin: 0 0 0.5rem; padding: 0; border: 0; }
 .leyenda-series { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; padding: 0; margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--tinta-suave); }
 .leyenda-series li { display: flex; align-items: center; gap: 0.45rem; margin: 0; }
 .clave-linea { display: inline-block; width: 1.1rem; height: 0; border-top: 2px solid; vertical-align: middle; }
@@ -386,3 +387,58 @@ table.presupuesto th { white-space: normal; }
 .promesa-etiquetas { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.2rem; }
 .ver-entera { justify-self: start; font: inherit; font-size: 0.8125rem; color: var(--acento); background: none; border: 0; padding: 0; text-decoration: underline; cursor: pointer; }
 .ver-entera:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+
+/* ---- Una pregunta, una respuesta (desde el 20/10/2026) ----
+   Cada página y cada bloque abren con una pregunta y una cifra; debajo, el gráfico, la fuente y la explicación. */
+:root {
+  --entender: #eef1f6;
+  --entender-tinta: #3e4a5c;
+}
+h1.pregunta { font: 700 clamp(2rem, 6.5vw, 3.25rem)/1.08 var(--sans); letter-spacing: -0.02em; margin: 1.5rem 0 1rem; }
+h2.pregunta { font: 700 clamp(1.5rem, 4.5vw, 2rem)/1.15 var(--sans); letter-spacing: -0.01em; }
+.respuesta { font: 400 clamp(1.2rem, 3.4vw, 1.45rem)/1.5 var(--serif); margin: 0 0 1.5rem; }
+.respuesta strong { font-family: var(--sans); font-weight: 700; }
+.cifra-grande { display: block; font: 700 clamp(2.5rem, 9vw, 3.75rem)/1 var(--sans); letter-spacing: -0.02em; color: var(--acento); margin: 0.5rem 0 0.35rem; font-variant-numeric: tabular-nums; }
+.paso-de { font: 700 0.8125rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--acento); margin: 0 0 0.6rem; }
+
+.entender { background: var(--entender); border-radius: 8px; padding: 1.25rem 1.4rem; margin: 2rem 0; }
+.entender > .rotulo { font: 700 0.8125rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--entender-tinta); margin: 0 0 0.6rem; }
+.entender h3 { margin: 0 0 0.6rem; }
+.entender p:last-child, .entender details p:last-child { margin-bottom: 0; }
+.entender details { margin-top: 0.75rem; }
+.entender summary { cursor: pointer; font-weight: 600; }
+.entender summary:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.ojo { border-left: 3px solid var(--tinta); padding: 0.1rem 0 0.1rem 1.1rem; margin: 1.5rem 0; }
+.ojo > strong:first-child { display: block; margin-bottom: 0.25rem; }
+.ojo p:last-child { margin-bottom: 0; }
+
+.capas { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 1.1rem; font-size: 0.9375rem; margin: 0.75rem 0 0.25rem; }
+.capas .selector-etiqueta { margin: 0; }
+.capas label { display: inline-flex; gap: 0.4rem; align-items: center; cursor: pointer; }
+.capas input { accent-color: var(--acento); width: 1rem; height: 1rem; margin: 0; }
+.nota-capas { font-size: 0.875rem; color: var(--tinta-suave); margin: 0.25rem 0 0; }
+
+/* Dos barras a la misma escala */
+.comparadas { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.75rem; }
+.comparadas li { margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.25rem; }
+.comparadas .barra { display: flex; align-items: center; gap: 0.5rem; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.comparadas .relleno { display: block; height: 1.4rem; border-radius: 0 3px 3px 0; background: var(--linea-fuerte); min-width: 2px; }
+.comparadas .relleno.destacada { background: var(--c-primario); }
+
+/* De cada 100: cuadrícula de 100 cuadros */
+.cien { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; max-width: 15rem; margin: 0.5rem 0 1rem; padding: 0; list-style: none; }
+.cien li { margin: 0; aspect-ratio: 1; border-radius: 2px; background: var(--linea); }
+.cien li.lleno { background: var(--c-primario); }
+
+.pasos { list-style: none; padding: 0; margin: 2rem 0; }
+.pasos > li { border-top: 1px solid var(--linea); padding: 1.75rem 0 0.5rem; margin: 0; }
+.pasos h2 { border: 0; padding: 0; margin: 0 0 0.5rem; }
+.pasos p { font-size: 1.125rem; }
+
+.sigue { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.75rem; margin: 2rem 0; }
+.sigue a { display: block; text-decoration: none; color: inherit; background: var(--nota); border-radius: 8px; padding: 1rem 1.1rem; }
+.sigue a:hover { outline: 1px solid var(--acento); }
+.sigue strong { display: block; font: 700 1.0625rem/1.3 var(--sans); margin-bottom: 0.3rem; }
+.sigue span { color: var(--tinta-suave); font-size: 0.9375rem; line-height: 1.45; }
+.nota-capas details { margin: 0 0 0.75rem; }
+.nota-capas ul { margin: 0.4rem 0 0; padding-left: 1.1rem; }

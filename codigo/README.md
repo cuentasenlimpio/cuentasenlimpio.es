@@ -12,6 +12,7 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `promesas/documentos.json` | El catálogo de esos documentos: partido, título, páginas, dirección original, copia del archivo, huella y notas. |
 | `promesas/INSTRUCCIONES.md` | Las reglas exactas con las que se clasifican las frases de esos documentos (promesa o no, y por qué). |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
+| `gobiernos.json` | Fechas de nombramiento de cada Presidente del Gobierno, con su Real Decreto en el BOE. Es una capa opcional de los gráficos: sitúa en el tiempo, no atribuye resultados. |
 
 Solo usan la biblioteca estándar de Python 3.12 o posterior: no hay que instalar nada.
 

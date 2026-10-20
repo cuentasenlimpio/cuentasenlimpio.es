@@ -59,36 +59,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Servicios públicos generales,millones de euros corrientes,77818.0,dato,GF01
 2023,evolución,Servicios públicos generales,millones de euros corrientes,84425.0,dato,GF01
 2024,evolución,Servicios públicos generales,millones de euros corrientes,92551.0,dato,GF01
-1995,evolución,Servicios públicos generales,millones de euros de 2024,74264.0,lectura,GF01
-1996,evolución,Servicios públicos generales,millones de euros de 2024,77516.1,lectura,GF01
-1997,evolución,Servicios públicos generales,millones de euros de 2024,76079.7,lectura,GF01
-1998,evolución,Servicios públicos generales,millones de euros de 2024,75449.8,lectura,GF01
-1999,evolución,Servicios públicos generales,millones de euros de 2024,71184.7,lectura,GF01
-2000,evolución,Servicios públicos generales,millones de euros de 2024,69807.1,lectura,GF01
-2001,evolución,Servicios públicos generales,millones de euros de 2024,71241.7,lectura,GF01
-2002,evolución,Servicios públicos generales,millones de euros de 2024,69699.2,lectura,GF01
-2003,evolución,Servicios públicos generales,millones de euros de 2024,69088.6,lectura,GF01
-2004,evolución,Servicios públicos generales,millones de euros de 2024,65706.9,lectura,GF01
-2005,evolución,Servicios públicos generales,millones de euros de 2024,67452.2,lectura,GF01
-2006,evolución,Servicios públicos generales,millones de euros de 2024,69462.6,lectura,GF01
-2007,evolución,Servicios públicos generales,millones de euros de 2024,70537.9,lectura,GF01
-2008,evolución,Servicios públicos generales,millones de euros de 2024,73845.1,lectura,GF01
-2009,evolución,Servicios públicos generales,millones de euros de 2024,78452.5,lectura,GF01
-2010,evolución,Servicios públicos generales,millones de euros de 2024,77566.1,lectura,GF01
-2011,evolución,Servicios públicos generales,millones de euros de 2024,85744.2,lectura,GF01
-2012,evolución,Servicios públicos generales,millones de euros de 2024,88915.0,lectura,GF01
-2013,evolución,Servicios públicos generales,millones de euros de 2024,96793.6,lectura,GF01
-2014,evolución,Servicios públicos generales,millones de euros de 2024,94709.5,lectura,GF01
-2015,evolución,Servicios públicos generales,millones de euros de 2024,89912.6,lectura,GF01
-2016,evolución,Servicios públicos generales,millones de euros de 2024,86982.9,lectura,GF01
-2017,evolución,Servicios públicos generales,millones de euros de 2024,81280.0,lectura,GF01
-2018,evolución,Servicios públicos generales,millones de euros de 2024,83903.7,lectura,GF01
-2019,evolución,Servicios públicos generales,millones de euros de 2024,82906.7,lectura,GF01
-2020,evolución,Servicios públicos generales,millones de euros de 2024,80024.5,lectura,GF01
-2021,evolución,Servicios públicos generales,millones de euros de 2024,83838.1,lectura,GF01
-2022,evolución,Servicios públicos generales,millones de euros de 2024,87798.7,lectura,GF01
-2023,evolución,Servicios públicos generales,millones de euros de 2024,89654.4,lectura,GF01
-2024,evolución,Servicios públicos generales,millones de euros de 2024,95371.8,lectura,GF01
+1995,evolución,Servicios públicos generales,millones de euros de 2025,74264.0,lectura,GF01
+1996,evolución,Servicios públicos generales,millones de euros de 2025,77516.1,lectura,GF01
+1997,evolución,Servicios públicos generales,millones de euros de 2025,76079.7,lectura,GF01
+1998,evolución,Servicios públicos generales,millones de euros de 2025,75449.8,lectura,GF01
+1999,evolución,Servicios públicos generales,millones de euros de 2025,71184.7,lectura,GF01
+2000,evolución,Servicios públicos generales,millones de euros de 2025,69807.1,lectura,GF01
+2001,evolución,Servicios públicos generales,millones de euros de 2025,71241.7,lectura,GF01
+2002,evolución,Servicios públicos generales,millones de euros de 2025,69699.2,lectura,GF01
+2003,evolución,Servicios públicos generales,millones de euros de 2025,69088.6,lectura,GF01
+2004,evolución,Servicios públicos generales,millones de euros de 2025,65706.9,lectura,GF01
+2005,evolución,Servicios públicos generales,millones de euros de 2025,67452.2,lectura,GF01
+2006,evolución,Servicios públicos generales,millones de euros de 2025,69462.6,lectura,GF01
+2007,evolución,Servicios públicos generales,millones de euros de 2025,70537.9,lectura,GF01
+2008,evolución,Servicios públicos generales,millones de euros de 2025,73845.1,lectura,GF01
+2009,evolución,Servicios públicos generales,millones de euros de 2025,78452.5,lectura,GF01
+2010,evolución,Servicios públicos generales,millones de euros de 2025,77566.1,lectura,GF01
+2011,evolución,Servicios públicos generales,millones de euros de 2025,85744.2,lectura,GF01
+2012,evolución,Servicios públicos generales,millones de euros de 2025,88915.0,lectura,GF01
+2013,evolución,Servicios públicos generales,millones de euros de 2025,96793.6,lectura,GF01
+2014,evolución,Servicios públicos generales,millones de euros de 2025,94709.5,lectura,GF01
+2015,evolución,Servicios públicos generales,millones de euros de 2025,89912.6,lectura,GF01
+2016,evolución,Servicios públicos generales,millones de euros de 2025,86982.9,lectura,GF01
+2017,evolución,Servicios públicos generales,millones de euros de 2025,81280.0,lectura,GF01
+2018,evolución,Servicios públicos generales,millones de euros de 2025,83903.7,lectura,GF01
+2019,evolución,Servicios públicos generales,millones de euros de 2025,82906.7,lectura,GF01
+2020,evolución,Servicios públicos generales,millones de euros de 2025,80024.5,lectura,GF01
+2021,evolución,Servicios públicos generales,millones de euros de 2025,83838.1,lectura,GF01
+2022,evolución,Servicios públicos generales,millones de euros de 2025,87798.7,lectura,GF01
+2023,evolución,Servicios públicos generales,millones de euros de 2025,89654.4,lectura,GF01
+2024,evolución,Servicios públicos generales,millones de euros de 2025,95371.8,lectura,GF01
 1995,evolución,Servicios públicos generales,euros por habitante,930,lectura,GF01
 1996,evolución,Servicios públicos generales,euros por habitante,1001,lectura,GF01
 1997,evolución,Servicios públicos generales,euros por habitante,1003,lectura,GF01
@@ -179,36 +179,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Defensa,millones de euros corrientes,15347.0,dato,GF02
 2023,evolución,Defensa,millones de euros corrientes,14008.0,dato,GF02
 2024,evolución,Defensa,millones de euros corrientes,14233.0,dato,GF02
-1995,evolución,Defensa,millones de euros de 2024,12604.1,lectura,GF02
-1996,evolución,Defensa,millones de euros de 2024,12146.7,lectura,GF02
-1997,evolución,Defensa,millones de euros de 2024,12256.2,lectura,GF02
-1998,evolución,Defensa,millones de euros de 2024,12150.1,lectura,GF02
-1999,evolución,Defensa,millones de euros de 2024,11935.5,lectura,GF02
-2000,evolución,Defensa,millones de euros de 2024,12421.6,lectura,GF02
-2001,evolución,Defensa,millones de euros de 2024,12456.4,lectura,GF02
-2002,evolución,Defensa,millones de euros de 2024,13057.8,lectura,GF02
-2003,evolución,Defensa,millones de euros de 2024,12857.3,lectura,GF02
-2004,evolución,Defensa,millones de euros de 2024,13701.9,lectura,GF02
-2005,evolución,Defensa,millones de euros de 2024,14209.2,lectura,GF02
-2006,evolución,Defensa,millones de euros de 2024,14036.5,lectura,GF02
-2007,evolución,Defensa,millones de euros de 2024,14296.6,lectura,GF02
-2008,evolución,Defensa,millones de euros de 2024,14504.0,lectura,GF02
-2009,evolución,Defensa,millones de euros de 2024,14088.3,lectura,GF02
-2010,evolución,Defensa,millones de euros de 2024,14479.6,lectura,GF02
-2011,evolución,Defensa,millones de euros de 2024,14336.3,lectura,GF02
-2012,evolución,Defensa,millones de euros de 2024,12489.1,lectura,GF02
-2013,evolución,Defensa,millones de euros de 2024,12665.4,lectura,GF02
-2014,evolución,Defensa,millones de euros de 2024,11500.9,lectura,GF02
-2015,evolución,Defensa,millones de euros de 2024,13311.3,lectura,GF02
-2016,evolución,Defensa,millones de euros de 2024,13864.1,lectura,GF02
-2017,evolución,Defensa,millones de euros de 2024,13043.1,lectura,GF02
-2018,evolución,Defensa,millones de euros de 2024,12783.1,lectura,GF02
-2019,evolución,Defensa,millones de euros de 2024,12909.3,lectura,GF02
-2020,evolución,Defensa,millones de euros de 2024,12779.2,lectura,GF02
-2021,evolución,Defensa,millones de euros de 2024,13839.2,lectura,GF02
-2022,evolución,Defensa,millones de euros de 2024,17315.4,lectura,GF02
-2023,evolución,Defensa,millones de euros de 2024,14875.7,lectura,GF02
-2024,evolución,Defensa,millones de euros de 2024,14666.8,lectura,GF02
+1995,evolución,Defensa,millones de euros de 2025,12604.1,lectura,GF02
+1996,evolución,Defensa,millones de euros de 2025,12146.7,lectura,GF02
+1997,evolución,Defensa,millones de euros de 2025,12256.2,lectura,GF02
+1998,evolución,Defensa,millones de euros de 2025,12150.1,lectura,GF02
+1999,evolución,Defensa,millones de euros de 2025,11935.5,lectura,GF02
+2000,evolución,Defensa,millones de euros de 2025,12421.6,lectura,GF02
+2001,evolución,Defensa,millones de euros de 2025,12456.4,lectura,GF02
+2002,evolución,Defensa,millones de euros de 2025,13057.8,lectura,GF02
+2003,evolución,Defensa,millones de euros de 2025,12857.3,lectura,GF02
+2004,evolución,Defensa,millones de euros de 2025,13701.9,lectura,GF02
+2005,evolución,Defensa,millones de euros de 2025,14209.2,lectura,GF02
+2006,evolución,Defensa,millones de euros de 2025,14036.5,lectura,GF02
+2007,evolución,Defensa,millones de euros de 2025,14296.6,lectura,GF02
+2008,evolución,Defensa,millones de euros de 2025,14504.0,lectura,GF02
+2009,evolución,Defensa,millones de euros de 2025,14088.3,lectura,GF02
+2010,evolución,Defensa,millones de euros de 2025,14479.6,lectura,GF02
+2011,evolución,Defensa,millones de euros de 2025,14336.3,lectura,GF02
+2012,evolución,Defensa,millones de euros de 2025,12489.1,lectura,GF02
+2013,evolución,Defensa,millones de euros de 2025,12665.4,lectura,GF02
+2014,evolución,Defensa,millones de euros de 2025,11500.9,lectura,GF02
+2015,evolución,Defensa,millones de euros de 2025,13311.3,lectura,GF02
+2016,evolución,Defensa,millones de euros de 2025,13864.1,lectura,GF02
+2017,evolución,Defensa,millones de euros de 2025,13043.1,lectura,GF02
+2018,evolución,Defensa,millones de euros de 2025,12783.1,lectura,GF02
+2019,evolución,Defensa,millones de euros de 2025,12909.3,lectura,GF02
+2020,evolución,Defensa,millones de euros de 2025,12779.2,lectura,GF02
+2021,evolución,Defensa,millones de euros de 2025,13839.2,lectura,GF02
+2022,evolución,Defensa,millones de euros de 2025,17315.4,lectura,GF02
+2023,evolución,Defensa,millones de euros de 2025,14875.7,lectura,GF02
+2024,evolución,Defensa,millones de euros de 2025,14666.8,lectura,GF02
 1995,evolución,Defensa,euros por habitante,158,lectura,GF02
 1996,evolución,Defensa,euros por habitante,157,lectura,GF02
 1997,evolución,Defensa,euros por habitante,162,lectura,GF02
@@ -299,36 +299,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Orden público y seguridad,millones de euros corrientes,25798.0,dato,GF03
 2023,evolución,Orden público y seguridad,millones de euros corrientes,27414.0,dato,GF03
 2024,evolución,Orden público y seguridad,millones de euros corrientes,28628.0,dato,GF03
-1995,evolución,Orden público y seguridad,millones de euros de 2024,18195.7,lectura,GF03
-1996,evolución,Orden público y seguridad,millones de euros de 2024,17477.5,lectura,GF03
-1997,evolución,Orden público y seguridad,millones de euros de 2024,18019.6,lectura,GF03
-1998,evolución,Orden público y seguridad,millones de euros de 2024,18535.3,lectura,GF03
-1999,evolución,Orden público y seguridad,millones de euros de 2024,19233.5,lectura,GF03
-2000,evolución,Orden público y seguridad,millones de euros de 2024,19127.3,lectura,GF03
-2001,evolución,Orden público y seguridad,millones de euros de 2024,21437.6,lectura,GF03
-2002,evolución,Orden público y seguridad,millones de euros de 2024,21605.7,lectura,GF03
-2003,evolución,Orden público y seguridad,millones de euros de 2024,22206.8,lectura,GF03
-2004,evolución,Orden público y seguridad,millones de euros de 2024,22825.6,lectura,GF03
-2005,evolución,Orden público y seguridad,millones de euros de 2024,23276.1,lectura,GF03
-2006,evolución,Orden público y seguridad,millones de euros de 2024,24606.0,lectura,GF03
-2007,evolución,Orden público y seguridad,millones de euros de 2024,26518.1,lectura,GF03
-2008,evolución,Orden público y seguridad,millones de euros de 2024,28032.8,lectura,GF03
-2009,evolución,Orden público y seguridad,millones de euros de 2024,28256.5,lectura,GF03
-2010,evolución,Orden público y seguridad,millones de euros de 2024,29729.3,lectura,GF03
-2011,evolución,Orden público y seguridad,millones de euros de 2024,29581.3,lectura,GF03
-2012,evolución,Orden público y seguridad,millones de euros de 2024,27074.8,lectura,GF03
-2013,evolución,Orden público y seguridad,millones de euros de 2024,26759.2,lectura,GF03
-2014,evolución,Orden público y seguridad,millones de euros de 2024,26584.4,lectura,GF03
-2015,evolución,Orden público y seguridad,millones de euros de 2024,27823.9,lectura,GF03
-2016,evolución,Orden público y seguridad,millones de euros de 2024,27011.5,lectura,GF03
-2017,evolución,Orden público y seguridad,millones de euros de 2024,26735.0,lectura,GF03
-2018,evolución,Orden público y seguridad,millones de euros de 2024,26769.2,lectura,GF03
-2019,evolución,Orden público y seguridad,millones de euros de 2024,27792.4,lectura,GF03
-2020,evolución,Orden público y seguridad,millones de euros de 2024,28417.3,lectura,GF03
-2021,evolución,Orden público y seguridad,millones de euros de 2024,28987.1,lectura,GF03
-2022,evolución,Orden público y seguridad,millones de euros de 2024,29106.8,lectura,GF03
-2023,evolución,Orden público y seguridad,millones de euros de 2024,29112.1,lectura,GF03
-2024,evolución,Orden público y seguridad,millones de euros de 2024,29500.5,lectura,GF03
+1995,evolución,Orden público y seguridad,millones de euros de 2025,18195.7,lectura,GF03
+1996,evolución,Orden público y seguridad,millones de euros de 2025,17477.5,lectura,GF03
+1997,evolución,Orden público y seguridad,millones de euros de 2025,18019.6,lectura,GF03
+1998,evolución,Orden público y seguridad,millones de euros de 2025,18535.3,lectura,GF03
+1999,evolución,Orden público y seguridad,millones de euros de 2025,19233.5,lectura,GF03
+2000,evolución,Orden público y seguridad,millones de euros de 2025,19127.3,lectura,GF03
+2001,evolución,Orden público y seguridad,millones de euros de 2025,21437.6,lectura,GF03
+2002,evolución,Orden público y seguridad,millones de euros de 2025,21605.7,lectura,GF03
+2003,evolución,Orden público y seguridad,millones de euros de 2025,22206.8,lectura,GF03
+2004,evolución,Orden público y seguridad,millones de euros de 2025,22825.6,lectura,GF03
+2005,evolución,Orden público y seguridad,millones de euros de 2025,23276.1,lectura,GF03
+2006,evolución,Orden público y seguridad,millones de euros de 2025,24606.0,lectura,GF03
+2007,evolución,Orden público y seguridad,millones de euros de 2025,26518.1,lectura,GF03
+2008,evolución,Orden público y seguridad,millones de euros de 2025,28032.8,lectura,GF03
+2009,evolución,Orden público y seguridad,millones de euros de 2025,28256.5,lectura,GF03
+2010,evolución,Orden público y seguridad,millones de euros de 2025,29729.3,lectura,GF03
+2011,evolución,Orden público y seguridad,millones de euros de 2025,29581.3,lectura,GF03
+2012,evolución,Orden público y seguridad,millones de euros de 2025,27074.8,lectura,GF03
+2013,evolución,Orden público y seguridad,millones de euros de 2025,26759.2,lectura,GF03
+2014,evolución,Orden público y seguridad,millones de euros de 2025,26584.4,lectura,GF03
+2015,evolución,Orden público y seguridad,millones de euros de 2025,27823.9,lectura,GF03
+2016,evolución,Orden público y seguridad,millones de euros de 2025,27011.5,lectura,GF03
+2017,evolución,Orden público y seguridad,millones de euros de 2025,26735.0,lectura,GF03
+2018,evolución,Orden público y seguridad,millones de euros de 2025,26769.2,lectura,GF03
+2019,evolución,Orden público y seguridad,millones de euros de 2025,27792.4,lectura,GF03
+2020,evolución,Orden público y seguridad,millones de euros de 2025,28417.3,lectura,GF03
+2021,evolución,Orden público y seguridad,millones de euros de 2025,28987.1,lectura,GF03
+2022,evolución,Orden público y seguridad,millones de euros de 2025,29106.8,lectura,GF03
+2023,evolución,Orden público y seguridad,millones de euros de 2025,29112.1,lectura,GF03
+2024,evolución,Orden público y seguridad,millones de euros de 2025,29500.5,lectura,GF03
 1995,evolución,Orden público y seguridad,euros por habitante,228,lectura,GF03
 1996,evolución,Orden público y seguridad,euros por habitante,226,lectura,GF03
 1997,evolución,Orden público y seguridad,euros por habitante,237,lectura,GF03
@@ -419,36 +419,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Asuntos económicos,millones de euros corrientes,77131.0,dato,GF04
 2023,evolución,Asuntos económicos,millones de euros corrientes,74851.0,dato,GF04
 2024,evolución,Asuntos económicos,millones de euros corrientes,80908.0,dato,GF04
-1995,evolución,Asuntos económicos,millones de euros de 2024,53312.7,lectura,GF04
-1996,evolución,Asuntos económicos,millones de euros de 2024,46028.2,lectura,GF04
-1997,evolución,Asuntos económicos,millones de euros de 2024,44869.9,lectura,GF04
-1998,evolución,Asuntos económicos,millones de euros de 2024,50581.1,lectura,GF04
-1999,evolución,Asuntos económicos,millones de euros de 2024,51393.6,lectura,GF04
-2000,evolución,Asuntos económicos,millones de euros de 2024,55886.1,lectura,GF04
-2001,evolución,Asuntos económicos,millones de euros de 2024,55485.4,lectura,GF04
-2002,evolución,Asuntos económicos,millones de euros de 2024,58590.7,lectura,GF04
-2003,evolución,Asuntos económicos,millones de euros de 2024,57763.0,lectura,GF04
-2004,evolución,Asuntos económicos,millones de euros de 2024,69237.0,lectura,GF04
-2005,evolución,Asuntos económicos,millones de euros de 2024,66739.9,lectura,GF04
-2006,evolución,Asuntos económicos,millones de euros de 2024,69024.6,lectura,GF04
-2007,evolución,Asuntos económicos,millones de euros de 2024,76185.5,lectura,GF04
-2008,evolución,Asuntos económicos,millones de euros de 2024,78988.6,lectura,GF04
-2009,evolución,Asuntos económicos,millones de euros de 2024,79887.6,lectura,GF04
-2010,evolución,Asuntos económicos,millones de euros de 2024,80593.4,lectura,GF04
-2011,evolución,Asuntos económicos,millones de euros de 2024,77534.4,lectura,GF04
-2012,evolución,Asuntos económicos,millones de euros de 2024,116495.9,lectura,GF04
-2013,evolución,Asuntos económicos,millones de euros de 2024,65537.7,lectura,GF04
-2014,evolución,Asuntos económicos,millones de euros de 2024,60232.5,lectura,GF04
-2015,evolución,Asuntos económicos,millones de euros de 2024,62363.5,lectura,GF04
-2016,evolución,Asuntos económicos,millones de euros de 2024,54970.2,lectura,GF04
-2017,evolución,Asuntos económicos,millones de euros de 2024,58162.6,lectura,GF04
-2018,evolución,Asuntos económicos,millones de euros de 2024,64036.3,lectura,GF04
-2019,evolución,Asuntos económicos,millones de euros de 2024,64639.8,lectura,GF04
-2020,evolución,Asuntos económicos,millones de euros de 2024,79697.5,lectura,GF04
-2021,evolución,Asuntos económicos,millones de euros de 2024,93248.9,lectura,GF04
-2022,evolución,Asuntos económicos,millones de euros de 2024,87023.6,lectura,GF04
-2023,evolución,Asuntos económicos,millones de euros de 2024,79487.4,lectura,GF04
-2024,evolución,Asuntos económicos,millones de euros de 2024,83374.0,lectura,GF04
+1995,evolución,Asuntos económicos,millones de euros de 2025,53312.7,lectura,GF04
+1996,evolución,Asuntos económicos,millones de euros de 2025,46028.2,lectura,GF04
+1997,evolución,Asuntos económicos,millones de euros de 2025,44869.9,lectura,GF04
+1998,evolución,Asuntos económicos,millones de euros de 2025,50581.1,lectura,GF04
+1999,evolución,Asuntos económicos,millones de euros de 2025,51393.6,lectura,GF04
+2000,evolución,Asuntos económicos,millones de euros de 2025,55886.1,lectura,GF04
+2001,evolución,Asuntos económicos,millones de euros de 2025,55485.4,lectura,GF04
+2002,evolución,Asuntos económicos,millones de euros de 2025,58590.7,lectura,GF04
+2003,evolución,Asuntos económicos,millones de euros de 2025,57763.0,lectura,GF04
+2004,evolución,Asuntos económicos,millones de euros de 2025,69237.0,lectura,GF04
+2005,evolución,Asuntos económicos,millones de euros de 2025,66739.9,lectura,GF04
+2006,evolución,Asuntos económicos,millones de euros de 2025,69024.6,lectura,GF04
+2007,evolución,Asuntos económicos,millones de euros de 2025,76185.5,lectura,GF04
+2008,evolución,Asuntos económicos,millones de euros de 2025,78988.6,lectura,GF04
+2009,evolución,Asuntos económicos,millones de euros de 2025,79887.6,lectura,GF04
+2010,evolución,Asuntos económicos,millones de euros de 2025,80593.4,lectura,GF04
+2011,evolución,Asuntos económicos,millones de euros de 2025,77534.4,lectura,GF04
+2012,evolución,Asuntos económicos,millones de euros de 2025,116495.9,lectura,GF04
+2013,evolución,Asuntos económicos,millones de euros de 2025,65537.7,lectura,GF04
+2014,evolución,Asuntos económicos,millones de euros de 2025,60232.5,lectura,GF04
+2015,evolución,Asuntos económicos,millones de euros de 2025,62363.5,lectura,GF04
+2016,evolución,Asuntos económicos,millones de euros de 2025,54970.2,lectura,GF04
+2017,evolución,Asuntos económicos,millones de euros de 2025,58162.6,lectura,GF04
+2018,evolución,Asuntos económicos,millones de euros de 2025,64036.3,lectura,GF04
+2019,evolución,Asuntos económicos,millones de euros de 2025,64639.8,lectura,GF04
+2020,evolución,Asuntos económicos,millones de euros de 2025,79697.5,lectura,GF04
+2021,evolución,Asuntos económicos,millones de euros de 2025,93248.9,lectura,GF04
+2022,evolución,Asuntos económicos,millones de euros de 2025,87023.6,lectura,GF04
+2023,evolución,Asuntos económicos,millones de euros de 2025,79487.4,lectura,GF04
+2024,evolución,Asuntos económicos,millones de euros de 2025,83374.0,lectura,GF04
 1995,evolución,Asuntos económicos,euros por habitante,668,lectura,GF04
 1996,evolución,Asuntos económicos,euros por habitante,594,lectura,GF04
 1997,evolución,Asuntos económicos,euros por habitante,591,lectura,GF04
@@ -539,36 +539,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Medio ambiente,millones de euros corrientes,13335.0,dato,GF05
 2023,evolución,Medio ambiente,millones de euros corrientes,14579.0,dato,GF05
 2024,evolución,Medio ambiente,millones de euros corrientes,15539.0,dato,GF05
-1995,evolución,Medio ambiente,millones de euros de 2024,7253.7,lectura,GF05
-1996,evolución,Medio ambiente,millones de euros de 2024,7512.8,lectura,GF05
-1997,evolución,Medio ambiente,millones de euros de 2024,7970.6,lectura,GF05
-1998,evolución,Medio ambiente,millones de euros de 2024,8537.6,lectura,GF05
-1999,evolución,Medio ambiente,millones de euros de 2024,9508.8,lectura,GF05
-2000,evolución,Medio ambiente,millones de euros de 2024,8186.0,lectura,GF05
-2001,evolución,Medio ambiente,millones de euros de 2024,10248.7,lectura,GF05
-2002,evolución,Medio ambiente,millones de euros de 2024,11422.9,lectura,GF05
-2003,evolución,Medio ambiente,millones de euros de 2024,12024.3,lectura,GF05
-2004,evolución,Medio ambiente,millones de euros de 2024,11589.5,lectura,GF05
-2005,evolución,Medio ambiente,millones de euros de 2024,11994.2,lectura,GF05
-2006,evolución,Medio ambiente,millones de euros de 2024,13513.6,lectura,GF05
-2007,evolución,Medio ambiente,millones de euros de 2024,14293.9,lectura,GF05
-2008,evolución,Medio ambiente,millones de euros de 2024,14091.2,lectura,GF05
-2009,evolución,Medio ambiente,millones de euros de 2024,14878.6,lectura,GF05
-2010,evolución,Medio ambiente,millones de euros de 2024,14767.1,lectura,GF05
-2011,evolución,Medio ambiente,millones de euros de 2024,13322.3,lectura,GF05
-2012,evolución,Medio ambiente,millones de euros de 2024,12344.9,lectura,GF05
-2013,evolución,Medio ambiente,millones de euros de 2024,11339.7,lectura,GF05
-2014,evolución,Medio ambiente,millones de euros de 2024,11905.7,lectura,GF05
-2015,evolución,Medio ambiente,millones de euros de 2024,12134.3,lectura,GF05
-2016,evolución,Medio ambiente,millones de euros de 2024,12085.5,lectura,GF05
-2017,evolución,Medio ambiente,millones de euros de 2024,12478.5,lectura,GF05
-2018,evolución,Medio ambiente,millones de euros de 2024,12747.1,lectura,GF05
-2019,evolución,Medio ambiente,millones de euros de 2024,13235.2,lectura,GF05
-2020,evolución,Medio ambiente,millones de euros de 2024,13065.1,lectura,GF05
-2021,evolución,Medio ambiente,millones de euros de 2024,13542.7,lectura,GF05
-2022,evolución,Medio ambiente,millones de euros de 2024,15045.3,lectura,GF05
-2023,evolución,Medio ambiente,millones de euros de 2024,15482.0,lectura,GF05
-2024,evolución,Medio ambiente,millones de euros de 2024,16012.6,lectura,GF05
+1995,evolución,Medio ambiente,millones de euros de 2025,7253.7,lectura,GF05
+1996,evolución,Medio ambiente,millones de euros de 2025,7512.8,lectura,GF05
+1997,evolución,Medio ambiente,millones de euros de 2025,7970.6,lectura,GF05
+1998,evolución,Medio ambiente,millones de euros de 2025,8537.6,lectura,GF05
+1999,evolución,Medio ambiente,millones de euros de 2025,9508.8,lectura,GF05
+2000,evolución,Medio ambiente,millones de euros de 2025,8186.0,lectura,GF05
+2001,evolución,Medio ambiente,millones de euros de 2025,10248.7,lectura,GF05
+2002,evolución,Medio ambiente,millones de euros de 2025,11422.9,lectura,GF05
+2003,evolución,Medio ambiente,millones de euros de 2025,12024.3,lectura,GF05
+2004,evolución,Medio ambiente,millones de euros de 2025,11589.5,lectura,GF05
+2005,evolución,Medio ambiente,millones de euros de 2025,11994.2,lectura,GF05
+2006,evolución,Medio ambiente,millones de euros de 2025,13513.6,lectura,GF05
+2007,evolución,Medio ambiente,millones de euros de 2025,14293.9,lectura,GF05
+2008,evolución,Medio ambiente,millones de euros de 2025,14091.2,lectura,GF05
+2009,evolución,Medio ambiente,millones de euros de 2025,14878.6,lectura,GF05
+2010,evolución,Medio ambiente,millones de euros de 2025,14767.1,lectura,GF05
+2011,evolución,Medio ambiente,millones de euros de 2025,13322.3,lectura,GF05
+2012,evolución,Medio ambiente,millones de euros de 2025,12344.9,lectura,GF05
+2013,evolución,Medio ambiente,millones de euros de 2025,11339.7,lectura,GF05
+2014,evolución,Medio ambiente,millones de euros de 2025,11905.7,lectura,GF05
+2015,evolución,Medio ambiente,millones de euros de 2025,12134.3,lectura,GF05
+2016,evolución,Medio ambiente,millones de euros de 2025,12085.5,lectura,GF05
+2017,evolución,Medio ambiente,millones de euros de 2025,12478.5,lectura,GF05
+2018,evolución,Medio ambiente,millones de euros de 2025,12747.1,lectura,GF05
+2019,evolución,Medio ambiente,millones de euros de 2025,13235.2,lectura,GF05
+2020,evolución,Medio ambiente,millones de euros de 2025,13065.1,lectura,GF05
+2021,evolución,Medio ambiente,millones de euros de 2025,13542.7,lectura,GF05
+2022,evolución,Medio ambiente,millones de euros de 2025,15045.3,lectura,GF05
+2023,evolución,Medio ambiente,millones de euros de 2025,15482.0,lectura,GF05
+2024,evolución,Medio ambiente,millones de euros de 2025,16012.6,lectura,GF05
 1995,evolución,Medio ambiente,euros por habitante,91,lectura,GF05
 1996,evolución,Medio ambiente,euros por habitante,97,lectura,GF05
 1997,evolución,Medio ambiente,euros por habitante,105,lectura,GF05
@@ -659,36 +659,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Vivienda y servicios comunitarios,millones de euros corrientes,6461.0,dato,GF06
 2023,evolución,Vivienda y servicios comunitarios,millones de euros corrientes,7821.0,dato,GF06
 2024,evolución,Vivienda y servicios comunitarios,millones de euros corrientes,7613.0,dato,GF06
-1995,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,9577.2,lectura,GF06
-1996,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,9300.8,lectura,GF06
-1997,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,9715.5,lectura,GF06
-1998,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,11055.4,lectura,GF06
-1999,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,11546.9,lectura,GF06
-2000,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,13136.6,lectura,GF06
-2001,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,11813.5,lectura,GF06
-2002,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,12485.0,lectura,GF06
-2003,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,13042.4,lectura,GF06
-2004,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,10176.2,lectura,GF06
-2005,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,11314.7,lectura,GF06
-2006,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,10680.3,lectura,GF06
-2007,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,13052.9,lectura,GF06
-2008,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,15309.0,lectura,GF06
-2009,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,17971.5,lectura,GF06
-2010,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,9683.9,lectura,GF06
-2011,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,7772.8,lectura,GF06
-2012,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,7524.6,lectura,GF06
-2013,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6030.1,lectura,GF06
-2014,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6638.4,lectura,GF06
-2015,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,7092.7,lectura,GF06
-2016,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6208.2,lectura,GF06
-2017,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6326.0,lectura,GF06
-2018,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6374.8,lectura,GF06
-2019,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6358.5,lectura,GF06
-2020,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6237.6,lectura,GF06
-2021,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,6827.4,lectura,GF06
-2022,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,7289.7,lectura,GF06
-2023,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,8305.4,lectura,GF06
-2024,evolución,Vivienda y servicios comunitarios,millones de euros de 2024,7845.0,lectura,GF06
+1995,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,9577.2,lectura,GF06
+1996,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,9300.8,lectura,GF06
+1997,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,9715.5,lectura,GF06
+1998,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,11055.4,lectura,GF06
+1999,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,11546.9,lectura,GF06
+2000,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,13136.6,lectura,GF06
+2001,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,11813.5,lectura,GF06
+2002,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,12485.0,lectura,GF06
+2003,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,13042.4,lectura,GF06
+2004,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,10176.2,lectura,GF06
+2005,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,11314.7,lectura,GF06
+2006,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,10680.3,lectura,GF06
+2007,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,13052.9,lectura,GF06
+2008,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,15309.0,lectura,GF06
+2009,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,17971.5,lectura,GF06
+2010,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,9683.9,lectura,GF06
+2011,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,7772.8,lectura,GF06
+2012,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,7524.6,lectura,GF06
+2013,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6030.1,lectura,GF06
+2014,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6638.4,lectura,GF06
+2015,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,7092.7,lectura,GF06
+2016,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6208.2,lectura,GF06
+2017,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6326.0,lectura,GF06
+2018,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6374.8,lectura,GF06
+2019,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6358.5,lectura,GF06
+2020,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6237.6,lectura,GF06
+2021,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,6827.4,lectura,GF06
+2022,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,7289.7,lectura,GF06
+2023,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,8305.4,lectura,GF06
+2024,evolución,Vivienda y servicios comunitarios,millones de euros de 2025,7845.0,lectura,GF06
 1995,evolución,Vivienda y servicios comunitarios,euros por habitante,120,lectura,GF06
 1996,evolución,Vivienda y servicios comunitarios,euros por habitante,120,lectura,GF06
 1997,evolución,Vivienda y servicios comunitarios,euros por habitante,128,lectura,GF06
@@ -779,36 +779,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Sanidad,millones de euros corrientes,93327.0,dato,GF07
 2023,evolución,Sanidad,millones de euros corrientes,98630.0,dato,GF07
 2024,evolución,Sanidad,millones de euros corrientes,102942.0,dato,GF07
-1995,evolución,Sanidad,millones de euros de 2024,48527.1,lectura,GF07
-1996,evolución,Sanidad,millones de euros de 2024,50289.4,lectura,GF07
-1997,evolución,Sanidad,millones de euros de 2024,50250.6,lectura,GF07
-1998,evolución,Sanidad,millones de euros de 2024,52364.3,lectura,GF07
-1999,evolución,Sanidad,millones de euros de 2024,54861.8,lectura,GF07
-2000,evolución,Sanidad,millones de euros de 2024,57966.5,lectura,GF07
-2001,evolución,Sanidad,millones de euros de 2024,59067.5,lectura,GF07
-2002,evolución,Sanidad,millones de euros de 2024,61533.1,lectura,GF07
-2003,evolución,Sanidad,millones de euros de 2024,64035.1,lectura,GF07
-2004,evolución,Sanidad,millones de euros de 2024,69643.8,lectura,GF07
-2005,evolución,Sanidad,millones de euros de 2024,74731.3,lectura,GF07
-2006,evolución,Sanidad,millones de euros de 2024,77618.9,lectura,GF07
-2007,evolución,Sanidad,millones de euros de 2024,80979.2,lectura,GF07
-2008,evolución,Sanidad,millones de euros de 2024,86881.1,lectura,GF07
-2009,evolución,Sanidad,millones de euros de 2024,93947.6,lectura,GF07
-2010,evolución,Sanidad,millones de euros de 2024,91301.4,lectura,GF07
-2011,evolución,Sanidad,millones de euros de 2024,89079.3,lectura,GF07
-2012,evolución,Sanidad,millones de euros de 2024,83347.9,lectura,GF07
-2013,evolución,Sanidad,millones de euros de 2024,81211.1,lectura,GF07
-2014,evolución,Sanidad,millones de euros de 2024,81597.2,lectura,GF07
-2015,evolución,Sanidad,millones de euros de 2024,84964.3,lectura,GF07
-2016,evolución,Sanidad,millones de euros de 2024,86213.9,lectura,GF07
-2017,evolución,Sanidad,millones de euros de 2024,87135.7,lectura,GF07
-2018,evolución,Sanidad,millones de euros de 2024,89652.2,lectura,GF07
-2019,evolución,Sanidad,millones de euros de 2024,93009.2,lectura,GF07
-2020,evolución,Sanidad,millones de euros de 2024,103630.1,lectura,GF07
-2021,evolución,Sanidad,millones de euros de 2024,104586.2,lectura,GF07
-2022,evolución,Sanidad,millones de euros de 2024,105296.9,lectura,GF07
-2023,evolución,Sanidad,millones de euros de 2024,104739.3,lectura,GF07
-2024,evolución,Sanidad,millones de euros de 2024,106079.5,lectura,GF07
+1995,evolución,Sanidad,millones de euros de 2025,48527.1,lectura,GF07
+1996,evolución,Sanidad,millones de euros de 2025,50289.4,lectura,GF07
+1997,evolución,Sanidad,millones de euros de 2025,50250.6,lectura,GF07
+1998,evolución,Sanidad,millones de euros de 2025,52364.3,lectura,GF07
+1999,evolución,Sanidad,millones de euros de 2025,54861.8,lectura,GF07
+2000,evolución,Sanidad,millones de euros de 2025,57966.5,lectura,GF07
+2001,evolución,Sanidad,millones de euros de 2025,59067.5,lectura,GF07
+2002,evolución,Sanidad,millones de euros de 2025,61533.1,lectura,GF07
+2003,evolución,Sanidad,millones de euros de 2025,64035.1,lectura,GF07
+2004,evolución,Sanidad,millones de euros de 2025,69643.8,lectura,GF07
+2005,evolución,Sanidad,millones de euros de 2025,74731.3,lectura,GF07
+2006,evolución,Sanidad,millones de euros de 2025,77618.9,lectura,GF07
+2007,evolución,Sanidad,millones de euros de 2025,80979.2,lectura,GF07
+2008,evolución,Sanidad,millones de euros de 2025,86881.1,lectura,GF07
+2009,evolución,Sanidad,millones de euros de 2025,93947.6,lectura,GF07
+2010,evolución,Sanidad,millones de euros de 2025,91301.4,lectura,GF07
+2011,evolución,Sanidad,millones de euros de 2025,89079.3,lectura,GF07
+2012,evolución,Sanidad,millones de euros de 2025,83347.9,lectura,GF07
+2013,evolución,Sanidad,millones de euros de 2025,81211.1,lectura,GF07
+2014,evolución,Sanidad,millones de euros de 2025,81597.2,lectura,GF07
+2015,evolución,Sanidad,millones de euros de 2025,84964.3,lectura,GF07
+2016,evolución,Sanidad,millones de euros de 2025,86213.9,lectura,GF07
+2017,evolución,Sanidad,millones de euros de 2025,87135.7,lectura,GF07
+2018,evolución,Sanidad,millones de euros de 2025,89652.2,lectura,GF07
+2019,evolución,Sanidad,millones de euros de 2025,93009.2,lectura,GF07
+2020,evolución,Sanidad,millones de euros de 2025,103630.1,lectura,GF07
+2021,evolución,Sanidad,millones de euros de 2025,104586.2,lectura,GF07
+2022,evolución,Sanidad,millones de euros de 2025,105296.9,lectura,GF07
+2023,evolución,Sanidad,millones de euros de 2025,104739.3,lectura,GF07
+2024,evolución,Sanidad,millones de euros de 2025,106079.5,lectura,GF07
 1995,evolución,Sanidad,euros por habitante,608,lectura,GF07
 1996,evolución,Sanidad,euros por habitante,650,lectura,GF07
 1997,evolución,Sanidad,euros por habitante,662,lectura,GF07
@@ -899,36 +899,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,"Ocio, cultura y religión",millones de euros corrientes,17120.0,dato,GF08
 2023,evolución,"Ocio, cultura y religión",millones de euros corrientes,18638.0,dato,GF08
 2024,evolución,"Ocio, cultura y religión",millones de euros corrientes,19193.0,dato,GF08
-1995,evolución,"Ocio, cultura y religión",millones de euros de 2024,12063.5,lectura,GF08
-1996,evolución,"Ocio, cultura y religión",millones de euros de 2024,12203.0,lectura,GF08
-1997,evolución,"Ocio, cultura y religión",millones de euros de 2024,12750.7,lectura,GF08
-1998,evolución,"Ocio, cultura y religión",millones de euros de 2024,13191.2,lectura,GF08
-1999,evolución,"Ocio, cultura y religión",millones de euros de 2024,14417.9,lectura,GF08
-2000,evolución,"Ocio, cultura y religión",millones de euros de 2024,15055.2,lectura,GF08
-2001,evolución,"Ocio, cultura y religión",millones de euros de 2024,15148.5,lectura,GF08
-2002,evolución,"Ocio, cultura y religión",millones de euros de 2024,15741.8,lectura,GF08
-2003,evolución,"Ocio, cultura y religión",millones de euros de 2024,16709.1,lectura,GF08
-2004,evolución,"Ocio, cultura y religión",millones de euros de 2024,17337.5,lectura,GF08
-2005,evolución,"Ocio, cultura y religión",millones de euros de 2024,18187.8,lectura,GF08
-2006,evolución,"Ocio, cultura y religión",millones de euros de 2024,20327.3,lectura,GF08
-2007,evolución,"Ocio, cultura y religión",millones de euros de 2024,22307.3,lectura,GF08
-2008,evolución,"Ocio, cultura y religión",millones de euros de 2024,23298.3,lectura,GF08
-2009,evolución,"Ocio, cultura y religión",millones de euros de 2024,22526.4,lectura,GF08
-2010,evolución,"Ocio, cultura y religión",millones de euros de 2024,22719.8,lectura,GF08
-2011,evolución,"Ocio, cultura y religión",millones de euros de 2024,20627.3,lectura,GF08
-2012,evolución,"Ocio, cultura y religión",millones de euros de 2024,16102.7,lectura,GF08
-2013,evolución,"Ocio, cultura y religión",millones de euros de 2024,14977.2,lectura,GF08
-2014,evolución,"Ocio, cultura y religión",millones de euros de 2024,15161.9,lectura,GF08
-2015,evolución,"Ocio, cultura y religión",millones de euros de 2024,15904.3,lectura,GF08
-2016,evolución,"Ocio, cultura y religión",millones de euros de 2024,15704.0,lectura,GF08
-2017,evolución,"Ocio, cultura y religión",millones de euros de 2024,16108.6,lectura,GF08
-2018,evolución,"Ocio, cultura y religión",millones de euros de 2024,16830.5,lectura,GF08
-2019,evolución,"Ocio, cultura y religión",millones de euros de 2024,17666.6,lectura,GF08
-2020,evolución,"Ocio, cultura y religión",millones de euros de 2024,16211.1,lectura,GF08
-2021,evolución,"Ocio, cultura y religión",millones de euros de 2024,17254.1,lectura,GF08
-2022,evolución,"Ocio, cultura y religión",millones de euros de 2024,19315.8,lectura,GF08
-2023,evolución,"Ocio, cultura y religión",millones de euros de 2024,19792.5,lectura,GF08
-2024,evolución,"Ocio, cultura y religión",millones de euros de 2024,19778.0,lectura,GF08
+1995,evolución,"Ocio, cultura y religión",millones de euros de 2025,12063.5,lectura,GF08
+1996,evolución,"Ocio, cultura y religión",millones de euros de 2025,12203.0,lectura,GF08
+1997,evolución,"Ocio, cultura y religión",millones de euros de 2025,12750.7,lectura,GF08
+1998,evolución,"Ocio, cultura y religión",millones de euros de 2025,13191.2,lectura,GF08
+1999,evolución,"Ocio, cultura y religión",millones de euros de 2025,14417.9,lectura,GF08
+2000,evolución,"Ocio, cultura y religión",millones de euros de 2025,15055.2,lectura,GF08
+2001,evolución,"Ocio, cultura y religión",millones de euros de 2025,15148.5,lectura,GF08
+2002,evolución,"Ocio, cultura y religión",millones de euros de 2025,15741.8,lectura,GF08
+2003,evolución,"Ocio, cultura y religión",millones de euros de 2025,16709.1,lectura,GF08
+2004,evolución,"Ocio, cultura y religión",millones de euros de 2025,17337.5,lectura,GF08
+2005,evolución,"Ocio, cultura y religión",millones de euros de 2025,18187.8,lectura,GF08
+2006,evolución,"Ocio, cultura y religión",millones de euros de 2025,20327.3,lectura,GF08
+2007,evolución,"Ocio, cultura y religión",millones de euros de 2025,22307.3,lectura,GF08
+2008,evolución,"Ocio, cultura y religión",millones de euros de 2025,23298.3,lectura,GF08
+2009,evolución,"Ocio, cultura y religión",millones de euros de 2025,22526.4,lectura,GF08
+2010,evolución,"Ocio, cultura y religión",millones de euros de 2025,22719.8,lectura,GF08
+2011,evolución,"Ocio, cultura y religión",millones de euros de 2025,20627.3,lectura,GF08
+2012,evolución,"Ocio, cultura y religión",millones de euros de 2025,16102.7,lectura,GF08
+2013,evolución,"Ocio, cultura y religión",millones de euros de 2025,14977.2,lectura,GF08
+2014,evolución,"Ocio, cultura y religión",millones de euros de 2025,15161.9,lectura,GF08
+2015,evolución,"Ocio, cultura y religión",millones de euros de 2025,15904.3,lectura,GF08
+2016,evolución,"Ocio, cultura y religión",millones de euros de 2025,15704.0,lectura,GF08
+2017,evolución,"Ocio, cultura y religión",millones de euros de 2025,16108.6,lectura,GF08
+2018,evolución,"Ocio, cultura y religión",millones de euros de 2025,16830.5,lectura,GF08
+2019,evolución,"Ocio, cultura y religión",millones de euros de 2025,17666.6,lectura,GF08
+2020,evolución,"Ocio, cultura y religión",millones de euros de 2025,16211.1,lectura,GF08
+2021,evolución,"Ocio, cultura y religión",millones de euros de 2025,17254.1,lectura,GF08
+2022,evolución,"Ocio, cultura y religión",millones de euros de 2025,19315.8,lectura,GF08
+2023,evolución,"Ocio, cultura y religión",millones de euros de 2025,19792.5,lectura,GF08
+2024,evolución,"Ocio, cultura y religión",millones de euros de 2025,19778.0,lectura,GF08
 1995,evolución,"Ocio, cultura y religión",euros por habitante,151,lectura,GF08
 1996,evolución,"Ocio, cultura y religión",euros por habitante,158,lectura,GF08
 1997,evolución,"Ocio, cultura y religión",euros por habitante,168,lectura,GF08
@@ -1019,36 +1019,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Educación,millones de euros corrientes,58669.0,dato,GF09
 2023,evolución,Educación,millones de euros corrientes,62532.0,dato,GF09
 2024,evolución,Educación,millones de euros corrientes,65862.0,dato,GF09
-1995,evolución,Educación,millones de euros de 2024,39762.0,lectura,GF09
-1996,evolución,Educación,millones de euros de 2024,40481.9,lectura,GF09
-1997,evolución,Educación,millones de euros de 2024,40876.1,lectura,GF09
-1998,evolución,Educación,millones de euros de 2024,41912.5,lectura,GF09
-1999,evolución,Educación,millones de euros de 2024,44471.6,lectura,GF09
-2000,evolución,Educación,millones de euros de 2024,45899.7,lectura,GF09
-2001,evolución,Educación,millones de euros de 2024,46699.6,lectura,GF09
-2002,evolución,Educación,millones de euros de 2024,48587.6,lectura,GF09
-2003,evolución,Educación,millones de euros de 2024,49787.9,lectura,GF09
-2004,evolución,Educación,millones de euros de 2024,52086.6,lectura,GF09
-2005,evolución,Educación,millones de euros de 2024,52314.2,lectura,GF09
-2006,evolución,Educación,millones de euros de 2024,54492.6,lectura,GF09
-2007,evolución,Educación,millones de euros de 2024,57249.8,lectura,GF09
-2008,evolución,Educación,millones de euros de 2024,60666.0,lectura,GF09
-2009,evolución,Educación,millones de euros de 2024,63924.0,lectura,GF09
-2010,evolución,Educación,millones de euros de 2024,62231.8,lectura,GF09
-2011,evolución,Educación,millones de euros de 2024,60558.3,lectura,GF09
-2012,evolución,Educación,millones de euros de 2024,55750.3,lectura,GF09
-2013,evolución,Educación,millones de euros de 2024,53987.8,lectura,GF09
-2014,evolución,Educación,millones de euros de 2024,54685.1,lectura,GF09
-2015,evolución,Educación,millones de euros de 2024,56728.9,lectura,GF09
-2016,evolución,Educación,millones de euros de 2024,57712.7,lectura,GF09
-2017,evolución,Educación,millones de euros de 2024,58396.4,lectura,GF09
-2018,evolución,Educación,millones de euros de 2024,59353.9,lectura,GF09
-2019,evolución,Educación,millones de euros de 2024,61320.9,lectura,GF09
-2020,evolución,Educación,millones de euros de 2024,62997.0,lectura,GF09
-2021,evolución,Educación,millones de euros de 2024,66012.4,lectura,GF09
-2022,evolución,Educación,millones de euros de 2024,66193.7,lectura,GF09
-2023,evolución,Educación,millones de euros de 2024,66405.3,lectura,GF09
-2024,evolución,Educación,millones de euros de 2024,67869.4,lectura,GF09
+1995,evolución,Educación,millones de euros de 2025,39762.0,lectura,GF09
+1996,evolución,Educación,millones de euros de 2025,40481.9,lectura,GF09
+1997,evolución,Educación,millones de euros de 2025,40876.1,lectura,GF09
+1998,evolución,Educación,millones de euros de 2025,41912.5,lectura,GF09
+1999,evolución,Educación,millones de euros de 2025,44471.6,lectura,GF09
+2000,evolución,Educación,millones de euros de 2025,45899.7,lectura,GF09
+2001,evolución,Educación,millones de euros de 2025,46699.6,lectura,GF09
+2002,evolución,Educación,millones de euros de 2025,48587.6,lectura,GF09
+2003,evolución,Educación,millones de euros de 2025,49787.9,lectura,GF09
+2004,evolución,Educación,millones de euros de 2025,52086.6,lectura,GF09
+2005,evolución,Educación,millones de euros de 2025,52314.2,lectura,GF09
+2006,evolución,Educación,millones de euros de 2025,54492.6,lectura,GF09
+2007,evolución,Educación,millones de euros de 2025,57249.8,lectura,GF09
+2008,evolución,Educación,millones de euros de 2025,60666.0,lectura,GF09
+2009,evolución,Educación,millones de euros de 2025,63924.0,lectura,GF09
+2010,evolución,Educación,millones de euros de 2025,62231.8,lectura,GF09
+2011,evolución,Educación,millones de euros de 2025,60558.3,lectura,GF09
+2012,evolución,Educación,millones de euros de 2025,55750.3,lectura,GF09
+2013,evolución,Educación,millones de euros de 2025,53987.8,lectura,GF09
+2014,evolución,Educación,millones de euros de 2025,54685.1,lectura,GF09
+2015,evolución,Educación,millones de euros de 2025,56728.9,lectura,GF09
+2016,evolución,Educación,millones de euros de 2025,57712.7,lectura,GF09
+2017,evolución,Educación,millones de euros de 2025,58396.4,lectura,GF09
+2018,evolución,Educación,millones de euros de 2025,59353.9,lectura,GF09
+2019,evolución,Educación,millones de euros de 2025,61320.9,lectura,GF09
+2020,evolución,Educación,millones de euros de 2025,62997.0,lectura,GF09
+2021,evolución,Educación,millones de euros de 2025,66012.4,lectura,GF09
+2022,evolución,Educación,millones de euros de 2025,66193.7,lectura,GF09
+2023,evolución,Educación,millones de euros de 2025,66405.3,lectura,GF09
+2024,evolución,Educación,millones de euros de 2025,67869.4,lectura,GF09
 1995,evolución,Educación,euros por habitante,498,lectura,GF09
 1996,evolución,Educación,euros por habitante,523,lectura,GF09
 1997,evolución,Educación,euros por habitante,539,lectura,GF09
@@ -1139,36 +1139,36 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2022,evolución,Protección social,millones de euros corrientes,252111.0,dato,GF10
 2023,evolución,Protección social,millones de euros corrientes,277327.0,dato,GF10
 2024,evolución,Protección social,millones de euros corrientes,297532.0,dato,GF10
-1995,evolución,Protección social,millones de euros de 2024,132575.4,lectura,GF10
-1996,evolución,Protección social,millones de euros de 2024,133897.3,lectura,GF10
-1997,evolución,Protección social,millones de euros de 2024,135117.5,lectura,GF10
-1998,evolución,Protección social,millones de euros de 2024,136357.2,lectura,GF10
-1999,evolución,Protección social,millones de euros de 2024,139178.2,lectura,GF10
-2000,evolución,Protección social,millones de euros de 2024,143067.2,lectura,GF10
-2001,evolución,Protección social,millones de euros de 2024,145953.7,lectura,GF10
-2002,evolución,Protección social,millones de euros de 2024,151777.6,lectura,GF10
-2003,evolución,Protección social,millones de euros de 2024,157281.8,lectura,GF10
-2004,evolución,Protección social,millones de euros de 2024,163021.7,lectura,GF10
-2005,evolución,Protección social,millones de euros de 2024,168015.1,lectura,GF10
-2006,evolución,Protección social,millones de euros de 2024,174241.6,lectura,GF10
-2007,evolución,Protección social,millones de euros de 2024,182543.5,lectura,GF10
-2008,evolución,Protección social,millones de euros de 2024,197566.2,lectura,GF10
-2009,evolución,Protección social,millones de euros de 2024,222337.5,lectura,GF10
-2010,evolución,Protección social,millones de euros de 2024,230650.0,lectura,GF10
-2011,evolución,Protección social,millones de euros de 2024,232355.2,lectura,GF10
-2012,evolución,Protección social,millones de euros de 2024,236651.7,lectura,GF10
-2013,evolución,Protección social,millones de euros de 2024,237682.8,lectura,GF10
-2014,evolución,Protección social,millones de euros de 2024,238167.4,lectura,GF10
-2015,evolución,Protección social,millones de euros de 2024,236661.5,lectura,GF10
-2016,evolución,Protección social,millones de euros de 2024,241122.1,lectura,GF10
-2017,evolución,Protección social,millones de euros de 2024,243773.3,lectura,GF10
-2018,evolución,Protección social,millones de euros de 2024,252842.0,lectura,GF10
-2019,evolución,Protección social,millones de euros de 2024,265529.1,lectura,GF10
-2020,evolución,Protección social,millones de euros de 2024,299757.3,lectura,GF10
-2021,evolución,Protección social,millones de euros de 2024,293734.7,lectura,GF10
-2022,evolución,Protección social,millones de euros de 2024,284446.1,lectura,GF10
-2023,evolución,Protección social,millones de euros de 2024,294505.1,lectura,GF10
-2024,evolución,Protección social,millones de euros de 2024,306600.4,lectura,GF10
+1995,evolución,Protección social,millones de euros de 2025,132575.4,lectura,GF10
+1996,evolución,Protección social,millones de euros de 2025,133897.3,lectura,GF10
+1997,evolución,Protección social,millones de euros de 2025,135117.5,lectura,GF10
+1998,evolución,Protección social,millones de euros de 2025,136357.2,lectura,GF10
+1999,evolución,Protección social,millones de euros de 2025,139178.2,lectura,GF10
+2000,evolución,Protección social,millones de euros de 2025,143067.2,lectura,GF10
+2001,evolución,Protección social,millones de euros de 2025,145953.7,lectura,GF10
+2002,evolución,Protección social,millones de euros de 2025,151777.6,lectura,GF10
+2003,evolución,Protección social,millones de euros de 2025,157281.8,lectura,GF10
+2004,evolución,Protección social,millones de euros de 2025,163021.7,lectura,GF10
+2005,evolución,Protección social,millones de euros de 2025,168015.1,lectura,GF10
+2006,evolución,Protección social,millones de euros de 2025,174241.6,lectura,GF10
+2007,evolución,Protección social,millones de euros de 2025,182543.5,lectura,GF10
+2008,evolución,Protección social,millones de euros de 2025,197566.2,lectura,GF10
+2009,evolución,Protección social,millones de euros de 2025,222337.5,lectura,GF10
+2010,evolución,Protección social,millones de euros de 2025,230650.0,lectura,GF10
+2011,evolución,Protección social,millones de euros de 2025,232355.2,lectura,GF10
+2012,evolución,Protección social,millones de euros de 2025,236651.7,lectura,GF10
+2013,evolución,Protección social,millones de euros de 2025,237682.8,lectura,GF10
+2014,evolución,Protección social,millones de euros de 2025,238167.4,lectura,GF10
+2015,evolución,Protección social,millones de euros de 2025,236661.5,lectura,GF10
+2016,evolución,Protección social,millones de euros de 2025,241122.1,lectura,GF10
+2017,evolución,Protección social,millones de euros de 2025,243773.3,lectura,GF10
+2018,evolución,Protección social,millones de euros de 2025,252842.0,lectura,GF10
+2019,evolución,Protección social,millones de euros de 2025,265529.1,lectura,GF10
+2020,evolución,Protección social,millones de euros de 2025,299757.3,lectura,GF10
+2021,evolución,Protección social,millones de euros de 2025,293734.7,lectura,GF10
+2022,evolución,Protección social,millones de euros de 2025,284446.1,lectura,GF10
+2023,evolución,Protección social,millones de euros de 2025,294505.1,lectura,GF10
+2024,evolución,Protección social,millones de euros de 2025,306600.4,lectura,GF10
 1995,evolución,Protección social,euros por habitante,1661,lectura,GF10
 1996,evolución,Protección social,euros por habitante,1729,lectura,GF10
 1997,evolución,Protección social,euros por habitante,1781,lectura,GF10
@@ -2849,3 +2849,499 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_exp)
 2024,quién paga,Todo el gasto,% pagado por Comunidades autónomas,32.8,lectura,(TOTAL − GF0108) de S1312 ÷ (TOTAL − GF0108) de S13 × 100
 2024,quién paga,Todo el gasto,% pagado por Entidades locales,11.2,lectura,(TOTAL − GF0108) de S1313 ÷ (TOTAL − GF0108) de S13 × 100
 2024,quién paga,Todo el gasto,% pagado por Seguridad Social,33.7,lectura,(TOTAL − GF0108) de S1314 ÷ (TOTAL − GF0108) de S13 × 100
+1995,gasto por tipo,Gasto corriente,% del PIB,37.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1996,gasto por tipo,Gasto corriente,% del PIB,37.5,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1997,gasto por tipo,Gasto corriente,% del PIB,36.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1998,gasto por tipo,Gasto corriente,% del PIB,35.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1999,gasto por tipo,Gasto corriente,% del PIB,34.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2000,gasto por tipo,Gasto corriente,% del PIB,34.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2001,gasto por tipo,Gasto corriente,% del PIB,33.2,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2002,gasto por tipo,Gasto corriente,% del PIB,33.1,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2003,gasto por tipo,Gasto corriente,% del PIB,33.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2004,gasto por tipo,Gasto corriente,% del PIB,33.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2005,gasto por tipo,Gasto corriente,% del PIB,32.9,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2006,gasto por tipo,Gasto corriente,% del PIB,32.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2007,gasto por tipo,Gasto corriente,% del PIB,33.2,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2008,gasto por tipo,Gasto corriente,% del PIB,35.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2009,gasto por tipo,Gasto corriente,% del PIB,39.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2010,gasto por tipo,Gasto corriente,% del PIB,40.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2011,gasto por tipo,Gasto corriente,% del PIB,40.8,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2012,gasto por tipo,Gasto corriente,% del PIB,41.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2013,gasto por tipo,Gasto corriente,% del PIB,42.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2014,gasto por tipo,Gasto corriente,% del PIB,41.8,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2015,gasto por tipo,Gasto corriente,% del PIB,40.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2016,gasto por tipo,Gasto corriente,% del PIB,39.4,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2017,gasto por tipo,Gasto corriente,% del PIB,38.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2018,gasto por tipo,Gasto corriente,% del PIB,38.4,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2019,gasto por tipo,Gasto corriente,% del PIB,39.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2020,gasto por tipo,Gasto corriente,% del PIB,47.5,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2021,gasto por tipo,Gasto corriente,% del PIB,44.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2022,gasto por tipo,Gasto corriente,% del PIB,42.4,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2023,gasto por tipo,Gasto corriente,% del PIB,41.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2024,gasto por tipo,Gasto corriente,% del PIB,41.2,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2025,gasto por tipo,Gasto corriente,% del PIB,41.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1995,gasto por tipo,Gasto corriente,millones de euros corrientes,173427.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+1996,gasto por tipo,Gasto corriente,millones de euros corrientes,183301.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+1997,gasto por tipo,Gasto corriente,millones de euros corrientes,188568.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+1998,gasto por tipo,Gasto corriente,millones de euros corrientes,197803.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+1999,gasto por tipo,Gasto corriente,millones de euros corrientes,206456.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2000,gasto por tipo,Gasto corriente,millones de euros corrientes,220228.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2001,gasto por tipo,Gasto corriente,millones de euros corrientes,232746.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2002,gasto por tipo,Gasto corriente,millones de euros corrientes,248284.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2003,gasto por tipo,Gasto corriente,millones de euros corrientes,264884.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2004,gasto por tipo,Gasto corriente,millones de euros corrientes,283778.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2005,gasto por tipo,Gasto corriente,millones de euros corrientes,305332.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2006,gasto por tipo,Gasto corriente,millones de euros corrientes,328835.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2007,gasto por tipo,Gasto corriente,millones de euros corrientes,357845.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2008,gasto por tipo,Gasto corriente,millones de euros corrientes,392889.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2009,gasto por tipo,Gasto corriente,millones de euros corrientes,425012.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2010,gasto por tipo,Gasto corriente,millones de euros corrientes,431420.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2011,gasto por tipo,Gasto corriente,millones de euros corrientes,436317.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2012,gasto por tipo,Gasto corriente,millones de euros corrientes,427726.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2013,gasto por tipo,Gasto corriente,millones de euros corrientes,433883.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2014,gasto por tipo,Gasto corriente,millones de euros corrientes,434393.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2015,gasto por tipo,Gasto corriente,millones de euros corrientes,438405.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2016,gasto por tipo,Gasto corriente,millones de euros corrientes,442484.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2017,gasto por tipo,Gasto corriente,millones de euros corrientes,448389.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2018,gasto por tipo,Gasto corriente,millones de euros corrientes,465841.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2019,gasto por tipo,Gasto corriente,millones de euros corrientes,489541.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2020,gasto por tipo,Gasto corriente,millones de euros corrientes,535785.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2021,gasto por tipo,Gasto corriente,millones de euros corrientes,550982.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2022,gasto por tipo,Gasto corriente,millones de euros corrientes,583674.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2023,gasto por tipo,Gasto corriente,millones de euros corrientes,622946.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2024,gasto por tipo,Gasto corriente,millones de euros corrientes,655795.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+2025,gasto por tipo,Gasto corriente,millones de euros corrientes,697121.0,dato,TE − P5 − NP − D9PAY (gov_10a_main)
+1995,gasto por tipo,Gasto corriente,millones de euros de 2025,348571.8,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1996,gasto por tipo,Gasto corriente,millones de euros de 2025,355842.2,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1997,gasto por tipo,Gasto corriente,millones de euros de 2025,357261.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1998,gasto por tipo,Gasto corriente,millones de euros de 2025,365136.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1999,gasto por tipo,Gasto corriente,millones de euros de 2025,371386.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2000,gasto por tipo,Gasto corriente,millones de euros de 2025,383082.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2001,gasto por tipo,Gasto corriente,millones de euros de 2025,388683.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2002,gasto por tipo,Gasto corriente,millones de euros de 2025,398333.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2003,gasto por tipo,Gasto corriente,millones de euros de 2025,408601.8,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2004,gasto por tipo,Gasto corriente,millones de euros de 2025,421268.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2005,gasto por tipo,Gasto corriente,millones de euros de 2025,434940.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2006,gasto por tipo,Gasto corriente,millones de euros de 2025,450092.1,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2007,gasto por tipo,Gasto corriente,millones de euros de 2025,472955.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2008,gasto por tipo,Gasto corriente,millones de euros de 2025,506847.1,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2009,gasto por tipo,Gasto corriente,millones de euros de 2025,547023.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2010,gasto por tipo,Gasto corriente,millones de euros de 2025,553647.4,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2011,gasto por tipo,Gasto corriente,millones de euros de 2025,560751.5,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2012,gasto por tipo,Gasto corriente,millones de euros de 2025,550826.6,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2013,gasto por tipo,Gasto corriente,millones de euros de 2025,556319.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2014,gasto por tipo,Gasto corriente,millones de euros de 2025,558201.8,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2015,gasto por tipo,Gasto corriente,millones de euros de 2025,560266.9,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2016,gasto por tipo,Gasto corriente,millones de euros de 2025,563381.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2017,gasto por tipo,Gasto corriente,millones de euros de 2025,563807.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2018,gasto por tipo,Gasto corriente,millones de euros de 2025,578877.4,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2019,gasto por tipo,Gasto corriente,millones de euros de 2025,599758.2,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2020,gasto por tipo,Gasto corriente,millones de euros de 2025,649055.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2021,gasto por tipo,Gasto corriente,millones de euros de 2025,650829.9,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2022,gasto por tipo,Gasto corriente,millones de euros de 2025,658534.5,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2023,gasto por tipo,Gasto corriente,millones de euros de 2025,661532.3,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2024,gasto por tipo,Gasto corriente,millones de euros de 2025,675782.7,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2025,gasto por tipo,Gasto corriente,millones de euros de 2025,697121.0,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1995,gasto por tipo,Gasto corriente,euros por habitante,4366,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1996,gasto por tipo,Gasto corriente,euros por habitante,4596,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1997,gasto por tipo,Gasto corriente,euros por habitante,4708,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1998,gasto por tipo,Gasto corriente,euros por habitante,4919,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1999,gasto por tipo,Gasto corriente,euros por habitante,5114,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2000,gasto por tipo,Gasto corriente,euros por habitante,5430,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2001,gasto por tipo,Gasto corriente,euros por habitante,5709,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2002,gasto por tipo,Gasto corriente,euros por habitante,5994,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2003,gasto por tipo,Gasto corriente,euros por habitante,6277,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2004,gasto por tipo,Gasto corriente,euros por habitante,6621,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2005,gasto por tipo,Gasto corriente,euros por habitante,6993,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2006,gasto por tipo,Gasto corriente,euros por habitante,7413,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2007,gasto por tipo,Gasto corriente,euros por habitante,7911,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2008,gasto por tipo,Gasto corriente,euros por habitante,8544,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2009,gasto por tipo,Gasto corriente,euros por habitante,9166,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2010,gasto por tipo,Gasto corriente,euros por habitante,9265,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2011,gasto por tipo,Gasto corriente,euros por habitante,9336,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2012,gasto por tipo,Gasto corriente,euros por habitante,9149,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2013,gasto por tipo,Gasto corriente,euros por habitante,9315,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2014,gasto por tipo,Gasto corriente,euros por habitante,9355,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2015,gasto por tipo,Gasto corriente,euros por habitante,9452,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2016,gasto por tipo,Gasto corriente,euros por habitante,9531,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2017,gasto por tipo,Gasto corriente,euros por habitante,9641,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2018,gasto por tipo,Gasto corriente,euros por habitante,9972,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2019,gasto por tipo,Gasto corriente,euros por habitante,10396,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2020,gasto por tipo,Gasto corriente,euros por habitante,11317,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2021,gasto por tipo,Gasto corriente,euros por habitante,11637,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2022,gasto por tipo,Gasto corriente,euros por habitante,12214,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2023,gasto por tipo,Gasto corriente,euros por habitante,12883,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2024,gasto por tipo,Gasto corriente,euros por habitante,13418,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+2025,gasto por tipo,Gasto corriente,euros por habitante,14123,lectura,TE − P5 − NP − D9PAY (gov_10a_main)
+1995,gasto por tipo,Inversión,% del PIB,4.4,dato,P51G (gov_10a_main)
+1996,gasto por tipo,Inversión,% del PIB,3.7,dato,P51G (gov_10a_main)
+1997,gasto por tipo,Inversión,% del PIB,3.7,dato,P51G (gov_10a_main)
+1998,gasto por tipo,Inversión,% del PIB,3.9,dato,P51G (gov_10a_main)
+1999,gasto por tipo,Inversión,% del PIB,3.9,dato,P51G (gov_10a_main)
+2000,gasto por tipo,Inversión,% del PIB,3.7,dato,P51G (gov_10a_main)
+2001,gasto por tipo,Inversión,% del PIB,3.8,dato,P51G (gov_10a_main)
+2002,gasto por tipo,Inversión,% del PIB,4.1,dato,P51G (gov_10a_main)
+2003,gasto por tipo,Inversión,% del PIB,4.1,dato,P51G (gov_10a_main)
+2004,gasto por tipo,Inversión,% del PIB,4.0,dato,P51G (gov_10a_main)
+2005,gasto por tipo,Inversión,% del PIB,4.2,dato,P51G (gov_10a_main)
+2006,gasto por tipo,Inversión,% del PIB,4.4,dato,P51G (gov_10a_main)
+2007,gasto por tipo,Inversión,% del PIB,4.7,dato,P51G (gov_10a_main)
+2008,gasto por tipo,Inversión,% del PIB,4.6,dato,P51G (gov_10a_main)
+2009,gasto por tipo,Inversión,% del PIB,5.2,dato,P51G (gov_10a_main)
+2010,gasto por tipo,Inversión,% del PIB,4.7,dato,P51G (gov_10a_main)
+2011,gasto por tipo,Inversión,% del PIB,3.7,dato,P51G (gov_10a_main)
+2012,gasto por tipo,Inversión,% del PIB,3.1,dato,P51G (gov_10a_main)
+2013,gasto por tipo,Inversión,% del PIB,2.4,dato,P51G (gov_10a_main)
+2014,gasto por tipo,Inversión,% del PIB,2.1,dato,P51G (gov_10a_main)
+2015,gasto por tipo,Inversión,% del PIB,2.6,dato,P51G (gov_10a_main)
+2016,gasto por tipo,Inversión,% del PIB,2.0,dato,P51G (gov_10a_main)
+2017,gasto por tipo,Inversión,% del PIB,2.0,dato,P51G (gov_10a_main)
+2018,gasto por tipo,Inversión,% del PIB,2.1,dato,P51G (gov_10a_main)
+2019,gasto por tipo,Inversión,% del PIB,2.2,dato,P51G (gov_10a_main)
+2020,gasto por tipo,Inversión,% del PIB,2.6,dato,P51G (gov_10a_main)
+2021,gasto por tipo,Inversión,% del PIB,2.7,dato,P51G (gov_10a_main)
+2022,gasto por tipo,Inversión,% del PIB,2.7,dato,P51G (gov_10a_main)
+2023,gasto por tipo,Inversión,% del PIB,3.0,dato,P51G (gov_10a_main)
+2024,gasto por tipo,Inversión,% del PIB,2.7,dato,P51G (gov_10a_main)
+2025,gasto por tipo,Inversión,% del PIB,2.9,dato,P51G (gov_10a_main)
+1995,gasto por tipo,Inversión,millones de euros corrientes,20243.0,dato,P51G (gov_10a_main)
+1996,gasto por tipo,Inversión,millones de euros corrientes,18228.0,dato,P51G (gov_10a_main)
+1997,gasto por tipo,Inversión,millones de euros corrientes,19329.0,dato,P51G (gov_10a_main)
+1998,gasto por tipo,Inversión,millones de euros corrientes,21442.0,dato,P51G (gov_10a_main)
+1999,gasto por tipo,Inversión,millones de euros corrientes,23086.0,dato,P51G (gov_10a_main)
+2000,gasto por tipo,Inversión,millones de euros corrientes,23928.0,dato,P51G (gov_10a_main)
+2001,gasto por tipo,Inversión,millones de euros corrientes,26536.0,dato,P51G (gov_10a_main)
+2002,gasto por tipo,Inversión,millones de euros corrientes,30487.0,dato,P51G (gov_10a_main)
+2003,gasto por tipo,Inversión,millones de euros corrientes,33265.0,dato,P51G (gov_10a_main)
+2004,gasto por tipo,Inversión,millones de euros corrientes,34404.0,dato,P51G (gov_10a_main)
+2005,gasto por tipo,Inversión,millones de euros corrientes,39134.0,dato,P51G (gov_10a_main)
+2006,gasto por tipo,Inversión,millones de euros corrientes,43832.0,dato,P51G (gov_10a_main)
+2007,gasto por tipo,Inversión,millones de euros corrientes,50418.0,dato,P51G (gov_10a_main)
+2008,gasto por tipo,Inversión,millones de euros corrientes,51712.0,dato,P51G (gov_10a_main)
+2009,gasto por tipo,Inversión,millones de euros corrientes,55353.0,dato,P51G (gov_10a_main)
+2010,gasto por tipo,Inversión,millones de euros corrientes,50959.0,dato,P51G (gov_10a_main)
+2011,gasto por tipo,Inversión,millones de euros corrientes,40001.0,dato,P51G (gov_10a_main)
+2012,gasto por tipo,Inversión,millones de euros corrientes,32549.0,dato,P51G (gov_10a_main)
+2013,gasto por tipo,Inversión,millones de euros corrientes,24651.0,dato,P51G (gov_10a_main)
+2014,gasto por tipo,Inversión,millones de euros corrientes,22079.0,dato,P51G (gov_10a_main)
+2015,gasto por tipo,Inversión,millones de euros corrientes,28002.0,dato,P51G (gov_10a_main)
+2016,gasto por tipo,Inversión,millones de euros corrientes,22199.0,dato,P51G (gov_10a_main)
+2017,gasto por tipo,Inversión,millones de euros corrientes,23118.0,dato,P51G (gov_10a_main)
+2018,gasto por tipo,Inversión,millones de euros corrientes,25889.0,dato,P51G (gov_10a_main)
+2019,gasto por tipo,Inversión,millones de euros corrientes,27206.0,dato,P51G (gov_10a_main)
+2020,gasto por tipo,Inversión,millones de euros corrientes,29694.0,dato,P51G (gov_10a_main)
+2021,gasto por tipo,Inversión,millones de euros corrientes,33591.0,dato,P51G (gov_10a_main)
+2022,gasto por tipo,Inversión,millones de euros corrientes,37350.0,dato,P51G (gov_10a_main)
+2023,gasto por tipo,Inversión,millones de euros corrientes,44696.0,dato,P51G (gov_10a_main)
+2024,gasto por tipo,Inversión,millones de euros corrientes,43485.0,dato,P51G (gov_10a_main)
+2025,gasto por tipo,Inversión,millones de euros corrientes,49632.0,dato,P51G (gov_10a_main)
+1995,gasto por tipo,Inversión,millones de euros de 2025,40686.5,lectura,P51G (gov_10a_main)
+1996,gasto por tipo,Inversión,millones de euros de 2025,35386.0,lectura,P51G (gov_10a_main)
+1997,gasto por tipo,Inversión,millones de euros de 2025,36620.8,lectura,P51G (gov_10a_main)
+1998,gasto por tipo,Inversión,millones de euros de 2025,39581.0,lectura,P51G (gov_10a_main)
+1999,gasto por tipo,Inversión,millones de euros de 2025,41528.6,lectura,P51G (gov_10a_main)
+2000,gasto por tipo,Inversión,millones de euros de 2025,41622.3,lectura,P51G (gov_10a_main)
+2001,gasto por tipo,Inversión,millones de euros de 2025,44314.8,lectura,P51G (gov_10a_main)
+2002,gasto por tipo,Inversión,millones de euros de 2025,48911.7,lectura,P51G (gov_10a_main)
+2003,gasto por tipo,Inversión,millones de euros de 2025,51313.5,lectura,P51G (gov_10a_main)
+2004,gasto por tipo,Inversión,millones de euros de 2025,51072.7,lectura,P51G (gov_10a_main)
+2005,gasto por tipo,Inversión,millones de euros de 2025,55745.8,lectura,P51G (gov_10a_main)
+2006,gasto por tipo,Inversión,millones de euros de 2025,59994.9,lectura,P51G (gov_10a_main)
+2007,gasto por tipo,Inversión,millones de euros de 2025,66636.3,lectura,P51G (gov_10a_main)
+2008,gasto por tipo,Inversión,millones de euros de 2025,66711.1,lectura,P51G (gov_10a_main)
+2009,gasto por tipo,Inversión,millones de euros de 2025,71243.6,lectura,P51G (gov_10a_main)
+2010,gasto por tipo,Inversión,millones de euros de 2025,65396.4,lectura,P51G (gov_10a_main)
+2011,gasto por tipo,Inversión,millones de euros de 2025,51409.0,lectura,P51G (gov_10a_main)
+2012,gasto por tipo,Inversión,millones de euros de 2025,41916.7,lectura,P51G (gov_10a_main)
+2013,gasto por tipo,Inversión,millones de euros de 2025,31607.2,lectura,P51G (gov_10a_main)
+2014,gasto por tipo,Inversión,millones de euros de 2025,28371.9,lectura,P51G (gov_10a_main)
+2015,gasto por tipo,Inversión,millones de euros de 2025,35785.6,lectura,P51G (gov_10a_main)
+2016,gasto por tipo,Inversión,millones de euros de 2025,28264.3,lectura,P51G (gov_10a_main)
+2017,gasto por tipo,Inversión,millones de euros de 2025,29068.7,lectura,P51G (gov_10a_main)
+2018,gasto por tipo,Inversión,millones de euros de 2025,32171.0,lectura,P51G (gov_10a_main)
+2019,gasto por tipo,Inversión,millones de euros de 2025,33331.3,lectura,P51G (gov_10a_main)
+2020,gasto por tipo,Inversión,millones de euros de 2025,35971.6,lectura,P51G (gov_10a_main)
+2021,gasto por tipo,Inversión,millones de euros de 2025,39678.3,lectura,P51G (gov_10a_main)
+2022,gasto por tipo,Inversión,millones de euros de 2025,42140.4,lectura,P51G (gov_10a_main)
+2023,gasto por tipo,Inversión,millones de euros de 2025,47464.5,lectura,P51G (gov_10a_main)
+2024,gasto por tipo,Inversión,millones de euros de 2025,44810.4,lectura,P51G (gov_10a_main)
+2025,gasto por tipo,Inversión,millones de euros de 2025,49632.0,lectura,P51G (gov_10a_main)
+1995,gasto por tipo,Inversión,euros por habitante,510,lectura,P51G (gov_10a_main)
+1996,gasto por tipo,Inversión,euros por habitante,457,lectura,P51G (gov_10a_main)
+1997,gasto por tipo,Inversión,euros por habitante,483,lectura,P51G (gov_10a_main)
+1998,gasto por tipo,Inversión,euros por habitante,533,lectura,P51G (gov_10a_main)
+1999,gasto por tipo,Inversión,euros por habitante,572,lectura,P51G (gov_10a_main)
+2000,gasto por tipo,Inversión,euros por habitante,590,lectura,P51G (gov_10a_main)
+2001,gasto por tipo,Inversión,euros por habitante,651,lectura,P51G (gov_10a_main)
+2002,gasto por tipo,Inversión,euros por habitante,736,lectura,P51G (gov_10a_main)
+2003,gasto por tipo,Inversión,euros por habitante,788,lectura,P51G (gov_10a_main)
+2004,gasto por tipo,Inversión,euros por habitante,803,lectura,P51G (gov_10a_main)
+2005,gasto por tipo,Inversión,euros por habitante,896,lectura,P51G (gov_10a_main)
+2006,gasto por tipo,Inversión,euros por habitante,988,lectura,P51G (gov_10a_main)
+2007,gasto por tipo,Inversión,euros por habitante,1115,lectura,P51G (gov_10a_main)
+2008,gasto por tipo,Inversión,euros por habitante,1125,lectura,P51G (gov_10a_main)
+2009,gasto por tipo,Inversión,euros por habitante,1194,lectura,P51G (gov_10a_main)
+2010,gasto por tipo,Inversión,euros por habitante,1094,lectura,P51G (gov_10a_main)
+2011,gasto por tipo,Inversión,euros por habitante,856,lectura,P51G (gov_10a_main)
+2012,gasto por tipo,Inversión,euros por habitante,696,lectura,P51G (gov_10a_main)
+2013,gasto por tipo,Inversión,euros por habitante,529,lectura,P51G (gov_10a_main)
+2014,gasto por tipo,Inversión,euros por habitante,476,lectura,P51G (gov_10a_main)
+2015,gasto por tipo,Inversión,euros por habitante,604,lectura,P51G (gov_10a_main)
+2016,gasto por tipo,Inversión,euros por habitante,478,lectura,P51G (gov_10a_main)
+2017,gasto por tipo,Inversión,euros por habitante,497,lectura,P51G (gov_10a_main)
+2018,gasto por tipo,Inversión,euros por habitante,554,lectura,P51G (gov_10a_main)
+2019,gasto por tipo,Inversión,euros por habitante,578,lectura,P51G (gov_10a_main)
+2020,gasto por tipo,Inversión,euros por habitante,627,lectura,P51G (gov_10a_main)
+2021,gasto por tipo,Inversión,euros por habitante,709,lectura,P51G (gov_10a_main)
+2022,gasto por tipo,Inversión,euros por habitante,782,lectura,P51G (gov_10a_main)
+2023,gasto por tipo,Inversión,euros por habitante,924,lectura,P51G (gov_10a_main)
+2024,gasto por tipo,Inversión,euros por habitante,890,lectura,P51G (gov_10a_main)
+2025,gasto por tipo,Inversión,euros por habitante,1005,lectura,P51G (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.79,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.33,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.48,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.33,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.67,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.66,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.64,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.22,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.59,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.32,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.42,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.41,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.43,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.67,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.36,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.23,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.91,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,22.28,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.18,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.58,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.11,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.71,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.73,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.37,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,25.58,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.24,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.23,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.24,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,24.09,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,23.83,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €",Sueldos de los empleados públicos,euros de cada 100,23.73,lectura,(D1PAY) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,9.59,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,9.5,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,9.83,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,9.68,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,9.89,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,10.28,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,10.51,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,10.78,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.23,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.62,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.16,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.24,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.87,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.89,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.42,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.45,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.53,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.44,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.75,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.99,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.28,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.29,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.34,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.25,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.23,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.42,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,11.66,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.4,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.58,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.34,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €",Compras de bienes y servicios,euros de cada 100,12.55,lectura,(P2) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,34.44,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.16,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.25,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,34.93,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.32,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.57,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.64,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.95,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.95,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,36.0,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,36.22,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,36.13,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.32,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,35.92,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,37.65,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,39.19,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,39.4,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,38.57,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,42.0,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,42.44,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,41.83,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,42.97,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,43.25,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,43.07,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,43.61,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,45.1,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,43.13,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,41.87,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,42.99,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,42.94,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €","Pensiones y otras prestaciones sociales (también en especie, como las recetas)",euros de cada 100,43.3,lectura,(D62PAY + D632PAY) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,11.2,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,11.74,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,10.94,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,9.92,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,8.54,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,8.09,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,7.73,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,6.81,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,6.0,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.13,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.54,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.19,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.03,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,3.82,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,3.71,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.14,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.41,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,6.15,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,7.72,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,7.85,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,7.03,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,6.61,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,6.17,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.88,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.36,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.33,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.28,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,4.99,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.23,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.35,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €",Intereses de la deuda,euros de cada 100,5.27,lectura,(D41PAY) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.24,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.25,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.18,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.77,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,3.01,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.94,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.69,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.79,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.79,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.63,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.7,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.68,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.79,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.67,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.5,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.47,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.45,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,1.92,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.26,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.38,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.59,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.3,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.5,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.39,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.41,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,3.69,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.88,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,4.15,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,3.01,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.53,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €",Subvenciones a empresas,euros de cada 100,2.6,lectura,(D3PAY) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.14,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.49,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.91,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.28,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.4,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.42,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.26,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.2,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.5,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.35,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.53,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.59,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.32,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.48,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.33,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.89,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,4.18,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.51,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.75,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.61,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.47,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.73,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.43,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.62,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.74,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.57,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.97,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.95,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.68,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.47,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €","Otros gastos corrientes (transferencias, aportación a la UE, impuestos pagados…)",euros de cada 100,3.69,lectura,(D29PAY + D4PAY − D41PAY + D5PAY + D7PAY + D8) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,9.97,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,8.7,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,8.98,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,9.42,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,9.71,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,9.45,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,9.86,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,10.53,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,10.81,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,10.31,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,10.97,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,11.36,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,11.94,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,11.25,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,11.2,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,10.32,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,8.15,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,6.38,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.21,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,4.72,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.9,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,4.7,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,4.82,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.14,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.16,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.12,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.5,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,5.86,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,6.57,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,6.0,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €","Inversión: obras, edificios, equipos y programas",euros de cada 100,6.49,lectura,(P51G) ÷ TE × 100 (gov_10a_main)
+1995,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,4.63,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+1996,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.84,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+1997,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.44,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+1998,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.67,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+1999,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.46,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2000,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.6,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2001,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.68,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2002,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.72,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2003,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.13,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2004,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,4.64,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2005,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.45,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2006,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.39,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2007,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.29,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2008,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.31,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2009,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.83,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2010,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.32,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2011,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.97,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2012,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,9.74,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2013,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.14,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2014,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.43,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2015,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,1.79,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2016,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,1.7,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2017,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,1.75,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2018,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.28,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2019,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,1.9,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2020,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.53,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2021,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,4.34,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2022,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.53,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2023,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,1.85,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2024,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,3.55,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)
+2025,"gasto por tipo, de cada 100 €","Otros gastos de capital (ayudas a la inversión de otros, terrenos, existencias)",euros de cada 100,2.37,lectura,(P5 − P51G + NP + D9PAY) ÷ TE × 100 (gov_10a_main)

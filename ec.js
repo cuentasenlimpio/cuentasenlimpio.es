@@ -31,8 +31,10 @@ const EC = (() => {
   }
 
   // Serie sin datos que lleva las marcas: franjas de legislaturas y líneas numeradas de los acontecimientos.
-  function marcas(d, { min, max, desplazamiento = 0, resaltada = null, numeros = true }) {
-    const franjas = legislaturas(d.legislaturas, min, max, desplazamiento).map((l, k) => {
+  // `capas` elige qué se dibuja; los nombramientos de Presidentes del Gobierno (BOE) van apagados salvo que se pidan.
+  function marcas(d, { min, max, desplazamiento = 0, resaltada = null, numeros = true,
+    capas = { legislaturas: true, acontecimientos: true, gobiernos: false } }) {
+    const franjas = (capas.legislaturas ? legislaturas(d.legislaturas, min, max, desplazamiento) : []).map((l, k) => {
       const esta = l.nombre === resaltada;
       return [
         {
@@ -49,12 +51,30 @@ const EC = (() => {
     const hitos = [];
     d.acontecimientos.lista.forEach((a, k) => {
       const x = posicion(a.fecha, desplazamiento);
-      if (x < min || x > max) return;
+      if (!capas.acontecimientos || x < min || x > max) return;
       nivel = x - anterior < 1.5 ? 1 - nivel : 0;
       anterior = x;
       hitos.push({ xAxis: x, name: a.corto, label: { formatter: String(k + 1), distance: [0, 22 + nivel * 20] } });
     });
     const tinta = css("--tinta");
+    // Nombramientos: línea gris de puntos; el nombre solo en el primero de cada persona, para no amontonar.
+    const suave = css("--tinta-suave");
+    let quien = null;
+    for (const n of capas.gobiernos && d.gobiernos ? d.gobiernos.lista : []) {
+      const x = posicion(n.fecha, desplazamiento);
+      const nuevo = n.persona !== quien;
+      quien = n.persona;
+      if (x < min || x > max) continue;
+      hitos.push({
+        xAxis: x, name: n.corto,
+        lineStyle: { color: css("--linea-fuerte"), type: [2, 3], width: 1 },
+        // Con las legislaturas a la vista, los nombres se pisarían: entonces solo la línea (los nombres van en la nota).
+        label: nuevo && !capas.legislaturas
+          ? { show: true, formatter: n.corto, position: "insideEndTop", color: suave, backgroundColor: "transparent",
+            width: null, height: null, fontSize: 11, fontWeight: 400, padding: [0, 0, 2, 0] }
+          : { show: false },
+      });
+    }
     return {
       id: "marcas", type: "line", data: [], silent: true, z: 1,
       // Los nombres de las legislaturas, encima del área del gráfico (fuera de las barras y las líneas); si no caben,

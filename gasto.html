@@ -6,8 +6,8 @@
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
   <meta name="referrer" content="no-referrer">
-  <title>En qué se gasta · Cuentas en limpio</title>
-  <meta name="description" content="En qué gastan las administraciones públicas españolas desde 1995 y qué parte paga cada nivel de administración, con la fuente de cada cifra.">
+  <title>En qué se gasta y cuánto se invierte · Cuentas en limpio</title>
+  <meta name="description" content="En qué gastan las administraciones públicas españolas desde 1995, cuánto invierten y qué parte paga cada nivel de administración, con la fuente de cada cifra.">
   <link rel="stylesheet" href="estilo.css">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -24,21 +24,16 @@
   <header class="sitio">
     <a class="marca" href="./">Cuentas en limpio</a>
     <nav aria-label="Principal">
-      <a href="./">Inicio</a>
-      <a href="cuentas.html">Cuentas</a>
-      <a href="gasto.html" aria-current="page">En qué se gasta</a>
-      <a href="ingresos.html">De dónde sale</a>
-      <a href="presupuesto.html">Presupuesto</a>
-      <a href="como-se-miente.html">Cómo se miente</a>
+      <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="metodologia.html">Metodología</a>
+      <a href="como-se-miente.html">Aprende</a>
     </nav>
   </header>
 
   <main>
-    <h1>¿En qué se gasta el dinero público, y quién lo gasta?</h1>
-    <p class="entradilla">El gasto de todas las administraciones públicas repartido en las diez grandes finalidades que usan todos los países de la UE, y qué parte de cada una paga el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos.</p>
-    <p class="contabilidad">Contabilidad nacional (SEC 2010), todas las administraciones consolidadas. <a href="como-se-miente.html#contabilidades">Qué significa</a>.</p>
+    <h1 class="pregunta">¿En qué se gasta el dinero público?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">Todas las administraciones juntas, en contabilidad nacional (SEC 2010). <a href="como-se-miente.html#contabilidades">Qué significa</a>.</p>
 
     <p class="ultimo-año" id="ultimo-año"></p>
     <div class="controles">
@@ -59,8 +54,53 @@
       <p class="fuente-grafico" id="reparto-fuente"></p>
     </section>
 
+    <section aria-labelledby="t-titulo">
+      <h2 class="pregunta" id="t-titulo">¿Cuánto se invierte?</h2>
+      <p class="respuesta" id="tipo-respuesta"></p>
+
+      <section class="grafico" aria-labelledby="i-titulo">
+        <h3 class="grafico-titulo" id="i-titulo">Inversión pública cada año, en <span class="unidad-elegida"></span></h3>
+        <div class="capas" role="group" aria-label="Contexto del gráfico">
+          <span class="selector-etiqueta">Añadir contexto:</span>
+          <label><input type="checkbox" data-capa="gobiernos"> Nombramientos del Presidente del Gobierno</label>
+          <label><input type="checkbox" data-capa="legislaturas"> Legislaturas</label>
+          <label><input type="checkbox" data-capa="acontecimientos"> Crisis externas</label>
+        </div>
+        <div class="lienzo" id="inversion" role="img" aria-label="Inversión pública de 1995 al último año disponible"></div>
+        <div class="nota-capas" id="nota-capas"></div>
+        <p class="fuente-grafico" id="inversion-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="c-titulo">
+        <h3 class="grafico-titulo" id="c-titulo">Gasto corriente frente a inversión</h3>
+        <ul class="comparadas" id="comparadas"></ul>
+        <p class="fuente-grafico" id="comparadas-fuente"></p>
+      </section>
+
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Gastar en el día a día o invertir</h3>
+        <p>El <strong>gasto corriente</strong> se consume en el año: sueldos, compras, pensiones, intereses. Se vuelve a pagar al año siguiente. La <strong>inversión</strong> crea algo que se usa durante años: una carretera, un hospital, un ordenador, un programa informático.</p>
+        <p>Por eso se miran por separado. Recortar inversión baja el déficit ese mismo año y casi no se nota al principio: el efecto llega después, en lo que no se construye o no se mantiene. Aumentarla sube el déficit hoy a cambio de algo que se usará durante años.</p>
+        <details>
+          <summary>Un paso más: prestar no es gastar</summary>
+          <p>Los préstamos que conceden las administraciones y las acciones que compran no cuentan como gasto ni como inversión: son <em>activos financieros</em>. No suben el déficit, pero sí la deuda, porque hay que pedir prestado el dinero. Se ve en <a href="cuentas.html#g3-titulo">¿Por qué cambió la deuda cada año?</a></p>
+        </details>
+        <details>
+          <summary>Qué cuenta exactamente en cada lado</summary>
+          <p>La inversión es la «formación bruta de capital fijo» (código P.51g). El gasto de capital incluye además las ayudas para que inviertan otros, la compra de terrenos y la variación de existencias. El gasto corriente es todo lo demás. Así se reparten <span class="año-tipo"></span> cada 100 € de gasto:</p>
+          <div class="tabla"><table id="partes"></table></div>
+        </details>
+      </div>
+
+      <div class="ojo">
+        <strong>Ojo con esto</strong>
+        <p>El porcentaje del PIB baja aunque se invierta lo mismo si la economía crece más deprisa, y sube sin invertir más si la economía se encoge. Para ver la cantidad, cambia arriba a «Euros sin inflación». Y un solo año puede subir por una obra o una compra grande: mira la tendencia.</p>
+      </div>
+    </section>
+
     <section class="grafico" aria-labelledby="e-titulo">
-      <h2 class="grafico-titulo" id="e-titulo">¿Cómo ha cambiado cada partida desde 1995?</h2>
+      <h2 class="pregunta" id="e-titulo">¿Cómo ha cambiado cada partida desde 1995?</h2>
       <p class="grafico-explica">El punto marca el año elegido; la cifra junto a cada nombre es su valor ese año.</p>
       <div id="periodo"></div>
       <div class="multiples" id="evolucion"></div>
@@ -68,7 +108,7 @@
     </section>
 
     <section class="grafico" aria-labelledby="q-titulo">
-      <h2 class="grafico-titulo" id="q-titulo">¿Quién paga cada partida en <span class="año-elegido"></span>?</h2>
+      <h2 class="pregunta" id="q-titulo">¿Quién paga cada partida en <span class="año-elegido"></span>?</h2>
       <p class="grafico-explica">Qué parte del gasto de cada función hace cada nivel de administración. A cada nivel se le quitan las transferencias generales que hace a otros (como la financiación de las comunidades autónomas), porque las gasta quien las recibe. Aun así, las filas pueden sumar algo más de 100: otras transferencias entre niveles cuentan en los dos.</p>
       <div class="tabla"><table class="matriz" id="quien"></table></div>
       <p class="fuente-grafico" id="quien-fuente"></p>
@@ -80,6 +120,7 @@
         <li>No dice si el dinero se gasta bien o mal: solo en qué y quién.</li>
         <li>No dice quién decidió cada gasto. Una comunidad autónoma gasta en sanidad dinero que en parte le transfiere el Estado.</li>
         <li>Las pensiones van dentro de «protección social», junto con el desempleo y otras prestaciones.</li>
+        <li>Las fechas de los Gobiernos sitúan en el tiempo; no atribuyen resultados.</li>
       </ul>
     </div>
 
@@ -92,7 +133,7 @@
 
   <footer class="sitio">
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="metodologia.html">Metodología</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span><a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>
