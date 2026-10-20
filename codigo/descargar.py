@@ -154,6 +154,19 @@ PAGINAS = [
      "nombre": "Paro registrado por sectores, 2001 a 2016",
      "url": "https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_avance/xls/empleo/evolparoseries2001.xls",
      "extension": "xls"},
+    *[{"fuente": "Banco de España", "tabla": f"bde_{c}", "opcional": True, "nombre": n,
+       "url": f"https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/{c}.csv", "extension": "csv"}
+      for c, n in (("be1309", "Deuda PDE de cada comunidad autónoma, miles de euros (Boletín Estadístico, cuadro 13.9)"),
+                   ("be1310", "Deuda PDE de cada comunidad autónoma, % de su PIB (Boletín Estadístico, cuadro 13.10)"),
+                   ("be1306", "Deuda PDE de las comunidades autónomas por instrumentos (Boletín Estadístico, cuadro 13.6)"))],
+    *[{"fuente": "INE", "tabla": f"ine_{c.lower()}", "opcional": True, "nombre": f"Población residente (Estadística Continua de Población), {n}",
+       "url": f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{c}?nult=40", "extension": "json"}
+      for c, n in (("ECP115502", "Andalucía"), ("ECP115501", "Aragón"), ("ECP115500", "Asturias"), ("ECP115499", "Illes Balears"),
+                   ("ECP115498", "Canarias"), ("ECP115497", "Cantabria"), ("ECP115496", "Castilla y León"),
+                   ("ECP115495", "Castilla-La Mancha"), ("ECP115494", "Cataluña"), ("ECP115493", "Comunitat Valenciana"),
+                   ("ECP115492", "Extremadura"), ("ECP115491", "Galicia"), ("ECP115490", "Comunidad de Madrid"),
+                   ("ECP115489", "Región de Murcia"), ("ECP115488", "Comunidad Foral de Navarra"), ("ECP115487", "País Vasco"),
+                   ("ECP115486", "La Rioja"))],
     {"fuente": "BCE", "tabla": "bce_bono_10", "opcional": True,
      "nombre": "Rentabilidad de la deuda pública a 10 años, España y Alemania (criterio de convergencia, media mensual)",
      "url": "https://data-api.ecb.europa.eu/service/data/IRS/M.ES+DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&detail=dataonly",
@@ -253,6 +266,22 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO ss_pensiones_avance: no se pudo leer la página ({error})")
 
+    # Comunidades autónomas: un fichero por año en la IGAE y en Hacienda. Los años que aún no existen se saltan sin aviso.
+    hoy_año = ahora.year
+    for a in range(2000, hoy_año):
+        PAGINAS.append({"fuente": "IGAE", "tabla": f"igae_ccaa_{a}", "opcional": True, "si_existe": True,
+                        "nombre": f"Operaciones no financieras de las comunidades autónomas, detalle por comunidad, {a}",
+                        "url": IGAE_CN + f"CCAA-A/A_CCAA_Det_{a}.xlsx", "extension": "xlsx"})
+    for a in range(hoy_año - 3, hoy_año):
+        PAGINAS.append({"fuente": "IGAE", "tabla": f"igae_cofog_ccaa_{a}", "opcional": True, "si_existe": True,
+                        "nombre": f"Gasto de las comunidades autónomas por funciones (COFOG), detalle por comunidad, {a}",
+                        "url": IGAE_CN + f"CCAA-A/COFOG_A_Detalle_CCAA_{a}.xlsx", "extension": "xlsx"})
+    for a in range(2019, hoy_año - 1):
+        PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": f"hacienda_liquidacion_{a}", "opcional": True, "si_existe": True,
+                        "nombre": f"Liquidación del sistema de financiación de las comunidades autónomas de régimen común, {a} (cuadros)",
+                        "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/"
+                               f"cuadros-liquidacion-{a}.xlsx", "extension": "xlsx"})
+
     for t in PAGINAS:
         peticion = urllib.request.Request(t["url"], headers={"User-Agent": "Mozilla/5.0 (cuentas del pais)"})
         try:
@@ -261,6 +290,8 @@ def main():
         except (urllib.error.URLError, TimeoutError) as error:
             if not t.get("opcional"):
                 raise
+            if t.get("si_existe") and isinstance(error, urllib.error.HTTPError) and error.code == 404:
+                continue
             print(f"AVISO {t['tabla']}: no se pudo descargar ({error}); se usa la copia anterior")
             continue
         huella = hashlib.sha256(cuerpo).hexdigest()

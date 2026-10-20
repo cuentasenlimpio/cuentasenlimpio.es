@@ -498,3 +498,5 @@ table.previsiones td:first-child { font-weight: 600; }
 .multiples > .info-panel { grid-column: 1 / -1; max-width: none; margin: 0; }
 .multiple figcaption button.info { width: 1.15rem; height: 1.15rem; font-size: 0.75rem; vertical-align: 0.1em; margin-left: 0.2rem; }
 .dos-columnas { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 0 1rem; }
+.cifras-clave .tarjeta-cifra { display: flex; flex-direction: column; gap: 0.35rem; background: var(--superficie); border: 1px solid var(--linea); border-radius: 10px; padding: 1.1rem 1.2rem; }
+.cifras-clave .tarjeta-cifra .valor { font-size: 2rem; }

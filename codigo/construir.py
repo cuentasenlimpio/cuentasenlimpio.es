@@ -946,6 +946,168 @@ def construir_economia(descargas, ingresos):
     return eco
 
 
+# ---- Comunidades autónomas (desde el 20/10/2026) ----
+# Orden alfabético a propósito: la web no ordena comunidades de mejor a peor.
+CCAA = [  # sufijo del Banco de España, nombre, código ECP del INE, régimen
+    ("AAN", "Andalucía", "ECP115502", "común"), ("AAR", "Aragón", "ECP115501", "común"),
+    ("ACA", "Canarias", "ECP115498", "común"), ("ACB", "Cantabria", "ECP115497", "común"),
+    ("ACL", "Castilla-La Mancha", "ECP115495", "común"), ("ACO", "Castilla y León", "ECP115496", "común"),
+    ("ACT", "Cataluña", "ECP115494", "común"), ("AMA", "Comunidad de Madrid", "ECP115490", "común"),
+    ("ANA", "Comunidad Foral de Navarra", "ECP115488", "foral"), ("AVA", "Comunitat Valenciana", "ECP115493", "común"),
+    ("AEX", "Extremadura", "ECP115492", "común"), ("AGA", "Galicia", "ECP115491", "común"),
+    ("ABA", "Illes Balears", "ECP115499", "común"), ("ALR", "La Rioja", "ECP115486", "común"),
+    ("APV", "País Vasco", "ECP115487", "foral"), ("AAS", "Principado de Asturias", "ECP115500", "común"),
+    ("AMU", "Región de Murcia", "ECP115489", "común"),
+]
+
+
+def ccaa_de(nombre):
+    """Sufijo de la comunidad a partir de cómo la escribe cada fuente."""
+    n = (nombre or "").strip().lower()
+    for clave, suf in (("andaluc", "AAN"), ("arag", "AAR"), ("asturias", "AAS"), ("balear", "ABA"), ("canarias", "ACA"),
+                       ("cantabria", "ACB"), ("castilla y le", "ACO"), ("mancha", "ACL"), ("catalu", "ACT"), ("valencia", "AVA"),
+                       ("extremadura", "AEX"), ("galicia", "AGA"), ("madrid", "AMA"), ("murcia", "AMU"), ("navarra", "ANA"),
+                       ("vasco", "APV"), ("rioja", "ALR")):
+        if clave in n:
+            return suf
+    return None
+
+
+def _bde_csv(descargas, clave):
+    """CSV del Boletín Estadístico del Banco de España → {código de serie: {«AAAATn»: valor}}."""
+    texto = (AQUI / descargas[clave]["fichero"]).read_bytes().decode("latin-1")
+    filas = list(csv.reader(texto.splitlines()))
+    codigos = filas[0][1:]
+    salida = {c: {} for c in codigos}
+    trimestre = {"MAR": 1, "JUN": 2, "SEP": 3, "DIC": 4}
+    for f in filas:
+        m = re.match(r"([A-Z]{3}) (\d{4})$", f[0] if f else "")
+        if not m or m.group(1) not in trimestre:
+            continue
+        for c, v in zip(codigos, f[1:]):
+            if v not in ("", "_"):
+                salida[c][f"{m.group(2)}T{trimestre[m.group(1)]}"] = float(v)
+    return salida
+
+
+def construir_territorio(descargas):
+    comprobaciones = []
+    datos = {s_: {"id": s_, "nombre": n, "regimen": r} for s_, n, _, r in CCAA}
+
+    # 1. Déficit (B.9) de cada comunidad, en millones y en % de su PIB regional (IGAE, un fichero por año).
+    años, total_igae, total_igae_pib, peor = [], {}, {}, 0.0
+    for a in range(2000, 2100):
+        k = f"igae_ccaa_{a}"
+        if k not in descargas:
+            continue
+        libro = hojas(AQUI / descargas[k]["fichero"])
+        for hoja, unidad in (("Tabla1a", "meur"), ("Tabla1b", "pib")):
+            filas = libro[hoja]
+            cab = next(f for f in filas if len(f) > 1 and f[1] == "CONCEPTOS")
+            fila = next(f for f in filas if f and isinstance(f[0], str) and f[0].strip() == "B.9")
+            suma = 0.0
+            for j, nombre in enumerate(cab):
+                suf = ccaa_de(nombre) if isinstance(nombre, str) else None
+                if suf and j < len(fila) and isinstance(fila[j], float):
+                    datos[suf].setdefault("deficit", {"años": [], "meur": [], "pib": []})
+                    if unidad == "meur":
+                        datos[suf]["deficit"]["años"].append(a)
+                        suma += fila[j]
+                    datos[suf]["deficit"][unidad].append(round(fila[j], 2 if unidad == "pib" else 0))
+                elif isinstance(nombre, str) and nombre.startswith("Total"):
+                    if unidad == "meur":
+                        total_igae[a] = fila[j]
+                    else:
+                        total_igae_pib[a] = round(fila[j], 2)
+            if unidad == "meur":
+                peor = max(peor, abs(suma - total_igae.get(a, suma)))
+        años.append(a)
+        provisional = "(P)" in str(libro["Tabla1a"][2][0])
+    comprobaciones.append({"que": "¿El déficit de las 17 comunidades suma el del conjunto de la administración regional?",
+                           "resultado": f"Sí, al millón de euros, en los {len(años)} años ({años[0]}–{años[-1]})" if peor < 1.5
+                           else f"No: diferencia máxima de {es(peor)} millones", "ok": peor < 1.5})
+
+    # 2. Deuda PDE (Banco de España): miles de euros, % del PIB regional y préstamos del Estado (mecanismos).
+    eur, pib, est = _bde_csv(descargas, "bde_be1309"), _bde_csv(descargas, "bde_be1310"), _bde_csv(descargas, "bde_be1306")
+    for s_, *_ in CCAA:
+        e_ = eur.get(f"DTNPDE2010_P00000_PS_ACS_{s_}", {})
+        t_ = sorted(e_)
+        datos[s_]["deuda"] = {"trimestres": t_, "meur": [round(e_[x] / 1000) for x in t_],
+                              "pib": [pib.get(f"DTNPDE2010_P0000P_PS_ACS_{s_}", {}).get(x) for x in t_],
+                              "estado_meur": [None if x not in est.get(f"DTNPDE2010_F42116_PS_ACS_{s_}", {}) else
+                                              round(est[f"DTNPDE2010_F42116_PS_ACS_{s_}"][x] / 1000) for x in t_]}
+    tot = eur["DTNPDE2010_P00000_PS_ACS"]
+    ult = max(tot)
+    suma = sum(eur[f"DTNPDE2010_P00000_PS_ACS_{s_}"][ult] for s_, *_ in CCAA)
+    comprobaciones.append({"que": "¿La deuda de las 17 comunidades suma la del conjunto?",
+                           "resultado": "Sí" if abs(suma - tot[ult]) < 1000 else
+                           f"No del todo: {es(suma / 1000)} frente a {es(tot[ult] / 1000)} millones (el conjunto incluye unidades no asignadas a una comunidad)",
+                           "ok": abs(suma - tot[ult]) < 1000})
+    total = {"deuda": {"trimestres": sorted(tot), "meur": [round(tot[x] / 1000) for x in sorted(tot)],
+                       "pib": [pib.get("DTNPDE2010_P0000P_PS_ACS", {}).get(x) for x in sorted(tot)],
+                       "estado_meur": [None if x not in est.get("DTNPDE2010_F42116_PS_ACS", {}) else round(est["DTNPDE2010_F42116_PS_ACS"][x] / 1000) for x in sorted(tot)]},
+             "deficit": {"años": años, "meur": [round(total_igae[a]) for a in años], "pib": [total_igae_pib.get(a) for a in años]}}
+
+    # 3. Población (Estadística Continua de Población, último dato) para las cifras por habitante.
+    for s_, _, ecp, _ in CCAA:
+        serie_ = _ine(descargas, ecp)
+        if serie_:
+            k = f"ine_{ecp.lower()}"
+            d_ = json.loads((AQUI / descargas[k]["fichero"]).read_text())["Data"]
+            u = max(d_, key=lambda x: x["Fecha"])
+            datos[s_]["poblacion"] = {"fecha": dt.datetime.fromtimestamp(u["Fecha"] / 1000 + 43200, dt.timezone.utc).date().isoformat(), "valor": u["Valor"]}
+
+    # 4. Financiación homogénea por habitante ajustado (régimen común), de cada liquidación.
+    liq_años = sorted(int(k[-4:]) for k in descargas if k.startswith("hacienda_liquidacion_"))
+    for a in liq_años:
+        libro = hojas(AQUI / descargas[f"hacienda_liquidacion_{a}"]["fichero"])
+        hoja = next((h for h in libro if h.startswith("2.2.3")), None)
+        if not hoja:
+            continue
+        for f in libro[hoja]:
+            v = [x for x in f if x not in (None, "")]
+            if len(v) >= 6 and isinstance(v[0], str) and isinstance(v[5], float):
+                suf = ccaa_de(v[0])
+                clave_ = suf if suf else ("media" if v[0].strip().startswith("Total") else None)
+                if clave_ == "media":
+                    total.setdefault("financiacion", {"años": [], "por_hab_ajustado": []})
+                    total["financiacion"]["años"].append(a)
+                    total["financiacion"]["por_hab_ajustado"].append(round(v[5], 2))
+                elif clave_:
+                    datos[suf].setdefault("financiacion", {"años": [], "por_hab_ajustado": []})
+                    datos[suf]["financiacion"]["años"].append(a)
+                    datos[suf]["financiacion"]["por_hab_ajustado"].append(round(v[5], 2))
+
+    # 5. Gasto por funciones (COFOG) de cada comunidad, último año publicado.
+    cof = sorted(int(k[-4:]) for k in descargas if k.startswith("igae_cofog_ccaa_"))
+    if cof:
+        a = cof[-1]
+        libro = hojas(AQUI / descargas[f"igae_cofog_ccaa_{a}"]["fichero"])
+        for nombre_h, filas in libro.items():
+            if not nombre_h.startswith("Tabla") or nombre_h == "Tabla1a" or not filas:
+                continue
+            suf = ccaa_de(str(filas[0][0]))
+            cab = next((f for f in filas if any(isinstance(x, str) and "Defensa" in x for x in f)), None)
+            fila = next((f for f in filas if f and any(isinstance(x, str) and x.strip() == "GASTO TOTAL" for x in f[:2])), None)
+            if not (suf and cab and fila):
+                continue
+            divisiones = []
+            for j, x in enumerate(cab):
+                if isinstance(x, str) and re.match(r"\d{2}\.", x.strip()):
+                    nombre_ = re.sub(r"^\s*\d+\.\s*", "", x.strip())
+                    nombre_ = {"Salud": "Sanidad"}.get(nombre_, nombre_)
+                    divisiones.append({"nombre": nombre_, "meur": fila[j]})
+                elif isinstance(x, str) and "TOTAL" in x:
+                    total_g = fila[j]
+            datos[suf]["gasto"] = {"año": a, "provisional": True, "divisiones": divisiones, "total": total_g}
+        fecha_cofog = next((str(f[0]) for f in libro.get("Tabla2a", []) if f and "actualización" in str(f[0])), "")
+    comprobaciones.append({"que": "¿Las divisiones del gasto por funciones suman el gasto total de cada comunidad?",
+                           "resultado": "Sí, en las 17" if all(abs(sum(d_["meur"] for d_ in c["gasto"]["divisiones"]) - c["gasto"]["total"]) < 1.5
+                                                               for c in datos.values() if "gasto" in c) else "No en todas",
+                           "ok": all(abs(sum(d_["meur"] for d_ in c["gasto"]["divisiones"]) - c["gasto"]["total"]) < 1.5 for c in datos.values() if "gasto" in c)})
+    return {"ccaa": [datos[s_] for s_, *_ in CCAA], "total": total, "comprobaciones": comprobaciones}
+
+
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
@@ -1554,7 +1716,8 @@ def main():
                                  "fmi_weo_ggxcnl_ngdp", "fmi_weo_ggxwdg_ngdp", "fmi_weo_ggr_ngdp", "fmi_weo_ggx_ngdp",
                                  "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
-                   *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_")))):
+                   *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
+                                                       "hacienda_liquidacion_", "bde_be13", "ine_ecp11")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -1596,7 +1759,14 @@ def main():
                 "tesoro_tipo_medio": "Tipo de interés medio de los últimos meses.",
                 "tesoro_vida_media": "Vida media de la deuda del Estado.",
                 "sepe_paro": "Paro registrado de los últimos diez años.",
-                "sepe_paro_2001": "Paro registrado de 2001 a 2016 (antes de mayo de 2005, reconstruido por el SEPE)."}.get(nombre)) or \
+                "sepe_paro_2001": "Paro registrado de 2001 a 2016 (antes de mayo de 2005, reconstruido por el SEPE).",
+                "bde_be1309": "Deuda de cada comunidad autónoma, en euros.",
+                "bde_be1310": "Deuda de cada comunidad autónoma, en % de su PIB.",
+                "bde_be1306": "Deuda de cada comunidad con el Estado (préstamos de los mecanismos de financiación)."}.get(nombre)) or \
+              ("Déficit de cada comunidad autónoma en ese año." if nombre.startswith("igae_ccaa_") else None) or \
+              ("Gasto por funciones de cada comunidad autónoma." if nombre.startswith("igae_cofog_ccaa_") else None) or \
+              ("Financiación por habitante ajustado de cada comunidad de régimen común." if nombre.startswith("hacienda_liquidacion_") else None) or \
+              ("Población de una comunidad autónoma." if nombre.startswith("ine_ecp11") else None) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else
@@ -1653,6 +1823,10 @@ def main():
         for c_ in compr:
             print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     escribir_csv_paginas(gasto, ingresos)
+    territorio = construir_territorio(descargas)
+    (WEB / "datos" / "territorio.json").write_text(json.dumps(territorio, ensure_ascii=False, separators=(",", ":")))
+    for c_ in territorio["comprobaciones"]:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     economia = construir_economia(descargas, ingresos)
     (WEB / "datos" / "economia.json").write_text(json.dumps(economia, ensure_ascii=False, separators=(",", ":")))
     for c_ in economia["comprobaciones"]:

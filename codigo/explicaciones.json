@@ -673,5 +673,105 @@
     "url": "https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf"
    }
   ]
+ },
+ "comparar_ccaa": {
+  "titulo": "Por qué comparar comunidades exige cuidado",
+  "texto": [
+   "Las competencias no son iguales en todas: la liquidación de Hacienda separa las «competencias no homogéneas» (8.331 millones en 2024) antes de comparar por habitante ajustado, y por eso compara la «financiación homogénea».",
+   "El País Vasco y Navarra no entran en el sistema común: en la liquidación solo figuran quince comunidades. Su financiación sigue otra lógica (cupo y aportación) y no es comparable cifra a cifra.",
+   "El habitante ajustado pondera la insularidad, la superficie y la dispersión de la población; en 2024 solo Canarias y Baleares tienen valor de insularidad. Canarias tiene un impuesto propio, el IGIC, en lugar del IVA.",
+   "Y la misma cifra cambia según el informe: el déficit de Andalucía de 2025 era del 0,1 % del PIB en el primer informe de Hacienda (junio de 2026) y del 0,157 % en la IGAE de septiembre."
+  ],
+  "fuentes": [
+   {
+    "texto": "Hacienda, liquidación del sistema de financiación de 2024 (texto)",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf"
+   },
+   {
+    "texto": "Hacienda, cuadros de la liquidación de 2024 (cuadros 1.9.1 y 2.2.3)",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/cuadros-liquidacion-2024.xlsx"
+   },
+   {
+    "texto": "IGAE, impuestos por comunidad autónoma",
+    "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/CCAA-A/Detalle_por_CCAA_Imp.xlsx"
+   }
+  ]
+ },
+ "deficit_ccaa": {
+  "titulo": "El déficit de una comunidad",
+  "texto": [
+   "Es su capacidad o necesidad de financiación en contabilidad nacional, la misma medida que se usa para el conjunto de España. Lo exige la ley de estabilidad: los objetivos se fijan «de acuerdo con la definición contenida en el Sistema Europeo de Cuentas Nacionales y Regionales», para el conjunto y para cada subsector.",
+   "Por eso no coincide con el saldo de su presupuesto: la ley obliga a acompañar cada presupuesto de la información que relaciona su saldo con el de contabilidad nacional. La Constitución impide a las comunidades un déficit estructural por encima de lo que fije la UE."
+  ],
+  "fuentes": [
+   {
+    "texto": "Ley Orgánica 2/2012, de estabilidad presupuestaria, artículos 15 y 27",
+    "url": "https://www.boe.es/eli/es/lo/2012/04/27/2/con"
+   },
+   {
+    "texto": "Constitución, artículo 135",
+    "url": "https://www.boe.es/eli/es/c/1978/12/27/(1)/con"
+   }
+  ]
+ },
+ "deuda_estado": {
+  "titulo": "La deuda con el Estado",
+  "texto": [
+   "Desde 2012, el Estado presta dinero a las comunidades a través de mecanismos extraordinarios (el Fondo de Liquidez Autonómico, la Facilidad Financiera y otros). Ese dinero es deuda de la comunidad con el Estado; el Banco de España la recoge como «préstamos del fondo de financiación».",
+   "A mitad de 2026, el conjunto de las comunidades debía al Estado unos 202.700 millones, el 57 % de toda su deuda. Algunas comunidades no han usado estos mecanismos, o ya no les deben nada."
+  ],
+  "fuentes": [
+   {
+    "texto": "Banco de España, Boletín Estadístico, cuadro 13.6",
+    "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1306.csv"
+   },
+   {
+    "texto": "Hacienda, mecanismos de financiación de las comunidades autónomas",
+    "url": "https://www.hacienda.gob.es/cdi/mecanismos%20financiaci%c3%b3n/mecanismos-financiacion-ccaa.xlsx"
+   }
+  ]
+ },
+ "habitante_ajustado": {
+  "titulo": "El «habitante ajustado»",
+  "texto": [
+   "El sistema no reparte solo por número de habitantes: pondera también la edad y el territorio, con siete variables que forman el «habitante ajustado»: población (30 %), población protegida por edades (38 %), menores de 16 (20,5 %), mayores de 65 (8,5 %), superficie (1,8 %), dispersión (0,6 %) e insularidad (0,6 %).",
+   "El Fondo de Garantía busca que cada comunidad reciba «los mismos recursos por habitante ajustado» para los servicios básicos. En 2024, Galicia tenía 2.703.353 habitantes y 3.212.322 ajustados; Madrid, 7.001.715 y 7.333.328."
+  ],
+  "fuentes": [
+   {
+    "texto": "Ley 22/2009, de financiación de las comunidades autónomas",
+    "url": "https://www.boe.es/eli/es/l/2009/12/18/22/con"
+   },
+   {
+    "texto": "Hacienda, liquidación del sistema de financiación de 2024 (texto)",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf"
+   },
+   {
+    "texto": "Hacienda, cuadros de la liquidación de 2024 (cuadro 1.9.1)",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/cuadros-liquidacion-2024.xlsx"
+   }
+  ]
+ },
+ "entregas_a_cuenta": {
+  "titulo": "Entregas a cuenta y liquidación",
+  "texto": [
+   "La ley dice que las comunidades reciben cada año «las entregas a cuenta» de sus recursos y, cuando se conocen los valores definitivos, «la liquidación definitiva», por diferencia. Hacienda lo explica así: «Puesto que los rendimientos definitivos no se pueden determinar en el año correspondiente, cada año las CC.AA. perciben unas entregas a cuenta».",
+   "Por eso la financiación de un año se cierra unos dos años después: la del ejercicio 2024 se publicó en julio de 2026, y las entregas a cuenta de 2026 se fijaron por un real decreto-ley de junio de 2026."
+  ],
+  "decalaje": "Unos dos años entre el ejercicio y su liquidación definitiva.",
+  "fuentes": [
+   {
+    "texto": "Ley 22/2009, de financiación de las comunidades autónomas",
+    "url": "https://www.boe.es/eli/es/l/2009/12/18/22/con"
+   },
+   {
+    "texto": "Hacienda, liquidación del sistema de financiación de 2024 (texto)",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf"
+   },
+   {
+    "texto": "Hacienda, entregas a cuenta de 2026",
+    "url": "https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/entregas-a-cuenta-2026.xlsx"
+   }
+  ]
  }
 }

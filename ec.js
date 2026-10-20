@@ -392,9 +392,12 @@ const EC = (() => {
   // ---- Pequeños múltiplos: un gráfico de línea por panel, todos con la misma escala vertical ----
   // Marca el año elegido con un punto y escribe su valor. `periodo` (de EC.periodo) acota todos los paneles a la vez.
   function multiples(contenedor, paneles, años, indice, { formato, unidadEje, periodo = null }) {
-    const valores = paneles.flatMap((p) => p.valores).filter((v) => v !== null);
-    const ticks = pasos(Math.max(...valores, 0), 2);
-    const ymax = ticks.at(-1);
+    const valores = paneles.flatMap((p) => p.valores).filter((v) => v !== null && v !== undefined);
+    // Si hay valores negativos (por ejemplo, déficit), el eje baja de cero con el mismo paso.
+    const maximo = Math.max(...valores, 0), minimo = Math.min(...valores, 0);
+    const ticks = pasos(Math.max(maximo, -minimo), 2);
+    const ymax = maximo > 0 ? ticks.at(-1) : 0;
+    const ymin = minimo < 0 ? -ticks.at(-1) : 0;
     const clave = paneles.map((p) => p.nombre).join("|");
     // Los paneles se crean una vez (o si cambian las partidas) y luego solo se actualizan.
     if (contenedor.cuentasClave !== clave) {
@@ -443,7 +446,7 @@ const EC = (() => {
       opciones.xAxis.axisLabel = { ...opciones.xAxis.axisLabel, fontSize: 10, showMinLabel: false };
       opciones.xAxis.splitNumber = 2;
       opciones.tooltip = { show: false };
-      opciones.yAxis = { type: "value", min: 0, max: ymax, interval: ticks[1], axisLabel: { color: suave, fontSize: 10, formatter: (t) => numero(t, ymax < 10 ? 1 : 0) }, splitLine: { lineStyle: { color: css("--linea") } } };
+      opciones.yAxis = { type: "value", min: ymin, max: ymax, interval: ticks[1], axisLabel: { color: suave, fontSize: 10, formatter: (t) => numero(t, ymax < 10 ? 1 : 0) }, splitLine: { lineStyle: { color: css("--linea") } } };
       opciones.series = [
         linea("valores", años.map((a, i) => [a, p.valores[i]]), color, { connectNulls: false }),
         puntos("año", v === null || v === undefined ? [] : [[años[indice], v]], [color]),

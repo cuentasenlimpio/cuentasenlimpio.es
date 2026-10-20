@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Las cuentas de cada comunidad · Cuentas en limpio</title>
+  <meta name="description" content="Déficit, deuda, financiación y gasto de cada comunidad autónoma, con la fuente de cada cifra y el contexto para compararlas.">
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js" defer></script>
+  <script src="ec.js" defer></script>
+  <script src="territorio.js" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <p class="antetitulo">El dinero · por comunidades</p>
+    <h1 class="pregunta">¿Cómo están las cuentas de cada comunidad?</h1>
+    <p class="respuesta" id="respuesta"></p>
+    <p class="contabilidad">Comunidades por orden alfabético: esta página no las ordena de mejor a peor. Ceuta y Melilla no aparecen en el detalle por comunidad de las fuentes.</p>
+
+    <div class="ojo">
+      <strong>Ojo al comparar comunidades</strong>
+      <p>No hacen todas lo mismo ni se financian igual. Las competencias no son idénticas (por eso Hacienda compara la «financiación homogénea», sin las competencias que solo tienen algunas). El País Vasco y Navarra tienen régimen foral: recaudan sus impuestos y pagan al Estado un cupo o aportación, y no entran en el sistema común. La financiación pondera la insularidad, la superficie y la dispersión, y Canarias tiene su propio impuesto en lugar del IVA (el IGIC). Y una misma cifra cambia de un informe a otro: cada dato lleva su fecha. <button type="button" class="info" data-info="comparar_ccaa">i</button></p>
+    </div>
+
+    <div class="controles">
+      <label>Comunidad <select id="selector-ccaa"></select></label>
+    </div>
+
+    <section aria-labelledby="ficha-t">
+      <h2 class="pregunta" id="ficha-t">Andalucía</h2>
+      <section class="cifras-clave" aria-label="Cifras de la comunidad" id="cifras"></section>
+      <p class="fuente-grafico" id="cifras-fuente"></p>
+      <section class="grafico" aria-labelledby="g-def-t">
+        <h3 class="grafico-titulo" id="g-def-t">Déficit o superávit cada año, en % de su PIB <button type="button" class="info" data-info="deficit_ccaa">i</button></h3>
+        <p class="grafico-explica">Línea gruesa: la comunidad; fina: el conjunto de las comunidades. Por encima de cero, superávit.</p>
+        <div class="lectura-año" id="g-def-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-def" role="img" aria-label="Déficit o superávit cada año, en % de su PIB"></div>
+        <p class="fuente-grafico" id="g-def-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-deu-t">
+        <h3 class="grafico-titulo" id="g-deu-t">Deuda al final de cada trimestre, en % de su PIB</h3>
+        <p class="grafico-explica">Línea gruesa: la comunidad; fina: el conjunto de las comunidades.</p>
+        <div class="lectura-año" id="g-deu-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-deu" role="img" aria-label="Deuda al final de cada trimestre, en % de su PIB"></div>
+        <p class="fuente-grafico" id="g-deu-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-est-t">
+        <h3 class="grafico-titulo" id="g-est-t">Deuda en millones de euros: total y la que se debe al propio Estado <button type="button" class="info" data-info="deuda_estado">i</button></h3>
+
+        <div class="lectura-año" id="g-est-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-est" role="img" aria-label="Deuda en millones de euros: total y la que se debe al propio Estado"></div>
+        <p class="fuente-grafico" id="g-est-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-gas-t">
+        <h3 class="grafico-titulo" id="g-gas-t">¿En qué gasta? De cada 100 € de su gasto</h3>
+
+        <div class="lectura-año" id="g-gas-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-gas" role="img" aria-label="¿En qué gasta? De cada 100 € de su gasto"></div>
+        <p class="fuente-grafico" id="g-gas-fuente"></p>
+      </section>
+
+      <section class="grafico" aria-labelledby="g-fin-t">
+        <h3 class="grafico-titulo" id="g-fin-t">Financiación del sistema por habitante ajustado, en euros <button type="button" class="info" data-info="habitante_ajustado">i</button></h3>
+        <p class="grafico-explica">Línea gruesa: la comunidad; fina: la media de las comunidades de régimen común.</p>
+        <div class="lectura-año" id="g-fin-lectura" aria-live="polite"></div>
+        <div class="lienzo" id="g-fin" role="img" aria-label="Financiación del sistema por habitante ajustado, en euros"></div>
+        <p class="fuente-grafico" id="g-fin-fuente"></p>
+      </section>
+
+    </section>
+
+    <section aria-labelledby="todas-t">
+      <h2 class="pregunta" id="todas-t">Todas las comunidades a la vez</h2>
+      <p class="grafico-explica">Misma escala en todos los paneles, por orden alfabético. El punto marca el último dato.</p>
+      <section class="grafico" aria-labelledby="m-deu-t">
+        <h3 class="grafico-titulo" id="m-deu-t">Deuda en % de su PIB</h3>
+        <div class="multiples" id="m-deu"></div>
+        <p class="fuente-grafico" id="m-deu-fuente"></p>
+      </section>
+      <section class="grafico" aria-labelledby="m-def-t">
+        <h3 class="grafico-titulo" id="m-def-t">Déficit o superávit en % de su PIB</h3>
+        <div class="multiples" id="m-def"></div>
+        <p class="fuente-grafico" id="m-def-fuente"></p>
+      </section>
+    </section>
+
+    <section aria-labelledby="fin-t">
+      <h2 class="pregunta" id="fin-t">¿Cómo se financian?</h2>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <h3>Régimen común y régimen foral</h3>
+        <p>Quince comunidades se financian con el <strong>sistema de régimen común</strong> (Ley 22/2009): una parte de los impuestos que pagan sus residentes (el 50 % del IRPF y del IVA, el 58 % de los impuestos especiales y otros), un Fondo de Garantía que busca que cada una reciba los mismos recursos por <em>habitante ajustado</em> para los servicios básicos, un Fondo de Suficiencia y dos fondos de convergencia. <button type="button" class="info" data-info="habitante_ajustado">i</button></p>
+        <p>El <strong>País Vasco y Navarra</strong> tienen <strong>régimen foral</strong>, amparado por la disposición adicional primera de la Constitución: regulan y recaudan sus propios impuestos y pagan al Estado una cantidad por lo que este sigue haciendo allí, el «cupo» vasco y la «aportación» navarra, que se fija cada cinco años. Según Hacienda, en 2023 el País Vasco ingresó al Estado 1.834 millones y Navarra 939,7 millones (incluida la liquidación del año anterior).</p>
+        <details>
+          <summary>Un paso más: por qué la financiación de un año se cierra dos años después</summary>
+          <p><button type="button" class="info" data-info="entregas_a_cuenta">i</button> Durante el año, las comunidades reciben «entregas a cuenta»: un adelanto calculado con previsiones. Cuando se conocen los datos definitivos, se hace la «liquidación» y se paga o se devuelve la diferencia. La liquidación del ejercicio 2024 se publicó en julio de 2026.</p>
+        </details>
+        <p class="fuente-grafico">Fuentes: <a href="https://www.boe.es/eli/es/l/2009/12/18/22/con">Ley 22/2009</a>; <a href="https://www.hacienda.gob.es/es-es/areas%20tematicas/financiacion%20autonomica/paginas/regimen%20foral1.aspx">Hacienda, régimen foral</a>; <a href="https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/las-haciendas-autonomicas-en-cifras-2023.pdf">Hacienda, Las haciendas autonómicas en cifras 2023</a>, págs. 37 y 39-40 (cupo y aportación); <a href="https://www.boe.es/eli/es/c/1978/12/27/(1)/con">Constitución</a>.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="reg-t">
+      <h2 class="pregunta" id="reg-t">¿Cumplen las reglas?</h2>
+      <p>Desde 2020 no hay objetivos de déficit para cada comunidad. Según las notas del propio fichero de objetivos de Hacienda, las reglas fiscales se suspendieron en 2020 y 2021 por la COVID-19 y la suspensión siguió en 2022 y 2023; en 2024, el Senado rechazó por segunda vez los objetivos propuestos y rigieron los del Programa de Estabilidad, y en 2025 el Congreso rechazó los propuestos. En 2024 y 2025 hay objetivo para el conjunto de las comunidades, pero no para cada una. Por eso esta página no dice si una comunidad «cumple» o «incumple» su objetivo de déficit en esos años.</p>
+      <p class="fuente-grafico">Fuente: Ministerio de Hacienda, <a href="https://www.hacienda.gob.es/cdi/estabilidad%20presupuestaria/serie-objetivos-ep.xlsx">serie de objetivos de estabilidad y deuda</a> (notas del fichero).</p>
+    </section>
+
+    <details class="plegable ficha" open>
+      <summary>Comprobaciones</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>
