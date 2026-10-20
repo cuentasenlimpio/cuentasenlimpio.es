@@ -209,7 +209,8 @@ async function montarInfo() {
     b.setAttribute("aria-label", `Qué implica: ${e.titulo || b.dataset.info}`);
     b.setAttribute("aria-expanded", "false");
     b.setAttribute("aria-controls", panel.id);
-    b.closest("h1, h2, h3, h4, p, label").after(panel);
+    // En los pequeños múltiplos, el panel va detrás de su figura y ocupa toda la fila.
+    (b.closest("figure.multiple") || b.closest("h1, h2, h3, h4, p, label")).after(panel);
     b.addEventListener("click", () => {
       const abierto = b.getAttribute("aria-expanded") === "true";
       b.setAttribute("aria-expanded", String(!abierto));

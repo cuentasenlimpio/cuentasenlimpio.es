@@ -274,5 +274,267 @@
     "url": "https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf"
    }
   ]
+ },
+ "cofog_GF01": {
+  "titulo": "Servicios públicos generales",
+  "texto": [
+   "Es el funcionamiento general del Estado: Gobiernos, parlamentos y plenos municipales, la gestión de Hacienda, asuntos exteriores y ayuda al exterior, servicios generales e investigación básica. También incluye la aportación de España al presupuesto de la UE.",
+   "Oficialmente, aquí van también los intereses de la deuda. En esta web los separamos para que se vean; en 2024 fueron 2,5 de los 5,8 puntos del PIB de esta partida. Y aquí van las transferencias de un nivel de administración a otro, que en el total de todas las administraciones valen cero: lo que una da, otra lo recibe."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, manual de la clasificación COFOG (2019)",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on general public services»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_general_public_services"
+   }
+  ]
+ },
+ "cofog_GF02": {
+  "titulo": "Defensa",
+  "texto": [
+   "Incluye los ejércitos, la defensa civil, la ayuda militar al exterior y las misiones de paz, y la investigación de defensa. No incluye las pensiones de los militares (van a protección social) ni la sanidad del personal militar (va a sanidad).",
+   "Por eso esta cifra no es la que usa la OTAN, que sí cuenta las pensiones militares, entre otras diferencias. La IGAE lo explica en su informe COFOG. En 2024, defensa fue el 0,9 % del PIB con este criterio; la OTAN estimó para España un 1,43 %.",
+   "En la cumbre de La Haya (25 de junio de 2025), los aliados se comprometieron a dedicar el 5 % del PIB en 2035: al menos un 3,5 % a defensa básica y hasta un 1,5 % a resiliencia e infraestructuras. La senda se revisará en 2029."
+  ],
+  "fuentes": [
+   {
+    "texto": "IGAE, informe COFOG 2020-2024 (provisional)",
+    "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on defence»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_defence"
+   },
+   {
+    "texto": "OTAN, Defence Expenditure of NATO Countries (2014-2025)",
+    "url": "https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2025-en.pdf"
+   },
+   {
+    "texto": "OTAN, declaración de la cumbre de La Haya (2025)",
+    "url": "https://www.nato.int/cps/en/natohq/official_texts_236705.htm"
+   }
+  ]
+ },
+ "cofog_GF03": {
+  "titulo": "Orden público y seguridad",
+  "texto": [
+   "Policía (incluidos tráfico, fronteras y guardacostas), bomberos y protección civil, tribunales y prisiones. En 2024, España gastó el 1,8 % del PIB, algo más que la media de la UE (1,7 %); casi toda la diferencia está en la policía (1,1 % frente a 0,9 %).",
+   "Sobre el efecto, la evidencia más citada es de Estados Unidos: un estudio de 1960 a 2010 estima que un 10 % más de policías reduce alrededor de un 5 % el coste social del delito, y más el violento que el patrimonial. No hay una estimación equivalente para España."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on public order and safety»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_public_order_and_safety"
+   },
+   {
+    "texto": "Chalfin y McCrary, NBER WP 18815 (2013)",
+    "url": "https://www.nber.org/papers/w18815"
+   }
+  ]
+ },
+ "cofog_GF04": {
+  "titulo": "Asuntos económicos",
+  "texto": [
+   "Dinero público para sectores productivos: transporte (carreteras, ferrocarril), energía, agricultura y pesca, industria, comunicaciones, ayudas a empresas, políticas activas de empleo e investigación aplicada.",
+   "Es la partida que más salta en las crisis, porque aquí se apuntan rescates y ayudas extraordinarias. En 2012, España anotó 39.100 millones de ayudas a entidades financieras, y la partida pasó del 5,6 % al 8,7 % del PIB. En 2022, las ayudas por la subida de la energía (entre ellas, 5.814 millones de la bonificación al combustible) llevaron el grupo de energía a 12.498 millones."
+  ],
+  "decalaje": "Buena parte de la inversión en transporte está aquí. Según el FMI, en las economías avanzadas un punto del PIB más de inversión pública sube la producción alrededor de un 0,4 % el primer año y un 1,5 % a los cuatro años.",
+  "fuentes": [
+   {
+    "texto": "Eurostat, manual de la clasificación COFOG (2019)",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf"
+   },
+   {
+    "texto": "IGAE, informe COFOG 2020-2024 (provisional)",
+    "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on economic affairs»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_economic_affairs"
+   },
+   {
+    "texto": "FMI, «Now Is a Good Time to Invest in Infrastructure» (2014)",
+    "url": "https://www.imf.org/en/blogs/articles/2014/09/30/now-is-a-good-time-to-invest-in-infrastructure"
+   }
+  ]
+ },
+ "cofog_GF05": {
+  "titulo": "Protección del medio ambiente",
+  "texto": [
+   "Recogida y tratamiento de residuos, alcantarillado y depuración, reducción de la contaminación y protección de la biodiversidad. El agua potable no está aquí, sino en vivienda y servicios comunitarios.",
+   "En 2024, España gastó el 1,0 % del PIB (UE: 0,8 %). La mayor parte es la gestión de residuos, un servicio sobre todo municipal, en la que España gasta el doble que la media europea (0,6 % frente a 0,3 %)."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on environmental protection»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_environmental_protection"
+   }
+  ]
+ },
+ "cofog_GF06": {
+  "titulo": "Vivienda y servicios comunitarios",
+  "texto": [
+   "Construcción y mejora de viviendas, urbanismo, abastecimiento de agua y alumbrado público. Las ayudas a las familias para pagar el alquiler o la hipoteca y la vivienda social para quien tiene pocos ingresos no están aquí, sino en protección social.",
+   "En 2024, España gastó el 0,5 % del PIB (UE: 0,7 %). Según la OCDE, la vivienda social en alquiler es menos del 2 % de las viviendas en España, frente al 8 % de media en la UE; la OCDE advierte de que cada país la define de forma distinta."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, manual de la clasificación COFOG (2019)",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on housing and community amenities»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_housing_and_community_amenities"
+   },
+   {
+    "texto": "OCDE, Affordable Housing Database, indicador PH4.2 (2025)",
+    "url": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/PH4-2-Social-rental-housing-stock.pdf"
+   }
+  ]
+ },
+ "cofog_GF07": {
+  "titulo": "Sanidad",
+  "texto": [
+   "Medicamentos y aparatos, centros de salud y especialistas, hospitales y salud pública. Las comunidades autónomas gestionan el 91 % del gasto sanitario público.",
+   "En 2024, el gasto público en sanidad fue el 6,5 % del PIB (UE: 7,3 %). Contando también el gasto privado, España gastó en 2023 un 9,2 % del PIB, unos 3.137 euros por habitante en poder de compra, alrededor de una quinta parte menos que la media de la UE. Los hogares pagan de su bolsillo el 21 % (UE: 16 %). Las dos cifras no se pueden comparar entre sí: miden perímetros distintos.",
+   "Con el envejecimiento, la Comisión Europea proyecta que el gasto público sanitario de España suba 1,2 puntos del PIB hasta 2070 y el de cuidados de larga duración, 0,9 puntos; en ambos casos, más que la media de la UE."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on health»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_health"
+   },
+   {
+    "texto": "OCDE, Observatorio Europeo y Comisión, State of Health in the EU: perfil de España 2025",
+    "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/12/country-health-profile-2025-country-notes_7e72146d/spain_4e0e2356/4ff6d4e0-en.pdf"
+   },
+   {
+    "texto": "Comisión Europea, 2024 Ageing Report",
+    "url": "https://economy-finance.ec.europa.eu/document/download/971dd209-41c2-425d-94f8-e3c3c3459af9_en?filename=ip279_en.pdf"
+   }
+  ]
+ },
+ "cofog_GF08": {
+  "titulo": "Ocio, cultura y religión",
+  "texto": [
+   "Instalaciones deportivas y recreativas, bibliotecas, museos, teatros y patrimonio, radiotelevisión pública y servicios religiosos y comunitarios.",
+   "En 2024, España gastó el 1,2 % del PIB, igual que la media de la UE, y con un reparto muy parecido entre deporte, cultura y medios públicos."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on recreation, culture and religion»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_recreation,_culture_and_religion"
+   }
+  ]
+ },
+ "cofog_GF09": {
+  "titulo": "Educación",
+  "texto": [
+   "De infantil a la universidad, más servicios como el transporte escolar o los comedores. En 2024, el gasto de las administraciones en educación fue el 4,1 % del PIB (UE: 4,7 %), de los más bajos de la UE. La OCDE, que cuenta también el gasto privado en centros, sitúa a España en el 4,5 % (2022), cerca de su media (4,7 %).",
+   "Más gasto se asocia a mejores resultados en PISA solo hasta cierto nivel: unos 75.000 dólares acumulados por alumno entre los 6 y los 15 años. Por encima, la relación desaparece. Es una correlación entre países, no un efecto causal."
+  ],
+  "decalaje": "Los efectos se miden años después. En Estados Unidos, una revisión de estudios estima que 1.000 dólares más por alumno durante cuatro años mejoran algo las notas y suben 2,8 puntos la entrada en la universidad, con efectos menores en grupos acomodados.",
+  "fuentes": [
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on education»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_education"
+   },
+   {
+    "texto": "OCDE, Education at a Glance 2025, nota de España",
+    "url": "https://www.educacionfpydeportes.gob.es/inee/eu/dam/jcr:9c89bba6-0c39-45c5-bc02-9da8ec6de9b8/country-note-spain-en.pdf"
+   },
+   {
+    "texto": "OCDE, PISA 2022, fichas por país («Resources invested in education»)",
+    "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/11/pisa-2022-results-volume-i-and-ii-country-notes_2fca04b9/indonesia_0e09c072/c2e1ae0e-en.pdf"
+   },
+   {
+    "texto": "Jackson y Mackevicius, AEJ: Applied Economics 16(1) (2024)",
+    "url": "https://www.aeaweb.org/articles?id=10.1257/app.20220279"
+   }
+  ]
+ },
+ "cofog_GF10": {
+  "titulo": "Protección social",
+  "texto": [
+   "Es la partida más grande: pensiones de jubilación y de viudedad, incapacidad, familia, desempleo, ayudas a la vivienda y rentas mínimas. En 2024, España gastó el 18,7 % del PIB (UE: 19,6 %). En jubilación, casi lo mismo que la media (10,4 % frente a 10,7 %); más en viudedad (2,2 % frente a 1,5 %) y menos en familia (1,0 % frente a 2,0 %).",
+   "El gasto en desempleo sube solo cuando sube el paro, sin aprobar nada nuevo: se duplicó en euros entre 2007 y 2009 y llegó al 3,7 % del PIB en 2020, con los ERTE. Un estudio europeo estima que impuestos y prestaciones absorben, en la UE, el 47 % de la pérdida de renta cuando sube el desempleo.",
+   "Las transferencias reducen la desigualdad medida. En 2025, el índice de Gini de España baja de 34,1 a 30,8 al sumar las prestaciones sin contar las pensiones, y desde 44,6 si se cuentan. Eurostat advierte de que el «antes» es un supuesto teórico: nadie se comportaría igual sin esas ayudas."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, manual de la clasificación COFOG (2019)",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure on social protection»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_social_protection"
+   },
+   {
+    "texto": "Dolls, Fuest y Peichl, NBER WP 16275 (2010)",
+    "url": "https://www.nber.org/papers/w16275"
+   },
+   {
+    "texto": "Eurostat, índice de Gini antes y después de transferencias (ilc_di12b)",
+    "url": "https://ec.europa.eu/eurostat/databrowser/view/ilc_di12b/default/table"
+   },
+   {
+    "texto": "Eurostat, glosario: riesgo de pobreza antes de transferencias",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate_before_social_transfers"
+   }
+  ]
+ },
+ "quien_gasta": {
+  "titulo": "Quién gasta y quién recauda",
+  "texto": [
+   "España es de los países que más reparten el gasto entre niveles de administración: según la OCDE, comunidades autónomas y ayuntamientos ejecutan alrededor de la mitad. Las comunidades llevan casi toda la sanidad y la educación; la Seguridad Social, casi todas las pensiones.",
+   "Quien gasta no es necesariamente quien recauda. Las comunidades de régimen común reciben el 50 % del IRPF y del IVA y el 58 % de los impuestos especiales de su territorio, más un fondo que busca que cada una tenga los mismos recursos por habitante ajustado para los servicios básicos. El País Vasco y Navarra tienen régimen foral: recaudan sus propios impuestos y pagan al Estado una cantidad por lo que este sigue haciendo allí (el «cupo» y la «aportación»).",
+   "Si se suma el gasto de cada nivel, el dinero que uno transfiere a otro se cuenta dos veces. Por eso se descuenta al sumar: en 2024, la IGAE restó 250.652 millones."
+  ],
+  "fuentes": [
+   {
+    "texto": "OCDE, gasto de las administraciones subcentrales (base regional)",
+    "url": "https://sdmx.oecd.org/public/rest/data/OECD.CFE.RDG,DSD_DASHBOARD@EXPEND,/ESP.......?startPeriod=2022&format=csvfilewithlabels"
+   },
+   {
+    "texto": "IGAE, informe COFOG 2020-2024 (provisional)",
+    "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf"
+   },
+   {
+    "texto": "Ley 22/2009, de financiación de las comunidades autónomas",
+    "url": "https://www.boe.es/buscar/pdf/2009/BOE-A-2009-20375-consolidado.pdf"
+   },
+   {
+    "texto": "Ley 12/2002, Concierto Económico con el País Vasco",
+    "url": "https://www.boe.es/buscar/pdf/2002/BOE-A-2002-9969-consolidado.pdf"
+   },
+   {
+    "texto": "Ley 28/1990, Convenio Económico con Navarra",
+    "url": "https://www.boe.es/buscar/pdf/1990/BOE-A-1990-31117-consolidado.pdf"
+   }
+  ]
+ },
+ "denominador": {
+  "titulo": "Por qué un porcentaje puede moverse sin que cambie el gasto",
+  "texto": [
+   "El porcentaje del PIB es una división: sube si se gasta más o si el PIB cae. En 2020, el PIB de España cayó un 9,9 %; las pensiones de jubilación subieron solo un 3,4 % en euros, pero pasaron del 9,5 % al 10,9 % del PIB. En 2022 pasó lo contrario con la sanidad: subió un 5,4 % en euros y bajó del 7,2 % al 6,8 % del PIB, porque el PIB creció más. Para ver la cantidad, cambia arriba a «Euros sin inflación».",
+   "Estas partidas siguen la clasificación COFOG, que ordena el gasto por su finalidad con las mismas reglas en todos los países de la UE. Por eso permite comparar países, cosa que no permiten los presupuestos de cada uno."
+  ],
+  "fuentes": [
+   {
+    "texto": "Eurostat, gasto por funciones en 2020 (nota del 28/02/2022)",
+    "url": "https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20220228-2"
+   },
+   {
+    "texto": "Eurostat, manual de la clasificación COFOG (2019)",
+    "url": "https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf"
+   },
+   {
+    "texto": "Eurostat, Statistics Explained: «Government expenditure by function – COFOG»",
+    "url": "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_by_function_%E2%80%93_COFOG"
+   }
+  ]
  }
 }

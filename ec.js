@@ -406,6 +406,14 @@ const EC = (() => {
         const titulo = document.createElement("figcaption");
         const nombre = document.createElement("span");
         nombre.textContent = p.nombre;
+        if (p.info) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "info";
+          b.dataset.info = p.info;
+          b.textContent = "i";
+          nombre.append(" ", b);
+        }
         const valor = document.createElement("b");
         titulo.append(nombre, valor);
         const lienzo = document.createElement("div");

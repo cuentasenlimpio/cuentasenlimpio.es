@@ -19,7 +19,7 @@ function pintar(g, aapp, sel) {
 
   // Evolución
   const esc = ESCALA[u];
-  const paneles = g.funciones.map((f) => ({ nombre: f.nombre, valores: f[u].map((v) => (v === null ? null : v * esc)) }));
+  const paneles = g.funciones.map((f) => ({ nombre: f.nombre, info: `cofog_${f.codigo}`, valores: f[u].map((v) => (v === null ? null : v * esc)) }));
   dibujarMultiples(document.getElementById("evolucion"), paneles, g.años, i,
     { formato: FORMATO[u], unidadEje: texto(UNIDADES[u].eje, g.año_base_constantes), periodo: sel.periodo });
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];
@@ -218,6 +218,7 @@ async function arrancar() {
   sel.periodo = EC.periodo(document.getElementById("periodo"), aapp, g.años);
   pintar(g, aapp, sel);
   pintarRespuesta(g);
+  montarInfo();
   pintarTipo(g, aapp, sel.unidad);
   EC.capas(document.getElementById("capas"), capas, () => pintarTipo(g, aapp, sel.unidad));
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
