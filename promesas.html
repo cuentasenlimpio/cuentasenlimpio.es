@@ -45,6 +45,7 @@
           <button type="button" data-quien="otros" aria-pressed="false">Demás partidos</button>
         </div>
         <label class="filtro">Documento <select id="p-doc"><option value="">Todos</option></select></label>
+        <label class="filtro">Último paso documentado <select id="p-paso"><option value="">Cualquiera</option><option value="con">Con una ley o un decreto-ley en el BOE</option><option value="sin">Sin hechos encontrados</option></select></label>
         <label class="filtro filtro-casilla"><input type="checkbox" id="p-repes"> Mostrar también las repeticiones</label>
       </div>
       <p class="ayuda-grafico">«Gobierno» reúne lo que prometieron los partidos que lo formaron (los programas de PSOE y Sumar y su acuerdo de coalición) y lo que el PSOE pactó en los acuerdos de investidura. Dentro de cada bloque, los documentos van por orden alfabético. La etiqueta en negrita es nuestra; lo que vale es la cita literal.</p>
@@ -164,6 +165,8 @@
         </table>
       </div>
       <p>Si no encontramos ningún hecho, lo decimos así, «sin hechos encontrados», junto con cómo hemos buscado. Es un dato sobre nuestra búsqueda, no un juicio sobre la promesa.</p>
+      <p><strong>Lo que ya está hecho.</strong> Hemos revisado las leyes orgánicas, las leyes y los reales decretos-leyes publicados en el BOE desde el inicio de la legislatura, con su paso por el Congreso (expediente y votaciones decisivas, con el voto de cada grupo y, en el Grupo Mixto, de cada formación con la que se presentaron sus diputados). Faltan los reales decretos, el Plan Anual Normativo, las referencias del Consejo de Ministros y las iniciativas que no llegaron a aprobarse.</p>
+      <p id="hechos-metodo">Para relacionar cada norma con las promesas, primero un programa busca las promesas que comparten palabras con la norma (solo decide qué se mira) y después dos clasificaciones independientes con IA (Claude) deciden, con <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/blob/main/codigo/promesas/INSTRUCCIONES_HECHOS.md">estas reglas públicas</a>, si tratan la misma medida. Los desacuerdos los resuelve una tercera, a ciegas.</p>
       <p>Para los partidos de la oposición, los hechos son los mismos cuando existen (por ejemplo, si registraron una proposición de ley) y, además, cómo votaron cuando se votó una medida igual o contraria a la que prometieron.</p>
     </section>
 

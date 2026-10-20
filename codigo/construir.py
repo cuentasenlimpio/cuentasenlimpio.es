@@ -1178,6 +1178,133 @@ def construir_desigualdad(descargas):
     return out
 
 
+# ---- Hechos de la XV Legislatura (desde el 20/10/2026): normas, su paso por el Congreso y sus votaciones clave ----
+GRUPOS = {"GP": "PP", "GS": "PSOE", "GVOX": "Vox", "GSUMAR": "Sumar", "GR": "ERC", "GJxCAT": "Junts", "GEH Bildu": "EH Bildu",
+          "GV (EAJ-PNV)": "PNV", "GMx": "Grupo Mixto"}
+
+
+def paso_de_votacion(info):
+    """Qué paso de la tramitación es una votación (solo las decisivas; las enmiendas sueltas se dejan fuera)."""
+    t, sub = info.get("titulo") or "", (info.get("textoSubGrupo") or "") + " " + (info.get("tituloSubGrupo") or "")
+    if t.startswith("Convalidación o derogación"):
+        return "Tramitación como proyecto de ley" if "proyecto de ley" in sub.lower() else "Convalidación"
+    if t.startswith("Toma en consideración"):
+        return "Toma en consideración"
+    if t.startswith("Debates de totalidad"):
+        return "Enmienda a la totalidad"
+    if "lectura única" in t:
+        return "Votación en lectura única" if not t.startswith("Acuerdo") else None
+    if t.startswith("Veto del Senado"):
+        return "Votación sobre el veto del Senado"
+    if t.startswith("Dictámenes"):
+        if "conjunto" in sub.lower():
+            return "Votación de conjunto"
+        if "dictamen" in sub.lower() and "enmienda" not in sub.lower():
+            return "Votación del dictamen"
+    return None
+
+
+def construir_hechos(relaciones_ruta=None):
+    ruta = AQUI / "hechos" / "catalogo.json"
+    if not ruta.exists():
+        print("Hechos: no hay catálogo en esta copia; no se genera datos/hechos.json")
+        return
+    cat = json.loads(ruta.read_text())
+    # Formación con la que se presentó cada diputado (para desglosar el Grupo Mixto).
+    formacion = {}
+    for f in ("diputados_activos.json", "diputados_baja.json"):
+        r_ = AQUI / "hechos" / f
+        if r_.exists():
+            for d in json.loads(r_.read_text()):
+                formacion[d["NOMBRE"]] = d.get("FORMACIONELECTORAL")
+    votos_dir = AQUI / "hechos" / "votaciones"
+
+    def resumen_votacion(url):
+        m = re.search(r"Sesion(\d+)/(\d{8})/Votacion(\d+)", url)
+        r_ = votos_dir / f"{m.group(2)}_{m.group(1)}_{m.group(3)}.json"
+        if not r_.exists():
+            return None
+        d = json.loads(r_.read_text())["datos"]
+        if not d:
+            return None
+        paso = paso_de_votacion(d["informacion"])
+        if not paso:
+            return None
+        grupos = {}
+        mixto = {}
+        for v in d["votaciones"]:
+            g = GRUPOS.get(v["grupo"], v["grupo"])
+            grupos.setdefault(g, {"Sí": 0, "No": 0, "Abstención": 0, "No vota": 0})
+            grupos[g][v["voto"]] = grupos[g].get(v["voto"], 0) + 1
+            if v["grupo"] == "GMx":
+                fo = formacion.get(v["diputado"], "?")
+                mixto.setdefault(fo, {"Sí": 0, "No": 0, "Abstención": 0, "No vota": 0})
+                mixto[fo][v["voto"]] = mixto[fo].get(v["voto"], 0) + 1
+        t = d["totales"]
+        f_ = d["informacion"]["fecha"]
+        return {"paso": paso, "fecha": f_, "titulo": (d["informacion"].get("textoExpediente") or d["informacion"].get("titulo") or "").strip(),
+                "asentimiento": t.get("asentimiento") == "Sí", "si": t.get("afavor"), "no": t.get("enContra"), "abstencion": t.get("abstenciones"),
+                "grupos": grupos, "mixto_por_formacion": mixto, "url": url.replace(".json", ".pdf") if False else url}
+
+    expedientes = {}
+    for i in cat["iniciativas"]:
+        for n in i.get("ficha", {}).get("normas", []):
+            expedientes.setdefault(n, []).append({"expediente": i["expediente"], "tipo": i["tipo"], "autor": i["autor"],
+                                                  "presentada": i["presentada"], "url": i["ficha"]["url"], "votaciones": i["ficha"]["votaciones"]})
+    for c in cat["convalidaciones"]:
+        for n in c["normas"]:
+            expedientes.setdefault(n, []).append({"expediente": c["expediente"], "tipo": "Convalidación de real decreto-ley", "autor": "Gobierno",
+                                                  "presentada": None, "url": c["url"], "votaciones": c["votaciones"]})
+    # Votaciones de las páginas de cada día: añaden las que la ficha no enlaza (las públicas por llamamiento no tienen
+    # fichero con el voto de cada diputado; quedan sus totales y el enlace al Diario de Sesiones).
+    por_exp = {}
+    for dia, puntos in (cat.get("dias") or {}).items():
+        for pt in puntos:
+            for v in pt["votaciones"]:
+                por_exp.setdefault(pt["expediente"], []).append((dia, pt["punto"], v))
+
+    def paso_de_punto(punto):
+        p_ = punto.lower()
+        for clave_, paso in (("votación de conjunto", "Votación de conjunto"), ("veto del senado", "Votación sobre el veto del Senado"),
+                             ("convalidación", "Convalidación"),
+                             ("toma en consideración", "Toma en consideración"), ("totalidad", "Enmienda a la totalidad"),
+                             ("lectura única", "Votación en lectura única")):
+            if clave_ in p_:
+                return paso
+        return None
+
+    normas = []
+    for n in cat["normas"]:
+        if n["rango"] not in ("LO", "L", "RDL"):
+            continue
+        tram = []
+        for e in expedientes.get(n["clave"], []):
+            urls = set(e["votaciones"]) | {v["json"] for _, _, v in por_exp.get(e["expediente"], []) if v["json"]}
+            vs = [x for x in (resumen_votacion(u) for u in sorted(urls)) if x]
+            for dia, punto, v in por_exp.get(e["expediente"], []):
+                # Primero lo que dice el propio bloque de la votación; si no, el título del punto del orden del día.
+                paso = paso_de_punto(v.get("texto", "")) or paso_de_punto(punto)
+                if v["json"] or not paso:
+                    continue
+                vs.append({"paso": paso, "fecha": f"{int(dia[6:8])}/{int(dia[4:6])}/{dia[:4]}", "titulo": punto,
+                           "asentimiento": v["asentimiento"], "si": v["si"], "no": v["no"], "abstencion": v["abstenciones"],
+                           "grupos": {}, "mixto_por_formacion": {}, "url": v["pdf"],
+                           "nota": "Votación sin fichero de voto por diputado en los datos abiertos del Congreso (por ejemplo, pública por llamamiento): el detalle está en el Diario de Sesiones."})
+            vs.sort(key=lambda x: [int(c) for c in x["fecha"].split("/")[::-1]])
+            tram.append({k: e[k] for k in ("expediente", "tipo", "autor", "presentada", "url")} | {"votaciones": vs})
+        normas.append({k: n[k] for k in ("clave", "rango", "numero", "año", "id", "titulo", "publicada", "url")} | {"tramitacion": tram})
+    relaciones = json.loads(pathlib.Path(relaciones_ruta).read_text()) if relaciones_ruta and pathlib.Path(relaciones_ruta).exists() else []
+    relaciones = [{k: r[k] for k in ("hecho", "promesa", "clase", "parcial", "motivo")} for r in relaciones]
+    fiab_ruta = pathlib.Path(relaciones_ruta).with_name("fiabilidad.json") if relaciones_ruta else None
+    fiabilidad = json.loads(fiab_ruta.read_text()) if fiab_ruta and fiab_ruta.exists() else None
+    salida = {"generado": cat["generado"], "normas": normas, "relaciones": relaciones, "fiabilidad": fiabilidad,
+              "fuentes": {"boe": "https://www.boe.es/datosabiertos/", "congreso": "https://www.congreso.es/es/datos-abiertos"}}
+    (WEB / "datos" / "hechos.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
+    sin_tram = [n["clave"] for n in normas if not n["tramitacion"]]
+    print(f"Hechos: {len(normas)} normas con rango de ley, {sum(bool(n['tramitacion']) for n in normas)} con su tramitación en el Congreso"
+          f"{'; sin ella: ' + ', '.join(sin_tram) if sin_tram else ''}; {len(relaciones)} relaciones con promesas")
+
+
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
@@ -1920,6 +2047,7 @@ def main():
     documentos = json.loads((CODIGO / "promesas" / "documentos.json").read_text())
     (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
     construir_promesas(documentos)
+    construir_hechos(CODIGO / "promesas" / "extraccion" / "hechos" / "relaciones.json")
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

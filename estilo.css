@@ -500,3 +500,13 @@ table.previsiones td:first-child { font-weight: 600; }
 .dos-columnas { display: grid; grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); gap: 0 1rem; }
 .cifras-clave .tarjeta-cifra { display: flex; flex-direction: column; gap: 0.35rem; background: var(--superficie); border: 1px solid var(--linea); border-radius: 10px; padding: 1.1rem 1.2rem; }
 .cifras-clave .tarjeta-cifra .valor { font-size: 2rem; }
+
+/* Hechos de cada promesa */
+.hechos { border-top: 1px dashed var(--linea-fuerte); margin-top: 0.75rem; padding-top: 0.6rem; }
+.hechos-titulo { font: 700 0.75rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--tinta-suave); margin: 0 0 0.5rem; }
+.hechos-lista { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+.hecho { border-left: 3px solid var(--acento); padding-left: 0.75rem; margin: 0; }
+.hecho-contraria { border-left-style: dashed; border-left-color: var(--tinta-suave); }
+.hecho p { margin: 0 0 0.25rem; font-size: 0.9375rem; }
+.hecho-motivo, .hecho-voto { color: var(--tinta-suave); }
+.hechos-ninguno { font-size: 0.875rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); margin-top: 0.75rem; padding-top: 0.5rem; }

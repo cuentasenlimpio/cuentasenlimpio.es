@@ -11,6 +11,9 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `descargar_documentos.py` | Descarga los programas y acuerdos de la página de promesas desde su copia en el Internet Archive y comprueba que su huella sha256 es la verificada. |
 | `promesas/documentos.json` | El catálogo de esos documentos: partido, título, páginas, dirección original, copia del archivo, huella y notas. |
 | `promesas/INSTRUCCIONES.md` | Las reglas exactas con las que se clasifican las frases de esos documentos (promesa o no, y por qué). |
+| `promesas/INSTRUCCIONES_HECHOS.md` | Las reglas con las que se decide si una norma trata la misma medida que una promesa. |
+| `promesas/candidatos_hechos.py`, `comparar_hechos.py`, `aplicar_hechos.py` | Búsqueda de candidatos por palabras, comparación de las dos pasadas independientes con su arbitraje y su auditoría. |
+| `hechos_descargar.py` | Descarga del BOE (sumario diario) y del Congreso (iniciativas, fichas y votaciones). |
 | `xls.py` | Lector de los libros .xls antiguos del SEPE (paro registrado), sin dependencias. |
 | `px.py` | Lector de los ficheros PC-Axis de la Seguridad Social (afiliación), sin dependencias. |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
