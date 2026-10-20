@@ -161,16 +161,20 @@ function pintarUltimoAño(años, motivo) {
 // ---- Botones (i): qué implica un valor, con su fuente ----
 // En el HTML: <button type="button" class="info" data-info="clave">i</button> dentro de un título. El texto sale de
 // datos/explicaciones.json (cada entrada: titulo, texto[], decalaje, fuentes[{texto, url}]). Sin entrada, el botón se quita.
+// Se puede volver a llamar cuando una página pinta botones nuevos: los ya montados se saltan.
+let explicaciones = null;
 async function montarInfo() {
-  const botones = document.querySelectorAll("button.info[data-info]");
+  const botones = [...document.querySelectorAll("button.info[data-info]")].filter((b) => !b.dataset.montado);
   if (!botones.length) return;
-  const ex = await fetch("datos/explicaciones.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+  for (const b of botones) b.dataset.montado = "1";
+  explicaciones ??= fetch("datos/explicaciones.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+  const ex = await explicaciones;
   botones.forEach((b, k) => {
     const e = ex[b.dataset.info];
     if (!e) return b.remove();
     const panel = document.createElement("aside");
     panel.className = "info-panel";
-    panel.id = `info-${b.dataset.info}-${k}`;
+    panel.id = `info-${b.dataset.info}-${document.querySelectorAll(".info-panel").length}-${k}`;
     panel.hidden = true;
     const t = document.createElement("p");
     t.className = "rotulo";

@@ -536,6 +536,7 @@ function pintar() {
   pintarFuente("g1-fuente", "gov_10a_main");
   pintarRecientes("g1-recientes", "saldo");
   pintarRecientes("g2-recientes", "deuda");
+  montarInfo();
   pintarFuente("g2-fuente", "gov_10dd_edpt1");
   pintarFuente("g3-fuente", "gov_10dd_edpt3",
     [["gov_10dd_edpt1", u === "pib" ? "intereses y PIB de la misma notificación" : "intereses de la misma notificación"]],
@@ -784,7 +785,9 @@ function pintarRecientes(id, clave) {
   item("clave-area tenue", `Fondo claro: provisional (${sin.length > 1 ? `${sin[0]}–${sin.at(-1)}` : sin[0] ?? ult})`);
   item("clave-area oscura", `Fondo oscuro: ${ult + 1}, en curso (punto hueco: último dato)`);
   item("clave-discontinua", `Discontinuas: previsiones de cada institución; de puntos: objetivo del Gobierno`);
-  el("h3", { textContent: clave === "saldo" ? "Lo más reciente y lo que se prevé: el saldo" : "Lo más reciente y lo que se prevé: la deuda" });
+  const h3 = el("h3", { textContent: clave === "saldo" ? "Lo más reciente y lo que se prevé: el saldo" : "Lo más reciente y lo que se prevé: la deuda" });
+  h3.append(" ");
+  el("button", { type: "button", className: "info", textContent: "i" }, h3).dataset.info = "previsiones";
   const f = r.fiabilidad[String(ult)];
   if (f) {
     const p = el("p");

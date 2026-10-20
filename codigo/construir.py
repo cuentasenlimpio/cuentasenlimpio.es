@@ -1341,6 +1341,9 @@ def main():
     presupuesto["comprobaciones"] = comprobaciones_presupuesto
     (WEB / "datos" / "presupuesto.json").write_text(json.dumps(presupuesto, ensure_ascii=False, separators=(",", ":")))
     # Documentos de promesas: el catálogo tal cual (los PDF no se publican; se enlazan el original y la copia del archivo).
+    # Explicaciones de los botones (i): el texto tal cual, con sus fuentes.
+    (WEB / "datos" / "explicaciones.json").write_text(
+        json.dumps(json.loads((CODIGO / "explicaciones.json").read_text()), ensure_ascii=False, separators=(",", ":")))
     documentos = json.loads((CODIGO / "promesas" / "documentos.json").read_text())
     (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
     construir_promesas(documentos)

@@ -13,6 +13,7 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `promesas/INSTRUCCIONES.md` | Las reglas exactas con las que se clasifican las frases de esos documentos (promesa o no, y por qué). |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
 | `previsiones.json` | De qué publicación sale cada previsión (AIReF, Banco de España, Comisión Europea, FMI) y cada objetivo del Gobierno, con su fichero y su página. Las que vienen de hojas de cálculo se comprueban solas contra el fichero. |
+| `explicaciones.json` | Los textos de los botones (i): qué implica cada indicador y cuánto tarda en notarse, con la fuente de cada afirmación. |
 | `certificados/` | El certificado intermedio de la FNMT que el servidor de la AIReF no envía; sin él, las descargas fallan. Es público. |
 | `gobiernos.json` | Fechas de nombramiento de cada Presidente del Gobierno, con su Real Decreto en el BOE. Es una capa opcional de los gráficos: sitúa en el tiempo, no atribuye resultados. |
 

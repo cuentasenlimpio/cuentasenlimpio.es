@@ -1,0 +1,146 @@
+{
+ "deficit": {
+  "titulo": "Qué implica el déficit",
+  "texto": [
+   "Parte del déficit se mueve sola con la economía. Cuando la actividad cae se recauda menos y se paga más paro, sin que nadie apruebe nada. Para España, la Comisión Europea estima que, si el PIB cae un 1 %, el saldo público empeora unas seis décimas del PIB. Eso amortigua la caída, pero empeora el déficit.",
+   "El efecto contrario, el de gastar más o menos sobre la economía, depende del momento. Para España, el Banco de España estimó que cada euro de gasto público mueve unos 1,4 euros de PIB en tiempos de crisis y unos 0,6 en tiempos tranquilos. En la crisis de 2010-2011, los ajustes frenaron el PIB europeo más de lo que preveían los organismos: alrededor de un 1 % por cada punto de ajuste.",
+   "No hay acuerdo sobre qué frena menos el crecimiento: recortar gasto o subir impuestos. El modelo de la Comisión Europea dice que, a corto plazo, recortar gasto. Varios estudios con datos de Estados Unidos dicen que subir impuestos."
+  ],
+  "decalaje": "Una medida tarda en hacer efecto por tres razones. Los datos llegan tarde y se revisan, aprobar una ley lleva meses y ejecutar el gasto (sobre todo las obras) lleva más todavía. Lo que se mueve solo con la economía (menos recaudación, más paro) no espera a nadie.",
+  "fuentes": [
+   {"texto": "Comisión Europea, semielasticidades del saldo, Discussion Paper 098 (2019), tabla IV.3", "url": "https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf"},
+   {"texto": "Banco de España, Documento de Trabajo 1309 (2013)", "url": "https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/13/Fich/dt1309e.pdf"},
+   {"texto": "Blanchard y Leigh, FMI WP/13/1 (2013)", "url": "https://www.imf.org/external/pubs/ft/wp/2013/wp1301.pdf"},
+   {"texto": "In 't Veld, Comisión Europea, Economic Papers 506 (2013)", "url": "https://ec.europa.eu/economy_finance/publications/economic_paper/2013/pdf/ecp506_en.pdf"},
+   {"texto": "Ramey, Journal of Economic Perspectives 33(2) (2019)", "url": "https://www.aeaweb.org/articles?id=10.1257/jep.33.2.89"},
+   {"texto": "FMI, Finance & Development, «Fiscal Policy: Taking and Giving Away»", "url": "https://www.imf.org/en/Publications/fandd/issues/Series/Back-to-Basics/Fiscal-Policy"}
+  ]
+ },
+ "deuda": {
+  "titulo": "Qué implica la deuda",
+  "texto": [
+   "Lo que cuesta la deuda cada año son sus intereses. Como solo se renueva una parte cada año, el coste medio cambia despacio. Tras la subida de tipos del BCE, el tipo de las Letras del Tesoro pasó del 0,73 % en 2022 al 3,48 % en 2023. El tipo medio de toda la deuda del Estado solo subió del 1,73 % al 2,45 % hasta septiembre de 2026.",
+   "Un estudio de 2010 encontró que, con más del 90 % de deuda, el crecimiento caía. Al repetirlo, otros investigadores encontraron errores de cálculo: con los datos corregidos, esos países crecían de media un 2,2 %, no un −0,1 %. El FMI no encuentra un umbral a partir del cual el crecimiento se hunda, y sí que los países con deuda alta pero bajando crecen como los demás. Un trabajo del BCE sí sitúa un punto de inflexión en torno al 90-100 %. Y otros estudios dudan de hacia dónde va la causa: ¿la deuda frena el crecimiento o el crecimiento bajo dispara la deuda?"
+  ],
+  "decalaje": "La deuda del Estado tarda de media unos ocho años en vencer (7,85 años en septiembre de 2026). Una subida de los tipos de interés tarda años en notarse entera en lo que se paga.",
+  "fuentes": [
+   {"texto": "Tesoro Público, tipo medio de la deuda en circulación", "url": "https://www.tesoro.es/documents/d/tesoro/03-pdf"},
+   {"texto": "Tesoro Público, vida media de la deuda del Estado", "url": "https://www.tesoro.es/documents/d/tesoro/02-pdf"},
+   {"texto": "Reinhart y Rogoff, NBER WP 15639 (2010)", "url": "https://www.nber.org/papers/w15639"},
+   {"texto": "Herndon, Ash y Pollin, PERI (2013)", "url": "https://peri.umass.edu/publication/does-high-public-debt-consistently-stifle-economic-growth-a-critique-of-reinhart-and-rogoff/"},
+   {"texto": "Pescatori, Sandri y Simon, FMI WP/14/34 (2014)", "url": "https://www.imf.org/external/pubs/ft/wp/2014/wp1434.pdf"},
+   {"texto": "Checherita-Westphal y Rother, BCE WP 1237 (2010)", "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1237.pdf"},
+   {"texto": "Panizza y Presbitero, Journal of Macroeconomics 41 (2014)", "url": "https://ideas.repec.org/a/eee/jmacro/v41y2014icp21-41.html"}
+  ]
+ },
+ "bola_de_nieve": {
+  "titulo": "El efecto bola de nieve",
+  "texto": [
+   "La deuda en porcentaje del PIB depende de dos velocidades. Una es a cuánto interés se paga la deuda; la otra, cuánto crece el PIB en euros, contando la inflación.",
+   "Si el interés medio es mayor que ese crecimiento, la deuda sobre el PIB sube sola, salvo que se ingrese más de lo que se gasta sin contar intereses. Si es menor, la ratio puede bajar incluso con algo de déficit. Por eso, en el gráfico, el efecto del crecimiento del PIB resta deuda la mayoría de los años y la suma cuando el PIB en euros cae, como en 2009, 2012 o 2020.",
+   "Hay debate. Olivier Blanchard sostuvo en 2019 que, con tipos por debajo del crecimiento, la deuda puede no tener coste fiscal. Él mismo advierte de los riesgos si los tipos suben."
+  ],
+  "fuentes": [
+   {"texto": "BCE, Financial Stability Review, noviembre de 2021, recuadro sobre el diferencial i−g", "url": "https://www.ecb.europa.eu/pub/financial-stability/fsr/focus/2021/html/ecb.fsrbox202111_01~f37aaca9fb.en.html"},
+   {"texto": "Blanchard, American Economic Review 109(4) (2019)", "url": "https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197"}
+  ]
+ },
+ "reglas": {
+  "titulo": "Las reglas europeas",
+  "texto": [
+   "Desde el 30 de abril de 2024, cada país presenta un plan de medio plazo con un límite al crecimiento de su «gasto neto». Es el gasto que controla el Gobierno, sin los intereses, lo que paga la UE, el paro que sube por el ciclo y lo extraordinario. Si el Gobierno baja un impuesto, cuenta como más gasto neto.",
+   "El 3 % de déficit y el 60 % de deuda siguen siendo las referencias. Con la deuda por encima del 90 %, debe bajar al menos un punto del PIB al año de media, y el ajuste sigue hasta dejar el déficit 1,5 puntos por debajo del 3 %. El plan de España abarca siete años de ajuste, con el gasto neto creciendo como mucho un 3,5 % en 2026 y un 3,2 % en 2027."
+  ],
+  "fuentes": [
+   {"texto": "Reglamento (UE) 2024/1263, artículos 2, 6, 7 y 8", "url": "https://www.boe.es/doue/2024/1263/L00001-00021.pdf"},
+   {"texto": "Comisión Europea, nuevo marco de gobernanza", "url": "https://economy-finance.ec.europa.eu/economic-and-fiscal-governance/economic-governance-review_en"},
+   {"texto": "Consejo de la UE, documento 5014/25, plan de España", "url": "https://data.consilium.europa.eu/doc/document/ST-5014-2025-INIT/en/pdf"}
+  ]
+ },
+ "previsiones": {
+  "titulo": "Cómo leer una previsión",
+  "texto": [
+   "Una previsión es lo que una institución espera que pase con las leyes y la economía que conoce; un objetivo es una meta que se fija quien gobierna. Por eso los mostramos por separado.",
+   "Las previsiones fallan y se revisan, y las propias instituciones lo dicen. La AIReF publica un abanico: en 8 de cada 10 de sus escenarios, la deuda quedaría dentro de la zona gris. Cuanto más lejos, más ancho.",
+   "También se revisa el pasado. Los países envían a Eurostat sus cifras de déficit y deuda dos veces al año, a finales de marzo y de septiembre. Los años anteriores pueden cambiar cuando llegan cuentas auditadas o se revisa el PIB."
+  ],
+  "fuentes": [
+   {"texto": "AIReF, informe sobre la ejecución presupuestaria, deuda y regla de gasto 2026 (gráfico 65)", "url": "https://www.airef.es/wp-content/uploads/2026/07/Informe-Ejecucion-Presupuestaria-2026.pdf"},
+   {"texto": "Eurostat, procedimiento de déficit excesivo", "url": "https://ec.europa.eu/eurostat/web/government-finance-statistics/excessive-deficit-procedure"},
+   {"texto": "Eurostat, principales revisiones entre las notificaciones de octubre de 2025 y abril de 2026", "url": "https://ec.europa.eu/eurostat/documents/d/government-finance-statistics/edp-notif-2026-apr-main-revisions-1"}
+  ]
+ },
+ "inversion": {
+  "titulo": "Qué implica invertir",
+  "texto": [
+   "Según el FMI, en las economías avanzadas un punto del PIB más de inversión pública sube el PIB alrededor de un 0,4 % el primer año y un 1,5 % a los cuatro años. El efecto es mayor si hay capacidad ociosa y si la inversión está bien elegida. El FMI calcula que, de media, se pierde alrededor de un 30 % por ineficiencias en el proceso.",
+   "Invertir no es lo mismo que tener más: una parte de la inversión de cada año solo repone lo que se desgasta. Según Fundación BBVA e Ivie (no es estadística oficial), en 2024 la inversión pública seguía muy por debajo de la de 2009. En la rama de servicios públicos, lo invertido dejó de cubrir el desgaste tras la Gran Recesión.",
+   "A largo plazo, un 10 % más de capital público se asocia a un PIB alrededor de un 1 % mayor, según una revisión de tres décadas de estudios. El tamaño exacto se discute."
+  ],
+  "decalaje": "Una obra pasa por planificación, permisos y licitación antes de empezar. Al principio su efecto puede ser pequeño o incluso negativo, y el grueso llega años después.",
+  "fuentes": [
+   {"texto": "FMI, «The Time Is Right for an Infrastructure Push» (2014)", "url": "https://www.imf.org/external/pubs/ft/survey/so/2014/res093014a.htm"},
+   {"texto": "FMI, Making Public Investment More Efficient (2015)", "url": "https://www.imf.org/en/Publications/Policy-Papers/Issues/2016/12/31/Making-Public-Investment-More-Efficient-PP4959"},
+   {"texto": "FMI, Fiscal Policy for the Crisis, SPN/08/01 (2008)", "url": "https://www.imf.org/external/pubs/ft/spn/2008/spn0801.pdf"},
+   {"texto": "Leeper, Walker y Yang, NBER WP 15153", "url": "https://www.nber.org/papers/w15153"},
+   {"texto": "Fundación BBVA e Ivie, El stock de capital en España (2025)", "url": "https://www.fbbva.es/wp-content/uploads/2025/09/DE_2025_stock-capital-espana_1995-2024.pdf"},
+   {"texto": "Bom y Ligthart, Journal of Economic Surveys 28(5) (2014)", "url": "https://ideas.repec.org/a/bla/jecsur/v28y2014i5p889-916.html"}
+  ]
+ },
+ "pensiones": {
+  "titulo": "Por qué crece la protección social",
+  "texto": [
+   "La mayor partida es la de pensiones, y su peso depende sobre todo de la edad de la población. La Comisión Europea proyecta que el gasto en pensiones de España pase del 13,1 % del PIB en 2022 a un máximo del 17,3 % hacia 2051. La AIReF calcula que pasará del 13 % en 2025 al 16,4 % en 2050.",
+   "Son proyecciones a «políticas constantes» y dependen de supuestos: cuántos hijos por mujer (de 1,2 a 1,4), cuánto se vive y cuántas personas llegan de fuera (unas 220.000 netas al año entre 2030 y 2050, según la Comisión). Si cambian la migración o el empleo, cambia la cifra."
+  ],
+  "fuentes": [
+   {"texto": "Comisión Europea y Comité de Política Económica, 2024 Ageing Report, ficha de España", "url": "https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf"},
+   {"texto": "AIReF, Estudio 1/2026 sobre la regla de gasto de pensiones", "url": "https://www.airef.es/wp-content/uploads/2026/05/Pensiones/Estudio_Regla_Gasto_Pensiones-2026.pdf"}
+  ]
+ },
+ "presion_fiscal": {
+  "titulo": "Presión fiscal y tipos",
+  "texto": [
+   "La «presión fiscal» es la suma de impuestos y cotizaciones sobre el PIB. Según la OCDE, en España fue del 37,3 % en 2023, por encima de la media de la OCDE (33,9 %): el puesto 13 de 38.",
+   "El tipo legal es el que fija la ley (en el impuesto de sociedades, el 25 % general). El efectivo es lo que se paga de verdad después de deducciones y bonificaciones, y suele ser menor. El efectivo puede subir sin que cambie la ley: la Agencia Tributaria calcula que el del IRPF creció un 3,5 % de media al año entre 2021 y 2025."
+  ],
+  "fuentes": [
+   {"texto": "OCDE, Revenue Statistics 2024, nota de España", "url": "https://www.oecd.org/spain/revenue-statistics-spain.pdf"},
+   {"texto": "Ley 27/2014 del Impuesto sobre Sociedades, artículo 29", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328"},
+   {"texto": "Agencia Tributaria, Informe anual de recaudación 2025", "url": "https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/1-ingresos-tributarios-2025/impuestos-devengados-ingresos-tributarios.html"}
+  ]
+ },
+ "recaudacion": {
+  "titulo": "Por qué sube la recaudación",
+  "texto": [
+   "Si los tramos del IRPF no se actualizan con la inflación, al subir los sueldos en euros se paga un tipo medio mayor aunque no se pueda comprar más. Es la «progresividad en frío». El Banco de España estima que, sin actualizar los tramos, un 1 % más de renta sube la recaudación del IRPF un 1,85 %. Este efecto explica alrededor de la mitad de la subida del IRPF sobre el PIB entre 2019 y 2023.",
+   "El mismo estudio señala que el efecto es mayor en las rentas medias y medias-altas."
+  ],
+  "decalaje": "Un cambio de impuestos no se nota entero el mismo año. El IRPF de un año se declara en la primavera del siguiente; Sociedades, en julio del siguiente; y la Agencia Tributaria explica que la vuelta del IVA a sus tipos normales se repartió en la caja de tres años (2024, 2025 y 2026).",
+  "fuentes": [
+   {"texto": "Banco de España, Documento Ocasional 2422 (2024)", "url": "https://repositorio.bde.es/bitstream/123456789/37393/4/do2422e.pdf"},
+   {"texto": "Banco de España, Documento de Trabajo 2545 (2025)", "url": "https://repositorio.bde.es/bitstream/123456789/41507/1/dt2545e.pdf"},
+   {"texto": "Agencia Tributaria, impuestos devengados e ingresos tributarios (2025)", "url": "https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/1-ingresos-tributarios-2025/impuestos-devengados-ingresos-tributarios.html"},
+   {"texto": "Ley 27/2014, artículo 124", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328"}
+  ]
+ },
+ "presupuesto": {
+  "titulo": "El calendario del presupuesto",
+  "texto": [
+   "La Constitución obliga al Gobierno a presentar los Presupuestos al Congreso al menos tres meses antes de que acabe el año. Si el 1 de enero no están aprobados, se prorrogan automáticamente los del año anterior hasta que haya unos nuevos.",
+   "Lo aprobado es un límite: lo máximo que se puede gastar en cada cosa, no lo que hay que gastar."
+  ],
+  "fuentes": [
+   {"texto": "Constitución Española, artículo 134", "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229"}
+  ]
+ },
+ "contabilidad": {
+  "titulo": "Por qué no cuadran dos cifras oficiales",
+  "texto": [
+   "El presupuesto apunta un impuesto cuando nace el derecho a cobrarlo. La contabilidad nacional, la que cuenta para Europa, solo apunta como ingreso lo que de verdad se cobra, para que no rebajen el déficit impuestos que nunca se van a recaudar. La IGAE hace «ajustes» para pasar de un saldo al otro."
+  ],
+  "fuentes": [
+   {"texto": "IGAE, Manual de cálculo del déficit en contabilidad nacional (2006), págs. 28-29", "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/InformacionGeneral/Documents/Manual_AATT/ManualCCLL1Edicion2006b.pdf"}
+  ]
+ }
+}
