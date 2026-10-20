@@ -117,12 +117,12 @@ function pintarTipo(g, aapp, u) {
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, estrecho ? 280 : 340);
   const graf = caja.cuentasGrafico;
   const algunaCapa = EC.algunaCapa(capas);
-  const op = EC.tiempo({ min: primero, max: ultimo, slider: false, zoom: false, marcasArriba: algunaCapa,
+  // Se conserva el zoom al repintar (cambio de unidad o de capas).
+  const zoomAntes = graf.getOption()?.dataZoom?.[0];
+  const op = EC.tiempo({ min: primero, max: ultimo, marcasArriba: algunaCapa,
     aria: `Inversión pública de ${primero} a ${ultimo}, en ${texto(UNIDADES[u].eje, g.año_base_constantes)}: ` +
       rotulos.map((p) => `${fmt(p[1])} en ${p[0]}`).join(", ") + "." });
   op.grid.top = algunaCapa ? 84 : 28;
-  op.tooltip = { show: false };
-  op.xAxis.axisPointer = { show: false };
   op.yAxis = EC.ejeY({ formato: (v) => numero(v, Number.isInteger(v) ? 0 : 1), min: 0 });
   op.yAxis.name = "";
   const color = EC.css("--c-primario");
@@ -139,6 +139,29 @@ function pintarTipo(g, aapp, u) {
     },
   ];
   graf.setOption(op, { notMerge: true });
+  if (zoomAntes) graf.dispatchAction({ type: "dataZoom", start: zoomAntes.start, end: zoomAntes.end });
+
+  // Lectura del año bajo el puntero (o el último, al entrar).
+  const lectura = (k) => {
+    const caja = document.getElementById("inversion-lectura");
+    caja.textContent = "";
+    const a = document.createElement("strong");
+    a.className = "lectura-anio";
+    a.textContent = String(t.años[k]);
+    const b = document.createElement("b");
+    b.textContent = valores[k] === null ? "sin dato" : fmt(valores[k]);
+    const c = document.createElement("span");
+    c.className = "lectura-fila";
+    c.append(b, ` de inversión · ${numero(de100.inversion[k], 1)} de cada 100 € de gasto`);
+    caja.append(a, c);
+  };
+  lectura(n);
+  // El manejador se registra una vez y lee siempre la última función (cambia con la unidad).
+  graf.cuentasLeer = (x) => lectura(Math.max(0, Math.min(n, Math.round(x) - primero)));
+  if (!graf.cuentasLectura) {
+    graf.cuentasLectura = true;
+    EC.alPasar(graf, (x) => graf.cuentasLeer(x));
+  }
 
   EC.notaCapas(document.getElementById("nota-capas"), aapp, capas);
 

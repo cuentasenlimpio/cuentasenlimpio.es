@@ -29,49 +29,45 @@
   </header>
 
   <main>
-    <h1 class="pregunta">Imagina que todo lo que produce la economía española en un año son 100 euros.</h1>
-    <p class="respuesta">Esto es lo que hicieron las administraciones públicas (el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos) en <span class="año-cuentas">el último año</span>, contado sobre esos 100 euros. Cuatro cifras, una por paso, con la fuente de cada una.</p>
+    <p class="antetitulo">Las cuentas públicas de España, con la fuente de cada cifra</p>
+    <h1 class="pregunta">¿Cuánto ingresan, cuánto gastan y cuánto deben las administraciones?</h1>
+    <p class="respuesta">Sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. Cifras de <span class="año-cuentas">el último año</span>, en porcentaje de lo que produce la economía en un año (el PIB).</p>
 
-    <ol class="pasos" id="pasos">
-      <li>
-        <p class="paso-de">Paso 1 de 4</p>
-        <h2 class="pregunta">Gastaron el equivalente a <span id="p-gastos">…</span>.</h2>
-        <ul class="cien" id="cien" aria-hidden="true"></ul>
-        <p id="p-gastos-detalle"></p>
-        <p><a href="gasto.html">¿En qué exactamente, y cuánto se invierte?</a></p>
-      </li>
-      <li>
-        <p class="paso-de">Paso 2 de 4</p>
-        <h2 class="pregunta">Ingresaron <span id="p-ingresos">…</span>.</h2>
-        <p id="p-ingresos-detalle"></p>
-        <p><a href="ingresos.html">¿De dónde sale cada euro?</a></p>
-      </li>
-      <li>
-        <p class="paso-de">Paso 3 de 4</p>
-        <h2 class="pregunta" id="p-saldo">…</h2>
-        <p id="p-saldo-detalle"></p>
-      </li>
-      <li>
-        <p class="paso-de">Paso 4 de 4</p>
-        <h2 class="pregunta">Y deben <span id="p-deuda">…</span>.</h2>
-        <p>Es la deuda que se ha ido acumulando año tras año, comparada con lo que produce la economía en uno. <a href="cuentas.html">¿Por qué sube o baja cada año?</a></p>
-      </li>
-    </ol>
-    <p class="fuente-grafico" id="pasos-fuente"></p>
+    <section class="cifras-clave" aria-label="Cifras clave">
+      <a href="cuentas.html#g1-titulo"><span class="nombre">Ingresos</span><span class="valor ingresos" id="k-ingresos">…</span><span class="explica">del PIB. Sobre todo impuestos y cotizaciones.</span></a>
+      <a href="gasto.html"><span class="nombre">Gastos</span><span class="valor gastos" id="k-gastos">…</span><span class="explica" id="k-gastos-explica">del PIB.</span></a>
+      <a href="cuentas.html#g1-titulo"><span class="nombre" id="k-saldo-nombre">Déficit</span><span class="valor" id="k-saldo">…</span><span class="explica" id="k-saldo-explica">del PIB. Lo que falta para cubrir el gasto, y se pide prestado.</span></a>
+      <a href="cuentas.html#g2-titulo"><span class="nombre">Deuda acumulada</span><span class="valor" id="k-deuda">…</span><span class="explica">del PIB. Lo que se debe de todos los años anteriores.</span></a>
+    </section>
+    <p class="fuente-grafico" id="claves-fuente"></p>
 
-    <div class="ojo">
-      <strong>Ojo con esto</strong>
-      <p>El gasto público no es un trozo de esos 100 euros: incluye pensiones y otras ayudas que luego gastan los hogares, y por eso puede sumar más de lo que parece. El porcentaje del PIB es una escala para comparar años y países, no un reparto. <a href="como-se-miente.html#unidades">Por qué usamos esta escala</a>.</p>
+    <h2 class="pregunta">Empieza por una pregunta</h2>
+    <div class="preguntas">
+      <a href="gasto.html"><strong>¿En qué se gasta el dinero público?</strong><span id="q-gasto">De cada 100 € de gasto, cuánto va a pensiones, sanidad, educación o intereses.</span></a>
+      <a href="ingresos.html"><strong>¿De dónde sale?</strong><span id="q-ingresos">Cotizaciones, IVA e impuestos sobre la renta, y cómo han cambiado desde 1995.</span></a>
+      <a href="cuentas.html#g3-titulo"><strong>¿Por qué sube o baja la deuda?</strong><span>No solo por el déficit: también por los préstamos que se hacen y por lo que crece la economía.</span></a>
+      <a href="promesas.html"><strong>¿Qué se prometió en 2023?</strong><span id="q-promesas">Las promesas de los programas y acuerdos de la XV Legislatura, con su cita literal. Sin veredicto: la promesa y los hechos.</span></a>
+      <a href="gasto.html#t-titulo"><strong>¿Cuánto se invierte?</strong><span id="q-inversion">Qué parte del gasto crea algo que dura: carreteras, hospitales, equipos.</span></a>
+      <a href="presupuesto.html"><strong>¿Se gastó lo que se aprobó?</strong><span>El presupuesto del Estado frente a lo que de verdad se gastó, política a política.</span></a>
     </div>
 
-    <nav class="sigue" aria-label="Sigue por">
-      <a href="dinero.html"><strong>El dinero, pregunta a pregunta</strong><span>Desde 1995: en qué se gasta, de dónde sale, cuánto se invierte y si se gastó lo aprobado.</span></a>
-      <a href="promesas.html"><strong>Lo que se prometió</strong><span id="sigue-promesas">Las promesas de los programas de 2023, con su cita literal.</span></a>
-      <a href="aprende.html"><strong>Aprende a leerlo</strong><span>Once ideas básicas, cada una en un minuto: déficit y deuda, invertir, inflación, impuestos…</span></a>
-    </nav>
+    <section class="entender entender-ancho" aria-labelledby="ideas">
+      <div>
+        <p class="rotulo">Para entenderlo</p>
+        <h2 id="ideas">Cinco ideas que cambian cómo se leen las cifras</h2>
+        <p><a href="aprende.html">Las once ideas, una a una →</a></p>
+      </div>
+      <ol>
+        <li><strong>Déficit no es deuda.</strong> El déficit es lo que falta en un año; la deuda, lo que se debe sumando todos.</li>
+        <li><strong>Gastar no es lo mismo que invertir.</strong> Pagar sueldos y pensiones es gasto del año; una carretera o un hospital duran décadas.</li>
+        <li><strong>Prestar no es gastar.</strong> Comprar activos financieros no cuenta como gasto, pero sí aumenta la deuda.</li>
+        <li><strong>El porcentaje del PIB engaña a la baja</strong> cuando la economía crece, aunque no cambie nada más.</li>
+        <li><strong>Coincidir en el tiempo no es causar.</strong> Que algo pase con un Gobierno no significa que lo provocara.</li>
+      </ol>
+    </section>
 
-    <div class="entender">
-      <p class="rotulo">Cómo trabajamos</p>
+    <div class="ojo">
+      <strong>Cómo trabajamos</strong>
       <p>Las mismas reglas para todos los años y todos los Gobiernos; el <em>dato</em> oficial, separado de nuestra <em>lectura</em>; sin colores de partido; el <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">código de los cálculos</a> y los ficheros oficiales, públicos; y los errores, en un <a href="correcciones.html">registro de correcciones</a>. Todo el proceso, en <a href="metodologia.html">cómo trabajamos</a>.</p>
     </div>
   </main>

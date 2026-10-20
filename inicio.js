@@ -1,15 +1,12 @@
-// Cuentas en limpio: portada. Las cuatro cifras salen de los mismos datos que el resto de la web.
+// Cuentas en limpio: portada. Las cifras salen de los mismos datos que el resto de la web.
 "use strict";
 
 const NOMBRES_INGRESOS = {
-  cotizaciones: "cotizaciones sociales", renta: "impuestos sobre la renta de los hogares", iva: "IVA",
-  otros_ingresos: "otros ingresos", productos: "otros impuestos sobre lo que se compra",
-  sociedades: "impuesto sobre los beneficios de las empresas", produccion: "otros impuestos sobre la producción",
+  cotizaciones: "cotizaciones sociales", renta: "impuestos sobre la renta", iva: "IVA", otros_ingresos: "otros ingresos",
+  productos: "otros impuestos sobre lo que se compra", sociedades: "impuesto de sociedades", produccion: "impuestos sobre la producción",
 };
 
-function lista(partes) {
-  return partes.length > 1 ? `${partes.slice(0, -1).join(", ")} y ${partes.at(-1)}` : partes[0];
-}
+const lista = (p) => (p.length > 1 ? `${p.slice(0, -1).join(", ")} y ${p.at(-1)}` : p[0]);
 
 async function arrancar() {
   const leer = (f) => fetch(f).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -19,48 +16,38 @@ async function arrancar() {
   const i = aapp.años.length - 1, año = aapp.años[i];
   const v = (k) => aapp.series[k].pib[i];
   for (const s of document.querySelectorAll(".año-cuentas")) s.textContent = String(año);
-
-  const gastos = v("gastos"), ingr = v("ingresos"), saldo = v("saldo"), deuda = v("deuda");
-  document.getElementById("p-gastos").textContent = `${numero(gastos, 1)} euros`;
-  document.getElementById("p-ingresos").textContent = `${numero(ingr, 1)}`;
-  document.getElementById("p-deuda").textContent = `${numero(deuda, 1)}`;
-
-  const cien = document.getElementById("cien");
-  for (let k = 0; k < 100; k++) {
-    const li = document.createElement("li");
-    if (k < Math.round(gastos)) li.className = "lleno";
-    cien.appendChild(li);
+  const pon = (id, t) => { document.getElementById(id).textContent = t; };
+  pon("k-ingresos", `${numero(v("ingresos"), 1)} %`);
+  pon("k-gastos", `${numero(v("gastos"), 1)} %`);
+  pon("k-deuda", `${numero(v("deuda"), 1)} %`);
+  const saldo = v("saldo");
+  pon("k-saldo", `${numero(Math.abs(saldo), 1)} %`);
+  if (saldo >= 0) {
+    pon("k-saldo-nombre", "Superávit");
+    pon("k-saldo-explica", "del PIB. Lo que sobra tras cubrir el gasto.");
   }
 
   if (gasto) {
     const r = gasto.reparto.at(-1);
-    const top = gasto.funciones.map((f) => ({ n: f.nombre.toLowerCase(), v: r[f.codigo] })).sort((a, b) => b.v - a.v).slice(0, 3);
-    document.getElementById("p-gastos-detalle").textContent =
-      `De cada 100 € de gasto, ${lista(top.map((t, k) => `${numero(Math.round(t.v), 0)} ${k ? "" : "van "}a ${t.n}`))} (${gasto.años.at(-1)}, último año con este detalle).`;
+    const top = gasto.funciones.map((f) => ({ n: f.nombre.toLowerCase(), v: r[f.codigo] })).sort((a, b) => b.v - a.v);
+    pon("k-gastos-explica", `del PIB. ${numero(Math.round(top[0].v), 0)} de cada 100 € van a ${top[0].n} (${gasto.años.at(-1)}).`);
+    pon("q-gasto", `De cada 100 € de gasto: ${lista([...top.slice(0, 3).map((t) => `${numero(Math.round(t.v), 0)} a ${t.n}`),
+      `${numero(r.intereses, 1)} a intereses de la deuda`])} (${gasto.años.at(-1)}).`);
+    const t = gasto.tipo, n = t.años.length - 1, inv = t.partes.find((p) => p.clave === "inversion").de_cada_100;
+    pon("q-inversion", `${numero(inv[n], 1)} de cada 100 € de gasto en ${t.años[n]}, frente a ${numero(inv[0], 1)} en ${t.años[0]}. Qué cuenta como inversión y por qué importa.`);
   }
   if (ingresos) {
     const r = ingresos.reparto.at(-1);
-    const top = Object.entries(r).filter(([k]) => NOMBRES_INGRESOS[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
-    document.getElementById("p-ingresos-detalle").textContent =
-      `De cada 100 € que ingresan, ${lista(top.map(([k, x], j) => `${numero(Math.round(x), 0)} ${j ? "" : "son "}${NOMBRES_INGRESOS[k]}`))} (${ingresos.años.at(-1)}).`;
+    const top = Object.entries(r).filter(([k]) => NOMBRES_INGRESOS[k] && k !== "otros_ingresos").sort((a, b) => b[1] - a[1]).slice(0, 3);
+    pon("q-ingresos", `De cada 100 € que ingresan: ${lista(top.map(([k, x]) => `${numero(Math.round(x), 0)} de ${NOMBRES_INGRESOS[k]}`))} (${ingresos.años.at(-1)}). Y cómo ha cambiado desde 1995.`);
   }
-  const t = document.getElementById("p-saldo"), d = document.getElementById("p-saldo-detalle");
-  if (saldo < 0) {
-    t.textContent = `Faltaron ${numero(-saldo, 1)}: el déficit.`;
-    d.textContent = "Para cubrirlos, las administraciones piden prestado. El déficit es lo que falta en un año; la deuda, todo lo que se debe sumando todos los años.";
-  } else {
-    t.textContent = `Sobraron ${numero(saldo, 1)}: el superávit.`;
-    d.textContent = "Lo que sobra puede servir para devolver deuda. El superávit es de un año; la deuda, todo lo que se debe sumando todos los años.";
-  }
-  lineaFuente(document.getElementById("pasos-fuente"), {
-    fuentes: aapp.fuentes,
-    tablas: [["gov_10a_main", "ingresos, gastos y saldo"], ["gov_10dd_edpt1", "deuda"], ["gov_10a_exp", "gasto por funciones"], ["gov_10a_taxag", "impuestos y cotizaciones"]],
-    tipo: "dato", nota: `Porcentajes del PIB de ${año} que publica Eurostat. Los repartos «de cada 100 €» son de ${gasto ? gasto.años.at(-1) : "su último año"}, el último que publica con detalle.`,
-  });
   if (promesas) {
-    document.getElementById("sigue-promesas").textContent =
-      `${numero(promesas.distintas, 0)} promesas de ${promesas.documentos} documentos de 2023, con su cita literal.`;
+    pon("q-promesas", `${numero(promesas.distintas, 0)} promesas de ${promesas.documentos} documentos, con su cita literal. Sin veredicto: la promesa y los hechos.`);
   }
+  lineaFuente(document.getElementById("claves-fuente"), {
+    fuentes: aapp.fuentes, tablas: [["gov_10a_main", "ingresos, gastos y saldo"], ["gov_10dd_edpt1", "deuda"]],
+    tipo: "dato", nota: `Porcentajes del PIB de ${año} que publica Eurostat.`,
+  });
 }
 
 arrancar();
