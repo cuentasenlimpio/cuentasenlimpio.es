@@ -598,7 +598,7 @@
   "titulo": "IPC general y subyacente",
   "texto": [
    "El IPC mide cómo cambian los precios de una cesta de lo que compran los hogares. La cifra habitual compara con el mismo mes del año anterior.",
-   "La subyacente es, en la etiqueta oficial del INE, el «general sin alimentos no elaborados ni productos energéticos»: quita lo que más sube y baja de un mes a otro, para ver la tendencia.",
+   "La subyacente es, en la etiqueta oficial del INE, el «general sin alimentos no elaborados ni productos energéticos»: deja fuera esos dos grupos de precios.",
    "En las cuentas públicas, la inflación sube la recaudación aunque no cambie ninguna ley (ver «progresividad en frío») y encarece lo que compran las administraciones."
   ],
   "fuentes": [

@@ -22,6 +22,7 @@ import zipfile
 
 from xlsx import hojas
 from px import leer_px
+from xls import hojas as hojas_xls
 
 CODIGO = pathlib.Path(__file__).resolve().parent
 # Descargas y manifiesto: junto al código o en CUENTAS_DATOS. La web se escribe en CUENTAS_WEB (por defecto, web/ del
@@ -794,6 +795,39 @@ def construir_economia(descargas, ingresos):
                                    "resultado": f"Diferencia máxima de {es(dif)} afiliados en los {len(comunes)} meses comunes; usamos la nueva desde 2021",
                                    "ok": dif < 50000})
 
+    # 1 bis. Paro registrado (SEPE): total y sectores de cada mes desde 2001. Los meses de antes de mayo de 2005 son
+    # reconstruidos por el propio SEPE.
+    paro, sectores_ult, peor, peor_sispe, descuadres = {}, None, 0.0, 0.0, 0
+    for clave in ("sepe_paro_2001", "sepe_paro"):
+        if clave not in descargas:
+            continue
+        for f in hojas_xls(AQUI / descargas[clave]["fichero"])["Sectores"]:
+            nums = [x for x in f if isinstance(x, float)]
+            codigo = next((int(x) for x in nums if 199001 <= x <= 210012), None)
+            if codigo is None:
+                continue
+            datos_ = [x for x in nums if x != codigo and not (1990 <= x <= 2100)]
+            if len(datos_) >= 6:
+                total, partes_ = datos_[0], datos_[1:6]
+                paro[f"{codigo // 100}-{codigo % 100:02d}"] = round(total)
+                d_ = abs(sum(partes_) - total)
+                peor = max(peor, d_)
+                descuadres += d_ >= 1
+                if codigo >= 200505:
+                    peor_sispe = max(peor_sispe, d_)
+                sectores_ult = (f"{codigo // 100}-{codigo % 100:02d}", partes_)
+    if paro:
+        m_ = sorted(paro)
+        nombres = ["Agricultura", "Industria", "Construcción", "Servicios", "Sin empleo anterior"]
+        eco["paro_registrado"] = {"meses": m_, "total": [paro[k] for k in m_], "ultimo": sectores_ult[0],
+                                  "por_sector": [{"nombre": n, "valor": round(v)} for n, v in zip(nombres, sectores_ult[1])]}
+        comprobaciones.append({"que": "¿Los sectores del paro registrado suman el total de cada mes?",
+                               "resultado": (f"Sí, en los {len(m_)} meses" if peor < 1 else
+                                             f"Sí desde mayo de 2005; antes, en {descuadres} meses de la serie que el SEPE reconstruyó, "
+                                             f"difieren en {es(peor)} parados como mucho") if peor_sispe < 1 else
+                                            f"No: diferencia máxima de {es(peor_sispe)} parados desde mayo de 2005",
+                               "ok": peor_sispe < 1})
+
     # 2. EPA (INE), trimestral.
     epa = {k: dict(_ine(descargas, c)) for k, c in (("ocupados", "EPA387796"), ("parados", "EPA387800"), ("tasa_paro", "EPA423474"),
                                                     ("tasa_actividad", "EPA388079"), ("tasa_empleo", "EPA441060"))}
@@ -1520,7 +1554,7 @@ def main():
                                  "fmi_weo_ggxcnl_ngdp", "fmi_weo_ggxwdg_ngdp", "fmi_weo_ggr_ngdp", "fmi_weo_ggx_ngdp",
                                  "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
-                   *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_")))):
+                   *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -1560,7 +1594,9 @@ def main():
                 "bce_bono_10": "Rentabilidad del bono a 10 años de España y de Alemania; la prima de riesgo es la resta.",
                 "tesoro_tipo_medio_historico": "Tipo de interés medio de la deuda viva del Estado desde 2001.",
                 "tesoro_tipo_medio": "Tipo de interés medio de los últimos meses.",
-                "tesoro_vida_media": "Vida media de la deuda del Estado."}.get(nombre)) or \
+                "tesoro_vida_media": "Vida media de la deuda del Estado.",
+                "sepe_paro": "Paro registrado de los últimos diez años.",
+                "sepe_paro_2001": "Paro registrado de 2001 a 2016 (antes de mayo de 2005, reconstruido por el SEPE)."}.get(nombre)) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else

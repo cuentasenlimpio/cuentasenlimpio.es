@@ -107,13 +107,23 @@ function pintar(e) {
     const t = epa.trimestres.length - 1;
     pon("r-empleo", [`En ${nombrePeriodo(a.ultimo)} había `, [`${numero(a.bruta[n], 0)} afiliados`],
       ` de media a la Seguridad Social (${numero(a.desest[n], 0)} sin el efecto de la época del año). Según la EPA, en el ${nombrePeriodo(epa.trimestres[t])} trabajaban `,
-      [`${numero(epa.ocupados[t] / 1000, 2)} millones de personas`], ` y la tasa de paro era del `, [`${numero(epa.tasa_paro[t], 2)} %`], "."]);
+      [`${numero(epa.ocupados[t] / 1000, 2)} millones de personas`], ` y la tasa de paro era del `, [`${numero(epa.tasa_paro[t], 2)} %`],
+      ...(e.paro_registrado ? [`. En los servicios públicos de empleo había ${numero(e.paro_registrado.total.at(-1), 0)} parados registrados en ${nombrePeriodo(e.paro_registrado.meses.at(-1))}: una cifra distinta, que mide otra cosa`] : []), "."]);
     lineas("g-afi", [
       { nombre: "afiliados sin estacionalidad (oficial)", periodos: a.meses, valores: a.desest, color: c1, ancho: 2.5 },
       { nombre: "afiliados tal cual", periodos: a.meses, valores: a.bruta, color: suave, ancho: 1.2 },
     ], { formato: millones, eje: "millones" });
     fuente("g-afi", [["ss_afiliados_medios", "afiliados medios"], ["ss_afiliados_desest_09", "desestacionalizados 2008-2020"], ["ss_afiliados_desest", "desestacionalizados desde 2021"]],
       "dato", "La desestacionalizada es la que publica la Seguridad Social (TRAMO-SEATS); no la calculamos nosotros.");
+    const pr = e.paro_registrado;
+    if (pr) {
+      lineas("g-paro", [{ nombre: "parados registrados", periodos: pr.meses, valores: pr.total, color: c1 }], { formato: millones, eje: "millones", min: 0 });
+      fuente("g-paro", [["sepe_paro_2001", "paro registrado 2001-2016"], ["sepe_paro", "últimos diez años"]], "dato",
+        "Antes de mayo de 2005, datos reconstruidos por el SEPE. Sin ajuste de estacionalidad: el SEPE no publica una serie desestacionalizada.");
+      dibujarBarrasH(document.getElementById("g-sector"), pr.por_sector, { formato: (v) => numero(v, 0) });
+      document.getElementById("g-sector-lectura").textContent = nombrePeriodo(pr.ultimo);
+      fuente("g-sector", [["sepe_paro", "paro registrado por sectores"]], "dato", "«Sin empleo anterior»: quien no había trabajado antes.");
+    }
     lineas("g-epa", [
       { nombre: "tasa de actividad", periodos: epa.trimestres, valores: epa.tasa_actividad, color: c2 },
       { nombre: "tasa de empleo", periodos: epa.trimestres, valores: epa.tasa_empleo, color: c3 },
@@ -161,7 +171,7 @@ function pintar(e) {
   if (ipc) {
     const n = ipc.meses.length - 1;
     pon("r-ipc", [`En ${nombrePeriodo(ipc.meses[n])}, los precios eran un `, [`${numero(ipc.general[n], 1)} % más altos`],
-      ` que un año antes. Sin los alimentos frescos ni la energía, que son los que más se mueven, un ${numero(ipc.subyacente[n], 1)} %.`]);
+      ` que un año antes. Sin los alimentos no elaborados ni los productos energéticos (la inflación subyacente), un ${numero(ipc.subyacente[n], 1)} %.`]);
     lineas("g-ipc", [
       { nombre: "general", periodos: ipc.meses, valores: ipc.general, color: c1, ancho: 2.5 },
       { nombre: "subyacente", periodos: ipc.meses, valores: ipc.subyacente, color: c2 },
@@ -173,8 +183,8 @@ function pintar(e) {
   const bo = e.bono, te = e.tesoro;
   if (bo && te) {
     const n = bo.meses.length - 1, m = te.meses.length - 1;
-    pon("r-deuda", [`En ${nombrePeriodo(bo.meses[n])}, el Estado pagaba un `, [`${numero(bo.espana[n], 2)} %`],
-      ` por la deuda nueva a 10 años, ${numero(bo.prima_pb[n], 0)} puntos básicos más que Alemania (la prima de riesgo). Pero el tipo medio de toda su deuda viva era del `,
+    pon("r-deuda", [`En ${nombrePeriodo(bo.meses[n])}, el bono del Estado a 10 años rendía en el mercado un `, [`${numero(bo.espana[n], 2)} %`],
+      ` de media, ${numero(bo.prima_pb[n], 0)} puntos básicos más que el alemán (la prima de riesgo). Pero el tipo medio de toda la deuda viva del Estado era del `,
       [`${numero(te.total[m], 2)} %`], te.vida_media ? `, porque la deuda vence poco a poco: de media, en ${numero(te.vida_media.años, 2)} años.` : "."]);
     lineas("g-bono", [
       { nombre: "España", periodos: bo.meses, valores: bo.espana, color: c1, ancho: 2.5 },
