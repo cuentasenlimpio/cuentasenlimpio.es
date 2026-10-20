@@ -18,6 +18,7 @@ import os
 import pathlib
 import re
 import shutil
+import zipfile
 
 from xlsx import hojas
 
@@ -388,6 +389,190 @@ def construir_tipo(tabla_main, años, deflactor, base, poblacion):
         "ok": descuadre < 1,
     }
     return salida, comprobacion
+
+
+# ---- Datos recientes (en curso) y previsiones, desde el 20/10/2026 ----
+
+def _tabla_trimestral(filas):
+    """IGAE T_AAPP: {(etiqueta, año, trimestre): valor}. Los años van en la fila «Índice», uno cada cuatro columnas."""
+    cab = next(i for i, f in enumerate(filas) if len(f) > 1 and f[1] == "Índice")
+    años, actual = [], None
+    for x in filas[cab]:
+        if isinstance(x, str) and x[:4].isdigit():
+            actual = int(x[:4])
+        años.append(actual)
+    trimestres = filas[cab + 1]
+    salida = {}
+    for f in filas[cab + 2:]:
+        etiqueta = (f[0] or "").strip() if f[0] else (f[1] or "").strip() if len(f) > 1 and isinstance(f[1], str) else ""
+        for j, v in enumerate(f):
+            if j < len(años) and años[j] and isinstance(v, float) and isinstance(trimestres[j], str):
+                salida[(etiqueta, años[j], int(trimestres[j][1]))] = v
+    return salida
+
+
+def _anual_igae(filas):
+    """IGAE A_AAPP: {(etiqueta, año): valor}, con la marca de provisional de cada año."""
+    cab = next(i for i, f in enumerate(filas) if len(f) > 1 and f[1] == "CONCEPTOS")
+    columnas = {j: (int(x[:4]), "(P)" in x) for j, x in enumerate(filas[cab]) if isinstance(x, str) and x[:4].isdigit()}
+    salida, provisional = {}, {}
+    for f in filas[cab + 1:]:
+        etiqueta = (f[0] or "").strip() if f[0] else (f[1] or "").strip() if len(f) > 1 and isinstance(f[1], str) else ""
+        for j, (a, p) in columnas.items():
+            if j < len(f) and isinstance(f[j], float):
+                salida[(etiqueta, a)] = f[j]
+                provisional[a] = p
+    return salida, provisional
+
+
+def construir_recientes(descargas, datos_series, años):
+    """Lo que hay después del último año cerrado y su grado de comprobación: el año en curso (IGAE trimestral, Banco de
+    España) y las previsiones de cada institución, por separado. Devuelve el bloque para aapp.json y sus comprobaciones."""
+    comprobaciones = []
+    ultimo = años[-1]
+    salida = {"ultimo_cerrado": ultimo, "fiabilidad": {}, "en_curso": None, "previsiones": {}}
+
+    # 1. El último año: ¿la IGAE (segunda fuente) da lo mismo que Eurostat?
+    if "igae_a_aapp" in descargas:
+        filas_a = hojas(AQUI / descargas["igae_a_aapp"]["fichero"])["Tabla1a"]
+        anual, prov = _anual_igae(filas_a)
+        m_fecha = next((re.search(r"(\d{2})/(\d{2})/(\d{4})", f[0]) for f in filas_a[:6] if f and isinstance(f[0], str) and "actualización" in f[0]), None)
+        fecha_igae = f"{int(m_fecha.group(1))} de {MESES[int(m_fecha.group(2)) - 1]} de {m_fecha.group(3)}" if m_fecha else "hace poco"
+        for a in años[-3:]:
+            igae = anual.get(("B.9", a))
+            eurostat = datos_series["saldo"]["meur"].get(a, (None,))[0]
+            if igae is None or eurostat is None:
+                continue
+            dif = igae - eurostat
+            salida["fiabilidad"][str(a)] = {
+                "igae_provisional": prov.get(a, False),
+                "cuadra": abs(dif) < 1,
+                "nota": (f"Eurostat y la IGAE dan el mismo saldo ({es(eurostat)} millones)." if abs(dif) < 1 else
+                         f"La IGAE da un saldo de {es(igae)} millones y Eurostat de {es(eurostat)} (diferencia de {es(abs(dif))}): "
+                         f"la IGAE publicó una revisión el {fecha_igae} que Eurostat todavía no ha recogido."),
+            }
+        a = ultimo
+        f = salida["fiabilidad"].get(str(a))
+        comprobaciones.append({
+            "que": f"¿El saldo de {a} es el mismo en Eurostat y en la IGAE?",
+            "resultado": ("Sí" if f and f["cuadra"] else "Todavía no" if f else "La IGAE aún no lo publica") +
+                         (f": {f['nota'][0].lower() + f['nota'][1:]}" if f else ""),
+            "ok": bool(f and f["cuadra"]),
+        })
+
+    # 2. El año en curso: acumulado hasta el último trimestre (IGAE) y deuda del último trimestre (Banco de España).
+    if "igae_t_aapp" in descargas and "ine_pib" in descargas:
+        libro = hojas(AQUI / descargas["igae_t_aapp"]["fichero"])
+        t = _tabla_trimestral(libro["Tabla1a"])
+        tp = _tabla_trimestral(libro["Tabla1b"])
+        conceptos = {"ingresos": "RECURSOS NO FINANCIEROS", "gastos": "EMPLEOS NO FINANCIEROS", "saldo": "B.9"}
+        hay = sorted({(a, q) for (e, a, q) in t if e == "B.9"})
+        a, q = hay[-1]
+        if a > ultimo:
+            pib = json.loads((AQUI / descargas["ine_pib"]["fichero"]).read_text())
+            pib_t = {(d["Anyo"], d["FK_Periodo"] - 18): d["Valor"] for d in pib["Data"]}
+            # PIB de los cuatro últimos trimestres (del 2.º de hace un año al último).
+            ventana = [((a - 1, k) if k > q else (a, k)) for k in range(1, 5)]
+            pib_12 = sum(pib_t[x] for x in ventana) if all(x in pib_t for x in ventana) else None
+            en_curso = {"año": a, "trimestre": q, "x": a - 1 + (3 * q) / 12 + 0.0, "series": {}}
+            for clave, etiqueta in conceptos.items():
+                acum = t[(etiqueta, a, q)]
+                antes = t[(etiqueta, a - 1, q)]
+                año_antes = t[(etiqueta, a - 1, 4)]
+                doce = año_antes - antes + acum
+                en_curso["series"][clave] = {
+                    "acumulado_meur": acum, "acumulado_anterior_meur": antes,
+                    "acumulado_pib": round(tp[(etiqueta, a, q)], 2), "acumulado_anterior_pib": round(tp[(etiqueta, a - 1, q)], 2),
+                    "doce_meses_meur": doce, "doce_meses_pib": None if not pib_12 else round(100 * doce / pib_12, 1),
+                }
+            en_curso["pib_doce_meses_meur"] = pib_12
+            # Deuda: el último trimestre del Banco de España, ya en % del PIB (cuadro 11.7).
+            if "bde_be1107" in descargas:
+                texto = (AQUI / descargas["bde_be1107"]["fichero"]).read_bytes().decode("latin-1")
+                filas = list(csv.reader(texto.splitlines()))
+                meses = {"MAR": 1, "JUN": 2, "SEP": 3, "DIC": 4}
+                ult = None
+                for f_ in filas:
+                    m_ = re.match(r"([A-Z]{3}) (\d{4})$", f_[0] if f_ else "")
+                    if m_ and m_.group(1) in meses and f_[1] not in ("_", ""):
+                        ult = (int(m_.group(2)), meses[m_.group(1)], float(f_[1]))
+                if ult and ult[0] > ultimo:
+                    en_curso["deuda"] = {"año": ult[0], "trimestre": ult[1], "pib": ult[2],
+                                         "x": ult[0] - 1 + (3 * ult[1]) / 12}
+            salida["en_curso"] = en_curso
+            # Comprobación: la suma de los cuatro trimestres de la IGAE del último año cerrado es su total anual.
+            if "igae_a_aapp" in descargas:
+                igae_b9 = anual.get(("B.9", a - 1))
+                comprobaciones.append({
+                    "que": f"¿El trimestral de la IGAE (4.º trimestre de {a - 1}) coincide con su dato anual?",
+                    "resultado": "Sí" if igae_b9 is not None and abs(t[("B.9", a - 1, 4)] - igae_b9) < 1 else "No",
+                    "ok": igae_b9 is not None and abs(t[("B.9", a - 1, 4)] - igae_b9) < 1,
+                })
+
+    # 3. Previsiones: una serie por institución, con la publicación de la que sale cada punto.
+    cfg = json.loads((CODIGO / "previsiones.json").read_text())
+    previsiones = {"criterio": cfg["criterio"], "emisores": [], "abanico": None}
+    for e in cfg["emisores"]:
+        series = {}
+        if e.get("automatico") == "ameco":
+            codigos = {"saldo": ("ameco16", "UBLGE"), "deuda": ("ameco18", "UDGG"), "ingresos": ("ameco16", "URTG"), "gastos": ("ameco16", "UUTG")}
+            for clave, (fichero, codigo) in codigos.items():
+                if fichero not in descargas:
+                    continue
+                with zipfile.ZipFile(AQUI / descargas[fichero]["fichero"]) as z:
+                    texto = z.read(z.namelist()[0]).decode("latin-1")
+                lineas = texto.splitlines()
+                cab = lineas[0].split(";")
+                for l in lineas:
+                    if l.startswith(f"ESP.1.0.319.0.{codigo};"):
+                        campos = l.split(";")
+                        series[clave] = {int(c): float(v) for c, v in zip(cab, campos) if c.isdigit() and int(c) > ultimo
+                                         and v not in ("NA", "")}
+            pub = e["publicacion"]
+            puntos = {k: [{"año": a_, "valor": round(v, 2), "publicacion": 0} for a_, v in sorted(s_.items())] for k, s_ in series.items()}
+            pubs = [pub | {"url": pub["pagina"]}]
+        elif e.get("automatico") == "weo":
+            codigos = {"saldo": "GGXCNL_NGDP", "deuda": "GGXWDG_NGDP", "ingresos": "GGR_NGDP", "gastos": "GGX_NGDP"}
+            for clave, codigo in codigos.items():
+                k = f"fmi_weo_{codigo.lower()}"
+                if k not in descargas:
+                    continue
+                xml = (AQUI / descargas[k]["fichero"]).read_text()
+                series[clave] = {int(a_): float(v) for a_, v in re.findall(r'TIME_PERIOD="(\d{4})" OBS_VALUE="([-\d.]+)"', xml) if int(a_) > ultimo}
+            pub = e["publicacion"]
+            puntos = {k: [{"año": a_, "valor": round(v, 2), "publicacion": 0} for a_, v in sorted(s_.items())] for k, s_ in series.items()}
+            pubs = [pub | {"url": pub["pagina"]}]
+        else:
+            # Transcritas: para cada año, la publicación más reciente que lo da.
+            pubs = sorted(e["publicaciones"], key=lambda p_: p_["fecha"])
+            puntos = {}
+            for k_pub, p_ in enumerate(pubs):
+                for clave, vals in p_["valores"].items():
+                    for a_, v in vals.items():
+                        if int(a_) > ultimo:
+                            puntos.setdefault(clave, {})[int(a_)] = {"año": int(a_), "valor": v, "publicacion": k_pub}
+                # Las que salen de una hoja de cálculo se comprueban contra el fichero descargado.
+                if p_["fichero"].lower().endswith(".xlsx") and p_.get("tabla") in descargas:
+                    celdas = [round(x, 2) for filas in hojas(AQUI / descargas[p_["tabla"]]["fichero"]).values()
+                              for f_ in filas for x in f_ if isinstance(x, float)]
+                    todos = [v for vals in p_["valores"].values() for v in vals.values()]
+                    todos += [v for b in p_.get("abanico", {}).values() for vals in b.values() for v in vals.values()]
+                    faltan = [v for v in todos if not any(abs(c - v) < 0.006 for c in celdas)]
+                    comprobaciones.append({
+                        "que": f"¿Las cifras que copiamos de «{p_['titulo']}» están en su hoja de cálculo?",
+                        "resultado": f"Sí, las {len(todos)}" if not faltan else f"No: faltan {', '.join(es(v, 2) for v in faltan)}",
+                        "ok": not faltan,
+                    })
+                if p_.get("abanico"):
+                    previsiones["abanico"] = {"emisor": e["id"], "publicacion": p_["titulo"], "fecha": p_["fecha"], "url": p_["fichero"],
+                                              "donde": p_["donde"],
+                                              "deuda": {k: {int(a_): v for a_, v in vals.items()} for k, vals in p_["abanico"]["deuda"].items()}}
+            puntos = {k: [v for _, v in sorted(d_.items())] for k, d_ in puntos.items()}
+            pubs = [{"fecha": p_["fecha"], "titulo": p_["titulo"], "url": p_["fichero"], "donde": p_["donde"]} for p_ in pubs]
+        previsiones["emisores"].append({"id": e["id"], "nombre": e["nombre"], "largo": e.get("largo"), "tipo": e["tipo"],
+                                        "publicaciones": pubs, "series": puntos})
+    salida["previsiones"] = previsiones
+    return salida, comprobaciones
 
 
 INGRESOS_PARTES = [
@@ -1061,13 +1246,19 @@ def main():
     for nombre in ("gov_10a_main", "gov_10dd_edpt1", "nama_10_gdp", "nama_10_pe", "gov_10a_exp", "legislaturas", "bde_be1106", "ert_h_eur_a", "igae_cap_serie", "gov_10dd_edpt3",
                    "ue_gov_10a_main", "ue_gov_10dd_edpt1", "ine_pib", "ine_poblacion",
                    "gov_10a_taxag", "igae_cofog", "sepg_estado_2023", "sepg_estado_2025p",
-                   *sorted(k for k in descargas if k.startswith(("liq_estado_", "ejec_dic_")))):
+                   *sorted(k for k in descargas if k.startswith(("liq_estado_", "ejec_dic_"))),
+                   *[k for k in ("igae_t_aapp", "igae_a_aapp", "igae_a_aapp_imp", "bde_be1107", "ameco16", "ameco18",
+                                 "fmi_weo_ggxcnl_ngdp", "fmi_weo_ggxwdg_ngdp", "fmi_weo_ggr_ngdp", "fmi_weo_ggx_ngdp",
+                                 "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
+                                 "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas]):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
         copia = f"{nombre}-{fecha}-{m['sha256'][:12]}{extension}.gz"
         destino = WEB / "crudo" / copia
-        if not destino.exists():
+        if extension == ".pdf":
+            copia = None  # informes en PDF: se enlaza el original, no se republica
+        elif not destino.exists():
             with open(AQUI / m["fichero"], "rb") as f, open(destino, "wb") as bruto, \
                     gzip.GzipFile(fileobj=bruto, mode="wb", mtime=0) as g:
                 shutil.copyfileobj(f, g)
@@ -1079,7 +1270,19 @@ def main():
                "ine_poblacion": "Se usa para comprobar la población de Eurostat.",
                "igae_cofog": "Se usa para comprobar el gasto de cada función.",
                "sepg_estado_2023": "Se usa para comprobar los créditos iniciales por capítulos.",
-               "sepg_estado_2025p": "Se usa para comprobar los créditos iniciales por capítulos."}.get(nombre) or \
+               "sepg_estado_2025p": "Se usa para comprobar los créditos iniciales por capítulos.",
+               "igae_t_aapp": "Ingresos, gastos y saldo del año en curso, acumulados trimestre a trimestre.",
+               "igae_a_aapp": "Segunda fuente del saldo de los últimos años.",
+               "igae_a_aapp_imp": "Impuestos y cotizaciones del último año, antes de que los publique Eurostat.",
+               "bde_be1107": "Deuda del último trimestre publicado, en porcentaje del PIB.",
+               "ameco16": "Previsiones de la Comisión Europea: ingresos, gastos y saldo.",
+               "ameco18": "Previsiones de la Comisión Europea: deuda.",
+               "airef_pfemp_2026": "Previsiones de saldo de la AIReF; las cifras copiadas se comprueban contra este fichero.",
+               "airef_ejecucion_2026": "Previsiones de saldo y deuda de la AIReF, con su abanico de incertidumbre; las cifras copiadas se comprueban contra este fichero.",
+               "airef_fichas_2026_08": "Última previsión de saldo de la AIReF para el año en curso (PDF; cifra copiada de la página 2).",
+               "bde_proyecciones_2026t3": "Proyecciones del Banco de España (PDF; cifras copiadas del Cuadro 1).",
+               "hacienda_objetivos_2027": "Objetivos de déficit y deuda del Gobierno (PDF; cifras copiadas de las páginas 7 y 9)."}.get(nombre) or \
+              ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else
                "Avance: ejecución a 31 de diciembre por políticas de gasto (hoja GTOS 008)." if nombre.startswith("ejec_dic_") else None)
@@ -1090,7 +1293,7 @@ def main():
             "dataset": m.get("dataset", nombre),
             "uso": uso,
             "descargado": m["descargado"], "actualizado_fuente": m["actualizado_fuente"], "sha256": m["sha256"],
-            "copia": f"crudo/{copia}",
+            "copia": f"crudo/{copia}" if copia else None,
         })
 
     ue = construir_ue(descargas, años)
@@ -1105,6 +1308,8 @@ def main():
     cambio, comprobacion_cambio = construir_cambio_deuda(tablas, años, deflactor, base, poblacion)
     comprobaciones.append(comprobacion_cambio)
 
+    recientes, comprobaciones_recientes = construir_recientes(descargas, datos, años)
+    comprobaciones.extend(comprobaciones_recientes)
     salida = {
         "generado": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat(),
         "años": años,
@@ -1115,6 +1320,7 @@ def main():
         "cambio_deuda": cambio,
         "acontecimientos": json.loads((CODIGO / "acontecimientos.json").read_text()),
         "gobiernos": json.loads((CODIGO / "gobiernos.json").read_text()),
+        "recientes": recientes,
         "ue": ue,
         "comprobaciones": comprobaciones,
     }

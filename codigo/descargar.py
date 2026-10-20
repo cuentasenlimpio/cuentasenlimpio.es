@@ -70,6 +70,7 @@ SEPG = "https://www.sepg.pap.hacienda.gob.es/sitios/sepg/es-ES/Presupuestos/acce
 
 
 # Otras fuentes (páginas y CSV): se guardan tal cual y el script de construcción extrae lo que necesita.
+IGAE_CN = "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/"
 PAGINAS = [
     {"fuente": "Congreso de los Diputados", "tabla": "legislaturas",
      "nombre": "Historia de las legislaturas: sesiones constitutivas",
@@ -93,11 +94,49 @@ PAGINAS = [
     {"fuente": "Ministerio de Hacienda", "tabla": "sepg_estado_2023",
      "nombre": "Estadísticas del Presupuesto del Estado (edición 2023): gastos por capítulos",
      "url": SEPG.format(v="2023"), "extension": "xlsx"},
+    # ---- Datos recientes y previsiones (desde el 20/10/2026). Si fallan, se avisa y se sigue con la copia anterior. ----
+    {"fuente": "IGAE", "tabla": "igae_t_aapp", "opcional": True,
+     "nombre": "Operaciones no financieras de las Administraciones públicas, trimestrales acumuladas (contabilidad nacional)",
+     "url": IGAE_CN + "AAPP_Trimestral/T_AAPP.xlsx", "extension": "xlsx"},
+    {"fuente": "IGAE", "tabla": "igae_a_aapp", "opcional": True,
+     "nombre": "Operaciones no financieras de las Administraciones públicas, anuales (contabilidad nacional)",
+     "url": IGAE_CN + "AAPP_A/A_AAPP.xlsx", "extension": "xlsx"},
+    {"fuente": "IGAE", "tabla": "igae_a_aapp_imp", "opcional": True,
+     "nombre": "Impuestos y cotizaciones sociales de las Administraciones públicas, anuales (contabilidad nacional)",
+     "url": IGAE_CN + "AAPP_A/A_AAPP_Imp.xlsx", "extension": "xlsx"},
+    {"fuente": "Banco de España", "tabla": "bde_be1107", "opcional": True,
+     "nombre": "Deuda según el Procedimiento de Déficit Excesivo, en porcentaje del PIB (Boletín Estadístico, cuadro 11.7)",
+     "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1107.csv", "extension": "csv"},
+    {"fuente": "Comisión Europea", "tabla": "ameco16", "opcional": True,
+     "nombre": "AMECO: cuentas de las administraciones públicas (previsiones de la Comisión Europea)",
+     "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco16.zip", "extension": "zip"},
+    {"fuente": "Comisión Europea", "tabla": "ameco18", "opcional": True,
+     "nombre": "AMECO: deuda de las administraciones públicas (previsiones de la Comisión Europea)",
+     "url": "https://ec.europa.eu/economy_finance/db_indicators/ameco/documents/ameco18.zip", "extension": "zip"},
+    *[{"fuente": "FMI", "tabla": f"fmi_weo_{c.lower()}", "opcional": True,
+       "nombre": f"Perspectivas de la Economía Mundial (WEO): {n}, España",
+       "url": f"https://api.imf.org/external/sdmx/2.1/data/IMF.RES,WEO/ESP.{c}.A?startPeriod=2020&endPeriod=2031",
+       "extension": "xml"}
+      for c, n in (("GGXCNL_NGDP", "saldo de las administraciones públicas en % del PIB"),
+                   ("GGXWDG_NGDP", "deuda bruta de las administraciones públicas en % del PIB"),
+                   ("GGR_NGDP", "ingresos de las administraciones públicas en % del PIB"),
+                   ("GGX_NGDP", "gastos de las administraciones públicas en % del PIB"))],
     {"fuente": "IGAE", "tabla": "igae_cap_serie",
      "nombre": "Cuentas de las Administraciones públicas, serie anual desde 1995",
      "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/CAAP/CAP_Serie.xlsx",
      "extension": "xlsx"},
 ]
+
+
+# El servidor de la AIReF no envía el certificado intermedio de la FNMT («AC Componentes Informáticos») y Python
+# rechaza la conexión. Se añade ese intermedio (público, de http://www.cert.fnmt.es/certs/ACCOMP.crt) a los de
+# confianza del sistema solo para esas descargas: la cadena se sigue verificando hasta la raíz de la FNMT.
+def contexto_para(url):
+    import ssl
+    ctx = ssl.create_default_context()
+    if urllib.parse.urlparse(url).hostname.endswith("airef.es"):
+        ctx.load_verify_locations(cafile=str(pathlib.Path(__file__).resolve().parent / "certificados" / "fnmt-ac-componentes-informaticos.pem"))
+    return ctx
 
 
 def url_de(t):
@@ -140,10 +179,25 @@ def main():
         print(f"{clave:18} {len(cuerpo):>10} B  actualizado {datos.get('updated')}  "
               f"{'NUEVO' if novedad else 'sin cambios'}")
 
+    # Las publicaciones de previsiones (AIReF, Banco de España, Gobierno) cambian de URL con cada informe: están en
+    # previsiones.json, que dice de qué fichero sale cada cifra; aquí solo se guarda una copia de cada uno.
+    previsiones = json.loads((pathlib.Path(__file__).resolve().parent / "previsiones.json").read_text())
+    for e in previsiones["emisores"]:
+        for pub in e.get("publicaciones", []):
+            if pub.get("tabla"):
+                PAGINAS.append({"fuente": e["nombre"], "tabla": pub["tabla"], "opcional": True, "nombre": pub["titulo"],
+                                "url": pub["fichero"], "extension": pub["fichero"].rsplit(".", 1)[-1].lower()})
+
     for t in PAGINAS:
         peticion = urllib.request.Request(t["url"], headers={"User-Agent": "Mozilla/5.0 (cuentas del pais)"})
-        with urllib.request.urlopen(peticion, timeout=120) as r:
-            cuerpo = r.read()
+        try:
+            with urllib.request.urlopen(peticion, timeout=120, context=contexto_para(t["url"])) as r:
+                cuerpo = r.read()
+        except (urllib.error.URLError, TimeoutError) as error:
+            if not t.get("opcional"):
+                raise
+            print(f"AVISO {t['tabla']}: no se pudo descargar ({error}); se usa la copia anterior")
+            continue
         huella = hashlib.sha256(cuerpo).hexdigest()
         anterior = next((m for m in reversed(manifiesto) if m["tabla"] == t["tabla"]), None)
         novedad = anterior is None or anterior["sha256"] != huella

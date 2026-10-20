@@ -472,3 +472,24 @@ main > .entender-ancho, .entender-ancho { display: grid; grid-template-columns: 
 .pregunta-seccion { border: 0; padding-top: 0; margin-top: 0.4rem; }
 .antetitulo + h2.pregunta { margin-top: 0.4rem; }
 section > .antetitulo:first-child { border-top: 1px solid var(--linea); padding-top: 1.5rem; margin-top: 3.5rem; }
+
+/* Botones (i) y su panel */
+button.info { font: italic 600 0.8125rem/1 var(--serif); width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1px solid var(--entender-tinta); background: var(--superficie); color: var(--entender-tinta); cursor: pointer; vertical-align: 0.25em; margin-left: 0.35rem; padding: 0; }
+button.info:hover, button.info[aria-expanded="true"] { background: var(--entender-tinta); color: var(--superficie); }
+button.info:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.info-panel { background: var(--entender); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.25rem 0 1rem; font-size: 0.9375rem; max-width: 46rem; }
+.info-panel .rotulo { font: 700 0.75rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--entender-tinta); margin: 0 0 0.5rem; }
+.info-panel p:last-child { margin-bottom: 0; }
+.info-fuentes { font-size: 0.8125rem; color: var(--tinta-suave); }
+.info-fuentes a { color: var(--tinta-suave); }
+
+/* Lo reciente y las previsiones, bajo los gráficos de cuentas */
+.recientes { border-top: 1px dashed var(--linea-fuerte); margin-top: 1rem; padding-top: 0.75rem; }
+.recientes h3 { font-family: var(--sans); font-size: 1rem; margin: 0 0 0.5rem; }
+.recientes p { font-size: 0.9375rem; max-width: 46rem; }
+table.previsiones td:not(:first-child) { font-variant-numeric: tabular-nums; }
+table.previsiones td:first-child { font-weight: 600; }
+.clave-area.tenue { background: rgba(29,29,27,0.05); border: 1px solid var(--linea); }
+.clave-discontinua { display: inline-block; width: 1.3rem; height: 0; border-top: 2px dashed var(--tinta-suave); vertical-align: middle; }
+.clave-area.oscura { background: rgba(29,29,27,0.11); }
+.cifras-clave .reciente { font-size: 0.8125rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); padding-top: 0.35rem; margin-top: auto; }

@@ -1,0 +1,64 @@
+{
+ "criterio": "Previsiones de déficit y deuda de las administraciones públicas de las instituciones que las publican con regularidad, cada una por separado, con la fecha de su publicación. No se promedian ni se empalman con los datos observados. Los objetivos del Gobierno se muestran aparte: un objetivo es una meta que se fija quien gobierna, no una previsión independiente.",
+ "emisores": [
+  {
+   "id": "airef", "nombre": "AIReF", "largo": "Autoridad Independiente de Responsabilidad Fiscal", "tipo": "prevision",
+   "publicaciones": [
+    {"fecha": "2026-05-14", "titulo": "AIReF: Informe de seguimiento 2026 del Plan Fiscal-Estructural de Medio Plazo 2025-2028 (cuadros y gráficos)",
+     "tabla": "airef_pfemp_2026",
+     "fichero": "https://www.airef.es/wp-content/uploads/2026/05/Informe_Progreso_PFEMP/Cuadros-y-graficos_PFEMP2026.xlsx",
+     "pagina": "https://www.airef.es/wp-content/uploads/2026/05/Informe_Progreso_PFEMP/Informe-Seguimiento-PFEMP-2026.pdf",
+     "donde": "hoja «Cuadro 1», fila «AA. PP.» (a políticas constantes)",
+     "valores": {"saldo": {"2026": -2.57, "2027": -2.19, "2028": -2.30, "2029": -2.29, "2030": -2.39}}},
+    {"fecha": "2026-07-15", "titulo": "AIReF: Informe sobre la ejecución presupuestaria, la deuda pública y la regla de gasto 2026 (cuadros y gráficos)",
+     "tabla": "airef_ejecucion_2026",
+     "fichero": "https://www.airef.es/wp-content/uploads/2026/07/Informes-ejecuci%C3%B3n-2026/AIReF.-Cuadros-y-graficos.-Informe-sobre-la-ejecucion-presupuestaria-la-deuda-publica-y-la-regla-de-gasto-de-las-AAPP-2026.xlsx",
+     "pagina": "https://www.airef.es/wp-content/uploads/2026/07/Informe-Ejecucion-Presupuestaria-2026.pdf",
+     "donde": "hoja «Cuadro 1», fila «AA. PP.», columna «Previsión Actual AIReF» (saldo); hoja «Gráfico 65», escenario central y percentiles 10 y 90 (deuda)",
+     "valores": {"saldo": {"2026": -2.55},
+                 "deuda": {"2026": 99.31, "2027": 98.19, "2028": 96.85, "2029": 95.89, "2030": 95.03}},
+     "abanico": {"deuda": {"p10": {"2026": 93.91, "2027": 89.82, "2028": 87.03, "2029": 84.17, "2030": 82.49},
+                           "p90": {"2026": 105.92, "2027": 107.69, "2028": 108.29, "2029": 108.53, "2030": 110.32}}}},
+    {"fecha": "2026-09-17", "titulo": "AIReF: Seguimiento del objetivo de estabilidad, fichas de agosto de 2026",
+     "tabla": "airef_fichas_2026_08",
+     "fichero": "https://www.airef.es/wp-content/uploads/2026/08/Objetivo_de_estabilidad/Fichas-Seguimiento_2026-agosto-1.pdf",
+     "donde": "página 2: «hasta el 2,7 % del PIB, una décima más que lo publicado en el Informe sobre la Ejecución Presupuestaria»",
+     "valores": {"saldo": {"2026": -2.7}}}
+   ]
+  },
+  {
+   "id": "bde", "nombre": "Banco de España", "tipo": "prevision",
+   "publicaciones": [
+    {"fecha": "2026-10-09", "titulo": "Banco de España: Proyecciones macroeconómicas e informe trimestral de la economía española, tercer trimestre de 2026",
+     "tabla": "bde_proyecciones_2026t3",
+     "fichero": "https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/InformesBoletinesRevistas/BoletinEconomico/26/T3/be2603-it.pdf",
+     "pagina": "https://www.bde.es/wbe/es/publicaciones/analisis-economico-investigacion/proyecciones-macro-informe-trimestral/proyecciones-e-informe-trimestral-de-la-economia-espanola-tercer-trimestre-2026.html",
+     "donde": "Cuadro 1, página 10 del PDF (fecha de cierre: 2 de octubre de 2026)",
+     "valores": {"saldo": {"2026": -2.6, "2027": -2.2}, "deuda": {"2026": 98.5, "2027": 96.2}}}
+   ]
+  },
+  {
+   "id": "ce", "nombre": "Comisión Europea", "tipo": "prevision", "automatico": "ameco",
+   "publicacion": {"fecha": "2026-05-21", "titulo": "Comisión Europea: previsiones económicas de primavera de 2026 (base de datos AMECO)",
+                   "pagina": "https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts_en",
+                   "donde": "AMECO, series ESP.1.0.319.0.UBLGE (saldo), UDGG (deuda), URTG (ingresos) y UUTG (gastos)"}
+  },
+  {
+   "id": "fmi", "nombre": "FMI", "largo": "Fondo Monetario Internacional", "tipo": "prevision", "automatico": "weo",
+   "publicacion": {"fecha": "2026-10-13", "titulo": "FMI: Perspectivas de la Economía Mundial (WEO), octubre de 2026",
+                   "pagina": "https://www.imf.org/en/Publications/WEO",
+                   "donde": "API SDMX del FMI, series GGXCNL_NGDP (saldo), GGXWDG_NGDP (deuda), GGR_NGDP (ingresos) y GGX_NGDP (gastos)"}
+  },
+  {
+   "id": "gobierno", "nombre": "Objetivo del Gobierno", "tipo": "objetivo",
+   "publicaciones": [
+    {"fecha": "2026-07-07", "titulo": "Ministerio de Hacienda: Límite de gasto no financiero 2027 y objetivos de estabilidad 2027-2029 (presentación)",
+     "tabla": "hacienda_objetivos_2027",
+     "fichero": "https://www.hacienda.gob.es/gabineteministro/notas%20prensa/2026/260707-presentacion-techo-gastos.pdf",
+     "donde": "página 7 (objetivos de déficit por subsectores) y página 9 (objetivos de deuda)",
+     "valores": {"saldo": {"2026": -2.1, "2027": -1.8, "2028": -1.6, "2029": -1.5},
+                 "deuda": {"2026": 99.1, "2027": 97.6, "2028": 96.4, "2029": 95.3}}}
+   ]
+  }
+ ]
+}

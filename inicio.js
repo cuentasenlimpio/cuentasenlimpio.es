@@ -27,6 +27,19 @@ async function arrancar() {
     pon("k-saldo-explica", "del PIB. Lo que sobra tras cubrir el gasto.");
   }
 
+  // Año en curso, debajo de las cifras de déficit y deuda.
+  const ec = aapp.recientes?.en_curso;
+  const FIN = ["marzo", "junio", "septiembre", "diciembre"];
+  const añadir = (id, texto) => {
+    const span = document.createElement("span");
+    span.className = "reciente";
+    span.textContent = texto;
+    document.getElementById(id).after(span);
+  };
+  if (ec?.series?.saldo?.doce_meses_pib !== null && ec?.series?.saldo) {
+    añadir("k-saldo-explica", `${ec.año}, en curso: ${numero(Math.abs(ec.series.saldo.doce_meses_pib), 1)} % en los doce meses hasta ${FIN[ec.trimestre - 1]}.`);
+  }
+  if (ec?.deuda) añadir("k-deuda-explica", `${ec.deuda.año}, en curso: ${numero(ec.deuda.pib, 1)} % a final de ${FIN[ec.deuda.trimestre - 1]}.`);
   if (gasto) {
     const r = gasto.reparto.at(-1);
     const top = gasto.funciones.map((f) => ({ n: f.nombre.toLowerCase(), v: r[f.codigo] })).sort((a, b) => b.v - a.v);

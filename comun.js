@@ -87,11 +87,14 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
     a.textContent = texto || f.nombre.charAt(0).toLowerCase() + f.nombre.slice(1);
     p.appendChild(a);
     const cuando = f.actualizado_fuente ? `actualizada el ${fecha(f.actualizado_fuente)}` : `descargada el ${fecha(f.descargado)}`;
-    p.appendChild(document.createTextNode(` (tabla ${f.dataset}, ${cuando}, `));
-    const c = document.createElement("a");
-    c.href = f.copia;
-    c.textContent = "fichero descargado";
-    p.appendChild(c);
+    p.appendChild(document.createTextNode(` (${f.fuente === "Eurostat" ? `tabla ${f.dataset}, ` : ""}${cuando}`));
+    if (f.copia) {
+      p.appendChild(document.createTextNode(", "));
+      const c = document.createElement("a");
+      c.href = f.copia;
+      c.textContent = "fichero descargado";
+      p.appendChild(c);
+    }
     p.appendChild(document.createTextNode(")"));
   });
   p.appendChild(document.createTextNode(". "));
@@ -154,3 +157,60 @@ function pintarUltimoAño(años, motivo) {
   p.appendChild(b);
   p.appendChild(document.createTextNode(motivo));
 }
+
+// ---- Botones (i): qué implica un valor, con su fuente ----
+// En el HTML: <button type="button" class="info" data-info="clave">i</button> dentro de un título. El texto sale de
+// datos/explicaciones.json (cada entrada: titulo, texto[], decalaje, fuentes[{texto, url}]). Sin entrada, el botón se quita.
+async function montarInfo() {
+  const botones = document.querySelectorAll("button.info[data-info]");
+  if (!botones.length) return;
+  const ex = await fetch("datos/explicaciones.json").then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+  botones.forEach((b, k) => {
+    const e = ex[b.dataset.info];
+    if (!e) return b.remove();
+    const panel = document.createElement("aside");
+    panel.className = "info-panel";
+    panel.id = `info-${b.dataset.info}-${k}`;
+    panel.hidden = true;
+    const t = document.createElement("p");
+    t.className = "rotulo";
+    t.textContent = e.titulo || "Qué implica";
+    panel.appendChild(t);
+    for (const parrafo of e.texto) {
+      const p = document.createElement("p");
+      p.textContent = parrafo;
+      panel.appendChild(p);
+    }
+    if (e.decalaje) {
+      const p = document.createElement("p");
+      const s = document.createElement("strong");
+      s.textContent = "Cuánto tarda en notarse. ";
+      p.append(s, e.decalaje);
+      panel.appendChild(p);
+    }
+    if (e.fuentes?.length) {
+      const p = document.createElement("p");
+      p.className = "info-fuentes";
+      p.append("Fuente: ");
+      e.fuentes.forEach((f, j) => {
+        if (j) p.append("; ");
+        const a = document.createElement("a");
+        a.href = f.url;
+        a.textContent = f.texto;
+        p.appendChild(a);
+      });
+      p.append(".");
+      panel.appendChild(p);
+    }
+    b.setAttribute("aria-label", `Qué implica: ${e.titulo || b.dataset.info}`);
+    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-controls", panel.id);
+    b.closest("h1, h2, h3, h4, p, label").after(panel);
+    b.addEventListener("click", () => {
+      const abierto = b.getAttribute("aria-expanded") === "true";
+      b.setAttribute("aria-expanded", String(!abierto));
+      panel.hidden = abierto;
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded", montarInfo);

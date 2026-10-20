@@ -193,10 +193,11 @@ const EC = (() => {
 
   // ---- Periodo: botones, legislatura, acontecimiento y años, sobre el zoom de todos los gráficos sumados ----
   // `raiz` es un contenedor vacío; `años` son los años con datos de la página.
-  function periodo(raiz, d, años, { desde2007 = true, alCambiar = () => {}, alResaltar = () => {} } = {}) {
+  // `hasta`: el eje puede seguir después del último año con datos (previsiones).
+  function periodo(raiz, d, años, { desde2007 = true, alCambiar = () => {}, alResaltar = () => {}, hasta } = {}) {
     const graficos = [];
     let resaltada = null, moviendo = false;
-    const min = años[0], max = años.at(-1);
+    const min = años[0], max = hasta ?? años.at(-1);
 
     const crearEl = (tipo, props = {}, padre = raiz) => {
       const e = document.createElement(tipo);
@@ -211,7 +212,8 @@ const EC = (() => {
     botones.setAttribute("role", "group");
     botones.setAttribute("aria-label", "Periodos rápidos");
     crearEl("span", { className: "selector-etiqueta", textContent: "Periodo" }, botones);
-    const rapidos = [["todo", "Todo"], ["10", "Últimos 10 años"]].concat(desde2007 && min < 2007 ? [["2007", "Desde 2007"]] : []);
+    const rapidos = [["todo", "Todo"], ["10", "Últimos 10 años"]].concat(desde2007 && min < 2007 ? [["2007", "Desde 2007"]] : [])
+      .concat(max > años.at(-1) ? [["recientes", "Recientes y previsiones"]] : []);
     for (const [v, t] of rapidos) {
       const b = crearEl("button", { type: "button", textContent: t }, botones);
       b.dataset.periodo = v;
@@ -238,7 +240,9 @@ const EC = (() => {
     anos.appendChild(selDesde);
     crearEl("label", { htmlFor: selHasta.id, textContent: "a" }, anos);
     anos.appendChild(selHasta);
-    for (const s of [selDesde, selHasta]) for (const a of años) crearEl("option", { value: String(a), textContent: a }, s);
+    const todos = [...años];
+    for (let a = años.at(-1) + 1; a <= max; a++) todos.push(a);
+    for (const s of [selDesde, selHasta]) for (const a of todos) crearEl("option", { value: String(a), textContent: a }, s);
     selDesde.value = String(min);
     selHasta.value = String(max);
 
@@ -272,7 +276,7 @@ const EC = (() => {
         selAc.value = "";
         resaltar(null);
         const p = b.dataset.periodo;
-        aplicar(p === "todo" ? min : p === "10" ? max - 10 : Number(p), max);
+        aplicar(p === "todo" ? min : p === "10" ? años.at(-1) - 10 : p === "recientes" ? años.at(-1) - 6 : Number(p), max);
       });
     }
     // Una legislatura: del año anterior a su inicio al año en que acabó, para ver de dónde se partía.
@@ -453,7 +457,9 @@ const EC = (() => {
     et.textContent = "Añadir contexto:";
     raiz.appendChild(et);
     const casillas = {};
-    for (const [clave, nombre] of [["gobiernos", "Nombramientos del Presidente del Gobierno"], ["legislaturas", "Legislaturas"], ["acontecimientos", "Crisis externas"]]) {
+    const lista = [["gobiernos", "Nombramientos del Presidente del Gobierno"], ["legislaturas", "Legislaturas"], ["acontecimientos", "Crisis externas"]];
+    if ("previsiones" in estadoCapas) lista.unshift(["previsiones", "Año en curso y previsiones"]);
+    for (const [clave, nombre] of lista) {
       const l = document.createElement("label");
       const c = document.createElement("input");
       c.type = "checkbox";

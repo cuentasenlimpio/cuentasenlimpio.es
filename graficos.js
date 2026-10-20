@@ -11,7 +11,67 @@ const FORMULAS = {
 
 // `graficos`: las instancias de ECharts; `marcar`: qué hace cada uno cuando cambia el año elegido.
 const estado = { datos: null, unidad: "pib", indice: null, indicadorUE: "deuda", graficos: {}, marcar: {}, periodo: null,
-  capas: { gobiernos: false, legislaturas: false, acontecimientos: false } };
+  capas: { gobiernos: false, legislaturas: false, acontecimientos: false, previsiones: true } };
+
+// Último año con dato anual cerrado y hasta dónde llega el eje cuando se ven las previsiones (dos años más).
+const ULTIMO = () => estado.datos.años.at(-1);
+const conRecientes = () => !!(estado.datos.recientes && estado.capas.previsiones && estado.unidad === "pib");
+const HASTA = () => (estado.datos.recientes ? ULTIMO() + 2 : ULTIMO());
+
+// Nombre corto de cada institución en los rótulos del gráfico.
+const CORTO = { airef: "AIReF", bde: "BdE", ce: "Comisión", fmi: "FMI", gobierno: "Objetivo Gob." };
+
+// Piezas de lo reciente para un gráfico de líneas en % del PIB: franjas de fiabilidad, punto del año en curso,
+// una línea discontinua por institución y, en la deuda, el abanico de la AIReF.
+function piezasRecientes(claves, colores, ultimosValores) {
+  const r = estado.datos.recientes, ult = ULTIMO(), hasta = HASTA();
+  const css = EC.css;
+  const sinComprobar = Object.entries(r.fiabilidad).filter(([, f]) => !f.cuadra || f.igae_provisional).map(([a]) => Number(a));
+  const desde = sinComprobar.length ? Math.min(...sinComprobar) - 0.5 : ult - 0.5;
+  const rotulo = () => ({ show: false });
+  const series = [{
+    id: "tramos", type: "line", data: [], silent: true, z: 0,
+    markArea: { silent: true, data: [
+      [{ xAxis: desde, itemStyle: { color: "rgba(29,29,27,0.05)" }, label: rotulo() }, { xAxis: ult }],
+      [{ xAxis: ult, itemStyle: { color: "rgba(29,29,27,0.11)" }, label: rotulo() }, { xAxis: ult + 1 }],
+      [{ xAxis: ult + 1, itemStyle: { color: "rgba(0,0,0,0)" }, label: rotulo() }, { xAxis: hasta }],
+    ] },
+  }];
+  claves.forEach((clave, k) => {
+    const color = colores[k];
+    // Año en curso: punto hueco (doce meses hasta el último trimestre, o la deuda del último trimestre).
+    const ec = r.en_curso;
+    const v = !ec ? null : clave === "deuda" ? ec.deuda?.pib : ec.series[clave]?.doce_meses_pib;
+    if (v !== null && v !== undefined) {
+      const x = clave === "deuda" ? ec.deuda.x : ec.x;
+      series.push({ id: `encurso-${clave}`, type: "scatter", silent: true, z: 5, symbolSize: 9,
+        itemStyle: { color: css("--superficie"), borderColor: color, borderWidth: 2 }, data: [[x, v]] });
+    }
+    for (const e of r.previsiones.emisores) {
+      const pts = (e.series[clave] || []).filter((p) => p.año <= hasta);
+      if (!pts.length) continue;
+      const objetivo = e.tipo === "objetivo";
+      series.push({
+        id: `prev-${clave}-${e.id}`, type: "line", silent: true, z: 3,
+        data: [[ult, ultimosValores[k]], ...pts.map((p) => [p.año, p.valor])],
+        symbol: objetivo ? "diamond" : "none", symbolSize: 6, showSymbol: objetivo,
+        itemStyle: { color }, lineStyle: { color, width: 1.5, type: objetivo ? [1, 3] : [5, 4], opacity: 0.8 },
+        endLabel: { show: true, formatter: CORTO[e.id], color: css("--tinta-suave"), fontSize: 10, distance: 4 },
+        labelLayout: { hideOverlap: true }, emphasis: { disabled: true },
+      });
+    }
+  });
+  const ab = r.previsiones.abanico;
+  if (ab && claves.includes("deuda")) {
+    const años = Object.keys(ab.deuda.p10).map(Number).filter((a) => a <= hasta).sort();
+    const base = [ult, ultimosValores[claves.indexOf("deuda")]];
+    const contorno = [base, ...años.map((a) => [a, ab.deuda.p90[a]]), ...años.reverse().map((a) => [a, ab.deuda.p10[a]])];
+    series.push({ id: "abanico", type: "custom", data: [0], silent: true, clip: true, z: 1,
+      renderItem: (_p, api) => ({ type: "polygon", shape: { points: contorno.map((q) => api.coord(q)) }, style: { fill: "rgba(29,29,27,0.07)" } }) });
+  }
+  return series;
+}
+
 
 const estrecho = () => document.querySelector("main").clientWidth < 520;
 
@@ -29,7 +89,8 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
   const d = estado.datos;
   const u = UNIDADES[estado.unidad];
   const años = d.años;
-  const min = años[0], max = años.at(-1);
+  // El eje llega siempre al horizonte de las previsiones (si las hay), para que el zoom sea el mismo en todas las unidades.
+  const min = años[0], max = HASTA();
   const g = estado.graficos[id] || (estado.graficos[id] = EC.crear(document.getElementById(id), alto));
   const puntosDe = (s) => años.map((a, i) => [a, s.valores[i] === null ? null : s.valores[i] * u.escala]);
   const lineas = series.map((s) => ({ ...s, datos: puntosDe(s), color: EC.css(`--serie-${s.clase}`) }));
@@ -50,11 +111,15 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
       renderItem: (_p, api) => ({ type: "polygon", shape: { points: contorno.map((p) => api.coord(p)) }, style: { fill: EC.css("--hueco") } }),
     });
   }
+  if (conRecientes()) {
+    const n = años.length - 1;
+    opciones.series.push(...piezasRecientes(lineas.map((s) => s.clave), lineas.map((s) => s.color), lineas.map((s) => s.datos[n][1])));
+  }
   g.setOption(opciones, { notMerge: true });
   if (!g.cuentasListo) {
     g.cuentasListo = true;
     EC.alPasar(g, elegirDesde);
-    estado.periodo.sumar(g, { ejeMin: min, ejeMax: max, marcas: { min, max, capas: estado.capas } });
+    estado.periodo.sumar(g, { ejeMin: min, ejeMax: HASTA(), marcas: { min, max: HASTA(), capas: estado.capas } });
   }
   estado.marcar[id] = (i) => {
     g.setOption({ series: [EC.puntos("año", lineas.map((s) => s.datos[i]).filter(([, v]) => v !== null), lineas.map((s) => s.color))] });
@@ -469,6 +534,8 @@ function pintar() {
   redibujarCruces();
   pintarFuenteUE();
   pintarFuente("g1-fuente", "gov_10a_main");
+  pintarRecientes("g1-recientes", "saldo");
+  pintarRecientes("g2-recientes", "deuda");
   pintarFuente("g2-fuente", "gov_10dd_edpt1");
   pintarFuente("g3-fuente", "gov_10dd_edpt3",
     [["gov_10dd_edpt1", u === "pib" ? "intereses y PIB de la misma notificación" : "intereses de la misma notificación"]],
@@ -626,7 +693,7 @@ function pintarFicha() {
     const enlaces = eurostat
       ? [["Ver en Eurostat", f.url_navegador], ["consulta exacta", f.url_api], ["fichero descargado", f.copia]]
       : [["Ver en la fuente", f.url_navegador], ["fichero descargado", f.copia]];
-    for (const [t, href] of enlaces) {
+    for (const [t, href] of enlaces.filter(([, h]) => h)) {
       const a = document.createElement("a");
       a.href = href;
       a.textContent = t;
@@ -690,6 +757,92 @@ function pintarRespuesta() {
   }
 }
 
+const FIN_TRIMESTRE = ["marzo", "junio", "septiembre", "diciembre"];
+
+// Debajo de un gráfico: el año en curso, la fiabilidad del último año y las previsiones de cada institución.
+// `clave`: "saldo" o "deuda".
+function pintarRecientes(id, clave) {
+  const caja = document.getElementById(id);
+  const r = estado.datos.recientes;
+  caja.textContent = "";
+  if (!r || !estado.capas.previsiones) return;
+  const el = (tipo, props = {}, padre = caja) => {
+    const e = document.createElement(tipo);
+    Object.assign(e, props);
+    padre.appendChild(e);
+    return e;
+  };
+  const ult = ULTIMO();
+  // Leyenda de las franjas y las líneas de lo reciente.
+  const sin = Object.entries(r.fiabilidad).filter(([, f]) => !f.cuadra || f.igae_provisional).map(([a]) => Number(a)).sort();
+  const ley = el("ul", { className: "leyenda-series" });
+  const item = (clase, texto) => {
+    const li = el("li", {}, ley);
+    el("span", { className: clase }, li);
+    li.append(texto);
+  };
+  item("clave-area tenue", `Fondo claro: provisional (${sin.length > 1 ? `${sin[0]}–${sin.at(-1)}` : sin[0] ?? ult})`);
+  item("clave-area oscura", `Fondo oscuro: ${ult + 1}, en curso (punto hueco: último dato)`);
+  item("clave-discontinua", `Discontinuas: previsiones de cada institución; de puntos: objetivo del Gobierno`);
+  el("h3", { textContent: clave === "saldo" ? "Lo más reciente y lo que se prevé: el saldo" : "Lo más reciente y lo que se prevé: la deuda" });
+  const f = r.fiabilidad[String(ult)];
+  if (f) {
+    const p = el("p");
+    const b = el("strong", { textContent: `${ult}, provisional. ` }, p);
+    p.append(f.nota + (f.igae_provisional ? ` La IGAE aún marca ${ult} como provisional.` : ""));
+  }
+  const ec = r.en_curso;
+  if (ec && clave === "saldo") {
+    const s_ = ec.series.saldo, mes = FIN_TRIMESTRE[ec.trimestre - 1];
+    const p = el("p");
+    el("strong", { textContent: `${ec.año}, en curso. ` }, p);
+    p.append(`De enero a ${mes}, el saldo fue del ${numero(s_.acumulado_pib, 2)} % del PIB de esos meses, frente al ${numero(s_.acumulado_anterior_pib, 2)} % en el mismo periodo de ${ec.año - 1} (dato de la IGAE). ` +
+      `En los doce meses hasta ${mes} de ${ec.año}: ${numero(s_.doce_meses_pib, 1)} % (lectura: suma de los cuatro últimos trimestres ÷ el PIB de esos trimestres, punto hueco del gráfico). ` +
+      "Un trimestre no anticipa el año: el gasto y los impuestos no se reparten igual entre trimestres.");
+  }
+  if (ec && clave === "deuda" && ec.deuda) {
+    const p = el("p");
+    el("strong", { textContent: `${ec.deuda.año}, en curso. ` }, p);
+    p.append(`A final de ${FIN_TRIMESTRE[ec.deuda.trimestre - 1]} de ${ec.deuda.año}, la deuda era del ${numero(ec.deuda.pib, 1)} % del PIB (dato del Banco de España, punto hueco del gráfico). A mitad de año suele estar más alta que en diciembre.`);
+  }
+  // Tabla: una fila por institución, con su publicación.
+  const años = [ult + 1, ult + 2];
+  const tabla = el("table", { className: "previsiones" }, el("div", { className: "tabla" }));
+  const cab = el("tr", {}, el("thead", {}, tabla));
+  for (const t of ["Quién", ...años.map(String), "De qué publicación"]) el("th", { scope: "col", textContent: t }, cab);
+  const cuerpo = el("tbody", {}, tabla);
+  for (const e of r.previsiones.emisores) {
+    const pts = e.series[clave];
+    if (!pts?.length) continue;
+    const tr = el("tr", {}, cuerpo);
+    el("td", { textContent: e.tipo === "objetivo" ? `${e.nombre} (meta, no previsión)` : e.nombre }, tr);
+    for (const a of años) {
+      const p = pts.find((x) => x.año === a);
+      el("td", { textContent: p ? `${numero(p.valor, 1)} %` : "—" }, tr);
+    }
+    const td = el("td", {}, tr);
+    const usadas = [...new Set(pts.filter((x) => años.includes(x.año)).map((x) => x.publicacion))];
+    usadas.forEach((k, j) => {
+      const pub = e.publicaciones[k];
+      if (j) td.append("; ");
+      el("a", { href: pub.url, textContent: `${fecha(pub.fecha)}` }, td);
+    });
+  }
+  const nota = el("p", { className: "fuente-grafico" });
+  nota.append(clave === "saldo" ? "Saldo en % del PIB: negativo es déficit. " : "Deuda en % del PIB. ");
+  nota.append(`${r.previsiones.criterio} Líneas discontinuas: previsiones; de puntos y rombos: objetivo del Gobierno. `);
+  const ab = r.previsiones.abanico;
+  if (clave === "deuda" && ab) {
+    nota.append(`Zona gris: abanico de la AIReF (${fecha(ab.fecha)}): en 8 de cada 10 de sus escenarios, la deuda de ${ult + 2} quedaría entre el ${numero(ab.deuda.p10[ult + 2], 1)} % y el ${numero(ab.deuda.p90[ult + 2], 1)} %. `);
+  }
+  if (clave === "saldo") nota.append("En el gráfico de arriba se ven las previsiones de ingresos y gastos de la Comisión Europea y del FMI, las únicas que las publican por separado. ");
+  const fuente = el("p", { className: "fuente-grafico" });
+  lineaFuente(fuente, { fuentes: estado.datos.fuentes,
+    tablas: clave === "saldo" ? [["igae_t_aapp", "operaciones trimestrales de las AAPP"], ["igae_a_aapp", "operaciones anuales"], ["ine_pib", "PIB trimestral"]]
+      : [["bde_be1107", "deuda en % del PIB"]],
+    tipo: "dato", nota: "Las previsiones, en el enlace de cada fila. Las cifras de los PDF se copian a mano; las de hojas de cálculo se comprueban solas cada día." });
+}
+
 // Encender o apagar una capa de contexto: se repintan los gráficos (cambia el hueco de arriba) y la nota.
 function cambiarCapas() {
   pintar();
@@ -715,6 +868,7 @@ async function arrancar() {
   estado.indice = estado.datos.años.length - 1;
   // Si el periodo elegido deja fuera el año que se está leyendo, se pasa al último año del periodo.
   estado.periodo = EC.periodo(document.getElementById("periodo"), estado.datos, estado.datos.años, {
+    hasta: estado.datos.recientes ? estado.datos.años.at(-1) + 2 : undefined,
     alCambiar: (desde, hasta) => {
       const año = estado.datos.años[estado.indice];
       if (año >= desde && año <= hasta) return;
