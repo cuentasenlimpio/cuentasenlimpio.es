@@ -29,6 +29,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,IVA,% del PIB,6.8,dato,D211
 2023,evolución,IVA,% del PIB,6.4,dato,D211
 2024,evolución,IVA,% del PIB,6.4,dato,D211
+2025,evolución,IVA,% del PIB,6.77,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,IVA,millones de euros corrientes,22922.0,dato,D211
 1996,evolución,IVA,millones de euros corrientes,25012.0,dato,D211
 1997,evolución,IVA,millones de euros corrientes,27489.0,dato,D211
@@ -59,6 +60,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,IVA,millones de euros corrientes,94140.0,dato,D211
 2023,evolución,IVA,millones de euros corrientes,96030.0,dato,D211
 2024,evolución,IVA,millones de euros corrientes,102495.0,dato,D211
+2025,evolución,IVA,millones de euros corrientes,114428.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,IVA,millones de euros de 2025,46071.0,lectura,D211
 1996,evolución,IVA,millones de euros de 2025,48555.8,lectura,D211
 1997,evolución,IVA,millones de euros de 2025,52080.8,lectura,D211
@@ -89,6 +91,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,IVA,millones de euros de 2025,106214.2,lectura,D211
 2023,evolución,IVA,millones de euros de 2025,101978.3,lectura,D211
 2024,evolución,IVA,millones de euros de 2025,105618.9,lectura,D211
+2025,evolución,IVA,millones de euros de 2025,114428.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,IVA,euros por habitante,577,lectura,D211
 1996,evolución,IVA,euros por habitante,627,lectura,D211
 1997,evolución,IVA,euros por habitante,686,lectura,D211
@@ -119,6 +122,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,IVA,euros por habitante,1970,lectura,D211
 2023,evolución,IVA,euros por habitante,1986,lectura,D211
 2024,evolución,IVA,euros por habitante,2097,lectura,D211
+2025,evolución,IVA,euros por habitante,2318,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,IVA,euros de cada 100,13.34,lectura,(D211) ÷ TR × 100
 1996,de cada 100 €,IVA,euros de cada 100,13.83,lectura,(D211) ÷ TR × 100
 1997,de cada 100 €,IVA,euros de cada 100,14.08,lectura,(D211) ÷ TR × 100
@@ -149,6 +153,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,IVA,euros de cada 100,16.4,lectura,(D211) ÷ TR × 100
 2023,de cada 100 €,IVA,euros de cada 100,15.24,lectura,(D211) ÷ TR × 100
 2024,de cada 100 €,IVA,euros de cada 100,15.21,lectura,(D211) ÷ TR × 100
+2025,de cada 100 €,IVA,euros de cada 100,15.77,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
 1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
 1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.9,lectura,D21 −D211
@@ -179,6 +184,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.1,lectura,D21 −D211
 2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,2.8,lectura,D21 −D211
 2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.0,lectura,D21 −D211
+2025,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.11,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,17487.0,lectura,D21 −D211
 1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,18476.0,lectura,D21 −D211
 1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,20263.0,lectura,D21 −D211
@@ -209,6 +215,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,42471.0,lectura,D21 −D211
 2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,42452.0,lectura,D21 −D211
 2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,47251.0,lectura,D21 −D211
+2025,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros corrientes,52504.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,35147.2,lectura,D21 −D211
 1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,35867.5,lectura,D21 −D211
 1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,38390.4,lectura,D21 −D211
@@ -239,6 +246,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,47918.2,lectura,D21 −D211
 2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,45081.5,lectura,D21 −D211
 2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,48691.1,lectura,D21 −D211
+2025,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",millones de euros de 2025,52504.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,440,lectura,D21 −D211
 1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,463,lectura,D21 −D211
 1997,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,506,lectura,D21 −D211
@@ -269,6 +277,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,889,lectura,D21 −D211
 2023,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,878,lectura,D21 −D211
 2024,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,967,lectura,D21 −D211
+2025,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros por habitante,1064,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.18,lectura,(D21 −D211) ÷ TR × 100
 1996,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.21,lectura,(D21 −D211) ÷ TR × 100
 1997,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,10.38,lectura,(D21 −D211) ÷ TR × 100
@@ -299,6 +308,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.4,lectura,(D21 −D211) ÷ TR × 100
 2023,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,6.74,lectura,(D21 −D211) ÷ TR × 100
 2024,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.01,lectura,(D21 −D211) ÷ TR × 100
+2025,de cada 100 €,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",euros de cada 100,7.24,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
 1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
 1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.2,dato,D29
@@ -329,6 +339,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
 2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.8,dato,D29
 2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.7,dato,D29
+2025,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",% del PIB,1.46,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,5611.0,dato,D29
 1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,5742.0,dato,D29
 1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,6152.0,dato,D29
@@ -359,6 +370,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,23818.0,dato,D29
 2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,27383.0,dato,D29
 2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,27191.0,dato,D29
+2025,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros corrientes,24626.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,11277.6,lectura,D29
 1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,11146.9,lectura,D29
 1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,11655.6,lectura,D29
@@ -389,6 +401,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,26872.8,lectura,D29
 2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,29079.1,lectura,D29
 2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,28019.7,lectura,D29
+2025,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",millones de euros de 2025,24626.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,141,lectura,D29
 1996,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,144,lectura,D29
 1997,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,154,lectura,D29
@@ -419,6 +432,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,498,lectura,D29
 2023,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,566,lectura,D29
 2024,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,556,lectura,D29
+2025,evolución,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros por habitante,499,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.27,lectura,(D29) ÷ TR × 100
 1996,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.17,lectura,(D29) ÷ TR × 100
 1997,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.15,lectura,(D29) ÷ TR × 100
@@ -449,6 +463,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.15,lectura,(D29) ÷ TR × 100
 2023,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.35,lectura,(D29) ÷ TR × 100
 2024,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.04,lectura,(D29) ÷ TR × 100
+2025,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.39,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.5,dato,D51A_C1
 1996,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.3,dato,D51A_C1
 1997,evolución,Impuestos sobre la renta de los hogares,% del PIB,6.9,dato,D51A_C1
@@ -479,6 +494,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.0,dato,D51A_C1
 2023,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.0,dato,D51A_C1
 2024,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.1,dato,D51A_C1
+2025,evolución,Impuestos sobre la renta de los hogares,% del PIB,9.55,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,34383.0,dato,D51A_C1
 1996,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,35538.0,dato,D51A_C1
 1997,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,35809.0,dato,D51A_C1
@@ -509,6 +525,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,123399.0,dato,D51A_C1
 2023,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,134371.0,dato,D51A_C1
 2024,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,145873.0,dato,D51A_C1
+2025,evolución,Impuestos sobre la renta de los hogares,millones de euros corrientes,161400.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,69106.6,lectura,D51A_C1
 1996,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,68989.9,lectura,D51A_C1
 1997,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,67843.9,lectura,D51A_C1
@@ -539,6 +556,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,139225.8,lectura,D51A_C1
 2023,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,142694.2,lectura,D51A_C1
 2024,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,150319.0,lectura,D51A_C1
+2025,evolución,Impuestos sobre la renta de los hogares,millones de euros de 2025,161400.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre la renta de los hogares,euros por habitante,866,lectura,D51A_C1
 1996,evolución,Impuestos sobre la renta de los hogares,euros por habitante,891,lectura,D51A_C1
 1997,evolución,Impuestos sobre la renta de los hogares,euros por habitante,894,lectura,D51A_C1
@@ -569,6 +587,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2582,lectura,D51A_C1
 2023,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2779,lectura,D51A_C1
 2024,evolución,Impuestos sobre la renta de los hogares,euros por habitante,2985,lectura,D51A_C1
+2025,evolución,Impuestos sobre la renta de los hogares,euros por habitante,3270,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,20.01,lectura,(D51A_C1) ÷ TR × 100
 1996,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,19.65,lectura,(D51A_C1) ÷ TR × 100
 1997,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,18.34,lectura,(D51A_C1) ÷ TR × 100
@@ -599,6 +618,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.5,lectura,(D51A_C1) ÷ TR × 100
 2023,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.32,lectura,(D51A_C1) ÷ TR × 100
 2024,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.65,lectura,(D51A_C1) ÷ TR × 100
+2025,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,22.24,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.6,dato,D51B_C2
 1996,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.8,dato,D51B_C2
 1997,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.4,dato,D51B_C2
@@ -629,6 +649,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.7,dato,D51B_C2
 2023,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,2.9,dato,D51B_C2
 2024,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.0,dato,D51B_C2
+2025,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,3.17,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,7565.0,dato,D51B_C2
 1996,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,8777.0,dato,D51B_C2
 1997,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,12695.0,dato,D51B_C2
@@ -659,6 +680,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,36628.0,dato,D51B_C2
 2023,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,43520.0,dato,D51B_C2
 2024,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,47452.0,dato,D51B_C2
+2025,evolución,Impuestos sobre los beneficios de las empresas,millones de euros corrientes,53623.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,15204.9,lectura,D51B_C2
 1996,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,17038.8,lectura,D51B_C2
 1997,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,24052.0,lectura,D51B_C2
@@ -689,6 +711,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,41325.8,lectura,D51B_C2
 2023,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,46215.7,lectura,D51B_C2
 2024,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,48898.3,lectura,D51B_C2
+2025,evolución,Impuestos sobre los beneficios de las empresas,millones de euros de 2025,53623.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,190,lectura,D51B_C2
 1996,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,220,lectura,D51B_C2
 1997,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,317,lectura,D51B_C2
@@ -719,6 +742,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,767,lectura,D51B_C2
 2023,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,900,lectura,D51B_C2
 2024,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,971,lectura,D51B_C2
+2025,evolución,Impuestos sobre los beneficios de las empresas,euros por habitante,1086,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.4,lectura,(D51B_C2) ÷ TR × 100
 1996,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,4.85,lectura,(D51B_C2) ÷ TR × 100
 1997,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.5,lectura,(D51B_C2) ÷ TR × 100
@@ -749,6 +773,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.38,lectura,(D51B_C2) ÷ TR × 100
 2023,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,6.91,lectura,(D51B_C2) ÷ TR × 100
 2024,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.04,lectura,(D51B_C2) ÷ TR × 100
+2025,de cada 100 €,Impuestos sobre los beneficios de las empresas,euros de cada 100,7.39,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
 1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
 1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
@@ -779,6 +804,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
 2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.3,lectura,D5 −D51A_C1 −D51B_C2
 2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.4,lectura,D5 −D51A_C1 −D51B_C2
+2025,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",% del PIB,0.33,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1670.0,lectura,D5 −D51A_C1 −D51B_C2
 1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1778.0,lectura,D5 −D51A_C1 −D51B_C2
 1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,1902.0,lectura,D5 −D51A_C1 −D51B_C2
@@ -809,6 +835,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,4743.0,lectura,D5 −D51A_C1 −D51B_C2
 2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,5228.0,lectura,D5 −D51A_C1 −D51B_C2
 2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,5386.0,lectura,D5 −D51A_C1 −D51B_C2
+2025,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros corrientes,5630.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,3356.5,lectura,D5 −D51A_C1 −D51B_C2
 1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,3451.6,lectura,D5 −D51A_C1 −D51B_C2
 1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,3603.5,lectura,D5 −D51A_C1 −D51B_C2
@@ -839,6 +866,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,5351.3,lectura,D5 −D51A_C1 −D51B_C2
 2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,5551.8,lectura,D5 −D51A_C1 −D51B_C2
 2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,5550.2,lectura,D5 −D51A_C1 −D51B_C2
+2025,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",millones de euros de 2025,5630.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,42,lectura,D5 −D51A_C1 −D51B_C2
 1996,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,45,lectura,D5 −D51A_C1 −D51B_C2
 1997,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,47,lectura,D5 −D51A_C1 −D51B_C2
@@ -869,6 +897,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,99,lectura,D5 −D51A_C1 −D51B_C2
 2023,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,108,lectura,D5 −D51A_C1 −D51B_C2
 2024,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,110,lectura,D5 −D51A_C1 −D51B_C2
+2025,evolución,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros por habitante,114,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.97,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
 1996,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.98,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
 1997,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.97,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
@@ -899,6 +928,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.83,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
 2023,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.83,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
 2024,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.8,lectura,(D5 −D51A_C1 −D51B_C2) ÷ TR × 100
+2025,de cada 100 €,"Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…)",euros de cada 100,0.78,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.3,dato,D91
 1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.3,dato,D91
 1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.5,dato,D91
@@ -929,6 +959,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
 2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
 2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.4,dato,D91
+2025,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",% del PIB,0.36,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,1498.0,dato,D91
 1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,1660.0,dato,D91
 1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,2453.0,dato,D91
@@ -959,6 +990,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5577.0,dato,D91
 2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5551.0,dato,D91
 2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,5694.0,dato,D91
+2025,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros corrientes,6047.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,3010.8,lectura,D91
 1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,3222.6,lectura,D91
 1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,4647.5,lectura,D91
@@ -989,6 +1021,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,6292.3,lectura,D91
 2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,5894.8,lectura,D91
 2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,5867.5,lectura,D91
+2025,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",millones de euros de 2025,6047.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,38,lectura,D91
 1996,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,42,lectura,D91
 1997,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,61,lectura,D91
@@ -1019,6 +1052,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,117,lectura,D91
 2023,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,115,lectura,D91
 2024,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,117,lectura,D91
+2025,evolución,"Impuestos sobre el capital (sucesiones, donaciones…)",euros por habitante,123,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.87,lectura,(D91) ÷ TR × 100
 1996,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.92,lectura,(D91) ÷ TR × 100
 1997,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.26,lectura,(D91) ÷ TR × 100
@@ -1049,6 +1083,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.97,lectura,(D91) ÷ TR × 100
 2023,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.88,lectura,(D91) ÷ TR × 100
 2024,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.85,lectura,(D91) ÷ TR × 100
+2025,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.83,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
 1996,evolución,Cotizaciones sociales,% del PIB,12.0,dato,D61
 1997,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
@@ -1079,6 +1114,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Cotizaciones sociales,% del PIB,13.1,dato,D61
 2023,evolución,Cotizaciones sociales,% del PIB,13.2,dato,D61
 2024,evolución,Cotizaciones sociales,% del PIB,13.2,dato,D61
+2025,evolución,Cotizaciones sociales,% del PIB,13.21,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Cotizaciones sociales,millones de euros corrientes,56187.0,dato,D61
 1996,evolución,Cotizaciones sociales,millones de euros corrientes,58634.0,dato,D61
 1997,evolución,Cotizaciones sociales,millones de euros corrientes,63111.0,dato,D61
@@ -1109,6 +1145,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Cotizaciones sociales,millones de euros corrientes,180086.0,dato,D61
 2023,evolución,Cotizaciones sociales,millones de euros corrientes,197003.0,dato,D61
 2024,evolución,Cotizaciones sociales,millones de euros corrientes,210337.0,dato,D61
+2025,evolución,Cotizaciones sociales,millones de euros corrientes,223230.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Cotizaciones sociales,millones de euros de 2025,112930.5,lectura,D61
 1996,evolución,Cotizaciones sociales,millones de euros de 2025,113826.2,lectura,D61
 1997,evolución,Cotizaciones sociales,millones de euros de 2025,119570.4,lectura,D61
@@ -1139,6 +1176,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Cotizaciones sociales,millones de euros de 2025,203183.4,lectura,D61
 2023,evolución,Cotizaciones sociales,millones de euros de 2025,209205.7,lectura,D61
 2024,evolución,Cotizaciones sociales,millones de euros de 2025,216747.8,lectura,D61
+2025,evolución,Cotizaciones sociales,millones de euros de 2025,223230.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Cotizaciones sociales,euros por habitante,1415,lectura,D61
 1996,evolución,Cotizaciones sociales,euros por habitante,1470,lectura,D61
 1997,evolución,Cotizaciones sociales,euros por habitante,1576,lectura,D61
@@ -1169,6 +1207,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Cotizaciones sociales,euros por habitante,3769,lectura,D61
 2023,evolución,Cotizaciones sociales,euros por habitante,4074,lectura,D61
 2024,evolución,Cotizaciones sociales,euros por habitante,4304,lectura,D61
+2025,evolución,Cotizaciones sociales,euros por habitante,4522,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.71,lectura,(D61) ÷ TR × 100
 1996,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.41,lectura,(D61) ÷ TR × 100
 1997,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.32,lectura,(D61) ÷ TR × 100
@@ -1199,6 +1238,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.37,lectura,(D61) ÷ TR × 100
 2023,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.26,lectura,(D61) ÷ TR × 100
 2024,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.22,lectura,(D61) ÷ TR × 100
+2025,de cada 100 €,Cotizaciones sociales,euros de cada 100,30.76,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
 1996,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
 1997,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
@@ -1229,6 +1269,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
 2023,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
 2024,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
+2025,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
 1996,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
 1997,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
@@ -1259,6 +1300,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
 2023,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
 2024,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,dato,−D995
+2025,evolución,Menos lo liquidado que no se espera cobrar,millones de euros corrientes,0.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
 1996,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
 1997,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
@@ -1289,6 +1331,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
 2023,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
 2024,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,lectura,−D995
+2025,evolución,Menos lo liquidado que no se espera cobrar,millones de euros de 2025,0.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
 1996,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
 1997,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
@@ -1319,6 +1362,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
 2023,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
 2024,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,lectura,−D995
+2025,evolución,Menos lo liquidado que no se espera cobrar,euros por habitante,0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
 1996,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
 1997,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
@@ -1349,6 +1393,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
 2023,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
 2024,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,lectura,(−D995) ÷ TR × 100
+2025,de cada 100 €,Menos lo liquidado que no se espera cobrar,euros de cada 100,0.0,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.3,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.2,lectura,TR − impuestos y cotizaciones
 1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.9,lectura,TR − impuestos y cotizaciones
@@ -1379,6 +1424,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.6,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.3,lectura,TR − impuestos y cotizaciones
 2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.2,lectura,TR − impuestos y cotizaciones
+2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.98,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,24472.0,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,25280.0,lectura,TR − impuestos y cotizaciones
 1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,25397.0,lectura,TR − impuestos y cotizaciones
@@ -1409,6 +1455,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,63150.0,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,78660.0,lectura,TR − impuestos y cotizaciones
 2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,82055.0,lectura,TR − impuestos y cotizaciones
+2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,84167.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,49186.4,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,49076.1,lectura,TR − impuestos y cotizaciones
 1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,48117.3,lectura,TR − impuestos y cotizaciones
@@ -1439,6 +1486,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,71249.5,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,83532.3,lectura,TR − impuestos y cotizaciones
 2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,84555.9,lectura,TR − impuestos y cotizaciones
+2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,84167.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,616,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,634,lectura,TR − impuestos y cotizaciones
 1997,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,634,lectura,TR − impuestos y cotizaciones
@@ -1469,6 +1517,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1322,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1627,lectura,TR − impuestos y cotizaciones
 2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1679,lectura,TR − impuestos y cotizaciones
+2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1705,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,14.24,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 1996,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,13.97,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 1997,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,13.01,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
@@ -1499,3 +1548,4 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2022,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.0,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 2023,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.48,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 2024,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.18,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2025,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.6,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)

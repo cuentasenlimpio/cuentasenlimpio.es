@@ -648,6 +648,75 @@ def construir_ingresos(descargas, tabla_main, deflactor, base, poblacion):
     return {"años": años, "partes": partes, "reparto": reparto}, comprobaciones
 
 
+def ampliar_ingresos_igae(ingresos, descargas, pib, deflactor, base, poblacion):
+    """Añade a los ingresos el año siguiente al último de Eurostat con el desglose de la IGAE (A_AAPP_Imp y A_AAPP),
+    marcado como provisional y sin segunda fuente. La correspondencia de categorías se comprueba en los años que
+    publican los dos."""
+    if "igae_a_aapp_imp" not in descargas or "igae_a_aapp" not in descargas:
+        return []
+
+    def tabla(filas):
+        cab = next(i for i, f in enumerate(filas) if len(f) > 1 and f[1] == "CONCEPTOS")
+        cols = {j: (int(x[:4]), "(P)" in x) for j, x in enumerate(filas[cab]) if isinstance(x, str) and x[:4].isdigit()}
+        out, prov = {}, {}
+        for f in filas[cab + 1:]:
+            cad = [x.strip() for x in f[:2] if isinstance(x, str) and x.strip()]
+            if not cad:
+                continue
+            for j, (a, pr) in cols.items():
+                if j < len(f) and isinstance(f[j], float):
+                    out.setdefault((cad[0], a), f[j])
+                    prov[a] = pr
+        return out, prov
+
+    t, prov = tabla(hojas(AQUI / descargas["igae_a_aapp_imp"]["fichero"])["Tabla1a"])
+    a_, _ = tabla(hojas(AQUI / descargas["igae_a_aapp"]["fichero"])["Tabla1a"])
+    etiquetas = {k for k, _ in t}
+    irpf = next(k for k in etiquetas if k.startswith("Impuesto sobre la Renta de Personas"))
+    soc = [next(k for k in etiquetas if k.startswith("Impuesto sobre Sociedades")),
+           "Gravamen Temporal Entidades de Crédito y Establecimientos Financieros",
+           "Impuesto sobre el margen de intereses y comisiones de determinadas entidades financieras"]
+
+    def partes(y):
+        g = lambda k: t.get((k, y), 0.0)
+        renta, sociedades = g(irpf), sum(g(k) for k in soc)
+        impuestos = {"iva": g("D.211"), "productos": g("D.21") - g("D.211"), "produccion": g("D.29"), "renta": renta,
+                     "sociedades": sociedades, "otros_corrientes": g("D.5") - renta - sociedades, "capital": g("D.91"),
+                     "cotizaciones": g("D.611") + g("D.612") + g("D.613"), "no_cobrado": 0.0}
+        impuestos["otros_ingresos"] = a_[("RECURSOS NO FINANCIEROS", y)] - sum(impuestos.values())
+        return impuestos
+
+    años = ingresos["años"]
+    comunes = [y for y in años if ("D.211", y) in t]
+    cuadran = [y for y in comunes if all(abs(partes(y)[p["clave"]] - p["corrientes"][años.index(y)]) < 1
+                                         for p in ingresos["partes"] if p["clave"] != "otros_ingresos")]
+    comprobaciones = [{
+        "que": "¿El desglose de impuestos de la IGAE coincide con el de Eurostat?",
+        "resultado": (f"Coincide al millón de euros en {len(cuadran)} de los {len(comunes)} años que publican los dos"
+                      + ("" if len(cuadran) == len(comunes) else
+                         f"; no en {', '.join(str(y) for y in comunes if y not in cuadran)}, que la IGAE revisó después")
+                      + ". Por eso usamos el de la IGAE para el año que Eurostat aún no tiene"),
+        "ok": bool(cuadran) and cuadran[-1] >= comunes[-1] - 1,
+    }]
+    nuevo = años[-1] + 1
+    if ("D.211", nuevo) not in t or ("RECURSOS NO FINANCIEROS", nuevo) not in a_ or nuevo not in pib:
+        ingresos["provisional_igae"] = [False] * len(años)
+        return comprobaciones
+    valores = partes(nuevo)
+    for p in ingresos["partes"]:
+        m = valores[p["clave"]]
+        p["pib"].append(round(100 * m / pib[nuevo][0], 2))
+        p["corrientes"].append(m)
+        p["constantes"].append(round(m * base / deflactor[nuevo][0], 1))
+        p["habitante"].append(round(m * 1e6 / (poblacion[nuevo][0] * 1e3)))
+    total = a_[("RECURSOS NO FINANCIEROS", nuevo)]
+    ingresos["reparto"].append({k: round(100 * v / total, 2) for k, v in valores.items()})
+    ingresos["años"] = años + [nuevo]
+    ingresos["provisional_igae"] = [False] * len(años) + [True]
+    ingresos["igae_marca_provisional"] = prov.get(nuevo, False)
+    return comprobaciones
+
+
 def escribir_csv_paginas(gasto, ingresos):
     """Todos los números de las páginas de gasto e ingresos, con su tipo y su fórmula."""
     unidades = {"pib": "% del PIB", "corrientes": "millones de euros corrientes",
@@ -689,11 +758,16 @@ def escribir_csv_paginas(gasto, ingresos):
         for p in ingresos["partes"]:
             for u, nombre_u in unidades.items():
                 for i, a in enumerate(ingresos["años"]):
+                    igae = ingresos.get("provisional_igae", [False] * (i + 1))[i]
                     w.writerow([a, "evolución", p["nombre"], nombre_u, p[u][i],
-                                "dato" if u in ("pib", "corrientes") and " " not in p["codigos"].strip("−") else "lectura", p["codigos"]])
+                                "provisional (IGAE, sin segunda fuente)" if igae else
+                                "dato" if u in ("pib", "corrientes") and " " not in p["codigos"].strip("−") else "lectura",
+                                "IGAE A_AAPP_Imp y A_AAPP (misma partida)" if igae else p["codigos"]])
             for i, a in enumerate(ingresos["años"]):
-                w.writerow([a, "de cada 100 €", p["nombre"], "euros de cada 100", ingresos["reparto"][i][p["clave"]], "lectura",
-                            f"({p['codigos']}) ÷ TR × 100"])
+                igae = ingresos.get("provisional_igae", [False] * (i + 1))[i]
+                w.writerow([a, "de cada 100 €", p["nombre"], "euros de cada 100", ingresos["reparto"][i][p["clave"]],
+                            "provisional (IGAE, sin segunda fuente)" if igae else "lectura",
+                            "partida ÷ recursos no financieros × 100 (IGAE)" if igae else f"({p['codigos']}) ÷ TR × 100"])
 
 
 # Qué presupuesto rigió cada año (comprobado en el BOE; ver la página «Cómo se miente con datos»).
@@ -1330,6 +1404,7 @@ def main():
     gasto["tipo"], comprobacion_tipo = construir_tipo(tablas["gov_10a_main"], años, deflactor, base, poblacion)
     comprobaciones_gasto.append(comprobacion_tipo)
     ingresos, comprobaciones_ingresos = construir_ingresos(descargas, tablas["gov_10a_main"], deflactor, base, poblacion)
+    comprobaciones_ingresos += ampliar_ingresos_igae(ingresos, descargas, pib_nama, deflactor, base, poblacion)
     for nombre, cuerpo, compr in (("gasto", gasto, comprobaciones_gasto), ("ingresos", ingresos, comprobaciones_ingresos)):
         cuerpo["comprobaciones"] = compr
         cuerpo["año_base_constantes"] = ultimo

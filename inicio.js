@@ -52,7 +52,7 @@ async function arrancar() {
   if (ingresos) {
     const r = ingresos.reparto.at(-1);
     const top = Object.entries(r).filter(([k]) => NOMBRES_INGRESOS[k] && k !== "otros_ingresos").sort((a, b) => b[1] - a[1]).slice(0, 3);
-    pon("q-ingresos", `De cada 100 € que ingresan: ${lista(top.map(([k, x]) => `${numero(Math.round(x), 0)} de ${NOMBRES_INGRESOS[k]}`))} (${ingresos.años.at(-1)}). Y cómo ha cambiado desde 1995.`);
+    pon("q-ingresos", `De cada 100 € que ingresan: ${lista(top.map(([k, x]) => `${numero(Math.round(x), 0)} de ${NOMBRES_INGRESOS[k]}`))} (${ingresos.años.at(-1)}${ingresos.provisional_igae?.at(-1) ? ", provisional" : ""}). Y cómo ha cambiado desde 1995.`);
   }
   if (promesas) {
     pon("q-promesas", `${numero(promesas.distintas, 0)} promesas de ${promesas.documentos} documentos, con su cita literal. Sin veredicto: la promesa y los hechos.`);

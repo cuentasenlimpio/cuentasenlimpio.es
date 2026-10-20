@@ -493,3 +493,5 @@ table.previsiones td:first-child { font-weight: 600; }
 .clave-discontinua { display: inline-block; width: 1.3rem; height: 0; border-top: 2px dashed var(--tinta-suave); vertical-align: middle; }
 .clave-area.oscura { background: rgba(29,29,27,0.11); }
 .cifras-clave .reciente { font-size: 0.8125rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); padding-top: 0.35rem; margin-top: auto; }
+.aviso-provisional { font-size: 0.875rem; background: rgba(29,29,27,0.05); border-left: 3px solid var(--linea-fuerte); padding: 0.4rem 0.7rem; margin: 0 0 0.75rem; }
+.como-leer { font-size: 0.9375rem; margin: 0.25rem 0 0; color: var(--tinta-suave); }

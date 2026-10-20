@@ -5,12 +5,19 @@ function pintar(g, aapp, sel) {
   const i = sel.indice;
   const u = sel.unidad;
   for (const s of document.querySelectorAll(".año-elegido")) s.textContent = g.años[i];
+  // El último año puede venir de la IGAE antes de que lo publique Eurostat: provisional y sin segunda fuente.
+  const provisional = !!g.provisional_igae?.[i];
+  document.getElementById("aviso-provisional").hidden = !provisional;
   // «Lo liquidado que no se espera cobrar» es casi siempre cero: solo se enseña cuando no lo es.
   const visibles = g.partes.filter((p) => p.clave !== "no_cobrado" || p.corrientes.some((v) => v));
 
   dibujarBarrasH(document.getElementById("reparto"),
     visibles.map((p) => ({ nombre: p.nombre, valor: g.reparto[i][p.clave] })), { formato: (v) => numero(v, 1), sufijo: " €" });
-  lineaFuente(document.getElementById("reparto-fuente"), {
+  lineaFuente(document.getElementById("reparto-fuente"), provisional ? {
+    fuentes: aapp.fuentes,
+    tablas: [["igae_a_aapp_imp", "impuestos y cotizaciones de las administraciones públicas"], ["igae_a_aapp", "recursos no financieros"]],
+    tipo: "lectura", nota: "Provisional: Eurostat aún no publica este año. Las mismas partidas que en los demás años, de la IGAE; ver «Comprobaciones».",
+  } : {
     fuentes: aapp.fuentes,
     tablas: [["gov_10a_taxag", "impuestos y cotizaciones sociales"], ["gov_10a_main", "ingresos totales de las administraciones"]],
     tipo: "lectura", nota: "Cada parte ÷ ingresos totales del año × 100. «Otros ingresos» es la resta: ingresos totales − impuestos y cotizaciones.",
@@ -40,7 +47,7 @@ function pintarRespuesta(g) {
   const r = g.reparto.at(-1);
   const top = Object.entries(r).filter(([k]) => NOMBRES_CORTOS[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
   const p = document.getElementById("respuesta");
-  p.textContent = `De cada 100 € que ingresaron las administraciones en ${g.años.at(-1)}, `;
+  p.textContent = `De cada 100 € que ingresaron las administraciones en ${g.años.at(-1)}${g.provisional_igae?.at(-1) ? " (provisional)" : ""}, `;
   top.forEach(([k, v], j) => {
     if (j) p.append(j === 2 ? " y " : ", ");
     const b = document.createElement("strong");
@@ -58,7 +65,9 @@ async function arrancar() {
   pintarRespuesta(g);
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_taxag");
-  pintarUltimoAño(g.años, `Eurostat publica el detalle por impuestos más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);
+  pintarUltimoAño(g.años, g.provisional_igae?.at(-1)
+    ? `${g.años.at(-1)} es provisional: Eurostat publica el detalle por impuestos más tarde (su última actualización es del ${fecha(f.actualizado_fuente)}), así que ese año sale de la IGAE${g.igae_marca_provisional ? ", que también lo marca como provisional" : ""}, sin segunda fuente. Cuando Eurostat lo publique, sustituirá a este.`
+    : `Eurostat publica el detalle por impuestos más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);
   let espera = null;
   window.addEventListener("resize", () => {
     clearTimeout(espera);

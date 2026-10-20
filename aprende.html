@@ -13,6 +13,7 @@
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
@@ -32,12 +33,12 @@
 
     <ol class="pasos">
       <li id="deficit">
-        <h2 class="pregunta">¿Déficit o deuda?</h2>
+        <h2 class="pregunta">¿Déficit o deuda? <button type="button" class="info" data-info="deficit">i</button></h2>
         <p>El déficit es lo que falta en un año: lo que se gasta menos lo que se ingresa. La deuda es todo lo que se debe, sumando los años. Si hay déficit, la deuda sigue creciendo aunque el déficit baje: solo crece más despacio.</p>
         <p><a href="cuentas.html#g1-titulo">Míralo en las cuentas →</a></p>
       </li>
       <li id="invertir">
-        <h2 class="pregunta">¿Gastar o invertir?</h2>
+        <h2 class="pregunta">¿Gastar o invertir? <button type="button" class="info" data-info="inversion">i</button></h2>
         <p>El gasto corriente se consume en el año: sueldos, compras, pensiones, intereses. La inversión crea algo que dura: una carretera, un hospital, un ordenador. Recortar inversión baja el déficit enseguida, pero el efecto llega años después.</p>
         <p><a href="gasto.html#t-titulo">Cuánto se invierte →</a></p>
       </li>
@@ -57,27 +58,27 @@
         <p><a href="cuentas.html">Cambia la unidad en cualquier gráfico →</a></p>
       </li>
       <li id="intereses">
-        <h2 class="pregunta">¿Qué pesa de la deuda?</h2>
+        <h2 class="pregunta">¿Qué pesa de la deuda? <button type="button" class="info" data-info="deuda">i</button></h2>
         <p>La deuda no se devuelve de golpe: cuando vence un bono se suele pagar emitiendo otro. Lo que cuesta cada año son los intereses, y dependen tanto de cuánto se debe como del tipo al que se pidió prestado.</p>
         <p><a href="gasto.html">Los intereses, en el gasto →</a></p>
       </li>
       <li id="impuestos">
-        <h2 class="pregunta">¿Impuesto o cotización?</h2>
+        <h2 class="pregunta">¿Impuesto o cotización? <button type="button" class="info" data-info="presion_fiscal">i</button></h2>
         <p>Un impuesto se paga sin recibir nada concreto a cambio. Una cotización social se paga por trabajar y da derecho a prestaciones: pensión, desempleo, baja. Los impuestos directos gravan lo que se gana o se tiene; los indirectos, lo que se compra.</p>
         <p><a href="ingresos.html">De dónde sale el dinero →</a></p>
       </li>
       <li id="recaudacion">
-        <h2 class="pregunta">¿Sube la recaudación, suben los impuestos?</h2>
+        <h2 class="pregunta">¿Sube la recaudación, suben los impuestos? <button type="button" class="info" data-info="recaudacion">i</button></h2>
         <p>No necesariamente. La recaudación sube con más empleo, más consumo o precios más altos, con las mismas leyes. Para saber si cambió un impuesto hay que mirar la ley, no lo recaudado.</p>
         <p><a href="ingresos.html">Cada ingreso desde 1995 →</a></p>
       </li>
       <li id="presupuesto">
-        <h2 class="pregunta">¿Qué es un presupuesto prorrogado?</h2>
+        <h2 class="pregunta">¿Qué es un presupuesto prorrogado? <button type="button" class="info" data-info="presupuesto">i</button></h2>
         <p>Si el 1 de enero no hay ley de presupuestos nueva, la Constitución prorroga la del año anterior hasta que se apruebe otra. El Estado sigue funcionando con las cifras viejas y las corrige durante el año.</p>
         <p><a href="presupuesto.html">Lo aprobado y lo gastado →</a></p>
       </li>
       <li id="contabilidad">
-        <h2 class="pregunta">¿Por qué no cuadran dos cifras oficiales?</h2>
+        <h2 class="pregunta">¿Por qué no cuadran dos cifras oficiales? <button type="button" class="info" data-info="contabilidad">i</button></h2>
         <p>Hay dos contabilidades. La presupuestaria cuenta lo que autoriza y gasta cada administración según su presupuesto. La nacional, la que usa Europa, suma a todas las administraciones con reglas comunes. Las dos son oficiales y miden cosas distintas.</p>
         <p><a href="como-se-miente.html#contabilidades">Dos contabilidades →</a></p>
       </li>
