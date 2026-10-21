@@ -1,12 +1,11 @@
 // Cuentas en limpio: tema claro u oscuro. Se carga en <head> sin «defer» para que la página no destelle al abrir.
-// Sin elección guardada, manda el dispositivo (prefers-color-scheme); con ella, la elección de quien lee.
+// Por defecto, siempre claro (aunque el dispositivo esté en oscuro); oscuro solo si quien lee lo elige y se recuerda.
 "use strict";
 (function () {
   let guardado = null;
-  try { guardado = localStorage.getItem("cuentas-tema"); } catch { /* sin almacenamiento: manda el dispositivo */ }
+  try { guardado = localStorage.getItem("cuentas-tema"); } catch { /* sin almacenamiento: tema claro */ }
   if (guardado === "dark" || guardado === "light") document.documentElement.dataset.theme = guardado;
-  const oscuro = () => document.documentElement.dataset.theme === "dark"
-    || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  const oscuro = () => document.documentElement.dataset.theme === "dark";
   function pintarBoton(b) {
     const o = oscuro();
     b.setAttribute("aria-pressed", String(o));

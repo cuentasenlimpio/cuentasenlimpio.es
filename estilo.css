@@ -692,19 +692,7 @@ footer.sitio .mapa li { margin: 0 0 0.55rem; }
    Estilo D (22/10/2026): estructura de cuaderno técnico, subrayado de rotulador, gráficos de línea gruesa
    y esquinas redondeadas. Tema oscuro con los mismos tokens.
    ====================================================================================================== */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --fondo: #161513; --cuadricula: #1d1c19; --superficie: #22201d; --tinta: #f2efe8; --tinta-suave: #b8b2a6;
-    --texto-respuesta: #ddd8ce; --linea: #3a3732; --linea-fuerte: #77736a; --acento: #e2b862; --acento-tenue: #3a3020;
-    --nota: #2a2824; --marca: #6a5c1c; --cabecera: #0e0d0c; --entender: #2c271e; --entender-tinta: #e2c48a;
-    --serie-ingresos: #e2b862; --serie-gastos: #f2efe8; --serie-deuda: #f2efe8;
-    --hueco: rgba(255, 255, 255, 0.08); --franja: rgba(255, 255, 255, 0.035); --sombra-tenue: rgba(255, 255, 255, 0.05);
-    --sombra-fuerte: rgba(255, 255, 255, 0.11); --relleno-zoom: rgba(226, 184, 98, 0.18);
-    --c-primario: #e2b862; --c-intereses: #4fb8c9; --c-activos: #d0b24a; --c-ajustes: #c98bb3; --c-crecimiento: #9cc04a;
-    --p-aprobado: #3f7f8a; --p-definitivo: #5fb3c2; --p-gastado: #a6dde6;
-    color-scheme: dark;
-  }
-}
+/* Tema oscuro: solo si quien lee lo elige con el botón del menú (por defecto, siempre claro) */
 :root[data-theme="dark"] {
   --fondo: #161513; --cuadricula: #1d1c19; --superficie: #22201d; --tinta: #f2efe8; --tinta-suave: #b8b2a6;
   --texto-respuesta: #ddd8ce; --linea: #3a3732; --linea-fuerte: #77736a; --acento: #e2b862; --acento-tenue: #3a3020;
