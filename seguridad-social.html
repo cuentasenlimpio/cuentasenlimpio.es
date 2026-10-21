@@ -17,7 +17,7 @@
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js?v=ddca3566b1" defer></script>
   <script src="ec.js?v=8d530b25b8" defer></script>
-  <script src="seguridad-social.js?v=15bed56b3b" defer></script>
+  <script src="seguridad-social.js?v=243f7949de" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -42,6 +42,19 @@
     <p class="contabilidad">Aquí «Seguridad Social» es lo que la contabilidad nacional llama fondos de la Seguridad Social: las pensiones contributivas, las bajas por enfermedad, los permisos por nacimiento y también el paro (el Servicio Público de Empleo Estatal). Las pensiones de los funcionarios del Estado (clases pasivas) no están aquí: las paga el Estado.</p>
     <div class="cifras-clave" id="cifras"></div>
     <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="ea-t">
+      <h2 class="pregunta" id="ea-t">¿Y en lo que va de año?</h2>
+      <p class="grafico-explica" id="ea-explica">Lo que el sistema de la Seguridad Social ha ingresado y gastado desde enero, frente a los mismos meses del año anterior, en millones de euros.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="ss-este-ano"></table></div>
+      <p class="fuente-grafico" id="ea-fuente"></p>
+      <p class="grafico-explica" id="ea-prestamo"></p>
+      <details class="plegable ficha">
+        <summary>Comprobaciones de estas cifras</summary>
+        <ul class="lista-comprobaciones" id="ea-comprobaciones"></ul>
+      </details>
+    </section>
 
     <section class="grafico" aria-labelledby="g1-t">
       <h2 class="pregunta" id="g1-t">¿Llegan las cotizaciones para las prestaciones?</h2>

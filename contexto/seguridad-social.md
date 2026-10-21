@@ -31,8 +31,25 @@ En millones de euros, 2025: cotizaciones 212.754, transferencias 48.727, prestac
 
 El saldo sin transferencias no es «lo que les falta a las pensiones»: parte de esas transferencias paga gastos que la ley atribuye al Estado (por ejemplo, los complementos a mínimos). Desde 2017 el Estado también presta dinero a la Seguridad Social; los préstamos no son ingresos.
 
+## En lo que va de año: enero a agosto de 2026 frente a los mismos meses de 2025 (contabilidad presupuestaria, millones de euros)
+
+| Partida | 2026 | 2025 | Variación % |
+|---|---|---|---|
+| Cotizaciones | 126.032 | 117.248 | 7,5 |
+| de ellas, Mecanismo de Equidad Intergeneracional | 4.075 | 3.237 | 25,9 |
+| Transferencias del Estado | 40.186 | 36.583 | 9,8 |
+| Ingresos no financieros | 171.383 | 159.169 | 7,7 |
+| Pensiones contributivas | 123.762 | 116.759 | 6,0 |
+| de ellas, jubilación | 91.351 | 86.044 | 6,2 |
+| Bajas por enfermedad (incapacidad temporal) | 12.751 | 11.742 | 8,6 |
+| Nacimiento y cuidado de menor | 3.721 | 3.041 | 22,4 |
+| Gastos no financieros | 163.951 | 153.110 | 7,1 |
+
+Préstamo del Estado previsto en el presupuesto de 2026: 10.004 M€ (no es un ingreso).
+
 Fondo de Reserva a final de 2025: 14.070 millones de euros (Seguridad Social, informe a las Cortes Generales sobre el Fondo de Reserva (ejercicio 2025), https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/FondoReserva/39728/1726/1727).
 
 ## Fuentes
 
 - Eurostat, Ingresos, gastos y saldo de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- Seguridad Social, Ejecución del presupuesto del sistema de la Seguridad Social hasta agosto de 2026: https://www.seg-social.es/descarga/es/ResSISTEMA_Agosto_2026.xlsx

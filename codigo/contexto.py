@@ -538,10 +538,15 @@ def seguridad_social(D):
     md += ("\nEl saldo sin transferencias no es «lo que les falta a las pensiones»: parte de esas transferencias paga gastos que la ley atribuye "
            "al Estado (por ejemplo, los complementos a mínimos). Desde 2017 el Estado también presta dinero a la Seguridad Social; los préstamos "
            "no son ingresos.\n")
+    ea = s.get("este_ano")
+    if ea:
+        md += (f"\n## En lo que va de año: enero a {ea['mes']} de {ea['año']} frente a los mismos meses de {ea['año'] - 1} (contabilidad presupuestaria, millones de euros)\n\n"
+               + tabla(["Partida", str(ea["año"]), str(ea["año"] - 1), "Variación %"], [[f["nombre"], n(f["actual"]), n(f["anterior"]), n(f["publicado"], 1)] for f in ea["filas"]])
+               + (f"\n\nPréstamo del Estado previsto en el presupuesto de {ea['año']}: {n(ea['prestamo_previsto'])} M€ (no es un ingreso).\n" if ea.get("prestamo_previsto") else "\n"))
     fr = s.get("fondo_reserva")
     if fr:
         md += f"\nFondo de Reserva a final de {fr['año']}: {n(fr['meur'])} millones de euros ({fr['fuente']}, {fr['url']}).\n"
-    md += fuentes_md([url_tabla(D["aapp"], "gov_10a_main")])
+    md += fuentes_md([url_tabla(D["aapp"], "gov_10a_main")] + ([url_tabla(D["aapp"], "ss_ejecucion_mensual")] if ea else []))
     return md
 
 

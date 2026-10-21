@@ -48,6 +48,31 @@ async function arrancarSS() {
       { nombre: "saldo publicado", v: p.saldo.pib, color: "--c-primario" }] });
   lineaFuente($("g2-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "lectura", nota: "El saldo sin transferencias es el publicado menos las transferencias corrientes y de capital recibidas." });
 
+  const ea = d.este_ano;
+  if (ea) {
+    $("ea-explica").textContent = `Lo que el sistema de la Seguridad Social ha ingresado (derechos reconocidos) y gastado (obligaciones reconocidas) de enero a ${ea.mes} de ${ea.año}, frente a los mismos meses de ${ea.año - 1}, en millones de euros. Son cifras del presupuesto, no de contabilidad nacional: no incluyen el paro (el SEPE) y no son comparables con las de los gráficos de abajo.`;
+    const t = $("ss-este-ano");
+    t.textContent = "";
+    const cab = t.createTHead().insertRow();
+    for (const c of ["", `Hasta ${ea.mes.slice(0, 3)}. ${ea.año}`, `Mismos meses de ${ea.año - 1}`, "Variación"]) { const th = document.createElement("th"); th.textContent = c; cab.appendChild(th); }
+    const cuerpo = t.createTBody();
+    for (const [titulo, tipo] of [["Ingresos", "ingreso"], ["Gastos", "gasto"]]) {
+      const a = cuerpo.insertRow(); a.className = "fila-area";
+      const c0 = a.insertCell(); c0.textContent = titulo; c0.colSpan = 4;
+      for (const f of ea.filas.filter((x) => x.tipo === tipo)) {
+        const tr = cuerpo.insertRow();
+        if (f.clave === "ingresos" || f.clave === "gastos") tr.className = "fila-total";
+        tr.insertCell().textContent = f.nombre;
+        for (const v of [numero(Math.round(f.actual), 0), numero(Math.round(f.anterior), 0), `${f.publicado > 0 ? "+" : ""}${numero(f.publicado, 1)} %`]) {
+          const c = tr.insertCell(); c.className = "cifra"; c.textContent = v;
+        }
+      }
+    }
+    lineaFuente($("ea-fuente"), { fuentes: aapp.fuentes, tablas: [[ea.tabla, `ejecución del presupuesto del sistema hasta ${ea.mes} de ${ea.año}`]], tipo: "dato" });
+    if (ea.prestamo_previsto) $("ea-prestamo").textContent = `Además, las previsiones de ${ea.año} incluyen un préstamo del Estado a la Seguridad Social de ${numero(Math.round(ea.prestamo_previsto), 0)} millones de euros a lo largo del año. Un préstamo no es un ingreso: se suma a lo que la Seguridad Social le debe al Estado.`;
+    pintarComprobaciones($("ea-comprobaciones"), ea.comprobaciones);
+  }
+
   const fr = d.fondo_reserva;
   if (fr) {
     const q = $("fondo-reserva");

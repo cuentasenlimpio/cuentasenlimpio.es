@@ -365,6 +365,26 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO ss_pensiones_avance: no se pudo leer la página ({error})")
 
+    # Ejecución mensual del presupuesto de la Seguridad Social: «ResSISTEMA_<Mes>_<Año>.xlsx». Si el mes no existe, el
+    # servidor devuelve un fichero vacío (no un error), así que se prueba hacia atrás hasta dar con un Excel de verdad.
+    meses_ss = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+    for atras in range(0, 5):
+        mes_i = (ahora.month - 1 - atras) % 12
+        año_ss = ahora.year - (1 if ahora.month - 1 - atras < 0 else 0)
+        url_ss = f"https://www.seg-social.es/descarga/es/ResSISTEMA_{meses_ss[mes_i]}_{año_ss}.xlsx"
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url_ss, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+                es_excel = r.read(2) == b"PK"
+        except (urllib.error.URLError, TimeoutError):
+            es_excel = False
+        if es_excel:
+            PAGINAS.append({"fuente": "Seguridad Social", "tabla": "ss_ejecucion_mensual", "opcional": True,
+                            "nombre": f"Ejecución del presupuesto del sistema de la Seguridad Social hasta {meses_ss[mes_i].lower()} de {año_ss}",
+                            "url": url_ss, "extension": "xlsx"})
+            break
+    else:
+        print("AVISO ss_ejecucion_mensual: no se encontró ningún mes reciente")
+
     # Deuda viva de cada ayuntamiento (Hacienda): un fichero por año con un nombre que cambia de convención; se busca en su
     # página el del último año publicado.
     try:

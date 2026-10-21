@@ -1256,6 +1256,7 @@ def construir_seguridad_social(descargas):
     salida["partidas"]["saldo_sin_transferencias"] = {
         u: [None if None in (b, t1, t2) else round(b - t1 - t2, 2) for b, t1, t2 in zip(p["saldo"][u], p["transferencias"][u], p["transferencias_capital"][u])]
         for u in ("meur", "pib")}
+    salida["este_ano"] = construir_ss_este_ano(descargas)
     salida["fondo_reserva"] = {"año": 2025, "meur": 14070, "fuente": "Seguridad Social, informe a las Cortes Generales sobre el Fondo de Reserva (ejercicio 2025)",
                                "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/FondoReserva/39728/1726/1727"}
     (WEB / "datos" / "seguridad_social.json").write_text(json.dumps(salida, ensure_ascii=False))
@@ -1823,6 +1824,91 @@ def construir_modificaciones(descargas, hacienda_capitulos=None):
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     t = salida["totales"]
     print(f"modificaciones: hasta {d['mes']} de {a}: {t['modificaciones']} M€ sobre {t['iniciales']} M€; años {n_años}")
+    return salida
+
+
+def _ss_hoja(filas):
+    """Hoja del resumen de ejecución de la Seguridad Social: {etiqueta: {campo: valor}}. Por las celdas combinadas, los
+    números no caen siempre en la columna de su cabecera: cada campo va de la columna de su cabecera a la siguiente, y
+    su valor es el primero que aparece en ese tramo. Campos: las cabeceras de la primera fila («PREVISIONES…»,
+    «DERECHOS…», «EJERCICIO <año>» —el primer valor del año anterior—, «INCREMENTO…»…)."""
+    i = next(k for k, f in enumerate(filas) if f and f[0] == "CLASIFICACIÓN ECONÓMICA")
+    cab = [(k, " ".join(str(v).split()).upper()) for k, v in enumerate(filas[i]) if k > 0 and v not in (None, "")]
+    tramos = [(nombre, k, cab[n + 1][0] if n + 1 < len(cab) else 10 ** 6) for n, (k, nombre) in enumerate(cab)]
+    salida = {}
+    for f in filas[i + 2:]:
+        if not f or not isinstance(f[0], str) or not f[0].strip():
+            continue
+        fila = {}
+        for nombre, desde, hasta in tramos:
+            fila[nombre] = next((f[c] for c in range(desde, min(hasta, len(f))) if isinstance(f[c], (int, float))), None)
+        if any(v is not None for v in fila.values()):
+            salida[" ".join(f[0].split())] = fila
+    return salida
+
+
+def _campo(fila, empieza):
+    return next((v for k, v in fila.items() if k.startswith(empieza)), None)
+
+
+def construir_ss_este_ano(descargas):
+    """La Seguridad Social en lo que va de año (contabilidad presupuestaria): derechos reconocidos y obligaciones hasta el
+    último mes publicado, frente a los mismos meses del año anterior. Columnas del fichero: ingresos [previsiones,
+    derechos, recaudación, %, %, derechos año anterior, recaudación año anterior, incremento %]; gastos [inicial,
+    modificaciones, total, obligaciones, pagos, %, obligaciones año anterior, pagos año anterior, incremento %…]."""
+    if "ss_ejecucion_mensual" not in descargas:
+        return None
+    libro = hojas(AQUI / descargas["ss_ejecucion_mensual"]["fichero"])
+    titulo = " ".join(str(x) for f in libro["ResumenPI"][:8] for x in f if isinstance(x, str))
+    m = re.search(r"MES DE ([A-ZÁÉÍÓÚ]+) DE (\d{4})", titulo.upper())  # «ACUMULADO HASTA FIN DE MES DE AGOSTO DE 2026»
+    mes, año = (m.group(1).lower(), int(m.group(2))) if m else (None, None)
+    pi, pic = _ss_hoja(libro["ResumenPI"]), _ss_hoja(libro["ResumenPICap4"])
+    pg, pgc = _ss_hoja(libro["ResumenPG"]), _ss_hoja(libro["ResumenPGCap4"])
+    comprobaciones = []
+
+    def ing(h, k):
+        v = h[k]
+        return {"actual": _campo(v, "DERECHOS"), "anterior": _campo(v, "EJERCICIO"), "prevision": _campo(v, "PREVISIONES"), "publicado": _campo(v, "INCREMENTO")}
+
+    def gas(h, k):
+        v = h[k]
+        return {"actual": _campo(v, "OBLIGACIONES RECONOCIDAS"), "anterior": _campo(v, "EJERCICIO"), "prevision": _campo(v, "PRESUPUESTO TOTAL"),
+                "publicado": _campo(v, "INCREMENTO")}
+    filas = [
+        ("cotizaciones", "Cotizaciones", ing(pi, "1. COTIZACIONES SOCIALES"), "ingreso"),
+        ("mei", "de ellas, Mecanismo de Equidad Intergeneracional", ing(pic, "MECANISMO DE EQUIDAD INTERGENERACIONAL"), "ingreso"),
+        ("estado", "Transferencias del Estado", ing(pic, "DEL ESTADO Y ORG.AUTÓNOMOS"), "ingreso"),
+        ("ingresos", "Ingresos no financieros", ing(pi, "SUMA DE OPERACIONES NO FINANCIERAS"), "ingreso"),
+        ("pensiones", "Pensiones contributivas", gas(pgc, "SUMA DE PENSIONES"), "gasto"),
+        ("jubilacion", "de ellas, jubilación", gas(pgc, "JUBILACIÓN"), "gasto"),
+        ("it", "Bajas por enfermedad (incapacidad temporal)", gas(pgc, "INCAPACIDAD TEMPORAL"), "gasto"),
+        ("nacimiento", "Nacimiento y cuidado de menor", next(gas(pgc, k) for k in pgc if k.startswith("NACIM")), "gasto"),
+        ("gastos", "Gastos no financieros", gas(pg, "SUMA DE OPERACIONES NO FINANCIERAS"), "gasto"),
+    ]
+    # Comprobación: los porcentajes de variación publicados salen de las cifras
+    malos = [n for _, n, x, _ in filas if x["publicado"] is not None and x["anterior"]
+             and abs(100 * (x["actual"] / x["anterior"] - 1) - x["publicado"]) > 0.02]
+    comprobaciones.append({"que": "¿Los porcentajes de variación que publica la Seguridad Social salen de sus cifras?",
+                           "resultado": f"Sí, en las {sum(1 for f in filas if f[2]['publicado'] is not None)} partidas que se muestran" if not malos else f"No en: {', '.join(malos)}",
+                           "ok": not malos})
+    # Comprobación: las partes suman los totales
+    regimenes = [k for k in pic if list(pic).index(k) < list(pic).index("TOTAL COTIZACIONES SOCIALES")]
+    suma_cot = sum(_campo(pic[k], "DERECHOS") or 0 for k in regimenes)
+    clases = [k for k in pgc if list(pgc).index(k) < list(pgc).index("SUMA DE PENSIONES")]
+    suma_pen = sum(_campo(pgc[k], "OBLIGACIONES RECONOCIDAS") or 0 for k in clases)
+    capitulos_i = [k for k in pi if re.match(r"\d\. ", k) and int(k[0]) <= 7]
+    suma_ing = sum(_campo(pi[k], "DERECHOS") or 0 for k in capitulos_i)
+    for que, suma, total in (("¿Los regímenes suman el total de cotizaciones?", suma_cot, _campo(pic["TOTAL COTIZACIONES SOCIALES"], "DERECHOS")),
+                             ("¿Las clases de pensión suman el total de pensiones?", suma_pen, _campo(pgc["SUMA DE PENSIONES"], "OBLIGACIONES RECONOCIDAS")),
+                             ("¿Los capítulos de ingresos suman los ingresos no financieros?", suma_ing, _campo(pi["SUMA DE OPERACIONES NO FINANCIERAS"], "DERECHOS"))):
+        comprobaciones.append({"que": que, "resultado": f"Sí, al céntimo de millón" if abs(suma - total) < 0.05 else
+                               f"No: suman {es(suma, 2)} millones y el total es {es(total, 2)}", "ok": abs(suma - total) < 0.05})
+    prestamo = _campo(pi["9. PASIVOS FINANCIEROS"], "PREVISIONES") if "9. PASIVOS FINANCIEROS" in pi else None
+    salida = {"mes": mes, "año": año, "filas": [{"clave": k, "nombre": n, "tipo": t, **x} for k, n, x, t in filas],
+              "prestamo_previsto": prestamo, "tabla": "ss_ejecucion_mensual", "comprobaciones": comprobaciones}
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"seguridad social este año: hasta {mes} de {año}; cotizaciones {filas[0][2]['actual']} M€ ({filas[0][2]['publicado']} %)")
     return salida
 
 
@@ -3168,7 +3254,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
