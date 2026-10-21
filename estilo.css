@@ -854,3 +854,8 @@ header.sitio { position: relative; }
 .cifras-clave .caja-destacada { background: var(--entender); }
 #d-cifras > div { display: flex; flex-direction: column; gap: 0.3rem; }
 #d-cifras .valor { font-size: clamp(1.35rem, 2.3vw, 1.75rem); white-space: nowrap; }
+.leyenda-linea { font-size: 0.875rem; color: var(--tinta-suave); display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; align-items: center; margin: 0 0 0.25rem; }
+#g1 svg, #g2 svg { width: 100%; height: auto; max-width: 40rem; display: block; }
+.cifras-clave > div { display: flex; flex-direction: column; gap: 0.3rem; }
+.cifras-clave > div .valor { font-size: clamp(1.5rem, 2.6vw, 2rem); }
+.leyenda-linea .clave-linea { width: 1.4rem; border-top-width: 3px; margin-left: 0.4rem; }

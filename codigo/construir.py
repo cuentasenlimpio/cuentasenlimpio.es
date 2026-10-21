@@ -1211,6 +1211,33 @@ def construir_este_ano(descargas):
         print(f"este año: {k} hasta {v['mes_nombre']} de {v['año']}")
 
 
+# ---- La Seguridad Social por dentro (desde el 22/10/2026): subsector «fondos de la Seguridad Social» (S1314) ----
+# En España incluye el sistema de la Seguridad Social (pensiones contributivas, bajas…), el Servicio Público de Empleo
+# Estatal (prestaciones por desempleo) y el FOGASA. Datos anuales de Eurostat en contabilidad nacional.
+def construir_seguridad_social(descargas):
+    celdas, d = leer_jsonstat(AQUI / descargas["gov_10a_main"]["fichero"])
+    partidas = {"ingresos": "TR", "gastos": "TE", "saldo": "B9", "cotizaciones": "D61REC", "prestaciones": "D62PAY",
+                "transferencias": "D7REC", "transferencias_capital": "D9REC", "personal": "D1PAY"}
+    salida = {"partidas": {}, "años": None}
+    for clave, item in partidas.items():
+        for unidad in ("MIO_EUR", "PC_GDP"):
+            s = serie(celdas, d, unit=unidad, sector="S1314", na_item=item, geo="ES")
+            años = sorted(a for a in s if s[a][0] is not None and a >= 1995)
+            salida["años"] = salida["años"] or años
+            salida["partidas"].setdefault(clave, {})["meur" if unidad == "MIO_EUR" else "pib"] = \
+                [s.get(a, (None,))[0] for a in salida["años"]]
+    # Cálculo nuestro: el saldo si no hubiera recibido transferencias de otras administraciones (sobre todo del Estado)
+    p = salida["partidas"]
+    salida["partidas"]["saldo_sin_transferencias"] = {
+        u: [None if None in (b, t1, t2) else round(b - t1 - t2, 2) for b, t1, t2 in zip(p["saldo"][u], p["transferencias"][u], p["transferencias_capital"][u])]
+        for u in ("meur", "pib")}
+    salida["fondo_reserva"] = {"año": 2025, "meur": 14070, "fuente": "Seguridad Social, informe a las Cortes Generales sobre el Fondo de Reserva (ejercicio 2025)",
+                               "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/FondoReserva/39728/1726/1727"}
+    (WEB / "datos" / "seguridad_social.json").write_text(json.dumps(salida, ensure_ascii=False))
+    a = salida["años"][-1]
+    print(f"seguridad social: {salida['años'][0]}–{a}; saldo {a}: {p['saldo']['meur'][-1]} M€; sin transferencias: {p['saldo_sin_transferencias']['meur'][-1]} M€")
+
+
 def construir_desigualdad(descargas):
     comprobaciones, out = [], {}
 
@@ -2587,6 +2614,7 @@ def main():
                       "decretos": CODIGO / "promesas" / "extraccion" / "hechos_decretos"})
     construir_datos_promesas(descargas)
     construir_este_ano(descargas)
+    construir_seguridad_social(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

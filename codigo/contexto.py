@@ -498,9 +498,35 @@ def este_ano(D):
     return md
 
 
+def seguridad_social(D):
+    s = D.get("seguridad_social") or {}
+    if not s:
+        return cabecera("La Seguridad Social por dentro", "seguridad-social.html", "Sin datos en esta construcción.")
+    p, años = s["partidas"], s["años"]
+    md = cabecera("La Seguridad Social por dentro: cotizaciones, transferencias y prestaciones", "seguridad-social.html",
+                  "Subsector «fondos de la Seguridad Social» (S1314) de la contabilidad nacional: incluye el sistema de la Seguridad Social "
+                  "(pensiones contributivas, bajas, permisos) y el Servicio Público de Empleo Estatal (paro). No incluye las pensiones de "
+                  "los funcionarios del Estado (clases pasivas). Hasta principios de los 2000 incluía también la sanidad (INSALUD): los "
+                  "primeros años no son comparables sin más.")
+    filas = [[a] + [n(p[k]["pib"][i], 1) for k in ("cotizaciones", "transferencias", "ingresos", "prestaciones", "gastos", "saldo", "saldo_sin_transferencias")]
+             for i, a in enumerate(años) if a >= años[-1] - 15]
+    md += "\n## % del PIB\n\n" + tabla(["Año", "Cotizaciones", "Transferencias recibidas", "Ingresos", "Prestaciones", "Gastos", "Saldo", "Saldo sin transferencias (cálculo nuestro)"], filas)
+    md += (f"\n\nEn millones de euros, {años[-1]}: cotizaciones {n(p['cotizaciones']['meur'][-1])}, transferencias {n(p['transferencias']['meur'][-1])}, "
+           f"prestaciones {n(p['prestaciones']['meur'][-1])}, saldo {n(p['saldo']['meur'][-1])}.\n")
+    md += ("\nEl saldo sin transferencias no es «lo que les falta a las pensiones»: parte de esas transferencias paga gastos que la ley atribuye "
+           "al Estado (por ejemplo, los complementos a mínimos). Desde 2017 el Estado también presta dinero a la Seguridad Social; los préstamos "
+           "no son ingresos.\n")
+    fr = s.get("fondo_reserva")
+    if fr:
+        md += f"\nFondo de Reserva a final de {fr['año']}: {n(fr['meur'])} millones de euros ({fr['fuente']}, {fr['url']}).\n"
+    md += fuentes_md([url_tabla(D["aapp"], "gov_10a_main")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
+    ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
     ("gasto", gasto, "En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa."),
     ("presupuesto", presupuesto, "El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto."),
@@ -590,6 +616,7 @@ def construir_contexto(web):
     D = {k: carga(d / f"{k}.json") for k in ("aapp", "escala", "ingresos", "gasto", "presupuesto", "economia", "territorio", "desigualdad", "explicaciones")}
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
+    D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
     D["terminos"] = carga(web / "terminos.json")
