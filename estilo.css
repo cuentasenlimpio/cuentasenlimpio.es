@@ -907,3 +907,12 @@ header.sitio { position: relative; }
 .sin-margen-abajo { margin-bottom: 0; }
 .indice-preguntas { scroll-margin-top: 1rem; }
 .tabla-años tr.fila-area td { font-weight: 700; border-top: 1px solid var(--linea-fuerte); }
+
+/* Submenú de «El dinero»: los cuatro grupos (texto) y, debajo, las páginas del grupo actual (píldoras) */
+.subnav-dinero .subnav-salto { flex-basis: 100%; height: 0; }
+.subnav-dinero a.subnav-grupo { border: 0; background: none; padding: 0.2rem 0.1rem; border-radius: 0; color: var(--tinta-suave); font-weight: 600; }
+.subnav-dinero a.subnav-grupo[aria-current="true"] { color: var(--tinta); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.35em; }
+@media (max-width: 40rem) {
+  .subnav-dinero { flex-wrap: wrap; overflow-x: visible; white-space: normal; }
+  .subnav-dinero a { white-space: nowrap; }
+}
