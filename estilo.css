@@ -880,3 +880,21 @@ header.sitio { position: relative; }
 .lista-municipios li { padding: 0.6rem 0; border-bottom: 1px solid var(--linea); }
 .lista-municipios .cifra-municipio { display: block; font-variant-numeric: tabular-nums; margin-top: 0.15rem; }
 .lista-municipios .detalle { display: block; color: var(--tinta-suave); font-size: 0.875rem; }
+
+/* Aviso de descuadre junto a la fuente (ver descuadres.html) */
+.aviso-descuadre { display: inline-block; font-size: 0.75rem; font-weight: 600; line-height: 1.4; padding: 0.05rem 0.55rem; border-radius: 999px; text-decoration: none; white-space: nowrap; border: 1px solid; }
+.aviso-descuadre.sin_explicar { color: var(--acento); background: var(--acento-tenue); border-color: var(--acento); }
+.aviso-descuadre.transitorio { color: #141414; background: var(--marca); border-color: transparent; }
+.aviso-descuadre.explicado { color: var(--tinta-suave); background: transparent; border-color: var(--linea-fuerte); }
+.aviso-descuadre:hover, .aviso-descuadre:focus-visible { text-decoration: underline; }
+/* Página «Lo que no cuadra» */
+.caso { border: 1px solid var(--linea); border-radius: var(--radio); background: var(--superficie); padding: 1.1rem 1.25rem; margin: 1.25rem 0; scroll-margin-top: 5rem; }
+.caso:target { outline: 2px solid var(--c-primario); }
+.caso h2 { font-size: 1.15rem; margin: 0.35rem 0 0.75rem; }
+.caso h3 { font-size: 0.8125rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tinta-suave); margin: 1rem 0 0.35rem; }
+.caso ul { margin: 0; padding-left: 1.1rem; }
+.caso .donde a { margin-right: 0.75rem; }
+.leyenda-descuadres { list-style: none; padding: 0; margin: 0.5rem 0 1.5rem; }
+.leyenda-descuadres li { margin-bottom: 0.5rem; }
+.leyenda-descuadres .aviso-descuadre { margin-right: 0.4rem; }
+.caso h2 { border-top: 0; padding-top: 0; }

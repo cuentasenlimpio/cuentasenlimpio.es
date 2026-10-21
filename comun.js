@@ -134,6 +134,32 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "", detalleTecnico = "" 
   // Va detrás del párrafo (un <details> no cabe dentro de un <p>); si la página repinta la fuente, sustituye al anterior.
   if (p.nextElementSibling?.classList.contains("fuente-detalle")) p.nextElementSibling.remove();
   p.after(detalle);
+  marcarDescuadre(p);
+}
+
+// Lo que no cuadra (datos/descuadres.json): junto a la fuente de cada gráfico o tabla afectados, un aviso que explica el
+// caso al pasar por encima y lleva a su ficha en descuadres.html.
+let promesaDescuadres = null;
+const ETIQUETA_DESCUADRE = { sin_explicar: "No cuadra", transitorio: "Desfase temporal", explicado: "Diferencia explicada" };
+function leerDescuadres() {
+  promesaDescuadres ||= fetch("datos/descuadres.json").then((r) => (r.ok ? r.json() : { casos: [] })).catch(() => ({ casos: [] }));
+  return promesaDescuadres;
+}
+async function marcarDescuadre(p) {
+  if (!p.id) return;
+  const pagina = location.pathname.split("/").pop() || "index.html";
+  const { casos } = await leerDescuadres();
+  for (const c of casos) {
+    if (!c.marcas?.some((m) => m.pagina === pagina && m.id === p.id) || p.querySelector(`[data-descuadre="${c.id}"]`)) continue;
+    const a = document.createElement("a");
+    a.className = `aviso-descuadre ${c.estado}`;
+    a.href = `descuadres.html#${c.id}`;
+    a.dataset.descuadre = c.id;
+    a.title = c.resumen;
+    a.setAttribute("aria-label", `${ETIQUETA_DESCUADRE[c.estado]}: ${c.resumen} Ver el caso.`);
+    a.textContent = `${c.estado === "explicado" ? "ⓘ" : "⚠"} ${ETIQUETA_DESCUADRE[c.estado]}`;
+    p.append(" ", a);
+  }
 }
 
 function pintarComprobaciones(ul, lista) {

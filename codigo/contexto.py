@@ -460,6 +460,23 @@ def promesas(D):
     return md
 
 
+def descuadres(D):
+    casos = (D.get("descuadres") or {}).get("casos") or []
+    md = cabecera("Lo que no cuadra", "descuadres.html",
+                  "Cifras de fuentes oficiales que no cuadran entre sí: qué diferencia hay, qué está explicado, qué falta y qué hace la "
+                  "web mientras tanto. Antes de citar una de estas cifras, conviene leer su caso.")
+    nombres = {"sin_explicar": "No cuadra (sin explicar)", "transitorio": "Desfase temporal", "explicado": "Diferencia explicada"}
+    if not casos:
+        return md + "\nAhora mismo no hay casos abiertos.\n"
+    for c in casos:
+        md += f"\n## {c['titulo']}\n\nEstado: {nombres[c['estado']]}. Ficha: https://cuentasenlimpio.es/descuadres.html#{c['id']}\n"
+        for titulo, lineas in (("Cifras", c.get("cifras")), ("Explicado", c.get("explicado")), ("Falta", [c["falta"]] if c.get("falta") else []),
+                               ("En la web", [c["en_la_web"]])):
+            if lineas:
+                md += f"\n{titulo}:\n" + "\n".join(f"- {x}" for x in lineas) + "\n"
+    return md
+
+
 def explicaciones(D):
     x = D["explicaciones"]
     md = cabecera("Explicaciones de cada concepto y cada gráfico", "aprende.html",
@@ -644,6 +661,7 @@ FICHEROS = [
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
+    ("descuadres", descuadres, "Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas."),
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
@@ -737,7 +755,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

@@ -1495,6 +1495,32 @@ def construir_deuda_local(descargas):
     print(f"deuda local: {años[0]}–{ultimo}, {salida['serie']['meur'][-1]} M€; ayuntamientos {m_.get('año')}: {m_.get('n')}, sin deuda {m_.get('sin_deuda')}")
 
 
+def construir_descuadres(gasto):
+    """Lo que no cuadra: los casos de datos/descuadres.json más los automáticos (hoy, el desfase de versiones entre el
+    gasto por funciones y el gasto total de Eurostat, que aparece y desaparece solo). Lo leen descuadres.html y las
+    marcas de aviso junto a las fuentes (comun.js)."""
+    casos = json.loads((CODIGO / "descuadres.json").read_text())["casos"]
+    d = gasto.get("desfase")
+    if d:
+        difs = "; ".join(f"{es(abs(x['meur']))} millones en {x['año']} ({es(abs(x['pct']), 2)} %)" for x in d["difs"])
+        casos.append({
+            "id": "gasto-por-funciones-desfase", "estado": "transitorio", "anotado": None, "automatico": True,
+            "titulo": "Gasto por funciones: va por detrás de la última revisión de Eurostat",
+            "resumen": f"La suma de las funciones no es aún el gasto total revisado: {difs}. Eurostat todavía no ha actualizado esta tabla.",
+            "cifras": [f"Diferencia entre la suma de las funciones y el gasto total: {difs}."],
+            "explicado": [f"La tabla por funciones de Eurostat cuadra al millón con el gasto total de su versión del {fecha_es(d['version'])}; "
+                          f"después, Eurostat revisó el gasto total y aún no ha publicado la tabla por funciones revisada."],
+            "falta": None,
+            "en_la_web": "La página de gasto lo avisa junto al último año. Este caso desaparece solo cuando Eurostat actualice la tabla.",
+            "marcas": [{"pagina": "gasto.html", "id": "reparto-fuente"}],
+        })
+    orden = {"sin_explicar": 0, "transitorio": 1, "explicado": 2}
+    casos.sort(key=lambda c: orden[c["estado"]])
+    (WEB / "datos" / "descuadres.json").write_text(json.dumps({"casos": casos}, ensure_ascii=False))
+    cuenta = {e: sum(1 for c in casos if c["estado"] == e) for e in orden}
+    print(f"descuadres: {len(casos)} casos ({', '.join(f'{e}: {v}' for e, v in cuenta.items())})")
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -2983,6 +3009,7 @@ def main():
     construir_fondos_europeos(descargas)
     construir_avales(descargas)
     construir_deuda_local(descargas)
+    construir_descuadres(gasto)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:
