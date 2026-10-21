@@ -346,6 +346,123 @@ const EC = (() => {
     };
   }
 
+  // ---- Líneas sencillas con lectura al pasar el puntero (las páginas que antes dibujaban su SVG a mano) ----
+  // `x`: posiciones en el eje (años; trimestres y meses como fracción del año, o índices si `etiquetaEje` las nombra);
+  // `etiquetas`: lo que se lee de cada posición; `series`: [{nombre, v (alineada con x), color («--variable» o color),
+  // ancho, discontinua}; con `soloLectura` y su `formato`, la serie no se dibuja y solo sale en la lectura (por ejemplo, los
+  // euros junto al % del PIB)]; `referencias`: líneas horizontales [{y, color, nombre}]. La lectura va debajo del gráfico.
+  const colorDe = (c) => (c && c.startsWith("--") ? css(c) : c);
+  function lectura(caja) {
+    let l = caja.nextElementSibling;
+    if (!l || !l.classList.contains("lectura-año")) {
+      l = document.createElement("div");
+      l.className = "lectura-año";
+      l.setAttribute("aria-live", "polite");
+      caja.after(l);
+    }
+    return l;
+  }
+  function clave(s) {
+    const k = document.createElement("span");
+    k.className = "clave-linea";
+    k.style.borderColor = colorDe(s.color);
+    if (s.discontinua) k.style.borderTopStyle = "dashed";
+    return k;
+  }
+  function lineas(caja, { x, etiquetas, series, formato, formatoLectura = formato, eje = "", min = null, alto = 300, cero = false,
+    referencias = [], slider = x.length > 16, etiquetaEje = null, aria = "" }) {
+    if (!caja.cuentasGrafico) { caja.textContent = ""; caja.cuentasGrafico = crear(caja, alto); }
+    const g = caja.cuentasGrafico;
+    const xmin = etiquetaEje ? x[0] : Math.floor(x[0]), xmax = etiquetaEje ? x.at(-1) : Math.ceil(x.at(-1));
+    const op = tiempo({ min: xmin, max: xmax, marcasArriba: false, slider, zoom: slider, aria: aria || caja.getAttribute("aria-label") || "" });
+    op.grid.top = 28;
+    if (etiquetaEje) op.xAxis.axisLabel.formatter = (v) => (Number.isInteger(v) ? etiquetaEje(v) : "");
+    op.yAxis = ejeY({ nombre: eje, formato, min: min ?? undefined });
+    op.yAxis.scale = min === null;
+    op.series = series.filter((s) => !s.soloLectura).map((s, k) => linea(`s${k}`, x.map((xx, i) => [xx, s.v[i] ?? null]), colorDe(s.color),
+      { connectNulls: false, lineStyle: { width: s.ancho ?? 3, type: s.discontinua ? [6, 5] : "solid" } }));
+    const horizontales = [
+      ...(cero ? [{ yAxis: 0, lineStyle: { color: css("--linea-fuerte"), type: "solid", width: 1 } }] : []),
+      ...referencias.map((r) => ({ yAxis: r.y, lineStyle: { color: colorDe(r.color), type: "solid", width: 1.5 },
+        label: { show: Boolean(r.nombre), formatter: r.nombre, position: "insideEndTop", color: colorDe(r.color), fontSize: 11 } })),
+    ];
+    if (horizontales.length) {
+      op.series.push({ type: "line", data: [], silent: true, markLine: { silent: true, symbol: "none", label: { show: false }, data: horizontales } });
+    }
+    g.setOption(op, { notMerge: true });
+    const caja2 = lectura(caja);
+    g.cuentasLeer = (pos) => {
+      let i = 0;
+      x.forEach((xx, k) => { if (Math.abs(xx - pos) < Math.abs(x[i] - pos)) i = k; });
+      caja2.textContent = "";
+      const a = document.createElement("strong");
+      a.className = "lectura-anio";
+      a.textContent = etiquetas[i];
+      caja2.appendChild(a);
+      for (const s of series) {
+        const v = s.v[i];
+        if (v === null || v === undefined) continue;
+        const f = document.createElement("span");
+        f.className = "lectura-fila";
+        const b = document.createElement("b");
+        b.textContent = (s.formato || formatoLectura)(v);
+        if (s.soloLectura) f.append(b, ` ${s.nombre}`);
+        else f.append(clave(s), " ", b, ` ${s.nombre}`);
+        caja2.appendChild(f);
+      }
+    };
+    if (!g.cuentasLectura) {
+      g.cuentasLectura = true;
+      alPasar(g, (pos) => g.cuentasLeer(pos));
+    }
+    // Al empezar, la lectura muestra la última posición con dato de la serie principal (la última de la lista)
+    const principal = series.filter((s) => !s.soloLectura).at(-1);
+    const k0 = principal ? principal.v.map((v) => v !== null && v !== undefined).lastIndexOf(true) : -1;
+    g.cuentasLeer(x[k0 >= 0 ? k0 : x.length - 1]);
+  }
+
+  // Barras agrupadas por año (una barra por serie), con la misma lectura que las líneas.
+  function barras(caja, { años, series, formato, formatoLectura = formato, eje = "", alto = 300, aria = "" }) {
+    if (!caja.cuentasGrafico) { caja.textContent = ""; caja.cuentasGrafico = crear(caja, alto); }
+    const g = caja.cuentasGrafico;
+    const op = tiempo({ min: años[0] - 0.5, max: años.at(-1) + 0.5, marcasArriba: false, slider: false, zoom: false,
+      aria: aria || caja.getAttribute("aria-label") || "" });
+    op.grid.top = 28;
+    op.yAxis = ejeY({ nombre: eje, formato, min: 0 });
+    op.series = series.map((s, k) => ({
+      id: `b${k}`, type: "bar", silent: true, barGap: "12%", barMaxWidth: 34,
+      data: años.map((a, i) => [a, s.v[i] ?? null]),
+      itemStyle: { color: colorDe(s.color), borderRadius: [4, 4, 0, 0] },
+    }));
+    g.setOption(op, { notMerge: true });
+    const caja2 = lectura(caja);
+    g.cuentasLeer = (pos) => {
+      const i = Math.max(0, Math.min(años.length - 1, Math.round(pos) - años[0]));
+      caja2.textContent = "";
+      const a = document.createElement("strong");
+      a.className = "lectura-anio";
+      a.textContent = String(años[i]);
+      caja2.appendChild(a);
+      for (const s of series) {
+        if (s.v[i] === null || s.v[i] === undefined) continue;
+        const f = document.createElement("span");
+        f.className = "lectura-fila";
+        const k = document.createElement("span");
+        k.className = "clave-barra";
+        k.style.background = colorDe(s.color);
+        const b = document.createElement("b");
+        b.textContent = formatoLectura(s.v[i]);
+        f.append(k, " ", b, ` ${s.nombre}`);
+        caja2.appendChild(f);
+      }
+    };
+    if (!g.cuentasLectura) {
+      g.cuentasLectura = true;
+      alPasar(g, (pos) => g.cuentasLeer(pos));
+    }
+    g.cuentasLeer(años.at(-1));
+  }
+
   // ---- Barras horizontales ordenadas de mayor a menor, con el valor al final de cada barra ----
   // `filas`: [{nombre, valor}]. En pantallas estrechas el nombre va encima de la barra.
   // Ancho en píxeles de un texto con la letra de la página (para que nombres y cifras no se corten).
@@ -536,7 +653,7 @@ const EC = (() => {
     }
   }
 
-  return { capas, algunaCapa, notaCapas, css, posicion, legislaturas, marcas, tiempo, ejeY, linea, puntos, crear, alPasar, fijar, periodo, barrasH, multiples };
+  return { capas, algunaCapa, notaCapas, css, posicion, legislaturas, marcas, tiempo, ejeY, linea, puntos, crear, alPasar, fijar, periodo, barrasH, multiples, lineas, barras };
 })();
 
 // Nombres que usan las páginas de gasto, ingresos y presupuesto.

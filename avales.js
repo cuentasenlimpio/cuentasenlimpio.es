@@ -2,40 +2,6 @@
 // pasivos contingentes de la Directiva 2011/85 (Eurostat, 2021 en adelante).
 "use strict";
 
-const NS_AV = "http://www.w3.org/2000/svg";
-function nodoAV(tipo, attrs, padre, texto) {
-  const e = document.createElementNS(NS_AV, tipo);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (texto !== undefined) e.textContent = texto;
-  if (padre) padre.appendChild(e);
-  return e;
-}
-
-// Una línea por años, con marcas del eje en cifras redondas y el último valor rotulado.
-function lineaAños(caja, años, v, { formato, etiqueta }) {
-  const W = 640, H = 250, m = { i: 46, d: 70, a: 14, b: 26 };
-  const vals = v.filter((x) => x !== null && x !== undefined);
-  const bruto = Math.max(...vals) / 4 || 1;
-  const pot = 10 ** Math.floor(Math.log10(bruto));
-  const paso = [1, 2, 2.5, 5, 10].map((f) => f * pot).find((x) => x >= bruto);
-  const max = Math.ceil(Math.max(...vals) / paso) * paso;
-  const x = (k) => m.i + (k * (W - m.i - m.d)) / (años.length - 1);
-  const y = (val) => H - m.b - (val * (H - m.a - m.b)) / max;
-  const s = nodoAV("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": etiqueta });
-  for (let val = 0; val <= max + paso / 2; val += paso) {
-    nodoAV("line", { x1: m.i, x2: W - m.d, y1: y(val), y2: y(val), class: "rejilla-ea" }, s);
-    nodoAV("text", { x: m.i - 8, y: y(val) + 4, "text-anchor": "end", class: "rotulo-recorrido" }, s, formato(val));
-  }
-  años.forEach((a, k) => { if (a % 5 === 0 || k === años.length - 1) nodoAV("text", { x: x(k), y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, s, a); });
-  const pts = v.map((val, k) => (val === null || val === undefined ? null : [x(k), y(val)])).filter(Boolean);
-  nodoAV("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: "linea-recorrido serie-actual" }, s);
-  const [lx, ly] = pts.at(-1);
-  nodoAV("circle", { cx: lx, cy: ly, r: 5, class: "punto-ea serie-actual" }, s);
-  nodoAV("text", { x: lx + 9, y: ly + 4, class: "dato-recorrido" }, s, formato(vals.at(-1)));
-  caja.textContent = "";
-  caja.appendChild(s);
-}
-
 // Tabla con una fila por partida y una columna por año.
 function tablaAños(t, cabeceras, filas) {
   t.textContent = "";
@@ -85,8 +51,9 @@ async function arrancarAV() {
   }
   lineaFuente($("cifras-fuente"), { fuentes: aapp.fuentes, tablas: [tablasBdE[0]], tipo: "dato" });
 
-  lineaAños($("g1"), av.años, av.pib, { formato: (v) => `${numero(v, 0)} %`,
-    etiqueta: `Avales del Estado vivos a final de año en % del PIB, ${av.años[0]}–${av.años[n]}: ${av.años.map((a, k) => `${a}, ${numero(av.pib[k] ?? 0, 1)} %`).join("; ")}` });
+  EC.lineas($("g1"), { x: av.años, etiquetas: av.años.map(String), formato: (v) => `${numero(v, 0)} %`, formatoLectura: (v) => `${numero(v, 1)} %`,
+    eje: "% del PIB", min: 0, aria: `Avales del Estado vivos a final de año en % del PIB, ${av.años[0]}–${av.años[n]}`,
+    series: [{ nombre: "del PIB", v: av.pib, color: "--c-primario" }, { nombre: "", v: av.meur, soloLectura: true, formato: (v) => `${numero(v, 0)} M€` }] });
   lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas: [tablasBdE[1]], tipo: "dato" });
 
   // Desglose: unos años que cuentan la historia (crisis financiera, antes y durante la pandemia) y el último dato

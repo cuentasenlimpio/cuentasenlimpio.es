@@ -1,49 +1,6 @@
 // Cuentas en limpio: «¿Cuánta gente trabaja en lo público?». EPA (INE) y remuneración de asalariados (Eurostat).
 "use strict";
 
-const NS_EP = "http://www.w3.org/2000/svg";
-function nodoEP(tipo, attrs, padre, texto) {
-  const e = document.createElementNS(NS_EP, tipo);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (texto !== undefined) e.textContent = texto;
-  if (padre) padre.appendChild(e);
-  return e;
-}
-
-// Líneas sobre periodos (años o trimestres «AAAATn»), con el rótulo de cada serie al final, separados si se pisan.
-function lineasEP(caja, periodos, series, { formato, etiqueta, rotuloX, desdeCero = true }) {
-  const W = 640, H = 250, m = { i: 46, d: 150, a: 14, b: 26 };
-  const todos = series.flatMap((s) => s.v.filter((x) => x !== null && x !== undefined));
-  // Marcas del eje en cifras redondas (1, 2 o 5 por una potencia de 10)
-  const bruto = (Math.max(...todos) - Math.min(...todos, desdeCero ? 0 : Infinity)) / 4 || 1;
-  const pot = 10 ** Math.floor(Math.log10(bruto));
-  const paso = [1, 2, 2.5, 5, 10].map((f) => f * pot).find((x) => x >= bruto);
-  const min = desdeCero ? 0 : Math.floor(Math.min(...todos) / paso) * paso;
-  const max = Math.ceil(Math.max(...todos) / paso) * paso;
-  const x = (k) => m.i + (k * (W - m.i - m.d)) / (periodos.length - 1);
-  const y = (v) => H - m.b - ((v - min) * (H - m.a - m.b)) / (max - min);
-  const s = nodoEP("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": etiqueta });
-  for (let v = min; v <= max + paso / 2; v += paso) {
-    nodoEP("line", { x1: m.i, x2: W - m.d, y1: y(v), y2: y(v), class: "rejilla-ea" }, s);
-    nodoEP("text", { x: m.i - 8, y: y(v) + 4, "text-anchor": "end", class: "rotulo-recorrido" }, s, formato(v));
-  }
-  periodos.forEach((p, k) => { const r = rotuloX(p, k); if (r) nodoEP("text", { x: x(k), y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, s, r); });
-  const rotulos = [];
-  for (const z of series) {
-    const pts = z.v.map((v, k) => (v === null || v === undefined ? null : [x(k), y(v)])).filter(Boolean);
-    if (!pts.length) continue;
-    nodoEP("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: `linea-recorrido ${z.clase}` }, s);
-    const [lx, ly] = pts.at(-1);
-    nodoEP("circle", { cx: lx, cy: ly, r: 5, class: `punto-ea ${z.clase}` }, s);
-    rotulos.push({ x: lx + 9, y: ly + 4, texto: z.nombre ? `${formato(z.v.at(-1))} ${z.nombre}` : formato(z.v.at(-1)) });
-  }
-  rotulos.sort((a, b) => a.y - b.y);
-  for (let k = 1; k < rotulos.length; k++) rotulos[k].y = Math.max(rotulos[k].y, rotulos[k - 1].y + 15);
-  for (const r of rotulos) nodoEP("text", { x: r.x, y: r.y, class: "dato-recorrido" }, s, r.texto);
-  caja.textContent = "";
-  caja.appendChild(s);
-}
-
 // Tabla con barra bajo cada nombre; `resaltar` marca una fila (España en la comparación europea).
 function tablaBarras(t, filas, { formato, resaltar = () => false }) {
   t.textContent = "";
@@ -103,20 +60,21 @@ async function arrancarEP() {
   cifra(`Sueldos públicos, ${rAño}`, `${numero(rem.total.pib[ri], 1)} %`, `del PIB: ${numero(Math.round(rem.total.meur[ri]), 0)} millones de euros, con las cotizaciones que paga la administración.`);
   lineaFuente($("cifras-fuente"), { fuentes: aapp.fuentes, tablas: [["ine_epa416131", "EPA: asalariados del sector público"], ["ine_epa450290", "EPA: % de asalariados públicos"], ["ine_epa416424", "EPA: % de temporales"], ["gov_10a_main", "remuneración de asalariados de las administraciones (D.1)"]], tipo: "dato" });
 
-  const rotuloT = (p, k) => (p.endsWith("T1") && Number(p.slice(0, 4)) % 4 === 2 ? p.slice(0, 4) : "");
-  lineasEP($("g1"), e.trimestres, [
-    { v: admin.comunidades.v, clase: "serie-actual", nombre: "comunidades" },
-    { v: admin.local.v, clase: "serie-anterior", nombre: "locales" },
-    { v: admin.central.v, clase: "serie-antigua", nombre: "central" },
-  ], { formato: (v) => numero(Math.round(v), 0), rotuloX: rotuloT, etiqueta: `Asalariados del sector público por administración, en miles, ${e.trimestres[0]}–${t}` });
+  const xT = e.trimestres.map((t) => Number(t.slice(0, 4)) + (Number(t.slice(-1)) - 1) / 4);
+  const etT = e.trimestres.map((t) => `${["1.er", "2.º", "3.er", "4.º"][Number(t.slice(-1)) - 1]} trimestre de ${t.slice(0, 4)}`);
+  EC.lineas($("g1"), { x: xT, etiquetas: etT, formato: (v) => numero(Math.round(v), 0), formatoLectura: (v) => `${numero(Math.round(v), 0)} mil`,
+    eje: "miles", min: 0, aria: `Asalariados del sector público por administración, en miles, ${e.trimestres[0]}–${t}`,
+    series: [{ nombre: "comunidades autónomas", v: admin.comunidades.v, color: "--c-primario" },
+      { nombre: "ayuntamientos, diputaciones y cabildos", v: admin.local.v, color: "--tinta" },
+      { nombre: "Administración central", v: admin.central.v, color: "--linea-fuerte", discontinua: true }] });
   lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas: [["ine_epa416134", "EPA: asalariados públicos en las comunidades autónomas"], ["ine_epa416135", "en la Administración local"], ["ine_epa416132", "en la Administración central"]], tipo: "dato" });
   $("reparto-t").textContent = `Todos los tipos de administración en el ${trimestreLegible(t)}, en miles de personas. Fuente: INE, Encuesta de Población Activa (tabla 65193).`;
   tablaBarras($("reparto"), e.admin.filter((a) => a.v[i] !== null).map((a) => ({ nombre: a.nombre, v: a.v[i] })).sort((a, b) => b.v - a.v), { formato: miles });
 
-  lineasEP($("g2"), e.trimestres, [
-    { v: e.pct_asalariados, clase: "serie-actual" },
-    { v: e.pct_temporal, clase: "serie-anterior" },
-  ], { formato: (v) => `${numero(v, 0)} %`, rotuloX: rotuloT, etiqueta: `Asalariados públicos en % del total y temporales en % de los públicos, ${e.trimestres[0]}–${t}` });
+  EC.lineas($("g2"), { x: xT, etiquetas: etT, formato: (v) => `${numero(v, 0)} %`, formatoLectura: (v) => `${numero(v, 1)} %`, eje: "%", min: 0,
+    aria: `Asalariados públicos en % del total y temporales en % de los públicos, ${e.trimestres[0]}–${t}`,
+    series: [{ nombre: "públicos, de cada 100 asalariados", v: e.pct_asalariados, color: "--c-primario" },
+      { nombre: "temporales, de cada 100 asalariados públicos", v: e.pct_temporal, color: "--tinta" }] });
   lineaFuente($("g2-fuente"), { fuentes: aapp.fuentes, tablas: [["ine_epa450290", "EPA: % de asalariados públicos"], ["ine_epa416424", "EPA: % de temporales en el sector público"]], tipo: "dato" });
 
   if (d.ccaa) {
@@ -125,9 +83,10 @@ async function arrancarEP() {
     lineaFuente($("g3-fuente"), { fuentes: aapp.fuentes, tablas: [[d.ccaa.tabla, "EPA: asalariados por sector y comunidad autónoma"]], tipo: "dato", nota: "En Ceuta, Melilla y las comunidades pequeñas el error de muestreo de la EPA es grande." });
   }
 
-  lineasEP($("g4"), rem.años, [{ v: rem.total.pib, clase: "serie-actual" }],
-    { formato: (v) => `${numero(v, 1)} %`, rotuloX: (a, k) => (a % 5 === 0 || k === rem.años.length - 1 ? a : ""), desdeCero: false,
-      etiqueta: `Remuneración de asalariados de las administraciones públicas en % del PIB, ${rem.años[0]}–${rAño}` });
+  EC.lineas($("g4"), { x: rem.años, etiquetas: rem.años.map(String), formato: (v) => `${numero(v, 1)} %`, eje: "% del PIB",
+    aria: `Remuneración de asalariados de las administraciones públicas en % del PIB, ${rem.años[0]}–${rAño}`,
+    series: [{ nombre: "del PIB", v: rem.total.pib, color: "--c-primario" }, { nombre: "", v: rem.total.meur, soloLectura: true, formato: (v) => `${numero(Math.round(v), 0)} M€` },
+      { nombre: "de cada 100 € de gasto público", v: rem.pct_gasto, soloLectura: true, formato: (v) => numero(v, 1) }] });
   lineaFuente($("g4-fuente"), { fuentes: aapp.fuentes, tablas: [["gov_10a_main", "remuneración de asalariados de las administraciones (D.1, sector S13)"]], tipo: "dato" });
   tablaBarras($("subsectores"), [["Comunidades autónomas", "comunidades"], ["Estado y sus organismos", "estado"], ["Ayuntamientos, diputaciones y cabildos", "local"], ["Seguridad Social", "seguridad_social"]]
     .map(([n, k]) => ({ nombre: n, v: rem[k].meur[ri], detalle: `${numero(rem[k].pib[ri], 1)} % del PIB` })), { formato: (v) => `${numero(Math.round(v), 0)} M€` });

@@ -1,43 +1,6 @@
 // Cuentas en limpio: «¿Cómo se pagan las pensiones?». La Seguridad Social (S1314) en contabilidad nacional, de Eurostat.
 "use strict";
 
-const NS = "http://www.w3.org/2000/svg";
-function nodoSS(tipo, attrs, padre, texto) {
-  const e = document.createElementNS(NS, tipo);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (texto !== undefined) e.textContent = texto;
-  if (padre) padre.appendChild(e);
-  return e;
-}
-
-// Líneas por años, con el último valor de cada serie rotulado y la línea del cero si hace falta.
-function lineasAños(caja, años, series, { formato, etiqueta }) {
-  const W = 640, H = 250, m = { i: 46, d: 64, a: 14, b: 26 };
-  const todos = series.flatMap((s) => s.v.filter((x) => x !== null));
-  let min = Math.min(...todos, 0), max = Math.max(...todos);
-  const margen = (max - min) * 0.08 || 1;
-  min -= min < 0 ? margen : 0; max += margen;
-  const x = (k) => m.i + (k * (W - m.i - m.d)) / (años.length - 1);
-  const y = (v) => H - m.b - ((v - min) * (H - m.a - m.b)) / (max - min);
-  const s = nodoSS("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": etiqueta });
-  for (let k = 0; k <= 4; k++) {
-    const v = min + ((max - min) * k) / 4;
-    nodoSS("line", { x1: m.i, x2: W - m.d, y1: y(v), y2: y(v), class: "rejilla-ea" }, s);
-    nodoSS("text", { x: m.i - 8, y: y(v) + 4, "text-anchor": "end", class: "rotulo-recorrido" }, s, formato(v));
-  }
-  if (min < 0) nodoSS("line", { x1: m.i, x2: W - m.d, y1: y(0), y2: y(0), class: "eje-recorrido" }, s);
-  años.forEach((a, k) => { if (a % 5 === 0 || k === años.length - 1) nodoSS("text", { x: x(k), y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, s, a); });
-  for (const z of series) {
-    const pts = z.v.map((v, k) => (v === null ? null : [x(k), y(v)])).filter(Boolean);
-    nodoSS("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: `linea-recorrido ${z.clase}` }, s);
-    const [lx, ly] = pts.at(-1);
-    nodoSS("circle", { cx: lx, cy: ly, r: 5, class: `punto-ea ${z.clase}` }, s);
-    nodoSS("text", { x: lx + 9, y: ly + 4, class: "dato-recorrido" }, s, formato(z.v.at(-1)));
-  }
-  caja.textContent = "";
-  caja.appendChild(s);
-}
-
 async function arrancarSS() {
   let d, aapp;
   try {
@@ -74,15 +37,15 @@ async function arrancarSS() {
   lineaFuente($("cifras-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "dato" });
 
   const f1 = (v) => `${numero(v, 1)} %`;
-  lineasAños($("g1"), años, [
-    { v: p.prestaciones.pib, clase: "serie-anterior" },
-    { v: p.cotizaciones.pib, clase: "serie-actual" },
-  ], { formato: f1, etiqueta: `Prestaciones y cotizaciones de la Seguridad Social en % del PIB, ${años[0]}–${año}` });
+  const etiquetasAños = años.map(String);
+  EC.lineas($("g1"), { x: años, etiquetas: etiquetasAños, formato: f1, eje: "% del PIB", min: 0,
+    aria: `Prestaciones y cotizaciones de la Seguridad Social en % del PIB, ${años[0]}–${año}`,
+    series: [{ nombre: "prestaciones", v: p.prestaciones.pib, color: "--tinta" }, { nombre: "cotizaciones", v: p.cotizaciones.pib, color: "--c-primario" }] });
   lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "dato" });
-  lineasAños($("g2"), años, [
-    { v: p.saldo_sin_transferencias.pib, clase: "serie-anterior" },
-    { v: p.saldo.pib, clase: "serie-actual" },
-  ], { formato: f1, etiqueta: `Saldo de la Seguridad Social en % del PIB, publicado y sin transferencias, ${años[0]}–${año}` });
+  EC.lineas($("g2"), { x: años, etiquetas: etiquetasAños, formato: f1, eje: "% del PIB", cero: true,
+    aria: `Saldo de la Seguridad Social en % del PIB, publicado y sin transferencias, ${años[0]}–${año}`,
+    series: [{ nombre: "sin transferencias de otras administraciones", v: p.saldo_sin_transferencias.pib, color: "--tinta" },
+      { nombre: "saldo publicado", v: p.saldo.pib, color: "--c-primario" }] });
   lineaFuente($("g2-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "lectura", nota: "El saldo sin transferencias es el publicado menos las transferencias corrientes y de capital recibidas." });
 
   const fr = d.fondo_reserva;

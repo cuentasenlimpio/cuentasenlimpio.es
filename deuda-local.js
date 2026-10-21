@@ -1,40 +1,6 @@
 // Cuentas en limpio: «¿Cuánto deben los ayuntamientos?». Banco de España (serie), Hacienda (cada ayuntamiento) e INE (población).
 "use strict";
 
-const NS_DL = "http://www.w3.org/2000/svg";
-function nodoDL(tipo, attrs, padre, texto) {
-  const e = document.createElementNS(NS_DL, tipo);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (texto !== undefined) e.textContent = texto;
-  if (padre) padre.appendChild(e);
-  return e;
-}
-
-// Una línea por años, con marcas del eje en cifras redondas y el último valor rotulado.
-function lineaDL(caja, años, v, { formato, etiqueta }) {
-  const W = 640, H = 250, m = { i: 46, d: 70, a: 14, b: 26 };
-  const vals = v.filter((x) => x !== null && x !== undefined);
-  const bruto = Math.max(...vals) / 4 || 1;
-  const pot = 10 ** Math.floor(Math.log10(bruto));
-  const paso = [1, 2, 2.5, 5, 10].map((f) => f * pot).find((x) => x >= bruto);
-  const max = Math.ceil(Math.max(...vals) / paso) * paso;
-  const x = (k) => m.i + (k * (W - m.i - m.d)) / (años.length - 1);
-  const y = (val) => H - m.b - (val * (H - m.a - m.b)) / max;
-  const s = nodoDL("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": etiqueta });
-  for (let val = 0; val <= max + paso / 2; val += paso) {
-    nodoDL("line", { x1: m.i, x2: W - m.d, y1: y(val), y2: y(val), class: "rejilla-ea" }, s);
-    nodoDL("text", { x: m.i - 8, y: y(val) + 4, "text-anchor": "end", class: "rotulo-recorrido" }, s, formato(val));
-  }
-  años.forEach((a, k) => { if (a % 5 === 0 || k === años.length - 1) nodoDL("text", { x: x(k), y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, s, a); });
-  const pts = v.map((val, k) => (val === null || val === undefined ? null : [x(k), y(val)])).filter(Boolean);
-  nodoDL("polyline", { points: pts.map((p) => p.join(",")).join(" "), class: "linea-recorrido serie-actual" }, s);
-  const [lx, ly] = pts.at(-1);
-  nodoDL("circle", { cx: lx, cy: ly, r: 5, class: "punto-ea serie-actual" }, s);
-  nodoDL("text", { x: lx + 9, y: ly + 4, class: "dato-recorrido" }, s, formato(vals.at(-1)));
-  caja.textContent = "";
-  caja.appendChild(s);
-}
-
 const PROVINCIAS = { "01": "Araba/Álava", "02": "Albacete", "03": "Alicante/Alacant", "04": "Almería", "05": "Ávila", "06": "Badajoz", "07": "Illes Balears",
   "08": "Barcelona", "09": "Burgos", "10": "Cáceres", "11": "Cádiz", "12": "Castellón/Castelló", "13": "Ciudad Real", "14": "Córdoba", "15": "A Coruña",
   "16": "Cuenca", "17": "Girona", "18": "Granada", "19": "Guadalajara", "20": "Gipuzkoa", "21": "Huelva", "22": "Huesca", "23": "Jaén", "24": "León",
@@ -119,8 +85,9 @@ async function arrancarDL() {
     pintar();
   });
 
-  lineaDL($("g1"), s.años, s.pib, { formato: (v) => `${numero(v, 1)} %`,
-    etiqueta: `Deuda de las entidades locales en % del PIB, ${s.años[0]}–${s.años[n]}: ${s.años.map((a, k) => `${a}, ${numero(s.pib[k] ?? 0, 1)} %`).join("; ")}` });
+  EC.lineas($("g1"), { x: s.años, etiquetas: s.años.map(String), formato: (v) => `${numero(v, 1)} %`, eje: "% del PIB", min: 0,
+    aria: `Deuda de las entidades locales en % del PIB, ${s.años[0]}–${s.años[n]}`,
+    series: [{ nombre: "del PIB", v: s.pib, color: "--c-primario" }, { nombre: "", v: s.meur, soloLectura: true, formato: (v) => `${numero(v, 0)} M€` }] });
   lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas: [tablasBdE[0]], tipo: "dato" });
 
   $("g2-explica").textContent = `Deuda de las entidades locales por tipo a final de ${rp.año}, en millones de euros.`;

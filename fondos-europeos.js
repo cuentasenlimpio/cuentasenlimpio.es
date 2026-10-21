@@ -1,38 +1,6 @@
 // Cuentas en limpio: «¿Qué ha pasado con los fondos europeos de recuperación?». Eurostat, gov_rrf_fa y gov_rrf_use.
 "use strict";
 
-const NS_FE = "http://www.w3.org/2000/svg";
-function nodoFE(tipo, attrs, padre, texto) {
-  const e = document.createElementNS(NS_FE, tipo);
-  for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
-  if (texto !== undefined) e.textContent = texto;
-  if (padre) padre.appendChild(e);
-  return e;
-}
-
-// Barras agrupadas por año: recibido y usado, con el valor encima de cada barra.
-function barrasAños(caja, años, series, etiqueta) {
-  const W = 640, H = 260, m = { i: 12, d: 12, a: 22, b: 26 };
-  const max = Math.max(...series.flatMap((s) => s.v.map((v) => v || 0))) * 1.08 || 1;
-  const hueco = (W - m.i - m.d) / años.length, ancho = Math.min(34, (hueco - 18) / series.length);
-  const y = (v) => H - m.b - (Math.max(v, 0) * (H - m.a - m.b)) / max;
-  const s = nodoFE("svg", { viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": etiqueta });
-  nodoFE("line", { x1: m.i, x2: W - m.d, y1: y(0), y2: y(0), class: "eje-recorrido" }, s);
-  años.forEach((a, k) => {
-    const centro = m.i + hueco * (k + 0.5);
-    nodoFE("text", { x: centro, y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, s, a);
-    series.forEach((z, j) => {
-      const v = z.v[k];
-      if (v === null || v === undefined) return;
-      const x0 = centro - (ancho * series.length + 4 * (series.length - 1)) / 2 + j * (ancho + 4);
-      nodoFE("rect", { x: x0, y: y(v), width: ancho, height: Math.max(1, y(0) - y(v)), rx: 4, class: z.clase }, s);
-      nodoFE("text", { x: x0 + ancho / 2, y: y(v) - 5, "text-anchor": "middle", class: "rotulo-recorrido" }, s, numero(Math.round(v / 100) / 10, 1));
-    });
-  });
-  caja.textContent = "";
-  caja.appendChild(s);
-}
-
 async function arrancarFE() {
   let d, aapp;
   try {
@@ -68,11 +36,10 @@ async function arrancarFE() {
   }
   lineaFuente($("cifras-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "dato", nota: "Las sumas desde 2020 son un cálculo nuestro." });
 
-  barrasAños($("g1"), años, [
-    { v: d.recibido.subvenciones, clase: "barra-escenario" },
-    { v: d.usado.total, clase: "barra-escenario barra-elegida" },
-  ], `Subvenciones del Mecanismo de Recuperación recibidas y usadas cada año, en miles de millones de euros: ${años.map((a, k) => `${a}, recibido ${numero(Math.round(d.recibido.subvenciones[k] || 0), 0)} y usado ${numero(Math.round(d.usado.total[k] || 0), 0)} millones`).join("; ")}`);
-  lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "dato", nota: "Cifras sobre las barras en miles de millones de euros." });
+  EC.barras($("g1"), { años, formato: (v) => numero(Math.round(v / 1000), 0), formatoLectura: (v) => `${numero(Math.round(v), 0)} M€`, eje: "miles de M€",
+    aria: `Subvenciones del Mecanismo de Recuperación recibidas y usadas cada año, ${años[0]}–${ultimo}`,
+    series: [{ nombre: "recibido", v: d.recibido.subvenciones, color: "--c-primario" }, { nombre: "usado", v: d.usado.total, color: "--tinta" }] });
+  lineaFuente($("g1-fuente"), { fuentes: aapp.fuentes, tablas, tipo: "dato" });
 
   const suma = (k) => d.usado[k].reduce((a, v) => a + (v || 0), 0);
   $("g2-explica").textContent = `Subvenciones usadas de 2020 a ${ultimo}, por tipo de gasto, en millones de euros.`;
