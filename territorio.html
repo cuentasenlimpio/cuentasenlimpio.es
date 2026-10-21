@@ -16,7 +16,7 @@
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js?v=a6a79b8632" defer></script>
   <script src="ec.js?v=7568c86795" defer></script>
-  <script src="territorio.js?v=f03b1d9cc4" defer></script>
+  <script src="territorio.js?v=cdb08b1567" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
@@ -38,7 +38,14 @@
 
     <div class="ojo">
       <strong>Ojo al comparar comunidades</strong>
-      <p>No hacen todas lo mismo ni se financian igual. Las competencias no son idénticas (por eso Hacienda compara la «financiación homogénea», sin las competencias que solo tienen algunas). El País Vasco y Navarra tienen régimen foral: recaudan sus impuestos y pagan al Estado un cupo o aportación, y no entran en el sistema común. La financiación pondera la insularidad, la superficie y la dispersión, y Canarias tiene su propio impuesto en lugar del IVA (el IGIC). Y una misma cifra cambia de un informe a otro: cada dato lleva su fecha. <button type="button" class="info" data-info="comparar_ccaa">i</button></p>
+      <p>No hacen todas lo mismo ni se financian igual <button type="button" class="info" data-info="comparar_ccaa">i</button></p>
+      <ul>
+        <li>No todas se encargan de los mismos servicios. Por eso Hacienda compara solo la parte común, la «financiación homogénea».</li>
+        <li>El País Vasco y Navarra tienen su propio sistema (régimen foral): recaudan sus impuestos y pagan al Estado una cantidad, el cupo o la aportación.</li>
+        <li>El reparto tiene en cuenta si una comunidad es una isla, su tamaño y lo repartida que está su población. Canarias tiene su propio impuesto en lugar del IVA, el IGIC.</li>
+        <li>Una misma cifra cambia de un informe a otro: cada dato lleva su fecha.</li>
+      </ul>
+      <p>Al entrar sale la primera comunidad por orden alfabético; cualquier otra se elige en la lista de abajo.</p>
     </div>
 
     <div class="controles">
@@ -93,7 +100,7 @@
 
     <section aria-labelledby="todas-t">
       <h2 class="pregunta" id="todas-t">Todas las comunidades a la vez</h2>
-      <p class="grafico-explica">Misma escala en todos los paneles, por orden alfabético. El punto marca el último dato.</p>
+      <p class="grafico-explica">Un recuadro por comunidad, por orden alfabético y con la misma escala, para poder compararlas. El punto marca el último dato. En el déficit, una cifra negativa quiere decir que le faltó dinero.</p>
       <section class="grafico" aria-labelledby="m-deu-t">
         <h3 class="grafico-titulo" id="m-deu-t">Deuda en % de su PIB</h3>
         <div class="multiples" id="m-deu"></div>
@@ -111,8 +118,13 @@
       <div class="entender">
         <p class="rotulo">Para entenderlo</p>
         <h3>Régimen común y régimen foral</h3>
-        <p>Quince comunidades se financian con el <strong>sistema de régimen común</strong> (Ley 22/2009): una parte de los impuestos que pagan sus residentes (el 50 % del IRPF y del IVA, el 58 % de los impuestos especiales y otros), un Fondo de Garantía que busca que cada una reciba los mismos recursos por <em>habitante ajustado</em> para los servicios básicos, un Fondo de Suficiencia y dos fondos de convergencia. <button type="button" class="info" data-info="habitante_ajustado">i</button></p>
-        <p>El <strong>País Vasco y Navarra</strong> tienen <strong>régimen foral</strong>, amparado por la disposición adicional primera de la Constitución: regulan y recaudan sus propios impuestos y pagan al Estado una cantidad por lo que este sigue haciendo allí, el «cupo» vasco y la «aportación» navarra, que se fija cada cinco años. Según Hacienda, en 2023 el País Vasco ingresó al Estado 1.834 millones y Navarra 939,7 millones (incluida la liquidación del año anterior).</p>
+        <p>Quince comunidades se financian con el <strong>sistema de régimen común</strong> (Ley 22/2009). Reciben tres cosas:</p>
+        <ul>
+          <li>una parte de los impuestos que pagan sus residentes: el 50 % del IRPF y del IVA, el 58 % de los impuestos especiales y otros;</li>
+          <li>dinero de un Fondo de Garantía, que busca que cada una reciba lo mismo por <em>habitante ajustado</em> para los servicios básicos;</li>
+          <li>y dinero de otros tres fondos más pequeños (uno de suficiencia y dos de convergencia), que corrigen diferencias entre comunidades.</li>
+        </ul>
+        <p>El <strong>País Vasco y Navarra</strong> tienen <strong>régimen foral</strong>, que ampara la Constitución. Regulan y recaudan sus propios impuestos. A cambio, pagan al Estado una cantidad por lo que este sigue haciendo allí: el «cupo» vasco y la «aportación» navarra, que se fijan cada cinco años. Según Hacienda, en 2023 el País Vasco pagó al Estado 1.834 millones y Navarra 939,7 millones (incluido el ajuste del año anterior).</p>
         <details>
           <summary>Un paso más: por qué la financiación de un año se cierra dos años después</summary>
           <p><button type="button" class="info" data-info="entregas_a_cuenta">i</button> Durante el año, las comunidades reciben «entregas a cuenta»: un adelanto calculado con previsiones. Cuando se conocen los datos definitivos, se hace la «liquidación» y se paga o se devuelve la diferencia. La liquidación del ejercicio 2024 se publicó en julio de 2026.</p>
@@ -123,7 +135,13 @@
 
     <section aria-labelledby="reg-t">
       <h2 class="pregunta" id="reg-t">¿Cumplen las reglas?</h2>
-      <p>Desde 2020 no hay objetivos de déficit para cada comunidad. Según las notas del propio fichero de objetivos de Hacienda, las reglas fiscales se suspendieron en 2020 y 2021 por la COVID-19 y la suspensión siguió en 2022 y 2023; en 2024, el Senado rechazó por segunda vez los objetivos propuestos y rigieron los del Programa de Estabilidad, y en 2025 el Congreso rechazó los propuestos. En 2024 y 2025 hay objetivo para el conjunto de las comunidades, pero no para cada una. Por eso esta página no dice si una comunidad «cumple» o «incumple» su objetivo de déficit en esos años.</p>
+      <p>Desde 2020 no hay objetivos de déficit para cada comunidad. Según las notas del propio fichero de objetivos de Hacienda:</p>
+      <ul>
+        <li>En 2020 y 2021, las reglas se suspendieron por la COVID-19, y la suspensión siguió en 2022 y 2023.</li>
+        <li>En 2024, el Senado rechazó por segunda vez los objetivos que proponía el Gobierno. Rigieron los del plan que España había enviado a Bruselas (el Programa de Estabilidad).</li>
+        <li>En 2025, fue el Congreso el que los rechazó.</li>
+      </ul>
+      <p>En 2024 y 2025 hay objetivo para el conjunto de las comunidades, pero no para cada una. Por eso esta página no dice si una comunidad «cumple» o «incumple» su objetivo de déficit en esos años.</p>
       <p class="fuente-grafico">Fuente: Ministerio de Hacienda, <a href="https://www.hacienda.gob.es/cdi/estabilidad%20presupuestaria/serie-objetivos-ep.xlsx">serie de objetivos de estabilidad y deuda</a> (notas del fichero).</p>
     </section>
 

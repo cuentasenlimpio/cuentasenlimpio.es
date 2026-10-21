@@ -72,7 +72,7 @@ function pintar(d) {
 
   // 1. Desigualdad de renta
   const g = d.gini, a = g.años.at(-1);
-  pon("respuesta", [`En la ${encuesta(a)}, el índice de Gini de España era `, [n1(ult(g))], ` (UE: ${n1(ult(g, "ue"))}) y el 20 % de la población con más renta tenía `,
+  pon("respuesta", [`El índice de Gini mide la desigualdad de la renta: 0 si todos tuvieran lo mismo y 100 si una sola persona lo tuviera todo. En la ${encuesta(a)}, el de España era `, [n1(ult(g))], ` (media de la UE: ${n1(ult(g, "ue"))}), y el 20 % de la población con más renta tenía `,
     [`${numero(ult(d.s80s20), 2)} veces`], " la del 20 % con menos. Sin pensiones ni prestaciones, el Gini sería ",
     [n1(ult(d.gini_sin_transferencias))], "."]);
   linea("g-gini", [serie(g, "es", "España", c1, { ancho: 2.5 }), serie(g, "ue", "UE", suave)], { formato: n1, eje: "índice (0-100)" });
@@ -84,8 +84,8 @@ function pintar(d) {
   // 2. Escalones
   const r = d.reduccion_pobreza;
   pon("r-transf", [`Las pensiones bajan el Gini de ${n1(ult(d.gini_sin_transferencias))} a ${n1(ult(d.gini_solo_pensiones))}, y el resto de prestaciones, a ${n1(ult(g))}. `,
-    `Las prestaciones distintas de las pensiones reducen el riesgo de pobreza un `, [`${numero(r.pct, 1)} %`],
-    ` (de ${n1(ult(d.pobreza_solo_pensiones))} a ${n1(ult(d.pobreza))} personas de cada 100), en la ${encuesta(r.año)}.`]);
+    `Las prestaciones distintas de las pensiones hacen que haya menos personas en riesgo de pobreza: de ${n1(ult(d.pobreza_solo_pensiones))} de cada 100 a `, [`${n1(ult(d.pobreza))} de cada 100`],
+    `, en la ${encuesta(r.año)}.`]);
   linea("g-escalones", [
     serie(d.gini_sin_transferencias, "es", "sin ninguna transferencia", suave),
     serie(d.gini_solo_pensiones, "es", "con pensiones, sin el resto", c2),
@@ -113,8 +113,8 @@ function pintar(d) {
   }
 
   // 3. Pobreza y carencias
-  pon("r-pobreza", [`En la ${encuesta(a)}, el `, [`${n1(ult(d.pobreza))} %`], ` de la población estaba en riesgo de pobreza (UE: ${n1(ult(d.pobreza, "ue"))} %): `,
-    `con una renta por debajo de ${numero(ult(d.umbral), 0)} € al año para una persona sola. El ${n1(ult(d.carencia))} % sufría carencia material y social severa, y el ${n1(ult(d.arope))} % cumplía al menos uno de los tres criterios de pobreza o exclusión (AROPE).`]);
+  pon("r-pobreza", [`En la ${encuesta(a)}, el `, [`${n1(ult(d.pobreza))} %`], ` de la población estaba en riesgo de pobreza (UE: ${n1(ult(d.pobreza, "ue"))} %). `,
+    `Es tener una renta por debajo de ${numero(ult(d.umbral), 0)} € al año si se vive solo, o de ${numero(Math.round(ult(d.umbral) * 2.1), 0)} € para dos adultos con dos hijos menores de 14 (el umbral se multiplica por 2,1: el primer adulto cuenta 1, el segundo 0,5 y cada niño 0,3). El ${n1(ult(d.carencia))} % sufría carencia material y social severa, y el ${n1(ult(d.arope))} % cumplía al menos uno de los tres criterios de pobreza o exclusión (AROPE).`]);
   linea("g-pob", [
     serie(d.pobreza, "es", "riesgo de pobreza", c1, { ancho: 2.5 }),
     serie(d.arope, "es", "pobreza o exclusión (AROPE)", c3),
@@ -147,3 +147,6 @@ async function arrancar() {
 }
 
 arrancar();
+
+// El gráfico de la OCDE va plegado: al abrirlo, los gráficos recalculan su tamaño.
+document.getElementById("ocde-plegable")?.addEventListener("toggle", () => window.dispatchEvent(new Event("resize")));

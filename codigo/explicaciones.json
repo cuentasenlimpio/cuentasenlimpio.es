@@ -753,7 +753,8 @@
   "titulo": "La deuda con el Estado",
   "texto": [
    "Desde 2012, el Estado presta dinero a las comunidades mediante mecanismos extraordinarios: el Fondo de Liquidez Autonómico, la Facilidad Financiera y otros. Ese dinero es deuda de la comunidad con el Estado. El Banco de España la apunta como «préstamos del fondo de financiación».",
-   "A mitad de 2026, el conjunto de las comunidades debía al Estado unos 202.700 millones de euros. Es el 57 % de toda su deuda. Algunas comunidades no han usado estos mecanismos, o ya no les deben nada."
+   "A mitad de 2026, el conjunto de las comunidades debía al Estado unos 202.700 millones de euros. Es el 57 % de toda su deuda. Algunas comunidades no han usado estos mecanismos, o ya no les deben nada.",
+   "Las cifras no dicen por qué unas comunidades deben más que otras. La deuda es la suma de lo que les ha faltado en muchos años. Y eso depende de lo que cada una ha gastado, de lo que ha ingresado y de la financiación que ha recibido."
   ],
   "fuentes": [
    {
@@ -866,7 +867,7 @@
   "texto": [
    "Es la misma renta de los hogares, pero quitando las transferencias sociales: el dinero que reciben de las administraciones. Son las pensiones de jubilación y viudedad, el paro, las ayudas por familia, enfermedad e invalidez, las de educación y vivienda y la asistencia social.",
    "Hay dos versiones. En una se quitan todas, también las pensiones. En la otra, las pensiones se dejan como parte de la renta.",
-   "Eurostat advierte de que el indicador examina «the hypothetical non-existence of social transfers», es decir, un mundo supuesto sin esas ayudas. Es un cálculo, no lo que pasaría de verdad sin ellas. Los impuestos ya están descontados en todas las versiones."
+   "Eurostat advierte de que el indicador supone un mundo sin esas ayudas. Es un cálculo, no lo que pasaría de verdad sin ellas. Los impuestos ya están descontados en todas las versiones."
   ],
   "fuentes": [
    {
@@ -917,7 +918,7 @@
    "La Organización para la Cooperación y el Desarrollo Económicos (OCDE) parte de la renta de mercado. Son los salarios, lo que ganan los autónomos y lo que dan los ahorros e inversiones (rentas del capital). En su definición entran también algunas prestaciones de seguros ligados al empleo.",
    "A eso le suma lo que dan las administraciones (transferencias públicas) y obtiene la renta bruta. Después le resta los impuestos sobre la renta y las cotizaciones de los hogares, y obtiene la renta disponible.",
    "Para comparar hogares de distinto tamaño usa otro método: divide la renta entre la raíz cuadrada del número de miembros. Además, pone a cada dato el año de la renta. Por eso sus cifras no coinciden con las de Eurostat y no deben mezclarse.",
-   "El cálculo va por pasos, uno detrás de otro. Por eso, cuánto se atribuye a cada paso depende del orden en que se hagan."
+   "Primero suma las ayudas y después resta los impuestos. El efecto que se atribuye a cada paso depende de ese orden: en otro orden saldría algo distinto."
   ],
   "fuentes": [
    {
@@ -931,7 +932,8 @@
   "texto": [
    "Combinan las cuentas nacionales con la Encuesta Financiera de las Familias del Banco de España. Con eso calculan, cada trimestre, cómo se reparte entre los hogares su riqueza neta: lo que tienen menos lo que deben.",
    "Es una estadística experimental, todavía en pruebas. Se publica con unos cinco meses de retraso.",
-   "No da la misma cifra que la propia Encuesta Financiera de las Familias, que se hace cada dos años desde 2020."
+   "No da la misma cifra que la propia Encuesta Financiera de las Familias, que se hace cada dos años desde 2020.",
+   "«Experimental» quiere decir que el método todavía se está afinando y que las cifras pueden revisarse; no que sean poco serias."
   ],
   "fuentes": [
    {

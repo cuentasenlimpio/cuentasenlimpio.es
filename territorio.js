@@ -68,6 +68,11 @@ function pintarFicha() {
   const def = c.deficit.pib[n], deu = c.deuda.pib[q], meur = c.deuda.meur[q], est = c.deuda.estado_meur[q];
   const cifras = document.getElementById("cifras");
   cifras.textContent = "";
+  // Diferencia con la media, en euros y en porcentaje: «64 € menos que la media (un 2 % menos)».
+  const dif = (v, m) => {
+    const d = Math.round(v) - Math.round(m), pc = Math.round((100 * (v - m)) / m);  // con las cifras redondeadas que se ven, para que cuadre
+    return d === 0 ? "igual que la media" : `${numero(Math.abs(d), 0)} € ${d < 0 ? "menos" : "más"} que la media (un ${numero(Math.abs(pc), 0)} % ${d < 0 ? "menos" : "más"})`;
+  };
   const tarjeta = (nombre, valor, explica) => {
     const d = document.createElement("div");
     d.className = "tarjeta-cifra";
@@ -77,17 +82,18 @@ function pintarFicha() {
     d.append(a, b, e);
     cifras.appendChild(d);
   };
-  tarjeta(def < 0 ? `Déficit ${c.deficit.años[n]}` : `Superávit ${c.deficit.años[n]}`, `${numero(Math.abs(def), 2)} %`,
-    `de su PIB: ${numero(Math.abs(c.deficit.meur[n]), 0)} millones de euros. Provisional.`);
+  const habDef = c.poblacion ? (Math.abs(c.deficit.meur[n]) * 1e6) / c.poblacion.valor : null;
+  tarjeta(def < 0 ? `Le faltó (déficit), ${c.deficit.años[n]}` : `Le sobró (superávit), ${c.deficit.años[n]}`, `${numero(Math.abs(def), 2)} %`,
+    `de su PIB: ${numero(Math.abs(c.deficit.meur[n]), 0)} millones de euros${habDef ? `, unos ${numero(Math.round(habDef), 0)} € por habitante` : ""}. Provisional.`);
   const hab = c.poblacion ? (meur * 1e6) / c.poblacion.valor : null;
   tarjeta(`Deuda, ${nombreTrim(c.deuda.trimestres[q])}`, `${numero(deu, 1)} %`,
     `de su PIB: ${numero(meur, 0)} millones de euros${hab ? `, unos ${numero(Math.round(hab / 10) * 10, 0)} € por habitante` : ""}.`);
   tarjeta("Deuda con el Estado", est ? `${numero((100 * est) / meur, 0)} %` : "0 %",
-    est ? `de su deuda (${numero(est, 0)} millones): préstamos de los mecanismos de financiación del Estado.` : "No ha usado los mecanismos de financiación del Estado, o ya no les debe.");
+    est ? `de su deuda (${numero(est, 0)} millones): dinero que le ha prestado el Estado desde 2012.` : "No ha pedido préstamos al Estado, o ya los ha devuelto.");
   if (c.financiacion) {
     const f = c.financiacion, k = f.años.length - 1, media = T.financiacion.por_hab_ajustado[T.financiacion.años.indexOf(f.años[k])];
     tarjeta(`Financiación ${f.años[k]}`, `${numero(Math.round(f.por_hab_ajustado[k]), 0)} €`,
-      `por habitante ajustado, en financiación homogénea. Media del régimen común: ${numero(Math.round(media), 0)} €.`);
+      `por habitante ajustado (contando la edad de la población y el territorio). Media de las comunidades del sistema común: ${numero(Math.round(media), 0)} €; ${dif(f.por_hab_ajustado[k], media)}.`);
   } else {
     tarjeta("Financiación", "Régimen foral", "Recauda sus propios impuestos y paga al Estado un cupo o aportación: no entra en el sistema común.");
   }
@@ -121,7 +127,8 @@ function pintarFicha() {
   if (c.gasto) {
     dibujarBarrasH(document.getElementById("g-gas"), c.gasto.divisiones.filter((d) => d.meur > 0)
       .map((d) => ({ nombre: d.nombre, valor: (100 * d.meur) / c.gasto.total })), { formato: (v) => numero(v, 1), sufijo: " €" });
-    document.getElementById("g-gas-lectura").textContent = `${c.gasto.año}, provisional · ${numero(c.gasto.total, 0)} millones de euros en total`;
+    const habGas = c.poblacion ? (c.gasto.total * 1e6) / c.poblacion.valor : null;
+    document.getElementById("g-gas-lectura").textContent = `${c.gasto.año}, provisional · ${numero(c.gasto.total, 0)} millones de euros en total${habGas ? `, unos ${numero(Math.round(habGas / 10) * 10, 0)} € por habitante` : ""}`;
     fuente("g-gas-fuente", [[`igae_cofog_ccaa_${c.gasto.año}`, "gasto por funciones de cada comunidad"]], "lectura",
       "Cada función ÷ gasto total × 100. Sanidad y educación son competencias de las comunidades, por eso pesan tanto.");
   }

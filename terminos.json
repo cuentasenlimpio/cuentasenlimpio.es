@@ -674,6 +674,57 @@
     "deuda viva"
    ],
    "def": "La deuda que todavía no se ha devuelto en un momento dado."
+  },
+  {
+   "id": "hab-ajustado",
+   "formas": [
+    "habitante ajustado",
+    "habitantes ajustados"
+   ],
+   "def": "Una forma de contar la población que da más peso a lo que cuesta más atender: los mayores y los niños, la superficie, las islas. Sirve para repartir el dinero entre comunidades."
+  },
+  {
+   "id": "regimen-comun",
+   "formas": [
+    "régimen común",
+    "sistema común"
+   ],
+   "def": "El sistema con el que se financian quince comunidades: todas menos el País Vasco y Navarra, que tienen el suyo (régimen foral)."
+  },
+  {
+   "id": "homogenea",
+   "formas": [
+    "financiación homogénea"
+   ],
+   "def": "La parte de la financiación que es para servicios que tienen todas las comunidades. Se usa para compararlas entre sí."
+  },
+  {
+   "id": "fondo-garantia",
+   "formas": [
+    "Fondo de Garantía"
+   ],
+   "def": "El fondo del sistema que reparte dinero para que cada comunidad tenga lo mismo por habitante ajustado para sanidad, educación y servicios sociales."
+  },
+  {
+   "id": "especiales",
+   "formas": [
+    "impuestos especiales"
+   ],
+   "def": "Los impuestos sobre la gasolina y el gasóleo, el tabaco, el alcohol y la electricidad, entre otros."
+  },
+  {
+   "id": "riqueza-neta",
+   "formas": [
+    "riqueza neta"
+   ],
+   "def": "Lo que tiene un hogar (casa, ahorros, acciones…) menos lo que debe (la hipoteca, otros préstamos). La renta es lo que se gana en un año; la riqueza, lo que se tiene."
+  },
+  {
+   "id": "renta-mercado",
+   "formas": [
+    "renta de mercado"
+   ],
+   "def": "Lo que se gana antes de cualquier ayuda pública: sueldos, lo que ganan los autónomos y lo que dan los ahorros y las inversiones."
   }
  ]
 }
