@@ -422,17 +422,18 @@ const EC = (() => {
   }
 
   // Barras agrupadas por año (una barra por serie), con la misma lectura que las líneas.
-  function barras(caja, { años, series, formato, formatoLectura = formato, eje = "", alto = 300, aria = "" }) {
+  // `min`: 0 por defecto; null deja que el eje baje de cero (series con valores negativos).
+  function barras(caja, { años, series, formato, formatoLectura = formato, eje = "", alto = 300, aria = "", min = 0 }) {
     if (!caja.cuentasGrafico) { caja.textContent = ""; caja.cuentasGrafico = crear(caja, alto); }
     const g = caja.cuentasGrafico;
     const op = tiempo({ min: años[0] - 0.5, max: años.at(-1) + 0.5, marcasArriba: false, slider: false, zoom: false,
       aria: aria || caja.getAttribute("aria-label") || "" });
     op.grid.top = 28;
-    op.yAxis = ejeY({ nombre: eje, formato, min: 0 });
+    op.yAxis = ejeY({ nombre: eje, formato, min: min ?? undefined });
     op.series = series.map((s, k) => ({
       id: `b${k}`, type: "bar", silent: true, barGap: "12%", barMaxWidth: 34,
-      data: años.map((a, i) => [a, s.v[i] ?? null]),
-      itemStyle: { color: colorDe(s.color), borderRadius: [4, 4, 0, 0] },
+      data: años.map((a, i) => ({ value: [a, s.v[i] ?? null], itemStyle: { borderRadius: (s.v[i] ?? 0) < 0 ? [0, 0, 4, 4] : [4, 4, 0, 0] } })),
+      itemStyle: { color: colorDe(s.color) },
     }));
     g.setOption(op, { notMerge: true });
     const caja2 = lectura(caja);

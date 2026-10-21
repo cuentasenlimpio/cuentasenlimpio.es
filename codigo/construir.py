@@ -2069,6 +2069,135 @@ def construir_beneficios_fiscales():
     print(f"beneficios fiscales: {len(memorias)} memorias; {ultima['año']}: {ultima['partidas']['total']} M€")
 
 
+def _iart_cuadro(ruta):
+    """Un cuadro del Informe Anual de Recaudación (una hoja, años en la fila 6, «2024 (p)» si es provisional, y a la
+    derecha las tasas de variación, que se ignoran): (años, provisionales, [(etiqueta, {año: valor})])."""
+    filas = next(iter(hojas(ruta).values()))
+    i_cab = next(i for i, f in enumerate(filas[:12]) if f and sum(1 for c in f if isinstance(c, float) and 1990 <= c <= 2100) > 5)
+    cols, provisionales = {}, set()
+    for k, c in enumerate(filas[i_cab]):
+        m = re.match(r"^(\d{4})(?:\.0)?(\s*\(p\))?$", str(c).strip()) if c is not None else None
+        if m and int(m.group(1)) >= 1990:
+            if int(m.group(1)) in cols.values():
+                break
+            cols[k] = int(m.group(1))
+            if m.group(2):
+                provisionales.add(int(m.group(1)))
+        elif cols:
+            break  # acaba el bloque de años; lo que sigue son tasas de variación
+    salida = []
+    for f in filas[i_cab + 1:]:
+        etiqueta = next((c for c in (f or [])[:2] if isinstance(c, str) and c.strip()), None)
+        if etiqueta:
+            salida.append((etiqueta, {a: (f[k] if k < len(f) and isinstance(f[k], (int, float)) else None) for k, a in cols.items()}))
+    return sorted(cols.values()), provisionales, salida
+
+
+def construir_recaudacion(descargas):
+    """¿Sube la recaudación por la economía o por las normas? Informe Anual de Recaudación Tributaria de la Agencia
+    Tributaria: ingresos tributarios totales (cuadro 1.6), bases imponibles y tipos efectivos (1.3) e impacto de los
+    cambios normativos y de gestión (1.5). Se cruza con la serie mensual de recaudación."""
+    claves = ("aeat_iart_1_3", "aeat_iart_1_5", "aeat_iart_1_6")
+    if not all(k in descargas for k in claves):
+        print("AVISO recaudación: faltan cuadros del informe anual")
+        return None
+    años6, prov6, f16 = _iart_cuadro(AQUI / descargas["aeat_iart_1_6"]["fichero"])
+    años5, _, f15 = _iart_cuadro(AQUI / descargas["aeat_iart_1_5"]["fichero"])
+    años3, prov3, f13 = _iart_cuadro(AQUI / descargas["aeat_iart_1_3"]["fichero"])
+    d6 = {}
+    for e, v in f16:
+        d6.setdefault(re.sub(r"\s*\(\d\)$", "", e.strip()), v)
+    # Cuadro 1.3 en tres bloques con las mismas etiquetas: bases, tipos efectivos e impuestos devengados
+    bloques, actual = {"bases": {}, "tipos": {}, "devengados": {}}, "bases"
+    for e, v in f13:
+        e = re.sub(r"\s*\(\d\)$", "", e.strip())
+        if e.startswith("Tipos efectivos"):
+            actual = "tipos"
+            continue
+        if e == "Impuestos devengados":
+            actual = "devengados"
+        bloques[actual].setdefault(e, v)
+    b, t, dv = bloques["bases"], bloques["tipos"], bloques["devengados"]
+    # Impacto normativo: el TOTAL y las partidas de primer nivel (impuestos), sin los desgloses de cada uno
+    primer_nivel = ("Impuesto", "IE.", "I.E.", "Fiscalidad", "Otros impuestos", "Tasas judiciales", "Canon", "Resto Capítulo III", "Cesión")
+    total15 = next(v for e, v in f15 if e.strip() == "TOTAL")
+    partidas15 = [(e.strip(), v) for e, v in f15 if e.strip().startswith(primer_nivel)]
+
+    comprobaciones = []
+    cap = ("Capítulo I. Impuestos Directos", "Capítulo II. Impuestos Indirectos", "Capítulo III. Tasas y otros Ingresos")
+    mal = [a for a in años6 if abs(sum(d6[c][a] for c in cap) - d6["Total Ingresos Tributarios"][a]) > 0.05]
+    comprobaciones.append({"que": "¿Los tres capítulos (impuestos directos, indirectos y tasas) suman el total de ingresos tributarios?",
+                           "resultado": f"Sí, en todos los años ({años6[0]}–{años6[-1]})" if not mal else f"No en {mal}", "ok": not mal})
+    # Cruce con la serie mensual: la suma de los doce meses de cada año
+    if "aeat_recaudacion_series" in descargas:
+        sumas, meses = {}, {}
+        for f in hojas(AQUI / descargas["aeat_recaudacion_series"]["fichero"]).get("Ingresos tributarios", []):
+            f = (f or []) + [None] * 10
+            try:
+                a, m = int(float(f[0])), int(float(f[1]))
+            except (TypeError, ValueError):
+                continue
+            if 1 <= m <= 12 and isinstance(f[6], float):
+                sumas[a] = sumas.get(a, 0) + f[6] / 1000
+                meses[a] = meses.get(a, 0) + 1
+        comunes = [a for a in años6 if meses.get(a) == 12]
+        peor = max((abs(sumas[a] - d6["Total Ingresos Tributarios"][a]) for a in comunes), default=None)
+        comprobaciones.append({"que": "¿El total anual del informe es la suma de los doce meses de la serie mensual de recaudación?",
+                               "resultado": ("No hay años comunes" if peor is None else
+                                             f"Sí, en los {len(comunes)} años ({comunes[0]}–{comunes[-1]}), con {es(peor, 1)} millones de diferencia como mucho"
+                                             if peor < 1 else f"No: hasta {es(peor, 1)} millones de diferencia"),
+                               "ok": peor is not None and peor < 1})
+    difs = {a: sum((v[a] or 0) for _, v in partidas15) - (total15[a] or 0) for a in años5}
+    malos = {a: d_ for a, d_ in difs.items() if abs(d_) > 0.5}
+    comprobaciones.append({"que": "¿El impacto de los cambios normativos de cada impuesto suma el total de cada año?",
+                           "resultado": ("Sí, en todos los años" if not malos else
+                                         "Sí, salvo " + "; ".join(f"{es(abs(x))} millón en {a}" for a, x in malos.items()) + " (redondeo de las partidas)")
+                           if all(abs(x) <= 1 for x in malos.values()) else f"No en {sorted(malos)}",
+                           "ok": all(abs(x) <= 1 for x in malos.values())})
+    pares = [("Total renta y gasto", "Impuestos devengados", "Base Imponible Agregada"),
+             ("Rentas brutas de los hogares", "Impuesto sobre la Renta de las Personas Físicas", "Rentas brutas de los hogares"),
+             ("Base imponible Sociedades consolidada", "Impuesto sobre Sociedades", "Base imponible Sociedades consolidada"),
+             ("Gasto final sujeto a IVA", "Impuesto sobre el Valor Añadido", "Gasto final sujeto a IVA")]
+    peor_t = max(abs(100 * dv[dk][a] / b[bk][a] - t[tk][a]) for tk, dk, bk in pares for a in años3 if b[bk][a] and t[tk][a] is not None)
+    comprobaciones.append({"que": "¿Cada tipo efectivo es el impuesto devengado dividido entre su base (total, IRPF, Sociedades e IVA)?",
+                           "resultado": f"Sí, en todos los años, con {es(peor_t, 3)} puntos de diferencia como mucho" if peor_t < 0.01 else f"No: hasta {es(peor_t, 2)} puntos",
+                           "ok": peor_t < 0.01})
+    peor_d = max(abs(dv["Impuestos sobre las rentas"][a] + dv["Impuestos sobre el gasto"][a] - dv["Impuestos devengados"][a]) for a in años3)
+    comprobaciones.append({"que": "¿Los impuestos devengados sobre la renta y sobre el gasto suman el total?",
+                           "resultado": "Sí, en todos los años" if peor_d < 0.05 else f"No: hasta {es(peor_d, 1)} millones", "ok": peor_d < 0.05})
+
+    r1 = lambda v: None if v is None else round(v, 1)
+    total = [r1(d6["Total Ingresos Tributarios"][a]) for a in años6]
+    variacion = [None] + [r1(total[i] - total[i - 1]) for i in range(1, len(años6))]
+    normativo = [r1(total15.get(a)) for a in años6]
+    salida = {
+        "años": años6, "provisionales": sorted(prov6 | prov3),
+        "total": total, "variacion": variacion, "normativo": normativo,
+        "impuestos": {"irpf": [r1(d6["Impuesto sobre la Renta de las Personas Físicas"][a]) for a in años6],
+                      "sociedades": [r1(d6["Impuesto sobre Sociedades"][a]) for a in años6],
+                      "iva": [r1(d6["Impuesto sobre el Valor Añadido"][a]) for a in años6],
+                      "especiales": [r1(d6["Impuestos Especiales"][a]) for a in años6]},
+        "normativo_por_impuesto": {e: [r1(v.get(a)) for a in años6] for e, v in partidas15},
+        "bases": {"años": años3,
+                  "agregada": [r1(b["Base Imponible Agregada"][a]) for a in años3],
+                  "rentas_hogares": [r1(b["Rentas brutas de los hogares"][a]) for a in años3],
+                  "sociedades": [r1(b["Base imponible Sociedades consolidada"][a]) for a in años3],
+                  "gasto_iva": [r1(b["Gasto final sujeto a IVA"][a]) for a in años3],
+                  "devengados": [r1(dv["Impuestos devengados"][a]) for a in años3]},
+        "tipos": {"total": [round(t["Total renta y gasto"][a], 2) for a in años3],
+                  "irpf": [round(t["Rentas brutas de los hogares"][a], 2) for a in años3],
+                  "sociedades": [round(t["Base imponible Sociedades consolidada"][a], 2) for a in años3],
+                  "iva": [round(t["Gasto final sujeto a IVA"][a], 2) for a in años3]},
+        "tablas": {"total": "aeat_iart_1_6", "normativo": "aeat_iart_1_5", "bases": "aeat_iart_1_3"},
+        "comprobaciones": comprobaciones,
+    }
+    (WEB / "datos" / "recaudacion.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"recaudación: {años6[0]}–{años6[-1]}; {años6[-1]}: {total[-1]} M€, normativo {normativo[-1]} M€")
+    return salida
+
+
 def _cupo_estado(descargas):
     """Lo que el Estado anota cada año como ingreso por el cupo vasco (derechos reconocidos netos del concepto 45000,
     «Cupo del País Vasco»), en miles de euros: de la liquidación de cada año y, si aún no la hay, del avance a 31 de
@@ -3550,7 +3679,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3581,6 +3710,9 @@ def main():
                "airef_fichas_2026_08": "Última previsión de saldo de la AIReF para el año en curso (PDF; cifra copiada de la página 2).",
                "bde_proyecciones_2026t3": "Proyecciones del Banco de España (PDF; cifras copiadas del Cuadro 1).",
                "hacienda_objetivos_2027": "Objetivos de déficit y deuda del Gobierno (PDF; cifras copiadas de las páginas 7 y 9).",
+               "aeat_iart_1_3": "Bases imponibles, tipos efectivos e impuestos devengados de los principales impuestos desde 1995.",
+               "aeat_iart_1_5": "Impacto estimado de los cambios normativos y de gestión en la recaudación de cada año, por impuesto.",
+               "aeat_iart_1_6": "Ingresos tributarios totales por concepto; se comprueba que cada año es la suma de los meses de la serie mensual.",
                "cmce_actas": "Lista de actas de la Comisión Mixta: sirve para avisar de las nuevas. Las cifras del cupo se copian a mano de cada acta, enlazada en la página del cupo."}.get(nombre) or \
               ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
               ({"ss_afiliados_medios": "Afiliados medios por régimen y edad; con ellos se calculan los afiliados por pensión.",
@@ -3709,6 +3841,7 @@ def main():
     construir_ue_saldo(descargas)
     construir_beneficios_fiscales()
     cupo = construir_cupo_vasco(descargas)
+    construir_recaudacion(descargas)
     construir_descuadres(gasto, pmp, cupo)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

@@ -414,6 +414,27 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO rcp_epsap: no se pudo leer la página ({error})")
 
+    # Informe Anual de Recaudación Tributaria (Agencia Tributaria): cuadros en Excel del último ejercicio publicado (sale
+    # hacia junio). Se prueba el año anterior y, si aún no está, el de antes.
+    base_iart = ("https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/"
+                 "Informes_Anuales_de_Recaudacion_Tributaria/Ejercicio_{año}/Cuadro_{c}_es_es.xlsx")
+    for año_iart in (ahora.year - 1, ahora.year - 2):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(base_iart.format(año=año_iart, c="1.3"), headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+                hay_iart = r.read(2) == b"PK"
+        except (urllib.error.URLError, TimeoutError):
+            hay_iart = False
+        if hay_iart:
+            for c, n in (("1.3", "bases imponibles, tipos efectivos e impuestos devengados (cuadro 1.3)"),
+                         ("1.5", "impacto recaudatorio de los principales cambios normativos y de gestión (cuadro 1.5)"),
+                         ("1.6", "ingresos tributarios totales por concepto (cuadro 1.6)")):
+                PAGINAS.append({"fuente": "Agencia Tributaria", "tabla": f"aeat_iart_{c.replace('.', '_')}", "opcional": True,
+                                "nombre": f"Informe Anual de Recaudación Tributaria {año_iart}: {n}",
+                                "url": base_iart.format(año=año_iart, c=c), "extension": "xlsx"})
+            break
+    else:
+        print("AVISO aeat_iart: no se encontró el informe anual de recaudación")
+
     # Ejecución mensual del presupuesto de la Seguridad Social: «ResSISTEMA_<Mes>_<Año>.xlsx». Si el mes no existe, el
     # servidor devuelve un fichero vacío (no un error), así que se prueba hacia atrás hasta dar con un Excel de verdad.
     meses_ss = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Recaudación · Cuentas en limpio</title>
+  <meta name="description" content="Por qué cambia cada año lo que recauda la Agencia Tributaria: cuánto viene de cambios en las normas, cuánto de que crezcan rentas y consumo, y qué parte de la renta y del gasto se paga en impuestos, desde 1995.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js?v=ddca3566b1" defer></script>
+  <script src="ec.js?v=3919f7e251" defer></script>
+  <script src="recaudacion.js?v=4fa474980f" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav subnav-dinero" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a class="subnav-grupo" href="dinero.html" aria-current="true">Las cuentas</a> <a class="subnav-grupo" href="presupuesto.html">Estado y presupuesto</a> <a class="subnav-grupo" href="seguridad-social.html">Seguridad Social y economía</a> <a class="subnav-grupo" href="territorio.html">Territorio y Europa</a><span class="subnav-salto" aria-hidden="true"></span><a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="recaudacion.html" aria-current="page">Recaudación</a> <a href="beneficios-fiscales.html">Beneficios fiscales</a> <a href="gasto.html">Gasto</a></nav>
+      
+  <main>
+    <h1 class="pregunta">¿La recaudación sube por la economía o por los impuestos?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Son los impuestos que cobra la Agencia Tributaria, incluida la parte que después pasa a las comunidades autónomas y a los ayuntamientos; sin cotizaciones sociales, sin lo que cobran las haciendas forales del País Vasco y Navarra y sin los impuestos propios de comunidades y ayuntamientos. Cuenta lo que entra en caja cada año, ya restadas las devoluciones.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cuánto cambia cada año, y cuánto por cambios en las normas?</h2>
+      <p class="grafico-explica">Cambio de la recaudación respecto al año anterior y parte de ese cambio que la Agencia Tributaria atribuye a cambios en las normas y en la gestión de los impuestos (subidas o bajadas de tipos, deducciones, adelantos o retrasos de pagos…), en millones de euros.</p>
+      <p class="leyenda-linea"><span class="clave-barra clave-barra-oscura"></span> Cambio total <span class="clave-barra"></span> Por cambios en las normas y la gestión</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Lo que queda al restar los cambios de normas sale, sobre todo, de que crecen o caen las rentas, los beneficios de las empresas y el consumo sobre los que se pagan los impuestos. <span class="resalta">Ese crecimiento incluye la inflación</span>: si suben los precios, sube lo que se paga de IVA, y si suben los sueldos, sube lo que se retiene de IRPF, aunque no cambie ninguna ley.</p>
+      </div>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿Qué parte de lo que se gana y se gasta acaba en impuestos?</h2>
+      <p class="grafico-explica" id="g2-explica">Tipo efectivo: impuesto que corresponde a cada año dividido entre su base (las rentas, los beneficios o el gasto sobre los que se paga), en porcentaje.</p>
+      <p class="leyenda-linea"><span class="clave-linea clave-tinta"></span> Total <span class="clave-linea clave-primaria"></span> IVA sobre el gasto <span class="clave-linea clave-discontinua"></span> IRPF sobre las rentas de los hogares</p>
+      <div id="g2"></div>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">¿Qué impuestos han cambiado por las normas?</h2>
+      <p class="grafico-explica" id="g3-explica">Impacto de los cambios normativos y de gestión en la recaudación, por impuesto, en millones de euros.</p>
+      <table class="tabla-sueldo" id="normas"></table>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g4-t">
+      <h2 class="pregunta" id="g4-t">¿Cuánto da cada impuesto?</h2>
+      <p class="grafico-explica">Ingresos tributarios de los principales impuestos en algunos años, en millones de euros.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para ver todos los años →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="impuestos"></table></div>
+      <p class="fuente-grafico" id="g4-fuente"></p>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Si los impuestos son altos o bajos, ni si una medida concreta fue acertada.</li>
+        <li>Cuánto de la subida se debe a que los tramos del IRPF no se ajustan a la inflación: la Agencia Tributaria no lo separa en estas cifras.</li>
+        <li>El impacto de cada cambio normativo es una estimación de la propia Agencia, no una cifra medida.</li>
+        <li>Las cotizaciones sociales, los impuestos forales del País Vasco y Navarra y los impuestos propios de comunidades y ayuntamientos: la recaudación de todas las administraciones está en <a href="ingresos.html">Ingresos</a>.</li>
+      </ul>
+    </div>
+    <details class="plegable ficha">
+      <summary>Comprobaciones: si las cifras cuadran entre sí</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+    <p class="seguir-recorrido">Para seguir: <a href="ingresos.html">de dónde sale el dinero público</a> · <a href="beneficios-fiscales.html">lo que se deja de recaudar por deducciones</a> · <a href="este-ano.html">cómo va la recaudación este año</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">Las cuentas</p><ul><li><a href="dinero.html">Resumen</a></li><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="recaudacion.html">Recaudación</a></li><li><a href="beneficios-fiscales.html">Beneficios fiscales</a></li><li><a href="gasto.html">Gasto</a></li></ul></div>
+      <div><p class="mapa-titulo">Estado y presupuesto</p><ul><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="modificaciones.html">Cambios del presupuesto</a></li><li><a href="avales.html">Avales</a></li><li><a href="pago-proveedores.html">Pago a proveedores</a></li><li><a href="empleo-publico.html">Empleo público</a></li></ul></div>
+      <div><p class="mapa-titulo">Seguridad Social y economía</p><ul><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="economia.html">Economía</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Territorio y Europa</p><ul><li><a href="territorio.html">Comunidades</a></li><li><a href="cupo-vasco.html">Cupo vasco</a></li><li><a href="deuda-local.html">Ayuntamientos</a></li><li><a href="union-europea.html">Unión Europea</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="descuadres.html">Lo que no cuadra</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

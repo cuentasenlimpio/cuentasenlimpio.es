@@ -773,6 +773,25 @@ def cupo_vasco(D):
     return md
 
 
+def recaudacion(D):
+    s = D.get("recaudacion") or {}
+    if not s:
+        return cabecera("Recaudación", "recaudacion.html", "Sin datos en esta construcción.")
+    md = cabecera("Recaudación: ¿sube por la economía o por los impuestos?", "recaudacion.html",
+                  "Informe Anual de Recaudación Tributaria de la Agencia Tributaria: ingresos tributarios totales (cuadro 1.6, caja, "
+                  "incluida la parte cedida a comunidades y ayuntamientos; sin cotizaciones ni haciendas forales), impacto estimado de los "
+                  "cambios normativos y de gestión (cuadro 1.5) y tipos efectivos sobre las bases imponibles (cuadro 1.3). El total anual "
+                  "coincide con la suma de los meses de la serie mensual. Datos provisionales: " + ", ".join(map(str, s["provisionales"])) + ".")
+    md += "\n## Millones de euros\n\n" + tabla(["Año", "Recaudación", "Cambio", "Por cambios normativos", "IRPF", "IVA", "Sociedades", "Especiales"],
+        [[a, n(s["total"][i]), n(s["variacion"][i]), n(s["normativo"][i]), n(s["impuestos"]["irpf"][i]), n(s["impuestos"]["iva"][i]),
+          n(s["impuestos"]["sociedades"][i]), n(s["impuestos"]["especiales"][i])] for i, a in enumerate(s["años"])])
+    b = s["bases"]
+    md += "\n\n## Tipos efectivos (%)\n\n" + tabla(["Año", "Total renta y gasto", "IRPF / rentas de los hogares", "IVA / gasto final", "Sociedades / base"],
+        [[a, n(s["tipos"]["total"][i], 1), n(s["tipos"]["irpf"][i], 1), n(s["tipos"]["iva"][i], 1), n(s["tipos"]["sociedades"][i], 1)] for i, a in enumerate(b["años"])])
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], k) for k in ("aeat_iart_1_6", "aeat_iart_1_5", "aeat_iart_1_3")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -784,6 +803,7 @@ FICHEROS = [
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("beneficios-fiscales", beneficios_fiscales, "Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF."),
+    ("recaudacion", recaudacion, "Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos."),
     ("cupo-vasco", cupo_vasco, "Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base."),
     ("union-europea", union_europea, "España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
@@ -877,7 +897,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco", "recaudacion"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

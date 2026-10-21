@@ -33,6 +33,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [deuda-local](https://cuentasenlimpio.es/contexto/deuda-local.md) (4 KB): Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio.
 - [avales](https://cuentasenlimpio.es/contexto/avales.md) (4 KB): Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas).
 - [beneficios-fiscales](https://cuentasenlimpio.es/contexto/beneficios-fiscales.md) (3 KB): Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF.
+- [recaudacion](https://cuentasenlimpio.es/contexto/recaudacion.md) (5 KB): Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos.
 - [cupo-vasco](https://cuentasenlimpio.es/contexto/cupo-vasco.md) (4 KB): Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base.
 - [union-europea](https://cuentasenlimpio.es/contexto/union-europea.md) (3 KB): España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles.
 - [fondos-europeos](https://cuentasenlimpio.es/contexto/fondos-europeos.md) (2 KB): Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional.
