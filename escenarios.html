@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>¿Qué pasaría si…? · Cuentas en limpio</title>
+  <meta name="description" content="Tres calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: una subida de los tipos de interés, más inflación y pensiones, y hacia dónde va la deuda.">
+  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=a6a79b8632" defer></script>
+  <script src="escenarios.js?v=61abc198ab" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html" aria-current="page">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="pregunta">¿Qué pasaría si…?</h1>
+    <p class="respuesta">Tres calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas, con las cifras de hoy. Se mueve una cosa y se ve qué cambia.</p>
+    <p class="contabilidad">No son previsiones. Cada calculadora cambia una sola cosa y deja quieto todo lo demás, y en la realidad todo se mueve a la vez. Los supuestos de cada una están debajo de su resultado.</p>
+    <nav class="indice" aria-label="Calculadoras"><ol>
+      <li><a href="#tipos">¿Y si suben los tipos de interés?</a></li>
+      <li><a href="#inflacion">¿Y si la inflación es más alta?</a></li>
+      <li><a href="#deuda">¿Hacia dónde va la deuda?</a></li>
+    </ol></nav>
+
+    <section class="escenario" id="tipos" aria-labelledby="tipos-t">
+      <h2 class="pregunta" id="tipos-t">¿Y si suben los tipos de interés?</h2>
+      <form class="mandos" id="tipos-form" autocomplete="off">
+        <label for="tipos-p">Cambio del tipo de interés al que se pide prestado
+          <output id="tipos-p-v" for="tipos-p"></output></label>
+        <input id="tipos-p" type="range" min="-2" max="4" step="0.25" value="1">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="-1">−1 punto</button>
+          <button type="button" data-valor="1">+1 punto</button>
+          <button type="button" data-valor="3">+3 puntos (lo que subió el bono a 10 años de 2021 a 2023)</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="tipos-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption id="tipos-pie"></figcaption>
+        <div id="tipos-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>La deuda no se pide toda de golpe: es como muchos préstamos que vencen en fechas distintas. Cada año vence una parte y se vuelve a pedir prestada al tipo de interés de ese momento. Por eso una subida de tipos no se nota entera el primer año: se va notando a medida que se renueva la deuda, hasta que toda se ha pedido al tipo nuevo.</p>
+      </div>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="tipos-supuestos"></ul></details>
+      <p class="fuente-grafico" id="tipos-fuente"></p>
+    </section>
+
+    <section class="escenario" id="inflacion" aria-labelledby="inflacion-t">
+      <h2 class="pregunta" id="inflacion-t">¿Y si la inflación es más alta?</h2>
+      <form class="mandos" id="inflacion-form" autocomplete="off">
+        <label for="inflacion-p">Inflación media del año (la que se usa para subir las pensiones)
+          <output id="inflacion-p-v" for="inflacion-p"></output></label>
+        <input id="inflacion-p" type="range" min="0" max="10" step="0.1" value="3">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="2">2 % (el objetivo del Banco Central Europeo)</button>
+          <button type="button" data-valor="8.5">8,5 % (lo que subieron las pensiones en 2023)</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="inflacion-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption>Coste de la subida de las pensiones en un año, en millones de euros</figcaption>
+        <div id="inflacion-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>Desde 2022, las pensiones contributivas suben cada enero lo mismo que subieron los precios de media entre diciembre y noviembre (Ley 21/2021). Así, la pensión compra lo mismo que antes. La subida se paga cada mes y en las pagas extra, todos los años siguientes. La inflación también sube algunos ingresos, porque las cosas cuestan más y los sueldos suelen subir, pero cuánto depende de muchas cosas y aquí no se calcula.</p>
+      </div>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="inflacion-supuestos"></ul></details>
+      <p class="fuente-grafico" id="inflacion-fuente"></p>
+    </section>
+
+    <section class="escenario" id="deuda" aria-labelledby="deuda-t">
+      <h2 class="pregunta" id="deuda-t">¿Hacia dónde va la deuda?</h2>
+      <form class="mandos mandos-tres" id="deuda-form" autocomplete="off">
+        <div><label for="deuda-pb">Lo que falta o sobra cada año sin contar intereses (% del PIB)
+          <output id="deuda-pb-v" for="deuda-pb"></output></label>
+        <input id="deuda-pb" type="range" min="-4" max="3" step="0.1"></div>
+        <div><label for="deuda-r">Interés medio que se paga por la deuda
+          <output id="deuda-r-v" for="deuda-r"></output></label>
+        <input id="deuda-r" type="range" min="0" max="6" step="0.1"></div>
+        <div><label for="deuda-g">Crecimiento de la economía cada año, con la subida de precios incluida
+          <output id="deuda-g-v" for="deuda-g"></output></label>
+        <input id="deuda-g" type="range" min="-2" max="8" step="0.1"></div>
+        <div class="atajos" role="group" aria-label="Valores de partida">
+          <button type="button" id="deuda-hoy">Volver a los valores de hoy</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="deuda-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption>Deuda de las administraciones en % del PIB: lo publicado y lo que saldría con estos valores</figcaption>
+        <div id="deuda-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>La deuda se mide frente al tamaño de la economía (el PIB). Cada año cambia por dos cosas: lo que falta o sobra sin contar intereses (el saldo primario) y la carrera entre el interés de la deuda y el crecimiento de la economía. Si la economía crece más deprisa que el interés, la deuda pesa cada vez menos aunque falte un poco de dinero; si crece más despacio, pesa cada vez más aunque sobre un poco.</p>
+      </div>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="deuda-supuestos"></ul></details>
+      <p class="fuente-grafico" id="deuda-fuente"></p>
+    </section>
+
+    <p class="seguir-recorrido">Las cifras de partida y las reglas, escritas, en <a href="contexto/mecanismos.md">contexto/mecanismos.md</a>. Para escenarios oficiales completos: la <a href="https://www.airef.es/">Autoridad Independiente de Responsabilidad Fiscal (AIReF)</a>, la Comisión Europea y el Banco de España.</p>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

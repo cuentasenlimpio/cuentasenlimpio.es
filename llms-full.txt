@@ -1,0 +1,1641 @@
+# Cuentas en limpio
+
+> Las cuentas públicas de España explicadas con datos oficiales, sin opinión política. Todas las cifras salen de fuentes oficiales (Eurostat, INE, IGAE, Banco de España, Tesoro, Seguridad Social, AIReF…) y se actualizan solas cada día.
+
+Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 21 de octubre de 2026.
+
+## Cómo citar (obligatorio al reutilizar esta información)
+
+- Atribuye la información a «Cuentas en limpio (https://cuentasenlimpio.es)» y enlaza la página concreta de la web (no estos ficheros), con la fecha de consulta.
+- Cita además la fuente oficial que figura junto a cada dato: sus condiciones de reutilización (CC BY 4.0 en Eurostat e INE, por ejemplo) lo exigen. Condiciones de cada institución: https://cuentasenlimpio.es/metodologia.html
+- Si haces un cálculo o una estimación propia con estos datos, preséntala como tuya, no como de esta web.
+- Si el dato sale de un CSV o JSON y ninguna página lo muestra, enlaza ese fichero de datos. Las aproximaciones de contexto/mecanismos.md se citan enlazando ese fichero, con sus supuestos.
+- Licencia: el código y los textos de la web están bajo licencia MIT (https://cuentasenlimpio.es/LICENSE): se pueden reutilizar conservando el aviso de autoría. Los datos oficiales mantienen la licencia de su institución.
+
+## Reglas de uso
+
+- Distingue «dato oficial» (copiado de la fuente) de «cálculo nuestro» (aritmética sobre datos oficiales: por habitante, de cada 100 €, euros constantes). Cada fichero lo indica.
+- Di siempre el año y si el dato es provisional. Las series tienen calendarios distintos.
+- Esta web no da veredictos ni opinión. Si un tema tiene debate entre expertos, preséntalo como debate y atribuye cada postura a quien la sostiene (ver contexto/preguntas.md).
+- No sumes ni compares promesas por partido (ver contexto/promesas.md).
+- Para escenarios futuros, usa contexto/mecanismos.md y di tus supuestos; no los presentes como previsiones de esta web.
+- Contabilidad nacional (cuentas, ingresos, gasto) y presupuesto del Estado miden cosas distintas: no las mezcles.
+
+## Contexto por tema
+
+- [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
+- [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (5 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
+- [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
+- [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
+- [economia](https://cuentasenlimpio.es/contexto/economia.md) (4 KB): Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento.
+- [territorio](https://cuentasenlimpio.es/contexto/territorio.md) (4 KB): Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante.
+- [desigualdad](https://cuentasenlimpio.es/contexto/desigualdad.md) (2 KB): Gini, pobreza, efecto de pensiones y transferencias, riqueza.
+- [mecanismos](https://cuentasenlimpio.es/contexto/mecanismos.md) (5 KB): Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto.
+- [preguntas](https://cuentasenlimpio.es/contexto/preguntas.md) (56 KB): Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido.
+- [sueldo](https://cuentasenlimpio.es/contexto/sueldo.md) (9 KB): Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026.
+- [promesas](https://cuentasenlimpio.es/contexto/promesas.md) (2 KB): Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo.
+- [explicaciones](https://cuentasenlimpio.es/contexto/explicaciones.md) (64 KB): Los textos explicativos de cada concepto y gráfico, con sus matices y fuentes.
+- [glosario](https://cuentasenlimpio.es/contexto/glosario.md) (19 KB): Definiciones llanas de los términos técnicos.
+
+## Datos descargables (CSV y JSON)
+
+- [aapp.csv](https://cuentasenlimpio.es/datos/aapp.csv): series anuales de ingresos, gastos, saldo y deuda en cuatro unidades, con tipo (dato/lectura) y si es provisional.
+- [ingresos.csv](https://cuentasenlimpio.es/datos/ingresos.csv), [gasto.csv](https://cuentasenlimpio.es/datos/gasto.csv), [presupuesto.csv](https://cuentasenlimpio.es/datos/presupuesto.csv), [promesas.csv](https://cuentasenlimpio.es/datos/promesas.csv).
+- JSON de cada página en https://cuentasenlimpio.es/datos/ (aapp, ingresos, gasto, economia, territorio, desigualdad, presupuesto, escala, explicaciones), más https://cuentasenlimpio.es/preguntas.json y https://cuentasenlimpio.es/sueldo.json.
+
+## Páginas para personas
+
+- [Portada](https://cuentasenlimpio.es/) · [Las cuentas en cinco minutos](https://cuentasenlimpio.es/recorrido.html) · [¿Qué pasaría si…?](https://cuentasenlimpio.es/escenarios.html) · [Lectura fácil](https://cuentasenlimpio.es/facil.html) · [Cómo trabajamos](https://cuentasenlimpio.es/metodologia.html) · [Correcciones](https://cuentasenlimpio.es/correcciones.html)
+
+## Optional
+
+- [Todo el contexto en un solo fichero](https://cuentasenlimpio.es/llms-full.txt)
+
+## In English (short)
+
+Spanish public finances from official sources, no political opinion. Attribute to “Cuentas en limpio (https://cuentasenlimpio.es)”, link the specific page, and also cite the official source next to each figure. Distinguish official data from our calculations, state year and provisional status, present expert disagreements as such, and do not aggregate electoral promises by party. Topic files above are in Spanish.
+
+
+---
+
+# Cuentas de las administraciones públicas: ingresos, gastos, saldo y deuda
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+«Administraciones públicas» es el conjunto del Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos (sector S13 de la contabilidad nacional), sumados sin contar lo que se pasan entre ellos. Todo en contabilidad nacional (SEC 2010), la definición europea que se usa para las reglas fiscales.
+
+## Últimos años
+
+Millones de euros corrientes salvo donde se indica. Saldo negativo = déficit.
+
+| Año | Ingresos | Gastos | Saldo | Saldo (% PIB) | Deuda | Deuda (% PIB) | Deuda por habitante (€) |
+|---|---|---|---|---|---|---|---|
+| 2010 | 391.624 | 493.817 | -102.193 | -9,5 | 649.152 | 60,3 | 13.942 |
+| 2011 | 387.333 | 490.908 | -103.575 | -9,7 | 743.043 | 69,5 | 15.899 |
+| 2012 | 390.842 | 509.936 | -119.094 | -11,5 | 927.813 | 89,6 | 19.847 |
+| 2013 | 396.593 | 473.398 | -76.805 | -7,5 | 1.025.805 | 100,0 | 22.022 |
+| 2014 | 405.125 | 467.841 | -62.716 | -6,0 | 1.085.165 | 104,4 | 23.371 |
+| 2015 | 417.645 | 474.893 | -57.248 | -5,3 | 1.114.129 | 102,5 | 24.019 |
+| 2016 | 425.316 | 472.717 | -47.401 | -4,2 | 1.145.655 | 102,0 | 24.676 |
+| 2017 | 444.005 | 479.908 | -35.903 | -3,1 | 1.184.148 | 101,2 | 25.460 |
+| 2018 | 472.250 | 503.193 | -30.943 | -2,6 | 1.209.742 | 99,8 | 25.896 |
+| 2019 | 488.347 | 526.769 | -38.422 | -3,1 | 1.224.364 | 97,7 | 26.002 |
+| 2020 | 468.267 | 580.164 | -111.897 | -9,9 | 1.346.916 | 119,3 | 28.449 |
+| 2021 | 528.950 | 611.124 | -82.174 | -6,7 | 1.429.404 | 115,7 | 30.190 |
+| 2022 | 574.012 | 637.117 | -63.105 | -4,6 | 1.504.105 | 109,3 | 31.476 |
+| 2023 | 630.198 | 680.225 | -50.027 | -3,3 | 1.575.377 | 105,3 | 32.581 |
+| 2024 | 674.315 | 725.122 | -50.807 | -3,2 | 1.620.578 | 101,4 | 33.158 |
+| 2025 | 725.655 | 766.296 | -40.641 | -2,4 | 1.698.355 | 100,5 | 34.406 |
+
+En 1995–2025 hubo déficit en 28 de 31 años. Los euros por habitante son un cálculo nuestro (dato ÷ población media de Eurostat); el resto, datos oficiales.
+
+## Por qué cambió la deuda (puntos del PIB)
+
+Descomposición de la variación anual de la deuda en % del PIB: déficit primario (sin intereses), intereses, efecto del crecimiento del PIB nominal, compra o venta de activos financieros y otros ajustes. Identidad contable; la suma de componentes da la variación.
+
+| Año | Déficit primario | Intereses | Activos financieros | Otros ajustes | Variación de la deuda/PIB | Efecto del crecimiento del PIB |
+|---|---|---|---|---|---|---|
+| 2016 | 1,44 | 2,78 | -1,29 | -0,13 | -0,46 | -3,27 |
+| 2017 | 0,54 | 2,53 | 1,02 | -0,80 | -0,81 | -4,10 |
+| 2018 | 0,11 | 2,44 | 0,54 | -0,98 | -1,42 | -3,53 |
+| 2019 | 0,81 | 2,25 | -0,99 | -0,90 | -2,13 | -3,30 |
+| 2020 | 7,68 | 2,23 | 1,10 | -0,16 | 21,62 | 10,77 |
+| 2021 | 4,53 | 2,12 | 3,00 | -2,97 | -3,58 | -10,26 |
+| 2022 | 2,28 | 2,31 | 1,12 | -0,28 | -6,38 | -11,81 |
+| 2023 | 0,97 | 2,38 | 0,50 | 0,92 | -4,03 | -8,80 |
+| 2024 | 0,74 | 2,43 | 0,69 | -1,04 | -3,91 | -6,74 |
+| 2025 | 0,01 | 2,39 | 1,66 | 0,53 | -0,88 | -5,48 |
+
+## España frente a la Unión Europea (2025 o último año con dato)
+
+| Indicador (% del PIB) | España | Media UE-27 |
+|---|---|---|
+| ingresos | 42,9 | 46,3 |
+| gastos | 45,3 | 49,4 |
+| saldo | -2,4 | -3,1 |
+| deuda | 100,5 | 81,5 |
+
+### Deuda de los países de la UE, % del PIB (2025), de más a menos deuda
+
+España ocupa el puesto 5 de 27. Ordenación nuestra sobre los datos de Eurostat.
+
+| Puesto | País | % del PIB |
+|---|---|---|
+| 1 | Grecia | 145,4 |
+| 2 | Italia | 136,7 |
+| 3 | Francia | 115,7 |
+| 4 | Bélgica | 108,1 |
+| 5 | España | 100,5 |
+| 6 | Portugal | 89,2 |
+| 7 | Finlandia | 88,4 |
+| 8 | Austria | 80,7 |
+| 9 | Hungría | 74,4 |
+| 10 | Eslovenia | 65,1 |
+| 11 | Alemania | 62,8 |
+| 12 | Eslovaquia | 60,5 |
+| 13 | Polonia | 59,6 |
+| 14 | Rumanía | 58,9 |
+| 15 | Croacia | 55,7 |
+| 16 | Chipre | 52,3 |
+| 17 | Malta | 46,3 |
+| 18 | Letonia | 46,2 |
+| 19 | Países Bajos | 44,7 |
+| 20 | Chequia | 44,2 |
+| 21 | Lituania | 39,3 |
+| 22 | Suecia | 35,1 |
+| 23 | Irlanda | 34,8 |
+| 24 | Bulgaria | 29,9 |
+| 25 | Dinamarca | 27,2 |
+| 26 | Luxemburgo | 26,0 |
+| 27 | Estonia | 24,0 |
+
+### Saldo de los países de la UE, % del PIB (2025), de más déficit a más superávit
+
+España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurostat.
+
+| Puesto | País | % del PIB |
+|---|---|---|
+| 1 | Rumanía | -7,8 |
+| 2 | Polonia | -7,2 |
+| 3 | Bélgica | -5,2 |
+| 4 | Francia | -5,1 |
+| 5 | Hungría | -4,7 |
+| 6 | Eslovaquia | -4,4 |
+| 7 | Austria | -4,1 |
+| 8 | Bulgaria | -4,0 |
+| 9 | Finlandia | -3,8 |
+| 10 | Italia | -3,1 |
+| 11 | Croacia | -3,0 |
+| 12 | Alemania | -2,9 |
+| 13 | Letonia | -2,5 |
+| 14 | Eslovenia | -2,5 |
+| 15 | España | -2,4 |
+| 16 | Chequia | -2,2 |
+| 17 | Malta | -2,1 |
+| 18 | Estonia | -2,0 |
+| 19 | Lituania | -1,8 |
+| 20 | Luxemburgo | -1,8 |
+| 21 | Países Bajos | -1,6 |
+| 22 | Suecia | -1,6 |
+| 23 | Portugal | 0,7 |
+| 24 | Irlanda | 1,8 |
+| 25 | Grecia | 2,0 |
+| 26 | Chipre | 3,6 |
+
+## Fuentes
+
+- Eurostat, Ingresos, gastos y saldo de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- Eurostat, Déficit y deuda según el Procedimiento de Déficit Excesivo: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=es
+- Eurostat, Del déficit a la variación de la deuda (notificación del Procedimiento de Déficit Excesivo): https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt3/default/table?lang=es
+- Eurostat, PIB y sus componentes: https://ec.europa.eu/eurostat/databrowser/view/nama_10_gdp/default/table?lang=es
+- Eurostat, Población y empleo: https://ec.europa.eu/eurostat/databrowser/view/nama_10_pe/default/table?lang=es
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿Ingresos menos gastos da exactamente el saldo publicado en la misma tabla? Sí, en los 31 años
+- Sí: ¿El saldo de la tabla de cuentas coincide con el de la notificación oficial de déficit? Sí, en los 31 años
+- Sí: ¿Los porcentajes del PIB de la deuda usan el PIB más reciente? No del todo: el PIB se ha revisado después; la mayor diferencia es de 0 millones de euros, en 1995 (0,00 %)
+- Sí: ¿La deuda que publica Eurostat coincide con la del Banco de España? Coinciden al millón de euros en 31 de 31 años
+- Sí: ¿Por qué la deuda en euros de 1995 a 1998 no es igual en todas las fuentes? Porque entonces la moneda era la peseta y hay dos formas de pasarla a euros. Eurostat, en su unidad «euros», usa el tipo de cambio de cierre del ECU de cada año (1995: 159,549, 1996: 164,167, 1997: 167,388, 1998: 166,386 pesetas); el Banco de España y la unidad «moneda nacional» de Eurostat usan el tipo fijo de 166,386. Con esos tipos, las dos versiones cuadran (diferencia máxima: 0,0 millones de euros). En esta web usamos el tipo fijo, que es el que permite comparar años
+- NO: ¿El saldo coincide con el que publica la IGAE, la Intervención General del Estado? No: diferencia máxima de 460 millones de euros
+- NO: ¿El total de gastos coincide con el de la IGAE? No del todo: coinciden 1 de 13 operaciones
+- NO: ¿El total de ingresos coincide con el de la IGAE? No del todo: coinciden 1 de 9 operaciones
+- Sí: ¿El PIB que usamos coincide con el del INE? Sí, al millón de euros en los 31 años (1995–2025), sumando los cuatro trimestres de la Contabilidad Nacional Trimestral
+- Sí: ¿La población que usamos para las cifras por habitante coincide con la del INE? Casi: de 1995 a 2025 la diferencia máxima es del 0,21 % (en 2001). Eurostat usa la población media de todo el año de la contabilidad nacional y el INE la publica a 1 de enero, así que comparamos con la media de dos 1 de enero seguidos
+- Sí: ¿Las cifras de España en la comparación europea son las mismas que las del resto de la página? Sí, en los cuatro indicadores y todos los años
+- Sí: ¿Las partes de «por qué cambió la deuda» suman exactamente la variación publicada? Sí: en euros, déficit + activos financieros + ajustes da la variación de la deuda de cada año con una diferencia máxima de 0,1 millones (redondeo de Eurostat); en % del PIB, la suma reproduce la variación del porcentaje publicado con una diferencia máxima de 0,09 puntos, porque Eurostat publica ese porcentaje redondeado a un decimal
+- Sí: ¿El saldo de 2025 es el mismo en Eurostat y en la IGAE? Sí: las dos fuentes oficiales, Eurostat y la IGAE, dan el mismo saldo (-40 641 millones).
+- Sí: ¿El trimestral de la IGAE (4.º trimestre de 2025) coincide con su dato anual? Sí
+- Sí: ¿Las cifras que copiamos de «AIReF: Informe de seguimiento 2026 del Plan Fiscal-Estructural de Medio Plazo 2025-2028 (cuadros y gráficos)» están en su hoja de cálculo? Sí, las 5
+- Sí: ¿Las cifras que copiamos de «AIReF: Informe sobre la ejecución presupuestaria, la deuda pública y la regla de gasto 2026 (cuadros y gráficos)» están en su hoja de cálculo? Sí, las 16
+
+
+---
+
+# De dónde sale el dinero: impuestos, cotizaciones y otros ingresos
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/ingresos.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/ingresos.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Ingresos de todas las administraciones públicas, por tipo. «De cada 100 €» es la parte de cada tipo en el total de ingresos (cálculo nuestro sobre datos oficiales).
+
+## 2025 (provisional, IGAE)
+
+| Tipo de ingreso | Millones de € | % del PIB | De cada 100 € de ingresos |
+|---|---|---|---|
+| IVA | 114.428 | 6,77 | 15,8 |
+| Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…) | 52.504 | 3,11 | 7,2 |
+| Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…) | 24.626 | 1,46 | 3,4 |
+| Impuestos sobre la renta de los hogares | 161.400 | 9,55 | 22,2 |
+| Impuestos sobre los beneficios de las empresas | 53.623 | 3,17 | 7,4 |
+| Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…) | 5.630 | 0,33 | 0,8 |
+| Impuestos sobre el capital (sucesiones, donaciones…) | 6.047 | 0,36 | 0,8 |
+| Cotizaciones sociales | 223.230 | 13,21 | 30,8 |
+| Menos lo liquidado que no se espera cobrar | 0 | 0,00 | 0,0 |
+| Otros ingresos (ventas, rentas de la propiedad, transferencias…) | 84.167 | 4,98 | 11,6 |
+
+## Evolución: de cada 100 € de ingresos
+
+| Año | IVA | Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…) | Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…) | Impuestos sobre la renta de los hogares | Impuestos sobre los beneficios de las empresas | Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…) | Impuestos sobre el capital (sucesiones, donaciones…) | Cotizaciones sociales | Menos lo liquidado que no se espera cobrar | Otros ingresos (ventas, rentas de la propiedad, transferencias…) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 2016 | 16,9 | 8,7 | 4,7 | 19,1 | 5,8 | 1,0 | 1,5 | 31,9 | 0,0 | 10,5 |
+| 2017 | 17,0 | 8,8 | 4,6 | 19,5 | 5,8 | 0,9 | 1,3 | 32,1 | 0,0 | 9,9 |
+| 2018 | 16,8 | 8,6 | 4,5 | 19,8 | 6,3 | 0,9 | 1,2 | 31,6 | 0,0 | 10,3 |
+| 2019 | 16,6 | 8,3 | 4,4 | 20,3 | 5,3 | 0,9 | 1,1 | 32,9 | 0,0 | 10,2 |
+| 2020 | 15,1 | 7,4 | 4,6 | 21,1 | 4,7 | 0,9 | 1,0 | 34,6 | 0,0 | 10,5 |
+| 2021 | 15,8 | 7,6 | 4,4 | 20,2 | 6,1 | 0,8 | 1,2 | 32,5 | 0,0 | 11,5 |
+| 2022 | 16,4 | 7,4 | 4,2 | 21,5 | 6,4 | 0,8 | 1,0 | 31,4 | 0,0 | 11,0 |
+| 2023 | 15,2 | 6,7 | 4,3 | 21,3 | 6,9 | 0,8 | 0,9 | 31,3 | 0,0 | 12,5 |
+| 2024 | 15,2 | 7,0 | 4,0 | 21,6 | 7,0 | 0,8 | 0,8 | 31,2 | 0,0 | 12,2 |
+| 2025 | 15,8 | 7,2 | 3,4 | 22,2 | 7,4 | 0,8 | 0,8 | 30,8 | 0,0 | 11,6 |
+
+Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye también el IGIC canario (unos 2.500 millones en 2025). Presión fiscal (impuestos y cotizaciones en % del PIB): ver el fichero de explicaciones, entrada «presion_fiscal», y la pregunta «¿Se pagan más impuestos en España que en el resto de Europa?».
+
+## Fuentes
+
+- Eurostat, Impuestos y cotizaciones sociales: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag/default/table?lang=es
+- Eurostat, Ingresos, gastos y saldo de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- IGAE, Impuestos y cotizaciones sociales de las Administraciones públicas, anuales (contabilidad nacional): https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/A_AAPP_Imp.xlsx
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿Las partes de los impuestos y cotizaciones suman su total publicado? Sí, en los 30 años
+- Sí: ¿Los impuestos y las cotizaciones coinciden con la IGAE? Sí: IVA, impuestos sobre la producción, sobre la renta, sobre el capital y cotizaciones coinciden al millón de euros en los 30 años (1995–2024). El reparto entre renta de los hogares y beneficios de empresas solo lo publica Eurostat
+- Sí: ¿El desglose de impuestos de la IGAE coincide con el de Eurostat? Coincide al millón de euros en 29 de los 30 años que publican los dos; no en 2024, que la IGAE revisó después. Por eso usamos el de la IGAE para el año que Eurostat aún no tiene
+
+
+---
+
+# En qué se gasta: el gasto público por funciones (COFOG)
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/gasto.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/gasto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Gasto de todas las administraciones públicas por funciones (clasificación COFOG de Naciones Unidas). Eurostat publica este desglose más tarde que los totales: el último año es 2024.
+
+## 2024
+
+En la columna «de cada 100 €», servicios generales (GF01) va sin intereses; los intereses aparecen aparte.
+
+| Código | Función | Millones de € | % del PIB | De cada 100 € de gasto |
+|---|---|---|---|---|
+| GF01 | Servicios públicos generales | 92.551 | 5,8 | 7,3 |
+| GF02 | Defensa | 14.233 | 0,9 | 2,0 |
+| GF03 | Orden público y seguridad | 28.628 | 1,8 | 3,9 |
+| GF04 | Asuntos económicos | 80.908 | 5,1 | 11,2 |
+| GF05 | Medio ambiente | 15.539 | 1,0 | 2,1 |
+| GF06 | Vivienda y servicios comunitarios | 7.613 | 0,5 | 1,1 |
+| GF07 | Sanidad | 102.942 | 6,5 | 14,2 |
+| GF08 | Ocio, cultura y religión | 19.193 | 1,2 | 2,6 |
+| GF09 | Educación | 65.862 | 4,1 | 9,1 |
+| GF10 | Protección social | 297.532 | 18,7 | 41,0 |
+| GF0107 | de ellos, intereses de la deuda (dentro de GF01) | — | — | 5,47 |
+
+## Quién gasta cada función (2024, % del gasto de esa función)
+
+Cálculo nuestro: gasto de cada nivel ÷ gasto de todas las administraciones en esa función.
+
+| Código | Función | Estado (Administración Central) | Comunidades autónomas | Entidades locales | Seguridad Social |
+|---|---|---|---|---|---|
+| GF01 | Servicios públicos generales | 64,5 | 20,5 | 17,8 | 0,3 |
+| GF02 | Defensa | 100,0 | 0,0 | 0,0 | 0,0 |
+| GF03 | Orden público y seguridad | 52,2 | 24,6 | 23,2 | 0,0 |
+| GF04 | Asuntos económicos | 42,2 | 31,6 | 22,4 | 3,9 |
+| GF05 | Medio ambiente | 12,7 | 22,3 | 65,0 | 0,0 |
+| GF06 | Vivienda y servicios comunitarios | 2,6 | 40,7 | 56,7 | 0,0 |
+| GF07 | Sanidad | 3,5 | 93,7 | 0,9 | 1,9 |
+| GF08 | Ocio, cultura y religión | 17,6 | 22,6 | 59,8 | 0,0 |
+| GF09 | Educación | 4,0 | 90,7 | 5,2 | 0,0 |
+| GF10 | Protección social | 9,9 | 6,4 | 3,4 | 80,3 |
+| TOTAL | Todo el gasto (sin transferencias generales entre administraciones, 01.8) | 22,7 | 32,8 | 11,2 | 33,7 |
+
+Serie completa por años, funciones y unidades: https://cuentasenlimpio.es/datos/gasto.csv
+
+## Fuentes
+
+- Eurostat, Gasto de las administraciones públicas por funciones (COFOG): https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=es
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿Las diez funciones suman el gasto total? Sí, en los 30 años
+- NO: ¿El total del gasto por funciones es el mismo gasto total de la página de cuentas? No: diferencia máxima de 121 millones
+- Sí: ¿El gasto de cada función coincide con la serie de la IGAE? Sí: las diez funciones coinciden al millón de euros en los 30 años (1995–2024)
+- Sí: ¿Las ocho partes del gasto por tipo suman exactamente el gasto total? Sí, en los 31 años (1995–2025)
+
+
+---
+
+# El presupuesto del Estado: lo aprobado y lo gastado
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuesto.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuesto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Solo el Estado (no comunidades, ayuntamientos ni Seguridad Social) y en criterio presupuestario, no de contabilidad nacional: estas cifras no se pueden sumar ni comparar directamente con las de cuentas.md. Créditos iniciales = lo aprobado; definitivos = tras las modificaciones del año; obligaciones reconocidas = lo gastado.
+
+## Totales (millones de euros)
+
+| Año | Presupuesto vigente | Iniciales | Definitivos | Obligaciones | Fuente |
+|---|---|---|---|---|---|
+| 2015 | Presupuesto propio desde el 1 de enero | 282.918 | 307.658 | 296.450 | liquidación |
+| 2016 | Presupuesto propio desde el 1 de enero | 274.732 | 276.637 | 263.372 | liquidación |
+| 2017 | Siguió el presupuesto anterior hasta que se aprobó el nuevo, el 27 de junio (Ley 3/2017) | 276.152 | 281.868 | 272.881 | liquidación |
+| 2018 | Siguió el presupuesto anterior hasta que se aprobó el nuevo, el 3 de julio (Ley 6/2018) | 278.065 | 294.182 | 279.574 | liquidación |
+| 2019 | No hubo presupuesto nuevo: siguió el de 2018 (Ley 6/2018) | 277.933 | 294.253 | 269.100 | liquidación |
+| 2020 | No hubo presupuesto nuevo: siguió el de 2018 (Ley 6/2018) | 277.933 | 354.010 | 345.922 | liquidación |
+| 2021 | Presupuesto propio desde el 1 de enero | 383.543 | 402.538 | 367.654 | liquidación |
+| 2022 | Presupuesto propio desde el 1 de enero | 347.486 | 376.300 | 342.184 | liquidación |
+| 2023 | Presupuesto propio desde el 1 de enero | 386.088 | 407.083 | 371.289 | liquidación |
+| 2024 | No hubo presupuesto nuevo: siguió el de 2023, aprobado en diciembre de 2022 (Ley 31/2022) | 380.822 | 433.164 | 408.564 | liquidación |
+| 2025 | No hubo presupuesto nuevo: siguió el de 2023, aprobado en diciembre de 2022 (Ley 31/2022) | 380.822 | 457.766 | 423.336 | avance |
+
+## Las 20 políticas de gasto con más gasto en 2025 (millones de euros)
+
+| Código | Política | Iniciales | Definitivos | Obligaciones | Ejecutado sobre definitivos |
+|---|---|---|---|---|---|
+| 95 | Deuda Pública | 128.797 | 157.300 | 156.336 | 99 % |
+| 94 | Transferencias a otras Administraciones Públicas | 66.274 | 73.645 | 72.807 | 99 % |
+| 00 | Transferencias Internas | 60.624 | 72.304 | 71.888 | 99 % |
+| 21 | Pensiones | 20.509 | 23.532 | 23.516 | 100 % |
+| 12 | Defensa | 12.062 | 17.464 | 17.268 | 99 % |
+| 92 | Servicios de carácter general | 25.520 | 25.196 | 15.021 | 60 % |
+| 46 | Investigación, desarrollo, innovación y digital. | 14.129 | 16.614 | 12.596 | 76 % |
+| 13 | Seguridad ciudadana e Instituciones penitenciarias | 9.792 | 11.049 | 10.767 | 97 % |
+| 45 | Infraestructuras y Ecosistemas Resilientes | 10.906 | 16.978 | 7.024 | 41 % |
+| 44 | Subvenciones al transporte | 3.446 | 5.339 | 5.332 | 100 % |
+| 26 | Acceso a la vivienda y Fomento de la edificación | 3.484 | 4.954 | 4.745 | 96 % |
+| 32 | Educación | 5.228 | 4.538 | 3.922 | 86 % |
+| 49 | Otras actuaciones de carácter económico | 1.010 | 3.747 | 3.634 | 97 % |
+| 23 | Servicios sociales y Promoción social | 1.853 | 3.641 | 3.217 | 88 % |
+| 42 | Industria y Energia | 5.991 | 3.474 | 3.209 | 92 % |
+| 93 | Administración Financiera y Tributaria | 343 | 4.053 | 2.623 | 65 % |
+| 11 | Justicia | 2.211 | 2.496 | 2.439 | 98 % |
+| 43 | Comercio, Turismo y Pymes | 2.981 | 5.341 | 1.955 | 37 % |
+| 14 | Política Exterior y Cooperación para el desarrollo | 1.292 | 1.439 | 1.168 | 81 % |
+| 31 | Sanidad | 1.120 | 1.245 | 1.049 | 84 % |
+
+Todas las políticas y años: https://cuentasenlimpio.es/datos/presupuesto.csv
+
+## Fuentes
+
+- IGAE, liquidación del presupuesto del Estado y avance de ejecución: https://www.igae.pap.hacienda.gob.es/
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿Las políticas de gasto suman su área y las áreas el total? Sí, en los 11 años
+- Sí: ¿Los créditos definitivos son los mismos en las dos tablas de la liquidación? Sí, en todas las políticas de los 11 años
+- NO: ¿Lo aprobado coincide con la estadística de presupuestos del Ministerio de Hacienda, capítulo a capítulo? Cuadran en 9 años (2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2025 (avance: solo el total)); difieren en 2024 (15,0 millones en transferencias de capital), sin explicación localizada todavía. Para 2020 Hacienda no publica la estadística en un formato que podamos leer
+- Sí: ¿El avance a 31 de diciembre de 2024 coincidió con la liquidación definitiva? Sí: lo aprobado, lo autorizado y lo gastado de las 32 áreas y políticas coinciden al millón de euros. Por eso mostramos 2025 como avance
+- Sí: ¿Está comprobado en el BOE qué presupuesto rigió cada año? Sí, en los 11 años
+
+
+---
+
+# Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Últimos datos de cada serie. Cada una tiene su calendario: por eso las fechas no coinciden.
+
+| Indicador | Último valor | Periodo |
+|---|---|---|
+| Afiliados a la Seguridad Social (media, sin estacionalidad) | 22.480.796 | septiembre de 2026 |
+| Paro registrado (SEPE) | 2.379.505 | septiembre de 2026 |
+| Tasa de paro (EPA, %) | 9,87 | 2026T2 |
+| Ocupados (EPA, miles) | 22.779,0 | 2026T2 |
+| IPC general, variación anual (%) | 4,9 | septiembre de 2026 |
+| IPC subyacente, variación anual (%) | 3,1 | septiembre de 2026 |
+| PIB real, variación interanual (%) | 2,64 | 2026T2 |
+| Pensiones contributivas en vigor | 10.547.417 | septiembre de 2026 |
+| Nómina mensual de pensiones contributivas (millones de €) | 14.498 | septiembre de 2026 |
+| Pensión contributiva media (€/mes) | 1.374,57 | septiembre de 2026 |
+| Afiliados por pensión | 2,13 | septiembre de 2026 |
+| Rentabilidad del bono a 10 años (%) | 3,927 | septiembre de 2026 |
+| Prima de riesgo frente a Alemania (puntos básicos) | 45 | septiembre de 2026 |
+| Tipo de interés medio de la deuda del Estado en circulación (%) | 2,453 | septiembre de 2026 |
+| Vida media de la deuda del Estado (años) | 7,85 | septiembre de 2026 |
+| Mayores de 64 por cada 100 personas de 16 a 64 (dependencia) | 31,7 | 2025 |
+
+Proyección del INE de la dependencia de mayores: 53,5 en 2076 (serie año a año en https://cuentasenlimpio.es/economia.html).
+
+Cuál usar para el paro: la EPA (encuesta del INE, trimestral) es la cifra internacional; el paro registrado (SEPE) cuenta a quien se apunta en las oficinas de empleo; la afiliación cuenta empleos dados de alta en la Seguridad Social. Miden cosas distintas y no deben mezclarse.
+
+## Fuentes
+
+- Seguridad Social, Afiliados medios desestacionalizados (PX-Web, 10mb25, desde enero de 2021): https://w6.seg-social.es/PXWeb/Resources/PX/Databases/Afiliados%20en%20alta%20laboral/Afiliados%20Medios/10mb25.%20Afiliados%20medios%20DESESTACIONALIZADOS%20por%20dependencia%20laboral%20y%20sector%20de%20actividad%20CNAE%2025%20(desde%20ene-21).px
+- SEPE, Paro registrado por sectores, últimos diez años (datos de avance): https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_avance/xls/empleo/evolparoseries.xls
+- INE, EPA: ocupados (miles): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA387796?nult=5000
+- INE, IPC: índice general, variación anual (%): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/IPC290750?nult=5000
+- Seguridad Social, Evolución mensual de las pensiones del sistema (avance mensual del INSS): https://www.seg-social.es/wps/wcm/connect/wss/d8a9c4fd-04ac-4814-9bae-6971cdb35250/202609_Avance+mensual.xlsx?MOD=AJPERES
+- BCE, Rentabilidad de la deuda pública a 10 años, España y Alemania (criterio de convergencia, media mensual): https://data-api.ecb.europa.eu/service/data/IRS/M.ES+DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&detail=dataonly
+- Tesoro Público, Tipo de interés medio de la deuda del Estado en circulación (último año): https://www.tesoro.es/documents/d/tesoro/03-xlsx
+- Tesoro Público, Vida media de la deuda del Estado: https://www.tesoro.es/documents/d/tesoro/02-xlsx
+- INE, Proyección de la tasa de dependencia (%): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/PROP7465?nult=5000
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿Los regímenes de la Seguridad Social suman el total de afiliados? Sí
+- Sí: ¿Las dos series desestacionalizadas de la Seguridad Social enlazan bien? Diferencia máxima de 44 657 afiliados en los 60 meses comunes; usamos la nueva desde 2021
+- Sí: ¿Los sectores del paro registrado suman el total de cada mes? Sí desde mayo de 2005; antes, en 25 meses de la serie que el SEPE reconstruyó, difieren en 2 parados como mucho
+- Sí: ¿Número de pensiones × pensión media da la nómina mensual? Sí, en todos los meses (diferencia por redondeo menor del 0,01 %)
+
+
+---
+
+# Comunidades autónomas: saldo, deuda y financiación
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/territorio.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/territorio.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Saldo y deuda de cada comunidad (contabilidad nacional, IGAE y Banco de España) y financiación del sistema común por habitante ajustado (Ministerio de Hacienda). País Vasco y Navarra tienen régimen foral: recaudan sus impuestos y pagan un cupo o aportación al Estado, así que no están en el sistema común de financiación. Saldo positivo = superávit.
+
+| Comunidad | Régimen | Saldo (M€, año) | Saldo (% de su PIB) | Deuda (M€, trimestre) | Deuda (% de su PIB) | De ella, debida al Estado (M€) | Financiación por habitante ajustado (€, año) |
+|---|---|---|---|---|---|---|---|
+| Andalucía | común | 358 (2025) | 0,16 | 42.070 (2026T2) | 18,2 | 20.509 | 3.412 (2024) |
+| Aragón | común | -191 (2025) | -0,37 | 9.407 (2026T2) | 17,4 | 7.508 | 3.797 (2024) |
+| Canarias | común | -177 (2025) | -0,29 | 6.897 (2026T2) | 10,9 | 965 | 3.034 (2024) |
+| Cantabria | común | 36 (2025) | 0,19 | 3.325 (2026T2) | 17,2 | 2.631 | 4.380 (2024) |
+| Castilla-La Mancha | común | -70 (2025) | -0,12 | 17.029 (2026T2) | 28,1 | 14.411 | 3.479 (2024) |
+| Castilla y León | común | -250 (2025) | -0,32 | 14.778 (2026T2) | 18,3 | 1.187 | 3.746 (2024) |
+| Cataluña | común | -1.914 (2025) | -0,60 | 92.770 (2026T2) | 28,1 | 74.941 | 3.475 (2024) |
+| Comunidad de Madrid | común | -1.119 (2025) | -0,33 | 42.296 (2026T2) | 12,3 | 0 | 3.660 (2024) |
+| Comunidad Foral de Navarra | foral | 582 (2025) | 2,10 | 2.446 (2026T2) | 8,4 | 0 | — (régimen foral) |
+| Comunitat Valenciana | común | -3.885 (2025) | -2,47 | 64.593 (2026T2) | 40,0 | 56.318 | 3.139 (2024) |
+| Extremadura | común | -20 (2025) | -0,07 | 5.570 (2026T2) | 19,2 | 2.196 | 3.885 (2024) |
+| Galicia | común | 167 (2025) | 0,19 | 13.357 (2026T2) | 15,0 | 1.248 | 3.608 (2024) |
+| Illes Balears | común | 1 (2025) | 0,00 | 8.691 (2026T2) | 17,8 | 6.023 | 2.929 (2024) |
+| La Rioja | común | -65 (2025) | -0,56 | 1.986 (2026T2) | 16,4 | 1.296 | 4.100 (2024) |
+| País Vasco | foral | 140 (2025) | 0,15 | 11.679 (2026T2) | 11,7 | 0 | — (régimen foral) |
+| Principado de Asturias | común | 61 (2025) | 0,20 | 4.095 (2026T2) | 12,5 | 433 | 3.668 (2024) |
+| Región de Murcia | común | -715 (2025) | -1,59 | 14.254 (2026T2) | 30,8 | 13.064 | 3.294 (2024) |
+
+La deuda «debida al Estado» son los préstamos de los mecanismos de financiación (FLA, Fondo de Facilidad Financiera y otros) desde 2012. Por qué unas comunidades deben más que otras: los datos no lo dicen por sí solos; la deuda acumula muchos años de diferencias entre gasto, ingresos y financiación recibida.
+
+## Fuentes
+
+- IGAE, cuentas de las comunidades autónomas: https://www.igae.pap.hacienda.gob.es/
+- Banco de España, deuda de las comunidades autónomas (cuadros 13.6 a 13.10 del Boletín Estadístico): https://www.bde.es/webbe/es/estadisticas/
+- Ministerio de Hacienda, liquidación del sistema de financiación: https://www.hacienda.gob.es/
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿El déficit de las 17 comunidades suma el del conjunto de la administración regional? Sí, al millón de euros, en los 26 años (2000–2025)
+- Sí: ¿La deuda de las 17 comunidades suma la del conjunto? Sí
+- Sí: ¿Las divisiones del gasto por funciones suman el gasto total de cada comunidad? Sí, en las 17
+
+
+---
+
+# Desigualdad: renta, pobreza y riqueza
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/desigualdad.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Encuesta de Condiciones de Vida (INE/Eurostat): el año de la encuesta mide la renta del año anterior. «Antes de transferencias» es lo que habría sin pensiones ni ayudas, a igualdad de todo lo demás: es una referencia contable, no lo que pasaría si se quitaran.
+
+| Indicador | Año de la encuesta | España | Media UE |
+|---|---|---|---|
+| Gini de la renta disponible (0 = todos igual, 100 = uno lo tiene todo) | 2025 | 30,8 | 29,2 |
+| Gini antes de pensiones y demás transferencias | 2025 | 44,6 | 47,8 |
+| Gini contando solo las pensiones | 2025 | 34,1 | 34,1 |
+| Riesgo de pobreza (% bajo el 60 % de la mediana) | 2025 | 19,5 | 16,3 |
+| Riesgo de pobreza antes de transferencias | 2025 | 41,9 | 42,8 |
+| Riesgo de pobreza contando solo pensiones | 2025 | 25,4 | 24,4 |
+| Renta del 20 % más rico ÷ 20 % más pobre | 2025 | 5,2 | 4,6 |
+| Riesgo de pobreza o exclusión social (AROPE, %) | 2025 | 25,7 | 20,9 |
+| Carencia material y social severa (%) | 2025 | 8,1 | 6,3 |
+| Umbral de pobreza, una persona (€/año) | 2025 | 12.220 | — |
+
+Riqueza (cuentas distributivas del BCE, experimentales), 2026T1: Gini de la riqueza neta 68,9; el 10 % más rico tiene el 54,9 % y la mitad con menos, el 7,6 %.
+
+En 2025, las ayudas distintas de las pensiones bajaron el riesgo de pobreza del 25,4 % (contando solo pensiones) al 19,5 %: un 23,2 % menos.
+
+## Fuentes
+
+- Eurostat, ilc_di12, ilc_li02 y relacionadas (encuesta de condiciones de vida): https://ec.europa.eu/eurostat/databrowser/view/ilc_di12/default/table?lang=es
+- BCE, cuentas distributivas de la riqueza (DWA): https://data.ecb.europa.eu/data/datasets/DWA
+
+## Comprobaciones automáticas de esta construcción
+
+- Sí: ¿El índice de Gini del INE y el de Eurostat son el mismo? Sí, en los 12 años comunes; por eso usamos el del INE para 2008-2013
+- Sí: ¿Las partes de la riqueza son coherentes (el 10 % más rico más el 50 % menos rico no pasan de 100)? Sí
+
+
+---
+
+# Mecanismos y órdenes de magnitud para razonar escenarios
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Valores de partida y reglas aritméticas para estimar el efecto de un cambio («¿qué pasaría si…?»), las mismas de las calculadoras de https://cuentasenlimpio.es/escenarios.html. Todo lo de este fichero que no es un dato copiado es una aproximación nuestra, con sus supuestos a la vista. No son previsiones: una estimación seria debe decir siempre sus supuestos y que la realidad cambia más cosas a la vez.
+
+## Valores de partida
+
+| Magnitud | Valor | Fuente |
+|---|---|---|
+| PIB nominal 2025 | 1.690.012 millones de € | Eurostat, nama_10_gdp |
+| Población media 2025 | 49.362.340 | Eurostat, nama_10_pe |
+| 1 punto del PIB | 16.900 millones de € (342 € por habitante) | cálculo nuestro |
+| Deuda de las administraciones, final de 2025 | 1.698.355 millones de € (100,5 % del PIB) | Eurostat, gov_10dd_edpt1 |
+| Intereses pagados 2025 | 40.391 millones de € (2,39 % del PIB) | Eurostat |
+| Saldo 2025 | -40.641 millones de € (-2,4 % del PIB) | Eurostat, gov_10a_main |
+| Ingresos totales 2025 | 725.655 millones de € | Eurostat, gov_10a_main |
+| Tipo medio de la deuda del Estado en circulación | 2,453 % (septiembre de 2026) | Tesoro Público |
+| Vida media de la deuda del Estado | 7,85 años (septiembre de 2026) | Tesoro Público |
+| Interés implícito 2025 (intereses ÷ deuda del año anterior) | 2,49 % | cálculo nuestro |
+| Crecimiento del PIB nominal 2025 | 5,7 % | cálculo nuestro sobre Eurostat |
+| Nómina mensual de pensiones contributivas (diciembre de 2025) | 13.750 millones de €; con 14 pagas, unos 192.501 millones al año | Seguridad Social; el ×14 es cálculo nuestro |
+
+## Reglas aproximadas
+
+**Subida de los tipos de interés (aproximación de esta web, con estos supuestos).** Toda la deuda de las administraciones con la vida media de la del Estado, que es la mayor parte; vencimientos repartidos por igual a lo largo del tiempo; deuda constante; todo lo que se renueva se paga 1 punto más caro. Cada año vence en torno a 1/vida media de la deuda, así que el coste extra crece poco a poco:
+
+| Momento | Coste extra al año en ese momento | Coste extra pagado durante ese año |
+|---|---|---|
+| Al acabar el primer año | 2.164 millones de € | 1.082 millones de € (la mitad: lo renovado entra a lo largo del año) |
+| Al acabar el tercer año | 6.491 millones de € | 5.409 millones de € |
+| Cuando se ha renovado toda (a los 7,85 años) | 16.984 millones de € (1,00 % del PIB) | — |
+
+Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (a menos de un año) se renuevan antes y aceleran el efecto; si la deuda crece, el efecto es mayor. Cita estas cifras como aproximación de esta web, con enlace a https://cuentasenlimpio.es/contexto/mecanismos.md y sus supuestos.
+
+**Dinámica de la deuda en % del PIB.** Variación de la deuda/PIB ≈ −saldo primario/PIB + (r − g)/(1 + g) × deuda/PIB anterior + ajustes, con r = interés implícito y g = crecimiento nominal. Si el tipo de interés implícito es menor que el crecimiento nominal, la deuda/PIB baja aunque haya un pequeño déficit primario; si es mayor, sube aunque haya un pequeño superávit primario. En 2025: r ≈ 2,49 %, g ≈ 5,7 %. La descomposición oficial año a año está en cuentas.md.
+
+**Inflación y pensiones.** Las pensiones contributivas se revalorizan cada enero con la inflación media de diciembre a noviembre (Ley 21/2021). Un punto más de inflación media sube la nómina anual en torno a un 1 %: unos 1.925 millones de € al año con la nómina de diciembre de 2025 por 14 pagas. La inflación también sube la recaudación nominal (más precio → más IVA; sueldos más altos → más IRPF y cotizaciones), pero cuánto depende de cómo se muevan sueldos y consumo: no hay una regla fija.
+
+**Peso de cada ingreso.** De cada 100 € de ingresos de 2025: IVA (incluye el IGIC canario), 15,8; Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…), 7,2; Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…), 3,4; Impuestos sobre la renta de los hogares, 22,2; Impuestos sobre los beneficios de las empresas, 7,4; Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…), 0,8; Impuestos sobre el capital (sucesiones, donaciones…), 0,8; Cotizaciones sociales, 30,8; Otros ingresos (ventas, rentas de la propiedad, transferencias…), 11,6. Un cambio del X % en la recaudación de un impuesto mueve los ingresos totales en X × su peso / 100 %, si lo demás no cambia (1 % de ingresos totales ≈ 7.257 millones de €).
+
+**Lo que estas reglas no recogen.** Efectos de segunda vuelta (un cambio de impuestos cambia el consumo, el empleo y la recaudación de otros impuestos), reacciones de los mercados y decisiones de política. Para escenarios oficiales completos: AIReF (https://www.airef.es/), Comisión Europea (Debt Sustainability Monitor) y Banco de España.
+
+
+---
+
+# Preguntas que se hace la gente, respondidas con datos
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/preguntas.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/preguntas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Cada respuesta separa lo que dicen los datos, lo que no dicen y si hay acuerdo entre expertos (con las posturas atribuidas a quien las sostiene). Al citar una postura, atribúyela a su autor, no a esta web.
+
+## Índice
+
+- ¿Están en peligro las pensiones? (#pensiones-en-peligro)
+- ¿Hay muchos empleados públicos en España? (#empleados-publicos)
+- ¿A quién le debe dinero España? (#a-quien-debe-espana)
+- ¿Quién paga la deuda? ¿Se devuelve alguna vez? (#quien-paga-la-deuda)
+- ¿Cuánto cuestan los intereses de la deuda? (#coste-intereses-deuda)
+- ¿Qué pasa si España no cumple las reglas europeas? (#incumplir-reglas-europeas)
+- ¿Se pagan más impuestos en España que en el resto de Europa? (#mas-impuestos-que-en-europa)
+- ¿A dónde va el IVA que se paga? (#a-donde-va-el-iva)
+
+## ¿Están en peligro las pensiones?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#pensiones-en-peligro (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** No tiene una respuesta de sí o no. Las pensiones se pagan cada mes porque lo manda la ley, y las proyecciones oficiales dan por hecho que se seguirán pagando. Lo que se discute es cómo pagar un gasto que crecerá con el envejecimiento. Puede ser con más cotizaciones, más impuestos, más deuda, pensiones que suban menos o una mezcla.
+
+**Lo que dicen los datos.**
+
+- En septiembre de 2026 se pagaban unos 10,5 millones de pensiones contributivas, las que se cobran por haber cotizado. La pensión media era de unos 1.375 euros al mes. Pagarlas costó unos 14.500 millones de euros ese mes (Seguridad Social). Hay personas que cobran dos pensiones, así que hay algo menos de pensionistas que de pensiones.
+- Sumando todas las pensiones públicas, también las no contributivas y las de los funcionarios del Estado, el gasto fue alrededor del 13 % del producto interior bruto (PIB) en 2025. Lo calcula la Autoridad Independiente de Responsabilidad Fiscal (AIReF), que vigila las cuentas públicas. El PIB es el valor de todo lo que produce el país en un año. Lectura: son unos 4.450 euros por habitante al año.
+- Ese gasto va a crecer porque hay más personas mayores. En 2025 había 32 mayores de 64 años por cada 100 personas de 16 a 64; el Instituto Nacional de Estadística (INE) proyecta 52 hacia 2050. La AIReF calcula que el gasto pasará del 13 % del PIB en 2025 al 16,4 % en 2050. La Comisión Europea calcula un máximo del 17,3 % hacia 2050. Ambas suponen que no cambian las leyes de hoy.
+- Las pensiones se pagan sobre todo con cotizaciones: lo que pagan empresas y trabajadores por cada sueldo. El resto lo pone el Estado. En septiembre de 2026 había 2,13 afiliados (personas dadas de alta en la Seguridad Social) por cada pensión; en 2016 había 1,88. Además de las cotizaciones y de lo que ya pone el Estado, hace falta más dinero. La AIReF calcula que ese añadido pasará del 0,7 % del PIB en 2025 al 3 % en 2050.
+- Las reformas de 2021 y 2023 suben las pensiones con los precios del año anterior y suben las cotizaciones, sobre todo de los sueldos más altos. También crean una regla de control. En mayo de 2026 la AIReF concluyó que se cumple. Descontado lo que aportan esas medidas, el gasto queda en el 13 % del PIB de media hasta 2050. El límite es el 13,3 %. La misma AIReF calcula que, sin más cambios, la deuda pública pasaría de algo más del 100 % del PIB en 2025 al 123 % en 2050.
+- La Seguridad Social tiene una hucha, el Fondo de Reserva. A finales de 2025 tenía unos 14.070 millones de euros: algo más de lo que cuesta la nómina de un mes. Llegó a tener unos 67.000 millones hacia 2010 y se gastó casi entero entre 2012 y 2018. Las pensiones españolas son altas en relación con el sueldo. Lo calcula la Organización para la Cooperación y el Desarrollo Económicos (OCDE). Quien empiece hoy a trabajar con el salario medio y cotice toda su vida cobrará en neto el 86 % de lo que ganaba. La media de la OCDE es el 63 %.
+
+**Lo que los datos no dicen.**
+
+- Las proyecciones suponen que las leyes no cambian y dependen de cuántas personas lleguen de fuera, cuántas trabajen y cuánto vivan; si eso cambia, cambia la cifra.
+- Los datos no dicen cuál es la forma correcta de pagar el gasto que viene: subir ingresos, recortar gasto o endeudarse es una decisión política.
+- Tampoco dicen cuánto cobrará cada persona concreta en el futuro.
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en que el gasto en pensiones crecerá por el envejecimiento y en que hoy una parte se paga con dinero del Estado, no con cotizaciones. No hay acuerdo en si las reformas de 2021 y 2023 bastan. El Gobierno sostiene que garantizan el sistema; la AIReF y el Fondo Monetario Internacional (FMI) sostienen que harán falta más medidas.
+
+- Gobierno de España (preámbulo del Real Decreto-ley 2/2023): Que la nueva cotización para la hucha y la recuperación del Fondo de Reserva garantizan que el sistema actual se mantenga en las próximas décadas. (BOE, Real Decreto-ley 2/2023, de 16 de marzo, preámbulo, https://www.boe.es/eli/es/rdl/2023/03/16/2)
+- Autoridad Independiente de Responsabilidad Fiscal (AIReF): Que la regla de gasto se cumple, pero no mide la sostenibilidad: sin más medidas, crecerán la deuda y el dinero que el Estado debe aportar. (AIReF, Estudio 1/2026 de evaluación de la regla de gasto de pensiones, 29 de mayo de 2026, resumen ejecutivo (págs. 5-9), https://www.airef.es/wp-content/uploads/2026/05/Pensiones/Estudio_Regla_Gasto_Pensiones-2026.pdf)
+- Fondo Monetario Internacional (FMI): Que España debería considerar otra reforma de las pensiones, por la subida de gasto ligada al envejecimiento. (FMI, nota de prensa 26/163, consulta del artículo IV con España, 22 de mayo de 2026, https://www.imf.org/en/news/articles/2026/05/22/pr26163-spain-imf-executive-board-concludes-2026-article-iv-consultation)
+- Comisión Europea y Comité de Política Económica: Que, con las leyes vigentes, el gasto en pensiones de España llegará a un máximo del 17,3 % del PIB hacia 2050. (Comisión Europea, 2024 Ageing Report, ficha de España, https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf)
+
+**Fuentes.**
+
+- Seguridad Social, pensiones contributivas en vigor y pensión media, septiembre de 2026: https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST23/EST24
+- AIReF, Estudio 1/2026 de evaluación de la regla de gasto de pensiones, 2026: resumen ejecutivo (págs. 5-9), gasto bruto (pág. 14), transferencias implícitas (págs. 18 y 54), tasa de generosidad (pág. 16): https://www.airef.es/wp-content/uploads/2026/05/Pensiones/Estudio_Regla_Gasto_Pensiones-2026.pdf
+- Comisión Europea, 2024 Ageing Report, ficha de España (cifra recogida en datos/explicaciones.json, clave pensiones): https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf
+- INE, proyecciones de población y tasa de dependencia de mayores: https://www.ine.es/DEFIne/es/concepto.htm?c=5098
+- Eurostat, gov_10a_main: saldo de los fondos de la Seguridad Social (S1314, B9) y deuda de las administraciones: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- BOE, Real Decreto-ley 2/2023, de 16 de marzo (preámbulo y disposición adicional segunda): https://www.boe.es/eli/es/rdl/2023/03/16/2
+- BOE, Ley 21/2021, de 28 de diciembre, de garantía del poder adquisitivo de las pensiones: https://www.boe.es/buscar/act.php?id=BOE-A-2021-21652
+- Seguridad Social, Fondo de Reserva: informe a las Cortes Generales, situación a 31 de diciembre de 2025 (págs. 9, 13 y 55): https://www.seg-social.es/descarga/es/15072026
+- OCDE, Pensions at a Glance 2025, tasa neta de sustitución para el salario medio (NPRR100), parámetros de 2024: https://sdmx.oecd.org/public/rest/data/OECD.ELS.SPD,DSD_PAG@DF_PRR,/.A.NPRR100..M._Z.M?format=csvfilewithlabels
+- FMI, nota de prensa 26/163, artículo IV de España, 2026: https://www.imf.org/en/news/articles/2026/05/22/pr26163-spain-imf-executive-board-concludes-2026-article-iv-consultation
+
+## ¿Hay muchos empleados públicos en España?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#empleados-publicos (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** Depende de con qué se compare. Unos 3,6 millones de personas trabajan para el sector público: 16 de cada 100 personas con empleo en 2026. Es algo menos que la media de los países de la OCDE y algo más que en Alemania o Italia. Lo que cuestan sus sueldos, en relación con el tamaño de la economía, está algo por encima de la media de la Unión Europea.
+
+**Lo que dicen los datos.**
+
+- Hay dos recuentos oficiales. La Encuesta de Población Activa (EPA) del INE contaba 3,65 millones de asalariados públicos en el segundo trimestre de 2026, contando las empresas públicas. El registro del Ministerio para la Transformación Digital y de la Función Pública contaba 3,07 millones en enero de 2026. Lectura: con la cifra de la EPA, hay unos 74 por cada 1.000 habitantes, uno de cada 14.
+- Casi dos de cada tres trabajan para las comunidades autónomas, que llevan la sanidad y la enseñanza (63 %). Los ayuntamientos y diputaciones tienen el 19 %. El Estado tiene el 18 %, y la mitad de ese grupo son militares, policías nacionales y guardias civiles (unos 285.000). Son datos del registro del ministerio de enero de 2026.
+- En 2007 eran 2,93 millones, el 14,2 % de quienes tenían empleo (EPA, segundo trimestre). Subieron hasta 3,30 millones en 2011 y bajaron a 2,95 en 2013. Desde 2014 han crecido casi todos los años. Su peso sube cuando hay crisis porque se pierde empleo privado: en 2012 llegó al 17,7 %. Según el registro del ministerio, entre 2017 y 2026 el personal creció un 22 %; en sanidad, un 48 %.
+- La OCDE compara 38 países con el mismo criterio: solo administraciones, sin empresas públicas. En 2023 España tenía el 15,2 % del empleo en ellas. La media de la OCDE era el 18,4 %. Francia tenía el 20,7 %, Suecia el 28,1 %, Italia el 13,7 % y Alemania el 11,5 %.
+- Los sueldos de los empleados públicos, con lo que se paga por ellos a la Seguridad Social, costaron unos 181.500 millones de euros en 2025. Son el 10,7 % del PIB; la media de la Unión Europea fue el 10,3 % (Eurostat). Lectura: unos 3.680 euros por habitante al año, y casi 24 de cada 100 euros que gastan las administraciones.
+- Más de uno de cada cuatro asalariados públicos tenía contrato temporal en el segundo trimestre de 2026 (27,3 %, EPA). Casi la mitad de esos contratos cubren la ausencia de otro trabajador. Una ley de 2021 manda bajar del 8 % las plazas fijas cubiertas con personal temporal; esa cifra no se mide igual que la de la EPA.
+
+**Lo que los datos no dicen.**
+
+- Los datos no dicen si son muchos o pocos para el trabajo que hacen: eso depende de qué servicios presta cada país con personal propio. Si una consulta médica la da una empresa privada pagada con dinero público, no cuenta como empleo público, aunque el servicio sea el mismo.
+- Tampoco miden si el trabajo se hace bien o con eficiencia.
+
+**¿Hay acuerdo?** En lo básico, sí. Hay acuerdo en que España está cerca de la media de los países de su entorno y algo por debajo de la de la OCDE. La cautela es que cada país delimita su sector público de forma distinta. Cuántos empleados públicos debería haber no es una pregunta que resuelvan los datos: depende de qué servicios quiera cada sociedad. Donde sí hay estudios con conclusiones distintas a lo largo del tiempo es en si cobran más o menos que en el sector privado por un trabajo parecido.
+
+- OCDE, Government at a Glance 2025: Que en 2023 el 15,2 % del empleo de España estaba en las administraciones, frente al 18,4 % de media de la OCDE. (OCDE, Government at a Glance 2025, empleo en las administraciones públicas (datos DF_GOV_EMPPS_REP_2025), https://sdmx.oecd.org/public/rest/data/OECD.GOV.GIP,DSD_GOV@DF_GOV_EMPPS_REP_2025,/all?startPeriod=2019&format=csvfilewithlabels)
+- Montesinos, Pérez y Ramos (Banco de España, Documento Ocasional 1402, 2014): Que el empleo público en España es comparable al de los países de su entorno, aunque inferior a la media, con cautelas por cómo se delimita en cada país. (Banco de España, Documento Ocasional 1402, pág. 12 y recuadro 1 (pág. 25), https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosOcasionales/14/Fich/do1402.pdf)
+- Giordano y otros (Banco Central Europeo, documento de trabajo 1406, 2011): Que, a igualdad de características, el sector público pagaba más que el privado, y que España estaba entre los países con mayor diferencia de los diez estudiados. (BCE, Working Paper 1406, «The public sector pay gap in a selection of euro area countries», 2011, resumen, https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1406.pdf)
+- Caballero, Ghirelli, Gómez y Pérez (Banco de España, documento de trabajo 2433, 2024): Que los recortes de la crisis redujeron esa diferencia de sueldos en la zona del euro y que después solo se recuperó en parte. (Banco de España, Documento de Trabajo 2433, 2024, resumen, https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/24/Files/dt2433e.pdf)
+
+**Fuentes.**
+
+- INE, EPA, tabla 65183: ocupados por tipo de sector (público o privado), 2.º trimestre de 2004 a 2026: https://www.ine.es/jaxiT3/Tabla.htm?t=65183
+- INE, EPA, tabla 65193: asalariados del sector público por tipo de administración, 2.º trimestre de 2026: https://www.ine.es/jaxiT3/Tabla.htm?t=65193
+- INE, EPA, tabla 65196: asalariados del sector público por tipo de contrato, 2.º trimestre de 2026: https://www.ine.es/jaxiT3/Tabla.htm?t=65196
+- Ministerio para la Transformación Digital y de la Función Pública, Estadística del personal al servicio de las Administraciones Públicas (EPSAP), nota de enero de 2026, tabla 1.1 (pág. 4) y págs. 1 y 5: https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/notaepsap/Noticia_EPSAP_Enero_26.pdf
+- Ministerio para la Transformación Digital y de la Función Pública, portal de la EPSAP: https://digital.gob.es/funcion-publica/dgfp/registro-central-personal/boletin.html
+- OCDE, Government at a Glance 2025, capítulo «Employment in general government» (gráfico 13.1): https://www.oecd.org/en/publications/government-at-a-glance-2025_0efd0bcd-en/full-report/employment-in-general-government_dafcfac5.html
+- Eurostat, gov_10a_main: remuneración de asalariados de las administraciones (D1PAY, S13), en % del PIB y millones de euros, 2025: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- BOE, Ley 20/2021, de 28 de diciembre, de medidas urgentes para la reducción de la temporalidad en el empleo público (preámbulo y artículo 2): https://www.boe.es/buscar/act.php?id=BOE-A-2021-21651
+- Banco de España, Documento Ocasional 1402 (2014): https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosOcasionales/14/Fich/do1402.pdf
+- BCE, Working Paper 1406 (2011): https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1406.pdf
+- Banco de España, Documento de Trabajo 2433 (2024): https://www.bde.es/f/webbe/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/24/Files/dt2433e.pdf
+
+## ¿A quién le debe dinero España?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#a-quien-debe-espana (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** Más o menos la mitad de la deuda pública está en manos de inversores de fuera de España. Del resto, el Banco de España tiene casi una quinta parte, y la mayor parte de lo demás la tienen bancos, aseguradoras y fondos españoles. Los hogares tienen muy poca de forma directa: unos 2 de cada 100 euros.
+
+**Lo que dicen los datos.**
+
+- La deuda pública es todo lo que las administraciones han pedido prestado y aún no han devuelto. A mitad de 2026 sumaba unos 1,76 billones de euros (1.762.936 millones), según el Banco de España. A finales de 2025 eran unos 34.400 euros por habitante.
+- De cada 100 euros de esa deuda, a mitad de 2026, unos 51 los tenían inversores de fuera de España y unos 18, el Banco de España. Unos 29 eran de bancos, aseguradoras, fondos y otras entidades financieras españolas. Menos de 2 eran de hogares y de empresas españolas que no son financieras. Es el reparto del Banco de España para toda la deuda de las administraciones (lectura sobre su cuadro 11.13).
+- El Tesoro da más detalle, pero solo de los bonos y letras del Estado, que son la mayor parte de la deuda. En julio de 2026, de cada 100 euros, 51 eran de no residentes y 20 del Banco de España. Los bancos españoles tenían 15; las aseguradoras, 6; los fondos de inversión, 2; otras administraciones, 2; y las personas particulares, casi 2.
+- «De fuera» no quiere decir solo bancos o fondos extranjeros. También cuenta ahí la deuda que tiene el Banco Central Europeo (BCE), el banco central de los países del euro. Las estadísticas no separan cuánto es del BCE y cuánto de inversores privados.
+- El reparto ha cambiado mucho. A finales de 2012, el Banco de España tenía unos 4 de cada 100 euros y los de fuera, unos 36. Desde 2015, los bancos centrales del euro compraron deuda para bajar los tipos de interés. En 2022 el Banco de España llegó a tener más de 28 de cada 100. Esas compras se hacen a otros inversores, nunca al Estado: la ley europea prohíbe que el banco central le preste directamente.
+- Desde julio de 2023 (un programa) y desde finales de 2024 (el otro), los bancos centrales del euro ya no vuelven a comprar la deuda que vence. Por eso la parte del Banco de España baja cada trimestre y sube la de los inversores de fuera.
+
+**Lo que los datos no dicen.**
+
+- Estos datos no dicen quién está detrás de cada fondo o banco: un fondo extranjero puede gestionar ahorro de españoles, y al revés.
+- Tampoco dicen si es mejor deber dentro o fuera del país.
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en las cifras: las publican el Banco de España y el Tesoro con los mismos datos de partida. No lo hay del todo en qué importa más. Unos estudios destacan que tener muchos tipos de inversores da estabilidad; otros, que depender de los de fuera puede encarecer la renovación de la deuda si se van de golpe; y otros, que si los bancos del país tienen mucha deuda de su Estado, los problemas de uno pasan al otro.
+
+- Comisión Europea: Que España tenga inversores variados y numerosos, deuda a plazos largos y casi toda en euros reduce el riesgo de su deuda. (Comisión Europea, Debt Sustainability Monitor 2024 (Institutional Paper 306, marzo de 2025), anexo de España, págs. 139-140, https://economy-finance.ec.europa.eu/document/download/581dbeab-4e86-44b9-afbe-6da8a1572491_en?filename=ip306_en.pdf)
+- Arslanalp y Tsuda (Fondo Monetario Internacional, 2012): Apoyarse más en inversores extranjeros puede abaratar la deuda, pero aumenta el riesgo al renovarla, porque esos inversores pueden salir de golpe. (FMI, documento de trabajo WP/12/284, «Tracking Global Demand for Advanced Economy Sovereign Debt», https://www.imf.org/en/publications/wp/issues/2016/12/31/tracking-global-demand-for-advanced-economy-sovereign-debt-40135)
+- Junta Europea de Riesgo Sistémico (JERS): Cuando los bancos de un país tienen mucha deuda de su propio Estado, los problemas del Estado y los de los bancos se contagian entre sí. (JERS, informe sobre el tratamiento regulatorio de las exposiciones soberanas, marzo de 2015, https://www.esrb.europa.eu/pub/pdf/other/esrbreportregulatorytreatmentsovereignexposures032015.en.pdf)
+
+**Fuentes.**
+
+- Banco de España, Boletín Estadístico, cuadro 11.13 (deuda de las administraciones públicas según el Procedimiento de Déficit Excesivo, por sectores tenedores), datos de diciembre de 2012, 2019, 2021, 2025 y junio de 2026: https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1113.csv
+- Tesoro Público, estadísticas mensuales, cuadro 9: total deuda del Estado no segregada y principales segregados, distribución por tenedores (julio de 2026): https://www.tesoro.es/documents/d/tesoro/07-xlsx
+- Eurostat, gov_10dd_edpt1, deuda de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=es
+- Tratado de Funcionamiento de la Unión Europea, artículo 123 (prohibición de que el BCE y los bancos centrales nacionales presten al sector público o le compren deuda directamente): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:12016E123
+- BCE, programa de compras de activos (APP): fin de las reinversiones desde julio de 2023: https://www.ecb.europa.eu/mopo/implement/app/html/index.en.html
+- BCE, programa de compras de emergencia frente a la pandemia (PEPP): fin de las reinversiones a finales de 2024: https://www.ecb.europa.eu/mopo/implement/pepp/html/index.en.html
+- Comisión Europea, Debt Sustainability Monitor 2024, Institutional Paper 306, págs. 139-140: https://economy-finance.ec.europa.eu/document/download/581dbeab-4e86-44b9-afbe-6da8a1572491_en?filename=ip306_en.pdf
+
+## ¿Quién paga la deuda? ¿Se devuelve alguna vez?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#quien-paga-la-deuda (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** Los intereses y lo que vence se pagan con el dinero de los presupuestos, que sale sobre todo de impuestos y cotizaciones. Cada préstamo concreto sí se devuelve, en su fecha. Pero el total no suele bajar, porque el Estado pide prestado de nuevo para pagar lo que vence, y más si gasta más de lo que ingresa.
+
+**Lo que dicen los datos.**
+
+- La Constitución obliga a pagar la deuda antes que cualquier otra cosa. Su artículo 135 dice que los intereses y el capital «gozarán de prioridad absoluta» en los presupuestos.
+- En 2025, las administraciones pagaron unos 40.400 millones de euros en intereses, según Eurostat. Son unos 820 euros por habitante al año. En 2024, de cada 100 euros de gasto público, unos 5,5 fueron intereses de la deuda.
+- Lo que se debe se devuelve por trozos. En 2025, el Estado devolvió unos 219.000 millones de bonos y letras que vencían. En el mismo año pidió prestados unos 290.000 millones. Por cada 100 euros que devolvió, pidió unos 132 (lectura sobre las cifras del Tesoro).
+- Por término medio, la deuda del Estado tarda casi ocho años en vencer: es su «vida media» (7,85 años en septiembre de 2026, según el Tesoro). Se parece a una hipoteca en que se paga durante años. No se parece en que el Estado no se jubila: puede renovar la deuda una y otra vez, mientras haya quien le preste.
+- La deuda en euros casi siempre ha subido desde 1995. Bajó algunos años: entre 2005 y 2007 pasó de unos 393.500 a unos 384.700 millones. Lo que más ha cambiado es su peso frente al producto interior bruto (PIB), todo lo que produce el país en un año. Bajó del 65 % en 1996 al 36 % en 2007. Y volvió a bajar del 119 % en 2020 a algo más del 100 % en 2025, aunque en euros siguió subiendo: la economía creció más deprisa.
+- A finales de 2024, la Comisión Europea calculó lo que las administraciones tendrían que pedir prestado en 2025 y 2026. Contando lo que vence y el déficit, sería cada año el equivalente a un 16 % del PIB. Con los datos de 2025, son unos 5.500 euros por habitante al año (lectura).
+
+**Lo que los datos no dicen.**
+
+- Los datos no dicen quién pagará en el futuro: depende de cómo evolucionen los impuestos, el gasto, los tipos de interés y el crecimiento.
+- Tampoco dicen si conviene reducir la deuda, ni a qué ritmo.
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en el mecanismo: la deuda se renueva, y su peso depende del interés y de cuánto crece la economía. No hay acuerdo en cuánto pesa sobre las generaciones futuras ni en cuánta deuda se puede mantener sin problemas.
+
+- Peter Diamond (1965): La deuda pública desplaza ahorro que iría a inversión privada, y eso reduce los ingresos de las generaciones siguientes. (Diamond, «National Debt in a Neoclassical Growth Model», American Economic Review 55(5), 1965, págs. 1126-1150, https://assets.aeaweb.org/asset-server/journals/aer/top20/55.5.1126-1150.pdf)
+- Olivier Blanchard (2019): Si el tipo de interés está por debajo del crecimiento de la economía, la deuda se puede renovar sin subir impuestos después para pagarla; el riesgo aparece si los tipos suben. (Blanchard, «Public Debt and Low Interest Rates», American Economic Review, 2019, https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197)
+- Comisión Europea: El riesgo de la deuda española es alto a medio plazo: sin cambios, volvería a subir hasta cerca del 112 % del PIB en 2035, sobre todo por el gasto ligado al envejecimiento. (Comisión Europea, Debt Sustainability Monitor 2024 (Institutional Paper 306), anexo de España, págs. 139-140, https://economy-finance.ec.europa.eu/document/download/581dbeab-4e86-44b9-afbe-6da8a1572491_en?filename=ip306_en.pdf)
+
+**Fuentes.**
+
+- Constitución Española, artículo 135.3 (texto consolidado, BOE): https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229#a135
+- Eurostat, gov_10dd_edpt1 y gov_10a_main, intereses y deuda de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=es
+- Tesoro Público, estadísticas mensuales, cuadros 26-29: financiación neta del Estado en 2025 y 2026 (emisiones, amortizaciones y financiación neta): https://www.tesoro.es/documents/d/tesoro/13-xlsx
+- Tesoro Público, estadísticas mensuales, cuadro 2: vida media de la deuda del Estado: https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales
+- Comisión Europea, Debt Sustainability Monitor 2024, Institutional Paper 306 (marzo de 2025), anexo de España, págs. 139-140: https://economy-finance.ec.europa.eu/document/download/581dbeab-4e86-44b9-afbe-6da8a1572491_en?filename=ip306_en.pdf
+
+## ¿Cuánto cuestan los intereses de la deuda?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#coste-intereses-deuda (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** En 2025, las administraciones públicas pagaron unos 40.400 millones de euros en intereses de la deuda. Son unos 820 euros por habitante, y algo más de 5 de cada 100 euros de todo el gasto público. Es más de lo que se gasta en defensa o en seguridad, y menos que en educación o sanidad.
+
+**Lo que dicen los datos.**
+
+- Los intereses son lo que se paga cada año por el dinero prestado, como en una hipoteca. En 2025, las administraciones públicas pagaron unos 40.400 millones de euros. Es el 2,4 % del producto interior bruto (PIB), que es todo lo que produce el país en un año (Eurostat, dato de 2025). Por habitante salen unos 820 euros al año, unos 68 al mes (lectura).
+- Comparado con otras partidas: de cada 100 euros que gastaron las administraciones en 2024, unos 5,5 fueron a intereses. A defensa fueron 2; a orden público y seguridad, 4; a educación, 9; y a sanidad, 14. A pensiones, paro y otras ayudas fueron 41 (Eurostat, gasto por funciones, 2024, dato provisional).
+- Mirado desde los ingresos: de cada 100 euros que ingresaron las administraciones en 2025, casi 6 se fueron en intereses (lectura).
+- Comparado con la economía, hoy pesan menos que en otras épocas. En 1996 eran el 5 % del PIB; en 2013, el 3,6 %; en 2025, el 2,4 %. Descontada la subida de precios, por habitante eran unos 1.200 euros en 1996, unos 1.000 en 2014 y unos 820 en 2025 (lectura, en euros de 2025).
+- Desde 2021 suben cada año: de unos 26.200 millones en 2021 a unos 40.400 en 2025. Hay dos motivos. Se debe más dinero: la deuda pasó de unos 1,43 billones de euros a unos 1,70 billones. Y desde 2022 pedir prestado cuesta más. El interés medio de la deuda del Estado pasó del 1,64 % a finales de 2021 al 2,45 % en septiembre de 2026 (Tesoro Público). Sube despacio porque cada año solo se renueva una parte: la deuda del Estado tarda de media casi ocho años en devolverse.
+- En la Unión Europea (UE), la media fue el 1,9 % del PIB en 2025, frente al 2,4 % de España. Pagaron más Italia y Hungría (3,8 %), Grecia (3,1 %), Rumanía (2,8 %) y Polonia (2,5 %); Alemania, el 1,1 % (Eurostat). La Autoridad Independiente de Responsabilidad Fiscal (AIReF), que vigila las cuentas públicas, prevé unos 43.700 millones para 2026: el 2,5 % del PIB.
+
+**Lo que los datos no dicen.**
+
+- Estos datos no dicen si la cifra es mucha o poca para la economía española: eso depende de cómo evolucionen los tipos de interés y el crecimiento.
+- Tampoco dicen en qué se gastaría ese dinero si no hubiera deuda, porque sin ella el gasto pasado tendría que haberse pagado de otra forma.
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en cómo se mide el coste y en que una subida de tipos tarda años en notarse entera, porque la deuda se renueva poco a poco. No hay acuerdo en cuánto pesa de verdad un nivel de deuda. Depende de si los tipos de interés quedan por encima o por debajo del crecimiento de la economía. Y eso no se sabe de antemano.
+
+- Autoridad Independiente de Responsabilidad Fiscal (AIReF): El coste medio de la deuda seguirá subiendo poco a poco mientras la deuda que vence se renueve a tipos más altos, lo que deja menos margen en el presupuesto. (AIReF, Informe sobre la ejecución presupuestaria, la deuda pública y la regla de gasto 2026 (15 de julio de 2026), páginas 72 y 113, https://www.airef.es/wp-content/uploads/2026/07/Informe-Ejecucion-Presupuestaria-2026.pdf)
+- Olivier Blanchard (American Economic Review, 2019): Mientras los tipos de interés estén por debajo del crecimiento de la economía, la deuda puede tener un coste bajo para las cuentas públicas; el propio autor advierte del riesgo si los tipos suben. (Blanchard, «Public Debt and Low Interest Rates», American Economic Review 109(4), 2019, https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197)
+
+**Fuentes.**
+
+- Eurostat, tabla gov_10dd_edpt1 (déficit y deuda según el procedimiento de déficit excesivo), partida D41PAY (intereses pagados), España y UE, 2024–2025: https://ec.europa.eu/eurostat/databrowser/view/gov_10dd_edpt1/default/table?lang=es
+- Eurostat, tabla gov_10a_exp (gasto por funciones COFOG), 2024: GF0107 (operaciones de deuda pública) y GF02–GF10: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=es
+- Tesoro Público, interés medio de la deuda del Estado en circulación y vida media (estadísticas mensuales, septiembre de 2026): https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales
+- AIReF, Informe sobre la ejecución presupuestaria, la deuda pública y la regla de gasto 2026, página 72 (apartado «Intereses») y cuadro 4 de la página 48: https://www.airef.es/wp-content/uploads/2026/07/Informe-Ejecucion-Presupuestaria-2026.pdf
+- Blanchard, «Public Debt and Low Interest Rates», American Economic Review, 2019: https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197
+
+## ¿Qué pasa si España no cumple las reglas europeas?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#incumplir-reglas-europeas (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** No hay una consecuencia automática: depende de qué regla se incumpla y de lo que decidan la Comisión Europea y el Consejo de la UE, donde se sientan los gobiernos. Las normas prevén un plan vigilado y, si no se cumple, multas y congelar fondos europeos. Hasta ahora no se ha cobrado ninguna multa por déficit: la de España de 2016, de unos 2.160 millones, se anuló.
+
+**Lo que dicen los datos.**
+
+- Las reglas europeas tienen dos referencias: un déficit de no más del 3 % del producto interior bruto (PIB) y una deuda de no más del 60 %. El déficit es lo que falta en un año cuando se gasta más de lo que se ingresa. Si un país las pasa, el Consejo de la UE, a propuesta de la Comisión, puede abrir un «procedimiento de déficit excesivo». Es un plan con plazos y revisiones para volver por debajo (Tratado de Funcionamiento de la UE, artículo 126).
+- Con las normas de abril de 2024, si el déficit pasa del 3 %, el país debe mejorar sus cuentas al menos medio punto del PIB al año. Esa mejora se mide sin contar lo que sube o baja solo por la marcha de la economía. Si la deuda pasa del 60 %, el procedimiento también puede abrirse cuando el gasto se sale del tope pactado más de lo permitido (Reglamento 2024/1264).
+- Si el país no toma medidas, las normas prevén castigos para los países del euro. Una multa del 0,2 % del PIB cuando el Consejo decide que no ha actuado (Reglamento 1173/2011, artículo 6). Si sigue sin actuar, otra multa de hasta el 0,05 % del PIB cada seis meses, que se acumula (Reglamento 1467/97, artículo 12). Con el PIB de España de 2025, serían unos 3.400 millones (unos 68 euros por habitante) y hasta unos 845 millones cada seis meses (unos 17 euros por habitante) (lectura). Además, la Comisión debe proponer congelar parte de los fondos europeos, salvo en una recesión grave (Reglamento 2021/1060, artículo 19).
+- España tuvo un procedimiento abierto de abril de 2009 a junio de 2019. Con los datos de hoy, su déficit pasó del 3 % todos los años de 2008 a 2017. El Consejo le hizo cuatro recomendaciones con plazos: dos en 2009, una en 2012 y otra en 2013. En julio de 2016 decidió que España no había tomado medidas eficaces. La multa que tocaba era el 0,2 % del PIB de 2015: 2.162 millones, unos 47 euros por habitante (lectura). El Consejo la anuló el 9 de agosto de 2016. Tuvo en cuenta la petición de España, sus reformas desde 2012 y los ajustes anunciados.
+- De 2020 a 2023 las reglas quedaron en pausa por la pandemia (la llamada cláusula general de salvaguardia, activada en marzo de 2020). En 2023, el déficit de España volvió a pasar del 3 %. En junio de 2024 la Comisión no propuso abrir un procedimiento: preveía que bajaría del 3 % sin más medidas. En 2025 fue del 2,4 %.
+- En otros países: en 2003, el Consejo dejó en suspenso los procedimientos de Francia y Alemania, y el Tribunal de Justicia de la UE anuló esa decisión en 2004. A Portugal se le anuló en 2016 una multa igual que la de España. A Hungría se le congelaron en marzo de 2012 unos 495 millones del Fondo de Cohesión, una ayuda europea para obras; la congelación se levantó en junio, antes de aplicarse. En octubre de 2026, según la Comisión Europea, tienen un procedimiento abierto diez países: Austria, Bélgica, Bulgaria, Eslovaquia, Finlandia, Francia, Hungría, Italia, Polonia y Rumanía.
+
+**Lo que los datos no dicen.**
+
+- Estos datos no permiten saber si un procedimiento abierto hace que un país baje antes su déficit, porque también influyen la economía y las decisiones de cada gobierno.
+- Tampoco dicen qué pasaría hoy con una multa: las normas de 2024 aún no se han aplicado a ningún castigo.
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en los hechos: hasta ahora no se ha cobrado ninguna multa por déficit y los plazos se han alargado a menudo. No hay acuerdo en si las reglas han servido. Un estudio del Fondo Monetario Internacional (FMI) encuentra que el límite del 3 % redujo los déficits. La Junta Fiscal Europea señala que se cumplieron poco porque los castigos no se aplicaban. La reforma de 2024 bajó las multas para que se puedan cobrar de verdad; aún no hay datos para saber si funciona.
+
+- Francesca Caselli y Philippe Wingender (FMI; European Economic Review, 2021): El límite del 3 % ha hecho que haya menos años con déficits grandes y ha mejorado de media las cuentas de los países de la UE. (Caselli y Wingender, «Bunching at 3 Percent: The Maastricht Fiscal Criterion and Government Deficits», FMI WP/18/182 (2018); versión publicada en European Economic Review 136 (2021), https://www.imf.org/en/Publications/WP/Issues/2018/08/03/Bunching-at-3-Percent-The-Maastricht-Fiscal-Criterion-and-Government-Deficits-46135)
+- Junta Fiscal Europea (órgano asesor independiente de la Comisión Europea): Antes de la crisis de 2008 los países cumplieron a medias porque los castigos no se aplicaban; las multas nunca se usaron y los plazos se alargaron aunque no hubiera medidas eficaces. (European Fiscal Board, Assessment of EU fiscal rules with a focus on the six and two-pack legislation (septiembre de 2019), página 53 del PDF (sección 3, procedimiento de déficit excesivo), https://commission.europa.eu/document/download/3746b2cf-963d-4902-9a20-4387d9b288c6_en?filename=2019-09-10-assessment-of-eu-fiscal-rules_en.pdf)
+- Consejo de la UE (Reglamento 2024/1264): Las multas no deben tener un importe mínimo y deben acumularse hasta que el país actúe, para que sean un incentivo real a cumplir. (Reglamento (UE) 2024/1264 del Consejo, de 29 de abril de 2024, considerando 20, https://eur-lex.europa.eu/eli/reg/2024/1264/oj)
+
+**Fuentes.**
+
+- Tratado de Funcionamiento de la UE, artículo 126 (procedimiento de déficit excesivo, apartados 2 a 12) y Protocolo 12: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:12016E126
+- Reglamento (UE) 2024/1264 del Consejo, que modifica el Reglamento (CE) 1467/97: artículo 3 (ajuste mínimo del 0,5 % del PIB), artículo 12 (multa de hasta el 0,05 % del PIB por semestre) y considerandos 14 y 20: https://eur-lex.europa.eu/eli/reg/2024/1264/oj
+- Reglamento (UE) 1173/2011, sobre la ejecución efectiva de la supervisión presupuestaria en la zona del euro, artículos 5 (depósito del 0,2 % del PIB) y 6 (multa del 0,2 % del PIB): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32011R1173
+- Reglamento (UE) 2021/1060, de disposiciones comunes de los fondos europeos, artículo 19, apartado 7: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32021R1060
+- Comisión Europea, procedimientos de déficit excesivo cerrados: España (2009–2019), cronología y documentos: https://economy-finance.ec.europa.eu/economic-and-fiscal-governance/stability-and-growth-pact/corrective-arm-excessive-deficit-procedure/closed-excessive-deficit-procedures/spain_en
+- Decisión de Ejecución (UE) 2017/2351 del Consejo, de 9 de agosto de 2016, multa a España (considerandos 3, 4 y 16; artículo 1: se anula): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32017D2351
+- Decisión de Ejecución (UE) 2017/2350 del Consejo, de 9 de agosto de 2016, multa a Portugal (artículo 1: se anula): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32017D2350
+- Comisión Europea, comunicación COM(2016) 901, evaluación de las medidas de Portugal y España (16 de noviembre de 2016): el procedimiento queda en suspenso: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:52016DC0901
+- Comisión Europea, comunicación COM(2020) 123, activación de la cláusula general de salvaguardia (20 de marzo de 2020): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:52020DC0123
+- Comisión Europea, informe del artículo 126(3) de 19 de junio de 2024 (documento del Consejo ST 11258/24), apartado 5 «Conclusions», páginas 43–44: https://data.consilium.europa.eu/doc/document/ST-11258-2024-INIT/en/pdf
+- Tribunal de Justicia de la UE, sentencia de 13 de julio de 2004, asunto C-27/04, Comisión contra Consejo (fallo, punto 2): https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:62004CJ0027
+- Decisión de Ejecución 2012/156/UE del Consejo (13 de marzo de 2012), suspensión de 495.184.000 euros del Fondo de Cohesión para Hungría, artículo 1: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32012D0156
+- Decisión de Ejecución 2012/323/UE del Consejo (22 de junio de 2012), levantamiento de la suspensión para Hungría, artículo 1: https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32012D0323
+- Comisión Europea, procedimientos de déficit excesivo: resumen y procedimientos abiertos (consultado el 21 de octubre de 2026): https://economy-finance.ec.europa.eu/economic-governance-framework/stability-and-growth-pact/corrective-arm-excessive-deficit-procedure/excessive-deficit-procedures-overview_en
+- European Fiscal Board, Assessment of EU fiscal rules (2019), página 53 del PDF: https://commission.europa.eu/document/download/3746b2cf-963d-4902-9a20-4387d9b288c6_en?filename=2019-09-10-assessment-of-eu-fiscal-rules_en.pdf
+- Caselli y Wingender, FMI WP/18/182 (2018), «Key findings»: https://www.imf.org/en/Publications/WP/Issues/2018/08/03/Bunching-at-3-Percent-The-Maastricht-Fiscal-Criterion-and-Government-Deficits-46135
+
+## ¿Se pagan más impuestos en España que en el resto de Europa?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#mas-impuestos-que-en-europa (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** Depende de con quién se compare y de cómo se mida. Con la media de la Unión Europea, España recauda menos: en 2024, impuestos y cotizaciones fueron el 37,3 % del PIB en España y el 40,3 % en la UE. Con la media de la OCDE, que incluye países como Estados Unidos o Corea, recauda más. Y en el sueldo de un trabajador medio, la parte que se va en impuestos y cotizaciones está por encima de la media de la OCDE.
+
+**Lo que dicen los datos.**
+
+- La «presión fiscal» suma todos los impuestos y las cotizaciones sociales, lo que empresas y trabajadores pagan a la Seguridad Social. Después lo compara con el producto interior bruto (PIB), el valor de todo lo que produce el país en un año. En 2024 fue el 37,3 % del PIB en España y el 40,3 % en la Unión Europea (UE), según Eurostat. Eurostat es la oficina de estadística de la UE. La de 2025 de España, aún provisional, sube a cerca del 38 %; la media europea de 2025 todavía no está publicada.
+- En euros, en 2024 los impuestos y las cotizaciones sumaron unos 592.000 millones: unos 12.100 euros por habitante al año. Los 3 puntos de diferencia con la media de la UE equivalen a unos 48.000 millones, unos 980 euros por habitante (lectura).
+- La media de Eurostat da más peso a los países grandes, como Alemania, Francia o Italia, que recaudan más. Si se cuenta igual a cada uno de los 27 países, la media de 2024 es el 37,8 %, y España queda medio punto por debajo. Ordenados de mayor a menor, España fue el 16.º de 27. Recaudan bastante más Dinamarca, Francia o Bélgica (más del 45 %); bastante menos Irlanda, Rumanía o Malta (menos del 30 %).
+- La Organización para la Cooperación y el Desarrollo Económicos (OCDE) agrupa a 38 países, también de fuera de Europa. Mide casi lo mismo, con algunas diferencias de criterio. Con su cálculo, España recaudó el 36,7 % del PIB en 2024 y la media de la OCDE fue el 34,1 %. España quedó la 15.ª de los 36 países con dato. Estados Unidos recaudó el 25,6 % y Corea, el 25,3 %.
+- La diferencia con la UE no está repartida por igual. En 2024, el impuesto sobre el valor añadido (IVA) recaudó el 6,4 % del PIB en España y el 7,1 % en la UE. Las cotizaciones que pagan las empresas fueron mayores en España (9,5 % frente a 7,1 %). Las que pagan los trabajadores de su nómina, menores (1,9 % frente a 4,1 %).
+- La OCDE también mira el sueldo de un trabajador sin hijos que gana el salario medio. Calcula la «cuña fiscal»: la parte de lo que cuesta ese sueldo a la empresa que se va en impuestos y cotizaciones. En 2025 fue el 41,4 % en España, unos 41 de cada 100 euros. La media de la OCDE fue el 35,1 % y la de los países de la OCDE que están en la UE, el 41,7 %.
+
+**Lo que los datos no dicen.**
+
+- La presión fiscal es una media de todo el país: no dice cuánto paga cada persona ni cada hogar.
+- Tampoco dice qué se recibe a cambio de esos impuestos, ni tiene en cuenta que la renta por habitante es distinta en cada país.
+- Con estos datos no se puede decir si los impuestos de España son altos o bajos «para lo que deberían ser».
+
+**¿Hay acuerdo?** No del todo. Hay acuerdo en los datos: con la media de la UE que publica Eurostat, España recauda menos, y la distancia ha bajado desde 2017. No hay acuerdo en cómo leerlos. Unos estudios se fijan en la media que se use y en qué impuestos explican la diferencia. Otros sostienen que hay que tener en cuenta la renta por habitante, y con ese criterio el esfuerzo de los contribuyentes españoles sale más alto. Las medidas que usan la renta por habitante (los índices de «sacrificio fiscal» de Frank y Bird) también tienen críticos.
+
+- Comisión Europea (ficha de España del informe Mind the Gap, 2025): En 2023 España recaudó en impuestos el 36,5 % del PIB, frente al 39,0 % de la UE; la diferencia se ha reducido desde 2017 y el IVA recauda menos que la media. (Comisión Europea, Mind the Gap Report 2025, ficha de España, SWD(2025) 421 (documento del Consejo 16801/25 ADD 26), págs. 3, 5, 6 y 9 del PDF, https://data.consilium.europa.eu/doc/document/ST-16801-2025-ADD-26/en/pdf)
+- Comité de personas expertas del Libro Blanco sobre la reforma tributaria (2022): En 2019 la diferencia con la UE era de 6,9 puntos con la media ponderada y de 3,9 con la simple; con la simple, se debía sobre todo a los impuestos indirectos, como el IVA. (Comité de personas expertas, Libro Blanco sobre la reforma tributaria (Instituto de Estudios Fiscales, 2022), págs. 20 y 76 del PDF, https://www.ief.es/docs/investigacion/comiteexpertos/LibroBlancoReformaTributaria_2022.pdf)
+- J. F. Sanz-Sanz y D. Romero-Jordán (Funcas, 2020): La presión fiscal de España es intermedia, pero si se tiene en cuenta la renta por habitante, el sacrificio fiscal del contribuyente español está entre los más altos de su entorno (datos de 2017). (J. F. Sanz-Sanz y D. Romero-Jordán, «Breve nota sobre presión fiscal, sacrificio fiscal y presión fiscal normativa en España: análisis comparado», Funcas, septiembre de 2020, pág. 1, https://www.funcas.es/wp-content/uploads/2020/10/Nota-t%C3%A9cnica_Presi%C3%B3n-fiscal.pdf)
+
+**Fuentes.**
+
+- Eurostat, tabla gov_10a_taxag (agregados de impuestos de la contabilidad nacional), indicador D2_D5_D91_D61_M_D995, sector S13_S212, % del PIB, 2024 (actualizada el 21/07/2026): https://ec.europa.eu/eurostat/databrowser/view/gov_10a_taxag/default/table?lang=es
+- OCDE, Revenue Statistics (estadísticas de ingresos públicos), edición 2025: ingresos fiscales totales del conjunto de las administraciones (S13) en % del PIB, 2023 y 2024: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD,/.TAX_REV.S13._T._T.PT_B1GQ.A?startPeriod=2023&format=csvfilewithlabels
+- OCDE, Taxing Wages (impuestos sobre el salario): cuña fiscal media, persona sola sin hijos con el salario medio, % del coste laboral, 2025: https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_TAX_WAGES_COMP@DF_TW_COMP,/.AV_TW.PT_COS_LB.S_C0.AW100._Z.A?startPeriod=2025&format=csvfilewithlabels
+- Comisión Europea, Mind the Gap Report 2025, ficha de España, SWD(2025) 421 (documento del Consejo 16801/25 ADD 26), págs. 3, 5, 6 y 9 del PDF: https://data.consilium.europa.eu/doc/document/ST-16801-2025-ADD-26/en/pdf
+- Comité de personas expertas, Libro Blanco sobre la reforma tributaria (Instituto de Estudios Fiscales, 2022), págs. 20 y 76 del PDF: https://www.ief.es/docs/investigacion/comiteexpertos/LibroBlancoReformaTributaria_2022.pdf
+- J. F. Sanz-Sanz y D. Romero-Jordán, «Breve nota sobre presión fiscal, sacrificio fiscal y presión fiscal normativa en España: análisis comparado», Funcas, septiembre de 2020, pág. 1: https://www.funcas.es/wp-content/uploads/2020/10/Nota-t%C3%A9cnica_Presi%C3%B3n-fiscal.pdf
+- Cuentas en limpio, página de ingresos: impuestos y cotizaciones por partes (Eurostat e IGAE), con el PIB y la población de Eurostat: ingresos.html
+
+## ¿A dónde va el IVA que se paga?
+
+Enlace: https://cuentasenlimpio.es/preguntas.html#a-donde-va-el-iva (comprobado el 21 de octubre de 2026)
+
+**Respuesta corta.** El IVA lo cobran las empresas al vender y lo ingresan en la Agencia Tributaria del Estado; en el País Vasco y Navarra, en sus propias haciendas. Después, la mitad pasa a las comunidades autónomas, según lo que se consume en cada una, y menos de 2 de cada 100 euros a ayuntamientos grandes y diputaciones. No está reservado a ningún gasto: se suma al resto de ingresos y paga todo el presupuesto.
+
+**Lo que dicen los datos.**
+
+- El impuesto sobre el valor añadido (IVA) lo paga quien compra, pero lo cobran las empresas. Cada empresa ingresa el IVA que ha cobrado a sus clientes menos el que ha pagado a sus proveedores. En casi toda España lo recauda la Agencia Estatal de Administración Tributaria (AEAT). En el País Vasco y Navarra lo recaudan sus haciendas forales, con las mismas normas. En Canarias, Ceuta y Melilla no hay IVA: Canarias tiene su propio impuesto, el IGIC.
+- En 2025, el IVA sumó unos 112.000 millones de euros, según la contabilidad nacional (dato provisional; sin el impuesto canario, el IGIC). Son unos 2.300 euros por habitante al año, unos 190 al mes. De cada 100 euros que ingresaron las administraciones, unos 15 fueron IVA. El tipo general es el 21 %, pero muchos productos pagan el 10 % o el 4 %. Por eso, según la AEAT, el IVA fue de unos 15 euros por cada 100 de gasto sujeto al impuesto.
+- Las comunidades de régimen común (todas menos el País Vasco y Navarra) reciben la mitad del IVA que se atribuye a su territorio. Se atribuye según lo que se consume en cada una, con un índice que calcula el Instituto Nacional de Estadística (INE). En 2024, la AEAT recaudó 90.541 millones de IVA, y a las comunidades les correspondieron 45.270 millones. Las comunidades no pueden cambiar los tipos del IVA ni lo gestionan: eso es del Estado.
+- De la mitad que se queda el Estado, los municipios grandes reciben el 2,3266 % de lo atribuido a su territorio. Son las capitales de provincia o de comunidad y los de 75.000 habitantes o más. Las diputaciones provinciales reciben el 1,3699 %. En total, de cada 100 euros de IVA, unos 50 van a las comunidades, menos de 2 a ayuntamientos y diputaciones, y el resto al Estado (lectura).
+- Las comunidades no esperan a fin de año. Reciben adelantos cada mes («entregas a cuenta») y unos dos años después se hace la cuenta final («liquidación»). Del IVA de 2024 recibieron 44.516 millones de adelanto y 754 millones más en la liquidación, publicada en julio de 2026. En el País Vasco funciona de otra forma: cada empresa paga a una u otra hacienda según dónde opera, y después un «ajuste a consumo» corrige el reparto.
+- El IVA no está destinado a nada concreto. La Ley General Presupuestaria dice que los recursos del Estado sirven para pagar el conjunto de sus obligaciones, salvo que una ley diga otra cosa. Así, el IVA se mezcla con el resto de ingresos y paga pensiones, sanidad, educación o intereses de la deuda, sin que se pueda saber qué euro va a qué. España aporta también a la Unión Europea (UE) una cantidad calculada sobre el IVA: el 0,30 % de una base común a todos los países. Sale del presupuesto del Estado; no se cobra aparte a quien compra.
+
+**Lo que los datos no dicen.**
+
+- Estos datos no permiten decir qué servicio se paga con el IVA, porque ese dinero se mezcla con el resto.
+- Tampoco dicen cuánto IVA paga cada hogar: depende de cuánto gasta y en qué.
+
+**¿Hay acuerdo?** En lo básico, sí. Sobre cómo se reparte hoy el IVA no hay discusión: lo fijan las leyes. Lo que se discute es qué parte deben recibir las comunidades y si deberían poder decidir algo sobre el impuesto. En septiembre de 2026, el Consejo de Política Fiscal y Financiera, donde se reúnen el Gobierno y las comunidades, aprobó una propuesta para cambiarlo. Para aplicarse hace falta una ley, que aún no está aprobada.
+
+- Ministerio de Hacienda (propuesta aprobada en el Consejo de Política Fiscal y Financiera, 4/09/2026): Subir la parte de las comunidades del 50 % al 56,5 % del IVA y permitir que reciban una parte del IVA que pagan las pymes de su territorio. (Ministerio de Hacienda, nota de prensa de 4 de septiembre de 2026: el Consejo de Política Fiscal y Financiera aprueba la reforma del sistema de financiación autonómica, pág. 2, https://www.hacienda.gob.es/es-es/prensa/noticias/noticiaspdf/742.pdf)
+- Comisión de Expertos para la revisión del modelo de financiación autonómica (2017): Las comunidades, actuando juntas, deberían poder fijar el tipo de un tramo autonómico del IVA, igual en toda España, porque la Comisión Europea se opone a tipos distintos por regiones. (Informe de la Comisión de Expertos para la revisión del modelo de financiación autonómica (Ministerio de Hacienda, julio de 2017), págs. 56, 59 y 80 del PDF, https://www.hacienda.gob.es/CDI/sist%20financiacion%20y%20deuda/informaci%C3%B3nCCAA/Informe_final_Comisi%C3%B3n_Reforma_SFA.pdf)
+- Experto designado por Baleares en la misma comisión (2017): Reforzar los ingresos de las comunidades con un porcentaje mayor del impuesto sobre la renta (IRPF) en lugar de con el IVA. (Informe de la Comisión de Expertos para la revisión del modelo de financiación autonómica (Ministerio de Hacienda, julio de 2017), págs. 56, 59 y 80 del PDF, https://www.hacienda.gob.es/CDI/sist%20financiacion%20y%20deuda/informaci%C3%B3nCCAA/Informe_final_Comisi%C3%B3n_Reforma_SFA.pdf)
+
+**Fuentes.**
+
+- IGAE, impuestos y cotizaciones sociales de las administraciones públicas (contabilidad nacional), 2025 provisional, fila del IVA (actualizado el 30/09/2026): https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/A_AAPP_Imp.xlsx
+- Ley 37/1992 del IVA, artículo 3 (Canarias, Ceuta y Melilla fuera del ámbito del impuesto): https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740
+- Ley 12/2002, Concierto Económico con el País Vasco, artículos 26, 27 y 53 (ajuste a consumo en el IVA): https://www.boe.es/buscar/act.php?id=BOE-A-2002-9969
+- Ley 22/2009, de financiación de las comunidades autónomas, artículos 35 (cesión del 50 % del IVA) y 45 (las competencias sobre los tributos cedidos son del Estado): https://www.boe.es/buscar/act.php?id=BOE-A-2009-20375
+- Ley Orgánica 8/1980, de financiación de las comunidades autónomas (LOFCA), artículos 11.e (IVA cedible hasta el 50 %) y 19.dos (la gestión del IVA no se cede): https://www.boe.es/buscar/act.php?id=BOE-A-1980-21166
+- Texto refundido de la Ley de Haciendas Locales (Real Decreto Legislativo 2/2004), artículos 111, 116 y 138: https://www.boe.es/buscar/act.php?id=BOE-A-2004-4214
+- Ley 47/2003, General Presupuestaria, artículo 27.3: https://www.boe.es/buscar/act.php?id=BOE-A-2003-21614
+- Decisión (UE, Euratom) 2020/2053 sobre el sistema de recursos propios de la UE, artículo 2.1.b (BOE de 11/06/2021, pág. 6 del PDF): https://www.boe.es/boe/dias/2021/06/11/pdfs/BOE-A-2021-9720.pdf
+- Ministerio de Hacienda, cuadros de la liquidación del sistema de financiación de las comunidades de 2024, hoja «1.2. IVA»: https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/cuadros-liquidacion-2024.xlsx
+- Agencia Tributaria, Informe anual de recaudación 2025, cuadro 4.1 (IVA: base imponible, tipo efectivo e impuesto devengado), columna 2025 (provisional): https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_Anuales_de_Recaudacion_Tributaria/Ejercicio_2025/Cuadro_4.1_es_es.xlsx
+- Agencia Tributaria, Informe anual de recaudación 2025, cuadro 4.2 (IVA: del devengo al ingreso), fila «Ingresos tributarios (C=IVAC-DC)»: https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/Informes_Anuales_de_Recaudacion_Tributaria/Ejercicio_2025/Cuadro_4.2_es_es.xlsx
+- Ministerio de Hacienda, nota de prensa de 9 de enero de 2026 sobre la propuesta de nuevo modelo de financiación autonómica: https://www.hacienda.gob.es/es-ES/Prensa/Noticias/Paginas/2026/20260109-NP-FINANCIACION-AUTONOMICA.aspx
+- Ministerio de Hacienda, nota de prensa de 4 de septiembre de 2026: el Consejo de Política Fiscal y Financiera aprueba la reforma del sistema de financiación autonómica, pág. 2: https://www.hacienda.gob.es/es-es/prensa/noticias/noticiaspdf/742.pdf
+- Informe de la Comisión de Expertos para la revisión del modelo de financiación autonómica (Ministerio de Hacienda, julio de 2017), págs. 56, 59 y 80 del PDF: https://www.hacienda.gob.es/CDI/sist%20financiacion%20y%20deuda/informaci%C3%B3nCCAA/Informe_final_Comisi%C3%B3n_Reforma_SFA.pdf
+- Cuentas en limpio, página de ingresos: el IVA en la contabilidad nacional (2025, dato provisional de la IGAE): ingresos.html
+
+
+---
+
+# Lo que paga un sueldo: IRPF, cotizaciones e IVA (2026)
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/sueldo.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/sueldo.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Método y parámetros de la calculadora de la web. La especificación exacta es el código: https://cuentasenlimpio.es/sueldo-calculo.js (sin dependencias) con los parámetros de https://cuentasenlimpio.es/sueldo.json. Es una estimación, no una declaración de la renta: un solo sueldo, sin otras rentas ni deducciones por gastos o situaciones personales.
+
+## Cotizaciones del trabajador y de la empresa (% del sueldo bruto, hasta la base máxima)
+
+| Concepto | Trabajador | Empresa |
+|---|---|---|
+| Contingencias comunes | 4,70 | 23,60 |
+| Mecanismo de Equidad Intergeneracional | 0,15 | 0,75 |
+| Desempleo (indefinido / temporal) | 1,55 / 1,60 | 5,50 / 6,70 |
+| Formación profesional | 0,10 | 0,60 |
+| FOGASA | — | 0,20 |
+| Accidentes de trabajo (supuesto: oficina) | — | 1,50 |
+
+Base máxima: 5.101,20 € al mes; por encima, cotización de solidaridad por tramos. Salario mínimo 2026: 17.094 € al año.
+
+## IRPF
+
+- Régimen común (15 comunidades, Ceuta y Melilla): rendimiento neto = bruto − cotizaciones; menos 2.000 € de gastos y la reducción por rendimientos del trabajo (art. 20 LIRPF); cuota = escala(base) − escala(mínimo personal y familiar), por separado con la escala estatal y la autonómica; deducción para sueldos bajos (disposición adicional 61.ª) sobre la cuota total; Ceuta y Melilla, deducción del 60 %.
+- País Vasco (Álava, Bizkaia, Gipuzkoa): bonificación de los rendimientos del trabajo, escala foral y minoración de cuota.
+- Navarra: escala foral, deducción por mínimo personal y deducción por trabajo en cuota.
+
+| Territorio | Régimen | Primer tramo | Tipo máximo | Norma |
+|---|---|---|---|---|
+| Andalucía | común | 9,50 % | 22,50 % | Ley 5/2021, de 20 de octubre, de Tributos Cedidos de la Comunidad Autónoma de Andalucía (BOJA núm. 206, de 26/10/2021; BOE núm. 263, de 03/1 |
+| Aragón | común | 9,50 % | 25,50 % | Decreto Legislativo 1/2005, de 26 de septiembre, del Gobierno de Aragón, TR de las disposiciones dictadas por la Comunidad Autónoma de Aragó |
+| Asturias | común | 9,00 % | 26,00 % | Decreto Legislativo 2/2014, de 22 de octubre, TR de las disposiciones legales del Principado de Asturias en materia de tributos cedidos por  |
+| Bizkaia | foral (País Vasco) | 23,00 % | 49,00 % | Norma Foral 13/2013, de 5 de diciembre, del IRPF (Bizkaia); Norma Foral 13/2013, de 5 de diciembre, del IRPF (Bizkaia), art. 75.1, redaccion |
+| Canarias | común | 9,00 % | 26,00 % | Decreto Legislativo 1/2009, de 21 de abril, TR tributos cedidos de Canarias (BOC n.º 77, 23/4/2009; consolidado BOE BOC-j-2009-90008), art.  |
+| Cantabria | común | 8,50 % | 24,50 % | Decreto Legislativo 62/2008, de 19 de junio, TR de la Ley de Medidas Fiscales en materia de Tributos cedidos por el Estado (BOC n.º 128, 2/7 |
+| Castilla y León | común | 9,00 % | 21,50 % | Decreto Legislativo 1/2013, de 12 de septiembre, texto refundido de las disposiciones legales de Castilla y León en materia de tributos prop |
+| Castilla-La Mancha | común | 9,50 % | 22,50 % | Ley 8/2013, de 21 de noviembre, de Medidas Tributarias de Castilla-La Mancha, art. 13 bis, añadido por el art. 1 de la Ley 9/2014, de 4 de d |
+| Cataluña | común | 9,50 % | 25,50 % | Decreto Legislativo 1/2024, de 12 de marzo, libro sexto del Código tributario de Cataluña (DOGC núm. 9122; BOE-A-2024-6951), art. 611-1 en l |
+| Ceuta | común | 9,50 % | 22,50 % | Ceuta no tiene competencias normativas en el IRPF. Disposición adicional trigésima segunda LIRPF: «La escala autonómica aplicable a los cont |
+| Comunidad de Madrid | común | 8,50 % | 20,50 % | Decreto Legislativo 1/2010, de 21 de octubre, TR de tributos cedidos de la Comunidad de Madrid (BOCM n.º 255, de 25/10/2010; ref. BOCM-m-201 |
+| Comunitat Valenciana | común | 8,80 % | 29,35 % | Ley 13/1997, de 23 de diciembre, tramo autonómico del IRPF y restantes tributos cedidos, art. 2 (escala), en la redacción del art. 18 de la  |
+| Extremadura | común | 7,75 % | 25,00 % | Decreto Legislativo 1/2018, de 10 de abril, TR de tributos cedidos de Extremadura (DOE n.º 99, de 23/05/2018; BOE-A-2018-8159), art. 1, en l |
+| Galicia | común | 9,00 % | 22,50 % | Decreto Legislativo 1/2011, de 28 de julio, TR de tributos cedidos de Galicia (DOG n.º 201, de 20/10/2011; BOE-A-2011-18161), art. 4 (escala |
+| Gipuzkoa | foral (País Vasco) | 23,00 % | 49,00 % | Norma Foral 3/2014, de 17 de enero, del IRPF (Gipuzkoa); Norma Foral 3/2014, de 17 de enero, del IRPF (Gipuzkoa), art. 75.1, redaccion de No |
+| Illes Balears | común | 9,00 % | 24,75 % | Decreto Legislativo 1/2014, de 6 de junio, TR tributos cedidos (BOIB n.º 77, 7/6/2014; BOE-A-2014-6925), art. 1 en la redacción de la disp.  |
+| La Rioja | común | 8,00 % | 27,00 % | Ley 10/2017, de 27 de octubre, por la que se consolidan las disposiciones legales de La Rioja en materia de impuestos propios y tributos ced |
+| Melilla | común | 9,50 % | 22,50 % | DA 32.ª LIRPF → escala del art. 65 LIRPF (igual que Ceuta). |
+| Navarra | foral (Navarra) | 13,00 % | 52,00 % | Texto Refundido de la Ley Foral del IRPF, Decreto Foral Legislativo 4/2008, de 2 de junio (BON n.º 80, 30/06/2008); Ley Foral 17/2025 |
+| Región de Murcia | común | 9,50 % | 22,50 % | Decreto Legislativo 1/2010, de 5 de noviembre, Texto Refundido de las disposiciones legales vigentes en la Región de Murcia en materia de tr |
+| Álava | foral (País Vasco) | 23,00 % | 49,00 % | Norma Foral 33/2013, de 27 de noviembre, del IRPF (Álava); Norma Foral 33/2013, de 27 de noviembre, del IRPF (Álava), art. 75.1, redaccion d |
+
+En régimen común, la tabla muestra solo la escala autonómica; se suma a la estatal (9,5 % a 24,5 %).
+
+## IVA estimado
+
+Se supone que la persona gasta como la media de los hogares con su misma renta equivalente (Encuesta de Presupuestos Familiares 2025 del INE, escala OCDE modificada), sin alquiler imputado, con los tipos de IVA de 2026. Curva (renta equivalente media del decil → IVA como % de la renta neta):
+
+| Renta equivalente (€/año) | IVA / renta neta | Gasto / renta neta |
+|---|---|---|
+| 7.728 | 11,2 % | 121,7 % |
+| 12.028 | 9,1 % | 92,9 % |
+| 14.703 | 8,4 % | 85,6 % |
+| 17.192 | 8,1 % | 79,7 % |
+| 19.574 | 7,7 % | 76,4 % |
+| 21.796 | 7,2 % | 72,1 % |
+| 25.084 | 7,1 % | 70,2 % |
+| 28.974 | 6,7 % | 66,4 % |
+| 35.252 | 5,9 % | 59,2 % |
+| 54.078 | 4,7 % | 47,9 % |
+
+Cómo se aplica (igual que la calculadora):
+
+- La renta es el sueldo **neto anual** (después de IRPF y cotizaciones). Un sueldo «de X € netos al mes» hay que pasarlo a año: ×12 o ×14 según las pagas.
+- Renta equivalente = renta neta anual ÷ unidades de consumo. Unidades de consumo = 1 + 0,3 por cada hijo menor de 14 años (la mitad de 0,3 si se comparte con otro progenitor). Un segundo adulto no se suma: el cálculo es para la renta de una persona.
+- El porcentaje se interpola en línea recta entre los puntos de la tabla; por debajo del primero y por encima del último se usa el del extremo. Si en ese punto el gasto supera la renta, se limita el gasto a la renta.
+- En Canarias (hay IGIC, no IVA), Ceuta y Melilla (IPSI) no se calcula.
+
+Ejemplo resuelto: persona sola con 1.500 € netos al mes. Con 12 pagas (18.000 € al año): IVA ≈ 8,0 % → unos 1.440 € al año. Con 14 pagas (21.000 €): ≈ 7,4 % → unos 1.560 € al año.
+
+## Fuentes
+
+- Ley 35/2006 del IRPF, texto consolidado (escala estatal, art. 63; reducción por trabajo, art. 20; mínimos, arts. 57 y 58; deducción para sueldos bajos, disposición adicional 61.ª): https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764
+- Real Decreto 126/2026, salario mínimo de 2026 (17.094 € al año): https://www.boe.es/buscar/act.php?id=BOE-A-2026-3815
+- Orden PJC/297/2026, de cotización a la Seguridad Social para 2026 (tipos y bases): https://www.boe.es/buscar/act.php?id=BOE-A-2026-7296
+- Ley General de la Seguridad Social, texto consolidado (tarifa de accidentes de trabajo, disposición adicional 61.ª; cotización de solidaridad): https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724
+- Ley 37/1992 del IVA, texto consolidado (tipos, arts. 90 y 91; exenciones, art. 20): https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740
+- INE, Encuesta de Presupuestos Familiares 2025, microdatos (gasto de los hogares según su renta): https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176806&menu=resultados&secc=1254736195147&idp=1254735976608
+
+
+---
+
+# Promesas de la XV Legislatura y lo que ha pasado con ellas
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/promesas.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/promesas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+5485 promesas distintas extraídas de 17 documentos (programas electorales, acuerdos de gobierno y de investidura), cada una con su cita literal y página, y relacionadas con hechos oficiales (normas del BOE, iniciativas del Congreso, Consejo de Ministros) y, cuando la meta es medible, con una serie oficial. La extracción y la relación con hechos las hace un modelo de lenguaje con doble pasada, arbitraje y auditoría por muestreo; el método está en https://cuentasenlimpio.es/promesas.html.
+
+## Reglas para usar estos datos
+
+- La web no da veredictos de «cumplida» o «incumplida»: pone la promesa y los hechos. No los conviertas en veredictos sin decir que son tuyos.
+- No sumes ni compares promesas por partido (cuántas cumplió cada uno): la web no lo hace a propósito, porque los documentos no son comparables en número ni en detalle. Filtrar por partido sí; agregar, no.
+- Cita siempre la frase literal y el documento, con su página.
+
+## Ficheros
+
+- https://cuentasenlimpio.es/datos/promesas.csv: una fila por promesa. Columnas: documento, partidos, id, página, etiqueta (nuestra), verbo literal, cita literal, frase que abre la lista, nota, repite (id).
+- https://cuentasenlimpio.es/datos/promesas.json: lo mismo con su estructura completa (grande, unos 3,5 MB).
+- https://cuentasenlimpio.es/datos/hechos.json: los hechos relacionados con cada promesa (unos 1,2 MB).
+- https://cuentasenlimpio.es/datos/datos_promesas.json: metas medibles con su serie oficial: valor al empezar la legislatura y último publicado.
+- https://cuentasenlimpio.es/datos/documentos.json: los documentos de origen, con su enlace (los PDF no se copian: se enlazan).
+
+
+---
+
+# Explicaciones de cada concepto y cada gráfico
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/aprende.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/aprende.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Los textos de los botones (i) de la web: qué es cada cosa, cómo se mide y sus matices, con fuentes.
+
+## Qué implica el déficit (`deficit`)
+
+Parte del déficit se mueve sola. Cuando la economía va mal se recauda menos y se paga más paro, sin aprobar nada. La Comisión Europea calcula que en España, si la economía se encoge un 1 %, el déficit crece unas seis décimas: si estaba en el 2,4 % del PIB, pasa a cerca del 3 %. Eso amortigua el golpe para los hogares, pero agranda el déficit.
+
+Y al contrario: lo que la economía gana o pierde cuando el Estado gasta más o menos depende del momento. El Banco de España estimó que, en una crisis, cada euro de gasto público acaba sumando unos 1,4 euros al PIB, porque quien lo recibe también lo gasta. En tiempos tranquilos, cada euro suma unos 0,6. En la crisis de 2010 y 2011, los recortes frenaron la economía europea bastante más de lo que habían calculado los organismos internacionales. Un estudio del FMI lo midió: por cada recorte del tamaño de un 1 % del PIB, la economía creció alrededor de un punto menos de lo que esos organismos habían previsto.
+
+Los expertos no se ponen de acuerdo sobre qué frena menos la economía, recortar gasto o subir impuestos. El modelo de la Comisión Europea dice que, a corto plazo, recortar gasto. Varios estudios con datos de Estados Unidos dicen que subir impuestos.
+
+Fuentes: Comisión Europea, estudio sobre cuánto se mueve el saldo con la economía (Discussion Paper 098, 2019), tabla IV.3 (https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf); Banco de España, estudio sobre el efecto del gasto público (Documento de Trabajo 1309, 2013) (https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/13/Fich/dt1309e.pdf); Blanchard y Leigh, FMI, sobre los errores de previsión en la crisis (WP/13/1, 2013) (https://www.imf.org/external/pubs/ft/wp/2013/wp1301.pdf); In 't Veld, Comisión Europea, modelo de los ajustes en la zona euro (Economic Papers 506, 2013) (https://ec.europa.eu/economy_finance/publications/economic_paper/2013/pdf/ecp506_en.pdf); Ramey, revisión de estudios sobre gasto e impuestos (Journal of Economic Perspectives, 2019) (https://www.aeaweb.org/articles?id=10.1257/jep.33.2.89); FMI, «Fiscal Policy: Taking and Giving Away», explicación básica de la política fiscal (https://www.imf.org/en/Publications/fandd/issues/Series/Back-to-Basics/Fiscal-Policy)
+
+## Qué implica la deuda (`deuda`)
+
+Lo que cuesta la deuda cada año son los intereses, como en una hipoteca. Y como cada año solo se renueva una parte, el coste medio cambia despacio. Cuando el Banco Central Europeo subió los tipos de interés, lo que pagan las letras del Tesoro (los préstamos a menos de un año) pasó del 0,73 % en 2022 al 3,48 % en 2023. En cambio, el interés medio de toda la deuda del Estado solo pasó del 1,73 % de 2022 al 2,45 % de septiembre de 2026.
+
+¿Frena la economía tener mucha deuda? No hay acuerdo. Un estudio de 2010 encontró que, por encima del 90 % del PIB, los países crecían menos. Al repetirlo, otros investigadores encontraron errores de cálculo: con los datos corregidos, esos países crecían de media un 2,2 %, no un −0,1 %. El FMI no encuentra una cifra a partir de la cual el crecimiento se hunda; un trabajo del BCE sí la sitúa hacia el 90-100 %. Y hay quien duda de qué causa qué: si la deuda frena el crecimiento o si crecer poco hace subir la deuda.
+
+Fuentes: Tesoro Público, interés medio de la deuda en circulación (https://www.tesoro.es/documents/d/tesoro/03-pdf); Tesoro Público, vida media de la deuda del Estado (https://www.tesoro.es/documents/d/tesoro/02-pdf); Reinhart y Rogoff, el estudio de 2010 sobre el umbral del 90 % (NBER WP 15639) (https://www.nber.org/papers/w15639); Herndon, Ash y Pollin, la corrección de ese estudio (PERI, 2013) (https://peri.umass.edu/publication/does-high-public-debt-consistently-stifle-economic-growth-a-critique-of-reinhart-and-rogoff/); Pescatori, Sandri y Simon, FMI (WP/14/34, 2014) (https://www.imf.org/external/pubs/ft/wp/2014/wp1434.pdf); Checherita-Westphal y Rother, BCE (WP 1237, 2010) (https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1237.pdf); Panizza y Presbitero, sobre qué causa qué (Journal of Macroeconomics, 2014) (https://ideas.repec.org/a/eee/jmacro/v41y2014icp21-41.html)
+
+## El efecto bola de nieve (`bola_de_nieve`)
+
+Que la deuda pese más o menos depende de dos velocidades: a qué interés se paga y cuánto crece la economía en euros, contando la subida de precios.
+
+Si los intereses crecen más deprisa que la economía, la deuda pesa cada vez más. Para frenarla hace falta ingresar más de lo que se gasta en todo lo demás (pensiones, sanidad, sueldos…), y que lo que sobre ayude a pagar los intereses. Si la economía crece más deprisa que los intereses, la deuda puede pesar menos aunque haya algo de déficit. Por eso, en el gráfico, el crecimiento de la economía resta deuda casi todos los años y la suma cuando la economía en euros se encoge, como en 2009, 2012 o 2020.
+
+Hay debate. El economista Olivier Blanchard sostuvo en 2019 que, mientras los tipos de interés estén por debajo del crecimiento de la economía, se puede tener deuda sin tener que subir impuestos para pagarla, porque la economía crece más deprisa que los intereses. Él mismo advierte del riesgo si los tipos suben.
+
+Fuentes: BCE, Informe de Estabilidad Financiera de noviembre de 2021, recuadro sobre interés y crecimiento (https://www.ecb.europa.eu/pub/financial-stability/fsr/focus/2021/html/ecb.fsrbox202111_01~f37aaca9fb.en.html); Blanchard, «Public Debt and Low Interest Rates» (American Economic Review, 2019) (https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197)
+
+## Las reglas europeas (`reglas`)
+
+Desde el 30 de abril de 2024, cada país de la Unión Europea presenta un plan para varios años. En él pone un límite a cuánto puede crecer su «gasto neto», el gasto que depende del Gobierno. No cuenta los intereses, lo que paga la Unión Europea, el paro que sube por una crisis ni los gastos extraordinarios. Y una bajada de impuestos cuenta como si fuera más gasto, porque deja el mismo agujero en las cuentas.
+
+Siguen las referencias de siempre: un déficit del 3 % y una deuda del 60 % del PIB. Si la deuda pasa del 90 %, tiene que bajar al menos un punto al año de media, y el ajuste sigue hasta que el déficit quede en el 1,5 % del PIB. El plan de España dura siete años, con el gasto neto creciendo como mucho un 3,5 % en 2026 y un 3,2 % en 2027.
+
+Fuentes: Reglamento (UE) 2024/1263, las reglas fiscales europeas, artículos 2, 6, 7 y 8 (https://www.boe.es/doue/2024/1263/L00001-00021.pdf); Comisión Europea, el nuevo marco de reglas fiscales (https://economy-finance.ec.europa.eu/economic-and-fiscal-governance/economic-governance-review_en); Consejo de la UE, el plan de España (documento 5014/25) (https://data.consilium.europa.eu/doc/document/ST-5014-2025-INIT/en/pdf)
+
+## Cómo leer una previsión (`previsiones`)
+
+Una previsión es lo que una institución espera que pase con las leyes y la economía que conoce. Un objetivo es la meta que se pone quien gobierna. Por eso van separados.
+
+Las previsiones fallan y se corrigen, y las propias instituciones lo dicen. La AIReF da un abanico: en 8 de cada 10 de sus cálculos, la deuda queda dentro de la zona gris del gráfico. Cuanto más lejos en el tiempo, más ancha.
+
+También se corrige el pasado. España envía a Eurostat sus cifras de déficit y deuda dos veces al año, a finales de marzo y de septiembre. Y los años anteriores pueden cambiar cuando se cierran cuentas o se revisa el PIB.
+
+Fuentes: AIReF, informe sobre la ejecución presupuestaria, deuda y regla de gasto 2026 (gráfico 65) (https://www.airef.es/wp-content/uploads/2026/07/Informe-Ejecucion-Presupuestaria-2026.pdf); Eurostat, procedimiento de déficit excesivo (https://ec.europa.eu/eurostat/web/government-finance-statistics/excessive-deficit-procedure); Eurostat, principales revisiones entre las notificaciones de octubre de 2025 y abril de 2026 (https://ec.europa.eu/eurostat/documents/d/government-finance-statistics/edp-notif-2026-apr-main-revisions-1)
+
+## Qué implica invertir (`inversion`)
+
+La inversión pública es el gasto en obras y equipos que duran años. Según el Fondo Monetario Internacional (FMI), en los países de economía avanzada, invertir un 1 % del PIB más sube el PIB alrededor de un 0,4 % el primer año. A los cuatro años, la subida es de alrededor de un 1,5 %.
+
+El efecto es mayor cuando hay máquinas y trabajadores parados, y cuando se elige bien en qué invertir. El FMI calcula que, de media, alrededor de un 30 % de lo invertido se pierde por una gestión poco eficiente.
+
+Invertir no es lo mismo que tener más. Una parte de lo que se invierte cada año solo repone lo que se desgasta con el uso. Según la Fundación BBVA y el Instituto Valenciano de Investigaciones Económicas (Ivie), en 2024 la inversión pública seguía muy por debajo de la de 2009. Este dato no es una estadística oficial. En los servicios públicos, lo invertido dejó de cubrir el desgaste tras la crisis conocida como Gran Recesión.
+
+A largo plazo, tener un 10 % más de capital público (carreteras, edificios y demás bienes de las administraciones) va unido a un PIB alrededor de un 1 % mayor. Lo dice una revisión de estudios de tres décadas. Los expertos discuten el tamaño exacto.
+
+Fuentes: FMI, artículo sobre por qué es buen momento para impulsar las infraestructuras («The Time Is Right for an Infrastructure Push», 2014) (https://www.imf.org/external/pubs/ft/survey/so/2014/res093014a.htm); FMI, informe sobre cómo hacer más eficiente la inversión pública («Making Public Investment More Efficient», 2015) (https://www.imf.org/en/Publications/Policy-Papers/Issues/2016/12/31/Making-Public-Investment-More-Efficient-PP4959); FMI, nota sobre la política de gasto e impuestos ante la crisis (SPN/08/01, 2008) (https://www.imf.org/external/pubs/ft/spn/2008/spn0801.pdf); Leeper, Walker y Yang, estudio sobre la inversión pública como estímulo y sus retrasos (NBER WP 15153) (https://www.nber.org/papers/w15153); Fundación BBVA e Ivie, estudio sobre el capital acumulado en España («El stock de capital en España», 2025) (https://www.fbbva.es/wp-content/uploads/2025/09/DE_2025_stock-capital-espana_1995-2024.pdf); Bom y Ligthart, revisión de estudios sobre lo que aporta el capital público (Journal of Economic Surveys 28(5), 2014) (https://ideas.repec.org/a/bla/jecsur/v28y2014i5p889-916.html)
+
+## Por qué crece el gasto en protección social (`pensiones`)
+
+La partida más grande son las pensiones. Cuánto pesan depende sobre todo de la edad de la población. La Comisión Europea calcula que el gasto en pensiones de España pasará del 13,1 % del PIB en 2022 a un máximo del 17,3 % hacia 2051. Son 4,2 puntos más: algo más de lo que hoy se gasta en toda la educación pública (el 4,1 % del PIB en 2024).
+
+La Autoridad Independiente de Responsabilidad Fiscal (AIReF), que vigila las cuentas públicas, calcula que pasará del 13 % en 2025 al 16,4 % en 2050.
+
+Son proyecciones «a políticas constantes»: suponen que no cambian las leyes de hoy. Y dependen de varios supuestos. Uno es cuántos hijos tiene cada mujer de media (de 1,2 a 1,4). Otro, cuánto vive la gente. Otro, cuántas personas llegan de fuera: la Comisión supone que llegan unas 220.000 más de las que se van cada año entre 2030 y 2050. Si cambian la migración o el empleo, cambia la cifra.
+
+Fuentes: Comisión Europea y Comité de Política Económica, informe sobre el envejecimiento de 2024 (2024 Ageing Report), ficha de España (https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf); AIReF, estudio sobre la regla de gasto de las pensiones (Estudio 1/2026) (https://www.airef.es/wp-content/uploads/2026/05/Pensiones/Estudio_Regla_Gasto_Pensiones-2026.pdf)
+
+## Presión fiscal y tipos de los impuestos (`presion_fiscal`)
+
+La «presión fiscal» suma todos los impuestos y las cotizaciones sociales (lo que empresas y trabajadores pagan a la Seguridad Social) y lo compara con el PIB. Según la Organización para la Cooperación y el Desarrollo Económicos (OCDE), en España fue del 36,7 % del PIB en 2024. La media de la OCDE fue del 34,1 %. España quedó en el puesto 15 de los 36 países con dato, contando de mayor a menor. Eurostat, con un criterio algo distinto, da el 37,3 % para España y el 40,3 % de media en la Unión Europea.
+
+El tipo legal es el porcentaje que fija la ley. Por ejemplo, en el impuesto de sociedades, el que pagan las empresas por sus beneficios, el tipo general es el 25 %. El tipo efectivo es lo que se paga de verdad, después de deducciones y rebajas. Suele ser menor que el legal.
+
+El tipo efectivo puede subir sin que cambie la ley. La Agencia Tributaria calcula que el del impuesto sobre la renta de las personas físicas (IRPF) creció un 3,5 % de media al año entre 2021 y 2025. Es decir, un tipo del 15 % pasaría a algo más del 15,5 % al año siguiente.
+
+Fuentes: OCDE, estadísticas de ingresos públicos 2025 (Revenue Statistics), datos por país (https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD,/.TAX_REV.S13._T._T.PT_B1GQ.A?startPeriod=2023&format=csvfilewithlabels); Ley 27/2014 del Impuesto sobre Sociedades, artículo 29 (el tipo del impuesto) (https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328); Agencia Tributaria, informe anual de recaudación 2025 (https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/1-ingresos-tributarios-2025/impuestos-devengados-ingresos-tributarios.html)
+
+## Por qué sube la recaudación (`recaudacion`)
+
+El impuesto sobre la renta de las personas físicas (IRPF) va por tramos: quien gana más paga un porcentaje mayor por la parte alta de su renta. Si esos tramos no se suben al ritmo de los precios, pasa algo. Los sueldos suben en euros y se paga un porcentaje medio mayor. Pero con ese sueldo no se puede comprar más que antes. Es la «progresividad en frío».
+
+El Banco de España calcula que, sin actualizar los tramos, cuando la renta sube un 1 %, lo recaudado por el IRPF sube un 1,85 %. Este efecto explica alrededor de la mitad de lo que subió el IRPF en relación con el PIB entre 2019 y 2023.
+
+El mismo estudio señala que el efecto es mayor en las rentas medias y medias-altas.
+
+Fuentes: Banco de España, Documento Ocasional 2422 (2024) (https://repositorio.bde.es/bitstream/123456789/37393/4/do2422e.pdf); Banco de España, Documento de Trabajo 2545 (2025) (https://repositorio.bde.es/bitstream/123456789/41507/1/dt2545e.pdf); Agencia Tributaria, impuestos que corresponden a cada año frente a lo que entra en caja (2025) (https://sede.agenciatributaria.gob.es/Sede/estadisticas/recaudacion-tributaria/informe-anual/ejercicio-2025/1-ingresos-tributarios-2025/impuestos-devengados-ingresos-tributarios.html); Ley 27/2014 del Impuesto sobre Sociedades, artículo 124 (la declaración del impuesto) (https://www.boe.es/buscar/act.php?id=BOE-A-2014-12328)
+
+## El calendario del presupuesto (`presupuesto`)
+
+La Constitución obliga al Gobierno a presentar los Presupuestos al Congreso al menos tres meses antes de que acabe el año. Si el 1 de enero no están aprobados, siguen valiendo los del año anterior. Esa «prórroga» es automática y dura hasta que se aprueben unos nuevos.
+
+Lo aprobado es un límite: lo máximo que se puede gastar en cada cosa. No obliga a gastarlo.
+
+Fuentes: Constitución Española, artículo 134 (los Presupuestos Generales del Estado) (https://www.boe.es/buscar/act.php?id=BOE-A-1978-31229)
+
+## Dos formas oficiales de llevar las cuentas (`contabilidad`)
+
+Las dos son oficiales y miden cosas distintas. El presupuesto dice cuánto permitió gastar el Parlamento y cuánto se gastó. La contabilidad nacional, la que siguen todos los países de la Unión Europea, es la que da el déficit y la deuda oficiales. Por eso sus cifras no cuadran del todo.
+
+El presupuesto apunta un impuesto en cuanto nace el derecho a cobrarlo. La contabilidad nacional es la forma de llevar las cuentas que cuenta para Europa. Esta solo apunta como ingreso lo que de verdad se cobra. Así, los impuestos que nunca se van a recaudar no rebajan el déficit.
+
+La Intervención General de la Administración del Estado (IGAE), que lleva las cuentas del sector público, hace «ajustes» para pasar de un saldo (ingresos menos gastos) al otro.
+
+Fuentes: IGAE, manual para calcular el déficit en contabilidad nacional (2006), págs. 28-29 (https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/InformacionGeneral/Documents/Manual_AATT/ManualCCLL1Edicion2006b.pdf)
+
+## Cómo leer estas cuatro cifras (`cifras_clave`)
+
+Las cuatro están comparadas con el PIB, todo lo que produce el país en un año. «45 % del PIB» quiere decir que el gasto público equivale a 45 de cada 100 euros de todo lo que se produce. Debajo de cada una, la misma cifra en euros por habitante.
+
+Que el gasto público sea el 45 % del PIB no quiere decir que las administraciones se queden con casi la mitad de la economía. Buena parte son pensiones, sueldos y ayudas que llegan a los hogares, y estos los gastan a su vez.
+
+Ingresos menos gastos es el saldo del año. Si sale negativo, es el déficit: lo que falta, y se pide prestado. La deuda es todo lo prestado en todos los años y aún no devuelto.
+
+Las reglas de la Unión Europea toman como referencia un déficit del 3 % del PIB y una deuda del 60 %. Cuando la deuda pasa del 90 %, como en España, piden que baje al menos un punto al año de media (unos años puede bajar más y otros menos): por ejemplo, del 100 % al 99 %.
+
+Parte del déficit sube y baja sola con la economía. Si la economía de España se encoge un 1 %, el déficit crece unas seis décimas, según la Comisión Europea: si estaba en el 2,4 % del PIB, pasa a cerca del 3 %. Se recauda menos y se paga más paro, sin que cambie ninguna ley.
+
+Fuentes: Reglamento (UE) 2024/1263, las reglas fiscales europeas, artículos 6 y 7 (https://www.boe.es/doue/2024/1263/L00001-00021.pdf); Comisión Europea, estudio sobre cuánto se mueve el saldo con la economía (Discussion Paper 098, 2019), tabla IV.3 (https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf)
+
+## Servicios públicos generales (`cofog_GF01`)
+
+Es lo que cuesta el funcionamiento general del Estado. Incluye Gobiernos, parlamentos y plenos municipales, la gestión de Hacienda, la política exterior y la ayuda a otros países. También los servicios generales y la investigación básica, la que busca conocimiento sin un uso concreto. También incluye lo que España aporta al presupuesto de la Unión Europea (UE).
+
+Las reglas oficiales ponen aquí también los intereses de la deuda. Esta web los separa para que se vean. En 2024, la partida entera fue el 5,8 % del PIB, y de eso, el 2,5 % fueron intereses.
+
+También van aquí las transferencias, el dinero que un nivel de administración pasa a otro. Al sumar todas las administraciones se anulan, porque lo que una da, otra lo recibe. Por eso no están en la cifra total de esta partida.
+
+Fuentes: Eurostat (oficina de estadística de la UE), manual de la clasificación COFOG, que ordena el gasto público según su finalidad (2019) (https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf); Eurostat, artículo divulgativo sobre el gasto público en servicios generales (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_general_public_services)
+
+## Defensa (`cofog_GF02`)
+
+Incluye los ejércitos, la defensa civil, la ayuda militar a otros países, las misiones de paz y la investigación militar. No incluye las pensiones de los militares, que van en protección social. Tampoco la sanidad del personal militar, que va en sanidad.
+
+Por eso esta cifra no es la que usa la Organización del Tratado del Atlántico Norte (OTAN). La OTAN sí cuenta las pensiones militares, entre otras diferencias. La Intervención General de la Administración del Estado (IGAE) lo explica en su informe sobre el gasto por finalidades (COFOG). En 2024, defensa fue el 0,9 % del PIB con este criterio. La OTAN estimó para España un 1,43 %.
+
+En la cumbre de La Haya, el 25 de junio de 2025, los países de la OTAN se comprometieron a dedicar el 5 % del PIB en 2035. De eso, al menos un 3,5 % iría a defensa básica. Hasta un 1,5 % iría a infraestructuras y a preparar al país para resistir crisis («resiliencia»). El camino para llegar ahí se revisará en 2029.
+
+Fuentes: IGAE, informe del gasto público por finalidades (COFOG) 2020-2024 (provisional) (https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf); Eurostat, artículo divulgativo sobre el gasto público en defensa (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_defence); OTAN, gasto en defensa de los países de la OTAN (2014-2025) (https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2025-en.pdf); OTAN, declaración de la cumbre de La Haya (2025) (https://www.nato.int/cps/en/natohq/official_texts_236705.htm)
+
+## Orden público y seguridad (`cofog_GF03`)
+
+Incluye la policía (también la de tráfico, fronteras y costas), los bomberos y la protección civil, los tribunales y las prisiones. En 2024, España gastó el 1,8 % del PIB, algo más que la media de la Unión Europea (UE), del 1,7 %. Casi toda la diferencia está en la policía: 1,1 % del PIB en España frente a 0,9 % en la UE.
+
+Sobre el efecto, los estudios más citados son de Estados Unidos. Uno, con datos de 1960 a 2010, calcula que un 10 % más de policías reduce alrededor de un 5 % el coste social del delito. Ese coste es lo que los delitos cuestan a las víctimas y al resto de la sociedad. Reduce más los delitos violentos que los robos y otros delitos contra la propiedad. No hay un cálculo parecido para España.
+
+Fuentes: Eurostat, artículo divulgativo sobre el gasto público en orden público y seguridad (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_public_order_and_safety); Chalfin y McCrary, estudio sobre policías y delitos en Estados Unidos (NBER WP 18815, 2013) (https://www.nber.org/papers/w18815)
+
+## Asuntos económicos (`cofog_GF04`)
+
+Es dinero público para los sectores que producen: transporte (carreteras, ferrocarril), energía, agricultura y pesca, industria y comunicaciones. También incluye ayudas a empresas, programas para que los parados encuentren trabajo («políticas activas de empleo») e investigación aplicada, la que busca un uso concreto.
+
+Es la partida que más sube y baja en las crisis, porque aquí se apuntan los rescates y las ayudas extraordinarias. En 2012, España apuntó 39.100 millones de euros de ayudas a bancos y otras entidades financieras: unos 840 € por habitante. La partida pasó del 5,6 % al 8,7 % del PIB.
+
+En 2022 llegaron las ayudas por la subida de la energía. Entre ellas, 5.814 millones de la rebaja en el precio del combustible. Con ellas, el gasto en energía llegó a 12.498 millones, unos 260 € por habitante.
+
+Fuentes: Eurostat, manual de la clasificación COFOG, que ordena el gasto público según su finalidad (2019) (https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf); IGAE, informe del gasto público por finalidades (COFOG) 2020-2024 (provisional) (https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf); Eurostat, artículo divulgativo sobre el gasto público en asuntos económicos (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_economic_affairs); FMI, artículo sobre por qué es buen momento para invertir en infraestructuras («Now Is a Good Time to Invest in Infrastructure», 2014) (https://www.imf.org/en/blogs/articles/2014/09/30/now-is-a-good-time-to-invest-in-infrastructure)
+
+## Protección del medio ambiente (`cofog_GF05`)
+
+Incluye la recogida y el tratamiento de basuras, el alcantarillado y la depuración de aguas. También la lucha contra la contaminación y la protección de la variedad de plantas y animales (biodiversidad). El agua del grifo no está aquí, sino en vivienda y servicios comunitarios.
+
+En 2024, España gastó el 1,0 % del PIB; la media de la Unión Europea fue el 0,8 %. La mayor parte es la gestión de basuras, que llevan sobre todo los ayuntamientos. En ella, España gasta el doble que la media europea: 0,6 % del PIB frente a 0,3 %.
+
+Fuentes: Eurostat, artículo divulgativo sobre el gasto público en protección del medio ambiente (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_environmental_protection)
+
+## Vivienda y servicios comunitarios (`cofog_GF06`)
+
+Incluye construir y mejorar viviendas, el urbanismo, el abastecimiento de agua y el alumbrado de las calles. No están aquí las ayudas a las familias para pagar el alquiler o la hipoteca. Tampoco la vivienda social para quien tiene pocos ingresos. Las dos van en protección social.
+
+En 2024, España gastó el 0,5 % del PIB; la media de la Unión Europea (UE) fue el 0,7 %. Según la Organización para la Cooperación y el Desarrollo Económicos (OCDE), en España menos de 2 de cada 100 viviendas son viviendas sociales de alquiler. En la UE, la media es de 8 de cada 100. La OCDE advierte de que cada país define la vivienda social de forma distinta.
+
+Fuentes: Eurostat, manual de la clasificación COFOG, que ordena el gasto público según su finalidad (2019) (https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf); Eurostat, artículo divulgativo sobre el gasto público en vivienda y servicios comunitarios (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_housing_and_community_amenities); OCDE, base de datos de vivienda asequible, indicador PH4.2 sobre vivienda social en alquiler (2025) (https://webfs.oecd.org/Els-com/Affordable_Housing_Database/PH4-2-Social-rental-housing-stock.pdf)
+
+## Sanidad (`cofog_GF07`)
+
+Incluye medicamentos y aparatos médicos, centros de salud y especialistas, hospitales y salud pública. Las comunidades autónomas gestionan 91 de cada 100 euros (el 91 %) del gasto sanitario público.
+
+En 2024, las administraciones gastaron en sanidad el 6,5 % del PIB. La media de la Unión Europea (UE) fue el 7,3 %.
+
+Si se suma también el gasto privado, España gastó en 2023 un 9,2 % del PIB. Son unos 3.137 euros por habitante, medidos en poder de compra (corrigiendo las diferencias de precios entre países). Es alrededor de una quinta parte menos que la media de la UE. Los hogares pagan de su bolsillo el 21 % de ese gasto; en la UE, el 16 %. Esta cifra del 9,2 % y la del 6,5 % no se pueden comparar entre sí: no cuentan exactamente las mismas cosas.
+
+La población envejece. Por eso, la Comisión Europea calcula que, hasta 2070, el gasto público en sanidad de España subirá en 1,2 puntos del PIB (un 1,2 % del PIB más). El de cuidados de larga duración, la atención a personas que no pueden valerse solas, subirá en 0,9 puntos. En los dos casos, más que la media de la UE.
+
+Fuentes: Eurostat, artículo divulgativo sobre el gasto público en sanidad (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_health); OCDE, Observatorio Europeo de Sistemas y Políticas de Salud y Comisión Europea, el estado de la salud en la UE (State of Health in the EU): perfil de España 2025 (https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/12/country-health-profile-2025-country-notes_7e72146d/spain_4e0e2356/4ff6d4e0-en.pdf); Comisión Europea, informe sobre el envejecimiento de 2024 (2024 Ageing Report) (https://economy-finance.ec.europa.eu/document/download/971dd209-41c2-425d-94f8-e3c3c3459af9_en?filename=ip279_en.pdf)
+
+## Ocio, cultura y religión (`cofog_GF08`)
+
+Incluye las instalaciones deportivas y de ocio, las bibliotecas, los museos, los teatros y el patrimonio, la radio y la televisión públicas y los servicios religiosos y comunitarios.
+
+En 2024, España gastó el 1,2 % del PIB, igual que la media de la Unión Europea. El reparto entre deporte, cultura y medios públicos también se parece mucho.
+
+Fuentes: Eurostat, artículo divulgativo sobre el gasto público en ocio, cultura y religión (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_recreation,_culture_and_religion)
+
+## Educación (`cofog_GF09`)
+
+Incluye desde la educación infantil hasta la universidad, más servicios como el transporte escolar o los comedores.
+
+En 2024, las administraciones gastaron en educación el 4,1 % del PIB. La media de la Unión Europea (UE) fue el 4,7 %, y la cifra de España está entre las más bajas de la UE. La Organización para la Cooperación y el Desarrollo Económicos (OCDE) cuenta también lo que se paga de forma privada a los centros. Con ese criterio, España gastó el 4,5 % del PIB en 2022, cerca de la media de la OCDE (4,7 %).
+
+Los países que gastan más por alumno tienen mejores resultados en PISA, la evaluación internacional de alumnos de la OCDE. Pero solo hasta cierto nivel: unos 75.000 dólares gastados en total por alumno entre los 6 y los 15 años. Por encima de esa cifra, la relación desaparece. Además, que las dos cosas vayan juntas no demuestra que una cause la otra.
+
+Fuentes: Eurostat, artículo divulgativo sobre el gasto público en educación (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_education); OCDE, Panorama de la educación 2025 (Education at a Glance), nota de España (https://www.educacionfpydeportes.gob.es/inee/eu/dam/jcr:9c89bba6-0c39-45c5-bc02-9da8ec6de9b8/country-note-spain-en.pdf); OCDE, PISA 2022, fichas por país (apartado sobre lo invertido en educación, «Resources invested in education») (https://www.oecd.org/content/dam/oecd/en/publications/reports/2023/11/pisa-2022-results-volume-i-and-ii-country-notes_2fca04b9/indonesia_0e09c072/c2e1ae0e-en.pdf); Jackson y Mackevicius, revisión de estudios sobre gasto escolar y resultados en Estados Unidos (AEJ: Applied Economics 16(1), 2024) (https://www.aeaweb.org/articles?id=10.1257/app.20220279)
+
+## Protección social (`cofog_GF10`)
+
+Es la partida más grande. Incluye las pensiones de jubilación y de viudedad, la incapacidad, las ayudas a las familias, el paro, las ayudas a la vivienda y las rentas mínimas. En 2024, España gastó el 18,7 % del PIB; la media de la Unión Europea (UE) fue el 19,6 %.
+
+En jubilación, España gasta casi lo mismo que la media (10,4 % del PIB frente a 10,7 %). En viudedad gasta más (2,2 % frente a 1,5 %). En familia gasta menos (1,0 % frente a 2,0 %).
+
+El gasto en paro sube solo cuando sube el paro, sin aprobar nada nuevo. En euros, se duplicó entre 2007 y 2009. En 2020 llegó al 3,7 % del PIB, con los expedientes de regulación temporal de empleo (ERTE), que pagaron a trabajadores apartados de su puesto por un tiempo. Un estudio europeo calcula que, en la UE, cuando sube el paro, los impuestos y las prestaciones compensan el 47 % de la renta que se pierde.
+
+Las transferencias, el dinero que las administraciones dan a los hogares, reducen la desigualdad que miden las estadísticas. Se mide con el índice de Gini: cuanto más alto, más desigual es el reparto. En 2025, sin ninguna prestación ni pensión, el índice de España sería 44,6. Con las pensiones, pero sin las demás prestaciones, 34,1. Con todo, 30,8: es la cifra oficial.
+
+Eurostat advierte de que el «antes» es una suposición teórica: sin esas ayudas, nadie se comportaría igual.
+
+Fuentes: Eurostat, manual de la clasificación COFOG, que ordena el gasto público según su finalidad (2019) (https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf); Eurostat, artículo divulgativo sobre el gasto público en protección social (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_on_social_protection); Dolls, Fuest y Peichl, estudio sobre cuánto amortiguan impuestos y prestaciones una crisis (NBER WP 16275, 2010) (https://www.nber.org/papers/w16275); Eurostat, índice de Gini antes y después de las transferencias sociales (ilc_di12b) (https://ec.europa.eu/eurostat/databrowser/view/ilc_di12b/default/table); Eurostat, glosario: riesgo de pobreza antes de las transferencias sociales (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate_before_social_transfers)
+
+## Quién gasta y quién recauda (`quien_gasta`)
+
+España es de los países que más reparten el gasto entre niveles de administración. Según la Organización para la Cooperación y el Desarrollo Económicos (OCDE), las comunidades autónomas y los ayuntamientos gastan alrededor de la mitad. Las comunidades llevan casi toda la sanidad y la educación. La Seguridad Social paga casi todas las pensiones.
+
+Quien gasta no es siempre quien recauda. Las comunidades de régimen común son todas menos el País Vasco y Navarra. Reciben la mitad (el 50 %) del impuesto sobre la renta (IRPF) y del impuesto sobre el valor añadido (IVA) de su territorio. También reciben el 58 % de los impuestos especiales, como los del alcohol, el tabaco o los carburantes.
+
+Además, reciben dinero de un fondo. Ese fondo busca que cada comunidad tenga los mismos recursos por habitante para los servicios básicos. El habitante se cuenta «ajustado», teniendo en cuenta también la edad y el territorio.
+
+El País Vasco y Navarra tienen régimen foral: recaudan sus propios impuestos. A cambio, pagan al Estado una cantidad por lo que este sigue haciendo allí: el «cupo» en el País Vasco y la «aportación» en Navarra.
+
+Si se suma el gasto de cada nivel, el dinero que uno pasa a otro se cuenta dos veces: cuando lo da y cuando lo gasta quien lo recibe. Por eso se descuenta al sumar. En 2024, la Intervención General de la Administración del Estado (IGAE) restó 250.652 millones de euros: algo más de un tercio de lo que se gastó, unos 5.100 € por habitante.
+
+Fuentes: OCDE, gasto de las administraciones regionales y locales (base de datos regional) (https://sdmx.oecd.org/public/rest/data/OECD.CFE.RDG,DSD_DASHBOARD@EXPEND,/ESP.......?startPeriod=2022&format=csvfilewithlabels); IGAE, informe del gasto público por finalidades (COFOG) 2020-2024 (provisional) (https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/Funcional%202020-2024.pdf); Ley 22/2009, de financiación de las comunidades autónomas (el sistema común) (https://www.boe.es/buscar/pdf/2009/BOE-A-2009-20375-consolidado.pdf); Ley 12/2002, Concierto Económico con el País Vasco (el cupo) (https://www.boe.es/buscar/pdf/2002/BOE-A-2002-9969-consolidado.pdf); Ley 28/1990, Convenio Económico con Navarra (la aportación) (https://www.boe.es/buscar/pdf/1990/BOE-A-1990-31117-consolidado.pdf)
+
+## Por qué un porcentaje puede moverse sin que cambie el gasto (`denominador`)
+
+El porcentaje del PIB es una división: el gasto entre el PIB. Sube si se gasta más, pero también si el PIB cae.
+
+En 2020, el PIB de España cayó un 9,9 %. Las pensiones de jubilación solo subieron un 3,4 % en euros, pero pasaron del 9,5 % al 10,9 % del PIB. En 2022 pasó lo contrario con la sanidad. Su gasto subió un 5,4 % en euros, pero bajó del 7,2 % al 6,8 % del PIB, porque el PIB creció más. Para ver la cantidad en euros, se puede elegir arriba «Euros sin inflación».
+
+Estas partidas siguen la clasificación COFOG. Ordena el gasto según para qué sirve, con las mismas reglas en todos los países de la Unión Europea. Por eso permite comparar países. Los presupuestos de cada país no lo permiten.
+
+Fuentes: Eurostat, nota sobre el gasto público por finalidades en 2020 (28/02/2022) (https://ec.europa.eu/eurostat/web/products-eurostat-news/-/ddn-20220228-2); Eurostat, manual de la clasificación COFOG, que ordena el gasto público según su finalidad (2019) (https://ec.europa.eu/eurostat/documents/3859598/10142242/KS-GQ-19-010-EN-N.pdf); Eurostat, artículo divulgativo sobre el gasto público por finalidades, COFOG (Statistics Explained) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Government_expenditure_by_function_%E2%80%93_COFOG)
+
+## Por qué cae la afiliación en enero y en agosto (`estacionalidad`)
+
+La afiliación cuenta las altas en la Seguridad Social de quien trabaja. Cada año baja en enero y en agosto, y sube en primavera y a comienzos del verano. Los cálculos oficiales del efecto de cada mes en 2026 marcan enero como el mes más bajo y junio como el más alto.
+
+Es el efecto de la época del año, no necesariamente un cambio de tendencia. En 2026, por ejemplo, la época del año bajó la cifra de agosto en 162.840 afiliados y la de enero en 270.782.
+
+Para ver la tendencia, la Seguridad Social publica una serie «desestacionalizada», que quita ese efecto con un método estadístico estándar. Es la línea gruesa del gráfico. No la calcula esta web.
+
+Los afiliados medios son la media de los días hábiles del mes. El número del último día del mes es otra cifra distinta.
+
+La afiliación cuenta altas en la Seguridad Social, no personas. Lo dice así la Seguridad Social: «la misma persona se contabiliza tantas veces como situaciones de cotización tenga». Por ejemplo, quien tiene dos trabajos cuenta dos veces. Hay excepciones que sí cuentan personas: los autónomos, los empleados del hogar y los trabajadores del campo por cuenta ajena.
+
+La afiliación no incluye a quien cobra el paro. Tampoco a los fijos discontinuos (con contrato fijo, pero que solo trabajan parte del año) mientras no trabajan.
+
+Fuentes: Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); Seguridad Social, método para quitar el efecto de la época del año (ajuste estacional, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); INE, resumen de cómo se hace la EPA (https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf); SEPE, introducción a la estadística de empleo (septiembre de 2026) (https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf)
+
+## Afiliación, EPA y paro registrado (`tres_cifras_empleo`)
+
+La afiliación cuenta altas en la Seguridad Social, no personas. Lo dice así la Seguridad Social: «la misma persona se contabiliza tantas veces como situaciones de cotización tenga». Por ejemplo, quien tiene dos trabajos cuenta dos veces. Hay excepciones que sí cuentan personas: los autónomos, los empleados del hogar y los trabajadores del campo por cuenta ajena.
+
+La afiliación no incluye a quien cobra el paro. Tampoco a los fijos discontinuos (con contrato fijo, pero que solo trabajan parte del año) mientras no trabajan.
+
+La Encuesta de Población Activa (EPA) del Instituto Nacional de Estadística (INE) pregunta a hogares cada trimestre. Cuenta como ocupado a quien trabajó al menos una hora en la semana por la que se pregunta. Cuenta como parado a quien no trabajó, buscó empleo y podría empezar a trabajar en dos semanas.
+
+Los activos son los ocupados más los parados. La tasa de actividad es el porcentaje de activos entre la población de 16 y más años. La tasa de empleo es el porcentaje de ocupados entre esa misma población. La tasa de paro es el porcentaje de parados entre los activos.
+
+El paro registrado es el del Servicio Público de Empleo Estatal (SEPE). Cuenta las peticiones de empleo apuntadas y sin cubrir el último día del mes. Pero quita las que excluye una orden de 1985. Entre otros, quita a quien ya trabaja y a los estudiantes menores de 25 años. También a quien busca un empleo de menos de tres meses o de menos de 20 horas. Por eso hay más demandantes de empleo (4,2 millones en septiembre de 2026) que parados registrados (2,4 millones).
+
+Fuentes: Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); INE, resumen de cómo se hace la EPA (https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf); SEPE, introducción a la estadística de empleo (septiembre de 2026) (https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf)
+
+## Afiliados por pensión (`afiliados_por_pension`)
+
+No hay una cifra oficial de «afiliados por pensionista». Hay que calcularla, y el resultado depende de qué se divide entre qué. Esta web divide los afiliados medios del mes entre las pensiones contributivas (las que se cobran por haber cotizado) en vigor el día 1 de ese mes.
+
+Si se divide entre pensionistas, es decir, entre personas, sale más: en septiembre de 2026, 2,35 en lugar de 2,13. La razón es que hay personas que cobran dos pensiones: de media, cada pensionista cobra 1,11 pensiones.
+
+Es una forma sencilla de ver cuántos cotizantes hay por cada pensión. Pero no mide si el sistema está en equilibrio. Lo que entra por cotizaciones depende de los salarios y de los porcentajes de cotización. Lo que se gasta depende de la cuantía de las pensiones. Y parte del gasto se paga con dinero que pasa el Estado.
+
+Fuentes: Seguridad Social, pensiones y pensionistas (resumen de datos, septiembre de 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST23/EST24); Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293)
+
+## El IPC: general y subyacente (`ipc`)
+
+El índice de precios de consumo (IPC) mide cómo cambian los precios de una cesta de lo que compran los hogares. La cifra que se da habitualmente compara cada mes con el mismo mes del año anterior.
+
+La inflación subyacente deja fuera dos grupos de precios: los alimentos sin elaborar y la energía. El Instituto Nacional de Estadística (INE) la llama oficialmente «general sin alimentos no elaborados ni productos energéticos».
+
+En las cuentas públicas, la subida de precios (la inflación) sube la recaudación aunque no cambie ninguna ley (ver «progresividad en frío»). También encarece lo que compran las administraciones.
+
+Fuentes: INE, IPC subyacente, tabla 76130 (https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/IPC292510?nult=1); Banco de España, Documento Ocasional 2422 (2024) (https://repositorio.bde.es/bitstream/123456789/37393/4/do2422e.pdf)
+
+## Bono a 10 años y prima de riesgo (`prima_riesgo`)
+
+La rentabilidad del bono a 10 años es el interés que piden los inversores por prestar dinero al Estado durante diez años. Esta web usa la serie del Banco Central Europeo (BCE), que mide igual a todos los países de la Unión Europea y da la media de cada mes.
+
+La prima de riesgo es la diferencia entre ese interés y el que paga Alemania, que se toma como referencia. Ninguna institución la publica como serie. Esta web la calcula restando una cifra de la otra, y por eso lleva la etiqueta «cálculo nuestro». Se mide en puntos básicos: 100 puntos básicos son un punto porcentual de interés.
+
+Fuentes: BCE, estadísticas de tipos de interés a largo plazo (https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/long_term_interest_rates/html/index.en.html)
+
+## El interés medio de la deuda (`tipo_medio`)
+
+Es el interés medio de toda la deuda del Estado que aún no se ha devuelto. Cada bono o letra cuenta con el interés que se fijó cuando se emitió.
+
+Cada mes solo vence una parte de la deuda. Por eso una subida de tipos de interés tarda años en notarse entera. Las letras del Tesoro son los préstamos al Estado a menos de un año. Tras la subida del Banco Central Europeo (BCE), pasaron de pagar el 0,73 % en 2022 al 3,48 % en 2023. En cambio, el interés medio de toda la deuda solo pasó del 1,73 % de 2022 al 2,45 % de septiembre de 2026.
+
+Es la deuda del Estado, no la de todas las administraciones. Es la mayor parte, pero no toda.
+
+Fuentes: Tesoro Público, interés medio de la deuda del Estado (estadísticas mensuales) (https://www.tesoro.es/deuda-publica/estad%C3%ADsticas-mensuales)
+
+## PIB sin la subida de precios (`pib_real`)
+
+Es el producto interior bruto (PIB) sin el efecto de la subida de precios: dice cuánto más (o menos) produce de verdad la economía. Cada trimestre se compara con el mismo trimestre del año anterior. La serie del Instituto Nacional de Estadística (INE) está corregida para quitar el efecto de la época del año y del número de días laborables («ajustada de estacionalidad y calendario»).
+
+En las cuentas públicas importa por dos razones. Con más actividad se recauda más y se paga menos paro. Y la deuda pesa menos si el PIB es mayor: es el efecto bola de nieve, explicado en la página de cuentas.
+
+Fuentes: INE, Contabilidad Nacional Trimestral, PIB en volumen (índices encadenados) (https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/CNTR6654?nult=1); BCE, Informe de Estabilidad Financiera de noviembre de 2021 (Financial Stability Review) (https://www.ecb.europa.eu/pub/financial-stability/fsr/focus/2021/html/ecb.fsrbox202111_01~f37aaca9fb.en.html)
+
+## Tasa de dependencia (`dependencia`)
+
+El Instituto Nacional de Estadística (INE) la calcula así. Suma las personas menores de 16 años y las mayores de 64. Divide entre las que tienen de 16 a 64 años y multiplica por cien. Dice cuántos menores de 16 y mayores de 64 hay por cada 100 personas de 16 a 64 años.
+
+No dice cuántas personas trabajan: solo compara grupos de edad.
+
+Importa para las cuentas porque el gasto en pensiones, sanidad y cuidados depende sobre todo de cuántas personas mayores hay. La proyección del INE supone que siguen las tendencias recientes. Si cambian los nacimientos o la migración, cambia la cifra.
+
+Fuentes: INE, glosario: tasa de dependencia (https://www.ine.es/DEFIne/es/concepto.htm?c=5098); Comisión Europea, informe sobre el envejecimiento de 2024 (2024 Ageing Report), ficha de España (https://economy-finance.ec.europa.eu/document/download/392994f2-c025-4066-bea8-f65cf4bcd411_en?filename=2024-ageing-report-country-fiche-Spain.pdf)
+
+## Por qué comparar comunidades exige cuidado (`comparar_ccaa`)
+
+No todas las comunidades se encargan de los mismos servicios. Hacienda cierra las cuentas de cada año con un informe, la «liquidación». Antes de comparar por habitante ajustado, ese informe aparta las «competencias no homogéneas», los servicios que no tienen todas: 8.331 millones de euros en 2024. Así compara solo la «financiación homogénea».
+
+El País Vasco y Navarra no entran en el sistema común: en la liquidación solo figuran quince comunidades. Su financiación sigue otra lógica (el cupo y la aportación) y no se puede comparar cifra a cifra.
+
+El habitante ajustado tiene en cuenta si la comunidad es una isla (insularidad), su superficie y lo repartida que está la población. En 2024, solo Canarias y Baleares tienen valor de insularidad. Canarias tiene un impuesto propio, el impuesto general indirecto canario (IGIC), en lugar del IVA.
+
+Y la misma cifra cambia según el informe. El déficit de Andalucía de 2025 era del 0,1 % del PIB en el primer informe de Hacienda (junio de 2026). En el de la Intervención General de la Administración del Estado (IGAE) de septiembre, era del 0,157 %.
+
+Fuentes: Hacienda, liquidación del sistema de financiación de las comunidades de 2024 (texto) (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf); Hacienda, tablas de la liquidación de 2024 (cuadros 1.9.1 y 2.2.3) (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/cuadros-liquidacion-2024.xlsx); IGAE, impuestos por comunidad autónoma (https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/CCAA-A/Detalle_por_CCAA_Imp.xlsx)
+
+## El déficit de una comunidad (`deficit_ccaa`)
+
+Es lo que le falta (o le sobra) a la comunidad al restar sus gastos de sus ingresos. Su nombre técnico es «capacidad o necesidad de financiación» en contabilidad nacional. Es la misma medida que se usa para el conjunto de España.
+
+Lo exige la ley de estabilidad presupuestaria. Según ella, los objetivos se fijan «de acuerdo con la definición contenida en el Sistema Europeo de Cuentas Nacionales y Regionales». Son las reglas comunes de la Unión Europea (UE) para llevar las cuentas. Vale para el conjunto y para cada subsector: Estado, comunidades, ayuntamientos y Seguridad Social.
+
+Por eso no coincide con el saldo de su presupuesto. La ley obliga a que cada presupuesto vaya acompañado de la información que conecta su saldo con el de contabilidad nacional.
+
+La Constitución prohíbe a las comunidades tener un déficit estructural mayor que el que fije la UE. El déficit estructural es el que queda al quitar el efecto de los años buenos y malos de la economía.
+
+Fuentes: Ley Orgánica 2/2012, de estabilidad presupuestaria, artículos 15 y 27 (https://www.boe.es/eli/es/lo/2012/04/27/2/con); Constitución Española, artículo 135 (el límite al déficit) (https://www.boe.es/eli/es/c/1978/12/27/(1)/con)
+
+## La deuda con el Estado (`deuda_estado`)
+
+Desde 2012, el Estado presta dinero a las comunidades mediante mecanismos extraordinarios: el Fondo de Liquidez Autonómico, la Facilidad Financiera y otros. Ese dinero es deuda de la comunidad con el Estado. El Banco de España la apunta como «préstamos del fondo de financiación».
+
+A mitad de 2026, el conjunto de las comunidades debía al Estado unos 202.700 millones de euros. Es el 57 % de toda su deuda. Algunas comunidades no han usado estos mecanismos, o ya no les deben nada.
+
+Las cifras no dicen por qué unas comunidades deben más que otras. La deuda es la suma de lo que les ha faltado en muchos años. Y eso depende de lo que cada una ha gastado, de lo que ha ingresado y de la financiación que ha recibido.
+
+Fuentes: Banco de España, Boletín Estadístico, cuadro 13.6 (https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1306.csv); Hacienda, mecanismos de financiación de las comunidades autónomas (https://www.hacienda.gob.es/cdi/mecanismos%20financiaci%c3%b3n/mecanismos-financiacion-ccaa.xlsx)
+
+## El «habitante ajustado» (`habitante_ajustado`)
+
+El sistema no reparte el dinero solo según el número de habitantes. Tiene en cuenta también la edad y el territorio. Para eso usa siete variables, cada una con su peso, que juntas forman el «habitante ajustado».
+
+Las variables y su peso son estas. La población total (30 %). La población con derecho a la sanidad pública, contada según su edad («población protegida por edades», 38 %). Los menores de 16 años (20,5 %) y los mayores de 65 (8,5 %). La superficie (1,8 %), lo repartida que está la población (dispersión, 0,6 %) y ser una isla (insularidad, 0,6 %).
+
+El Fondo de Garantía busca que cada comunidad reciba «los mismos recursos por habitante ajustado» para los servicios básicos. En 2024, Galicia tenía 2.703.353 habitantes y 3.212.322 habitantes ajustados. Madrid tenía 7.001.715 habitantes y 7.333.328 ajustados.
+
+Fuentes: Ley 22/2009, de financiación de las comunidades autónomas (https://www.boe.es/eli/es/l/2009/12/18/22/con); Hacienda, liquidación del sistema de financiación de las comunidades de 2024 (texto) (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf); Hacienda, tablas de la liquidación de 2024 (cuadro 1.9.1) (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/cuadros-liquidacion-2024.xlsx)
+
+## Adelantos y cuenta final: entregas a cuenta y liquidación (`entregas_a_cuenta`)
+
+La ley dice que cada año las comunidades reciben «las entregas a cuenta» de sus recursos: un adelanto. Cuando se conocen las cifras definitivas, llega «la liquidación definitiva», que ajusta la diferencia.
+
+Hacienda lo explica así: «Puesto que los rendimientos definitivos no se pueden determinar en el año correspondiente, cada año las CC.AA. perciben unas entregas a cuenta». Es decir, como ese año aún no se sabe cuánto les corresponde de verdad, las comunidades autónomas reciben un adelanto.
+
+Por eso la financiación de un año se cierra unos dos años después. La de 2024 se publicó en julio de 2026. Las entregas a cuenta de 2026 se fijaron por un real decreto-ley de junio de 2026. Es una norma con fuerza de ley que aprueba el Gobierno y que después vota el Congreso.
+
+Fuentes: Ley 22/2009, de financiación de las comunidades autónomas (https://www.boe.es/eli/es/l/2009/12/18/22/con); Hacienda, liquidación del sistema de financiación de las comunidades de 2024 (texto) (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/liquidacion-de-los-recursos-sfa-2024.pdf); Hacienda, entregas a cuenta de 2026 (https://www.hacienda.gob.es/cdi/sist%20financiacion%20y%20deuda/informaci%c3%b3nccaa/entregas-a-cuenta-2026.xlsx)
+
+## Año de la encuesta y año de la renta (`año_renta`)
+
+La encuesta se hace en primavera y pregunta por los ingresos del año anterior completo. El Instituto Nacional de Estadística (INE) lo explica: «las variables sobre ingresos de la encuesta de 2025 se refieren a 2024 mientras que las demás preguntas se refieren a 2025». Eurostat, la oficina de estadística de la Unión Europea, aplica la misma regla a todos los países.
+
+Por eso, un cambio en las pensiones o en una prestación aprobado un año aparece en estas cifras al menos un año después. La Organización para la Cooperación y el Desarrollo Económicos (OCDE) pone a cada dato el año de los ingresos, no el de la encuesta. Por eso parece ir un año «por detrás».
+
+Fuentes: INE, Encuesta de Condiciones de Vida 2025, nota de prensa (https://www.ine.es/dyngs/Prensa/ECV2025.htm); Eurostat, ficha técnica de la encuesta europea de ingresos y condiciones de vida (EU-SILC) (https://ec.europa.eu/eurostat/cache/metadata/en/ilc_sieusilc.htm)
+
+## El índice de Gini (`gini`)
+
+Mide cuánto se aleja el reparto de la renta de un reparto en el que todos tuvieran lo mismo. Eurostat, la oficina de estadística de la Unión Europea, lo explica así: un índice de 0 es la igualdad perfecta, en la que todo el mundo tiene la misma renta. Un índice de 100 es la desigualdad total, en la que una sola persona tiene toda la renta.
+
+El Banco de España y la Organización para la Cooperación y el Desarrollo Económicos (OCDE) lo dan de 0 a 1.
+
+Resume todo el reparto en un solo número. Por eso no dice dónde está la desigualdad: arriba, en medio o abajo. Para eso sirven el S80/S20 o las tasas de pobreza.
+
+Fuentes: Eurostat, glosario: índice de Gini (Gini coefficient) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Gini_coefficient)
+
+## Renta equivalente y S80/S20 (`renta_equivalente`)
+
+Para comparar hogares de distinto tamaño, la renta del hogar no se divide sin más entre el número de personas. Se divide entre «adultos equivalentes», con la escala de la OCDE modificada. El primer adulto cuenta 1. Cada persona de 14 años o más cuenta 0,5. Cada menor de 14 cuenta 0,3.
+
+El resultado se asigna a cada miembro del hogar. El Instituto Nacional de Estadística (INE) lo llama «renta por unidad de consumo».
+
+El S80/S20 compara los extremos. Divide toda la renta del 20 % de la población con más renta entre la del 20 % con menos.
+
+Fuentes: Eurostat, glosario: renta disponible equivalente (Equivalised disposable income) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Equivalised_disposable_income); Eurostat, glosario: relación S80/S20 entre quintiles de renta (Income quintile share ratio) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Income_quintile_share_ratio)
+
+## «Antes de transferencias» (`antes_transferencias`)
+
+Es la misma renta de los hogares, pero quitando las transferencias sociales: el dinero que reciben de las administraciones. Son las pensiones de jubilación y viudedad, el paro, las ayudas por familia, enfermedad e invalidez, las de educación y vivienda y la asistencia social.
+
+Hay dos versiones. En una se quitan todas, también las pensiones. En la otra, las pensiones se dejan como parte de la renta.
+
+Eurostat advierte de que el indicador supone un mundo sin esas ayudas. Es un cálculo, no lo que pasaría de verdad sin ellas. Los impuestos ya están descontados en todas las versiones.
+
+Fuentes: Eurostat, glosario: tasa de riesgo de pobreza (At-risk-of-poverty rate) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate); Eurostat, glosario: transferencias sociales (Social transfers) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Social_transfers)
+
+## El umbral de riesgo de pobreza (`umbral_pobreza`)
+
+Está en el 60 % de la renta mediana de cada país. La mediana es la que queda justo en medio: la mitad de la población tiene más y la otra mitad, menos. Se usa la renta disponible equivalente: la que queda tras impuestos y prestaciones, ajustada al tamaño del hogar.
+
+En España, en la encuesta de 2025, el umbral era de 12.220 € al año para una persona sola.
+
+Es una medida relativa: si la renta de todos sube, el umbral también sube. Por eso Eurostat aclara que no mide la riqueza ni la pobreza. Mide tener poca renta en comparación con los demás residentes del país. Y eso no implica necesariamente un nivel de vida bajo.
+
+Fuentes: Eurostat, glosario: tasa de riesgo de pobreza (At-risk-of-poverty rate) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:At-risk-of-poverty_rate); Eurostat, umbral de riesgo de pobreza (ilc_li01) (https://ec.europa.eu/eurostat/databrowser/view/ilc_li01/default/table)
+
+## Pobreza relativa y carencia material (`carencia_material`)
+
+La pobreza relativa compara la renta de cada persona con la de los demás. La carencia material y social severa mira otra cosa: si una persona no puede permitirse al menos 7 de una lista de 13 cosas.
+
+Las 13 cosas son estas. Afrontar un gasto imprevisto, una semana de vacaciones y comer carne, pescado o su equivalente cada dos días. Mantener la casa a una temperatura adecuada, pagar los recibos a tiempo, tener coche y tener internet. Comprar ropa, tener dos pares de zapatos y cambiar los muebles. Hacer un pequeño gasto en sí misma, tener algo de ocio y reunirse con familia o amigos una vez al mes.
+
+Por eso las dos medidas pueden moverse en sentidos distintos. El indicador AROPE mide el riesgo de pobreza o exclusión social. Cuenta a quien cumple al menos uno de tres criterios: riesgo de pobreza, carencia severa o vivir en un hogar con muy poco trabajo.
+
+Fuentes: Eurostat, glosario: tasa de carencia material y social severa (SMSD) (https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Glossary:Severe_material_and_social_deprivation_rate_(SMSD))
+
+## El método de la OCDE (`ocde_metodo`)
+
+La Organización para la Cooperación y el Desarrollo Económicos (OCDE) parte de la renta de mercado. Son los salarios, lo que ganan los autónomos y lo que dan los ahorros e inversiones (rentas del capital). En su definición entran también algunas prestaciones de seguros ligados al empleo.
+
+A eso le suma lo que dan las administraciones (transferencias públicas) y obtiene la renta bruta. Después le resta los impuestos sobre la renta y las cotizaciones de los hogares, y obtiene la renta disponible.
+
+Para comparar hogares de distinto tamaño usa otro método: divide la renta entre la raíz cuadrada del número de miembros. Además, pone a cada dato el año de la renta. Por eso sus cifras no coinciden con las de Eurostat y no deben mezclarse.
+
+Primero suma las ayudas y después resta los impuestos. El efecto que se atribuye a cada paso depende de ese orden: en otro orden saldría algo distinto.
+
+Fuentes: OCDE, base de datos de distribución de la renta (Income Distribution Database): definiciones y método (https://oecd.org/content/dam/oecd/en/data/datasets/income-and-wealth-distribution-databases/idd-tor-2012-onwards.pdf)
+
+## Las cuentas de cómo se reparte la riqueza (`riqueza_dwa`)
+
+Combinan las cuentas nacionales con la Encuesta Financiera de las Familias del Banco de España. Con eso calculan, cada trimestre, cómo se reparte entre los hogares su riqueza neta: lo que tienen menos lo que deben.
+
+Es una estadística experimental, todavía en pruebas. Se publica con unos cinco meses de retraso.
+
+No da la misma cifra que la propia Encuesta Financiera de las Familias, que se hace cada dos años desde 2020.
+
+«Experimental» quiere decir que el método todavía se está afinando y que las cifras pueden revisarse; no que sean poco serias.
+
+Fuentes: Banco Central Europeo (BCE), cuentas de cómo se reparte la riqueza de los hogares (DWA) (https://data-api.ecb.europa.eu/service/data/DWA/Q.ES.S14._Z._Z.NWA._Z.GI.S.N?format=csvdata); Banco de España, Encuesta Financiera de las Familias 2024 (https://www.bde.es/wbe/es/publicaciones/analisis-economico-investigacion/documentos-ocasionales/encuesta-financiera-de-las-familias-eff-2024-metodos-resultados-y-cambios-desde-2022.html)
+
+## Qué cuenta el paro registrado (`paro_registrado`)
+
+El paro registrado es el del Servicio Público de Empleo Estatal (SEPE). Cuenta las peticiones de empleo apuntadas y sin cubrir el último día del mes. Pero no cuenta a todos los apuntados: por una norma de 1985, deja fuera, entre otros, a quien ya trabaja, a los estudiantes menores de 25 años y a quien busca un empleo de menos de tres meses o de menos de 20 horas. Por eso hay más demandantes de empleo (4,2 millones en septiembre de 2026) que parados registrados (2,4 millones).
+
+No es la cifra oficial de paro: esa es la de la Encuesta de Población Activa (EPA).
+
+Fuentes: Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); INE, resumen de cómo se hace la EPA (https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf); SEPE, introducción a la estadística de empleo (septiembre de 2026) (https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf)
+
+## Qué cuenta la EPA (`tasas_epa`)
+
+La Encuesta de Población Activa (EPA) del Instituto Nacional de Estadística (INE) pregunta a hogares cada trimestre. Cuenta como ocupado a quien trabajó al menos una hora en la semana por la que se pregunta. Cuenta como parado a quien no trabajó, buscó empleo y podría empezar a trabajar en dos semanas.
+
+Los activos son los que trabajan más los que buscan trabajo. La tasa de actividad es el porcentaje de activos entre toda la población de 16 años o más. La tasa de empleo, el porcentaje de los que trabajan entre esa misma población. Y la tasa de paro, el porcentaje de los que buscan trabajo sin encontrarlo entre los activos.
+
+Por eso la tasa de empleo parece baja: en la población de 16 años o más entran también los jubilados y los estudiantes.
+
+Fuentes: Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); INE, resumen de cómo se hace la EPA (https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf); SEPE, introducción a la estadística de empleo (septiembre de 2026) (https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf)
+
+
+---
+
+# Glosario
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/glosario.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Definiciones en lenguaje llano de las palabras técnicas que usa la web.
+
+- **producto interior bruto** (PIB): Todo lo que produce la economía de un país en un año, contado en euros. Sirve de vara de medir: «el 4 % del PIB» quiere decir 4 de cada 100 euros de todo lo que se produce en el país ese año.
+- **% del PIB** (por ciento del PIB): Una cifra dividida por todo lo que produce el país en un año. Permite comparar años y países de tamaños distintos, pero no dice cuántos euros son: para eso está la opción «Por habitante».
+- **déficit**: Lo que falta en un año: lo que las administraciones gastan por encima de lo que ingresan. Se cubre pidiendo prestado, y por eso hace crecer la deuda.
+- **superávit**: Lo contrario del déficit: un año en que se ingresa más de lo que se gasta.
+- **saldo**: Ingresos menos gastos de un año. Si sale negativo es déficit; si sale positivo, superávit.
+- **deuda pública** (deuda PDE): Todo lo que deben las administraciones por los préstamos de todos los años que aún no han devuelto. Se debe sobre todo a quien compró bonos y letras del Tesoro: bancos, fondos de inversión, particulares y el Banco Central Europeo.
+- **cotizaciones sociales** (cotizaciones, cotización): Lo que pagan las empresas y los trabajadores, y los autónomos con su cuota, a la Seguridad Social. Pagan sobre todo las pensiones y el paro.
+- **consolidar** (consolidado, consolidada, consolidados, consolidadas): Sumar varias administraciones sin contar dos veces el dinero que se pasan entre ellas. Si el Estado da 100 euros a una comunidad y esta los gasta, en el total cuentan 100, no 200.
+- **activos financieros**: Préstamos, depósitos o acciones que compran las administraciones. No cuentan como gasto porque en principio se recuperan, pero hay que pedir prestado para pagarlos, y por eso aumentan la deuda.
+- **administraciones públicas**: El Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos (y diputaciones), sumados. Es el conjunto que cuenta para el déficit y la deuda oficiales.
+- **entidades locales** (corporaciones locales): Ayuntamientos, diputaciones, cabildos y consejos insulares.
+- **contabilidad nacional** (SEC 2010): La forma de llevar las cuentas públicas con las mismas reglas en toda la Unión Europea (se llaman SEC 2010). Es la que da las cifras oficiales de déficit y deuda.
+- **contabilidad presupuestaria**: Las cuentas tal como las lleva el presupuesto: cuánto permitió gastar el Parlamento y cuánto se gastó. Da cifras algo distintas de la contabilidad nacional, porque apunta algunas cosas en otro momento o de otra forma.
+- **Procedimiento de Déficit Excesivo**: Las reglas con las que la Unión Europea vigila el déficit y la deuda de cada país. La deuda medida con esas reglas es la cifra oficial.
+- **deflactor**: El índice con el que se descuenta cuánto han subido los precios de toda la economía, para poder comparar euros de años distintos.
+- **euros sin inflación** (euros constantes): Euros de otros años pasados a precios del último, descontando lo que han subido los precios. Así 100 euros de 2005 y 100 de 2025 se pueden comparar.
+- **Presupuestos Generales del Estado**: La ley que aprueban cada año las Cortes con lo que el Estado puede gastar en cada cosa y lo que espera ingresar. Lo que fija para el gasto es un máximo, no una obligación.
+- **créditos iniciales**: Lo que el presupuesto aprobado permite gastar en cada partida al empezar el año. Es un máximo.
+- **créditos definitivos**: Lo que el presupuesto permite gastar al acabar el año, sumando los cambios aprobados durante el año.
+- **obligaciones reconocidas**: Lo que de verdad se gastó: los pagos a los que el Estado se comprometió ese año porque la obra, el servicio o la ayuda ya se hizo.
+- **prorrogado** (prorrogados, prórroga presupuestaria, prórroga): Cuando no se aprueba un presupuesto nuevo, sigue valiendo el del año anterior: se dice que está prorrogado.
+- **liquidación**: El cierre de cuentas de un año: lo que se gastó y se ingresó de verdad, una vez terminado.
+- **transferencias** (transferencia): Dinero que una administración pasa a otra, a una empresa o a una familia sin recibir nada a cambio: una pensión, una subvención o la financiación de una comunidad autónoma.
+- **protección social**: En las cuentas públicas, el gasto en pensiones, paro, familias, dependencia, vivienda social y ayudas contra la exclusión.
+- **intereses de la deuda**: Lo que se paga cada año por tener deuda, como los intereses de una hipoteca. Es gasto del año; devolver los préstamos que vencen, no, porque se suele hacer pidiendo otros.
+- **tipo de interés** (tipos de interés): El precio de pedir prestado, en porcentaje al año. Un tipo del 3 % quiere decir 3 euros al año por cada 100 prestados.
+- **prima de riesgo**: Cuánto más paga España que Alemania por pedir prestado a diez años. Si España paga un 3,2 % y Alemania un 2,6 %, la prima es de 0,6 puntos (se suele decir «60 puntos básicos»).
+- **rentabilidad**: En la deuda, el interés que cobra quien compra un bono del Estado. Para el Estado es lo que le cuesta pedir prestado.
+- **letras del Tesoro** (letras, bonos y obligaciones, bono del Estado, bonos): Las formas en que el Estado pide prestado: vende títulos que se devuelven con intereses. Las letras se devuelven en menos de un año; los bonos y las obligaciones, en más.
+- **vida media**: Cuántos años faltan, de media, para devolver la deuda. Cuanto más larga, más tarda en notarse una subida de los tipos de interés, porque la deuda vieja sigue al tipo antiguo.
+- **bola de nieve**: Cuando lo que se paga de intereses crece más deprisa que la economía, la deuda pesa cada vez más aunque no haya déficit nuevo.
+- **estabilizadores automáticos**: Ingresos y gastos que se mueven solos con la economía, sin cambiar ninguna ley: en una crisis se recauda menos y se paga más paro, y eso amortigua la caída.
+- **déficit estructural**: El déficit que habría si la economía no estuviera ni en crisis ni en auge. No se mide: se estima con modelos, y cada institución da una cifra algo distinta.
+- **regla de gasto**: Un límite a cuánto puede crecer el gasto público cada año, fijado por las reglas europeas.
+- **paro estructural** (NAWRU): La tasa de paro que, según los modelos de la Comisión Europea, habría sin crisis ni auge. Es una estimación que se revisa a menudo.
+- **Encuesta de Población Activa** (EPA): La encuesta del INE que cada trimestre pregunta en unas 65.000 viviendas quién trabaja y quién busca trabajo. De ella sale la tasa de paro oficial.
+- **paro registrado**: Las personas apuntadas como demandantes de empleo en las oficinas públicas de empleo. No coincide con el paro de la EPA: hay quien busca trabajo sin apuntarse y quien está apuntado sin cumplir las condiciones de la encuesta.
+- **afiliados** (afiliación, afiliadas): Las altas en la Seguridad Social: cada empleo por el que se cotiza. Una persona con dos trabajos cuenta dos veces.
+- **tasa de paro**: De cada 100 personas que trabajan o buscan trabajo, cuántas lo buscan sin encontrarlo.
+- **tasa de actividad**: De cada 100 personas de 16 años o más, cuántas trabajan o buscan trabajo.
+- **tasa de empleo**: De cada 100 personas en edad de trabajar, cuántas tienen trabajo.
+- **población activa**: Las personas que trabajan más las que buscan trabajo.
+- **IPC** (índice de precios de consumo): El índice del INE que mide cuánto suben los precios de lo que compran los hogares. Esa subida es la inflación.
+- **subyacente**: La subida de precios sin los alimentos frescos ni la energía, que suben y bajan mucho. Sirve para ver la tendencia de fondo.
+- **índice de Gini** (Gini): Una medida de desigualdad de la renta, de 0 a 100: 0 si todos tuvieran lo mismo y 100 si una sola persona se lo llevara todo. En la Unión Europea, los países van de algo más de 20 a algo menos de 40.
+- **S80/S20**: Cuántas veces más renta tiene el 20 % de la población que más tiene que el 20 % que menos.
+- **AROPE** (riesgo de pobreza o exclusión social): El indicador oficial de la Unión Europea: personas con poca renta, o con carencias materiales graves, o que viven en hogares donde casi no se trabaja.
+- **umbral de riesgo de pobreza** (riesgo de pobreza): Tener una renta por debajo del 60 % de la de la persona que está justo en medio. Mide desigualdad de renta, no si alguien pasa necesidad.
+- **carencia material y social severa** (carencia material): No poder permitirse varias cosas básicas: mantener la casa caliente, comer carne o pescado cada dos días, afrontar un gasto imprevisto, irse una semana de vacaciones al año…
+- **renta disponible**: Lo que le queda a un hogar para gastar o ahorrar: sus ingresos, más pensiones y ayudas, menos impuestos y cotizaciones.
+- **valor añadido**: Lo que produce una empresa o un sector, menos lo que compró a otros para producirlo. Sumado para todo el país da casi todo el PIB.
+- **Intervención General de la Administración del Estado** (IGAE): El organismo del Ministerio de Hacienda que lleva y controla las cuentas del sector público y las envía a Eurostat.
+- **Autoridad Independiente de Responsabilidad Fiscal** (AIReF): Un organismo público independiente que vigila las cuentas de todas las administraciones y hace sus propias previsiones.
+- **Eurostat**: La oficina de estadística de la Unión Europea. Publica los datos de todos los países con las mismas reglas, a partir de lo que le envían los organismos de cada país.
+- **AMECO**: La base de datos económicos de la Comisión Europea, con sus previsiones para cada país.
+- **OCDE**: La Organización para la Cooperación y el Desarrollo Económicos: 38 países, casi todos ricos (la mayoría de la Unión Europea, Estados Unidos, Japón, Canadá…), que comparan sus datos con reglas comunes.
+- **régimen foral** (regímenes forales, haciendas forales): El sistema del País Vasco y Navarra: recaudan casi todos sus impuestos y pagan al Estado una cantidad (el cupo o la aportación) por lo que este presta allí. Lo ampara la Constitución.
+- **legislatura**: El periodo entre dos elecciones generales. La actual, la XV, empezó el 17 de agosto de 2023.
+- **expediente**: El número con el que el Congreso registra cada proyecto o proposición de ley, para seguir su tramitación.
+- **real decreto-ley** (reales decretos-leyes, decreto-ley): Una norma con rango de ley que aprueba el Gobierno por urgencia. Vale desde el día siguiente, pero el Congreso tiene que votarla (convalidarla) en 30 días o deja de valer.
+- **convalidar** (convalidación, convalidado, convalidada): Votar en el Congreso un real decreto-ley para que siga en vigor.
+- **enmienda a la totalidad** (enmiendas a la totalidad): La propuesta de un grupo para rechazar un proyecto de ley entero, o cambiarlo por otro texto, antes de discutirlo artículo por artículo.
+- **anteproyecto**: El borrador de una ley que aprueba el Gobierno antes de pedir informes. Cuando lo aprueba por segunda vez, ya como proyecto, lo envía al Congreso.
+- **proposición de ley** (proposiciones de ley): Una ley que proponen los grupos del Congreso, el Senado o un parlamento autonómico. Si la propone el Gobierno se llama proyecto de ley.
+- **kappa**: Una medida de cuánto coinciden dos clasificaciones hechas por separado, descontando lo que coincidirían por azar. Va de 0 a 1; por encima de 0,8 se considera un acuerdo muy alto.
+- **Fondo Monetario Internacional** (FMI): El Fondo Monetario Internacional: un organismo de 191 países que vigila la economía mundial, publica previsiones y presta dinero a países en apuros.
+- **Banco Central Europeo** (BCE): El banco central de los países del euro. Fija los tipos de interés de referencia y, desde 2015, ha comprado mucha deuda de los Gobiernos.
+- **otros ajustes contables** (ajustes y discrepancias): Lo que mueve la deuda sin ser déficit ni préstamos: por ejemplo, que un bono se venda por menos de lo que luego se devuelve, o que cambie el valor de la deuda en otra moneda. Incluye una pequeña diferencia entre fuentes.
+- **euros corrientes** (precios corrientes): Euros de cada año, tal cual, sin descontar la subida de precios.
+- **sesión constitutiva** (sesiones constitutivas): La primera sesión del Congreso tras unas elecciones, en la que empieza la legislatura.
+- **impuesto sobre la renta de las personas físicas** (IRPF): El impuesto que se paga por el sueldo, la pensión y otras rentas. Se adelanta cada mes (la retención de la nómina) y se ajusta en la declaración de la renta.
+- **Gran Recesión**: La crisis económica que empezó en 2008 con la quiebra de bancos en Estados Unidos. En España duró hasta 2013 y llegó a tener a más de una de cada cuatro personas activas en paro.
+- **actos jurídicos documentados** (actos jurídicos): Un impuesto que se paga al firmar ciertos documentos ante notario, por ejemplo una hipoteca o la compra de una casa nueva.
+- **primas de seguros**: Un impuesto que va incluido en el precio de los seguros (del coche, de la casa, del negocio…).
+- **provisional**: Una cifra que todavía puede cambiar cuando el organismo que la publica cierre las cuentas del año con todos los datos.
+- **dividendos**: La parte de los beneficios que una empresa reparte entre quienes tienen sus acciones.
+- **Servicio Público de Empleo Estatal** (SEPE): El organismo del Estado que gestiona las prestaciones por desempleo y coordina las oficinas de empleo, que son de las comunidades autónomas.
+- **fijos discontinuos** (fijo discontinuo): Un contrato indefinido para trabajos que no duran todo el año, como una campaña agrícola o la temporada turística. Entre campaña y campaña, la persona no trabaja pero sigue teniendo el contrato.
+- **régimen general**: El sistema de la Seguridad Social en el que cotiza la mayoría de los asalariados. Los autónomos, por ejemplo, cotizan en otro (el régimen especial de trabajadores autónomos).
+- **pensiones contributivas** (pensión contributiva): Las pensiones que se cobran por haber cotizado: jubilación, incapacidad, viudedad, orfandad. Las no contributivas son para quien no cotizó lo suficiente y no tiene apenas ingresos.
+- **progresividad en frío**: Cuando los sueldos suben con la inflación pero los tramos del IRPF no se actualizan, se paga un porcentaje mayor de impuesto sin que se pueda comprar más que antes.
+- **puntos básicos**: Centésimas de punto porcentual: 100 puntos básicos son un 1 %. Si un bono paga un 3,9 % y otro un 3,4 %, la diferencia es de 50 puntos básicos.
+- **desestacionalizada** (desestacionalizado, desestacionalizados, desestacionalizadas): Una serie a la que se le quita el efecto de la época del año (más empleo en verano, menos en enero), para ver si de verdad sube o baja.
+- **en volumen** (índice de volumen): Descontando la subida de precios: mide si se produce más, no si lo producido vale más euros.
+- **deuda viva**: La deuda que todavía no se ha devuelto en un momento dado.
+- **habitante ajustado** (habitantes ajustados): Una forma de contar la población que da más peso a lo que cuesta más atender: los mayores y los niños, la superficie, las islas. Sirve para repartir el dinero entre comunidades.
+- **régimen común** (sistema común): El sistema con el que se financian quince comunidades: todas menos el País Vasco y Navarra, que tienen el suyo (régimen foral).
+- **financiación homogénea**: La parte de la financiación que es para servicios que tienen todas las comunidades. Se usa para compararlas entre sí.
+- **Fondo de Garantía**: El fondo del sistema que reparte dinero para que cada comunidad tenga lo mismo por habitante ajustado para sanidad, educación y servicios sociales.
+- **impuestos especiales**: Los impuestos sobre la gasolina y el gasóleo, el tabaco, el alcohol y la electricidad, entre otros.
+- **riqueza neta**: Lo que tiene un hogar (casa, ahorros, acciones…) menos lo que debe (la hipoteca, otros préstamos). La renta es lo que se gana en un año; la riqueza, lo que se tiene.
+- **renta de mercado**: Lo que se gana antes de cualquier ayuda pública: sueldos, lo que ganan los autónomos y lo que dan los ahorros y las inversiones.
+- **acuerdos de investidura** (acuerdo de investidura, investidura): La votación del Congreso que elige al presidente del Gobierno. Un acuerdo de investidura es un pacto en el que un partido promete votar a favor a cambio de compromisos.
+- **Libro Verde**: Un documento de debate que publica una administración antes de proponer una norma, para recoger opiniones.
+- **segundo pilar**: Las pensiones se suelen ordenar en tres «pilares»: el primero, las públicas; el segundo, los planes de pensiones de empresa; el tercero, los planes privados de cada persona.
+- **Mecanismo de Equidad Intergeneracional**: Una cotización adicional a la Seguridad Social, en vigor desde 2023, cuyo dinero va al Fondo de Reserva, la «hucha de las pensiones».
+- **Planes Anuales Normativos** (Plan Anual Normativo): La lista que publica cada año el Gobierno con las leyes y reales decretos que piensa aprobar ese año.
+- **leyes orgánicas** (ley orgánica): Una ley sobre materias que la Constitución considera básicas (derechos fundamentales, elecciones, autonomías…). Para aprobarla hace falta la mayoría absoluta del Congreso.
+- **reales decretos** (real decreto): Una norma que aprueba el Gobierno, por debajo de la ley: desarrolla o aplica lo que dicen las leyes.
+- **huella sha256** (huella digital (SHA-256), SHA-256, sha256): Un código que se calcula a partir de un fichero. Si alguien cambia una sola letra del fichero, el código cambia. Sirve para comprobar que es el mismo documento.
+- **CSV**: Un fichero de datos que se abre con cualquier hoja de cálculo (Excel, LibreOffice…).
+- **repositorio público** (repositorio): El lugar de internet donde está guardado el código de esta web, a la vista de cualquiera.
+- **CC BY 4.0**: Una licencia que permite reutilizar los datos con la única condición de citar de dónde salen.
+- **Internet Archive**: Una biblioteca digital sin ánimo de lucro que guarda copias de páginas y documentos de internet, para que se puedan consultar aunque desaparezcan.
+- **OCR**: Reconocimiento de texto: el programa que convierte una imagen escaneada en letras que se pueden copiar. A veces se equivoca en alguna letra.
+- **agentes sociales**: Los sindicatos y las organizaciones de empresarios, que negocian con el Gobierno asuntos de trabajo y pensiones.
+- **dotación** (dotando, dotar): Poner dinero en un fondo o en una partida.
+- **excedentes**: Lo que sobra cuando se ingresa más de lo que se gasta.
+- **Boletín Oficial del Estado** (BOE): El diario oficial donde se publican las leyes y las normas. Una norma vale desde que sale en él (o desde la fecha que diga).
+- **gravan** (grava, gravar): Poner un impuesto sobre algo.

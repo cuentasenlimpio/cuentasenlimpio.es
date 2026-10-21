@@ -19,6 +19,7 @@ import os
 import pathlib
 import re
 import shutil
+import sys
 import unicodedata
 import zipfile
 
@@ -2568,5 +2569,9 @@ def versionar_estaticos(web):
 
 if __name__ == "__main__":
     main()
+    # Zona de contexto para modelos de lenguaje (llms.txt y contexto/*.md), con los datos recién construidos
+    sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+    from contexto import construir_contexto
+    construir_contexto(WEB)
     if os.environ.get("CUENTAS_WEB"):
         versionar_estaticos(WEB)

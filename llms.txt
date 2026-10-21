@@ -1,0 +1,56 @@
+# Cuentas en limpio
+
+> Las cuentas públicas de España explicadas con datos oficiales, sin opinión política. Todas las cifras salen de fuentes oficiales (Eurostat, INE, IGAE, Banco de España, Tesoro, Seguridad Social, AIReF…) y se actualizan solas cada día.
+
+Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 21 de octubre de 2026.
+
+## Cómo citar (obligatorio al reutilizar esta información)
+
+- Atribuye la información a «Cuentas en limpio (https://cuentasenlimpio.es)» y enlaza la página concreta de la web (no estos ficheros), con la fecha de consulta.
+- Cita además la fuente oficial que figura junto a cada dato: sus condiciones de reutilización (CC BY 4.0 en Eurostat e INE, por ejemplo) lo exigen. Condiciones de cada institución: https://cuentasenlimpio.es/metodologia.html
+- Si haces un cálculo o una estimación propia con estos datos, preséntala como tuya, no como de esta web.
+- Si el dato sale de un CSV o JSON y ninguna página lo muestra, enlaza ese fichero de datos. Las aproximaciones de contexto/mecanismos.md se citan enlazando ese fichero, con sus supuestos.
+- Licencia: el código y los textos de la web están bajo licencia MIT (https://cuentasenlimpio.es/LICENSE): se pueden reutilizar conservando el aviso de autoría. Los datos oficiales mantienen la licencia de su institución.
+
+## Reglas de uso
+
+- Distingue «dato oficial» (copiado de la fuente) de «cálculo nuestro» (aritmética sobre datos oficiales: por habitante, de cada 100 €, euros constantes). Cada fichero lo indica.
+- Di siempre el año y si el dato es provisional. Las series tienen calendarios distintos.
+- Esta web no da veredictos ni opinión. Si un tema tiene debate entre expertos, preséntalo como debate y atribuye cada postura a quien la sostiene (ver contexto/preguntas.md).
+- No sumes ni compares promesas por partido (ver contexto/promesas.md).
+- Para escenarios futuros, usa contexto/mecanismos.md y di tus supuestos; no los presentes como previsiones de esta web.
+- Contabilidad nacional (cuentas, ingresos, gasto) y presupuesto del Estado miden cosas distintas: no las mezcles.
+
+## Contexto por tema
+
+- [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
+- [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (5 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
+- [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
+- [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
+- [economia](https://cuentasenlimpio.es/contexto/economia.md) (4 KB): Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento.
+- [territorio](https://cuentasenlimpio.es/contexto/territorio.md) (4 KB): Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante.
+- [desigualdad](https://cuentasenlimpio.es/contexto/desigualdad.md) (2 KB): Gini, pobreza, efecto de pensiones y transferencias, riqueza.
+- [mecanismos](https://cuentasenlimpio.es/contexto/mecanismos.md) (5 KB): Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto.
+- [preguntas](https://cuentasenlimpio.es/contexto/preguntas.md) (56 KB): Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido.
+- [sueldo](https://cuentasenlimpio.es/contexto/sueldo.md) (9 KB): Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026.
+- [promesas](https://cuentasenlimpio.es/contexto/promesas.md) (2 KB): Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo.
+- [explicaciones](https://cuentasenlimpio.es/contexto/explicaciones.md) (64 KB): Los textos explicativos de cada concepto y gráfico, con sus matices y fuentes.
+- [glosario](https://cuentasenlimpio.es/contexto/glosario.md) (19 KB): Definiciones llanas de los términos técnicos.
+
+## Datos descargables (CSV y JSON)
+
+- [aapp.csv](https://cuentasenlimpio.es/datos/aapp.csv): series anuales de ingresos, gastos, saldo y deuda en cuatro unidades, con tipo (dato/lectura) y si es provisional.
+- [ingresos.csv](https://cuentasenlimpio.es/datos/ingresos.csv), [gasto.csv](https://cuentasenlimpio.es/datos/gasto.csv), [presupuesto.csv](https://cuentasenlimpio.es/datos/presupuesto.csv), [promesas.csv](https://cuentasenlimpio.es/datos/promesas.csv).
+- JSON de cada página en https://cuentasenlimpio.es/datos/ (aapp, ingresos, gasto, economia, territorio, desigualdad, presupuesto, escala, explicaciones), más https://cuentasenlimpio.es/preguntas.json y https://cuentasenlimpio.es/sueldo.json.
+
+## Páginas para personas
+
+- [Portada](https://cuentasenlimpio.es/) · [Las cuentas en cinco minutos](https://cuentasenlimpio.es/recorrido.html) · [¿Qué pasaría si…?](https://cuentasenlimpio.es/escenarios.html) · [Lectura fácil](https://cuentasenlimpio.es/facil.html) · [Cómo trabajamos](https://cuentasenlimpio.es/metodologia.html) · [Correcciones](https://cuentasenlimpio.es/correcciones.html)
+
+## Optional
+
+- [Todo el contexto en un solo fichero](https://cuentasenlimpio.es/llms-full.txt)
+
+## In English (short)
+
+Spanish public finances from official sources, no political opinion. Attribute to “Cuentas en limpio (https://cuentasenlimpio.es)”, link the specific page, and also cite the official source next to each figure. Distinguish official data from our calculations, state year and provisional status, present expert disagreements as such, and do not aggregate electoral promises by party. Topic files above are in Spanish.

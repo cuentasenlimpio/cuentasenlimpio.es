@@ -597,3 +597,23 @@ body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 
 .rotulo-recorrido { font-size: 11px; fill: var(--tinta-suave); }
 .dato-recorrido { font-size: 13px; font-weight: 600; fill: var(--tinta); }
 .seguir-recorrido { font-size: 0.9375rem; }
+
+/* ¿Qué pasaría si…? */
+.escenario { border-top: 1px solid var(--linea); margin-top: 2.5rem; max-width: 46rem; }
+.mandos { display: grid; gap: 0.6rem; margin: 1rem 0; padding: 1rem; background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; }
+.mandos label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; font-weight: 600; font-size: 0.9375rem; }
+.mandos output { font-variant-numeric: tabular-nums; font-size: 1.15rem; color: var(--c-primario); }
+.mandos input[type="range"] { width: 100%; accent-color: var(--c-primario); height: 2rem; }
+.mandos-tres > div { display: grid; gap: 0.2rem; }
+.atajos { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.atajos button { font: inherit; font-size: 0.875rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid var(--linea-fuerte); background: var(--fondo); color: var(--tinta); cursor: pointer; }
+.atajos button:hover { border-color: var(--acento); }
+.atajos button:focus-visible, .mandos input:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.resultado { min-height: 4.5em; }
+.figura-escenario { margin: 1rem 0; }
+.figura-escenario figcaption { font-size: 0.875rem; color: var(--tinta-suave); margin-bottom: 0.25rem; }
+.figura-escenario svg { width: 100%; height: auto; display: block; }
+.barra-escenario { fill: var(--c-primario); opacity: 0.8; }
+.linea-escenario { stroke-dasharray: 6 5; }
+.barra-escenario.barra-elegida { opacity: 1; fill: var(--tinta); }
+.figura-escenario svg, .visual-recorrido svg { max-width: 34rem; }

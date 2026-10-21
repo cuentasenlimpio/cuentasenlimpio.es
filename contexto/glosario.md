@@ -1,0 +1,118 @@
+# Glosario
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/glosario.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Definiciones en lenguaje llano de las palabras técnicas que usa la web.
+
+- **producto interior bruto** (PIB): Todo lo que produce la economía de un país en un año, contado en euros. Sirve de vara de medir: «el 4 % del PIB» quiere decir 4 de cada 100 euros de todo lo que se produce en el país ese año.
+- **% del PIB** (por ciento del PIB): Una cifra dividida por todo lo que produce el país en un año. Permite comparar años y países de tamaños distintos, pero no dice cuántos euros son: para eso está la opción «Por habitante».
+- **déficit**: Lo que falta en un año: lo que las administraciones gastan por encima de lo que ingresan. Se cubre pidiendo prestado, y por eso hace crecer la deuda.
+- **superávit**: Lo contrario del déficit: un año en que se ingresa más de lo que se gasta.
+- **saldo**: Ingresos menos gastos de un año. Si sale negativo es déficit; si sale positivo, superávit.
+- **deuda pública** (deuda PDE): Todo lo que deben las administraciones por los préstamos de todos los años que aún no han devuelto. Se debe sobre todo a quien compró bonos y letras del Tesoro: bancos, fondos de inversión, particulares y el Banco Central Europeo.
+- **cotizaciones sociales** (cotizaciones, cotización): Lo que pagan las empresas y los trabajadores, y los autónomos con su cuota, a la Seguridad Social. Pagan sobre todo las pensiones y el paro.
+- **consolidar** (consolidado, consolidada, consolidados, consolidadas): Sumar varias administraciones sin contar dos veces el dinero que se pasan entre ellas. Si el Estado da 100 euros a una comunidad y esta los gasta, en el total cuentan 100, no 200.
+- **activos financieros**: Préstamos, depósitos o acciones que compran las administraciones. No cuentan como gasto porque en principio se recuperan, pero hay que pedir prestado para pagarlos, y por eso aumentan la deuda.
+- **administraciones públicas**: El Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos (y diputaciones), sumados. Es el conjunto que cuenta para el déficit y la deuda oficiales.
+- **entidades locales** (corporaciones locales): Ayuntamientos, diputaciones, cabildos y consejos insulares.
+- **contabilidad nacional** (SEC 2010): La forma de llevar las cuentas públicas con las mismas reglas en toda la Unión Europea (se llaman SEC 2010). Es la que da las cifras oficiales de déficit y deuda.
+- **contabilidad presupuestaria**: Las cuentas tal como las lleva el presupuesto: cuánto permitió gastar el Parlamento y cuánto se gastó. Da cifras algo distintas de la contabilidad nacional, porque apunta algunas cosas en otro momento o de otra forma.
+- **Procedimiento de Déficit Excesivo**: Las reglas con las que la Unión Europea vigila el déficit y la deuda de cada país. La deuda medida con esas reglas es la cifra oficial.
+- **deflactor**: El índice con el que se descuenta cuánto han subido los precios de toda la economía, para poder comparar euros de años distintos.
+- **euros sin inflación** (euros constantes): Euros de otros años pasados a precios del último, descontando lo que han subido los precios. Así 100 euros de 2005 y 100 de 2025 se pueden comparar.
+- **Presupuestos Generales del Estado**: La ley que aprueban cada año las Cortes con lo que el Estado puede gastar en cada cosa y lo que espera ingresar. Lo que fija para el gasto es un máximo, no una obligación.
+- **créditos iniciales**: Lo que el presupuesto aprobado permite gastar en cada partida al empezar el año. Es un máximo.
+- **créditos definitivos**: Lo que el presupuesto permite gastar al acabar el año, sumando los cambios aprobados durante el año.
+- **obligaciones reconocidas**: Lo que de verdad se gastó: los pagos a los que el Estado se comprometió ese año porque la obra, el servicio o la ayuda ya se hizo.
+- **prorrogado** (prorrogados, prórroga presupuestaria, prórroga): Cuando no se aprueba un presupuesto nuevo, sigue valiendo el del año anterior: se dice que está prorrogado.
+- **liquidación**: El cierre de cuentas de un año: lo que se gastó y se ingresó de verdad, una vez terminado.
+- **transferencias** (transferencia): Dinero que una administración pasa a otra, a una empresa o a una familia sin recibir nada a cambio: una pensión, una subvención o la financiación de una comunidad autónoma.
+- **protección social**: En las cuentas públicas, el gasto en pensiones, paro, familias, dependencia, vivienda social y ayudas contra la exclusión.
+- **intereses de la deuda**: Lo que se paga cada año por tener deuda, como los intereses de una hipoteca. Es gasto del año; devolver los préstamos que vencen, no, porque se suele hacer pidiendo otros.
+- **tipo de interés** (tipos de interés): El precio de pedir prestado, en porcentaje al año. Un tipo del 3 % quiere decir 3 euros al año por cada 100 prestados.
+- **prima de riesgo**: Cuánto más paga España que Alemania por pedir prestado a diez años. Si España paga un 3,2 % y Alemania un 2,6 %, la prima es de 0,6 puntos (se suele decir «60 puntos básicos»).
+- **rentabilidad**: En la deuda, el interés que cobra quien compra un bono del Estado. Para el Estado es lo que le cuesta pedir prestado.
+- **letras del Tesoro** (letras, bonos y obligaciones, bono del Estado, bonos): Las formas en que el Estado pide prestado: vende títulos que se devuelven con intereses. Las letras se devuelven en menos de un año; los bonos y las obligaciones, en más.
+- **vida media**: Cuántos años faltan, de media, para devolver la deuda. Cuanto más larga, más tarda en notarse una subida de los tipos de interés, porque la deuda vieja sigue al tipo antiguo.
+- **bola de nieve**: Cuando lo que se paga de intereses crece más deprisa que la economía, la deuda pesa cada vez más aunque no haya déficit nuevo.
+- **estabilizadores automáticos**: Ingresos y gastos que se mueven solos con la economía, sin cambiar ninguna ley: en una crisis se recauda menos y se paga más paro, y eso amortigua la caída.
+- **déficit estructural**: El déficit que habría si la economía no estuviera ni en crisis ni en auge. No se mide: se estima con modelos, y cada institución da una cifra algo distinta.
+- **regla de gasto**: Un límite a cuánto puede crecer el gasto público cada año, fijado por las reglas europeas.
+- **paro estructural** (NAWRU): La tasa de paro que, según los modelos de la Comisión Europea, habría sin crisis ni auge. Es una estimación que se revisa a menudo.
+- **Encuesta de Población Activa** (EPA): La encuesta del INE que cada trimestre pregunta en unas 65.000 viviendas quién trabaja y quién busca trabajo. De ella sale la tasa de paro oficial.
+- **paro registrado**: Las personas apuntadas como demandantes de empleo en las oficinas públicas de empleo. No coincide con el paro de la EPA: hay quien busca trabajo sin apuntarse y quien está apuntado sin cumplir las condiciones de la encuesta.
+- **afiliados** (afiliación, afiliadas): Las altas en la Seguridad Social: cada empleo por el que se cotiza. Una persona con dos trabajos cuenta dos veces.
+- **tasa de paro**: De cada 100 personas que trabajan o buscan trabajo, cuántas lo buscan sin encontrarlo.
+- **tasa de actividad**: De cada 100 personas de 16 años o más, cuántas trabajan o buscan trabajo.
+- **tasa de empleo**: De cada 100 personas en edad de trabajar, cuántas tienen trabajo.
+- **población activa**: Las personas que trabajan más las que buscan trabajo.
+- **IPC** (índice de precios de consumo): El índice del INE que mide cuánto suben los precios de lo que compran los hogares. Esa subida es la inflación.
+- **subyacente**: La subida de precios sin los alimentos frescos ni la energía, que suben y bajan mucho. Sirve para ver la tendencia de fondo.
+- **índice de Gini** (Gini): Una medida de desigualdad de la renta, de 0 a 100: 0 si todos tuvieran lo mismo y 100 si una sola persona se lo llevara todo. En la Unión Europea, los países van de algo más de 20 a algo menos de 40.
+- **S80/S20**: Cuántas veces más renta tiene el 20 % de la población que más tiene que el 20 % que menos.
+- **AROPE** (riesgo de pobreza o exclusión social): El indicador oficial de la Unión Europea: personas con poca renta, o con carencias materiales graves, o que viven en hogares donde casi no se trabaja.
+- **umbral de riesgo de pobreza** (riesgo de pobreza): Tener una renta por debajo del 60 % de la de la persona que está justo en medio. Mide desigualdad de renta, no si alguien pasa necesidad.
+- **carencia material y social severa** (carencia material): No poder permitirse varias cosas básicas: mantener la casa caliente, comer carne o pescado cada dos días, afrontar un gasto imprevisto, irse una semana de vacaciones al año…
+- **renta disponible**: Lo que le queda a un hogar para gastar o ahorrar: sus ingresos, más pensiones y ayudas, menos impuestos y cotizaciones.
+- **valor añadido**: Lo que produce una empresa o un sector, menos lo que compró a otros para producirlo. Sumado para todo el país da casi todo el PIB.
+- **Intervención General de la Administración del Estado** (IGAE): El organismo del Ministerio de Hacienda que lleva y controla las cuentas del sector público y las envía a Eurostat.
+- **Autoridad Independiente de Responsabilidad Fiscal** (AIReF): Un organismo público independiente que vigila las cuentas de todas las administraciones y hace sus propias previsiones.
+- **Eurostat**: La oficina de estadística de la Unión Europea. Publica los datos de todos los países con las mismas reglas, a partir de lo que le envían los organismos de cada país.
+- **AMECO**: La base de datos económicos de la Comisión Europea, con sus previsiones para cada país.
+- **OCDE**: La Organización para la Cooperación y el Desarrollo Económicos: 38 países, casi todos ricos (la mayoría de la Unión Europea, Estados Unidos, Japón, Canadá…), que comparan sus datos con reglas comunes.
+- **régimen foral** (regímenes forales, haciendas forales): El sistema del País Vasco y Navarra: recaudan casi todos sus impuestos y pagan al Estado una cantidad (el cupo o la aportación) por lo que este presta allí. Lo ampara la Constitución.
+- **legislatura**: El periodo entre dos elecciones generales. La actual, la XV, empezó el 17 de agosto de 2023.
+- **expediente**: El número con el que el Congreso registra cada proyecto o proposición de ley, para seguir su tramitación.
+- **real decreto-ley** (reales decretos-leyes, decreto-ley): Una norma con rango de ley que aprueba el Gobierno por urgencia. Vale desde el día siguiente, pero el Congreso tiene que votarla (convalidarla) en 30 días o deja de valer.
+- **convalidar** (convalidación, convalidado, convalidada): Votar en el Congreso un real decreto-ley para que siga en vigor.
+- **enmienda a la totalidad** (enmiendas a la totalidad): La propuesta de un grupo para rechazar un proyecto de ley entero, o cambiarlo por otro texto, antes de discutirlo artículo por artículo.
+- **anteproyecto**: El borrador de una ley que aprueba el Gobierno antes de pedir informes. Cuando lo aprueba por segunda vez, ya como proyecto, lo envía al Congreso.
+- **proposición de ley** (proposiciones de ley): Una ley que proponen los grupos del Congreso, el Senado o un parlamento autonómico. Si la propone el Gobierno se llama proyecto de ley.
+- **kappa**: Una medida de cuánto coinciden dos clasificaciones hechas por separado, descontando lo que coincidirían por azar. Va de 0 a 1; por encima de 0,8 se considera un acuerdo muy alto.
+- **Fondo Monetario Internacional** (FMI): El Fondo Monetario Internacional: un organismo de 191 países que vigila la economía mundial, publica previsiones y presta dinero a países en apuros.
+- **Banco Central Europeo** (BCE): El banco central de los países del euro. Fija los tipos de interés de referencia y, desde 2015, ha comprado mucha deuda de los Gobiernos.
+- **otros ajustes contables** (ajustes y discrepancias): Lo que mueve la deuda sin ser déficit ni préstamos: por ejemplo, que un bono se venda por menos de lo que luego se devuelve, o que cambie el valor de la deuda en otra moneda. Incluye una pequeña diferencia entre fuentes.
+- **euros corrientes** (precios corrientes): Euros de cada año, tal cual, sin descontar la subida de precios.
+- **sesión constitutiva** (sesiones constitutivas): La primera sesión del Congreso tras unas elecciones, en la que empieza la legislatura.
+- **impuesto sobre la renta de las personas físicas** (IRPF): El impuesto que se paga por el sueldo, la pensión y otras rentas. Se adelanta cada mes (la retención de la nómina) y se ajusta en la declaración de la renta.
+- **Gran Recesión**: La crisis económica que empezó en 2008 con la quiebra de bancos en Estados Unidos. En España duró hasta 2013 y llegó a tener a más de una de cada cuatro personas activas en paro.
+- **actos jurídicos documentados** (actos jurídicos): Un impuesto que se paga al firmar ciertos documentos ante notario, por ejemplo una hipoteca o la compra de una casa nueva.
+- **primas de seguros**: Un impuesto que va incluido en el precio de los seguros (del coche, de la casa, del negocio…).
+- **provisional**: Una cifra que todavía puede cambiar cuando el organismo que la publica cierre las cuentas del año con todos los datos.
+- **dividendos**: La parte de los beneficios que una empresa reparte entre quienes tienen sus acciones.
+- **Servicio Público de Empleo Estatal** (SEPE): El organismo del Estado que gestiona las prestaciones por desempleo y coordina las oficinas de empleo, que son de las comunidades autónomas.
+- **fijos discontinuos** (fijo discontinuo): Un contrato indefinido para trabajos que no duran todo el año, como una campaña agrícola o la temporada turística. Entre campaña y campaña, la persona no trabaja pero sigue teniendo el contrato.
+- **régimen general**: El sistema de la Seguridad Social en el que cotiza la mayoría de los asalariados. Los autónomos, por ejemplo, cotizan en otro (el régimen especial de trabajadores autónomos).
+- **pensiones contributivas** (pensión contributiva): Las pensiones que se cobran por haber cotizado: jubilación, incapacidad, viudedad, orfandad. Las no contributivas son para quien no cotizó lo suficiente y no tiene apenas ingresos.
+- **progresividad en frío**: Cuando los sueldos suben con la inflación pero los tramos del IRPF no se actualizan, se paga un porcentaje mayor de impuesto sin que se pueda comprar más que antes.
+- **puntos básicos**: Centésimas de punto porcentual: 100 puntos básicos son un 1 %. Si un bono paga un 3,9 % y otro un 3,4 %, la diferencia es de 50 puntos básicos.
+- **desestacionalizada** (desestacionalizado, desestacionalizados, desestacionalizadas): Una serie a la que se le quita el efecto de la época del año (más empleo en verano, menos en enero), para ver si de verdad sube o baja.
+- **en volumen** (índice de volumen): Descontando la subida de precios: mide si se produce más, no si lo producido vale más euros.
+- **deuda viva**: La deuda que todavía no se ha devuelto en un momento dado.
+- **habitante ajustado** (habitantes ajustados): Una forma de contar la población que da más peso a lo que cuesta más atender: los mayores y los niños, la superficie, las islas. Sirve para repartir el dinero entre comunidades.
+- **régimen común** (sistema común): El sistema con el que se financian quince comunidades: todas menos el País Vasco y Navarra, que tienen el suyo (régimen foral).
+- **financiación homogénea**: La parte de la financiación que es para servicios que tienen todas las comunidades. Se usa para compararlas entre sí.
+- **Fondo de Garantía**: El fondo del sistema que reparte dinero para que cada comunidad tenga lo mismo por habitante ajustado para sanidad, educación y servicios sociales.
+- **impuestos especiales**: Los impuestos sobre la gasolina y el gasóleo, el tabaco, el alcohol y la electricidad, entre otros.
+- **riqueza neta**: Lo que tiene un hogar (casa, ahorros, acciones…) menos lo que debe (la hipoteca, otros préstamos). La renta es lo que se gana en un año; la riqueza, lo que se tiene.
+- **renta de mercado**: Lo que se gana antes de cualquier ayuda pública: sueldos, lo que ganan los autónomos y lo que dan los ahorros y las inversiones.
+- **acuerdos de investidura** (acuerdo de investidura, investidura): La votación del Congreso que elige al presidente del Gobierno. Un acuerdo de investidura es un pacto en el que un partido promete votar a favor a cambio de compromisos.
+- **Libro Verde**: Un documento de debate que publica una administración antes de proponer una norma, para recoger opiniones.
+- **segundo pilar**: Las pensiones se suelen ordenar en tres «pilares»: el primero, las públicas; el segundo, los planes de pensiones de empresa; el tercero, los planes privados de cada persona.
+- **Mecanismo de Equidad Intergeneracional**: Una cotización adicional a la Seguridad Social, en vigor desde 2023, cuyo dinero va al Fondo de Reserva, la «hucha de las pensiones».
+- **Planes Anuales Normativos** (Plan Anual Normativo): La lista que publica cada año el Gobierno con las leyes y reales decretos que piensa aprobar ese año.
+- **leyes orgánicas** (ley orgánica): Una ley sobre materias que la Constitución considera básicas (derechos fundamentales, elecciones, autonomías…). Para aprobarla hace falta la mayoría absoluta del Congreso.
+- **reales decretos** (real decreto): Una norma que aprueba el Gobierno, por debajo de la ley: desarrolla o aplica lo que dicen las leyes.
+- **huella sha256** (huella digital (SHA-256), SHA-256, sha256): Un código que se calcula a partir de un fichero. Si alguien cambia una sola letra del fichero, el código cambia. Sirve para comprobar que es el mismo documento.
+- **CSV**: Un fichero de datos que se abre con cualquier hoja de cálculo (Excel, LibreOffice…).
+- **repositorio público** (repositorio): El lugar de internet donde está guardado el código de esta web, a la vista de cualquiera.
+- **CC BY 4.0**: Una licencia que permite reutilizar los datos con la única condición de citar de dónde salen.
+- **Internet Archive**: Una biblioteca digital sin ánimo de lucro que guarda copias de páginas y documentos de internet, para que se puedan consultar aunque desaparezcan.
+- **OCR**: Reconocimiento de texto: el programa que convierte una imagen escaneada en letras que se pueden copiar. A veces se equivoca en alguna letra.
+- **agentes sociales**: Los sindicatos y las organizaciones de empresarios, que negocian con el Gobierno asuntos de trabajo y pensiones.
+- **dotación** (dotando, dotar): Poner dinero en un fondo o en una partida.
+- **excedentes**: Lo que sobra cuando se ingresa más de lo que se gasta.
+- **Boletín Oficial del Estado** (BOE): El diario oficial donde se publican las leyes y las normas. Una norma vale desde que sale en él (o desde la fecha que diga).
+- **gravan** (grava, gravar): Poner un impuesto sobre algo.
