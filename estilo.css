@@ -221,6 +221,9 @@ h2.grafico-titulo, h3.grafico-titulo { font-family: var(--sans); font-size: 1.12
 .leyenda-series { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; list-style: none; padding: 0; margin: 0 0 0.5rem; font-size: 0.875rem; color: var(--tinta-suave); }
 .leyenda-series li { display: flex; align-items: center; gap: 0.45rem; margin: 0; }
 .clave-linea { display: inline-block; width: 1.1rem; height: 0; border-top: 2px solid; vertical-align: middle; }
+.clave-barra { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 3px; background: var(--c-primario); opacity: 0.8; vertical-align: middle; }
+.clave-barra-oscura { background: var(--tinta); opacity: 1; }
+.fila-es td { font-weight: 600; }
 .clave-linea.ingresos { border-color: var(--serie-ingresos); }
 .clave-linea.gastos { border-color: var(--serie-gastos); }
 .clave-linea.deuda { border-color: var(--serie-deuda); }

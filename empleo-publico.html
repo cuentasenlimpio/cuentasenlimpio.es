@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>El empleo público · Cuentas en limpio</title>
+  <meta name="description" content="Cuánta gente trabaja para las administraciones públicas en España, en cuál de ellas y cuánto se paga en sueldos públicos, con datos de la EPA del INE y de Eurostat.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=24290a87ad">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=21c529621e" defer></script>
+  <script src="empleo-publico.js?v=e27b670be3" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html" aria-current="page">Empleo público</a> <a href="fondos-europeos.html">Fondos europeos</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+
+  <main>
+    <h1 class="pregunta">¿Cuánta gente trabaja en lo público?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Las personas son las que dice la Encuesta de Población Activa (EPA) del INE: asalariados que contestan que trabajan para el sector público, incluidas las empresas públicas. Los sueldos son la remuneración de asalariados de la contabilidad nacional (Eurostat): sueldos brutos más las cotizaciones que paga la administración como empleadora.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿En qué administración trabajan?</h2>
+      <p class="grafico-explica">Asalariados del sector público en las tres administraciones con más personal, en miles de personas, cada trimestre desde 2002. Las comunidades autónomas son las que más personal tienen porque llevan la sanidad y la educación.</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+      <table class="tabla-sueldo" id="reparto" aria-describedby="reparto-t"></table>
+      <p class="fuente-grafico" id="reparto-t"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿Cuánto pesa lo público entre quienes trabajan por cuenta ajena?</h2>
+      <p class="grafico-explica">De cada 100 asalariados, cuántos trabajan para el sector público; y de cada 100 asalariados públicos, cuántos tienen contrato temporal. Cada trimestre desde 2002.</p>
+      <p class="leyenda-linea"><span class="clave-linea" style="border-color:var(--c-primario)"></span> Públicos, de cada 100 asalariados <span class="clave-linea" style="border-color:var(--tinta)"></span> Temporales, de cada 100 asalariados públicos</p>
+      <div id="g2"></div>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">¿Y en cada comunidad?</h2>
+      <p class="grafico-explica" id="g3-explica">De cada 100 asalariados de cada comunidad autónoma, cuántos trabajan para el sector público.</p>
+      <table class="tabla-sueldo" id="ccaa"></table>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g4-t">
+      <h2 class="pregunta" id="g4-t">¿Cuánto se paga en sueldos públicos?</h2>
+      <p class="grafico-explica">Remuneración de los asalariados de todas las administraciones (Estado, comunidades, ayuntamientos y Seguridad Social), en porcentaje del PIB, desde 1995.</p>
+      <div id="g4"></div>
+      <p class="fuente-grafico" id="g4-fuente"></p>
+      <table class="tabla-sueldo" id="subsectores"></table>
+      <p class="fuente-grafico" id="subsectores-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g5-t">
+      <h2 class="pregunta" id="g5-t">¿Es mucho o poco comparado con Europa?</h2>
+      <p class="grafico-explica" id="g5-explica">Remuneración de los asalariados de las administraciones públicas en porcentaje del PIB de cada país.</p>
+      <table class="tabla-sueldo" id="ue"></table>
+      <p class="fuente-grafico" id="g5-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Comparar países así tiene trampa: <span class="resalta">un país donde la sanidad la prestan sobre todo hospitales privados pagados con dinero público tendrá menos sueldos públicos</span>, aunque gaste lo mismo en sanidad. Lo que pesa en el PIB depende de qué hace la administración con su personal y qué contrata fuera.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>La EPA es una encuesta: en las comunidades pequeñas el error de muestreo es grande, y de un trimestre a otro las cifras pueden moverse sin que haya pasado nada.</li>
+        <li>No coincide con el registro oficial de personal de las administraciones (el Boletín Estadístico del Personal al Servicio de las Administraciones Públicas), que usa otra definición y da una cifra menor.</li>
+        <li>En 2002 la sanidad pública que quedaba en la Seguridad Social (el INSALUD) pasó a las comunidades autónomas: por eso la Seguridad Social casi no tiene personal en esta serie. No es un recorte, es un cambio de administración.</li>
+        <li>Dividir los sueldos entre las personas no da el sueldo medio de un empleado público: la contabilidad nacional y la EPA no cuentan exactamente a las mismas personas.</li>
+      </ul>
+    </div>
+    <p class="seguir-recorrido">Para seguir: <a href="gasto.html">en qué se gasta todo el dinero público</a> · <a href="territorio.html">las cuentas de cada comunidad</a> · <a href="economia.html">empleo y paro en toda la economía</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

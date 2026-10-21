@@ -43,7 +43,7 @@ TABLAS = [
     # Comparación europea: los 27 países y la media de la UE, solo lo que se dibuja (en % del PIB)
     {"tabla": "gov_10a_main", "clave": "ue_gov_10a_main",
      "nombre": "Ingresos, gastos y saldo de las administraciones públicas (UE-27)",
-     "filtros": {"geo": UE + ["EU27_2020"], "sector": "S13", "na_item": ["TR", "TE", "B9"], "unit": "PC_GDP"}},
+     "filtros": {"geo": UE + ["EU27_2020"], "sector": "S13", "na_item": ["TR", "TE", "B9", "D1PAY"], "unit": "PC_GDP"}},
     {"tabla": "gov_10dd_edpt1", "clave": "ue_gov_10dd_edpt1",
      "nombre": "Deuda según el Procedimiento de Déficit Excesivo (UE-27)",
      "filtros": {"geo": UE + ["EU27_2020"], "sector": "S13", "na_item": "GD", "unit": "PC_GDP"}},
@@ -198,6 +198,25 @@ PAGINAS = [
                    ("ECP115486", "La Rioja"))],
     {"fuente": "INE", "tabla": "ine_ecv7186", "opcional": True, "nombre": "Encuesta de Condiciones de Vida: índice de Gini",
      "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/ECV7186?nult=100", "extension": "json"},
+    # ---- Empleo público y fondos europeos (desde el 21/10/2026) ----
+    *[{"fuente": "INE", "tabla": f"ine_{c.lower()}", "opcional": True, "nombre": n,
+       "url": f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{c}?nult=400", "extension": "json"}
+      for c, n in (("EPA416131", "EPA: asalariados del sector público, total (miles)"),
+                   ("EPA416132", "EPA: asalariados del sector público en la Administración central (miles)"),
+                   ("EPA416133", "EPA: asalariados del sector público en la Seguridad Social (miles)"),
+                   ("EPA416134", "EPA: asalariados del sector público en las comunidades autónomas (miles)"),
+                   ("EPA416135", "EPA: asalariados del sector público en la Administración local (miles)"),
+                   ("EPA416136", "EPA: asalariados del sector público en empresas e instituciones públicas (miles)"),
+                   ("EPA416137", "EPA: asalariados del sector público de otro tipo (miles)"),
+                   ("EPA416138", "EPA: asalariados del sector público que no saben de qué administración (miles)"),
+                   ("EPA450290", "EPA: asalariados del sector público, % del total de asalariados"),
+                   ("EPA416424", "EPA: asalariados del sector público con contrato temporal, % del total"))],
+    {"fuente": "INE", "tabla": "ine_epa_t65327", "opcional": True,
+     "nombre": "EPA: asalariados por sector público o privado y comunidad autónoma (tabla 65327)",
+     "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65327?nult=4", "extension": "json"},
+    *[{"fuente": "Eurostat", "tabla": t, "opcional": True, "nombre": n, "url": f"{EUROSTAT}{t}?geo=ES&lang=EN", "extension": "json"}
+      for t, n in (("gov_rrf_fa", "Mecanismo de Recuperación y Resiliencia: fondos recibidos (contabilidad nacional)"),
+                   ("gov_rrf_use", "Mecanismo de Recuperación y Resiliencia: en qué se han usado (contabilidad nacional)"))],
     {"fuente": "OCDE", "tabla": "ocde_idd", "opcional": True,
      "nombre": "Income Distribution Database: Gini de la renta de mercado, bruta y disponible, España",
      "url": "https://sdmx.oecd.org/public/rest/data/OECD.WISE.INE,DSD_WISE_IDD@DF_IDD,/ESP.A.INC_MRKT_GINI+INC_GROSS_GINI+INC_DISP_GINI..._T.METH2012.D_CUR.?format=csv",
@@ -261,6 +280,9 @@ def main():
         novedad = anterior is None or anterior["sha256"] != huella
         # Si el fichero es idéntico al último, no se guarda otra copia: la entrada nueva apunta al mismo fichero.
         destino = carpeta / f"{clave}.json" if novedad or not (AQUI / anterior["fichero"]).exists() else AQUI / anterior["fichero"]
+        # Si ya cambió antes el mismo día, la copia nueva lleva la huella en el nombre para no pisar la anterior
+        if novedad and destino.exists() and hashlib.sha256(destino.read_bytes()).hexdigest() != huella:
+            destino = destino.with_name(f"{destino.stem}-{huella[:12]}{destino.suffix}")
         if not destino.exists():
             destino.write_bytes(cuerpo)
         manifiesto.append({
@@ -363,6 +385,9 @@ def main():
         anterior = next((m for m in reversed(manifiesto) if m["tabla"] == t["tabla"]), None)
         novedad = anterior is None or anterior["sha256"] != huella
         destino = carpeta / f"{t['tabla']}.{t['extension']}" if novedad or not (AQUI / anterior["fichero"]).exists() else AQUI / anterior["fichero"]
+        # Si ya cambió antes el mismo día, la copia nueva lleva la huella en el nombre para no pisar la anterior
+        if novedad and destino.exists() and hashlib.sha256(destino.read_bytes()).hexdigest() != huella:
+            destino = destino.with_name(f"{destino.stem}-{huella[:12]}{destino.suffix}")
         if not destino.exists():
             destino.write_bytes(cuerpo)
         manifiesto.append({
@@ -415,6 +440,9 @@ def main():
         anterior = next((m for m in reversed(manifiesto) if m["tabla"] == t["tabla"]), None)
         novedad = anterior is None or anterior["sha256"] != huella
         destino = carpeta / f"{t['tabla']}.{t['extension']}" if novedad or not (AQUI / anterior["fichero"]).exists() else AQUI / anterior["fichero"]
+        # Si ya cambió antes el mismo día, la copia nueva lleva la huella en el nombre para no pisar la anterior
+        if novedad and destino.exists() and hashlib.sha256(destino.read_bytes()).hexdigest() != huella:
+            destino = destino.with_name(f"{destino.stem}-{huella[:12]}{destino.suffix}")
         if not destino.exists():
             destino.write_bytes(cuerpo)
         manifiesto.append({

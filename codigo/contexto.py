@@ -523,10 +523,63 @@ def seguridad_social(D):
     return md
 
 
+def empleo_publico(D):
+    s = D.get("empleo_publico") or {}
+    if not s.get("epa"):
+        return cabecera("El empleo público", "empleo-publico.html", "Sin datos en esta construcción.")
+    e, r = s["epa"], s["remuneracion"]
+    md = cabecera("El empleo público: cuánta gente trabaja en lo público y cuánto se paga", "empleo-publico.html",
+                  "Personas: asalariados del sector público según la Encuesta de Población Activa (INE), incluidas las empresas públicas; es una "
+                  "encuesta, con error de muestreo, y no coincide con el registro oficial de personal (BEPSAP). Sueldos: remuneración de asalariados "
+                  "(D.1) de las administraciones públicas en contabilidad nacional (Eurostat), con las cotizaciones a cargo del empleador. En 2002 "
+                  "el INSALUD pasó a las comunidades: la Seguridad Social casi no tiene personal en la serie de la EPA.")
+    filas = [[t, n(e["total"][i], 1)] + [n(a["v"][i], 1) for a in e["admin"]] + [n(e["pct_asalariados"][i], 1), n(e["pct_temporal"][i], 1)]
+             for i, t in enumerate(e["trimestres"]) if t.endswith(e["trimestres"][-1][-2:])]
+    md += ("\n## Asalariados del sector público (EPA, miles; mismo trimestre de cada año)\n\n"
+           + tabla(["Trimestre", "Total"] + [a["nombre"] for a in e["admin"]] + ["% de los asalariados", "% temporales"], filas))
+    if s.get("ccaa"):
+        c = s["ccaa"]
+        md += (f"\n\n## Asalariados públicos por cada 100 asalariados, por comunidad ({c['periodo']})\n\n"
+               + tabla(["Comunidad", "%"], [[f["nombre"], n(f["pct"], 1)] for f in sorted(c["filas"], key=lambda f: -f["pct"])] + [["España", n(c["total"], 1)]]))
+    filas = [[a, n(r["total"]["meur"][i]), n(r["total"]["pib"][i], 1), n(r["pct_gasto"][i], 1)] + [n(r[k]["meur"][i]) for k in ("estado", "comunidades", "local", "seguridad_social")]
+             for i, a in enumerate(r["años"]) if a >= r["años"][-1] - 15]
+    md += ("\n\n## Remuneración de asalariados de las administraciones (D.1)\n\n"
+           + tabla(["Año", "Total (M€)", "% del PIB", "% del gasto total (cálculo nuestro)", "Estado (M€)", "Comunidades (M€)", "Locales (M€)", "Seguridad Social (M€)"], filas))
+    if s.get("ue"):
+        md += (f"\n\n## Remuneración de asalariados públicos en % del PIB, UE ({s['ue']['año']})\n\n"
+               + tabla(["País", "% del PIB"], [[p_["nombre"], n(p_["v"], 1)] for p_ in s["ue"]["paises"]])
+               + "\n\nOjo al comparar: depende de cuánto presta la administración con personal propio y cuánto contrata fuera.\n")
+    md += fuentes_md([url_tabla(D["aapp"], k) for k in ("ine_epa416131", "ine_epa_t65327", "gov_10a_main", "ue_gov_10a_main")])
+    return md
+
+
+def fondos_europeos(D):
+    s = D.get("fondos_europeos") or {}
+    if not s:
+        return cabecera("Los fondos europeos de recuperación", "fondos-europeos.html", "Sin datos en esta construcción.")
+    md = cabecera("Los fondos europeos de recuperación (Mecanismo de Recuperación y Resiliencia)", "fondos-europeos.html",
+                  "Contabilidad nacional (Eurostat, gov_rrf_fa y gov_rrf_use). «Usado» es gasto ya registrado en las cuentas de las "
+                  "administraciones: no coincide con lo comprometido, lo adjudicado ni lo pagado por la Comisión según su propio calendario. "
+                  "Las subvenciones recibidas y aún no usadas quedan como pendiente y no mejoran el déficit hasta que se gastan. "
+                  "Los préstamos hay que devolverlos.")
+    u = s["usado"]
+    filas = [[a, n(s["recibido"]["subvenciones"][i]), n(s["recibido"]["prestamos"][i]), n(u["total"][i]), n(u["inversion"][i]),
+              n(u["transferencias_capital"][i]), n(u["corriente"][i])] for i, a in enumerate(s["años"])]
+    md += "\n## Millones de euros\n\n" + tabla(["Año", "Subvenciones recibidas", "Préstamos recibidos", "Subvenciones usadas", "de ellas: inversión directa",
+                                               "ayudas a la inversión", "gasto corriente"], filas)
+    ac = s["acumulado"]
+    md += (f"\n\nAcumulado {s['años'][0]}–{s['años'][-1]} (cálculo nuestro): subvenciones recibidas {n(ac['subvenciones_recibidas'])} M€, usadas "
+           f"{n(ac['subvenciones_usadas'])} M€, pendientes {n(ac.get('pendiente'))} M€; préstamos recibidos {n(ac['prestamos_recibidos'])} M€.\n")
+    md += fuentes_md([url_tabla(D["aapp"], k) for k in ("gov_rrf_fa", "gov_rrf_use")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
+    ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
+    ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
     ("gasto", gasto, "En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa."),
     ("presupuesto", presupuesto, "El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto."),
@@ -617,6 +670,8 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
+    for k in ("empleo_publico", "fondos_europeos"):
+        D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
     D["terminos"] = carga(web / "terminos.json")

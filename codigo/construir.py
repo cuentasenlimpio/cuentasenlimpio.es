@@ -1238,6 +1238,119 @@ def construir_seguridad_social(descargas):
     print(f"seguridad social: {salida['años'][0]}–{a}; saldo {a}: {p['saldo']['meur'][-1]} M€; sin transferencias: {p['saldo_sin_transferencias']['meur'][-1]} M€")
 
 
+EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
+             ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
+             ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
+
+
+def construir_empleo_publico(descargas):
+    """Cuánta gente trabaja en lo público (EPA, trimestral desde 2002) y cuánto cuesta (remuneración de asalariados, D.1)."""
+    salida = {}
+    total = dict(_ine(descargas, "EPA416131"))
+    if total:
+        trimestres = sorted(total)
+        por = {k: dict(_ine(descargas, c)) for k, c, _ in EPA_ADMIN}
+        pct = dict(_ine(descargas, "EPA450290"))
+        temp = dict(_ine(descargas, "EPA416424"))
+        salida["epa"] = {
+            "trimestres": trimestres, "total": [total[t] for t in trimestres],
+            "admin": [{"clave": k, "nombre": n, "v": [por[k].get(t) for t in trimestres]} for k, _, n in EPA_ADMIN],
+            "pct_asalariados": [pct.get(t) for t in trimestres], "pct_temporal": [temp.get(t) for t in trimestres],
+            "tablas": ["ine_epa416131", *[f"ine_{c.lower()}" for _, c, _ in EPA_ADMIN], "ine_epa450290", "ine_epa416424"],
+        }
+        # Cuadra: la suma de los tipos de administración da el total (tolerancia: redondeo de la EPA en miles)
+        t = trimestres[-1]
+        suma = sum(por[k].get(t) or 0 for k, _, _ in EPA_ADMIN)
+        if abs(suma - total[t]) > 1:
+            print(f"AVISO empleo público: la suma por administraciones ({suma}) no da el total ({total[t]}) en {t}")
+    if "ine_epa_t65327" in descargas:
+        d = json.loads((AQUI / descargas["ine_epa_t65327"]["fichero"]).read_text())
+        ccaa = []
+        for x in d:
+            partes = [z.strip() for z in x["Nombre"].split(".")]
+            if len(partes) >= 4 and partes[0] == "Ambos sexos" and partes[2] == "Asalariado sector público" and partes[3] == "Porcentaje":
+                datos = sorted(((y["Anyo"], y["FK_Periodo"]), y["Valor"]) for y in x["Data"] if y.get("Valor") is not None)
+                if datos:
+                    (a, p_), v = datos[-1]
+                    ccaa.append({"nombre": partes[1], "pct": v, "periodo": f"{a}T{p_ - 18}"})
+        salida["ccaa"] = {"filas": [c for c in ccaa if c["nombre"] != "Total Nacional"],
+                          "total": next((c["pct"] for c in ccaa if c["nombre"] == "Total Nacional"), None),
+                          "periodo": ccaa[0]["periodo"] if ccaa else None, "tabla": "ine_epa_t65327"}
+    # Remuneración de asalariados (D.1) por subsector, desde 1995
+    celdas, d = leer_jsonstat(AQUI / descargas["gov_10a_main"]["fichero"])
+    subsectores = {"total": "S13", "estado": "S1311", "comunidades": "S1312", "local": "S1313", "seguridad_social": "S1314"}
+    rem = {"años": None}
+    te = serie(celdas, d, unit="MIO_EUR", sector="S13", na_item="TE", geo="ES")
+    for clave, sec in subsectores.items():
+        for unidad in ("MIO_EUR", "PC_GDP"):
+            s_ = serie(celdas, d, unit=unidad, sector=sec, na_item="D1PAY", geo="ES")
+            rem["años"] = rem["años"] or sorted(a for a in s_ if s_[a][0] is not None and a >= 1995)
+            rem.setdefault(clave, {})["meur" if unidad == "MIO_EUR" else "pib"] = [s_.get(a, (None,))[0] for a in rem["años"]]
+    # Cálculo nuestro: qué parte del gasto total es pagar al personal
+    rem["pct_gasto"] = [None if not te.get(a, (None,))[0] or v is None else round(100 * v / te[a][0], 1)
+                        for a, v in zip(rem["años"], rem["total"]["meur"])]
+    salida["remuneracion"] = rem
+    # Comparación con la UE: remuneración en % del PIB del último año con dato para casi todos
+    if "ue_gov_10a_main" in descargas:
+        c2, d2 = leer_jsonstat(AQUI / descargas["ue_gov_10a_main"]["fichero"])
+        por_pais = {p_: serie(c2, d2, geo=p_, sector="S13", na_item="D1PAY", unit="PC_GDP") for p_ in PAISES}
+        años_ = sorted({a for s_ in por_pais.values() for a, (v, _) in s_.items() if v is not None})
+        año = next((a for a in reversed(años_) if sum(1 for s_ in por_pais.values() if s_.get(a, (None,))[0] is not None) >= 26), None)
+        if año:
+            salida["ue"] = {"año": año, "paises": sorted(({"geo": p_, "nombre": PAISES[p_], "v": s_[año][0]} for p_, s_ in por_pais.items()
+                                                           if s_.get(año, (None,))[0] is not None), key=lambda x: -x["v"])}
+    (WEB / "datos" / "empleo_publico.json").write_text(json.dumps(salida, ensure_ascii=False))
+    e = salida.get("epa")
+    print(f"empleo público: {e['trimestres'][-1]} {e['total'][-1]} mil asalariados ({e['pct_asalariados'][-1]} %); "
+          f"remuneración {rem['años'][-1]}: {rem['total']['meur'][-1]} M€" if e else "empleo público: sin EPA")
+
+
+def construir_fondos_europeos(descargas):
+    """El Mecanismo de Recuperación y Resiliencia en la contabilidad nacional (Eurostat): lo recibido y lo usado cada año."""
+    if "gov_rrf_fa" not in descargas or "gov_rrf_use" not in descargas:
+        return
+    cf, df = leer_jsonstat(AQUI / descargas["gov_rrf_fa"]["fichero"])
+    cu, du = leer_jsonstat(AQUI / descargas["gov_rrf_use"]["fichero"])
+
+    def anual(s_):
+        return {a: v for a, (v, _) in s_.items() if v is not None}
+    recibido = {t: anual(serie(cf, df, geo="ES", finpos="NET", na_item="F2R_F4R", fin_typ=t, stk_flow="TRN", unit="MIO_EUR"))
+                for t in ("GRNT", "LOAN")}
+    anticipo = anual(serie(cf, df, geo="ES", finpos="NET", na_item="F2R_F4R_AP", fin_typ="GRNT", stk_flow="TRN", unit="MIO_EUR"))
+    usos = {k: anual(serie(cu, du, geo="ES", na_item=k, fin_typ="GRNT", unit="MIO_EUR"))
+            for k in ("TOTAL", "P51G", "D9", "CAP_OTH", "CUR", "OTH")}
+    usos_prestamos = anual(serie(cu, du, geo="ES", na_item="TOTAL", fin_typ="LOAN", unit="MIO_EUR"))
+    años = sorted(set(recibido["GRNT"]) | set(usos["TOTAL"]))
+    años = [a for a in años if a >= 2020]
+
+    def col(dic):
+        return [dic.get(a) for a in años]
+    salida = {
+        "años": años,
+        "recibido": {"subvenciones": col(recibido["GRNT"]), "prestamos": col(recibido["LOAN"]), "anticipos": col(anticipo)},
+        "usado": {"total": col(usos["TOTAL"]), "inversion": col(usos["P51G"]), "transferencias_capital": col(usos["D9"]),
+                  "otro_capital": col(usos["CAP_OTH"]), "corriente": col(usos["CUR"]), "otros": col(usos["OTH"]),
+                  "prestamos": col(usos_prestamos)},
+        "tablas": ["gov_rrf_fa", "gov_rrf_use"],
+    }
+    acum_r = sum(v or 0 for v in salida["recibido"]["subvenciones"])
+    acum_u = sum(v or 0 for v in salida["usado"]["total"])
+    salida["acumulado"] = {"subvenciones_recibidas": acum_r, "subvenciones_usadas": acum_u,
+                           "prestamos_recibidos": sum(v or 0 for v in salida["recibido"]["prestamos"])}
+    # Cuadra: lo recibido y aún no usado es lo que la contabilidad apunta como pendiente (pasivo F89 de subvenciones)
+    pendiente = anual(serie(cf, df, geo="ES", finpos="LIAB", na_item="F89", fin_typ="GRNT", stk_flow="STK", unit="MIO_EUR"))
+    if años[-1] in pendiente and abs(acum_r - acum_u - pendiente[años[-1]]) > 5:
+        print(f"AVISO fondos europeos: recibido menos usado ({acum_r - acum_u}) no da lo pendiente ({pendiente[años[-1]]})")
+    salida["acumulado"]["pendiente"] = pendiente.get(años[-1])
+    # Cuadra: los usos por tipo suman el total de cada año
+    for a, t, *partes in zip(años, salida["usado"]["total"], salida["usado"]["inversion"], salida["usado"]["transferencias_capital"],
+                             salida["usado"]["otro_capital"], salida["usado"]["corriente"], salida["usado"]["otros"]):
+        if t is not None and abs(t - sum(x or 0 for x in partes)) > 2:
+            print(f"AVISO fondos europeos: en {a} los usos por tipo ({sum(x or 0 for x in partes)}) no suman el total ({t})")
+    (WEB / "datos" / "fondos_europeos.json").write_text(json.dumps(salida, ensure_ascii=False))
+    print(f"fondos europeos: {años[0]}–{años[-1]}; subvenciones recibidas {acum_r} M€, usadas {acum_u} M€")
+
+
 def construir_desigualdad(descargas):
     comprobaciones, out = [], {}
 
@@ -2469,7 +2582,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -2524,6 +2637,10 @@ def main():
                 "ocde_idd": "Gini antes y después de transferencias e impuestos, con el método de la OCDE.",
                 "bce_dwa_gini": "Reparto de la riqueza (estadística experimental).", "bce_dwa_top10": "Reparto de la riqueza (estadística experimental).",
                 "bce_dwa_bottom50": "Reparto de la riqueza (estadística experimental)."}.get(nombre)) or \
+              ({"gov_rrf_fa": "Fondos del Mecanismo de Recuperación recibidos por España cada año, en subvenciones y en préstamos.",
+                "gov_rrf_use": "En qué se han usado los fondos del Mecanismo de Recuperación, según la contabilidad nacional.",
+                "ine_epa_t65327": "Peso del sector público en los asalariados de cada comunidad autónoma."}.get(nombre)) or \
+              ("Asalariados del sector público por tipo de administración, de la EPA." if nombre.startswith("ine_epa416") or nombre == "ine_epa450290" else None) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
                if nombre.startswith("liq_estado_") else
@@ -2615,6 +2732,8 @@ def main():
     construir_datos_promesas(descargas)
     construir_este_ano(descargas)
     construir_seguridad_social(descargas)
+    construir_empleo_publico(descargas)
+    construir_fondos_europeos(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Los fondos europeos · Cuentas en limpio</title>
+  <meta name="description" content="Cuánto dinero del Mecanismo de Recuperación y Resiliencia (los fondos Next Generation EU) ha recibido España y cuánto se ha usado, según la contabilidad nacional de Eurostat.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=24290a87ad">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=21c529621e" defer></script>
+  <script src="fondos-europeos.js?v=00f86fc778" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html">Empleo público</a> <a href="fondos-europeos.html" aria-current="page">Fondos europeos</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+
+  <main>
+    <h1 class="pregunta">¿Qué ha pasado con los fondos europeos de recuperación?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Son los fondos del Mecanismo de Recuperación y Resiliencia, la parte principal de los «Next Generation EU» que la Unión Europea aprobó tras la pandemia. Llegan de dos formas: subvenciones, que no se devuelven, y préstamos, que sí. Las cifras son las de la contabilidad nacional que publica Eurostat.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cuánto llega y cuánto se usa cada año?</h2>
+      <p class="grafico-explica">Subvenciones recibidas de la Unión Europea y subvenciones usadas en gasto cada año, en miles de millones de euros. El dinero llega por tramos, cuando la Comisión Europea da por cumplidos los hitos pactados; se usa a medida que se ejecutan los proyectos.</p>
+      <p class="leyenda-linea"><span class="clave-barra"></span> Recibido <span class="clave-barra clave-barra-oscura"></span> Usado</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿En qué se ha usado?</h2>
+      <p class="grafico-explica" id="g2-explica">Subvenciones usadas desde 2020, por tipo de gasto, en millones de euros.</p>
+      <table class="tabla-sueldo" id="usos"></table>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>«Usado» aquí quiere decir que el gasto ya figura en las cuentas de las administraciones: una obra hecha, una ayuda pagada. Por eso <span class="resalta">esta cifra no coincide con la de las convocatorias resueltas ni con la del dinero comprometido</span>, que son las que suelen dar el Gobierno y las comunidades: un proyecto adjudicado puede tardar años en convertirse en gasto.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Llegan una vez al año y tarde: el último año que se ve es el anterior al actual.</li>
+        <li>No dicen qué proyectos concretos se han pagado ni quién ha recibido el dinero.</li>
+        <li>Lo recibido no cuenta como ingreso hasta que se gasta: en contabilidad nacional, el dinero que llega y aún no se ha usado queda apartado y no mejora el déficit.</li>
+        <li>Los préstamos hay que devolverlos: son deuda del Estado con la Unión Europea. En estos datos, su uso en gasto aún aparece como cero o sin dato.</li>
+      </ul>
+    </div>
+    <p class="seguir-recorrido">Para seguir: <a href="cuentas.html">déficit y deuda de todas las administraciones</a> · <a href="gasto.html">en qué se gasta el dinero público</a> · <a href="presupuesto.html">el presupuesto del Estado</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>
