@@ -792,6 +792,23 @@ def recaudacion(D):
     return md
 
 
+def contratacion(D):
+    s = D.get("contratacion") or {}
+    if not s:
+        return cabecera("Contratación pública", "contratacion.html", "Sin datos en esta construcción.")
+    e = s["edicion"]
+    md = cabecera("Contratación pública: licitado y adjudicado", "contratacion.html",
+                  f"Infocifras de la OIReScon (edición del {e['trimestre']}.º trimestre de {e['año']}: {e['url']}). Importes sin impuestos de "
+                  "todas las plataformas de contratación (estatal y autonómicas), sin contratos menores. Cada edición recalcula los "
+                  "trimestres anteriores: son datos vivos, no definitivos. Lo adjudicado es lo comprometido, no lo pagado.")
+    md += "\n## Millones de euros por trimestre\n\n" + tabla(["Trimestre", "Licitado", "Adjudicado"],
+        [[t, n(s["licitado"][i], 1), n(s["adjudicado"][i], 1)] for i, t in enumerate(s["trimestres"])])
+    md += "\n\n## Por año (suma de trimestres, cálculo nuestro)\n\n" + tabla(["Año", "Licitado", "Adjudicado"],
+        [[a["año"], n(a["licitado"]), n(a["adjudicado"])] for a in s["anual"]])
+    md += "\n\nLicitadores medios por contrato: " + "; ".join(f"{l['trimestre']}: {n(l['v'], 2)}" for l in s["licitadores"]) + "\n"
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -803,6 +820,7 @@ FICHEROS = [
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("beneficios-fiscales", beneficios_fiscales, "Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF."),
+    ("contratacion", contratacion, "Contratación pública desde 2022 (OIReScon): importe licitado y adjudicado por trimestre y empresas por contrato."),
     ("recaudacion", recaudacion, "Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos."),
     ("cupo-vasco", cupo_vasco, "Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base."),
     ("union-europea", union_europea, "España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles."),
@@ -897,7 +915,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco", "recaudacion"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco", "recaudacion", "contratacion"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

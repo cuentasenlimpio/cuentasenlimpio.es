@@ -220,6 +220,11 @@ PAGINAS = [
     {"fuente": "Gobierno Vasco", "tabla": "cmce_actas", "opcional": True,
      "nombre": "Actas de la Comisión Mixta del Concierto Económico (lista)",
      "url": "https://www.euskadi.eus/informacion/comision-mixta-del-concierto-economico/web01-a2conci/es/", "extension": "html"},
+    # Infocifras de la OIReScon (contratación pública, un PDF por trimestre): las cifras se extraen a mano con
+    # herramientas/extraer_infocifras.py; la lista sirve para avisar cuando sale una edición nueva.
+    {"fuente": "OIReScon", "tabla": "oirescon_infocifras", "opcional": True,
+     "nombre": "Infocifras: resumen trimestral de la contratación pública (lista de ediciones)",
+     "url": "https://www.hacienda.gob.es/es-ES/Oirescon/Paginas/infocifras.aspx", "extension": "html"},
     {"fuente": "Ministerio de Hacienda", "tabla": "hacienda_pmp_series", "opcional": True,
      "nombre": "Periodo medio de pago a proveedores de las administraciones públicas: series mensuales desde abril de 2018 (RD 1040/2017)",
      "url": "https://www.hacienda.gob.es/cdi/pmp/pmp-series-rd-1040-2017.xlsx", "extension": "xlsx"},

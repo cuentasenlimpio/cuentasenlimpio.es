@@ -81,6 +81,7 @@ const QUIEN = {
   IGAE: "la Intervención General del Estado (IGAE), que lleva las cuentas del sector público",
   INE: "el Instituto Nacional de Estadística (INE)",
   AIReF: "la AIReF, el organismo independiente que vigila las cuentas públicas",
+  OIReScon: "la OIReScon, la oficina independiente que supervisa la contratación pública",
 };
 // Etiqueta de qué es una cifra: «dato oficial» (publicado tal cual) o «cálculo nuestro» (una lectura sobre datos oficiales).
 const ETIQUETA_TIPO = { dato: "dato oficial", lectura: "cálculo nuestro" };

@@ -2198,6 +2198,71 @@ def construir_recaudacion(descargas):
     return salida
 
 
+def construir_contratacion(descargas):
+    """Contratación pública: Infocifras de la OIReScon (licitado y adjudicado por trimestre, sin impuestos, de todas las
+    plataformas de contratación), extraído de los PDF por herramientas/extraer_infocifras.py. Se usa la última edición
+    con tablas (cada una recalcula los trimestres anteriores) y se comprueba contra los totales que da cada texto."""
+    ruta = CODIGO / "contratacion.json"
+    if not ruta.exists():
+        return None
+    eds = json.loads(ruta.read_text())["ediciones"]
+    con_tablas = [e for e in eds if e["licitado"] and e["adjudicado"]]
+    base = con_tablas[-1]
+    trimestres = [(int(a), q + 1) for a in sorted(base["licitado"]) for q in range(len(base["licitado"][a]))]
+    valor = lambda e, c, a, q: (e[c].get(str(a)) or [None] * 4)[q - 1] if e[c] and len(e[c].get(str(a)) or []) >= q else None
+    # Los cuatro últimos trimestres de cada edición frente al total que da su propio texto
+    malos, n_ok = [], 0
+    for e in eds:
+        for c, t in (("licitado", "licitados"), ("adjudicado", "adjudicados")):
+            if not e[c] or e[f"total_texto_{t}"] is None:
+                continue
+            serie = [x for a in sorted(e[c]) for x in e[c][a]]
+            dif = sum(serie[-4:]) - e[f"total_texto_{t}"]
+            if abs(dif) > 0.05:
+                malos.append(f"{e['trimestre']}T {e['año']} {c} ({es(dif, 2)})")
+            else:
+                n_ok += 1
+    nuevas = None
+    if "oirescon_infocifras" in descargas:
+        pagina = (AQUI / descargas["oirescon_infocifras"]["fichero"]).read_bytes().decode("utf-8", errors="replace").lower()
+        publicadas = set(re.findall(r"infocifras-(\d)t-(\d{4})\.pdf", pagina))
+        conocidas = {(str(e["trimestre"]), str(e["año"])) for e in eds}
+        nuevas = sorted(f"{t}T {a}" for t, a in publicadas - conocidas) if publicadas else None
+    comprobaciones = [
+        {"que": "¿Los cuatro últimos trimestres de cada tabla suman el total que da el texto de la misma edición?",
+         "resultado": f"Sí, en las {n_ok} comprobaciones posibles, con 2 céntimos de diferencia como mucho (redondeo)" if not malos else f"No en {malos}",
+         "ok": not malos},
+        {"que": "¿Están incorporadas todas las ediciones publicadas por la OIReScon?",
+         "resultado": ("No se ha podido leer la lista" if nuevas is None else f"Sí, las {len(eds)}" if not nuevas else f"No: falta(n) {', '.join(nuevas)}"),
+         "ok": nuevas == []},
+    ]
+    # Revisiones: primera cifra publicada de cada trimestre frente a la de la última edición
+    revisiones = []
+    for a, q in trimestres:
+        primera = next(((e, valor(e, "adjudicado", a, q)) for e in con_tablas if valor(e, "adjudicado", a, q) is not None), None)
+        ultima = valor(base, "adjudicado", a, q)
+        if primera and primera[0] is not base and ultima:
+            revisiones.append({"trimestre": f"{q}T {a}", "primera": primera[1], "edicion": f"{primera[0]['trimestre']}T {primera[0]['año']}",
+                               "ultima": ultima, "pct": round(100 * (ultima - primera[1]) / primera[1], 1)})
+    completos = [a for a in sorted({a for a, _ in trimestres}) if len(base["licitado"][str(a)]) == 4]
+    salida = {
+        "trimestres": [f"{q}T {a}" for a, q in trimestres],
+        "licitado": [valor(base, "licitado", a, q) for a, q in trimestres],
+        "adjudicado": [valor(base, "adjudicado", a, q) for a, q in trimestres],
+        "anual": [{"año": a, "licitado": round(sum(base["licitado"][str(a)]), 2), "adjudicado": round(sum(base["adjudicado"][str(a)]), 2)} for a in completos],
+        "licitadores": [{"trimestre": f"{e['trimestre']}T {e['año']}", "v": e["licitadores"]} for e in eds if e["licitadores"]],
+        "ultimos4": {"licitado": base["total_texto_licitados"], "adjudicado": base["total_texto_adjudicados"]},
+        "edicion": {"trimestre": base["trimestre"], "año": base["año"], "url": base["url"]},
+        "ediciones": [{"trimestre": e["trimestre"], "año": e["año"], "url": e["url"]} for e in eds],
+        "revisiones": revisiones, "tabla": "oirescon_infocifras", "comprobaciones": comprobaciones,
+    }
+    (WEB / "datos" / "contratacion.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"contratación: {len(eds)} ediciones; base {base['trimestre']}T {base['año']}; {len(revisiones)} trimestres revisados")
+    return salida
+
+
 def _cupo_estado(descargas):
     """Lo que el Estado anota cada año como ingreso por el cupo vasco (derechos reconocidos netos del concepto 45000,
     «Cupo del País Vasco»), en miles de euros: de la liquidación de cada año y, si aún no la hay, del avance a 31 de
@@ -3679,7 +3744,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3713,6 +3778,7 @@ def main():
                "aeat_iart_1_3": "Bases imponibles, tipos efectivos e impuestos devengados de los principales impuestos desde 1995.",
                "aeat_iart_1_5": "Impacto estimado de los cambios normativos y de gestión en la recaudación de cada año, por impuesto.",
                "aeat_iart_1_6": "Ingresos tributarios totales por concepto; se comprueba que cada año es la suma de los meses de la serie mensual.",
+               "oirescon_infocifras": "Lista de ediciones de Infocifras: sirve para avisar de las nuevas. Las cifras se extraen de cada PDF, enlazado en la página de contratación.",
                "cmce_actas": "Lista de actas de la Comisión Mixta: sirve para avisar de las nuevas. Las cifras del cupo se copian a mano de cada acta, enlazada en la página del cupo."}.get(nombre) or \
               ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
               ({"ss_afiliados_medios": "Afiliados medios por régimen y edad; con ellos se calculan los afiliados por pensión.",
@@ -3842,6 +3908,7 @@ def main():
     construir_beneficios_fiscales()
     cupo = construir_cupo_vasco(descargas)
     construir_recaudacion(descargas)
+    construir_contratacion(descargas)
     construir_descuadres(gasto, pmp, cupo)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

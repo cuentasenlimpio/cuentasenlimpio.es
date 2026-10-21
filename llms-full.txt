@@ -33,6 +33,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [deuda-local](https://cuentasenlimpio.es/contexto/deuda-local.md) (4 KB): Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio.
 - [avales](https://cuentasenlimpio.es/contexto/avales.md) (4 KB): Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas).
 - [beneficios-fiscales](https://cuentasenlimpio.es/contexto/beneficios-fiscales.md) (3 KB): Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF.
+- [contratacion](https://cuentasenlimpio.es/contexto/contratacion.md) (2 KB): Contratación pública desde 2022 (OIReScon): importe licitado y adjudicado por trimestre y empresas por contrato.
 - [recaudacion](https://cuentasenlimpio.es/contexto/recaudacion.md) (5 KB): Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos.
 - [cupo-vasco](https://cuentasenlimpio.es/contexto/cupo-vasco.md) (4 KB): Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base.
 - [union-europea](https://cuentasenlimpio.es/contexto/union-europea.md) (3 KB): España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles.
@@ -1115,6 +1116,51 @@ Memorias de Beneficios Fiscales de los proyectos de Presupuestos Generales del E
 | 2023 | 45.269 | 11.179 | 5.697 | 25.679 | 1.014 | 96 |
 
 Memorias (PDF): 2010: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2010Proyecto/MaestroTomos/PGE-ROM/doc/L_10_A_A2.PDF; 2011: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2011Proyecto/MaestroTomos/PGE-ROM/doc/L_11_A_A2.PDF; 2012: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2012Proyecto/MaestroTomos/PGE-ROM/doc/L_12_A_A2.PDF; 2013: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2013Proyecto/MaestroTomos/PGE-ROM/doc/L_13_A_A2.PDF; 2014: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2014Proyecto/MaestroTomos/PGE-ROM/doc/L_14_A_A2.PDF; 2015: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2015Proyecto/MaestroTomos/PGE-ROM/doc/L_15_A_A2.PDF; 2016: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2016Proyecto/MaestroTomos/PGE-ROM/doc/L_16_A_A2.PDF; 2017: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2017Proyecto/MaestroTomos/PGE-ROM/doc/L_17_A_A2.PDF; 2018: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2018Proyecto/MaestroTomos/PGE-ROM/doc/L_18_A_A2.PDF; 2021: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2021Proyecto/MaestroTomos/PGE-ROM/doc/L_21_A_A2.PDF; 2022: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2022Proyecto/MaestroTomos/PGE-ROM/doc/L_22_A_A2.PDF; 2023: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Proyecto/MaestroTomos/PGE-ROM/doc/L_23_A_A2.PDF
+
+
+---
+
+# Contratación pública: licitado y adjudicado
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/contratacion.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/contratacion.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Infocifras de la OIReScon (edición del 2.º trimestre de 2026: https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-2t-2026.pdf). Importes sin impuestos de todas las plataformas de contratación (estatal y autonómicas), sin contratos menores. Cada edición recalcula los trimestres anteriores: son datos vivos, no definitivos. Lo adjudicado es lo comprometido, no lo pagado.
+
+## Millones de euros por trimestre
+
+| Trimestre | Licitado | Adjudicado |
+|---|---|---|
+| 1T 2022 | 17.836,9 | 13.909,0 |
+| 2T 2022 | 25.869,2 | 16.577,3 |
+| 3T 2022 | 25.588,1 | 16.922,8 |
+| 4T 2022 | 30.081,6 | 23.163,2 |
+| 1T 2023 | 27.614,2 | 18.049,3 |
+| 2T 2023 | 27.272,0 | 19.192,7 |
+| 3T 2023 | 21.257,7 | 16.126,6 |
+| 4T 2023 | 29.949,4 | 23.889,1 |
+| 1T 2024 | 22.728,3 | 17.164,4 |
+| 2T 2024 | 28.326,1 | 18.341,6 |
+| 3T 2024 | 25.817,5 | 18.903,6 |
+| 4T 2024 | 35.831,2 | 22.074,1 |
+| 1T 2025 | 25.822,0 | 17.316,7 |
+| 2T 2025 | 32.730,7 | 26.965,9 |
+| 3T 2025 | 28.311,0 | 21.513,4 |
+| 4T 2025 | 55.760,4 | 46.565,1 |
+| 1T 2026 | 31.835,0 | 18.691,4 |
+| 2T 2026 | 35.435,5 | 21.815,2 |
+
+## Por año (suma de trimestres, cálculo nuestro)
+
+| Año | Licitado | Adjudicado |
+|---|---|---|
+| 2022 | 99.376 | 70.572 |
+| 2023 | 106.093 | 77.258 |
+| 2024 | 112.703 | 76.484 |
+| 2025 | 142.624 | 112.361 |
+
+Licitadores medios por contrato: 4T 2022: 2,99; 2T 2023: 3,05; 3T 2023: 3,22; 4T 2023: 2,98; 1T 2024: 2,90; 2T 2024: 2,99; 3T 2024: 2,98; 4T 2024: 2,90; 1T 2025: 2,90; 2T 2025: 2,93; 3T 2025: 2,79; 4T 2025: 2,68; 1T 2026: 2,64; 2T 2026: 2,79
 
 
 ---

@@ -1,0 +1,537 @@
+{
+ "_nota": "Generado por herramientas/extraer_infocifras.py a partir de los PDF de Infocifras (OIReScon). Millones de euros sin impuestos. Cada edición recalcula los trimestres anteriores con los datos vivos de las plataformas de contratación, así que las cifras cambian de una a otra.",
+ "ediciones": [
+  {
+   "trimestre": 4,
+   "año": 2022,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-4t-2022.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.99,
+   "total_texto_licitados": 103162.59,
+   "total_texto_adjudicados": 73568.23
+  },
+  {
+   "trimestre": 1,
+   "año": 2023,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-1t-2023.pdf",
+   "licitado": {
+    "2019": [
+     13877.53,
+     24220.28,
+     16297.18,
+     15890.75
+    ],
+    "2020": [
+     11727.86,
+     12475.49,
+     19782.52,
+     18614.75
+    ],
+    "2021": [
+     18706.59,
+     21513.53,
+     22983.93,
+     32752.44
+    ],
+    "2022": [
+     17971.46,
+     25757.72,
+     26721.9,
+     30241.12
+    ],
+    "2023": [
+     30290.76
+    ]
+   },
+   "adjudicado": null,
+   "licitadores": null,
+   "total_texto_licitados": 113011.5,
+   "total_texto_adjudicados": 76684.45
+  },
+  {
+   "trimestre": 2,
+   "año": 2023,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-2t-2023.pdf",
+   "licitado": {
+    "2019": [
+     13873.98,
+     24214.33,
+     16307.26,
+     15879.61
+    ],
+    "2020": [
+     11734.19,
+     12441.71,
+     19470.34,
+     18922.12
+    ],
+    "2021": [
+     18698.83,
+     21504.57,
+     22828.91,
+     32782.19
+    ],
+    "2022": [
+     18074.19,
+     25740.25,
+     26341.9,
+     29655.3
+    ],
+    "2023": [
+     28632.43,
+     29226.29
+    ]
+   },
+   "adjudicado": null,
+   "licitadores": 3.05,
+   "total_texto_licitados": 113855.92,
+   "total_texto_adjudicados": 76002.66
+  },
+  {
+   "trimestre": 3,
+   "año": 2023,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-3t-2023.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 3.22,
+   "total_texto_licitados": 107525.53,
+   "total_texto_adjudicados": 75267.63
+  },
+  {
+   "trimestre": 4,
+   "año": 2023,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-4t-2023.pdf",
+   "licitado": {
+    "2019": [
+     13857.33,
+     24187.06,
+     16328.39,
+     15824.32
+    ],
+    "2020": [
+     11790.52,
+     12435.14,
+     19479.2,
+     18917.77
+    ],
+    "2021": [
+     18697.77,
+     21489.63,
+     22813.43,
+     32754.19
+    ],
+    "2022": [
+     18023.81,
+     25821.76,
+     26169.24,
+     29077.91
+    ],
+    "2023": [
+     27561.61,
+     27393.75,
+     21637.92,
+     32923.37
+    ]
+   },
+   "adjudicado": null,
+   "licitadores": 2.98,
+   "total_texto_licitados": 109516.65,
+   "total_texto_adjudicados": 77850.26
+  },
+  {
+   "trimestre": 1,
+   "año": 2024,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-1t-2024.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.9,
+   "total_texto_licitados": 104490.72,
+   "total_texto_adjudicados": 76023.77
+  },
+  {
+   "trimestre": 2,
+   "año": 2024,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-2t-2024.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.99,
+   "total_texto_licitados": 105217.62,
+   "total_texto_adjudicados": 75790.97
+  },
+  {
+   "trimestre": 3,
+   "año": 2024,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-3t-2024.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.98,
+   "total_texto_licitados": 110402.93,
+   "total_texto_adjudicados": 78714.67
+  },
+  {
+   "trimestre": 4,
+   "año": 2024,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-4t-2024.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.9,
+   "total_texto_licitados": 113648.22,
+   "total_texto_adjudicados": 75077.71
+  },
+  {
+   "trimestre": 1,
+   "año": 2025,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-1t-2025.pdf",
+   "licitado": {
+    "2021": [
+     18680.18,
+     21527.57,
+     22798.52,
+     32759.56
+    ],
+    "2022": [
+     18077.37,
+     25845.53,
+     26554.58,
+     29113.65
+    ],
+    "2023": [
+     27708.34,
+     27164.11,
+     21269.61,
+     30768.68
+    ],
+    "2024": [
+     22910.1,
+     28394.48,
+     25795.42,
+     35991.4
+    ],
+    "2025": [
+     26755.5
+    ]
+   },
+   "adjudicado": {
+    "2021": [
+     10543.69,
+     15908.82,
+     14800.72,
+     22328.26
+    ],
+    "2022": [
+     14000.28,
+     16520.8,
+     16915.89,
+     23105.48
+    ],
+    "2023": [
+     18053.99,
+     19045.18,
+     16274.09,
+     24734.05
+    ],
+    "2024": [
+     17370.47,
+     18443.74,
+     18742.11,
+     21942.81
+    ],
+    "2025": [
+     16408.36
+    ]
+   },
+   "licitadores": 2.9,
+   "total_texto_licitados": 116936.8,
+   "total_texto_adjudicados": 75537.03
+  },
+  {
+   "trimestre": 2,
+   "año": 2025,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-2t-2025.pdf",
+   "licitado": {
+    "2021": [
+     18648.57,
+     21557.98,
+     22800.14,
+     32759.43
+    ],
+    "2022": [
+     18077.41,
+     25846.6,
+     26555.58,
+     29115.36
+    ],
+    "2023": [
+     27663.59,
+     27200.8,
+     21267.56,
+     30771.27
+    ],
+    "2024": [
+     22912.68,
+     28291.63,
+     25744.23,
+     35779.07
+    ],
+    "2025": [
+     26033.95,
+     35007.94
+    ]
+   },
+   "adjudicado": {
+    "2021": [
+     10548.6,
+     15920.06,
+     14803.0,
+     22322.47
+    ],
+    "2022": [
+     13975.59,
+     16525.1,
+     16916.45,
+     23113.61
+    ],
+    "2023": [
+     18053.08,
+     19048.16,
+     16370.41,
+     24784.21
+    ],
+    "2024": [
+     17372.52,
+     18293.13,
+     18783.26,
+     22032.07
+    ],
+    "2025": [
+     17325.55,
+     22891.29
+    ]
+   },
+   "licitadores": 2.93,
+   "total_texto_licitados": 122565.19,
+   "total_texto_adjudicados": 81032.17
+  },
+  {
+   "trimestre": 3,
+   "año": 2025,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-3t-2025.pdf",
+   "licitado": {
+    "2021": [
+     18648.53,
+     21567.12,
+     22826.12,
+     32755.77
+    ],
+    "2022": [
+     18080.78,
+     25836.44,
+     26538.63,
+     29159.02
+    ],
+    "2023": [
+     27617.56,
+     27242.54,
+     21268.1,
+     29947.89
+    ],
+    "2024": [
+     22698.84,
+     28275.03,
+     25771.74,
+     35764.37
+    ],
+    "2025": [
+     25878.6,
+     34607.73,
+     31001.98
+    ]
+   },
+   "adjudicado": {
+    "2021": [
+     10545.97,
+     15906.85,
+     14825.43,
+     22264.14
+    ],
+    "2022": [
+     13889.48,
+     16570.21,
+     16909.98,
+     23134.48
+    ],
+    "2023": [
+     18065.07,
+     19046.81,
+     16382.72,
+     23960.13
+    ],
+    "2024": [
+     17167.57,
+     18257.35,
+     18856.64,
+     22100.66
+    ],
+    "2025": [
+     17185.98,
+     26978.24,
+     21067.3
+    ]
+   },
+   "licitadores": 2.79,
+   "total_texto_licitados": 127252.68,
+   "total_texto_adjudicados": 87332.17
+  },
+  {
+   "trimestre": 4,
+   "año": 2025,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-4t-2025.pdf",
+   "licitado": {
+    "2021": [
+     18645.44,
+     21560.1,
+     22833.48,
+     32756.26
+    ],
+    "2022": [
+     18080.72,
+     25836.74,
+     25584.48,
+     30078.62
+    ],
+    "2023": [
+     27628.71,
+     27267.41,
+     21258.75,
+     29949.48
+    ],
+    "2024": [
+     22698.46,
+     28287.94,
+     25795.38,
+     35823.51
+    ],
+    "2025": [
+     25792.86,
+     33222.94,
+     29854.8,
+     55051.16
+    ]
+   },
+   "adjudicado": {
+    "2021": [
+     10545.35,
+     15908.55,
+     14832.5,
+     22295.15
+    ],
+    "2022": [
+     13892.04,
+     16544.84,
+     16921.84,
+     23143.08
+    ],
+    "2023": [
+     18063.72,
+     19045.94,
+     16387.42,
+     23977.73
+    ],
+    "2024": [
+     17139.02,
+     18266.08,
+     18861.27,
+     22076.72
+    ],
+    "2025": [
+     17298.69,
+     27002.54,
+     21509.38,
+     45577.85
+    ]
+   },
+   "licitadores": 2.68,
+   "total_texto_licitados": 143921.76,
+   "total_texto_adjudicados": 111388.46
+  },
+  {
+   "trimestre": 1,
+   "año": 2026,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-1t-2026.pdf",
+   "licitado": null,
+   "adjudicado": null,
+   "licitadores": 2.64,
+   "total_texto_licitados": 150362.66,
+   "total_texto_adjudicados": 113132.14
+  },
+  {
+   "trimestre": 2,
+   "año": 2026,
+   "url": "https://www.hacienda.gob.es/rsc/oirescon/infocifras/infocifras-2t-2026.pdf",
+   "licitado": {
+    "2022": [
+     17836.88,
+     25869.22,
+     25588.11,
+     30081.64
+    ],
+    "2023": [
+     27614.21,
+     27272.02,
+     21257.71,
+     29949.38
+    ],
+    "2024": [
+     22728.27,
+     28326.07,
+     25817.47,
+     35831.19
+    ],
+    "2025": [
+     25822.03,
+     32730.71,
+     28310.96,
+     55760.43
+    ],
+    "2026": [
+     31834.96,
+     35435.47
+    ]
+   },
+   "adjudicado": {
+    "2022": [
+     13908.96,
+     16577.33,
+     16922.8,
+     23163.18
+    ],
+    "2023": [
+     18049.28,
+     19192.65,
+     16126.59,
+     23889.13
+    ],
+    "2024": [
+     17164.42,
+     18341.61,
+     18903.62,
+     22074.13
+    ],
+    "2025": [
+     17316.7,
+     26965.87,
+     21513.4,
+     46565.06
+    ],
+    "2026": [
+     18691.39,
+     21815.24
+    ]
+   },
+   "licitadores": 2.79,
+   "total_texto_licitados": 151341.84,
+   "total_texto_adjudicados": 108585.08
+  }
+ ]
+}
