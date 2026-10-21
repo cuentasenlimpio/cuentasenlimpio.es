@@ -2573,5 +2573,11 @@ if __name__ == "__main__":
     sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
     from contexto import construir_contexto
     construir_contexto(WEB)
+    # Cuándo llegó cada dato (pie de las páginas y tabla de fechas de metodología)
+    from actualidad import construir_actualidad
+    construir_actualidad(AQUI / "manifiesto.json", WEB)
+    # Índice del buscador
+    from buscador import construir_buscador
+    construir_buscador(WEB)
     if os.environ.get("CUENTAS_WEB"):
         versionar_estaticos(WEB)

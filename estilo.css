@@ -818,3 +818,27 @@ header.sitio { position: relative; }
 /* Una sola raya entre bloques: la de la sección, no también la del título */
 .escenario > h2.pregunta, .paso-recorrido > h2.pregunta, .pregunta-faq > h2.pregunta, .paso-recorrido > .antetitulo + h2.pregunta { border-top: 0; padding-top: 0; margin-top: 0.6rem; }
 .escenario, .paso-recorrido { padding-top: 1.5rem; }
+.pie-datos { flex-basis: 100%; font-size: 0.8125rem; color: var(--cabecera-suave); margin: 0 0 0.5rem; max-width: 60rem; }
+.pie-datos a { color: var(--cabecera-acento); }
+
+/* Buscador */
+.buscador input { width: 100%; max-width: 46rem; box-sizing: border-box; font: inherit; font-size: 1.125rem; padding: 0.75rem 1rem; min-height: 3rem;
+  border-radius: 999px; border: 1px solid var(--linea-fuerte); background: var(--superficie); color: var(--tinta); }
+.buscador input:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.buscador-estado { color: var(--tinta-suave); font-size: 0.9375rem; }
+.resultados { list-style: none; padding: 0; max-width: 46rem; display: grid; gap: 0.7rem; }
+.resultados li { background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); padding: 0.85rem 1.1rem; margin: 0; }
+.resultados a { display: flex; flex-direction: column; gap: 0.2rem; text-decoration: none; color: var(--tinta); }
+.resultados a:hover strong { color: var(--acento); }
+.resultados strong { font-size: 1.0625rem; }
+.resultados p { margin: 0.35rem 0 0; font-size: 0.9375rem; color: var(--tinta-suave); }
+.resultado-tipo { font: 500 0.75rem/1 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; color: var(--acento); }
+.resultados mark { background: var(--marca); color: var(--tinta); padding: 0 1px; border-radius: 2px; }
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.boton-buscar { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 2.5rem; padding: 0 0.9rem; border-radius: 999px;
+  border: 1px solid #6b6760; color: var(--sobre-cabecera) !important; opacity: 1 !important; text-decoration: none !important; font-size: 0.875rem; }
+.boton-buscar svg { width: 1rem; height: 1rem; }
+@media (max-width: 40rem) {
+  .boton-buscar { position: absolute; top: 0.45rem; right: 4.1rem; padding: 0; width: 2.75rem; justify-content: center; }
+  .boton-buscar-texto { display: none; }
+}

@@ -9,12 +9,12 @@
   <title>Metodología · Cuentas en limpio</title>
   <meta name="description" content="De dónde sale cada cifra, cómo se trata, qué es dato y qué es lectura, cómo se comprueba y qué decisiones de método tomamos.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=a99fb0955b">
+  <link rel="stylesheet" href="estilo.css?v=447825acd3">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="comun.js?v=21c529621e" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -27,6 +27,7 @@
       <a href="preguntas.html">Preguntas</a>
       <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html" aria-current="true">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
       <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
@@ -164,6 +165,16 @@
       <p>Todo lo necesario para rehacer los cálculos es público: el método completo en esta página, <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">el código que descarga las fuentes, calcula cada cifra y la comprueba</a>, los ficheros oficiales tal como se descargaron y todos los números de cada página en CSV.</p>
       <p>Los gráficos se dibujan con <a href="https://echarts.apache.org/">Apache ECharts</a> 6.0.0, una biblioteca de código abierto (<a href="lib/echarts-6.0.0/LICENSE">licencia Apache 2.0</a>) que se sirve desde esta misma web, en una versión reducida a las piezas que usamos. No carga nada de otros sitios.</p>
     </section>
+    <section aria-labelledby="fechas">
+      <h2 id="fechas">Desde cuándo y hasta cuándo</h2>
+      <p>Las cuentas de las administraciones (ingresos, gastos, déficit, deuda, gasto por funciones e impuestos) empiezan en 1995. Es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años entre sí y con los demás países de la Unión Europea. Hay cifras de antes, pero con otras reglas contables: mezclarlas daría saltos que no son reales. Otras series empiezan cuando empieza su fuente (la encuesta de condiciones de vida, en 2004; el presupuesto del Estado por políticas, en 2015).</p>
+      <p>Cada mañana, el programa que hace la web revisa todas las fuentes. Si alguna ha publicado algo nuevo, lo descarga, rehace los cálculos y las comprobaciones y publica la web. Esta tabla dice, para cada fuente, cuándo llegó su último dato nuevo (cuando cambió de verdad su contenido) y cuándo se descargó por última vez.</p>
+      <div class="tabla"><table class="tabla-fichas" id="tabla-fechas">
+        <thead><tr><th scope="col">Fuente</th><th scope="col">Qué</th><th scope="col">Último dato nuevo</th><th scope="col">Última descarga</th></tr></thead>
+        <tbody><tr><td colspan="4">Cargando las fechas…</td></tr></tbody>
+      </table></div>
+      <p class="fuente-grafico">Fuente: registro de descargas de esta web (la huella de cada fichero dice si cambió). Los ficheros que llevan la hora dentro y cambian en cada descarga, como los del FMI, no tienen fecha de dato nuevo.</p>
+    </section>
     <section aria-labelledby="llm-t">
       <h2 id="llm-t">Para modelos de inteligencia artificial</h2>
       <p>Las cifras de estas páginas se dibujan en el navegador, así que un programa que solo descarga el HTML no las ve. Para quien quiera preguntar a un modelo de lenguaje (ChatGPT, Claude, Gemini u otro) usando esta web, hay una zona de contexto con todo escrito, por temas, con año, fuente y enlace: <a href="llms.txt">llms.txt</a> es el índice y <a href="llms-full.txt">llms-full.txt</a>, todo en un fichero. Se genera cada día con los mismos datos que la web.</p>
@@ -178,6 +189,7 @@
       <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
       <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
     </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
     <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>

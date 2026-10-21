@@ -480,3 +480,38 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(prepararTablas, 1500);
   new ResizeObserver(() => prepararTablas()).observe(document.body);
 });
+
+// Pie: cuándo se revisaron las fuentes por última vez y cuál fue el último dato nuevo; en metodología, la tabla de
+// fechas de cada fuente. Lo escribe la construcción diaria (datos/actualidad.json) y el servidor (datos/estado.json).
+function fechaHora(iso) {
+  const d = new Date(iso);
+  return `${d.toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" })} a las ${d.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" })}`;
+}
+async function pintarActualidad() {
+  const pie = document.getElementById("pie-actualidad");
+  const tabla = document.getElementById("tabla-fechas");
+  if (!pie && !tabla) return;
+  const leer = (u) => fetch(u, { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const [estado, act] = await Promise.all([leer("datos/estado.json"), leer("datos/actualidad.json")]);
+  if (pie && (estado?.revisado || act?.ultimo_cambio)) {
+    pie.textContent = "";
+    if (estado?.revisado) pie.append(`Fuentes revisadas por última vez el ${fechaHora(estado.revisado)}. `);
+    const u = act?.ultimo_cambio;
+    if (u?.cambio) pie.append(`Último dato nuevo: ${u.fuente}, «${u.nombre}», llegado el ${fecha(u.cambio)}.`);
+  }
+  if (tabla && act?.fuentes) {
+    const cuerpo = tabla.querySelector("tbody");
+    cuerpo.textContent = "";
+    for (const f of act.fuentes) {
+      const tr = cuerpo.insertRow();
+      const a = tr.insertCell();
+      a.textContent = f.fuente;
+      const b = tr.insertCell();
+      if (f.url) { const l = document.createElement("a"); l.href = f.url; l.textContent = f.nombre; b.appendChild(l); } else b.textContent = f.nombre;
+      tr.insertCell().textContent = f.cambio ? fecha(f.cambio) : "—";
+      tr.insertCell().textContent = f.descargado ? fecha(f.descargado) : "—";
+    }
+    prepararTablas(tabla.parentElement);
+  }
+}
+document.addEventListener("DOMContentLoaded", pintarActualidad);
