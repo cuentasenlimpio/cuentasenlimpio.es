@@ -105,10 +105,11 @@ function pintar(e) {
   if (a) {
     const n = a.meses.indexOf(a.ultimo);
     const t = epa.trimestres.length - 1;
-    pon("r-empleo", [`En ${nombrePeriodo(a.ultimo)} había `, [`${numero(a.bruta[n], 0)} afiliados`],
-      ` de media a la Seguridad Social (${numero(a.desest[n], 0)} sin el efecto de la época del año). Según la EPA, en el ${nombrePeriodo(epa.trimestres[t])} trabajaban `,
-      [`${numero(epa.ocupados[t] / 1000, 2)} millones de personas`], ` y la tasa de paro era del `, [`${numero(epa.tasa_paro[t], 2)} %`],
-      ...(e.paro_registrado ? [`. En los servicios públicos de empleo había ${numero(e.paro_registrado.total.at(-1), 0)} parados registrados en ${nombrePeriodo(e.paro_registrado.meses.at(-1))}: una cifra distinta, que mide otra cosa`] : []), "."]);
+    pon("r-empleo", [`Según la EPA, la encuesta oficial del INE, en el ${nombrePeriodo(epa.trimestres[t])} trabajaban `,
+      [`${numero(epa.ocupados[t] / 1000, 1)} millones de personas`], ` y la tasa de paro era del `, [`${numero(epa.tasa_paro[t], 1)} %`],
+      `: de cada 100 personas que trabajaban o buscaban trabajo, unas ${numero(Math.round(epa.tasa_paro[t]), 0)} no lo encontraban. Es la cifra oficial de paro. `,
+      `En ${nombrePeriodo(a.ultimo)} había unos ${numero(a.bruta[n] / 1e6, 1)} millones de afiliados a la Seguridad Social, que cuentan empleos, no personas`,
+      ...(e.paro_registrado ? [`, y unos ${numero(e.paro_registrado.total.at(-1) / 1e6, 2)} millones de personas apuntadas como paradas en las oficinas de empleo: tres cifras que miden cosas distintas`] : []), "."]);
     lineas("g-afi", [
       { nombre: "afiliados sin estacionalidad (oficial)", periodos: a.meses, valores: a.desest, color: c1, ancho: 2.5 },
       { nombre: "afiliados tal cual", periodos: a.meses, valores: a.bruta, color: suave, ancho: 1.2 },
@@ -142,8 +143,8 @@ function pintar(e) {
     if (cr) {
       lineas("g-cruce-afi", [{ nombre: "afiliados medios", periodos: cr.años, valores: cr.afiliados, color: c1 }], { formato: millones, eje: "millones", alto: 240 });
       fuente("g-cruce-afi", [["ss_afiliados_medios", "afiliados medios"]], "lectura", "Media de los doce meses de cada año.");
-      lineas("g-cruce-cot", [{ nombre: `cotizaciones (miles de millones de € de ${cr.base_constantes})`, periodos: cr.años,
-        valores: cr.cotizaciones_constantes.map((v) => v / 1000), color: c2 }], { formato: (v) => `${numero(v, 0)} mil M€`, eje: "mil M€", alto: 240 });
+      lineas("g-cruce-cot", [{ nombre: `cotizaciones (miles de millones de euros, a precios de ${cr.base_constantes})`, periodos: cr.años,
+        valores: cr.cotizaciones_constantes.map((v) => v / 1000), color: c2 }], { formato: (v) => `${numero(v, 0)} mil millones €`, eje: "mil millones €", alto: 240 });
       fuente("g-cruce-cot", [["gov_10a_taxag", "cotizaciones sociales"], ["nama_10_gdp", "deflactor del PIB"]], "lectura",
         "Las cotizaciones dependen también de los salarios y de los tipos de cotización, no solo de cuántos afiliados hay.");
     }
@@ -153,9 +154,9 @@ function pintar(e) {
   const pe = e.pensiones;
   if (pe) {
     const n = pe.meses.length - 1;
-    pon("r-pensiones", [`El 1 de ${nombrePeriodo(pe.meses[n])} había `, [`${numero(pe.numero[n], 0)} pensiones contributivas`],
-      `, con una pensión media de ${numero(pe.media[n], 2)} € al mes y una nómina mensual de `, [`${numero(pe.nomina[n] / 1e9, 1)} miles de millones de euros`],
-      `. Por cada pensión había ${numero(pe.afiliados_por_pension_meses[n], 2)} afiliados.`]);
+    pon("r-pensiones", [`El 1 de ${nombrePeriodo(pe.meses[n])} había `, [`unos ${numero(pe.numero[n] / 1e6, 1)} millones de pensiones contributivas`],
+      `, con una pensión media de ${numero(Math.round(pe.media[n]), 0)} € al mes. Entre todas suman cada mes `, [`unos ${numero(Math.round(pe.nomina[n] / 1e8) * 100, 0)} millones de euros`],
+      `. Por cada pensión había ${numero(pe.afiliados_por_pension_meses[n], 2)} afiliados; en ${pe.años[0]}, ${numero(pe.afiliados_por_pension_años[0], 2)}.`]);
     const per = [...pe.años.map(String), ...pe.meses.filter((m) => Number(m.slice(0, 4)) > pe.años.at(-1))];
     const num = [...pe.numero_anual, ...pe.numero.filter((_, i) => Number(pe.meses[i].slice(0, 4)) > pe.años.at(-1))];
     const app = [...pe.afiliados_por_pension_años, ...pe.afiliados_por_pension_meses.filter((_, i) => Number(pe.meses[i].slice(0, 4)) > pe.años.at(-1))];
@@ -171,7 +172,7 @@ function pintar(e) {
   if (ipc) {
     const n = ipc.meses.length - 1;
     pon("r-ipc", [`En ${nombrePeriodo(ipc.meses[n])}, los precios eran un `, [`${numero(ipc.general[n], 1)} % más altos`],
-      ` que un año antes. Sin los alimentos no elaborados ni los productos energéticos (la inflación subyacente), un ${numero(ipc.subyacente[n], 1)} %.`]);
+      ` que un año antes. Sin los alimentos no elaborados ni los productos energéticos (la inflación subyacente), un ${numero(ipc.subyacente[n], 1)} %. Desde ${ipc.meses[0].slice(0, 4)}, la media ha sido de un ${numero(ipc.general.filter((v) => v !== null).reduce((s, v) => s + v, 0) / ipc.general.filter((v) => v !== null).length, 1)} %. Desde 2022, las pensiones contributivas suben cada enero lo que subieron de media los precios en los doce meses que acaban en noviembre.`]);
     lineas("g-ipc", [
       { nombre: "general", periodos: ipc.meses, valores: ipc.general, color: c1, ancho: 2.5 },
       { nombre: "subyacente", periodos: ipc.meses, valores: ipc.subyacente, color: c2 },
@@ -180,11 +181,17 @@ function pintar(e) {
   }
 
   // 4. Coste de la deuda
+  // El valor más alto de la prima desde 2010, para tener con qué comparar la de hoy.
+  const maxPrima = (b) => {
+    let k = -1;
+    b.meses.forEach((m_, i) => { if (m_ >= "2010" && b.prima_pb[i] !== null && (k < 0 || b.prima_pb[i] > b.prima_pb[k])) k = i; });
+    return k < 0 ? "" : `. Desde 2010, la más alta fue de ${numero(b.prima_pb[k], 0)}, en ${nombrePeriodo(b.meses[k])}`;
+  };
   const bo = e.bono, te = e.tesoro;
   if (bo && te) {
     const n = bo.meses.length - 1, m = te.meses.length - 1;
-    pon("r-deuda", [`En ${nombrePeriodo(bo.meses[n])}, el bono del Estado a 10 años rendía en el mercado un `, [`${numero(bo.espana[n], 2)} %`],
-      ` de media, ${numero(bo.prima_pb[n], 0)} puntos básicos más que el alemán (la prima de riesgo). Pero el tipo medio de toda la deuda viva del Estado era del `,
+    pon("r-deuda", [`En ${nombrePeriodo(bo.meses[n])}, el bono del Estado a 10 años pagaba de interés un `, [`${numero(bo.espana[n], 2)} %`],
+      ` de media, ${numero(bo.prima_pb[n], 0)} puntos básicos más que el alemán (la prima de riesgo; 100 puntos básicos son un 1 %)${maxPrima(bo)}. Pero el tipo medio de toda la deuda que el Estado aún debe era del `,
       [`${numero(te.total[m], 2)} %`], te.vida_media ? `, porque la deuda vence poco a poco: de media, en ${numero(te.vida_media.años, 2)} años.` : "."]);
     lineas("g-bono", [
       { nombre: "España", periodos: bo.meses, valores: bo.espana, color: c1, ancho: 2.5 },
@@ -198,7 +205,7 @@ function pintar(e) {
       { nombre: "letras (menos de un año)", periodos: te.meses, valores: te.letras, color: c2 },
     ], { formato: pct(2), eje: "%", min: 0 });
     fuente("g-tesoro", [["tesoro_tipo_medio_historico", "tipo medio de la deuda en circulación"], ["tesoro_tipo_medio", "últimos meses"], ["tesoro_vida_media", "vida media"]],
-      "dato", "Tipo de emisión de la deuda viva a fin de cada mes. Es la deuda del Estado, no la de todas las administraciones.");
+      "dato", "Interés medio al que se pidió prestada la deuda que el Estado aún debe, a fin de cada mes. Es la deuda del Estado, no la de todas las administraciones.");
   }
 
   // 5. Crecimiento
@@ -206,7 +213,8 @@ function pintar(e) {
   if (pib) {
     const n = pib.trimestres.length - 1;
     pon("r-pib", [`En el ${nombrePeriodo(pib.trimestres[n])}, la economía producía un `, [`${numero(pib.interanual[n], 1)} % más`],
-      " que un año antes, descontada la subida de precios. Si la economía crece más deprisa que el interés de la deuda, la deuda pesa menos sobre el PIB."]);
+      ` que un año antes, descontada la subida de precios. Desde ${pib.trimestres[0].slice(0, 4)}, la media ha sido de un ${numero(pib.interanual.reduce((s, v) => s + v, 0) / pib.interanual.length, 1)} %. `,
+      "Si la economía crece más deprisa que el interés de la deuda, la deuda pesa menos: es como deber lo mismo y ganar más."]);
     lineas("g-pib", [{ nombre: "PIB en volumen", periodos: pib.trimestres, valores: pib.interanual, color: c1 }], { formato: pct(1), eje: "%" });
     fuente("g-pib", [["ine_cntr6654", "PIB, índice de volumen encadenado"]], "dato", "Ajustado de estacionalidad y calendario.");
   }
@@ -216,8 +224,8 @@ function pintar(e) {
   if (dp) {
     const n = dp.años.length - 1, pr = dp.proyeccion;
     const ult = pr.años.at(-1);
-    pon("r-dep", [`En ${dp.años[n]} había `, [`${numero(dp.total[n], 1)} menores de 16 y mayores de 64`],
-      ` por cada 100 personas de 16 a 64 años (${numero(dp.mayores[n], 1)} solo de mayores). Según la proyección del INE, en ${ult} serían ${numero(pr.total.at(-1), 1)}.`]);
+    pon("r-dep", [`En ${dp.años[n]} había `, [`unos ${numero(Math.round(dp.total[n]), 0)} menores de 16 y mayores de 64`],
+      ` por cada 100 personas de 16 a 64 años. Solo mayores de 64, unos ${numero(Math.round(dp.mayores[n]), 0)} por cada 100; en ${dp.años[0]} eran unos ${numero(Math.round(dp.mayores[0]), 0)}. Según la proyección del INE, en ${ult} habría unos ${numero(Math.round(pr.total.at(-1)), 0)} menores y mayores por cada 100.`]);
     lineas("g-dep", [
       { nombre: "total", periodos: dp.años, valores: dp.total, color: c1, ancho: 2.5 },
       { nombre: "solo mayores de 64", periodos: dp.años, valores: dp.mayores, color: c3 },

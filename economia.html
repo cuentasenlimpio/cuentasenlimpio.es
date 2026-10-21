@@ -8,15 +8,15 @@
   <meta name="referrer" content="no-referrer">
   <title>La economía detrás de las cuentas · Cuentas en limpio</title>
   <meta name="description" content="Empleo, pensiones, precios, coste de la deuda, crecimiento y envejecimiento: los datos de la economía que mueven las cuentas públicas, con la fuente de cada cifra.">
-  <link rel="stylesheet" href="estilo.css?v=31ec141bbe">
+  <link rel="stylesheet" href="estilo.css?v=70ecfc44d3">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=49c570b7be" defer></script>
+  <script src="comun.js?v=a6a79b8632" defer></script>
   <script src="ec.js?v=7568c86795" defer></script>
-  <script src="economia.js?v=b0f9314370" defer></script>
+  <script src="economia.js?v=a966a9ca58" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
@@ -33,8 +33,16 @@
   <main>
     <p class="antetitulo">El dinero · el contexto</p>
     <h1 class="pregunta">¿Qué pasa en la economía que mueve las cuentas?</h1>
-    <p class="respuesta">Las cotizaciones dependen de cuánta gente trabaja; el gasto en desempleo, del paro; las pensiones, de cuántas personas se jubilan; los intereses, de a cuánto se pide prestado; y la deuda en % del PIB, de cuánto crece la economía. Estos son esos datos, con la fuente de cada cifra.</p>
-    <p class="contabilidad">Son datos de registros y encuestas oficiales, no de contabilidad nacional. Coincidir en el tiempo no es causar: <a href="como-se-miente.html#causa">por qué</a>.</p>
+    <p class="respuesta">Las cuentas públicas dependen de cinco cosas que pasan fuera de ellas:</p>
+    <ul class="respuesta-lista">
+      <li>cuánta gente trabaja, porque de eso salen las cotizaciones;</li>
+      <li>cuánta gente está en paro, por lo que se paga en prestaciones;</li>
+      <li>cuántas personas se jubilan, por las pensiones;</li>
+      <li>a qué interés se pide prestado, por lo que cuesta la deuda;</li>
+      <li>y cuánto crece la economía, porque cuanto más crece, menos pesa la deuda.</li>
+    </ul>
+    <p class="respuesta">Estos son esos datos, con la fuente de cada cifra.</p>
+    <p class="contabilidad">Son datos de encuestas y registros oficiales, no de las cuentas públicas. Que dos cosas pasen a la vez no quiere decir que una cause la otra: <a href="como-se-miente.html#causa">por qué</a>.</p>
     <div id="capas"></div>
     <div class="nota-capas" id="nota-capas"></div>
 
@@ -50,14 +58,14 @@
       </section>
 
       <section class="grafico" aria-labelledby="g-paro-t">
-        <h3 class="grafico-titulo" id="g-paro-t">Paro registrado en los servicios públicos de empleo, cada mes <button type="button" class="info" data-info="tres_cifras_empleo">i</button></h3>
+        <h3 class="grafico-titulo" id="g-paro-t">Paro registrado en los servicios públicos de empleo, cada mes <button type="button" class="info" data-info="paro_registrado">i</button></h3>
         <p class="grafico-explica">Demandas de empleo inscritas el último día de cada mes, menos las que la norma excluye. No es la cifra oficial de paro, que es la de la EPA (abajo).</p>
         <div class="lectura-año" id="g-paro-lectura" aria-live="polite"></div>
         <div class="lienzo" id="g-paro" role="img" aria-label="Paro registrado cada mes desde 2001"></div>
         <p class="fuente-grafico" id="g-paro-fuente"></p>
       </section>
       <section class="grafico" aria-labelledby="g-epa-t">
-        <h3 class="grafico-titulo" id="g-epa-t">Tasas de la Encuesta de Población Activa, cada trimestre <button type="button" class="info" data-info="tres_cifras_empleo">i</button></h3>
+        <h3 class="grafico-titulo" id="g-epa-t">Tasas de la Encuesta de Población Activa, cada trimestre <button type="button" class="info" data-info="tasas_epa">i</button></h3>
 
         <div class="lectura-año" id="g-epa-lectura" aria-live="polite"></div>
         <div class="lienzo" id="g-epa" role="img" aria-label="Tasas de la Encuesta de Población Activa, cada trimestre"></div>
@@ -68,7 +76,8 @@
         <p class="rotulo">Para entenderlo</p>
         <h3>Tres cifras de empleo que no miden lo mismo</h3>
         <p>La <strong>afiliación</strong> cuenta relaciones laborales que cotizan a la Seguridad Social: quien tiene dos empleos por cuenta ajena cuenta dos veces. La <strong>EPA</strong> del INE es una encuesta que cuenta personas: está parado quien no trabaja, busca empleo y podría empezar en dos semanas, esté o no apuntado en una oficina. El <strong>paro registrado</strong> del SEPE cuenta las demandas de empleo inscritas, menos las que la norma excluye (por ejemplo, quien ya trabaja o busca un empleo de menos de 20 horas).</p>
-        <p>Por eso no cuadran entre sí, ni deben. El propio INE advierte de que las cifras que salen de registros administrativos dependen de normas que cambian y no forman series homogéneas.</p>
+        <p>Por eso no cuadran entre sí, ni tienen por qué. El propio INE advierte de que las cifras que salen de registros dependen de normas que cambian con el tiempo.</p>
+        <p><strong>¿Cuál usar?</strong> Para saber cuánta gente busca trabajo sin encontrarlo, la cifra oficial, y la que se puede comparar con otros países, es la de la EPA. La afiliación sirve para ver cuántos empleos cotizan, mes a mes. El paro registrado, cuánta gente está apuntada en las oficinas de empleo.</p>
       </div>
       <div class="dos-columnas">
       <section class="grafico" aria-labelledby="g-reg-t">
@@ -168,10 +177,10 @@
       </section>
 
       <section class="grafico" aria-labelledby="g-tesoro-t">
-        <h3 class="grafico-titulo" id="g-tesoro-t">Tipo de interés medio de toda la deuda viva del Estado <button type="button" class="info" data-info="tipo_medio">i</button></h3>
+        <h3 class="grafico-titulo" id="g-tesoro-t">Interés medio de toda la deuda que el Estado aún debe <button type="button" class="info" data-info="tipo_medio">i</button></h3>
         <p class="grafico-explica">Los tipos nuevos (las letras, a menos de un año) se mueven deprisa; el tipo medio de toda la deuda, despacio.</p>
         <div class="lectura-año" id="g-tesoro-lectura" aria-live="polite"></div>
-        <div class="lienzo" id="g-tesoro" role="img" aria-label="Tipo de interés medio de toda la deuda viva del Estado"></div>
+        <div class="lienzo" id="g-tesoro" role="img" aria-label="Interés medio de toda la deuda que el Estado aún debe"></div>
         <p class="fuente-grafico" id="g-tesoro-fuente"></p>
       </section>
 
@@ -181,7 +190,7 @@
       <h2 class="pregunta" id="b5">¿Cuánto crece la economía?</h2>
       <p class="respuesta" id="r-pib"></p>
       <section class="grafico" aria-labelledby="g-pib-t">
-        <h3 class="grafico-titulo" id="g-pib-t">PIB en volumen: variación sobre el mismo trimestre del año anterior <button type="button" class="info" data-info="pib_real">i</button></h3>
+        <h3 class="grafico-titulo" id="g-pib-t">Cuánto crece la economía, descontada la subida de precios (frente al mismo trimestre del año anterior) <button type="button" class="info" data-info="pib_real">i</button></h3>
 
         <div class="lectura-año" id="g-pib-lectura" aria-live="polite"></div>
         <div class="lienzo" id="g-pib" role="img" aria-label="PIB en volumen: variación sobre el mismo trimestre del año anterior"></div>

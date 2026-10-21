@@ -8,15 +8,15 @@
   <meta name="referrer" content="no-referrer">
   <title>Presupuesto y ejecución · Cuentas en limpio</title>
   <meta name="description" content="El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto, con la fuente de cada cifra.">
-  <link rel="stylesheet" href="estilo.css?v=31ec141bbe">
+  <link rel="stylesheet" href="estilo.css?v=70ecfc44d3">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=49c570b7be" defer></script>
+  <script src="comun.js?v=a6a79b8632" defer></script>
   <script src="ec.js?v=7568c86795" defer></script>
-  <script src="presupuesto.js?v=d456f3dc00" defer></script>
+  <script src="presupuesto.js?v=b399f96540" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
@@ -33,13 +33,14 @@
   <main>
     <h1 class="pregunta">¿Se gastó lo que se aprobó?</h1>
     <p class="respuesta" id="respuesta"></p>
-    <p class="contabilidad">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Aquí solo está el presupuesto del Estado en sentido estricto: los ministerios y los órganos constitucionales. Los organismos autónomos, la Seguridad Social, las comunidades autónomas y los ayuntamientos tienen presupuestos propios y no están. Contabilidad presupuestaria, no la nacional del resto de la web.</p>
+    <p class="contabilidad">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Solo está el presupuesto del Estado: los ministerios, el Gobierno, las Cortes y los demás órganos que fija la Constitución. La Seguridad Social, las comunidades autónomas, los ayuntamientos y los organismos que dependen del Estado tienen presupuestos propios y no están aquí.</p>
+    <p class="como-leer">Por eso estas cifras no son las del resto de la web, que suma todas las administraciones con otras reglas <button type="button" class="info" data-info="contabilidad">i</button></p>
 
     <div class="explica-pasos">
       <p><strong>Cómo se lee.</strong> Un presupuesto pasa por tres momentos:</p>
       <ol>
         <li><span class="clave-barra p-aprobado"></span><strong>Aprobado:</strong> lo que autoriza la ley de presupuestos al empezar el año (los «créditos iniciales»). Si no hay ley nueva, es el presupuesto prorrogado.</li>
-        <li><span class="clave-barra p-definitivo"></span><strong>Autorizado al final:</strong> lo aprobado más las modificaciones que se hacen durante el año (ampliaciones, créditos extraordinarios, bajas…).</li>
+        <li><span class="clave-barra p-definitivo"></span><strong>Autorizado al final:</strong> lo aprobado más los cambios que se hacen durante el año: más dinero para unas partidas y menos para otras.</li>
         <li><span class="clave-barra p-gastado"></span><strong>Gastado:</strong> lo que el Estado se comprometió a pagar de verdad ese año (las «obligaciones reconocidas»).</li>
       </ol>
     </div>
@@ -49,7 +50,13 @@
       <p class="grafico-explica">En miles de millones de euros.</p>
       <div class="lectura-año" id="t-lectura" aria-live="polite"></div>
       <div class="lienzo" id="totales" tabindex="0" role="img" aria-label="Presupuesto aprobado, autorizado y gastado del Estado por año. Usa las flechas para recorrer los años."></div>
-      <p class="nota-años"><span>*</span> presupuesto prorrogado todo el año · <span>†</span> prorrogado hasta que se aprobó la ley, a mitad de año; en esos años, «aprobado» es lo que fijó esa ley, que es lo que recoge la liquidación · <span>a</span> avance: ejecución a 31 de diciembre, a falta de la liquidación definitiva · <span>?</span> por confirmar en el BOE si hubo presupuesto propio</p>
+      <p class="nota-años">Las marcas junto al año quieren decir:</p>
+      <ul class="nota-años">
+        <li><span>*</span> no se aprobó presupuesto ese año: siguió el del año anterior (prorrogado).</li>
+        <li><span>†</span> siguió el del año anterior hasta que se aprobó el nuevo, a mitad de año. En esos años, «aprobado» es lo que fijó la ley nueva.</li>
+        <li><span>a</span> avance: lo gastado hasta el 31 de diciembre, a falta del cierre definitivo de las cuentas.</li>
+        <li><span>?</span> falta confirmar en el Boletín Oficial del Estado si hubo presupuesto nuevo.</li>
+      </ul>
       <p class="fuente-grafico" id="totales-fuente"></p>
       <div class="entender">
         <p class="rotulo">Para entenderlo</p>
@@ -70,8 +77,8 @@
     </div>
 
     <section class="grafico" aria-labelledby="e-titulo">
-      <h2 class="pregunta" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>? <button type="button" class="info" data-info="contabilidad">i</button></h2>
-      <p class="grafico-explica">Gastado ÷ autorizado al final del año, por política de gasto. Gastar menos de lo autorizado no es por sí bueno ni malo: puede ser ahorro, retraso o un programa que no arrancó.</p>
+      <h2 class="pregunta" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>?</h2>
+      <p class="grafico-explica">Gastado ÷ autorizado al final del año, por política de gasto. Gastar menos de lo autorizado no es por sí bueno ni malo: puede ser ahorro, retraso o un programa que no arrancó, y las cuentas no dicen cuál de las tres. Lo que no se gasta, en general, no pasa al año siguiente.</p>
       <div class="lienzo" id="ejecucion" role="img" aria-label="Porcentaje gastado de lo autorizado por política de gasto en el año elegido"></div>
       <p class="fuente-grafico" id="ejecucion-fuente"></p>
     </section>
@@ -86,9 +93,10 @@
       <strong>Lo que esta página no dice</strong>
       <ul>
         <li>No es todo el gasto público: solo el del Estado. El gasto de todas las administraciones está en <a href="cuentas.html">Cuentas</a> y <a href="gasto.html">En qué se gasta</a>, y se mide con otra contabilidad (ver <a href="como-se-miente.html#contabilidades">por qué</a>).</li>
-        <li>«Deuda pública» incluye devolver la deuda que vence, no solo pagar sus intereses. Por eso es la política más grande.</li>
+        <li>«Deuda pública» incluye devolver la deuda que vence, no solo pagar sus intereses. Por eso es la política más grande: lo que se devuelve se vuelve a pedir prestado casi entero.</li>
+        <li>«Pensiones» son aquí sobre todo las de los funcionarios del Estado (las «clases pasivas»). Las de la Seguridad Social van en el presupuesto de la Seguridad Social, que no está en esta página; el Estado le pasa dinero dentro de las transferencias internas.</li>
         <li>«Transferencias internas» y «transferencias a otras administraciones» son dinero que el Estado pasa a la Seguridad Social, a sus organismos o a comunidades y ayuntamientos, que lo gastan después.</li>
-        <li>Gastado no es pagado: una parte de lo comprometido se paga al año siguiente.</li>
+        <li>«Gastado» quiere decir comprometido: la obra, el servicio o la ayuda ya se hizo y hay que pagarlo. Una parte se paga en los primeros meses del año siguiente, y no vuelve a contar en el presupuesto de ese año.</li>
       </ul>
     </div>
 

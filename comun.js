@@ -12,14 +12,14 @@ const UNIDADES = {
   },
   corrientes: {
     tipo: "dato",
-    corta: "mil M€",
+    corta: "mil millones €",
     eje: "miles de millones de euros",
     explica: "Miles de millones de euros de cada año, sin descontar la subida de precios. Hasta 1998, pesetas pasadas a euros al tipo fijo de 166,386. Dato publicado por Eurostat.",
     escala: 1 / 1000,
   },
   constantes: {
     tipo: "lectura",
-    corta: "mil M€",
+    corta: "mil millones €",
     eje: "miles de millones de euros de {base}",
     explica: "Miles de millones de euros de {base}: descontamos la subida de precios con el deflactor del PIB, para que los años se puedan comparar. Es una lectura: un cálculo nuestro sobre datos de Eurostat.",
     escala: 1 / 1000,
@@ -68,8 +68,8 @@ const fecha = (iso) =>
 const ESCALA = { pib: 1, corrientes: 1 / 1000, constantes: 1 / 1000, habitante: 1 };
 const FORMATO = {
   pib: (v) => `${numero(v, 1)} %`,
-  corrientes: (v) => `${numero(v, 1)} mil M€`,
-  constantes: (v) => `${numero(v, 1)} mil M€`,
+  corrientes: (v) => `${numero(v, 1)} mil millones €`,
+  constantes: (v) => `${numero(v, 1)} mil millones €`,
   habitante: (v) => `${numero(Math.round(v), 0)} €`,
 };
 

@@ -250,8 +250,9 @@
   ]
  },
  "contabilidad": {
-  "titulo": "Por qué no cuadran dos cifras oficiales",
+  "titulo": "Dos formas oficiales de llevar las cuentas",
   "texto": [
+   "Las dos son oficiales y miden cosas distintas. El presupuesto dice cuánto permitió gastar el Parlamento y cuánto se gastó. La contabilidad nacional, la que siguen todos los países de la Unión Europea, es la que da el déficit y la deuda oficiales. Por eso sus cifras no cuadran del todo.",
    "El presupuesto apunta un impuesto en cuanto nace el derecho a cobrarlo. La contabilidad nacional es la forma de llevar las cuentas que cuenta para Europa. Esta solo apunta como ingreso lo que de verdad se cobra. Así, los impuestos que nunca se van a recaudar no rebajan el déficit.",
    "La Intervención General de la Administración del Estado (IGAE), que lleva las cuentas del sector público, hace «ajustes» para pasar de un saldo (ingresos menos gastos) al otro."
   ],
@@ -557,9 +558,11 @@
   "titulo": "Por qué cae la afiliación en enero y en agosto",
   "texto": [
    "La afiliación cuenta las altas en la Seguridad Social de quien trabaja. Cada año baja en enero y en agosto, y sube en primavera y a comienzos del verano. Los cálculos oficiales del efecto de cada mes en 2026 marcan enero como el mes más bajo y junio como el más alto.",
-   "Es efecto de la época del año, no necesariamente un cambio de tendencia. En 2026, por ejemplo, agosto restó 162.840 afiliados medios y enero, 270.782.",
-   "Para ver la tendencia, la Seguridad Social publica una serie «desestacionalizada»: quita ese efecto de la época del año con un método estadístico estándar (TRAMO-SEATS). Es la línea gruesa del gráfico. No la calcula esta web.",
-   "Los afiliados medios son la media de los días hábiles del mes. El número del último día del mes es otra cifra distinta."
+   "Es el efecto de la época del año, no necesariamente un cambio de tendencia. En 2026, por ejemplo, la época del año bajó la cifra de agosto en 162.840 afiliados y la de enero en 270.782.",
+   "Para ver la tendencia, la Seguridad Social publica una serie «desestacionalizada», que quita ese efecto con un método estadístico estándar. Es la línea gruesa del gráfico. No la calcula esta web.",
+   "Los afiliados medios son la media de los días hábiles del mes. El número del último día del mes es otra cifra distinta.",
+   "La afiliación cuenta altas en la Seguridad Social, no personas. Lo dice así la Seguridad Social: «la misma persona se contabiliza tantas veces como situaciones de cotización tenga». Por ejemplo, quien tiene dos trabajos cuenta dos veces. Hay excepciones que sí cuentan personas: los autónomos, los empleados del hogar y los trabajadores del campo por cuenta ajena.",
+   "La afiliación no incluye a quien cobra el paro. Tampoco a los fijos discontinuos (con contrato fijo, pero que solo trabajan parte del año) mientras no trabajan."
   ],
   "fuentes": [
    {
@@ -569,6 +572,14 @@
    {
     "texto": "Seguridad Social, método para quitar el efecto de la época del año (ajuste estacional, 2026)",
     "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   },
+   {
+    "texto": "INE, resumen de cómo se hace la EPA",
+    "url": "https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf"
+   },
+   {
+    "texto": "SEPE, introducción a la estadística de empleo (septiembre de 2026)",
+    "url": "https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf"
    }
   ]
  },
@@ -635,8 +646,8 @@
  "prima_riesgo": {
   "titulo": "Bono a 10 años y prima de riesgo",
   "texto": [
-   "La rentabilidad del bono a 10 años es el interés que piden los inversores por prestar dinero al Estado durante diez años. Esta web usa la serie del Banco Central Europeo (BCE) para la convergencia del euro, la que sirve para comprobar si un país cumple las condiciones para usar el euro. Mide igual a todos los países y da la media de cada mes.",
-   "La prima de riesgo es la diferencia entre ese interés y el que paga Alemania, que se toma como referencia. Ninguna institución la publica como serie. Esta web la calcula restando una cifra de la otra, y por eso lleva la etiqueta «lectura». Se mide en puntos básicos: 100 puntos básicos son un punto porcentual de interés."
+   "La rentabilidad del bono a 10 años es el interés que piden los inversores por prestar dinero al Estado durante diez años. Esta web usa la serie del Banco Central Europeo (BCE), que mide igual a todos los países de la Unión Europea y da la media de cada mes.",
+   "La prima de riesgo es la diferencia entre ese interés y el que paga Alemania, que se toma como referencia. Ninguna institución la publica como serie. Esta web la calcula restando una cifra de la otra, y por eso lleva la etiqueta «cálculo nuestro». Se mide en puntos básicos: 100 puntos básicos son un punto porcentual de interés."
   ],
   "decalaje": "Lo que se paga por la deuda nueva solo afecta a la parte que se pide prestada o se renueva cada año. El interés medio de toda la deuda se mueve mucho más despacio (gráfico de abajo).",
   "fuentes": [
@@ -650,7 +661,7 @@
   "titulo": "El interés medio de la deuda",
   "texto": [
    "Es el interés medio de toda la deuda del Estado que aún no se ha devuelto. Cada bono o letra cuenta con el interés que se fijó cuando se emitió.",
-   "Cada mes solo vence una parte de la deuda. Por eso una subida de tipos de interés tarda años en notarse entera. Las letras del Tesoro son los préstamos al Estado a menos de un año. Tras la subida del Banco Central Europeo (BCE), pasaron de pagar el 0,73 % en 2022 al 3,48 % en 2023. En cambio, el interés medio de toda la deuda solo pasó del 1,73 % al 2,45 % hasta septiembre de 2026.",
+   "Cada mes solo vence una parte de la deuda. Por eso una subida de tipos de interés tarda años en notarse entera. Las letras del Tesoro son los préstamos al Estado a menos de un año. Tras la subida del Banco Central Europeo (BCE), pasaron de pagar el 0,73 % en 2022 al 3,48 % en 2023. En cambio, el interés medio de toda la deuda solo pasó del 1,73 % de 2022 al 2,45 % de septiembre de 2026.",
    "Es la deuda del Estado, no la de todas las administraciones. Es la mayor parte, pero no toda."
   ],
   "decalaje": "La deuda del Estado tarda de media unos ocho años en devolverse: es su «vida media» (7,85 años en septiembre de 2026).",
@@ -930,6 +941,49 @@
    {
     "texto": "Banco de España, Encuesta Financiera de las Familias 2024",
     "url": "https://www.bde.es/wbe/es/publicaciones/analisis-economico-investigacion/documentos-ocasionales/encuesta-financiera-de-las-familias-eff-2024-metodos-resultados-y-cambios-desde-2022.html"
+   }
+  ]
+ },
+ "paro_registrado": {
+  "titulo": "Qué cuenta el paro registrado",
+  "texto": [
+   "El paro registrado es el del Servicio Público de Empleo Estatal (SEPE). Cuenta las peticiones de empleo apuntadas y sin cubrir el último día del mes. Pero no cuenta a todos los apuntados: por una norma de 1985, deja fuera, entre otros, a quien ya trabaja, a los estudiantes menores de 25 años y a quien busca un empleo de menos de tres meses o de menos de 20 horas. Por eso hay más demandantes de empleo (4,2 millones en septiembre de 2026) que parados registrados (2,4 millones).",
+   "No es la cifra oficial de paro: esa es la de la Encuesta de Población Activa (EPA)."
+  ],
+  "fuentes": [
+   {
+    "texto": "Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   },
+   {
+    "texto": "INE, resumen de cómo se hace la EPA",
+    "url": "https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf"
+   },
+   {
+    "texto": "SEPE, introducción a la estadística de empleo (septiembre de 2026)",
+    "url": "https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf"
+   }
+  ]
+ },
+ "tasas_epa": {
+  "titulo": "Qué cuenta la EPA",
+  "texto": [
+   "La Encuesta de Población Activa (EPA) del Instituto Nacional de Estadística (INE) pregunta a hogares cada trimestre. Cuenta como ocupado a quien trabajó al menos una hora en la semana por la que se pregunta. Cuenta como parado a quien no trabajó, buscó empleo y podría empezar a trabajar en dos semanas.",
+   "Los activos son los que trabajan más los que buscan trabajo. La tasa de actividad es el porcentaje de activos entre toda la población de 16 años o más. La tasa de empleo, el porcentaje de los que trabajan entre esa misma población. Y la tasa de paro, el porcentaje de los que buscan trabajo sin encontrarlo entre los activos.",
+   "Por eso la tasa de empleo parece baja: en la población de 16 años o más entran también los jubilados y los estudiantes."
+  ],
+  "fuentes": [
+   {
+    "texto": "Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026)",
+    "url": "https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293"
+   },
+   {
+    "texto": "INE, resumen de cómo se hace la EPA",
+    "url": "https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf"
+   },
+   {
+    "texto": "SEPE, introducción a la estadística de empleo (septiembre de 2026)",
+    "url": "https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf"
    }
   ]
  }

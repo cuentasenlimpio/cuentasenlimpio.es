@@ -6,7 +6,26 @@ const SERIES = [
   { clave: "definitivos", clase: "p-definitivo", nombre: "autorizado al final" },
   { clave: "obligaciones", clase: "p-gastado", nombre: "gastado" },
 ];
-const milM = (v) => `${numero(v / 1000, 1)} mil M€`;
+const milM = (v) => `${numero(v / 1000, 1)} mil millones €`;
+// Nombres de las áreas y políticas como se entienden: el oficial va abreviado o dice poco («Producción bienes púb.
+// carácter preferente»). Lo que hay dentro, en llano; el nombre oficial, en el CSV.
+const NOMBRE_POLITICA = {
+  A0: "Transferencias internas (a la Seguridad Social y a organismos del Estado)",
+  "00": "Transferencias internas",
+  A1: "Servicios básicos: justicia, defensa, seguridad y exterior",
+  A2: "Protección social: pensiones, empleo, vivienda y servicios sociales",
+  A3: "Sanidad, educación y cultura",
+  A4: "Economía: agricultura, industria, comercio, transporte, infraestructuras e investigación",
+  A9: "Generales: Gobierno, Hacienda, transferencias a otras administraciones y deuda",
+  28: "Gestión y administración de Trabajo y Economía social",
+  29: "Gestión y administración de la Seguridad Social, Inclusión y Migraciones",
+  42: "Industria y Energía",
+  45: "Infraestructuras: carreteras, ferrocarril, agua y medio ambiente (Infraestructuras y Ecosistemas Resilientes)",
+  46: "Investigación, desarrollo, innovación y digitalización",
+  91: "Órganos constitucionales, Gobierno y otros",
+  95: "Deuda pública (intereses y devolución de lo que vence)",
+};
+const nombrePolitica = (p) => NOMBRE_POLITICA[p.codigo] || p.nombre;
 const marcaVigencia = (v) => (v.tipo === "prorrogado" ? "*" : v.tipo === "mitad" ? "†" : v.tipo === "sin_confirmar" ? "?" : "");
 // Año con avance (ejecución a 31 de diciembre) en lugar de liquidación definitiva
 const marcaAño = (d, i) => `${marcaVigencia(d.vigencia[i])}${d.avance[i] ? "a" : ""}`;
@@ -80,7 +99,9 @@ function dibujarTotales(contenedor, d, sel, alCambiar) {
   c.textContent = "";
   const año = document.createElement("strong");
   año.className = "lectura-anio";
-  año.textContent = `${d.años[i]}${marcaAño(d, i)}${d.avance[i] ? " · avance" : ""}`;
+  // En la lectura del año, las marcas en palabras (en el eje, que no cabe, siguen siendo símbolos).
+  const v = d.vigencia[i];
+  año.textContent = `${d.años[i]}${v.tipo === "prorrogado" ? " · presupuesto prorrogado" : v.tipo === "mitad" ? " · prorrogado hasta mitad de año" : ""}${d.avance[i] ? " · avance, a falta del cierre" : ""}`;
   c.appendChild(año);
   for (const s of SERIES) {
     const f = document.createElement("span");
@@ -110,7 +131,7 @@ function pintar(d, aapp, sel) {
 
   const politicas = d.politicas[i].filter((p) => !p.es_area && p.definitivos > 0 && p.obligaciones !== null);
   dibujarBarrasH(document.getElementById("ejecucion"),
-    politicas.map((p) => ({ nombre: p.nombre, valor: (100 * p.obligaciones) / p.definitivos })), { formato: (v) => numero(v, 0), sufijo: " %" });
+    politicas.map((p) => ({ nombre: nombrePolitica(p), valor: (100 * p.obligaciones) / p.definitivos })), { formato: (v) => numero(v, 0), sufijo: " %" });
   lineaFuente(document.getElementById("ejecucion-fuente"), { fuentes: aapp.fuentes,
     tablas: [fuenteAño(d, i)], tipo: "lectura",
     nota: `Obligaciones reconocidas ÷ créditos definitivos × 100 (hoja ${d.avance[i] ? "GTOS 008" : "LIQ 007"}).` });
@@ -132,7 +153,7 @@ function pintar(d, aapp, sel) {
     if (!p.es_area && d.politicas[i].filter((q) => !q.es_area && q.area === p.area).length === 1) continue;
     const tr = document.createElement("tr");
     if (p.es_area) tr.className = "fila-area";
-    const celdas = [p.nombre, p.iniciales, p.definitivos - p.iniciales, p.definitivos, p.obligaciones,
+    const celdas = [nombrePolitica(p), p.iniciales, p.definitivos - p.iniciales, p.definitivos, p.obligaciones,
       p.obligaciones === null || !p.definitivos ? null : (100 * p.obligaciones) / p.definitivos];
     celdas.forEach((v, k) => {
       const td = document.createElement("td");
@@ -168,7 +189,7 @@ function pintarRespuesta(d) {
   const k = d.años.findLastIndex((_, j) => !d.avance[j]);
   const t = d.totales[k];
   const p = document.getElementById("respuesta");
-  p.textContent = `En ${d.años[k]}, el Estado gastó `;
+  p.textContent = `En ${d.años[k]}, el último año con las cuentas cerradas, el Estado gastó `;
   const b = document.createElement("strong");
   b.textContent = `${numero(Math.round((100 * t.obligaciones) / t.definitivos), 0)} de cada 100 €`;
   const prorroga = d.vigencia.filter((v) => v.tipo === "prorrogado" || v.tipo === "mitad").length;

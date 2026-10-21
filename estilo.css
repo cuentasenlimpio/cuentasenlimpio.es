@@ -540,3 +540,8 @@ button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset:
 
 .info-fuentes-plegadas summary { cursor: pointer; font-size: 0.8125rem; color: var(--tinta-suave); }
 .grafico-clave { font-weight: 600; max-width: 46rem; }
+
+ul.nota-años { list-style: none; padding: 0; margin: 0.25rem 0 0; font-size: 0.875rem; color: var(--tinta-suave); }
+ul.nota-años li { margin: 0.15rem 0; }
+
+.respuesta-lista { font-size: 1.05rem; max-width: 46rem; margin: 0 0 0.75rem; }

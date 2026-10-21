@@ -604,6 +604,76 @@
     "dividendos"
    ],
    "def": "La parte de los beneficios que una empresa reparte entre quienes tienen sus acciones."
+  },
+  {
+   "id": "sepe",
+   "formas": [
+    "Servicio Público de Empleo Estatal",
+    "SEPE"
+   ],
+   "def": "El organismo del Estado que gestiona las prestaciones por desempleo y coordina las oficinas de empleo, que son de las comunidades autónomas."
+  },
+  {
+   "id": "fijo-discontinuo",
+   "formas": [
+    "fijos discontinuos",
+    "fijo discontinuo"
+   ],
+   "def": "Un contrato indefinido para trabajos que no duran todo el año, como una campaña agrícola o la temporada turística. Entre campaña y campaña, la persona no trabaja pero sigue teniendo el contrato."
+  },
+  {
+   "id": "regimen",
+   "formas": [
+    "régimen general"
+   ],
+   "def": "El sistema de la Seguridad Social en el que cotiza la mayoría de los asalariados. Los autónomos, por ejemplo, cotizan en otro (el régimen especial de trabajadores autónomos)."
+  },
+  {
+   "id": "contributivas",
+   "formas": [
+    "pensiones contributivas",
+    "pensión contributiva"
+   ],
+   "def": "Las pensiones que se cobran por haber cotizado: jubilación, incapacidad, viudedad, orfandad. Las no contributivas son para quien no cotizó lo suficiente y no tiene apenas ingresos."
+  },
+  {
+   "id": "progresividad-frio",
+   "formas": [
+    "progresividad en frío"
+   ],
+   "def": "Cuando los sueldos suben con la inflación pero los tramos del IRPF no se actualizan, se paga un porcentaje mayor de impuesto sin que se pueda comprar más que antes."
+  },
+  {
+   "id": "puntos-basicos",
+   "formas": [
+    "puntos básicos"
+   ],
+   "def": "Centésimas de punto porcentual: 100 puntos básicos son un 1 %. Si un bono paga un 3,9 % y otro un 3,4 %, la diferencia es de 50 puntos básicos."
+  },
+  {
+   "id": "desest",
+   "formas": [
+    "desestacionalizada",
+    "desestacionalizado",
+    "desestacionalizados",
+    "desestacionalizadas"
+   ],
+   "def": "Una serie a la que se le quita el efecto de la época del año (más empleo en verano, menos en enero), para ver si de verdad sube o baja."
+  },
+  {
+   "id": "volumen",
+   "formas": [
+    "en volumen",
+    "índice de volumen"
+   ],
+   "def": "Descontando la subida de precios: mide si se produce más, no si lo producido vale más euros."
+  },
+  {
+   "id": "deuda-viva",
+   "formas": [
+    "deuda viva"
+   ],
+   "def": "La deuda que todavía no se ha devuelto en un momento dado."
   }
  ]
 }

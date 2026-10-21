@@ -1621,13 +1621,13 @@ def escribir_csv_paginas(gasto, ingresos):
 
 # Qué presupuesto rigió cada año (comprobado en el BOE; ver la página «Cómo se miente con datos»).
 VIGENCIA = {
-    2017: ("mitad", "Prorrogado hasta la Ley 3/2017, de 27 de junio"),
-    2018: ("mitad", "Prorrogado hasta la Ley 6/2018, de 3 de julio"),
-    2019: ("prorrogado", "Prorrogados los de 2018 (Ley 6/2018)"),
-    2020: ("prorrogado", "Prorrogados los de 2018 (Ley 6/2018)"),
-    2024: ("prorrogado", "Prorrogados los de 2023 (Ley 31/2022)"),
-    2025: ("prorrogado", "Prorrogados los de 2023 (Ley 31/2022)"),
-    2026: ("prorrogado", "Prorrogados los de 2023 (Ley 31/2022)"),
+    2017: ("mitad", "Siguió el presupuesto anterior hasta que se aprobó el nuevo, el 27 de junio (Ley 3/2017)"),
+    2018: ("mitad", "Siguió el presupuesto anterior hasta que se aprobó el nuevo, el 3 de julio (Ley 6/2018)"),
+    2019: ("prorrogado", "No hubo presupuesto nuevo: siguió el de 2018 (Ley 6/2018)"),
+    2020: ("prorrogado", "No hubo presupuesto nuevo: siguió el de 2018 (Ley 6/2018)"),
+    2024: ("prorrogado", "No hubo presupuesto nuevo: siguió el de 2023, aprobado en diciembre de 2022 (Ley 31/2022)"),
+    2025: ("prorrogado", "No hubo presupuesto nuevo: siguió el de 2023, aprobado en diciembre de 2022 (Ley 31/2022)"),
+    2026: ("prorrogado", "No hubo presupuesto nuevo: siguió el de 2023, aprobado en diciembre de 2022 (Ley 31/2022)"),
 }
 # Hasta qué año está comprobado en el BOE. Un año posterior aparece como «por confirmar» y salta un aviso.
 VIGENCIA_COMPROBADA_HASTA = 2026
