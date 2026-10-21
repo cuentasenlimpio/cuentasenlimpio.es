@@ -2552,5 +2552,21 @@ def main():
     print(f"{len(años)} años ({años[0]}–{ultimo}); web/datos/aapp.json y aapp.csv escritos")
 
 
+def versionar_estaticos(web):
+    """Pone a cada script y hoja de estilos propios su versión (huella del contenido) en las páginas: «comun.js?v=…».
+    GitHub Pages guarda cada fichero diez minutos en caché, por separado; sin versión, tras publicar, una visita podía
+    juntar un comun.js viejo con un graficos.js nuevo y la página fallaba. Solo en la copia que se publica (CUENTAS_WEB):
+    el repositorio no cambia."""
+    huellas = {f.name: hashlib.sha256(f.read_bytes()).hexdigest()[:10] for f in list(web.glob("*.js")) + list(web.glob("*.css"))}
+    for pagina in web.glob("*.html"):
+        html = pagina.read_text()
+        nuevo = re.sub(r'(src|href)="([\w.-]+\.(?:js|css))(\?v=\w+)?"',
+                       lambda m: f'{m.group(1)}="{m.group(2)}?v={huellas[m.group(2)]}"' if m.group(2) in huellas else m.group(0), html)
+        if nuevo != html:
+            pagina.write_text(nuevo)
+
+
 if __name__ == "__main__":
     main()
+    if os.environ.get("CUENTAS_WEB"):
+        versionar_estaticos(WEB)
