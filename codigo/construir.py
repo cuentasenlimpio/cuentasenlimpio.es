@@ -2074,6 +2074,188 @@ def construir_promesas(documentos):
     print(f"Promesas: {len(filas)} de {len(docs)} documentos; web/datos/promesas.json y promesas.csv escritos")
 
 
+# ---- Paso «Dato» de las promesas (desde el 21/10/2026): series oficiales de las metas medibles ----
+# Qué se descarga y cómo se calcula cada magnitud está en promesas/series_datos.json; aquí solo se lee y se calcula.
+# El valor «al empezar la legislatura» es el del último periodo cerrado antes de la investidura (16/11/2023), con la
+# edición más reciente de la serie; el «último», el del periodo más reciente publicado.
+INICIO_LEGISLATURA = "2023-11-16"
+
+
+def descargas_de_serie(m, hoy_año):
+    """[(tabla, url, extensión)] de una magnitud automática. La misma URL se descarga una sola vez."""
+    import hashlib
+    if m.get("ree"):
+        return [(f"dato_ree_{a}", "https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?"
+                 f"start_date={a}-01-01T00:00&end_date={a}-12-31T23:59&time_trunc=year", "json") for a in range(2019, hoy_año)]
+    return [("dato_" + hashlib.sha1(u.encode()).hexdigest()[:10], u, "csv" if "format=csvfile" in u else "json")
+            for u in m["descargas"].values()]
+
+
+def _fin_periodo(p):
+    """Último día de un periodo «AAAA», «AAAATn» o «AAAA-MM» (para compararlo con el inicio de la legislatura)."""
+    import calendar
+    if "T" in p:
+        a, t = p.split("T")
+        mes = 3 * int(t)
+    elif "-" in p:
+        a, mes = p.split("-")[:2]
+        mes = int(mes)
+    else:
+        a, mes = p, 12
+    return f"{a}-{mes:02d}-{calendar.monthrange(int(a), mes)[1]:02d}"
+
+
+def _serie_fuente(ruta, url, ref):
+    """{periodo: valor} de una referencia {"de", "filtro"} dentro del fichero descargado."""
+    import csv
+    filtro = ref.get("filtro", {})
+    if "eurostat" in url:
+        celdas, d = leer_jsonstat(ruta)
+        ids = d["id"]
+        out = {}
+        for coords, (v, _) in celdas.items():
+            dims = dict(zip(ids, coords))
+            if v is not None and all(dims.get(k) == x for k, x in filtro.items()):
+                t = dims["time"]
+                out[t.replace("-Q", "T") if "-Q" in t else t] = v
+        if len({tuple(c[i] for i, k in enumerate(ids) if k != "time") for c, (v, _) in celdas.items()
+                if all(dict(zip(ids, c)).get(k) == x for k, x in filtro.items())}) > 1:
+            raise ValueError(f"{url}: el filtro {filtro} no deja una sola serie")
+        return out
+    if "servicios.ine.es" in url:
+        d = json.loads(ruta.read_text())
+        series = [d] if isinstance(d, dict) else [x for x in d if x.get("Nombre") == filtro.get("nombre")]
+        if len(series) != 1:
+            raise ValueError(f"{url}: el filtro {filtro} deja {len(series)} series")
+        out = {}
+        for x in series[0]["Data"]:
+            if x.get("Valor") is None:
+                continue
+            if "FK_Periodo" not in x:  # las tablas (DATOS_TABLA) solo traen el nombre del periodo: aquí, años
+                out[x["NombrePeriodo"]] = x["Valor"]
+                continue
+            p_, a = x["FK_Periodo"], x["Anyo"]
+            out[f"{a}-{p_:02d}" if 1 <= p_ <= 12 else f"{a}T{p_ - 18}" if 19 <= p_ <= 22 else str(a)] = x["Valor"]
+        return out
+    if "sdmx.oecd.org" in url:
+        out = {}
+        filas = list(csv.DictReader(ruta.read_text(encoding="utf-8-sig").splitlines()))
+        claves = {tuple((k, f[k]) for k in sorted(f) if k not in ("TIME_PERIOD", "OBS_VALUE") and k.isupper())
+                  for f in filas if all(f.get(k) == x for k, x in filtro.items())}
+        for f in filas:
+            if all(f.get(k) == x for k, x in filtro.items()) and f["OBS_VALUE"] not in ("", None):
+                out[f["TIME_PERIOD"]] = float(f["OBS_VALUE"])
+        if len(claves) > 1:
+            raise ValueError(f"{url}: el filtro {filtro} no deja una sola serie ({len(claves)})")
+        return out
+    raise ValueError(f"fuente sin lector: {url}")
+
+
+def calcular_dato(m, descargas):
+    """{periodo: valor} de una magnitud automática, o None si falta alguna descarga."""
+    if m.get("ree"):
+        out = {}
+        for tabla, url, _ in descargas_de_serie(m, 9999):
+            if tabla in descargas:
+                d = json.loads((AQUI / descargas[tabla]["fichero"]).read_text())
+                ren = next(x for x in d["included"] if x["type"] == "Renovable")
+                for v in ren["attributes"]["values"]:
+                    out[v["datetime"][:4]] = 100 * v["percentage"]
+        return out or None
+    tablas = dict(zip(m["descargas"], descargas_de_serie(m, 0)))
+
+    def lee(ref):
+        refs = ref if isinstance(ref, list) else [ref]
+        partes = []
+        for r in refs:
+            tabla, url, _ = tablas[r["de"]]
+            if tabla not in descargas:
+                return None
+            partes.append(_serie_fuente(AQUI / descargas[tabla]["fichero"], url, r))
+        comunes = set.intersection(*(set(p) for p in partes))
+        return {p: sum(x[p] for x in partes) for p in comunes}
+
+    c = m["calculo"]
+    x = lee(c["x"])
+    if x is None:
+        return None
+    por = c.get("por", 1)
+    if c["op"] == "valor":
+        return {p: v * por for p, v in x.items()}
+    if c["op"] in ("cociente", "diferencia"):
+        y = lee(c["y"])
+        if y is None:
+            return None
+        if c["op"] == "diferencia":
+            return {p: x[p] - y[p] for p in x if p in y}
+        return {p: x[p] / y[p] * por for p in x if p in y and y[p]}
+    if c["op"] == "variacion_base":
+        b = x.get(c["base"])
+        return {p: (v / b - 1) * 100 for p, v in x.items() if b and p > c["base"]}
+    if c["op"] == "variacion_anual":
+        return {p: (v / x[str(int(p) - 1)] - 1) * 100 for p, v in x.items() if str(int(p) - 1) in x}
+    raise ValueError(f"cálculo desconocido: {c['op']}")
+
+
+def inicio_y_ultimo(serie_):
+    """(periodo, valor) al empezar la legislatura y el último publicado."""
+    if not serie_:
+        return None, None
+    orden = sorted(serie_, key=_fin_periodo)
+    antes = [p for p in orden if _fin_periodo(p) <= INICIO_LEGISLATURA]
+    return ((antes[-1], serie_[antes[-1]]) if antes else None), (orden[-1], serie_[orden[-1]])
+
+
+def construir_datos_promesas(descargas):
+    """web/datos/datos_promesas.json: por promesa, sus metas medibles y, por magnitud, la serie oficial con su valor al
+    empezar la legislatura y el último publicado (o el motivo por el que no hay dato oficial)."""
+    carpeta = CODIGO / "promesas" / "extraccion" / "datos"
+    if not carpeta.exists():
+        print("Datos de promesas: no hay extracción en esta copia; no se genera datos/datos_promesas.json")
+        return
+    spec = {m["id"]: m for m in json.loads((CODIGO / "promesas" / "series_datos.json").read_text())}
+    hoy = dt.date.today()
+    magnitudes, avisos = {}, []
+    for c in json.loads((carpeta / "magnitudes.json").read_text()):
+        m = spec.get(c["id"])
+        if not c["serie"] or not m:
+            magnitudes[c["id"]] = {"nombre": c["nombre"], "ambito": c["ambito"], "sin_dato": c["motivo"]}
+            continue
+        if m["tipo"] == "automatica":
+            try:
+                ini, ult = inicio_y_ultimo(calcular_dato(m, descargas))
+            except (ValueError, KeyError, StopIteration, json.JSONDecodeError) as error:
+                ini, ult = None, None
+                avisos.append(f"{c['id']}: la descarga no tiene la forma esperada ({error})")
+            if ult is None:
+                avisos.append(f"{c['id']}: no se pudo calcular")
+                magnitudes[c["id"]] = {"nombre": c["nombre"], "ambito": c["ambito"], "sin_dato": "La serie oficial no se ha podido descargar."}
+                continue
+            comprobado = None
+        else:
+            ini = (m["inicio"]["periodo"], m["inicio"]["valor"]) if m["inicio"] else None
+            ult = (m["ultimo"]["periodo"], m["ultimo"]["valor"])
+            comprobado = m["comprobado"]
+            if (hoy - dt.date.fromisoformat(comprobado)).days > 365:
+                avisos.append(f"{c['id']}: el dato fijo se comprobó el {comprobado}, hace más de un año")
+        magnitudes[c["id"]] = {"nombre": c["nombre"], "ambito": c["ambito"], "unidad": m["unidad"], "decimales": m["decimales"],
+                               "organismo": m["organismo"], "serie": m["nombre"], "definicion": m["definicion"], "ficha": m["ficha"],
+                               "coincidencia": m["coincidencia"], "nota": m["nota"], "comprobado": comprobado,
+                               "inicio": list(ini) if ini else None, "ultimo": list(ult)}
+    metas = {}
+    por_meta = {mt: c["id"] for c in json.loads((carpeta / "magnitudes.json").read_text()) for mt in c["metas"]}
+    for x in json.loads((carpeta / "metas.json").read_text()):
+        metas.setdefault(x["promesa"], []).append({"magnitud": por_meta[x["meta"]], "valor": x["valor"], "fecha": x["fecha"], "ambito": x["ambito"]})
+    salida = {"inicio_legislatura": INICIO_LEGISLATURA, "fiabilidad": json.loads((carpeta / "fiabilidad.json").read_text()),
+              "magnitudes": magnitudes, "metas": metas}
+    (WEB / "datos" / "datos_promesas.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
+    con = sum("sin_dato" not in v for v in magnitudes.values())
+    print(f"Datos de promesas: {sum(len(v) for v in metas.values())} metas en {len(metas)} promesas; {len(magnitudes)} magnitudes, "
+          f"{con} con dato oficial ({sum(v.get('comprobado') is None and 'sin_dato' not in v for v in magnitudes.values())} automáticas)")
+    for a in avisos:
+        print("AVISO Datos de promesas: " + a)
+
+
 def main():
     descargas = ultimas_descargas()
     tablas = {}
@@ -2310,6 +2492,7 @@ def main():
     construir_hechos({"normas": CODIGO / "promesas" / "extraccion" / "hechos",
                       "iniciativas": CODIGO / "promesas" / "extraccion" / "hechos_iniciativas",
                       "decretos": CODIGO / "promesas" / "extraccion" / "hechos_decretos"})
+    construir_datos_promesas(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

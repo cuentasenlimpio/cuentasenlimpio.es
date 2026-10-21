@@ -265,12 +265,56 @@ function ultimoPaso(rels, h) {
   return "";
 }
 
+// Paso «Dato»: la meta que fija la promesa y la serie oficial que la mide, con su valor al empezar la legislatura y el
+// último publicado. Sin veredicto ni distancia a la meta: solo las cifras, su fecha y su fuente.
+const MESES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
+function periodoTexto(p) {
+  let m = /^(\d{4})T([1-4])$/.exec(p);
+  if (m) return `${m[2]}.º trimestre de ${m[1]}`;
+  m = /^(\d{4})-(\d{2})$/.exec(p);
+  if (m) return `${MESES[Number(m[2]) - 1]} de ${m[1]}`;
+  m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(p);
+  if (m) return `${Number(m[3])} de ${MESES[Number(m[2]) - 1]} de ${m[1]}`;
+  return p;
+}
+function bloqueDatos(metas, dp, padre) {
+  const caja = nuevo("div", { className: "hechos datos-meta" }, padre);
+  nuevo("p", { className: "hechos-titulo", textContent: metas.length > 1 ? "Metas medibles" : "Meta medible" }, caja);
+  const ol = nuevo("ol", { className: "hechos-lista" }, caja);
+  for (const x of metas) {
+    const g = dp.magnitudes[x.magnitud];
+    const li = nuevo("li", { className: "hecho dato" }, ol);
+    const t = nuevo("p", {}, li);
+    nuevo("strong", { textContent: "Meta: " }, t);
+    t.appendChild(document.createTextNode(`${g.nombre}: ${x.valor}${x.fecha ? ` (${x.fecha})` : ""}${x.ambito && x.ambito !== "España" ? `, ${x.ambito}` : ""}.`));
+    if (g.sin_dato) {
+      nuevo("p", { className: "hecho-motivo", textContent: `Sin dato oficial que la mida. ${g.sin_dato}` }, li);
+      continue;
+    }
+    const v = (par) => `${numero(par[1], g.decimales)} ${g.unidad}`;
+    const cifras = nuevo("p", {}, li);
+    if (g.inicio && g.inicio[0] !== g.ultimo[0]) {
+      cifras.appendChild(document.createTextNode(`Al empezar la legislatura (${periodoTexto(g.inicio[0])}): ${v(g.inicio)}. `));
+      cifras.appendChild(document.createTextNode(`Último dato publicado (${periodoTexto(g.ultimo[0])}): ${v(g.ultimo)}.`));
+    } else {
+      cifras.appendChild(document.createTextNode(`Último dato publicado (${periodoTexto(g.ultimo[0])}): ${v(g.ultimo)}.`));
+      if (!g.inicio) cifras.appendChild(document.createTextNode(" No había dato publicado de antes de la legislatura."));
+    }
+    if (g.coincidencia === "aproximada" && g.nota) nuevo("p", { className: "hecho-motivo", textContent: `La serie no mide exactamente lo mismo: ${g.nota}` }, li);
+    const f = nuevo("p", { className: "hecho-motivo" }, li);
+    f.appendChild(document.createTextNode(`Fuente: ${g.organismo}, `));
+    enlace(g.ficha, g.serie, f);
+    f.appendChild(document.createTextNode(g.comprobado ? `. Dato comprobado a mano en la publicación oficial el ${periodoTexto(g.comprobado)}.` : "."));
+  }
+}
+
 async function arrancarPromesas() {
   const resumen = document.getElementById("promesas-resumen");
-  let datos, hechos;
+  let datos, hechos, dp;
   try {
-    [datos, hechos] = await Promise.all([fetch("datos/promesas.json").then((r) => r.json()),
-      fetch("datos/hechos.json").then((r) => (r.ok ? r.json() : null)).catch(() => null)]);
+    [datos, hechos, dp] = await Promise.all([fetch("datos/promesas.json").then((r) => r.json()),
+      fetch("datos/hechos.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
+      fetch("datos/datos_promesas.json").then((r) => (r.ok ? r.json() : null)).catch(() => null)]);
   } catch {
     resumen.textContent = "No se han podido cargar las promesas.";
     return;
@@ -285,6 +329,8 @@ async function arrancarPromesas() {
   for (const p of datos.promesas) {
     p.hechos = relaciones[`${p.d}:${p.id}`] || [];
     p.paso = ultimoPaso(p.hechos, h);
+    p.metas = dp?.metas[`${p.d}:${p.id}`] || [];
+    p.dato = !p.metas.length ? "" : p.metas.some((x) => !dp.magnitudes[x.magnitud].sin_dato) ? "con" : "sin";
   }
   for (const p of datos.promesas) p.buscable = plano(`${p.e} ${p.c} ${p.x}`);
   const distintas = datos.promesas.filter((p) => !p.r).length;
@@ -299,7 +345,7 @@ async function arrancarPromesas() {
   const orden = datos.documentos.slice().sort((a, b) => (b.gobierno - a.gobierno) || ordenAlfabetico(a, b)).map((d) => d.id);
   datos.promesas.sort((a, b) => orden.indexOf(a.d) - orden.indexOf(b.d) || a.p - b.p);
 
-  const estado = { texto: "", quien: "", doc: "", paso: "", repes: false, vistas: POR_PAGINA };
+  const estado = { texto: "", quien: "", doc: "", paso: "", dato: "", repes: false, vistas: POR_PAGINA };
   const lista = document.getElementById("promesas-lista");
   const cuenta = document.getElementById("promesas-cuenta");
   const mas = document.getElementById("promesas-mas");
@@ -341,6 +387,10 @@ async function arrancarPromesas() {
       if (unicas.length) bloqueHechos(unicas, h, d, li);
       else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas, reales decretos-leyes y reales decretos de la legislatura, en las iniciativas del Congreso que no llegaron a ley, en los anteproyectos y proyectos del Consejo de Ministros ni en los Planes Anuales Normativos 2024 y 2025." }, li);
     }
+    if (dp) {
+      const metas = grupo.flatMap((q) => q.metas);
+      if (metas.length) bloqueDatos(metas, dp, li);
+    }
     return li;
   }
   const unidad = (p) => (p.id.match(/^(.*\d)[a-z]$/) || [, p.id])[1];
@@ -359,6 +409,7 @@ async function arrancarPromesas() {
     const hits = datos.promesas.filter((p) => (estado.repes || !p.r)
       && (!estado.doc || p.d === estado.doc)
       && (!estado.paso || (estado.paso === "sin" ? !p.paso : p.paso === estado.paso))
+      && (!estado.dato || (estado.dato === "meta" ? p.dato : p.dato === estado.dato))
       && (!estado.quien || (estado.quien === "gobierno") === docs[p.d].gobierno)
       && palabras.every((w) => p.buscable.includes(w)));
     lista.textContent = "";
@@ -384,6 +435,9 @@ async function arrancarPromesas() {
   for (const [v, t] of Object.entries(PASOS)) selPaso.insertBefore(new Option(t, v), selPaso.lastElementChild);
   if (hechos) selPaso.addEventListener("change", () => { estado.paso = selPaso.value; estado.vistas = POR_PAGINA; pintar(); });
   else selPaso.closest("label").hidden = true;
+  const selDato = document.getElementById("p-dato");
+  if (dp) selDato.addEventListener("change", () => { estado.dato = selDato.value; estado.vistas = POR_PAGINA; pintar(); });
+  else selDato.closest("label").hidden = true;
   document.getElementById("p-repes").addEventListener("change", (ev) => { estado.repes = ev.target.checked; estado.vistas = POR_PAGINA; pintar(); });
   mas.addEventListener("click", () => { estado.vistas += POR_PAGINA; pintar(); });
   pintar();
@@ -396,6 +450,14 @@ async function arrancarPromesas() {
   f.appendChild(document.createTextNode("."));
   pintarRecuento(datos);
   pintarRespuesta(datos);
+  // Fiabilidad de la selección de metas medibles, en el método.
+  const dm = document.getElementById("datos-metodo");
+  if (dp && dm) {
+    const r = dp.fiabilidad.resumen, a = dp.fiabilidad.auditoria;
+    const mags = Object.values(dp.magnitudes);
+    const con = mags.filter((g) => !g.sin_dato);
+    dm.appendChild(document.createTextNode(` De ${numero(r.promesas, 0)} promesas con alguna cifra, las dos clasificaciones coincidieron en el ${numero(r.acuerdo, 1)} % (kappa ${numero(r.kappa, 2)}); los ${numero(r.desacuerdos, 0)} desacuerdos se arbitraron. Una revisión independiente de una muestra al azar no vio meta medible en ${numero(a.metas_que_la_auditoria_no_ve, 0)} de ${numero(a.metas_revisadas, 0)} promesas que la tienen y sí la vio en ${numero(a.descartadas_que_la_auditoria_ve_meta, 0)} de ${numero(a.descartadas_revisadas, 0)} descartadas. Resultado: ${numero(Object.keys(dp.metas).length, 0)} promesas con meta medible, sobre ${numero(mags.length, 0)} magnitudes; ${numero(con.length, 0)} tienen serie oficial (${numero(con.filter((g) => g.coincidencia === "aproximada").length, 0)} de ellas aproximada, con su diferencia explicada) y ${numero(mags.length - con.length, 0)} no.`));
+  }
   // Fiabilidad de la relación hechos–promesas, en el método.
   const m = document.getElementById("hechos-metodo");
   const NOMBRE_TANDA = { normas: "norma–promesa", iniciativas: "iniciativa–promesa (iniciativas sin ley y Consejo de Ministros)",

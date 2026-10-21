@@ -278,6 +278,24 @@ def main():
                 PAGINAS.append({"fuente": e["nombre"], "tabla": pub["tabla"], "opcional": True, "nombre": pub["titulo"],
                                 "url": pub["fichero"], "extension": pub["fichero"].rsplit(".", 1)[-1].lower()})
 
+    # Paso «Dato» de las promesas: las series oficiales automáticas de promesas/series_datos.json (desde el 21/10/2026).
+    import hashlib as hashlib_
+    vistas = set()
+    for m in json.loads((pathlib.Path(__file__).resolve().parent / "promesas" / "series_datos.json").read_text()):
+        if m["tipo"] != "automatica":
+            continue
+        if m.get("ree"):
+            urls = [(f"dato_ree_{a}", "https://apidatos.ree.es/es/datos/generacion/evolucion-renovable-no-renovable?"
+                     f"start_date={a}-01-01T00:00&end_date={a}-12-31T23:59&time_trunc=year", "json") for a in range(2019, ahora.year)]
+        else:
+            urls = [("dato_" + hashlib_.sha1(u.encode()).hexdigest()[:10], u, "csv" if "format=csvfile" in u else "json")
+                    for u in m["descargas"].values()]
+        for tabla, u, ext in urls:
+            if tabla not in vistas:
+                vistas.add(tabla)
+                PAGINAS.append({"fuente": m["organismo"], "tabla": tabla, "opcional": True, "url": u, "extension": ext,
+                                "nombre": f"Dato de promesas: {m['nombre']}"})
+
     # Pensiones: el avance mensual de la Seguridad Social cambia de dirección cada mes; se busca en su página, que es fija.
     try:
         import html as html_

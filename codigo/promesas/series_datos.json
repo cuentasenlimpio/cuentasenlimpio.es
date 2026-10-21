@@ -1,0 +1,1299 @@
+[
+ {
+  "id": "brecha-actividad-genero",
+  "organismo": "INE",
+  "nombre": "Encuesta de Población Activa (EPA). Tasas de actividad por sexo y grupo de edad",
+  "definicion": "Diferencia en puntos entre la tasa de actividad de los hombres y la de las mujeres de 16 y más años (activos / población de 16 y más años).",
+  "ficha": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=resultados&idp=1254735976595",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "h": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA388093?nult=60",
+   "m": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA388106?nult=60"
+  },
+  "calculo": {
+   "op": "diferencia",
+   "x": {
+    "de": "h"
+   },
+   "y": {
+    "de": "m"
+   }
+  },
+  "unidad": "puntos",
+  "decimales": 1
+ },
+ {
+  "id": "peso-industria-pib",
+  "organismo": "Eurostat (Contabilidad Nacional del INE)",
+  "nombre": "Valor añadido bruto por ramas de actividad (industria, B-E) y PIB (nama_10_a10 y nama_10_gdp)",
+  "definicion": "Valor añadido bruto de la industria (secciones B-E de la CNAE: extractivas, manufacturera, energía y agua) en porcentaje del PIB a precios corrientes.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/nama_10_a10/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_a10?format=JSON&lang=EN&geo=ES&nace_r2=B-E&na_item=B1G&unit=CP_MEUR",
+   "pib": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&geo=ES&na_item=B1GQ&unit=CP_MEUR"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "a"
+   },
+   "y": {
+    "de": "pib"
+   },
+   "por": 100
+  },
+  "unidad": "% del PIB",
+  "decimales": 1
+ },
+ {
+  "id": "gasto-defensa-pib",
+  "organismo": "OTAN (NATO)",
+  "nombre": "Gasto en defensa de los países de la OTAN, tabla 3: gasto en defensa en porcentaje del PIB",
+  "definicion": "Gasto en defensa según la definición común de la OTAN (la del compromiso del 2 % entre aliados), en porcentaje del PIB real a precios de 2021. Se publica solo en PDF (la edición de 2026 es imagen, sin texto); 2025 y 2026 son estimaciones de la OTAN y el último año cerrado, 2024, da 1,42 %.",
+  "ficha": "https://www.nato.int/cps/en/natohq/topics_49198.htm",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% del PIB",
+  "decimales": 2,
+  "descarga": "https://www.nato.int/content/dam/nato/webready/documents/finance/def-exp-2026-en.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 1.13
+  },
+  "ultimo": {
+   "periodo": "2026 (estimación OTAN)",
+   "valor": 2.0
+  }
+ },
+ {
+  "id": "efectivos-fuerzas-armadas",
+  "organismo": "Ministerio de Defensa (Unidad de Estadística del Órgano Central)",
+  "nombre": "Anuario Estadístico Militar (avance): Estadística de personal militar de carrera de las FAS + Estadística de personal militar con relación de servicios de carácter temporal",
+  "definicion": "Militares de las Fuerzas Armadas en situación de servicio activo a 31 de diciembre (militares de carrera más militares de complemento y de tropa y marinería temporales).",
+  "ficha": "https://datos.gob.es/es/catalogo/e00003301-anuario-estadistico-personal-militar-de-carrera",
+  "coincidencia": "aproximada",
+  "nota": "Suma dos publicaciones y cuenta solo el servicio activo (excluye reserva, excedencia y servicios especiales: con todas las situaciones, 2023 da 135.513); los PDF van cifrados y no se dejan bajar por curl, sí por navegador. La última edición publicada es la de 2023.",
+  "tipo": "fija",
+  "unidad": "militares en servicio activo",
+  "decimales": 0,
+  "descarga": "https://publicaciones.defensa.gob.es/media/downloadable/files/links/e/s/estad_stica_personal_militar_carrera_fuerzas_armadas__2023.pdf + https://publicaciones.defensa.gob.es/media/downloadable/files/links/e/s/estadistica_personal_militar_relacion_caracter_temporal_2023.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022-12-31",
+   "valor": 116965
+  },
+  "ultimo": {
+   "periodo": "2023-12-31",
+   "valor": 116392
+  }
+ },
+ {
+  "id": "paro-estructural",
+  "organismo": "Comisión Europea (DG ECFIN, base AMECO)",
+  "nombre": "Tasa de paro que no acelera los salarios (NAWRU), base de datos AMECO",
+  "definicion": "Tasa de paro compatible con salarios estables que estima la Comisión con su modelo de producción potencial; es la referencia de 'paro estructural' en la UE.",
+  "ficha": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en",
+  "coincidencia": "aproximada",
+  "nota": "No es una estadística observada sino una estimación de modelo que se revisa en cada edición de previsiones (y llega hasta años de previsión: 2026 11,72 %, 2027 11,41 %).",
+  "tipo": "fija",
+  "unidad": "% de la población activa",
+  "decimales": 1,
+  "descarga": "https://ec.europa.eu/economy_finance/ameco/wq/series?fullVariable=1.0.0.0.ZNAWRU&countries=ESP&years=2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027&defaultCountries=0",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 13.53
+  },
+  "ultimo": {
+   "periodo": "2025",
+   "valor": 12.11
+  }
+ },
+ {
+  "id": "cobertura-banda-ancha-poblacion",
+  "organismo": "Ministerio para la Transformación Digital y de la Función Pública (Secretaría de Estado de Telecomunicaciones e Infraestructuras Digitales)",
+  "nombre": "Informe de cobertura de banda ancha en España: cobertura de redes fijas ≥100 Mbps en condiciones de máxima demanda",
+  "definicion": "Porcentaje de viviendas (Catastro) con cobertura de redes fijas de al menos 100 Mbps de descarga en hora cargada, a 30 de junio de cada año.",
+  "ficha": "https://digital.gob.es/telecomunicaciones-infraestructuras-digitales/areas-interes/banda-ancha/informacion-cobertura.html",
+  "coincidencia": "aproximada",
+  "nota": "Se mide sobre viviendas (sobre hogares: 97,92 % en junio de 2025, pero esa hoja solo empieza en 2023) y con el umbral de 100 Mbps, que la promesa no fija.",
+  "tipo": "fija",
+  "unidad": "% de las viviendas",
+  "decimales": 1,
+  "descarga": "https://digital.gob.es/content/dam/portal-mtdfp/avance-digital/telecomunicacion-e-infraestructuras-digitales/areas_interes/banda-ancha/cobertura/documents/Cobertura_BA_Espa%C3%B1a_2021-2025_MUN_PROV_CCAA_Nacional_datosgob_DEF.xlsx",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022-06-30",
+   "valor": 89.96
+  },
+  "ultimo": {
+   "periodo": "2025-06-30",
+   "valor": 96.37
+  }
+ },
+ {
+  "id": "cuota-ferrocarril-mercancias",
+  "organismo": "Eurostat",
+  "nombre": "Reparto modal del transporte terrestre de mercancías (tran_hv_frmod)",
+  "definicion": "Porcentaje del ferrocarril en las toneladas-kilómetro del transporte terrestre de mercancías (ferrocarril, carretera y vías navegables interiores).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/tran_hv_frmod/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tran_hv_frmod?format=JSON&lang=EN&geo=ES&tra_mode=RAIL&unit=PC"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "%",
+  "decimales": 1
+ },
+ {
+  "id": "cuota-ferrocarril-mercancias-erc",
+  "organismo": "Eurostat",
+  "nombre": "Reparto modal del transporte terrestre de mercancías (tran_hv_frmod)",
+  "definicion": "Porcentaje del ferrocarril en las toneladas-kilómetro del transporte terrestre de mercancías (ferrocarril, carretera y vías navegables interiores).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/tran_hv_frmod/default/table",
+  "coincidencia": "aproximada",
+  "nota": "La promesa no dice el ámbito (ni si incluye marítimo o aéreo); se usa la cuota en el transporte terrestre (t-km), que es la medida oficial habitual.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tran_hv_frmod?format=JSON&lang=EN&geo=ES&tra_mode=RAIL&unit=PC"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "%",
+  "decimales": 1
+ },
+ {
+  "id": "superficie-terrestre-protegida",
+  "organismo": "Eurostat",
+  "nombre": "Espacios protegidos: superficie terrestre protegida (env_bio4)",
+  "definicion": "Superficie terrestre designada como Natura 2000 o espacio protegido nacional, en % de la superficie terrestre del país.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_bio4/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_bio4?format=JSON&lang=EN&geo=ES&unit=PC&areaprot=TPA"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% del territorio terrestre",
+  "decimales": 1
+ },
+ {
+  "id": "superficie-marina-protegida",
+  "organismo": "Eurostat",
+  "nombre": "Espacios marinos protegidos (sdg_14_10)",
+  "definicion": "Superficie de las aguas marinas designada como Natura 2000 o espacio marino protegido nacional, en % de las aguas marinas del país.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/sdg_14_10/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sdg_14_10?format=JSON&lang=EN&geo=ES&unit=PC"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de las aguas marinas",
+  "decimales": 1
+ },
+ {
+  "id": "agua-reutilizada",
+  "organismo": "INE",
+  "nombre": "Estadística sobre el suministro y saneamiento del agua: recogida y tratamiento de las aguas residuales (Volumen total de agua reutilizada)",
+  "definicion": "Volumen de agua residual tratada que se reutiliza; el INE lo publica en m³/día y aquí se pasa a hm³/año (×365/10⁶).",
+  "ficha": "https://www.ine.es/jaxi/Tabla.htm?tpx=53450",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/53450?nult=10"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a",
+    "filtro": {
+     "nombre": "España, Volumen total de agua reutilizada"
+    }
+   },
+   "por": 0.000365
+  },
+  "unidad": "hm³ al año",
+  "decimales": 0
+ },
+ {
+  "id": "perdidas-agua-redes",
+  "organismo": "INE",
+  "nombre": "Estadística sobre el suministro y saneamiento del agua: volumen de agua suministrada a la red (Pérdidas reales)",
+  "definicion": "Pérdidas reales (fugas, roturas y averías hasta el contador) en % del agua suministrada a la red de abastecimiento público; el INE lo define así en su indicador 575.",
+  "ficha": "https://ine.es/dyngs/Medioambiente/metadatos.htm?id=575",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/53447?nult=10"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "a",
+    "filtro": {
+     "nombre": "España, - Pérdidas reales"
+    }
+   },
+   "y": {
+    "de": "a",
+    "filtro": {
+     "nombre": "España, Volumen de agua suministrada a la red de abastecimiento público"
+    }
+   },
+   "por": 100
+  },
+  "unidad": "% del agua suministrada",
+  "decimales": 1
+ },
+ {
+  "id": "matriculados-fp-sistema-educativo",
+  "organismo": "Ministerio de Educación, Formación Profesional y Deportes (Subdirección General de Estadística y Estudios)",
+  "nombre": "Estadística de las Enseñanzas no universitarias. Alumnado matriculado (datos avance) / Estadística del alumnado de Formación Profesional",
+  "definicion": "Alumnado matriculado en Formación Profesional del sistema educativo (Grado Básico, Grado Medio y Grado Superior presencial y a distancia, y Cursos de Especialización) en el curso.",
+  "ficha": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/no-universitaria/alumnado/matriculado.html",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "alumnos",
+  "decimales": 0,
+  "descarga": "https://www.educacionfpydeportes.gob.es/dam/jcr:e7a0bdc6-411e-4a1d-9758-746d87ac5837/nota-2025-2026-da.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022-23",
+   "valor": 1085259
+  },
+  "ultimo": {
+   "periodo": "2025-26 (avance)",
+   "valor": 1211062
+  }
+ },
+ {
+  "id": "viviendas-avales-ico-jovenes",
+  "organismo": "ICO (con el Ministerio de Vivienda y Agenda Urbana)",
+  "nombre": "Actividad mensual y acumulada de la Línea de Avales ICO-MIVAU para la adquisición de primera vivienda por comunidades autónomas y provincias",
+  "definicion": "Número acumulado de operaciones hipotecarias avaladas por la línea ICO-MIVAU de primera vivienda desde el inicio de su comercialización.",
+  "ficha": "https://datos.gob.es/es/catalogo/ea0042926-actividad-mensual-y-acumulada-de-la-linea-de-avales-icomivau-para-la-adquisicion-de-primera-vivienda-por-comunidades-autonomas-y-provincias",
+  "coincidencia": "aproximada",
+  "nota": "Suma las operaciones de jóvenes menores de 35 años y de familias con menores a cargo (el BOE de julio de 2026 da 6.119 de 8.549 para jóvenes a 31/10/2025); el fichero no las separa y no es una descarga de URL fija. Al empezar la legislatura no había un dato publicado de la línea, recién puesta en marcha.",
+  "tipo": "fija",
+  "unidad": "operaciones acumuladas",
+  "decimales": 0,
+  "descarga": "https://www.ico.es/documents/20124/1247246/Tabla+de+actividad+mensual+y+acumulada+de+la+Linea+de+Avales+ICO+MIVAU+para+la+adquisicion+de+primera+vivienda+por+CCAA+diciembre+2025.csv",
+  "comprobado": "2026-10-21",
+  "inicio": null,
+  "ultimo": {
+   "periodo": "2025-12",
+   "valor": 10454
+  }
+ },
+ {
+  "id": "mujeres-organos-direccion",
+  "organismo": "Comisión Nacional del Mercado de Valores (CNMV)",
+  "nombre": "Presencia de mujeres en el consejo de administración y en la alta dirección de las sociedades cotizadas",
+  "definicion": "Porcentaje de consejeras sobre el total de miembros de los consejos de administración de las sociedades cotizadas españolas, a cierre de año.",
+  "ficha": "https://www.cnmv.es/portal/Publicaciones/Informes-Gobierno-Corporativo.aspx",
+  "coincidencia": "aproximada",
+  "nota": "Solo cubre los consejos de las sociedades cotizadas; no hay serie oficial para el conjunto de órganos de dirección públicos y privados (la Ibex 35 sola daría 42,19 % en 2025).",
+  "tipo": "fija",
+  "unidad": "% de los consejeros",
+  "decimales": 1,
+  "descarga": "https://internet.cnmv.es/DocPortal/Publicaciones/Informes/PresenciaMujeresConsejos2025.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 31.87
+  },
+  "ultimo": {
+   "periodo": "2025",
+   "valor": 37.52
+  }
+ },
+ {
+  "id": "fondo-reserva-seguridad-social",
+  "organismo": "Ministerio de Inclusión, Seguridad Social y Migraciones",
+  "nombre": "Fondo de Reserva de la Seguridad Social. Informe a las Cortes Generales (valor a precio de adquisición)",
+  "definicion": "Valor del Fondo de Reserva de la Seguridad Social a precio de adquisición, en millones de euros.",
+  "ficha": "https://www.lamoncloa.gob.es/serviciosdeprensa/notasprensa/inclusion/Paginas/2026/130426-fondo-reserva-seguridad-social-abril.aspx",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "millones de euros",
+  "decimales": 0,
+  "descarga": "https://www.seg-social.es/descarga/es/15072025_Informe_Cortes_2024",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "31/12/2022",
+   "valor": 2140.61
+  },
+  "ultimo": {
+   "periodo": "31/03/2026",
+   "valor": 15267
+  }
+ },
+ {
+  "id": "vih-diagnosticados",
+  "organismo": "Ministerio de Sanidad / Centro Nacional de Epidemiología (ISCIII)",
+  "nombre": "Estimación del continuo de atención del VIH en España",
+  "definicion": "Porcentaje de las personas que viven con el VIH en España que conocen su diagnóstico (primer 95 de ONUSIDA).",
+  "ficha": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/home.htm",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% del total estimado",
+  "decimales": 1,
+  "descarga": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/docs/Continuo_atencion_VIH_mayo_2023.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2021-2022",
+   "valor": 92.5
+  },
+  "ultimo": {
+   "periodo": "2021-2022",
+   "valor": 92.5
+  }
+ },
+ {
+  "id": "vih-en-tratamiento",
+  "organismo": "Ministerio de Sanidad / Centro Nacional de Epidemiología (ISCIII)",
+  "nombre": "Estimación del continuo de atención del VIH en España",
+  "definicion": "Porcentaje de las personas diagnosticadas de VIH que reciben tratamiento antirretroviral (segundo 95 de ONUSIDA).",
+  "ficha": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/home.htm",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% de los diagnosticados",
+  "decimales": 1,
+  "descarga": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/docs/Continuo_atencion_VIH_mayo_2023.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2021-2022",
+   "valor": 96.6
+  },
+  "ultimo": {
+   "periodo": "2021-2022",
+   "valor": 96.6
+  }
+ },
+ {
+  "id": "vih-carga-viral-suprimida",
+  "organismo": "Ministerio de Sanidad / Centro Nacional de Epidemiología (ISCIII)",
+  "nombre": "Estimación del continuo de atención del VIH en España",
+  "definicion": "Porcentaje de las personas en tratamiento antirretroviral con carga viral suprimida (tercer 95 de ONUSIDA).",
+  "ficha": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/home.htm",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% de los tratados",
+  "decimales": 1,
+  "descarga": "https://www.sanidad.gob.es/areas/DCVIHT/vihSida/vigilancia/docs/Continuo_atencion_VIH_mayo_2023.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2021-2022",
+   "valor": 90.4
+  },
+  "ultimo": {
+   "periodo": "2021-2022",
+   "valor": 90.4
+  }
+ },
+ {
+  "id": "gasto-publico-sanidad-pib",
+  "organismo": "Eurostat (IGAE)",
+  "nombre": "Gasto de las administraciones públicas por funciones (COFOG): 07 Sanidad (gov_10a_exp)",
+  "definicion": "Gasto total de las Administraciones Públicas consolidadas en la función 07 Sanidad, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "g": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&lang=EN&geo=ES&sector=S13&na_item=TE&unit=MIO_EUR&cofog99=GF07&cofog99=GF09&cofog99=GF1004&cofog99=GF0601&cofog99=GF1006",
+   "pib": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&geo=ES&na_item=B1GQ&unit=CP_MEUR"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "g",
+    "filtro": {
+     "cofog99": "GF07"
+    }
+   },
+   "y": {
+    "de": "pib"
+   },
+   "por": 100
+  },
+  "unidad": "% del PIB",
+  "decimales": 1
+ },
+ {
+  "id": "gasto-publico-educacion-pib",
+  "organismo": "Eurostat (IGAE)",
+  "nombre": "Gasto de las administraciones públicas por funciones (COFOG): 09 Educación (gov_10a_exp)",
+  "definicion": "Gasto total de las Administraciones Públicas consolidadas en la función 09 Educación, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "g": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&lang=EN&geo=ES&sector=S13&na_item=TE&unit=MIO_EUR&cofog99=GF07&cofog99=GF09&cofog99=GF1004&cofog99=GF0601&cofog99=GF1006",
+   "pib": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&geo=ES&na_item=B1GQ&unit=CP_MEUR"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "g",
+    "filtro": {
+     "cofog99": "GF09"
+    }
+   },
+   "y": {
+    "de": "pib"
+   },
+   "por": 100
+  },
+  "unidad": "% del PIB",
+  "decimales": 1
+ },
+ {
+  "id": "fallecidos-trafico",
+  "organismo": "Eurostat (dato de la DGT)",
+  "nombre": "Fallecidos en accidentes de tráfico (tran_sf_roadus)",
+  "definicion": "Personas fallecidas en accidente de tráfico en el acto o en los 30 días siguientes, vías interurbanas y urbanas.",
+  "ficha": "https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Series-historicas-de-accidentes-con-victimas-fallecidos-30-dias-heridos-hospitalizados-y-heridos-no-hospitalizados-2024/",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/tran_sf_roadus?format=JSON&lang=EN&geo=ES&sex=T&age=TOTAL&unit=NR&pers_cat=TOTAL"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "personas",
+  "decimales": 0
+ },
+ {
+  "id": "heridos-graves-trafico",
+  "organismo": "Dirección General de Tráfico (Ministerio del Interior)",
+  "nombre": "Series históricas de accidentes con víctimas: fallecidos 30 días, heridos hospitalizados y heridos no hospitalizados",
+  "definicion": "Heridos hospitalizados más de 24 horas en accidentes de tráfico (la categoría «herido grave» de la Orden INT/2223/2014), vías interurbanas y urbanas.",
+  "ficha": "https://www.dgt.es/menusecundario/dgt-en-cifras/dgt-en-cifras-resultados/dgt-en-cifras-detalle/Series-historicas-de-accidentes-con-victimas-fallecidos-30-dias-heridos-hospitalizados-y-heridos-no-hospitalizados-2024/",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "personas",
+  "decimales": 0,
+  "descarga": "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Series-Historicas-Anuario-Accidentes/Series-Historicas-Anuario-Accidentes-2024.xlsx",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 8502
+  },
+  "ultimo": {
+   "periodo": "2024",
+   "valor": 9561
+  }
+ },
+ {
+  "id": "aod-rnb",
+  "organismo": "OCDE (Comité de Ayuda al Desarrollo)",
+  "nombre": "DAC1: ayuda oficial al desarrollo en porcentaje de la renta nacional bruta (equivalente en donación)",
+  "definicion": "Ayuda Oficial al Desarrollo en equivalente de donación en porcentaje de la Renta Nacional Bruta (medida oficial del objetivo del 0,7 %).",
+  "ficha": "https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_DAC1%40DF_DAC1&df[ag]=OECD.DCD.FSD",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/ESP._Z.11002._Z.1160.PT_B5G.V?startPeriod=2015&format=csvfile"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de la renta nacional bruta",
+  "decimales": 2
+ },
+ {
+  "id": "aod-humanitaria",
+  "organismo": "OCDE (Comité de Ayuda al Desarrollo)",
+  "nombre": "DAC5: ayuda por sectores, ayuda humanitaria sobre el total de la AOD bilateral comprometida",
+  "definicion": "Peso de la ayuda humanitaria (sector CAD 700) en la AOD bilateral comprometida por España.",
+  "ficha": "https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_DAC1%40DF_DAC5&df[ag]=OECD.DCD.FSD",
+  "coincidencia": "aproximada",
+  "nota": "Cuenta solo la AOD bilateral y en compromisos, no el total de la AOD desembolsada: deja fuera las contribuciones a organismos multilaterales (la OCDE no ofrece para España, en los años recientes, el reparto por sectores de la parte multilateral).",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC5,/ESP.700+1000.528._Z._Z.USD.V?startPeriod=2015&format=csvfile"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "a",
+    "filtro": {
+     "SECTOR": "700"
+    }
+   },
+   "y": {
+    "de": "a",
+    "filtro": {
+     "SECTOR": "1000"
+    }
+   },
+   "por": 100
+  },
+  "unidad": "% de la AOD bilateral comprometida",
+  "decimales": 1
+ },
+ {
+  "id": "aod-pma-fragiles",
+  "organismo": "OCDE (Comité de Ayuda al Desarrollo)",
+  "nombre": "DAC2A: AOD desembolsada a los países menos adelantados, y DAC1: renta nacional bruta",
+  "definicion": "AOD neta desembolsada a los países menos adelantados (bilateral más la parte multilateral imputada) en porcentaje de la Renta Nacional Bruta.",
+  "ficha": "https://data-explorer.oecd.org/vis?df[ds]=dsDisseminateFinalDMZ&df[id]=DSD_DAC2%40DF_DAC2A&df[ag]=OECD.DCD.FSD",
+  "coincidencia": "aproximada",
+  "nota": "Cubre solo los países menos adelantados; los Estados frágiles que no son PMA no se pueden sumar sin contarlos dos veces (el agregado de contextos frágiles, FSCAC, da 0,049 % en 2024).",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC2@DF_DAC2A,/ESP.LDC.206+106.USD.V?startPeriod=2015&format=csvfile",
+   "rnb": "https://sdmx.oecd.org/public/rest/data/OECD.DCD.FSD,DSD_DAC1@DF_DAC1,/ESP._Z.1._Z.1140.USD.V?startPeriod=2015&format=csvfile"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": [
+    {
+     "de": "a",
+     "filtro": {
+      "MEASURE": "206"
+     }
+    },
+    {
+     "de": "a",
+     "filtro": {
+      "MEASURE": "106"
+     }
+    }
+   ],
+   "y": {
+    "de": "rnb"
+   },
+   "por": 100
+  },
+  "unidad": "% de la renta nacional bruta",
+  "decimales": 3
+ },
+ {
+  "id": "tasa-paro",
+  "organismo": "INE",
+  "nombre": "Encuesta de Población Activa (EPA). Tasas de paro por distintos grupos de edad, sexo y comunidad autónoma",
+  "definicion": "Parados en porcentaje de la población activa de 16 y más años.",
+  "ficha": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=resultados&idp=1254735976595",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA452434?nult=60"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de la población activa",
+  "decimales": 2
+ },
+ {
+  "id": "tasa-empleo",
+  "organismo": "Eurostat (EPA del INE)",
+  "nombre": "Tasa de empleo de 20 a 64 años (lfsi_emp_q, a partir de la EPA)",
+  "definicion": "Ocupados de 20 a 64 años en porcentaje de la población de esa edad (indicador del objetivo de empleo de la UE para 2030).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/lfsi_emp_q/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/lfsi_emp_q?format=JSON&lang=EN&geo=ES&indic_em=EMP_LFS&age=Y20-64&sex=T&unit=PC_POP&s_adj=NSA"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de la población de 20 a 64 años",
+  "decimales": 1
+ },
+ {
+  "id": "escolarizacion-0-2",
+  "organismo": "Ministerio de Educación, Formación Profesional y Deportes (EDUCAbase)",
+  "nombre": "Tasa neta de escolaridad 0-2 años",
+  "definicion": "Alumnado de 0 a 2 años escolarizado en centros autorizados por las administraciones educativas sobre la población de esa edad (Estadística Continua de Población del INE).",
+  "ficha": "https://estadisticas.educacion.gob.es/EducaJaxiPx/Tabla.htm?path=/no-universitaria/alumnado/matriculado/series/gen-escolar/l0/&file=escolar_05.px&L=0",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% de los niños de 0 a 2 años",
+  "decimales": 1,
+  "descarga": "https://estadisticas.educacion.gob.es/EducaJaxiPx/files/_px/es/px/no-universitaria/alumnado/matriculado/series/gen-escolar/l0/escolar_05.px",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022-23",
+   "valor": 45.9
+  },
+  "ultimo": {
+   "periodo": "2025-26 (avance)",
+   "valor": 50.2
+  }
+ },
+ {
+  "id": "vehiculos-combustion",
+  "organismo": "Dirección General de Tráfico (Ministerio del Interior)",
+  "nombre": "Parque de vehículos - Tablas estadísticas (Tabla V.4.1.C.A: parque por comunidades autónomas, tipos y carburantes)",
+  "definicion": "Vehículos del parque a 31 de diciembre con carburante gasolina o gasóleo, todos los tipos.",
+  "ficha": "https://datos.gob.es/es/catalogo/e00130502-parque-de-vehiculos-tablas-estadisticas-2025",
+  "coincidencia": "aproximada",
+  "nota": "Suma gasolina y gasóleo: deja fuera los de combustión con GLP o gas natural (van en «Otros», junto a los eléctricos) y no separa los híbridos, que cuentan por su carburante.",
+  "tipo": "fija",
+  "unidad": "vehículos",
+  "decimales": 0,
+  "descarga": "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/publicaciones/Parque-de-vehiculos-Tablas-Estadisticas/Parque-de-vehiculos-Tablas-estadisticas-2025.xlsx",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 34801917
+  },
+  "ultimo": {
+   "periodo": "2025",
+   "valor": 35743867
+  }
+ },
+ {
+  "id": "gasto-id-total-pib",
+  "organismo": "Eurostat (Estadística sobre actividades de I+D del INE)",
+  "nombre": "Gasto interno en I+D por sector de ejecución (rd_e_gerdtot)",
+  "definicion": "Gasto interno total en I+D de todos los sectores, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/rd_e_gerdtot/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/rd_e_gerdtot?format=JSON&lang=EN&geo=ES&sectperf=TOTAL&unit=PC_GDP"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% del PIB",
+  "decimales": 2
+ },
+ {
+  "id": "gasto-id-privado-pib",
+  "organismo": "Eurostat (Estadística sobre actividades de I+D del INE)",
+  "nombre": "Gasto interno en I+D ejecutado por las empresas (rd_e_gerdtot)",
+  "definicion": "Gasto en I+D ejecutado por las empresas, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/rd_e_gerdtot/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Mide el gasto que ejecutan las empresas; el que financian (rd_e_gerdfund, sectfund=BES) es menor: 0,72 % en 2024 y 0,69 % en 2022.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/rd_e_gerdtot?format=JSON&lang=EN&geo=ES&sectperf=BES&unit=PC_GDP"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% del PIB",
+  "decimales": 2
+ },
+ {
+  "id": "gasto-id-publico-pib",
+  "organismo": "Eurostat (Estadística sobre actividades de I+D del INE)",
+  "nombre": "Gasto interno en I+D financiado por las administraciones públicas (rd_e_gerdfund)",
+  "definicion": "Gasto interno en I+D financiado por las Administraciones Públicas, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/rd_e_gerdfund/default/table",
+  "coincidencia": "aproximada",
+  "nota": "'Inversión pública' puede leerse como gasto financiado por las Administraciones (esta serie) o como gasto ejecutado por Administraciones y universidades (rd_e_gerdtot GOV+HES: 0,66 % en 2024); los fondos europeos no cuentan aquí.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/rd_e_gerdfund?format=JSON&lang=EN&geo=ES&sectperf=TOTAL&sectfund=GOV&unit=PC_GDP"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% del PIB",
+  "decimales": 2
+ },
+ {
+  "id": "crecimiento-inversion-publica-id",
+  "organismo": "Eurostat (Estadística sobre actividades de I+D del INE)",
+  "nombre": "Gasto interno en I+D financiado por las administraciones públicas, millones de euros (rd_e_gerdfund)",
+  "definicion": "Variación anual, en %, del gasto interno en I+D financiado por las Administraciones Públicas, en euros corrientes.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/rd_e_gerdfund/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Se calcula sobre el gasto en I+D que financian las Administraciones (ejecutado en España), no sobre los créditos presupuestarios de I+D (política de gasto 46 de los PGE), que es otra forma de medir la 'inversión pública en I+D'.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/rd_e_gerdfund?format=JSON&lang=EN&geo=ES&sectperf=TOTAL&sectfund=GOV&unit=MIO_EUR"
+  },
+  "calculo": {
+   "op": "variacion_anual",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de variación anual",
+  "decimales": 1
+ },
+ {
+  "id": "emisiones-gei-reduccion-1990",
+  "organismo": "Eurostat (inventario nacional de emisiones del MITECO)",
+  "nombre": "Emisiones de gases de efecto invernadero por sector (env_air_gge)",
+  "definicion": "Emisiones brutas de gases de efecto invernadero (sin LULUCF ni partidas memorándum) en Mt CO2 eq; la variación se calcula frente al valor de 1990 de la misma tabla (284,42 Mt).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_air_gge/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_air_gge?format=JSON&lang=EN&geo=ES&airpol=GHG&unit=MIO_T&src_crf=TOTX4_MEMO"
+  },
+  "calculo": {
+   "op": "variacion_base",
+   "x": {
+    "de": "a"
+   },
+   "base": "1990"
+  },
+  "unidad": "% respecto a 1990",
+  "decimales": 1
+ },
+ {
+  "id": "emisiones-gei-reduccion-ue",
+  "organismo": "Eurostat (inventario de la UE, AEMA)",
+  "nombre": "Emisiones de gases de efecto invernadero por sector, Unión Europea (env_air_gge)",
+  "definicion": "Emisiones netas de gases de efecto invernadero de la UE-27 (incluido LULUCF, sin aviación ni navegación internacionales) en Mt CO2 eq; la variación se calcula frente al valor de 1990 de la misma tabla (4.608,5 Mt).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_air_gge/default/table",
+  "coincidencia": "aproximada",
+  "nota": "El objetivo europeo del −55 % (Ley Europea del Clima) incluye la aviación internacional dentro de la UE, que esta serie deja fuera.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_air_gge?format=JSON&lang=EN&geo=EU27_2020&airpol=GHG&unit=MIO_T&src_crf=TOTXMEMO"
+  },
+  "calculo": {
+   "op": "variacion_base",
+   "x": {
+    "de": "a"
+   },
+   "base": "1990"
+  },
+  "unidad": "% respecto a 1990",
+  "decimales": 1
+ },
+ {
+  "id": "emisiones-netas-gei",
+  "organismo": "Eurostat (inventario nacional de emisiones del MITECO)",
+  "nombre": "Emisiones de gases de efecto invernadero por sector, netas de absorciones (env_air_gge)",
+  "definicion": "Emisiones netas de gases de efecto invernadero de España (emisiones menos absorciones de LULUCF, sin partidas memorándum), en millones de toneladas de CO2 eq.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_air_gge/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_air_gge?format=JSON&lang=EN&geo=ES&airpol=GHG&unit=MIO_T&src_crf=TOTXMEMO"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "millones de t de CO₂ equivalente",
+  "decimales": 1
+ },
+ {
+  "id": "electrificacion-energia-final",
+  "organismo": "Eurostat",
+  "nombre": "Balances energéticos completos: electricidad en el consumo final de energía (nrg_bal_c)",
+  "definicion": "Electricidad consumida como energía final dividida por el consumo final de energía total (usos energéticos), en %.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_c/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_bal_c?format=JSON&lang=EN&geo=ES&unit=KTOE&nrg_bal=FC_E&siec=TOTAL&siec=E7000"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "a",
+    "filtro": {
+     "siec": "E7000"
+    }
+   },
+   "y": {
+    "de": "a",
+    "filtro": {
+     "siec": "TOTAL"
+    }
+   },
+   "por": 100
+  },
+  "unidad": "% del consumo final de energía",
+  "decimales": 1
+ },
+ {
+  "id": "renovables-electricidad",
+  "organismo": "Red Eléctrica (operador del sistema)",
+  "nombre": "REData, generación: evolución renovable y no renovable",
+  "definicion": "Porcentaje de la generación eléctrica nacional procedente de fuentes renovables.",
+  "ficha": "https://www.ree.es/es/datos/generacion",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "ree": true,
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "ree"
+   }
+  },
+  "unidad": "% de la generación eléctrica",
+  "decimales": 1
+ },
+ {
+  "id": "renovables-energia-final",
+  "organismo": "Eurostat",
+  "nombre": "Cuota de energía procedente de fuentes renovables (nrg_ind_ren)",
+  "definicion": "Cuota de energía renovable en el consumo final bruto de energía, según la Directiva de Renovables.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/nrg_ind_ren/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_ind_ren?format=JSON&lang=EN&geo=ES&nrg_bal=REN&unit=PC"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% del consumo final bruto de energía",
+  "decimales": 1
+ },
+ {
+  "id": "consumo-energia-viviendas",
+  "organismo": "Eurostat",
+  "nombre": "Balances energéticos completos: consumo final de los hogares (nrg_bal_c)",
+  "definicion": "Consumo final de energía del sector residencial (hogares), en miles de tep; la variación se calcula frente al año de referencia.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/nrg_bal_c/default/table",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_bal_c?format=JSON&lang=EN&geo=ES&unit=KTOE&nrg_bal=FC_OTH_HH_E&siec=TOTAL"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "miles de toneladas equivalentes de petróleo",
+  "decimales": 0
+ },
+ {
+  "id": "residuos-eliminacion-habitante",
+  "organismo": "Eurostat",
+  "nombre": "Residuos municipales por operación de tratamiento: eliminación en vertedero y otras (env_wasmun)",
+  "definicion": "Residuos municipales tratados mediante depósito en vertedero y otras operaciones de eliminación (D1-D7, D12), en kg por habitante.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_wasmun/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Solo residuos municipales y solo eliminación en sentido estricto: la incineración con recuperación de energía (47 kg/hab en 2024) cuenta como valorización (R1) y la incineración sin ella (DSP_I) es 0 en España.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_wasmun?format=JSON&lang=EN&geo=ES&unit=KG_HAB&wst_oper=DSP_L_OTH"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "kg por habitante",
+  "decimales": 0
+ },
+ {
+  "id": "preparacion-reutilizacion-residuos",
+  "organismo": "Eurostat",
+  "nombre": "Residuos de aparatos eléctricos y electrónicos por operación de tratamiento (env_waseleeos)",
+  "definicion": "RAEE preparados para la reutilización en % de los RAEE recogidos (cociente de dos filas en toneladas).",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/env_waseleeos/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Solo RAEE: no hay serie oficial de preparación para la reutilización de textiles ni de muebles.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/env_waseleeos?format=JSON&lang=EN&geo=ES&waste=EE6&unit=T&wst_oper=PRP_REU&wst_oper=COL"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "a",
+    "filtro": {
+     "wst_oper": "PRP_REU"
+    }
+   },
+   "y": {
+    "de": "a",
+    "filtro": {
+     "wst_oper": "COL"
+    }
+   },
+   "por": 100
+  },
+  "unidad": "% de los RAEE recogidos",
+  "decimales": 1
+ },
+ {
+  "id": "financiacion-publica-universidades",
+  "organismo": "Ministerio de Educación, Formación Profesional y Deportes",
+  "nombre": "Estadística del Gasto Público en Educación — Serie 10: gasto público en instituciones de educación universitaria en relación al PIB",
+  "definicion": "Gasto público en instituciones de educación universitaria de todas las administraciones, sin capítulos financieros, en porcentaje del PIB.",
+  "ficha": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/economicas/gasto.html",
+  "coincidencia": "aproximada",
+  "nota": "Según la nota de la serie, no incluye becas (salvo exención de precios) e incorpora la financiación de origen privado de las universidades. El último año suele ser provisional.",
+  "tipo": "fija",
+  "unidad": "% del PIB",
+  "decimales": 2,
+  "descarga": "https://estadisticas.educacion.gob.es/EducaJaxiPx/files/_px/es/csv_bdsc/economicas/gasto/series/l0/series_10.csv_bdsc?nocab=1",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 0.83
+  },
+  "ultimo": {
+   "periodo": "2024",
+   "valor": 0.8
+  }
+ },
+ {
+  "id": "gasto-publico-deporte",
+  "organismo": "Ministerio de Educación, Formación Profesional y Deportes",
+  "nombre": "Anuario de Estadísticas Deportivas — Gasto liquidado en deporte por la Administración General del Estado, la Autonómica y la Local",
+  "definicion": "Suma del gasto liquidado en deporte por el Estado, las comunidades autónomas y las entidades locales, en porcentaje del PIB.",
+  "ficha": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/deportes.html",
+  "coincidencia": "aproximada",
+  "nota": "Suma no consolidada de tres niveles (puede contar dos veces las transferencias entre administraciones) y cada uno con su propia delimitación de programas. La función COFOG GF0801 de Eurostat (servicios recreativos y deportivos) es más amplia: 0,42 % en 2024.",
+  "tipo": "fija",
+  "unidad": "% del PIB",
+  "decimales": 2,
+  "descarga": "https://www.educacionfpydeportes.gob.es/va/dam/jcr:f01394c9-0138-4977-b451-d2857b46e92f/aed-2026.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 0.27
+  },
+  "ultimo": {
+   "periodo": "2024",
+   "valor": 0.26
+  }
+ },
+ {
+  "id": "gasto-publico-familia",
+  "organismo": "Eurostat (IGAE)",
+  "nombre": "Gasto de las administraciones públicas por funciones (COFOG): 10.4 Familia e hijos (gov_10a_exp)",
+  "definicion": "Gasto total de las Administraciones Públicas consolidadas en la función 10.4 Familia e hijos, en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table",
+  "coincidencia": "aproximada",
+  "nota": "No incluye los beneficios fiscales por familia (deducciones del IRPF) ni la educación de 0 a 3 años, que entra en la función de educación.",
+  "tipo": "automatica",
+  "descargas": {
+   "g": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&lang=EN&geo=ES&sector=S13&na_item=TE&unit=MIO_EUR&cofog99=GF07&cofog99=GF09&cofog99=GF1004&cofog99=GF0601&cofog99=GF1006",
+   "pib": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&geo=ES&na_item=B1GQ&unit=CP_MEUR"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": {
+    "de": "g",
+    "filtro": {
+     "cofog99": "GF1004"
+    }
+   },
+   "y": {
+    "de": "pib"
+   },
+   "por": 100
+  },
+  "unidad": "% del PIB",
+  "decimales": 2
+ },
+ {
+  "id": "analfabetismo-digital-cat",
+  "organismo": "Instituto Nacional de Estadística (INE)",
+  "nombre": "Encuesta sobre equipamiento y uso de TIC en los hogares (TIC-H): habilidades digitales por comunidades y ciudades autónomas",
+  "definicion": "Porcentaje de las personas de 16 a 74 años sin habilidades digitales (nivel 0 del indicador de Eurostat) en Cataluña.",
+  "ficha": "https://www.ine.es/jaxi/Tabla.htm?tpx=76631&L=0",
+  "coincidencia": "aproximada",
+  "nota": "«Sin habilidades» deja fuera a quienes no usaron internet en los últimos tres meses (2,2 % en Cataluña en 2025), que tampoco se evalúan; cada edición tiene su propio id de tabla. La de 2023 salió el 28/11/2023, después del inicio de la legislatura.",
+  "tipo": "fija",
+  "unidad": "% de la población de 16 a 74 años",
+  "decimales": 1,
+  "descarga": "https://www.ine.es/jaxi/files/tpx/es/csv_bdsc/76631.csv",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2021",
+   "valor": 1.7
+  },
+  "ultimo": {
+   "periodo": "2025",
+   "valor": 1.3
+  }
+ },
+ {
+  "id": "tasa-paro-cat",
+  "organismo": "INE",
+  "nombre": "Encuesta de Población Activa (EPA). Tasas de paro por distintos grupos de edad, sexo y comunidad autónoma",
+  "definicion": "Parados en porcentaje de la población activa de 16 y más años en Cataluña.",
+  "ficha": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=resultados&idp=1254735976595",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA452504?nult=60"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de la población activa",
+  "decimales": 2
+ },
+ {
+  "id": "empleo-creado-cat",
+  "organismo": "INE",
+  "nombre": "Encuesta de Población Activa (EPA). Ocupados por grupo de edad, sexo y comunidad autónoma",
+  "definicion": "Número de ocupados en Cataluña, en miles; los empleos creados se miden como la diferencia con el nivel de partida.",
+  "ficha": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=resultados&idp=1254735976595",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA433970?nult=60"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "miles de ocupados",
+  "decimales": 1
+ },
+ {
+  "id": "gasto-estatal-vivienda-pib",
+  "organismo": "Eurostat (IGAE)",
+  "nombre": "Gasto de las administraciones públicas por funciones (COFOG): 06.1 Urbanización y 10.6 Vivienda (gov_10a_exp)",
+  "definicion": "Gasto de las Administraciones Públicas en vivienda (desarrollo de vivienda y ayudas sociales a la vivienda) en porcentaje del PIB.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Recoge el gasto de todas las administraciones, no solo el del Estado: los fondos estatales de vivienda se transfieren casi todos a las comunidades y COFOG los cuenta donde se gastan (la administración central, S1311, solo suma 0,03 % en GF0601+GF1006).",
+  "tipo": "automatica",
+  "descargas": {
+   "g": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&lang=EN&geo=ES&sector=S13&na_item=TE&unit=MIO_EUR&cofog99=GF07&cofog99=GF09&cofog99=GF1004&cofog99=GF0601&cofog99=GF1006",
+   "pib": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_gdp?format=JSON&lang=EN&geo=ES&na_item=B1GQ&unit=CP_MEUR"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": [
+    {
+     "de": "g",
+     "filtro": {
+      "cofog99": "GF0601"
+     }
+    },
+    {
+     "de": "g",
+     "filtro": {
+      "cofog99": "GF1006"
+     }
+    }
+   ],
+   "y": {
+    "de": "pib"
+   },
+   "por": 100
+  },
+  "unidad": "% del PIB",
+  "decimales": 2
+ },
+ {
+  "id": "gasto-universidades-cat",
+  "organismo": "Ministerio de Educación, Formación Profesional y Deportes (PIB regional: INE/Eurostat)",
+  "nombre": "Estadística del Gasto Público en Educación — Serie 10: gasto público en instituciones de educación universitaria (Cataluña - Departament d'Educació)",
+  "definicion": "Gasto público de la administración educativa de Cataluña en instituciones universitarias, en porcentaje del PIB de Cataluña.",
+  "ficha": "https://www.educacionfpydeportes.gob.es/servicios-al-ciudadano/estadisticas/economicas/gasto.html",
+  "coincidencia": "aproximada",
+  "nota": "El Ministerio lo da en % del PIB de España y con dos decimales (0,12 en 2022 y 2024); al pasarlo al PIB catalán el redondeo deja un margen de unos ±0,03 puntos. Además incluye financiación privada de las universidades, por eso sale por encima del 0,40 % que cita la promesa.",
+  "tipo": "fija",
+  "unidad": "% del PIB de Cataluña",
+  "decimales": 2,
+  "descarga": "https://estadisticas.educacion.gob.es/EducaJaxiPx/files/_px/es/csv_bdsc/economicas/gasto/series/l0/series_10.csv_bdsc?nocab=1 ; https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10r_2gdp?format=JSON&geo=ES&geo=ES51&unit=MIO_EUR",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 0.64
+  },
+  "ultimo": {
+   "periodo": "2024",
+   "valor": 0.63
+  }
+ },
+ {
+  "id": "inversion-publica-vivienda-habitante",
+  "organismo": "Eurostat (IGAE)",
+  "nombre": "Gasto de las administraciones públicas por funciones (COFOG): 06.1 Urbanización y 10.6 Vivienda (gov_10a_exp), y población (nama_10_pe)",
+  "definicion": "Gasto de las Administraciones Públicas en vivienda (desarrollo de vivienda y ayudas sociales a la vivienda) en euros por habitante.",
+  "ficha": "https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table",
+  "coincidencia": "aproximada",
+  "nota": "Es gasto total, no solo inversión; la parte de inversión (formación bruta de capital, P5, en GF0601) es menor.",
+  "tipo": "automatica",
+  "descargas": {
+   "g": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&lang=EN&geo=ES&sector=S13&na_item=TE&unit=MIO_EUR&cofog99=GF07&cofog99=GF09&cofog99=GF1004&cofog99=GF0601&cofog99=GF1006",
+   "pob": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nama_10_pe?format=JSON&lang=EN&geo=ES&na_item=POP_NC&unit=THS_PER"
+  },
+  "calculo": {
+   "op": "cociente",
+   "x": [
+    {
+     "de": "g",
+     "filtro": {
+      "cofog99": "GF0601"
+     }
+    },
+    {
+     "de": "g",
+     "filtro": {
+      "cofog99": "GF1006"
+     }
+    }
+   ],
+   "y": {
+    "de": "pob"
+   },
+   "por": 1000
+  },
+  "unidad": "euros por habitante",
+  "decimales": 0
+ },
+ {
+  "id": "hogares-bono-social",
+  "organismo": "Comisión Nacional de los Mercados y la Competencia (CNMC)",
+  "nombre": "Boletín de indicadores eléctricos: consumidores acogidos al bono social",
+  "definicion": "Número de consumidores eléctricos (suministros de vivienda habitual) acogidos al bono social a final de mes, vulnerables y vulnerables severos.",
+  "ficha": "https://cnmc.es/sectores-que-regulamos/energia/boletines-de-indicadores-electricos",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "hogares",
+  "decimales": 0,
+  "descarga": "https://www.cnmc.es/sites/default/files/6750305.pdf",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2023-06",
+   "valor": 1509186
+  },
+  "ultimo": {
+   "periodo": "2026-03",
+   "valor": 1716420
+  }
+ },
+ {
+  "id": "financiacion-age-dependencia",
+  "organismo": "Imserso (Ministerio de Derechos Sociales)",
+  "nombre": "Información estadística del SAAD — Financiación del SAAD: nivel mínimo + nivel acordado, % sobre el gasto en dependencia",
+  "definicion": "Aportación de la Administración General del Estado (nivel mínimo más nivel acordado) en porcentaje del gasto en dependencia que certifican las comunidades autónomas.",
+  "ficha": "https://imserso.es/espacio-mayores/estadisticas/sistema-autonomia-atencion-dependencia-saad",
+  "coincidencia": "exacta",
+  "nota": "",
+  "tipo": "fija",
+  "unidad": "% del gasto en dependencia",
+  "decimales": 1,
+  "descarga": "https://imserso.es/documents/d/global/f_general_202609",
+  "comprobado": "2026-10-21",
+  "inicio": {
+   "periodo": "2022",
+   "valor": 25.95
+  },
+  "ultimo": {
+   "periodo": "2025",
+   "valor": 26.86
+  }
+ },
+ {
+  "id": "temporalidad-administraciones",
+  "organismo": "INE",
+  "nombre": "Encuesta de Población Activa (EPA). Asalariados del sector público por sexo y tipo de contrato o relación laboral",
+  "definicion": "Asalariados del sector público con contrato temporal, en porcentaje del total de asalariados del sector público.",
+  "ficha": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176918&menu=resultados&idp=1254735976595",
+  "coincidencia": "aproximada",
+  "nota": "El sector público de la EPA incluye las empresas públicas además de las Administraciones.",
+  "tipo": "automatica",
+  "descargas": {
+   "a": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA416424?nult=60"
+  },
+  "calculo": {
+   "op": "valor",
+   "x": {
+    "de": "a"
+   }
+  },
+  "unidad": "% de los asalariados del sector público",
+  "decimales": 1
+ }
+]
