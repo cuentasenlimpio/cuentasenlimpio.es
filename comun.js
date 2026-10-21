@@ -541,3 +541,8 @@ async function pintarActualidad() {
   }
 }
 document.addEventListener("DOMContentLoaded", pintarActualidad);
+
+// Anchos de barras escritos en el HTML (la CSP no deja usar style="…" en el HTML; desde JavaScript, sí)
+document.addEventListener("DOMContentLoaded", () => {
+  for (const e of document.querySelectorAll("[data-ancho]")) e.style.width = `${e.dataset.ancho}%`;
+});

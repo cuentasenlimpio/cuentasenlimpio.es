@@ -212,6 +212,9 @@ PAGINAS = [
        "url": f"https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/{c}.csv", "extension": "csv"}
       for c, n in (("be1406", "Deuda PDE de las corporaciones locales por tipo y de los ayuntamientos de más de 300.000 habitantes (Boletín Estadístico, cuadro 14.6)"),
                    ("be1408", "Deuda PDE de las corporaciones locales, en euros y en % del PIB (Boletín Estadístico, cuadro 14.8)"))],
+    {"fuente": "Ministerio de Hacienda", "tabla": "hacienda_pmp_series", "opcional": True,
+     "nombre": "Periodo medio de pago a proveedores de las administraciones públicas: series mensuales desde abril de 2018 (RD 1040/2017)",
+     "url": "https://www.hacienda.gob.es/cdi/pmp/pmp-series-rd-1040-2017.xlsx", "extension": "xlsx"},
     {"fuente": "INE", "tabla": "ine_padron_municipios", "opcional": True,
      "nombre": "Cifras oficiales de población de los municipios (revisión del padrón, tabla 29005)",
      "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/29005?nult=1&tip=AM", "extension": "json"},

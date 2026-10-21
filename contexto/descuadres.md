@@ -41,6 +41,26 @@ Falta:
 En la web:
 - La serie se muestra solo desde 2021, igual que las otras tablas de la misma directiva europea, que Eurostat marca con ruptura de serie hasta 2020.
 
+## Periodo medio de pago: cifras del fichero de Hacienda que no casan entre sí
+
+Estado: No cuadra (sin explicar). Ficha: https://cuentasenlimpio.es/descuadres.html#pmp-fichero-incoherente
+
+Cifras:
+- ADMINISTRACIÓN LOCAL (Cesión), 2025-01: 31,56 días publicados frente a 23,48 que salen de sus partes (el publicado coincide con la suma de sus entidades: lo erróneo son las partes)
+- Diputación Prov. de Granada, 2023-12: 20,66 días publicados frente a 3,94 que salen de sus partes
+- Toledo, 2023-08: 9,58 días publicados frente a 9,85 que salen de sus partes
+- Torrent, 2022-05: 34,32 días publicados frente a 14,06 que salen de sus partes
+- Valencia, 2022-05: 24,14 días publicados frente a 34,32 que salen de sus partes
+
+Explicado:
+- El periodo medio es la media de los días de lo pagado y de lo pendiente, ponderada por sus importes; en estos casos el fichero da cifras que no cumplen esa cuenta. Comprobamos todas las entidades y todos los meses cada día.
+
+Falta:
+- Saber cuál de las cifras es la correcta en cada caso. Solo Hacienda puede corregir el fichero.
+
+En la web:
+- Esos meses no entran en las medias de doce meses. El caso desaparece solo si Hacienda corrige el fichero.
+
 ## Gasto por funciones: va por detrás de la última revisión de Eurostat
 
 Estado: Desfase temporal. Ficha: https://cuentasenlimpio.es/descuadres.html#gasto-por-funciones-desfase

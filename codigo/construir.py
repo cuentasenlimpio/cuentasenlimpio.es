@@ -1495,7 +1495,7 @@ def construir_deuda_local(descargas):
     print(f"deuda local: {años[0]}–{ultimo}, {salida['serie']['meur'][-1]} M€; ayuntamientos {m_.get('año')}: {m_.get('n')}, sin deuda {m_.get('sin_deuda')}")
 
 
-def construir_descuadres(gasto):
+def construir_descuadres(gasto, pmp=None):
     """Lo que no cuadra: los casos de datos/descuadres.json más los automáticos (hoy, el desfase de versiones entre el
     gasto por funciones y el gasto total de Eurostat, que aparece y desaparece solo). Lo leen descuadres.html y las
     marcas de aviso junto a las fuentes (comun.js)."""
@@ -1514,11 +1514,178 @@ def construir_descuadres(gasto):
             "en_la_web": "La página de gasto lo avisa junto al último año. Este caso desaparece solo cuando Eurostat actualice la tabla.",
             "marcas": [{"pagina": "gasto.html", "id": "reparto-fuente"}],
         })
+    if pmp and pmp.get("incoherentes"):
+        inc = pmp["incoherentes"]
+        lineas = [f"{m_['nombre']}, {m_['periodo']}: {es(m_['publicado'], 2)} días publicados frente a {es(m_['calculado'], 2)} que salen de sus partes"
+                  + (" (el publicado coincide con la suma de sus entidades: lo erróneo son las partes)" if m_.get("pmp_correcto") else "") for m_ in inc]
+        casos.append({
+            "id": "pmp-fichero-incoherente", "estado": "sin_explicar", "anotado": None, "automatico": True,
+            "titulo": "Periodo medio de pago: cifras del fichero de Hacienda que no casan entre sí",
+            "resumen": f"En {len(inc)} casos (entidad y mes) el periodo publicado no sale de sus partes. Esos meses no entran en las medias.",
+            "cifras": lineas,
+            "explicado": ["El periodo medio es la media de los días de lo pagado y de lo pendiente, ponderada por sus importes; en estos casos el "
+                          "fichero da cifras que no cumplen esa cuenta. Comprobamos todas las entidades y todos los meses cada día."],
+            "falta": "Saber cuál de las cifras es la correcta en cada caso. Solo Hacienda puede corregir el fichero.",
+            "en_la_web": "Esos meses no entran en las medias de doce meses. El caso desaparece solo si Hacienda corrige el fichero.",
+            "marcas": [{"pagina": "pago-proveedores.html", "id": "g1-fuente"}, {"pagina": "pago-proveedores.html", "id": "g3-fuente"}],
+        })
     orden = {"sin_explicar": 0, "transitorio": 1, "explicado": 2}
     casos.sort(key=lambda c: orden[c["estado"]])
     (WEB / "datos" / "descuadres.json").write_text(json.dumps({"casos": casos}, ensure_ascii=False))
     cuenta = {e: sum(1 for c in casos if c["estado"] == e) for e in orden}
     print(f"descuadres: {len(casos)} casos ({', '.join(f'{e}: {v}' for e, v in cuenta.items())})")
+
+
+def _pmp_tabla(filas, desde=0):
+    """Una tabla del fichero de series del PMP: ({clave: {"nombre", "v": {"AAAA-MM": valor}}}, índice de la fila siguiente).
+    La clave es el código (o el subsector en la tabla 1); «Sin Dato» y «#N/A» son None."""
+    i = next(k for k in range(desde, len(filas)) if filas[k] and filas[k][0] in ("Código", "SUBSECTOR"))
+    cab = filas[i]
+    periodos = {k: re.sub(r"\s*-\s*", "-", str(c).strip()) for k, c in enumerate(cab) if c and re.match(r"\d{4}\s*-\s*\d{2}$", str(c).strip())}
+    nombre_col = max(k for k, c in enumerate(cab) if c and k not in periodos)
+    salida = {}
+    k = i + 1
+    while k < len(filas) and filas[k] and isinstance(filas[k][0], str) and not filas[k][0].startswith("Tabla"):
+        f = filas[k]
+        clave = f[0].strip().upper()
+        vals = {}
+        for col, per in periodos.items():
+            x = f[col] if col < len(f) else None
+            try:
+                vals[per] = float(x) if x not in (None, "") else None
+            except (TypeError, ValueError):
+                vals[per] = None
+        salida[clave] = {"nombre": str(f[nombre_col] if cab[0] == "Código" else f[0]).strip(), "v": vals}
+        k += 1
+    return salida, k
+
+
+def construir_pmp(descargas):
+    """Periodo medio de pago a proveedores (Hacienda, RD 1040/2017): días que tardan en pagar las facturas comerciales.
+    PMP = (ratio pagadas × pagos realizados + ratio pendientes × pagos pendientes) / (pagos realizados + pendientes)."""
+    if "hacienda_pmp_series" not in descargas:
+        return
+    # En algunas hojas (la tabla 1) el contenido empieza en la segunda columna: la primera solo lleva el enlace «<<» al índice
+    libro = {}
+    for n, filas in hojas(AQUI / descargas["hacienda_pmp_series"]["fichero"]).items():
+        desplazada = any(len(f) > 1 and f[0] is None and f[1] in ("SUBSECTOR", "Código") for f in filas)
+        libro[n.strip()] = [f[1:] if desplazada and f else f for f in filas]  # algunos nombres llevan un espacio al final
+    comprobaciones = []
+    # Tabla 1: una cabecera de periodos y cinco bloques seguidos (1.1 PMP, 1.2 ratio pagadas, 1.3 pagos, 1.4 ratio
+    # pendientes, 1.5 pagos pendientes), cada uno con una fila por subsector.
+    filas = libro["Tabla 1"]
+    cab = next(f for f in filas if f and f[0] == "SUBSECTOR")
+    periodos = {k: re.sub(r"\s*-\s*", "-", str(c).strip()) for k, c in enumerate(cab) if c and re.match(r"\d{4}\s*-\s*\d{2}$", str(c).strip())}
+    t1, bloque = {}, None
+    for f in filas:
+        if not f or not isinstance(f[0], str):
+            continue
+        m = re.match(r"Tabla 1\.(\d)$", f[0].strip())
+        if m:
+            bloque = ("pmp", "r_pag", "pagos", "r_pend", "pend")[int(m.group(1)) - 1]
+            t1[bloque] = {}
+        elif bloque and f[0].strip().upper().startswith(("ADMINISTRACI", "FONDOS")):
+            vals = {}
+            for col, per in periodos.items():
+                try:
+                    vals[per] = float(f[col]) if col < len(f) and f[col] not in (None, "") else None
+                except (TypeError, ValueError):
+                    vals[per] = None
+            t1[bloque][f[0].strip().upper()] = {"nombre": f[0].strip(), "v": vals}
+    bloques = {"pmp": "Tabla 4.5", "r_pag": "Tabla 4.1", "pagos": "Tabla 4.2", "r_pend": "Tabla 4.3", "pend": "Tabla 4.4"}
+    t4 = {k: _pmp_tabla(libro[h])[0] for k, h in bloques.items()}
+    t5 = {k: _pmp_tabla(libro[h.replace("4.", "5.")])[0] for k, h in bloques.items()}
+
+    # Comprobación: la fórmula reproduce el PMP publicado. Las filas de resumen de las tablas 4 y 5 (S.1312, S.1313) no se
+    # usan (el resumen por subsectores es la tabla 1) y no se revisan.
+    def revisar(t, omitir=()):
+        n, malos = 0, []
+        for clave, e in t["pmp"].items():
+            if clave in omitir:
+                continue
+            for per, v in e["v"].items():
+                partes = [t[k].get(clave, {}).get("v", {}).get(per) for k in ("r_pag", "pagos", "r_pend", "pend")]
+                if v is None or None in partes or partes[1] + partes[3] <= 0:
+                    continue
+                n += 1
+                calc = (partes[0] * partes[1] + partes[2] * partes[3]) / (partes[1] + partes[3])
+                if abs(calc - v) > 0.05:
+                    malos.append({"clave": clave, "nombre": e["nombre"], "periodo": per, "publicado": round(v, 2), "calculado": round(calc, 2)})
+        return n, malos
+
+    def agregado(t, per, omitir):
+        """PMP de un periodo a partir de las entidades, ponderado por sus importes (para contrastar el de la tabla 1)."""
+        num = den = 0.0
+        for clave in t["pmp"]:
+            partes = [t[k].get(clave, {}).get("v", {}).get(per) for k in ("r_pag", "pagos", "r_pend", "pend")]
+            if clave in omitir or None in partes:
+                continue
+            num += partes[0] * partes[1] + partes[2] * partes[3]
+            den += partes[1] + partes[3]
+        return num / den if den else None
+    incoherentes = []
+    for nombre, t, omitir in (("los subsectores", t1, ()), ("las comunidades autónomas", t4, ("S.1312",)), ("las entidades locales", t5, ("S.1313",))):
+        n, malos = revisar(t, omitir)
+        for m_ in malos:
+            # En la tabla 1, si el PMP publicado es el que sale de sumar las entidades, lo erróneo son sus piezas, no el PMP
+            if t is t1 and m_["clave"].startswith(("ADMINISTRACIÓN LOCAL", "ADMINISTRACIÓN REGIONAL")):
+                t_ent = t5 if m_["clave"].startswith("ADMINISTRACIÓN LOCAL") else t4
+                ag = agregado(t_ent, m_["periodo"], ("S.1313", "S.1312"))
+                m_["pmp_correcto"] = ag is not None and abs(ag - m_["publicado"]) <= 0.05
+        incoherentes += malos
+        comprobaciones.append({
+            "que": f"¿El periodo medio de pago de {nombre} sale de sus dos partes (lo pagado y lo pendiente)?",
+            "resultado": (f"Sí, en las {es(n)} cifras que lo permiten (cada entidad y cada mes)" if not malos else
+                          f"Sí en {es(n - len(malos))} de {es(n)} cifras; en {len(malos)} el propio fichero de Hacienda no casa: "
+                          + "; ".join(f"{m_['nombre']} en {m_['periodo']} ({es(m_['publicado'], 2)} días publicados, {es(m_['calculado'], 2)} calculados"
+                                      + (", y el publicado es el que sale de sumar sus entidades" if m_.get("pmp_correcto") else "") + ")" for m_ in malos)
+                          + ". Esos meses no entran en las medias"),
+            "ok": not malos})
+    # Comprobación de unidades: el fichero dice «miles de euros»; si lo fueran, lo pagado en un año superaría el PIB
+    ac = next(e for c, e in t1["pagos"].items() if c.startswith("ADMINISTRACIÓN CENTRAL"))
+    ultimos = [v for per, v in sorted(ac["v"].items()) if v is not None][-12:]
+    año_pagos = sum(ultimos)
+    comprobaciones.append({"que": "¿En qué unidad están los importes de pagos? (el fichero dice «miles de euros»)",
+                           "resultado": (f"En euros: en los últimos doce meses la Administración central pagó {es(año_pagos / 1e6)} millones de euros "
+                                         f"a proveedores según el fichero; si fueran miles de euros serían {es(año_pagos / 1e9)} billones, más que todo "
+                                         f"el PIB de España. Por eso los usamos como euros"),
+                           "ok": año_pagos / 1e9 > 2})
+
+    excluidos = {(m_["clave"], m_["periodo"]) for m_ in incoherentes}
+
+    def ultimo_periodo(t):
+        return max(per for e in t["pmp"].values() for per, v in e["v"].items() if v is not None)
+
+    def media12(t, clave, hasta):
+        """Media de los doce meses hasta «hasta», ponderada por los importes (cálculo nuestro)."""
+        pers = sorted(p for p in t["pmp"][clave]["v"] if p <= hasta)[-12:]
+        num = den = 0.0
+        for per in pers:
+            partes = [t[k].get(clave, {}).get("v", {}).get(per) for k in ("r_pag", "pagos", "r_pend", "pend")]
+            if None in partes or (clave, per) in excluidos:
+                continue
+            num += partes[0] * partes[1] + partes[2] * partes[3]
+            den += partes[1] + partes[3]
+        return round(num / den, 1) if den else None
+
+    subsectores = []
+    for clave, e in t1["pmp"].items():
+        pers = sorted(e["v"])
+        subsectores.append({"clave": clave, "nombre": e["nombre"], "periodos": pers, "v": [None if e["v"][p] is None else round(e["v"][p], 1) for p in pers],
+                            "pendiente_meur": round((t1["pend"].get(clave, {}).get("v", {}).get(max(p for p in pers if e["v"][p] is not None)) or 0) / 1e6)})
+    fin4 = ultimo_periodo(t4)
+    ccaa = [{"codigo": c, "nombre": e["nombre"], "ultimo": e["v"].get(fin4), "media12": media12(t4, c, fin4)}
+            for c, e in t4["pmp"].items() if c != "S.1312"]
+    fin5 = ultimo_periodo(t5)
+    locales = [{"codigo": c, "nombre": e["nombre"], "ultimo": e["v"].get(fin5), "media12": media12(t5, c, fin5)}
+               for c, e in t5["pmp"].items() if c.startswith("S.1313.") and e["nombre"] not in ("", "None")]  # el fichero trae alguna fila suelta sin código completo ni nombre
+    salida = {"subsectores": subsectores, "ccaa": {"periodo": fin4, "filas": ccaa}, "locales": {"periodo": fin5, "filas": locales},
+              "plazo_legal": 30, "tabla": "hacienda_pmp_series", "comprobaciones": comprobaciones, "incoherentes": incoherentes}
+    (WEB / "datos" / "pmp.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"pmp: {len(subsectores)} subsectores, {len(ccaa)} comunidades ({fin4}), {len(locales)} entidades locales ({fin5})")
+    return salida
 
 
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
@@ -2856,7 +3023,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3009,7 +3176,8 @@ def main():
     construir_fondos_europeos(descargas)
     construir_avales(descargas)
     construir_deuda_local(descargas)
-    construir_descuadres(gasto)
+    pmp = construir_pmp(descargas)
+    construir_descuadres(gasto, pmp)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

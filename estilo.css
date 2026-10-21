@@ -898,3 +898,11 @@ header.sitio { position: relative; }
 .leyenda-descuadres li { margin-bottom: 0.5rem; }
 .leyenda-descuadres .aviso-descuadre { margin-right: 0.4rem; }
 .caso h2 { border-top: 0; padding-top: 0; }
+.tabla-años td.por-encima { font-weight: 700; }
+.referencia-pp { stroke: #b3261e; stroke-width: 1.5; }
+.clave-linea.clave-discontinua { border-top: 2px dashed var(--linea-fuerte); }
+.clave-linea.clave-primaria { border-color: var(--c-primario); }
+.clave-linea.clave-tinta { border-color: var(--tinta); }
+.clave-linea.clave-roja { border-color: #b3261e; }
+.sin-margen-abajo { margin-bottom: 0; }
+.indice-preguntas { scroll-margin-top: 1rem; }

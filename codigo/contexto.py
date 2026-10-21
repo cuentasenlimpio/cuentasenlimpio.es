@@ -656,12 +656,35 @@ def deuda_local(D):
     return md
 
 
+def pago_proveedores(D):
+    s = D.get("pmp") or {}
+    if not s.get("subsectores"):
+        return cabecera("El pago a proveedores", "pago-proveedores.html", "Sin datos en esta construcción.")
+    md = cabecera("El periodo medio de pago a proveedores de las administraciones", "pago-proveedores.html",
+                  "Días que tardan de media en pagar las facturas comerciales desde que se aprueban, contando las pendientes (Ministerio de "
+                  "Hacienda, método del RD 1040/2017, desde abril de 2018). Máximo legal: 30 días. Los importes del fichero van en euros "
+                  "aunque su cabecera diga miles. La media de doce meses es un cálculo nuestro, ponderada por lo pagado y lo pendiente. "
+                  "Los meses en que el fichero no casa consigo mismo no entran en las medias (ver descuadres.md).")
+    filas = []
+    for x in s["subsectores"]:
+        k = max(i for i, v in enumerate(x["v"]) if v is not None)
+        filas.append([x["nombre"], x["periodos"][k], n(x["v"][k], 1), n(x["pendiente_meur"])])
+    md += "\n## Por subsector (último mes)\n\n" + tabla(["Subsector", "Mes", "Días", "Facturas pendientes (M€)"], filas)
+    md += (f"\n\n## Comunidades autónomas ({s['ccaa']['periodo']})\n\n"
+           + tabla(["Comunidad", "Días en el mes", "Media 12 meses"], [[f["nombre"], n(f["ultimo"], 1), n(f["media12"], 1)] for f in sorted(s["ccaa"]["filas"], key=lambda f: f["nombre"])]))
+    md += (f"\n\n## Grandes ayuntamientos y diputaciones ({s['locales']['periodo']})\n\n"
+           + tabla(["Entidad", "Días en el mes", "Media 12 meses"], [[f["nombre"], n(f["ultimo"], 1), n(f["media12"], 1)] for f in sorted(s["locales"]["filas"], key=lambda f: f["nombre"])]))
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], "hacienda_pmp_series")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
     ("descuadres", descuadres, "Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas."),
+    ("pago-proveedores", pago_proveedores, "Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones."),
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
@@ -755,7 +778,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
