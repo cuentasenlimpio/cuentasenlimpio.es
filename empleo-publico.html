@@ -17,7 +17,7 @@
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js?v=ddca3566b1" defer></script>
   <script src="ec.js?v=8d530b25b8" defer></script>
-  <script src="empleo-publico.js?v=b69c60e177" defer></script>
+  <script src="empleo-publico.js?v=dbd2904cea" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -58,6 +58,19 @@
       <p class="leyenda-linea"><span class="clave-linea clave-primaria"></span> Públicos, de cada 100 asalariados <span class="clave-linea clave-tinta"></span> Temporales, de cada 100 asalariados públicos</p>
       <div id="g2"></div>
       <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="rcp-t">
+      <h2 class="pregunta" id="rcp-t">¿Y según el registro oficial de personal?</h2>
+      <p class="grafico-explica" id="rcp-explica">Efectivos de las administraciones públicas según la estadística del Registro Central de Personal.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="rcp-serie"></table></div>
+      <table class="tabla-sueldo" id="rcp-reparto"></table>
+      <p class="fuente-grafico" id="rcp-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>La EPA y el registro no cuentan lo mismo. La EPA es una encuesta a los hogares: cuenta a quien dice trabajar para el sector público, también en empresas públicas. El registro cuenta a las personas que constan en los sistemas de personal de las administraciones y sus organismos. <span class="resalta">Por eso la EPA da más gente y las dos cifras no deben compararse sin más</span>.</p>
+      </div>
     </section>
 
     <section class="grafico" aria-labelledby="g3-t">

@@ -26,7 +26,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
 - [este-ano](https://cuentasenlimpio.es/contexto/este-ano.md) (2 KB): El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior.
 - [seguridad-social](https://cuentasenlimpio.es/contexto/seguridad-social.md) (4 KB): La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo.
-- [empleo-publico](https://cuentasenlimpio.es/contexto/empleo-publico.md) (7 KB): Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea.
+- [empleo-publico](https://cuentasenlimpio.es/contexto/empleo-publico.md) (8 KB): Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea.
 - [descuadres](https://cuentasenlimpio.es/contexto/descuadres.md) (6 KB): Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas.
 - [modificaciones](https://cuentasenlimpio.es/contexto/modificaciones.md) (7 KB): Cómo cambia el presupuesto del Estado durante el año: modificaciones de crédito por tipo, ministerio y política, frente a los mismos meses de años anteriores.
 - [pago-proveedores](https://cuentasenlimpio.es/contexto/pago-proveedores.md) (8 KB): Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones.

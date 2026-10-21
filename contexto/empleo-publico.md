@@ -117,9 +117,24 @@ Personas: asalariados del sector público según la Encuesta de Población Activ
 
 Ojo al comparar: depende de cuánto presta la administración con personal propio y cuánto contrata fuera.
 
+
+## Efectivos según el Registro Central de Personal (estadística semestral; ediciones revisadas desde julio de 2023)
+
+| Edición | Estado | Comunidades | Locales | Total |
+|---|---|---|---|---|
+| 2023-07 | 529.018 | 1.849.040 | 603.516 | 2.981.574 |
+| 2024-01 | 530.281 | 1.860.634 | 587.801 | 2.978.716 |
+| 2024-07 | 535.668 | 1.873.159 | 602.136 | 3.010.963 |
+| 2025-01 | 540.404 | 1.905.576 | 587.324 | 3.033.304 |
+| 2025-07 | 540.210 | 1.936.642 | 599.713 | 3.076.565 |
+| 2026-01 | 546.554 | 1.930.273 | 594.898 | 3.071.725 |
+
+No es comparable con la EPA: la EPA es una encuesta e incluye empresas públicas; el registro cuenta puestos en los sistemas de personal.
+
 ## Fuentes
 
 - INE, EPA: asalariados del sector público, total (miles): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA416131?nult=400
 - INE, EPA: asalariados por sector público o privado y comunidad autónoma (tabla 65327): https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65327?nult=4
 - Eurostat, Ingresos, gastos y saldo de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
 - Eurostat, Ingresos, gastos y saldo de las administraciones públicas (UE-27): https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+- Ministerio para la Transformación Digital y de la Función Pública, Personal al servicio de las administraciones públicas (Registro Central de Personal), enero de 2026: microdatos: https://digital.gob.es/content/dam/portal-mtdfp/funcion-publica/rcp/boletin/2026_01/Microdatos_Enero_2026.zip

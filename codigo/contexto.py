@@ -576,7 +576,12 @@ def empleo_publico(D):
         md += (f"\n\n## Remuneración de asalariados públicos en % del PIB, UE ({s['ue']['año']})\n\n"
                + tabla(["País", "% del PIB"], [[p_["nombre"], n(p_["v"], 1)] for p_ in s["ue"]["paises"]])
                + "\n\nOjo al comparar: depende de cuánto presta la administración con personal propio y cuánto contrata fuera.\n")
-    md += fuentes_md([url_tabla(D["aapp"], k) for k in ("ine_epa416131", "ine_epa_t65327", "gov_10a_main", "ue_gov_10a_main")])
+    rg = s.get("registro")
+    if rg:
+        md += ("\n\n## Efectivos según el Registro Central de Personal (estadística semestral; ediciones revisadas desde julio de 2023)\n\n"
+               + tabla(["Edición", "Estado", "Comunidades", "Locales", "Total"], [[x["periodo"], n(x["estado"]), n(x["ccaa"]), n(x["local"]), n(x["total"])] for x in rg["ediciones"]])
+               + "\n\nNo es comparable con la EPA: la EPA es una encuesta e incluye empresas públicas; el registro cuenta puestos en los sistemas de personal.\n")
+    md += fuentes_md([url_tabla(D["aapp"], k) for k in ("ine_epa416131", "ine_epa_t65327", "gov_10a_main", "ue_gov_10a_main")] + ([url_tabla(D["aapp"], rg["ultima"]["tabla"])] if rg else []))
     return md
 
 

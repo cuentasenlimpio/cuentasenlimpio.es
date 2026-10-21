@@ -2049,6 +2049,42 @@ EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
 
 
+def _registro_personal(descargas):
+    """Efectivos del Registro Central de Personal (estadística semestral, microdatos): total por administración de cada
+    edición revisada (desde julio de 2023) y, en la última, por tipo de administración y tipo de personal."""
+    import collections
+    import io
+    import zipfile
+    claves = sorted(k for k in descargas if k.startswith("rcp_epsap_"))
+    if not claves:
+        return None
+    ediciones, ultima = [], None
+    nombres = {"SECTOR PUBLICO DEL ESTADO": "estado", "SECTOR PUBLICO DE LAS COMUNIDADES AUTONOMAS": "ccaa", "SECTOR PUBLICO DE LAS ENTIDADES LOCALES": "local"}
+    for k in claves:
+        try:
+            z = zipfile.ZipFile(AQUI / descargas[k]["fichero"])
+        except zipfile.BadZipFile:
+            print(f"AVISO {k}: el fichero no es un zip")
+            continue
+        interno = next(n for n in z.namelist() if "Total" in n)
+        filas = next(iter(hojas(io.BytesIO(z.read(interno))).values()))
+        cab = [str(x).strip() for x in filas[0]]
+        ia, isub, itp = cab.index("TIPO_ADMINISTRACION"), cab.index("SUBTIPO_ADMINISTRACION"), cab.index("TIPO_PERSONAL")
+        por, sub, tipos = collections.Counter(), collections.Counter(), collections.Counter()
+        for f in filas[1:]:
+            if not f or not isinstance(f[-1], (int, float)):
+                continue
+            por[nombres.get(f[ia], f[ia])] += f[-1]
+            sub[(nombres.get(f[ia], f[ia]), f[isub])] += f[-1]
+            tipos[f[itp]] += f[-1]
+        periodo = f"{k[10:14]}-{k[15:17]}"
+        ediciones.append({"periodo": periodo, "total": int(sum(por.values())), **{n: int(v) for n, v in por.items()}})
+        ultima = {"periodo": periodo, "sub": [{"admin": a, "nombre": n, "v": int(v)} for (a, n), v in sub.most_common()],
+                  "tipos": {t: int(v) for t, v in tipos.most_common()}, "tabla": k}
+    print(f"registro de personal: {len(ediciones)} ediciones; {ediciones[-1]['periodo']}: {ediciones[-1]['total']} efectivos")
+    return {"ediciones": ediciones, "ultima": ultima, "tablas": claves}
+
+
 def construir_empleo_publico(descargas):
     """Cuánta gente trabaja en lo público (EPA, trimestral desde 2002) y cuánto cuesta (remuneración de asalariados, D.1)."""
     salida = {}
@@ -2105,6 +2141,7 @@ def construir_empleo_publico(descargas):
         if año:
             salida["ue"] = {"año": año, "paises": sorted(({"geo": p_, "nombre": PAISES[p_], "v": s_[año][0]} for p_, s_ in por_pais.items()
                                                            if s_.get(año, (None,))[0] is not None), key=lambda x: -x["v"])}
+    salida["registro"] = _registro_personal(descargas)
     (WEB / "datos" / "empleo_publico.json").write_text(json.dumps(salida, ensure_ascii=False))
     e = salida.get("epa")
     print(f"empleo público: {e['trimestres'][-1]} {e['total'][-1]} mil asalariados ({e['pct_asalariados'][-1]} %); "
@@ -3386,7 +3423,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix

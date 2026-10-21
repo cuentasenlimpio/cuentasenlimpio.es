@@ -77,6 +77,45 @@ async function arrancarEP() {
       { nombre: "temporales, de cada 100 asalariados públicos", v: e.pct_temporal, color: "--tinta" }] });
   lineaFuente($("g2-fuente"), { fuentes: aapp.fuentes, tablas: [["ine_epa450290", "EPA: % de asalariados públicos"], ["ine_epa416424", "EPA: % de temporales en el sector público"]], tipo: "dato" });
 
+  const rg = d.registro;
+  if (rg) {
+    const ed = rg.ediciones, ul = ed.at(-1);
+    const nomPer = (p) => `${p.endsWith("-01") ? "enero" : "julio"} ${p.slice(0, 4)}`;
+    $("rcp-explica").textContent = `Efectivos de las administraciones según la estadística del Registro Central de Personal: ${numero(ul.total, 0)} en ${nomPer(ul.periodo)}. Es semestral; las ediciones desde julio de 2023 se revisaron en agosto de 2026 y son comparables entre sí; las anteriores, no.`;
+    const t = $("rcp-serie");
+    t.textContent = "";
+    const cab = t.createTHead().insertRow();
+    for (const c of ["", ...ed.map((x) => nomPer(x.periodo))]) { const th = document.createElement("th"); th.textContent = c; cab.appendChild(th); }
+    const cuerpo = t.createTBody();
+    for (const [n, k, total] of [["Estado", "estado"], ["Comunidades autónomas", "ccaa"], ["Entidades locales", "local"], ["Total", "total", true]]) {
+      const tr = cuerpo.insertRow();
+      if (total) tr.className = "fila-total";
+      tr.insertCell().textContent = n;
+      for (const x of ed) { const c = tr.insertCell(); c.className = "cifra"; c.textContent = numero(x[k], 0); }
+    }
+    const t2 = $("rcp-reparto");
+    t2.textContent = "";
+    const max = Math.max(...rg.ultima.sub.map((x) => x.v));
+    const NOMBRES_RCP = { "INSTITUCIONES SANITARIAS": "Instituciones sanitarias", "DOCENCIA NO UNIVERSITARIA": "Docencia no universitaria",
+      "AYUNTAMIENTOS Y OTRAS ENTIDADES LOCALES Y SUS OOAA": "Ayuntamientos y otras entidades locales, con sus organismos",
+      "FUERZAS ARMADAS Y FUERZAS Y CUERPOS DE SEGURIDAD DEL ESTADO": "Fuerzas Armadas y Fuerzas y Cuerpos de Seguridad del Estado",
+      "ADMINISTRACION DEL ESTADO": "Administración del Estado", "ADMINISTRACION GENERAL CCAA": "Administración general de las comunidades",
+      "UNIVERSIDADES": "Universidades públicas", "DIPUTACIONES CABILDOS Y CONSEJOS INSULARES Y SUS OOAA": "Diputaciones, cabildos y consejos insulares, con sus organismos",
+      "ADMINISTRACION DE JUSTICIA": "Administración de Justicia", "POLICIA": "Policías autonómicas",
+      "ADMINISTRACION AL SERVICIO DE TRIBUNALES DE INSTANCIA": "Administración al servicio de los tribunales de instancia" };
+    const minus = (s) => NOMBRES_RCP[s] || s.charAt(0) + s.slice(1).toLowerCase();
+    for (const x of rg.ultima.sub) {
+      const tr = t2.insertRow();
+      const a = tr.insertCell(); a.textContent = minus(x.nombre);
+      const sp = document.createElement("span"); sp.className = "detalle"; sp.textContent = { estado: "Estado", ccaa: "Comunidades autónomas", local: "Entidades locales" }[x.admin] || "";
+      a.appendChild(sp);
+      const b = document.createElement("span"); b.className = "barra"; b.style.width = `${(100 * x.v) / max}%`; a.appendChild(b);
+      const c = tr.insertCell(); c.className = "cifra"; c.textContent = numero(x.v, 0);
+    }
+    lineaFuente($("rcp-fuente"), { fuentes: aapp.fuentes, tablas: [[rg.ultima.tabla, `estadística del personal al servicio de las administraciones, ${nomPer(ul.periodo)}`]], tipo: "dato",
+      nota: `De ellos, ${numero(rg.ultima.tipos["PERSONAL FUNCIONARIO DE CARRERA"], 0)} funcionarios de carrera (con el personal estatutario de la sanidad), ${numero(rg.ultima.tipos["PERSONAL LABORAL"], 0)} laborales y ${numero(rg.ultima.tipos["OTRO PERSONAL"], 0)} de otro tipo (interinos, eventuales…). Esta cifra no tiene todavía una segunda fuente con la que contrastarla.` });
+  }
+
   if (d.ccaa) {
     $("g3-explica").textContent = `De cada 100 asalariados de cada comunidad autónoma, cuántos trabajan para el sector público, en el ${trimestreLegible(d.ccaa.periodo)}. En el conjunto de España: ${numero(d.ccaa.total, 1)}.`;
     tablaBarras($("ccaa"), [...d.ccaa.filas].sort((a, b) => b.pct - a.pct).map((c) => ({ nombre: c.nombre, v: c.pct })), { formato: (v) => numero(v, 1) });

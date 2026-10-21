@@ -386,6 +386,29 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO ce_gasto_ingresos_ue: no se pudo leer la página ({error})")
 
+    # Estadística del personal al servicio de las administraciones (Registro Central de Personal): microdatos de cada
+    # edición semestral. En agosto de 2026 se revisaron las ediciones de julio de 2023 a enero de 2026; solo esas (y las
+    # siguientes) forman una serie homogénea. La página está en funcionpublica.digital.gob.es; los ficheros, en digital.gob.es.
+    try:
+        import html as html_
+        import re
+        pag_rcp = "https://funcionpublica.digital.gob.es/funcion-publica/rcp/boletin.html"
+        with urllib.request.urlopen(urllib.request.Request(pag_rcp, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+            texto_rcp = r.read().decode("utf-8", errors="replace")
+        vistos_rcp = set()
+        for m_rcp in re.finditer(r'href="(/content/dam/[^"]*/rcp/boletin/(\d{4})_(\d{2})/[^"]*\.zip)"', texto_rcp):
+            ruta_rcp, a_rcp, m_mes = html_.unescape(m_rcp.group(1)), int(m_rcp.group(2)), int(m_rcp.group(3))
+            clave_rcp = f"rcp_epsap_{a_rcp}_{m_mes:02d}"
+            if (a_rcp, m_mes) >= (2023, 7) and clave_rcp not in vistos_rcp:
+                vistos_rcp.add(clave_rcp)
+                PAGINAS.append({"fuente": "Ministerio para la Transformación Digital y de la Función Pública", "tabla": clave_rcp, "opcional": True,
+                                "nombre": f"Personal al servicio de las administraciones públicas (Registro Central de Personal), {('enero' if m_mes == 1 else 'julio')} de {a_rcp}: microdatos",
+                                "url": "https://digital.gob.es" + ruta_rcp.replace(" ", "%20"), "extension": "zip"})
+        if not vistos_rcp:
+            print("AVISO rcp_epsap: no se encontraron microdatos en la página")
+    except (urllib.error.URLError, TimeoutError) as error:
+        print(f"AVISO rcp_epsap: no se pudo leer la página ({error})")
+
     # Ejecución mensual del presupuesto de la Seguridad Social: «ResSISTEMA_<Mes>_<Año>.xlsx». Si el mes no existe, el
     # servidor devuelve un fichero vacío (no un error), así que se prueba hacia atrás hasta dar con un Excel de verdad.
     meses_ss = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
