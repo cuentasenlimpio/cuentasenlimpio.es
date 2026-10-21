@@ -545,3 +545,10 @@ ul.nota-años { list-style: none; padding: 0; margin: 0.25rem 0 0; font-size: 0.
 ul.nota-años li { margin: 0.15rem 0; }
 
 .respuesta-lista { font-size: 1.05rem; max-width: 46rem; margin: 0 0 0.75rem; }
+
+/* Preguntas */
+.pregunta-faq { border-top: 1px solid var(--linea); padding-top: 1.5rem; margin-top: 2rem; max-width: 46rem; }
+.pregunta-faq h3 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+.pregunta-faq .para-seguir, .pregunta-faq .comprobado { font-size: 0.875rem; color: var(--tinta-suave); }
+.pregunta-faq > h2.pregunta { border-top: 0; margin-top: 0; padding-top: 0; }
+.pregunta-faq:first-child { border-top: 0; margin-top: 1rem; }

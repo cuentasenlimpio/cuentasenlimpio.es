@@ -28,7 +28,7 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,ingresos,% del PIB,42.8,dato,no,gov_10a_main
 2022,ingresos,% del PIB,41.7,dato,no,gov_10a_main
 2023,ingresos,% del PIB,42.1,dato,no,gov_10a_main
-2024,ingresos,% del PIB,42.3,dato,no,gov_10a_main
+2024,ingresos,% del PIB,42.2,dato,no,gov_10a_main
 2025,ingresos,% del PIB,42.9,dato,no,gov_10a_main
 1995,ingresos,millones de euros corrientes,171795.0,dato,no,gov_10a_main
 1996,ingresos,millones de euros corrientes,180897.0,dato,no,gov_10a_main
@@ -59,8 +59,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,ingresos,millones de euros corrientes,528950.0,dato,no,gov_10a_main
 2022,ingresos,millones de euros corrientes,574012.0,dato,no,gov_10a_main
 2023,ingresos,millones de euros corrientes,630198.0,dato,no,gov_10a_main
-2024,ingresos,millones de euros corrientes,673734.0,dato,no,gov_10a_main
-2025,ingresos,millones de euros corrientes,724554.0,dato,no,gov_10a_main
+2024,ingresos,millones de euros corrientes,674315.0,dato,no,gov_10a_main
+2025,ingresos,millones de euros corrientes,725655.0,dato,no,gov_10a_main
 1995,ingresos,millones de euros de 2025,345291.6,lectura,no,gov_10a_main
 1996,ingresos,millones de euros de 2025,351175.3,lectura,no,gov_10a_main
 1997,ingresos,millones de euros de 2025,369961.3,lectura,no,gov_10a_main
@@ -90,8 +90,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,ingresos,millones de euros de 2025,624805.3,lectura,no,gov_10a_main
 2022,ingresos,millones de euros de 2025,647633.3,lectura,no,gov_10a_main
 2023,ingresos,millones de euros de 2025,669233.5,lectura,no,gov_10a_main
-2024,ingresos,millones de euros de 2025,694268.5,lectura,sí,gov_10a_main
-2025,ingresos,millones de euros de 2025,724554.0,lectura,sí,gov_10a_main
+2024,ingresos,millones de euros de 2025,694867.2,lectura,sí,gov_10a_main
+2025,ingresos,millones de euros de 2025,725655.0,lectura,sí,gov_10a_main
 1995,ingresos,euros por habitante,4325,lectura,no,gov_10a_main
 1996,ingresos,euros por habitante,4536,lectura,no,gov_10a_main
 1997,ingresos,euros por habitante,4876,lectura,no,gov_10a_main
@@ -121,8 +121,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,ingresos,euros por habitante,11172,lectura,no,gov_10a_main
 2022,ingresos,euros por habitante,12012,lectura,no,gov_10a_main
 2023,ingresos,euros por habitante,13033,lectura,no,gov_10a_main
-2024,ingresos,euros por habitante,13785,lectura,sí,gov_10a_main
-2025,ingresos,euros por habitante,14678,lectura,sí,gov_10a_main
+2024,ingresos,euros por habitante,13797,lectura,sí,gov_10a_main
+2025,ingresos,euros por habitante,14701,lectura,sí,gov_10a_main
 1995,gastos,% del PIB,44.1,dato,no,gov_10a_main
 1996,gastos,% del PIB,42.9,dato,no,gov_10a_main
 1997,gastos,% del PIB,41.5,dato,no,gov_10a_main
@@ -151,8 +151,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,gastos,% del PIB,51.4,dato,no,gov_10a_main
 2021,gastos,% del PIB,49.5,dato,no,gov_10a_main
 2022,gastos,% del PIB,46.3,dato,no,gov_10a_main
-2023,gastos,% del PIB,45.4,dato,no,gov_10a_main
-2024,gastos,% del PIB,45.5,dato,no,gov_10a_main
+2023,gastos,% del PIB,45.5,dato,no,gov_10a_main
+2024,gastos,% del PIB,45.4,dato,no,gov_10a_main
 2025,gastos,% del PIB,45.3,dato,no,gov_10a_main
 1995,gastos,millones de euros corrientes,203062.0,dato,no,gov_10a_main
 1996,gastos,millones de euros corrientes,209578.0,dato,no,gov_10a_main
@@ -183,8 +183,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,gastos,millones de euros corrientes,611124.0,dato,no,gov_10a_main
 2022,gastos,millones de euros corrientes,637117.0,dato,no,gov_10a_main
 2023,gastos,millones de euros corrientes,680225.0,dato,no,gov_10a_main
-2024,gastos,millones de euros corrientes,725001.0,dato,no,gov_10a_main
-2025,gastos,millones de euros corrientes,764884.0,dato,no,gov_10a_main
+2024,gastos,millones de euros corrientes,725122.0,dato,no,gov_10a_main
+2025,gastos,millones de euros corrientes,766296.0,dato,no,gov_10a_main
 1995,gastos,millones de euros de 2025,408135.3,lectura,no,gov_10a_main
 1996,gastos,millones de euros de 2025,406853.8,lectura,no,gov_10a_main
 1997,gastos,millones de euros de 2025,407906.4,lectura,no,gov_10a_main
@@ -214,8 +214,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,gastos,millones de euros de 2025,721870.7,lectura,no,gov_10a_main
 2022,gastos,millones de euros de 2025,718832.0,lectura,no,gov_10a_main
 2023,gastos,millones de euros de 2025,722359.3,lectura,no,gov_10a_main
-2024,gastos,millones de euros de 2025,747098.0,lectura,sí,gov_10a_main
-2025,gastos,millones de euros de 2025,764884.0,lectura,sí,gov_10a_main
+2024,gastos,millones de euros de 2025,747222.7,lectura,sí,gov_10a_main
+2025,gastos,millones de euros de 2025,766296.0,lectura,sí,gov_10a_main
 1995,gastos,euros por habitante,5112,lectura,no,gov_10a_main
 1996,gastos,euros por habitante,5255,lectura,no,gov_10a_main
 1997,gastos,euros por habitante,5376,lectura,no,gov_10a_main
@@ -245,8 +245,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,gastos,euros por habitante,12907,lectura,no,gov_10a_main
 2022,gastos,euros por habitante,13333,lectura,no,gov_10a_main
 2023,gastos,euros por habitante,14068,lectura,no,gov_10a_main
-2024,gastos,euros por habitante,14834,lectura,sí,gov_10a_main
-2025,gastos,euros por habitante,15495,lectura,sí,gov_10a_main
+2024,gastos,euros por habitante,14837,lectura,sí,gov_10a_main
+2025,gastos,euros por habitante,15524,lectura,sí,gov_10a_main
 1995,saldo,% del PIB,-6.8,dato,no,gov_10a_main
 1996,saldo,% del PIB,-5.9,dato,no,gov_10a_main
 1997,saldo,% del PIB,-3.9,dato,no,gov_10a_main
@@ -307,8 +307,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,saldo,millones de euros corrientes,-82174.0,dato,no,gov_10a_main
 2022,saldo,millones de euros corrientes,-63105.0,dato,no,gov_10a_main
 2023,saldo,millones de euros corrientes,-50027.0,dato,no,gov_10a_main
-2024,saldo,millones de euros corrientes,-51267.0,dato,no,gov_10a_main
-2025,saldo,millones de euros corrientes,-40330.0,dato,no,gov_10a_main
+2024,saldo,millones de euros corrientes,-50807.0,dato,no,gov_10a_main
+2025,saldo,millones de euros corrientes,-40641.0,dato,no,gov_10a_main
 1995,saldo,millones de euros de 2025,-62843.7,lectura,no,gov_10a_main
 1996,saldo,millones de euros de 2025,-55678.4,lectura,no,gov_10a_main
 1997,saldo,millones de euros de 2025,-37945.1,lectura,no,gov_10a_main
@@ -338,8 +338,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,saldo,millones de euros de 2025,-97065.4,lectura,no,gov_10a_main
 2022,saldo,millones de euros de 2025,-71198.7,lectura,no,gov_10a_main
 2023,saldo,millones de euros de 2025,-53125.8,lectura,no,gov_10a_main
-2024,saldo,millones de euros de 2025,-52829.5,lectura,sí,gov_10a_main
-2025,saldo,millones de euros de 2025,-40330.0,lectura,sí,gov_10a_main
+2024,saldo,millones de euros de 2025,-52355.5,lectura,sí,gov_10a_main
+2025,saldo,millones de euros de 2025,-40641.0,lectura,sí,gov_10a_main
 1995,saldo,euros por habitante,-787,lectura,no,gov_10a_main
 1996,saldo,euros por habitante,-719,lectura,no,gov_10a_main
 1997,saldo,euros por habitante,-500,lectura,no,gov_10a_main
@@ -369,8 +369,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,saldo,euros por habitante,-1736,lectura,no,gov_10a_main
 2022,saldo,euros por habitante,-1321,lectura,no,gov_10a_main
 2023,saldo,euros por habitante,-1035,lectura,no,gov_10a_main
-2024,saldo,euros por habitante,-1049,lectura,sí,gov_10a_main
-2025,saldo,euros por habitante,-817,lectura,sí,gov_10a_main
+2024,saldo,euros por habitante,-1040,lectura,sí,gov_10a_main
+2025,saldo,euros por habitante,-823,lectura,sí,gov_10a_main
 1995,deuda,% del PIB,61.6,dato,no,gov_10dd_edpt1
 1996,deuda,% del PIB,65.4,dato,no,gov_10dd_edpt1
 1997,deuda,% del PIB,64.3,dato,no,gov_10dd_edpt1
@@ -399,9 +399,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,deuda,% del PIB,119.3,dato,no,gov_10dd_edpt1
 2021,deuda,% del PIB,115.7,dato,no,gov_10dd_edpt1
 2022,deuda,% del PIB,109.3,dato,no,gov_10dd_edpt1
-2023,deuda,% del PIB,105.2,dato,no,gov_10dd_edpt1
-2024,deuda,% del PIB,101.6,dato,no,gov_10dd_edpt1
-2025,deuda,% del PIB,100.7,dato,no,gov_10dd_edpt1
+2023,deuda,% del PIB,105.3,dato,no,gov_10dd_edpt1
+2024,deuda,% del PIB,101.4,dato,no,gov_10dd_edpt1
+2025,deuda,% del PIB,100.5,dato,no,gov_10dd_edpt1
 1995,deuda,millones de euros corrientes,283457.3,dato,no,gov_10dd_edpt1
 1996,deuda,millones de euros corrientes,319975.8,dato,no,gov_10dd_edpt1
 1997,deuda,millones de euros corrientes,333627.3,dato,no,gov_10dd_edpt1
@@ -431,8 +431,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,deuda,millones de euros corrientes,1429403.6,dato,no,gov_10dd_edpt1
 2022,deuda,millones de euros corrientes,1504105.1,dato,no,gov_10dd_edpt1
 2023,deuda,millones de euros corrientes,1575376.7,dato,no,gov_10dd_edpt1
-2024,deuda,millones de euros corrientes,1620573.4,dato,no,gov_10dd_edpt1
-2025,deuda,millones de euros corrientes,1698224.6,dato,no,gov_10dd_edpt1
+2024,deuda,millones de euros corrientes,1620577.8,dato,no,gov_10dd_edpt1
+2025,deuda,millones de euros corrientes,1698354.8,dato,no,gov_10dd_edpt1
 1995,deuda,millones de euros de 2025,569722.3,lectura,no,gov_10dd_edpt1
 1996,deuda,millones de euros de 2025,621169.0,lectura,no,gov_10dd_edpt1
 1997,deuda,millones de euros de 2025,632091.7,lectura,no,gov_10dd_edpt1
@@ -462,8 +462,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,deuda,millones de euros de 2025,1688437.4,lectura,no,gov_10dd_edpt1
 2022,deuda,millones de euros de 2025,1697017.8,lectura,no,gov_10dd_edpt1
 2023,deuda,millones de euros de 2025,1672958.2,lectura,no,gov_10dd_edpt1
-2024,deuda,millones de euros de 2025,1669966.2,lectura,sí,gov_10dd_edpt1
-2025,deuda,millones de euros de 2025,1698224.6,lectura,sí,gov_10dd_edpt1
+2024,deuda,millones de euros de 2025,1669970.7,lectura,sí,gov_10dd_edpt1
+2025,deuda,millones de euros de 2025,1698354.8,lectura,sí,gov_10dd_edpt1
 1995,deuda,euros por habitante,7137,lectura,no,gov_10dd_edpt1
 1996,deuda,euros por habitante,8023,lectura,no,gov_10dd_edpt1
 1997,deuda,euros por habitante,8330,lectura,no,gov_10dd_edpt1
@@ -494,7 +494,7 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2022,deuda,euros por habitante,31476,lectura,no,gov_10dd_edpt1
 2023,deuda,euros por habitante,32581,lectura,no,gov_10dd_edpt1
 2024,deuda,euros por habitante,33158,lectura,sí,gov_10dd_edpt1
-2025,deuda,euros por habitante,34403,lectura,sí,gov_10dd_edpt1
+2025,deuda,euros por habitante,34406,lectura,sí,gov_10dd_edpt1
 1996,cambio_deuda.deficit_primario,puntos del PIB,0.83,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.deficit_primario,puntos del PIB,-0.68,lectura,no,gov_10dd_edpt3
 1998,cambio_deuda.deficit_primario,puntos del PIB,-1.44,lectura,no,gov_10dd_edpt3
@@ -523,8 +523,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.deficit_primario,puntos del PIB,4.53,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.deficit_primario,puntos del PIB,2.28,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.deficit_primario,puntos del PIB,0.97,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.deficit_primario,puntos del PIB,0.78,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.deficit_primario,puntos del PIB,0.0,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,puntos del PIB,0.74,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,puntos del PIB,0.01,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.intereses,puntos del PIB,5.03,lectura,no,gov_10dd_edpt1
 1997,cambio_deuda.intereses,puntos del PIB,4.54,lectura,no,gov_10dd_edpt1
 1998,cambio_deuda.intereses,puntos del PIB,4.07,lectura,no,gov_10dd_edpt1
@@ -552,7 +552,7 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.intereses,puntos del PIB,2.23,lectura,no,gov_10dd_edpt1
 2021,cambio_deuda.intereses,puntos del PIB,2.12,lectura,no,gov_10dd_edpt1
 2022,cambio_deuda.intereses,puntos del PIB,2.31,lectura,no,gov_10dd_edpt1
-2023,cambio_deuda.intereses,puntos del PIB,2.37,lectura,no,gov_10dd_edpt1
+2023,cambio_deuda.intereses,puntos del PIB,2.38,lectura,no,gov_10dd_edpt1
 2024,cambio_deuda.intereses,puntos del PIB,2.43,lectura,no,gov_10dd_edpt1
 2025,cambio_deuda.intereses,puntos del PIB,2.39,lectura,no,gov_10dd_edpt1
 1996,cambio_deuda.activos,puntos del PIB,1.57,lectura,no,gov_10dd_edpt3
@@ -583,8 +583,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.activos,puntos del PIB,3.0,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.activos,puntos del PIB,1.12,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.activos,puntos del PIB,0.5,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.activos,puntos del PIB,0.64,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.activos,puntos del PIB,1.65,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,puntos del PIB,0.69,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,puntos del PIB,1.66,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.ajustes,puntos del PIB,0.03,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.ajustes,puntos del PIB,0.24,lectura,no,gov_10dd_edpt3
 1998,cambio_deuda.ajustes,puntos del PIB,-0.59,lectura,no,gov_10dd_edpt3
@@ -613,8 +613,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.ajustes,puntos del PIB,-2.97,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.ajustes,puntos del PIB,-0.28,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.ajustes,puntos del PIB,0.92,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.ajustes,puntos del PIB,-1.02,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.ajustes,puntos del PIB,0.56,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,puntos del PIB,-1.04,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,puntos del PIB,0.53,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.variacion,puntos del PIB,3.86,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.variacion,puntos del PIB,-1.16,lectura,no,gov_10dd_edpt3
 1998,cambio_deuda.variacion,puntos del PIB,-1.93,lectura,no,gov_10dd_edpt3
@@ -642,9 +642,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.variacion,puntos del PIB,21.62,lectura,no,gov_10dd_edpt3
 2021,cambio_deuda.variacion,puntos del PIB,-3.58,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.variacion,puntos del PIB,-6.38,lectura,no,gov_10dd_edpt3
-2023,cambio_deuda.variacion,puntos del PIB,-4.14,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.variacion,puntos del PIB,-3.54,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.variacion,puntos del PIB,-0.99,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.variacion,puntos del PIB,-4.03,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,puntos del PIB,-3.91,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,puntos del PIB,-0.88,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.crecimiento,puntos del PIB,-3.61,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.crecimiento,puntos del PIB,-3.79,lectura,no,gov_10dd_edpt3
 1998,cambio_deuda.crecimiento,puntos del PIB,-4.23,lectura,no,gov_10dd_edpt3
@@ -672,9 +672,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.crecimiento,puntos del PIB,10.77,lectura,no,gov_10dd_edpt3
 2021,cambio_deuda.crecimiento,puntos del PIB,-10.26,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.crecimiento,puntos del PIB,-11.81,lectura,no,gov_10dd_edpt3
-2023,cambio_deuda.crecimiento,puntos del PIB,-8.9,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.crecimiento,puntos del PIB,-6.37,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.crecimiento,puntos del PIB,-5.59,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.crecimiento,puntos del PIB,-8.8,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.crecimiento,puntos del PIB,-6.74,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.crecimiento,puntos del PIB,-5.48,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.deficit_primario,millones de euros corrientes,8527.0,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.deficit_primario,millones de euros corrientes,4081.0,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.deficit_primario,millones de euros corrientes,-3515.0,lectura,no,gov_10dd_edpt3
@@ -704,8 +704,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.deficit_primario,millones de euros corrientes,56004.0,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.deficit_primario,millones de euros corrientes,31330.0,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.deficit_primario,millones de euros corrientes,14476.0,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.deficit_primario,millones de euros corrientes,12474.0,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.deficit_primario,millones de euros corrientes,16.0,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,millones de euros corrientes,11904.0,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,millones de euros corrientes,209.0,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.intereses,millones de euros corrientes,22740.0,dato,no,gov_10dd_edpt1
 1996,cambio_deuda.intereses,millones de euros corrientes,24600.0,dato,no,gov_10dd_edpt1
 1997,cambio_deuda.intereses,millones de euros corrientes,23543.0,dato,no,gov_10dd_edpt1
@@ -735,8 +735,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.intereses,millones de euros corrientes,26170.0,dato,no,gov_10dd_edpt1
 2022,cambio_deuda.intereses,millones de euros corrientes,31775.0,dato,no,gov_10dd_edpt1
 2023,cambio_deuda.intereses,millones de euros corrientes,35551.0,dato,no,gov_10dd_edpt1
-2024,cambio_deuda.intereses,millones de euros corrientes,38793.0,dato,no,gov_10dd_edpt1
-2025,cambio_deuda.intereses,millones de euros corrientes,40314.0,dato,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,millones de euros corrientes,38903.0,dato,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,millones de euros corrientes,40432.0,dato,no,gov_10dd_edpt1
 1995,cambio_deuda.activos,millones de euros corrientes,323.5,dato,no,gov_10dd_edpt3
 1996,cambio_deuda.activos,millones de euros corrientes,7699.3,dato,no,gov_10dd_edpt3
 1997,cambio_deuda.activos,millones de euros corrientes,-7635.7,dato,no,gov_10dd_edpt3
@@ -765,9 +765,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.activos,millones de euros corrientes,12422.9,dato,no,gov_10dd_edpt3
 2021,cambio_deuda.activos,millones de euros corrientes,37019.6,dato,no,gov_10dd_edpt3
 2022,cambio_deuda.activos,millones de euros corrientes,15400.2,dato,no,gov_10dd_edpt3
-2023,cambio_deuda.activos,millones de euros corrientes,7504.8,dato,no,gov_10dd_edpt3
-2024,cambio_deuda.activos,millones de euros corrientes,10262.1,dato,no,gov_10dd_edpt3
-2025,cambio_deuda.activos,millones de euros corrientes,27847.3,dato,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,millones de euros corrientes,7512.6,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,millones de euros corrientes,11097.3,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,millones de euros corrientes,28095.8,dato,no,gov_10dd_edpt3
 1995,cambio_deuda.ajustes,millones de euros corrientes,2359.3,dato,no,gov_10dd_edpt3
 1996,cambio_deuda.ajustes,millones de euros corrientes,138.3,dato,no,gov_10dd_edpt3
 1997,cambio_deuda.ajustes,millones de euros corrientes,1259.2,dato,no,gov_10dd_edpt3
@@ -796,9 +796,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.ajustes,millones de euros corrientes,-1767.3,dato,no,gov_10dd_edpt3
 2021,cambio_deuda.ajustes,millones de euros corrientes,-36706.3,dato,no,gov_10dd_edpt3
 2022,cambio_deuda.ajustes,millones de euros corrientes,-3803.8,dato,no,gov_10dd_edpt3
-2023,cambio_deuda.ajustes,millones de euros corrientes,13739.8,dato,no,gov_10dd_edpt3
-2024,cambio_deuda.ajustes,millones de euros corrientes,-16332.4,dato,no,gov_10dd_edpt3
-2025,cambio_deuda.ajustes,millones de euros corrientes,9474.0,dato,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,millones de euros corrientes,13732.0,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,millones de euros corrientes,-16703.2,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,millones de euros corrientes,9040.2,dato,no,gov_10dd_edpt3
 1995,cambio_deuda.variacion,millones de euros corrientes,33949.7,dato,no,gov_10dd_edpt3
 1996,cambio_deuda.variacion,millones de euros corrientes,36518.5,dato,no,gov_10dd_edpt3
 1997,cambio_deuda.variacion,millones de euros corrientes,13651.4,dato,no,gov_10dd_edpt3
@@ -828,8 +828,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.variacion,millones de euros corrientes,82487.3,dato,no,gov_10dd_edpt3
 2022,cambio_deuda.variacion,millones de euros corrientes,74701.4,dato,no,gov_10dd_edpt3
 2023,cambio_deuda.variacion,millones de euros corrientes,71271.7,dato,no,gov_10dd_edpt3
-2024,cambio_deuda.variacion,millones de euros corrientes,45196.6,dato,no,gov_10dd_edpt3
-2025,cambio_deuda.variacion,millones de euros corrientes,77651.3,dato,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,millones de euros corrientes,45201.0,dato,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,millones de euros corrientes,77777.0,dato,no,gov_10dd_edpt3
 1995,cambio_deuda.deficit_primario,millones de euros de 2025,17138.5,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.deficit_primario,millones de euros de 2025,7922.4,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.deficit_primario,millones de euros de 2025,-6659.5,lectura,no,gov_10dd_edpt3
@@ -859,8 +859,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.deficit_primario,millones de euros de 2025,66152.9,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.deficit_primario,millones de euros de 2025,35348.3,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.deficit_primario,millones de euros de 2025,15372.7,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.deficit_primario,millones de euros de 2025,12854.2,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.deficit_primario,millones de euros de 2025,16.0,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,millones de euros de 2025,12266.8,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,millones de euros de 2025,209.0,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.intereses,millones de euros de 2025,45705.2,lectura,no,gov_10dd_edpt1
 1996,cambio_deuda.intereses,millones de euros de 2025,47756.0,lectura,no,gov_10dd_edpt1
 1997,cambio_deuda.intereses,millones de euros de 2025,44604.7,lectura,no,gov_10dd_edpt1
@@ -890,8 +890,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.intereses,millones de euros de 2025,30912.5,lectura,no,gov_10dd_edpt1
 2022,cambio_deuda.intereses,millones de euros de 2025,35850.4,lectura,no,gov_10dd_edpt1
 2023,cambio_deuda.intereses,millones de euros de 2025,37753.1,lectura,no,gov_10dd_edpt1
-2024,cambio_deuda.intereses,millones de euros de 2025,39975.4,lectura,no,gov_10dd_edpt1
-2025,cambio_deuda.intereses,millones de euros de 2025,40314.0,lectura,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,millones de euros de 2025,40088.7,lectura,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,millones de euros de 2025,40432.0,lectura,no,gov_10dd_edpt1
 1995,cambio_deuda.activos,millones de euros de 2025,650.2,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.activos,millones de euros de 2025,14946.7,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.activos,millones de euros de 2025,-14466.6,lectura,no,gov_10dd_edpt3
@@ -920,9 +920,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.activos,millones de euros de 2025,15049.2,lectura,no,gov_10dd_edpt3
 2021,cambio_deuda.activos,millones de euros de 2025,43728.2,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.activos,millones de euros de 2025,17375.4,lectura,no,gov_10dd_edpt3
-2023,cambio_deuda.activos,millones de euros de 2025,7969.7,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.activos,millones de euros de 2025,10574.9,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.activos,millones de euros de 2025,27847.3,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.activos,millones de euros de 2025,7977.9,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,millones de euros de 2025,11435.5,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,millones de euros de 2025,28095.8,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.ajustes,millones de euros de 2025,4742.0,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.ajustes,millones de euros de 2025,268.5,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.ajustes,millones de euros de 2025,2385.7,lectura,no,gov_10dd_edpt3
@@ -951,9 +951,9 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2020,cambio_deuda.ajustes,millones de euros de 2025,-2140.9,lectura,no,gov_10dd_edpt3
 2021,cambio_deuda.ajustes,millones de euros de 2025,-43358.1,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.ajustes,millones de euros de 2025,-4291.7,lectura,no,gov_10dd_edpt3
-2023,cambio_deuda.ajustes,millones de euros de 2025,14590.9,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.ajustes,millones de euros de 2025,-16830.2,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.ajustes,millones de euros de 2025,9474.0,lectura,no,gov_10dd_edpt3
+2023,cambio_deuda.ajustes,millones de euros de 2025,14582.6,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,millones de euros de 2025,-17212.3,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,millones de euros de 2025,9040.2,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.variacion,millones de euros de 2025,68235.7,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.variacion,millones de euros de 2025,70893.4,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.variacion,millones de euros de 2025,25864.0,lectura,no,gov_10dd_edpt3
@@ -983,8 +983,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.variacion,millones de euros de 2025,97435.5,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.variacion,millones de euros de 2025,84282.4,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.variacion,millones de euros de 2025,75686.4,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.variacion,millones de euros de 2025,46574.1,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.variacion,millones de euros de 2025,77651.3,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.variacion,millones de euros de 2025,46578.7,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,millones de euros de 2025,77777.0,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.deficit_primario,euros por habitante,215,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.deficit_primario,euros por habitante,102,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.deficit_primario,euros por habitante,-88,lectura,no,gov_10dd_edpt3
@@ -1014,8 +1014,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.deficit_primario,euros por habitante,1183,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.deficit_primario,euros por habitante,656,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.deficit_primario,euros por habitante,299,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.deficit_primario,euros por habitante,255,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.deficit_primario,euros por habitante,0,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.deficit_primario,euros por habitante,244,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.deficit_primario,euros por habitante,4,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.intereses,euros por habitante,573,lectura,no,gov_10dd_edpt1
 1996,cambio_deuda.intereses,euros por habitante,617,lectura,no,gov_10dd_edpt1
 1997,cambio_deuda.intereses,euros por habitante,588,lectura,no,gov_10dd_edpt1
@@ -1045,8 +1045,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.intereses,euros por habitante,553,lectura,no,gov_10dd_edpt1
 2022,cambio_deuda.intereses,euros por habitante,665,lectura,no,gov_10dd_edpt1
 2023,cambio_deuda.intereses,euros por habitante,735,lectura,no,gov_10dd_edpt1
-2024,cambio_deuda.intereses,euros por habitante,794,lectura,no,gov_10dd_edpt1
-2025,cambio_deuda.intereses,euros por habitante,817,lectura,no,gov_10dd_edpt1
+2024,cambio_deuda.intereses,euros por habitante,796,lectura,no,gov_10dd_edpt1
+2025,cambio_deuda.intereses,euros por habitante,819,lectura,no,gov_10dd_edpt1
 1995,cambio_deuda.activos,euros por habitante,8,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.activos,euros por habitante,193,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.activos,euros por habitante,-191,lectura,no,gov_10dd_edpt3
@@ -1076,8 +1076,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.activos,euros por habitante,782,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.activos,euros por habitante,322,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.activos,euros por habitante,155,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.activos,euros por habitante,210,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.activos,euros por habitante,564,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.activos,euros por habitante,227,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.activos,euros por habitante,569,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.ajustes,euros por habitante,59,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.ajustes,euros por habitante,3,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.ajustes,euros por habitante,31,lectura,no,gov_10dd_edpt3
@@ -1107,8 +1107,8 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2021,cambio_deuda.ajustes,euros por habitante,-775,lectura,no,gov_10dd_edpt3
 2022,cambio_deuda.ajustes,euros por habitante,-80,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.ajustes,euros por habitante,284,lectura,no,gov_10dd_edpt3
-2024,cambio_deuda.ajustes,euros por habitante,-334,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.ajustes,euros por habitante,192,lectura,no,gov_10dd_edpt3
+2024,cambio_deuda.ajustes,euros por habitante,-342,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.ajustes,euros por habitante,183,lectura,no,gov_10dd_edpt3
 1995,cambio_deuda.variacion,euros por habitante,855,lectura,no,gov_10dd_edpt3
 1996,cambio_deuda.variacion,euros por habitante,916,lectura,no,gov_10dd_edpt3
 1997,cambio_deuda.variacion,euros por habitante,341,lectura,no,gov_10dd_edpt3
@@ -1139,4 +1139,4 @@ año,serie,unidad,valor,tipo,provisional,tabla_eurostat
 2022,cambio_deuda.variacion,euros por habitante,1563,lectura,no,gov_10dd_edpt3
 2023,cambio_deuda.variacion,euros por habitante,1474,lectura,no,gov_10dd_edpt3
 2024,cambio_deuda.variacion,euros por habitante,925,lectura,no,gov_10dd_edpt3
-2025,cambio_deuda.variacion,euros por habitante,1573,lectura,no,gov_10dd_edpt3
+2025,cambio_deuda.variacion,euros por habitante,1576,lectura,no,gov_10dd_edpt3

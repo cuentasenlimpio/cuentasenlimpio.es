@@ -152,7 +152,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,IVA,euros de cada 100,15.79,lectura,(D211) ÷ TR × 100
 2022,de cada 100 €,IVA,euros de cada 100,16.4,lectura,(D211) ÷ TR × 100
 2023,de cada 100 €,IVA,euros de cada 100,15.24,lectura,(D211) ÷ TR × 100
-2024,de cada 100 €,IVA,euros de cada 100,15.21,lectura,(D211) ÷ TR × 100
+2024,de cada 100 €,IVA,euros de cada 100,15.2,lectura,(D211) ÷ TR × 100
 2025,de cada 100 €,IVA,euros de cada 100,15.77,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
 1996,evolución,"Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…)",% del PIB,3.8,lectura,D21 −D211
@@ -462,7 +462,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.36,lectura,(D29) ÷ TR × 100
 2022,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.15,lectura,(D29) ÷ TR × 100
 2023,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.35,lectura,(D29) ÷ TR × 100
-2024,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.04,lectura,(D29) ÷ TR × 100
+2024,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,4.03,lectura,(D29) ÷ TR × 100
 2025,de cada 100 €,"Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…)",euros de cada 100,3.39,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.5,dato,D51A_C1
 1996,evolución,Impuestos sobre la renta de los hogares,% del PIB,7.3,dato,D51A_C1
@@ -617,7 +617,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,20.16,lectura,(D51A_C1) ÷ TR × 100
 2022,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.5,lectura,(D51A_C1) ÷ TR × 100
 2023,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.32,lectura,(D51A_C1) ÷ TR × 100
-2024,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.65,lectura,(D51A_C1) ÷ TR × 100
+2024,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,21.63,lectura,(D51A_C1) ÷ TR × 100
 2025,de cada 100 €,Impuestos sobre la renta de los hogares,euros de cada 100,22.24,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.6,dato,D51B_C2
 1996,evolución,Impuestos sobre los beneficios de las empresas,% del PIB,1.8,dato,D51B_C2
@@ -1082,7 +1082,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,1.17,lectura,(D91) ÷ TR × 100
 2022,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.97,lectura,(D91) ÷ TR × 100
 2023,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.88,lectura,(D91) ÷ TR × 100
-2024,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.85,lectura,(D91) ÷ TR × 100
+2024,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.84,lectura,(D91) ÷ TR × 100
 2025,de cada 100 €,"Impuestos sobre el capital (sucesiones, donaciones…)",euros de cada 100,0.83,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Cotizaciones sociales,% del PIB,12.2,dato,D61
 1996,evolución,Cotizaciones sociales,% del PIB,12.0,dato,D61
@@ -1237,7 +1237,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,Cotizaciones sociales,euros de cada 100,32.46,lectura,(D61) ÷ TR × 100
 2022,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.37,lectura,(D61) ÷ TR × 100
 2023,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.26,lectura,(D61) ÷ TR × 100
-2024,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.22,lectura,(D61) ÷ TR × 100
+2024,de cada 100 €,Cotizaciones sociales,euros de cada 100,31.19,lectura,(D61) ÷ TR × 100
 2025,de cada 100 €,Cotizaciones sociales,euros de cada 100,30.76,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)
 1995,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
 1996,evolución,Menos lo liquidado que no se espera cobrar,% del PIB,0.0,dato,−D995
@@ -1423,7 +1423,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.9,lectura,TR − impuestos y cotizaciones
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.6,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.3,lectura,TR − impuestos y cotizaciones
-2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.2,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,5.1,lectura,TR − impuestos y cotizaciones
 2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",% del PIB,4.98,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,24472.0,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,25280.0,lectura,TR − impuestos y cotizaciones
@@ -1454,7 +1454,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,60632.0,lectura,TR − impuestos y cotizaciones
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,63150.0,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,78660.0,lectura,TR − impuestos y cotizaciones
-2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,82055.0,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,82636.0,lectura,TR − impuestos y cotizaciones
 2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros corrientes,84167.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,49186.4,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,49076.1,lectura,TR − impuestos y cotizaciones
@@ -1485,7 +1485,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,71619.6,lectura,TR − impuestos y cotizaciones
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,71249.5,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,83532.3,lectura,TR − impuestos y cotizaciones
-2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,84555.9,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,85154.6,lectura,TR − impuestos y cotizaciones
 2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",millones de euros de 2025,84167.0,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,616,lectura,TR − impuestos y cotizaciones
 1996,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,634,lectura,TR − impuestos y cotizaciones
@@ -1516,7 +1516,7 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1281,lectura,TR − impuestos y cotizaciones
 2022,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1322,lectura,TR − impuestos y cotizaciones
 2023,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1627,lectura,TR − impuestos y cotizaciones
-2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1679,lectura,TR − impuestos y cotizaciones
+2024,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1691,lectura,TR − impuestos y cotizaciones
 2025,evolución,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros por habitante,1705,"provisional (IGAE, sin segunda fuente)",IGAE A_AAPP_Imp y A_AAPP (misma partida)
 1995,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,14.24,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 1996,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,13.97,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
@@ -1547,5 +1547,5 @@ año,pieza,partida,unidad,valor,tipo,fórmula o código (Eurostat gov_10a_taxag 
 2021,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.46,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 2022,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.0,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 2023,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.48,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
-2024,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.18,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
+2024,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,12.25,lectura,(TR − impuestos y cotizaciones) ÷ TR × 100
 2025,de cada 100 €,"Otros ingresos (ventas, rentas de la propiedad, transferencias…)",euros de cada 100,11.6,"provisional (IGAE, sin segunda fuente)",partida ÷ recursos no financieros × 100 (IGAE)

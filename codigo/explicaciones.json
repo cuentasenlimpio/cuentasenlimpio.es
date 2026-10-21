@@ -190,14 +190,14 @@
  "presion_fiscal": {
   "titulo": "Presión fiscal y tipos de los impuestos",
   "texto": [
-   "La «presión fiscal» suma todos los impuestos y las cotizaciones sociales (lo que empresas y trabajadores pagan a la Seguridad Social) y lo compara con el PIB. Según la Organización para la Cooperación y el Desarrollo Económicos (OCDE), en España fue del 37,3 % del PIB en 2023. La media de la OCDE fue del 33,9 %. España quedó en el puesto 13 de 38 países, contando de mayor a menor.",
+   "La «presión fiscal» suma todos los impuestos y las cotizaciones sociales (lo que empresas y trabajadores pagan a la Seguridad Social) y lo compara con el PIB. Según la Organización para la Cooperación y el Desarrollo Económicos (OCDE), en España fue del 36,7 % del PIB en 2024. La media de la OCDE fue del 34,1 %. España quedó en el puesto 15 de los 36 países con dato, contando de mayor a menor. Eurostat, con un criterio algo distinto, da el 37,3 % para España y el 40,3 % de media en la Unión Europea.",
    "El tipo legal es el porcentaje que fija la ley. Por ejemplo, en el impuesto de sociedades, el que pagan las empresas por sus beneficios, el tipo general es el 25 %. El tipo efectivo es lo que se paga de verdad, después de deducciones y rebajas. Suele ser menor que el legal.",
    "El tipo efectivo puede subir sin que cambie la ley. La Agencia Tributaria calcula que el del impuesto sobre la renta de las personas físicas (IRPF) creció un 3,5 % de media al año entre 2021 y 2025. Es decir, un tipo del 15 % pasaría a algo más del 15,5 % al año siguiente."
   ],
   "fuentes": [
    {
-    "texto": "OCDE, estadísticas de ingresos públicos 2024 (Revenue Statistics), nota de España",
-    "url": "https://www.oecd.org/spain/revenue-statistics-spain.pdf"
+    "texto": "OCDE, estadísticas de ingresos públicos 2025 (Revenue Statistics), datos por país",
+    "url": "https://sdmx.oecd.org/public/rest/data/OECD.CTP.TPS,DSD_REV_COMP_OECD@DF_RSOECD,/.TAX_REV.S13._T._T.PT_B1GQ.A?startPeriod=2023&format=csvfilewithlabels"
    },
    {
     "texto": "Ley 27/2014 del Impuesto sobre Sociedades, artículo 29 (el tipo del impuesto)",
