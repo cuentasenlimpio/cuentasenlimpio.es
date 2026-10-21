@@ -1,6 +1,6 @@
 # Cuentas de las administraciones públicas: ingresos, gastos, saldo y deuda
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 

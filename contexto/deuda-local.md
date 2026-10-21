@@ -1,6 +1,6 @@
 # La deuda de las entidades locales (ayuntamientos, diputaciones, cabildos)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/deuda-local.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 

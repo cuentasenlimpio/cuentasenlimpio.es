@@ -2,7 +2,7 @@
 
 > Las cuentas públicas de España explicadas con datos oficiales, sin opinión política. Todas las cifras salen de fuentes oficiales (Eurostat, INE, IGAE, Banco de España, Tesoro, Seguridad Social, AIReF…) y se actualizan solas cada día.
 
-Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 21 de octubre de 2026.
+Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 22 de octubre de 2026.
 
 ## Cómo citar (obligatorio al reutilizar esta información)
 
@@ -27,12 +27,13 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [este-ano](https://cuentasenlimpio.es/contexto/este-ano.md) (2 KB): El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior.
 - [seguridad-social](https://cuentasenlimpio.es/contexto/seguridad-social.md) (4 KB): La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo.
 - [empleo-publico](https://cuentasenlimpio.es/contexto/empleo-publico.md) (8 KB): Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea.
-- [descuadres](https://cuentasenlimpio.es/contexto/descuadres.md) (6 KB): Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas.
+- [descuadres](https://cuentasenlimpio.es/contexto/descuadres.md) (8 KB): Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas.
 - [modificaciones](https://cuentasenlimpio.es/contexto/modificaciones.md) (7 KB): Cómo cambia el presupuesto del Estado durante el año: modificaciones de crédito por tipo, ministerio y política, frente a los mismos meses de años anteriores.
 - [pago-proveedores](https://cuentasenlimpio.es/contexto/pago-proveedores.md) (8 KB): Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones.
 - [deuda-local](https://cuentasenlimpio.es/contexto/deuda-local.md) (4 KB): Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio.
 - [avales](https://cuentasenlimpio.es/contexto/avales.md) (4 KB): Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas).
 - [beneficios-fiscales](https://cuentasenlimpio.es/contexto/beneficios-fiscales.md) (3 KB): Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF.
+- [cupo-vasco](https://cuentasenlimpio.es/contexto/cupo-vasco.md) (4 KB): Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base.
 - [union-europea](https://cuentasenlimpio.es/contexto/union-europea.md) (3 KB): España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles.
 - [fondos-europeos](https://cuentasenlimpio.es/contexto/fondos-europeos.md) (2 KB): Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional.
 - [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.

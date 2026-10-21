@@ -215,6 +215,11 @@ PAGINAS = [
     {"fuente": "Ministerio de Hacienda", "tabla": "sepg_pbf_2023", "opcional": True,
      "nombre": "Memoria de Beneficios Fiscales del proyecto de Presupuestos Generales del Estado para 2023 (la última publicada)",
      "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Proyecto/MaestroTomos/PGE-ROM/doc/L_23_A_A2.PDF", "extension": "pdf"},
+    # Lista de actas de la Comisión Mixta del Concierto Económico: el cupo vasco se copia a mano de las actas
+    # (datos/cupo_vasco.json); la lista sirve para avisar cuando se publica un acta nueva.
+    {"fuente": "Gobierno Vasco", "tabla": "cmce_actas", "opcional": True,
+     "nombre": "Actas de la Comisión Mixta del Concierto Económico (lista)",
+     "url": "https://www.euskadi.eus/informacion/comision-mixta-del-concierto-economico/web01-a2conci/es/", "extension": "html"},
     {"fuente": "Ministerio de Hacienda", "tabla": "hacienda_pmp_series", "opcional": True,
      "nombre": "Periodo medio de pago a proveedores de las administraciones públicas: series mensuales desde abril de 2018 (RD 1040/2017)",
      "url": "https://www.hacienda.gob.es/cdi/pmp/pmp-series-rd-1040-2017.xlsx", "extension": "xlsx"},

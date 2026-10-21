@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Cupo vasco · Cuentas en limpio</title>
+  <meta name="description" content="Cuánto paga cada año el País Vasco al Estado por el cupo, según las actas de la Comisión Mixta del Concierto Económico desde 2017: cifra provisional y definitiva, compensaciones y cómo se calcula.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js?v=ddca3566b1" defer></script>
+  <script src="ec.js?v=8d530b25b8" defer></script>
+  <script src="cupo-vasco.js?v=e98e2a6745" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav subnav-dinero" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a class="subnav-grupo" href="dinero.html">Las cuentas</a> <a class="subnav-grupo" href="presupuesto.html">Estado y presupuesto</a> <a class="subnav-grupo" href="seguridad-social.html">Seguridad Social y economía</a> <a class="subnav-grupo" href="territorio.html" aria-current="true">Territorio y Europa</a><span class="subnav-salto" aria-hidden="true"></span><a href="territorio.html">Comunidades</a> <a href="cupo-vasco.html" aria-current="page">Cupo vasco</a> <a href="deuda-local.html">Ayuntamientos</a> <a href="union-europea.html">Unión Europea</a> <a href="fondos-europeos.html">Fondos europeos</a></nav>
+      
+  <main>
+    <h1 class="pregunta">¿Cuánto paga el País Vasco al Estado por el cupo?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">En el País Vasco los impuestos los cobran las tres diputaciones forales, no la Agencia Tributaria. A cambio, el País Vasco paga cada año al Estado el cupo: su parte de lo que gasta el Estado en lo que no ha traspasado al País Vasco, como la defensa, las relaciones exteriores, la Casa Real o los intereses de la deuda del Estado. Esa parte es el 6,24 %, que la ley fija cada cinco años «básicamente en función de la renta» del País Vasco frente a la de España. Navarra tiene un sistema parecido, la aportación, que esta página no recoge.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cómo ha cambiado desde 2017?</h2>
+      <p class="grafico-explica">Cupo de cada año, antes de compensaciones, en millones de euros. El provisional se fija al empezar el año, con lo que el Estado prevé recaudar; el definitivo, al liquidarlo, con lo que recaudó de verdad.</p>
+      <p class="leyenda-linea"><span class="clave-barra"></span> Provisional <span class="clave-barra clave-barra-oscura"></span> Definitivo</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿Cómo se calcula?</h2>
+      <p class="grafico-explica" id="g2-explica">Cálculo del año base, en millones de euros.</p>
+      <table class="tabla-sueldo" id="calculo"></table>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>El cálculo se hace a fondo una vez cada cinco años, para el año base. <span class="resalta">Los demás años, el cupo del año base se multiplica por un índice</span>: cuánto ha cambiado la recaudación del Estado por los impuestos que en el País Vasco cobran las diputaciones. Si el Estado recauda más, el cupo sube; si recauda menos, baja. Por eso el definitivo de 2020, el año de la pandemia, fue 300 millones menor que el provisional.</p>
+        <p>Los ajustes restan del cupo la parte vasca de lo que el Estado financia con algo que no son impuestos concertados: impuestos que el País Vasco no cobra, ingresos que no son impuestos y el déficit del Estado. Se resta el déficit porque esa parte del gasto se paga con deuda, y el País Vasco ya paga su parte de la deuda cuando el Estado la devuelve: los intereses y las devoluciones de la deuda del Estado entran en las cargas del cupo.</p>
+      </div>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">Año a año, con su acta</h2>
+      <p class="grafico-explica">Cupo provisional y definitivo de cada año, compensaciones y líquido a pagar, en millones de euros. Cada cifra sale del acta de la Comisión Mixta que la aprobó; el enlace lleva al acta y dice la página.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para ver todas las columnas →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="años"></table></div>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+      <ul class="notas-tabla" id="notas"></ul>
+    </section>
+
+    <section class="grafico" aria-labelledby="g4-t">
+      <h2 class="pregunta" id="g4-t">¿Y lo que anota el Estado como ingreso?</h2>
+      <p class="grafico-explica">El Estado anota cada año en su presupuesto de ingresos lo que cobra por el cupo (concepto «Cupo del País Vasco»). No es la cifra del acta de ese año: incluye regularizaciones de años anteriores, que se aprueban con retraso, y descuenta compensaciones por programas del Estado. En millones de euros.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para ver todos los años →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="estado"></table></div>
+      <p class="fuente-grafico" id="estado-fuente"></p>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Si el cupo es alto o bajo. Hay estudios que comparan lo que aporta el País Vasco con lo que aportan las comunidades de régimen común, con métodos y resultados distintos; no hay una cifra oficial neutral para esa comparación, y esta página no la hace.</li>
+        <li>Los ajustes por IVA y por impuestos especiales entre el Estado y las diputaciones: son otro flujo, que las actas aprueban aparte (compensaciones financieras) y que la Agencia Tributaria publica en sus informes de recaudación.</li>
+        <li>Lo que el Estado aporta al País Vasco por las políticas activas de empleo traspasadas en 2010: las actas lo aprueban aparte y lo excluyen del líquido a pagar.</li>
+        <li>Los años de 2007 a 2016, que se liquidaron todos juntos en 2017, después de una década sin acuerdo.</li>
+      </ul>
+    </div>
+    <details class="plegable ficha">
+      <summary>Comprobaciones: si las cifras cuadran entre sí</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+    <p class="seguir-recorrido">Para seguir: <a href="territorio.html">las cuentas de cada comunidad</a> · <a href="ingresos.html">de dónde sale el dinero público</a> · <a href="presupuesto.html">el presupuesto del Estado</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">Las cuentas</p><ul><li><a href="dinero.html">Resumen</a></li><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="beneficios-fiscales.html">Beneficios fiscales</a></li><li><a href="gasto.html">Gasto</a></li></ul></div>
+      <div><p class="mapa-titulo">Estado y presupuesto</p><ul><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="modificaciones.html">Cambios del presupuesto</a></li><li><a href="avales.html">Avales</a></li><li><a href="pago-proveedores.html">Pago a proveedores</a></li><li><a href="empleo-publico.html">Empleo público</a></li></ul></div>
+      <div><p class="mapa-titulo">Seguridad Social y economía</p><ul><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="economia.html">Economía</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Territorio y Europa</p><ul><li><a href="territorio.html">Comunidades</a></li><li><a href="cupo-vasco.html">Cupo vasco</a></li><li><a href="deuda-local.html">Ayuntamientos</a></li><li><a href="union-europea.html">Unión Europea</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="descuadres.html">Lo que no cuadra</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # Lo que no cuadra
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/descuadres.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -60,6 +60,32 @@ Falta:
 
 En la web:
 - Esos meses no entran en las medias de doce meses. El caso desaparece solo si Hacienda corrige el fichero.
+
+## Cupo vasco: lo que anota el Estado cada año no es la cifra del acta de ese año
+
+Estado: No cuadra (sin explicar). Ficha: https://cuentasenlimpio.es/descuadres.html#cupo-vasco-acta-estado
+
+Cifras:
+- 2017: el Estado anota 742 millones; el acta fija 1 300 millones de cupo provisional (menos la compensación a Álava)
+- 2018: el Estado anota 1 327 millones; no hay acta publicada con el cupo provisional de ese año
+- 2019: el Estado anota 1 158 millones; el acta fija 1 349 millones de cupo provisional (menos la compensación a Álava)
+- 2020: el Estado anota 1 370 millones; el acta fija 1 348 millones de cupo provisional (menos la compensación a Álava)
+- 2021: el Estado anota 1 096 millones; el acta fija 1 367 millones de cupo provisional (menos la compensación a Álava)
+- 2022: el Estado anota 1 423 millones; el acta fija 1 468 millones de cupo provisional (menos la compensación a Álava)
+- 2023: el Estado anota 1 682 millones; no hay acta publicada con el cupo provisional de ese año
+- 2024: el Estado anota 1 558 millones; el acta fija 1 558 millones de cupo provisional (menos la compensación a Álava)
+- 2025: el Estado anota 1 443 millones; el acta fija 1 460 millones de cupo provisional (menos la compensación a Álava)
+
+Explicado:
+- Cada año el Estado anota lo que cobra ese año, no el cupo de ese año: los plazos del cupo provisional y, cuando la Comisión Mixta aprueba la liquidación de años anteriores, la diferencia entre lo provisional y lo definitivo. Esas liquidaciones llegan con años de retraso (las de 2017 y 2018 se aprobaron en marzo de 2020).
+- Al pago se le restan además compensaciones por programas del Estado que gestiona el País Vasco (educación, salud mental y otros), que las actas aplican en el primer plazo del cupo del año siguiente.
+- En 2017 la Comisión Mixta aprobó de una vez las liquidaciones de 2007 a 2016.
+
+Falta:
+- Cuadrar año a año lo anotado por el Estado con las actas: haría falta saber qué regularizaciones y compensaciones entran en cada año, y no hay acta publicada con el cupo provisional de 2018 ni de 2023.
+
+En la web:
+- La página del cupo usa las cifras de las actas, que cuadran entre sí al céntimo, y muestra aparte lo que anota el Estado.
 
 ## Gasto por funciones: va por detrás de la última revisión de Eurostat
 

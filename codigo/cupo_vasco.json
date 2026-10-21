@@ -1,0 +1,69 @@
+{
+ "_nota": "Cupo del País Vasco: cifras copiadas a mano de las actas de la Comisión Mixta del Concierto Económico (euskadi.eus), con el acta y la página del PDF de cada una. Miles de euros, como en las actas. Las actas de 2017 a 2022 son escaneos: las cifras se han leído de la imagen y construir.py comprueba cada día que cuadran entre sí (cupo = base × índice; a pagar = cupo + compensaciones; año base: imputación = 6,24 % de las cargas no asumidas). Al aparecer un acta nueva, la construcción avisa; se añade aquí a mano.",
+ "unidad": "miles de euros",
+ "listado": "https://www.euskadi.eus/informacion/comision-mixta-del-concierto-economico/web01-a2conci/es/",
+ "actas": {
+  "1/2017": {"fecha": "2017-05-17", "url": "https://www.euskadi.eus/contenidos/informacion/concierto_quinquenal/es_4177/adjuntos/cmce2017.pdf"},
+  "2/2017": {"fecha": "2017-07-19", "url": "https://www.euskadi.eus/contenidos/informacion/concierto_quinquenal/es_4177/adjuntos/cmce2017-2.pdf"},
+  "1/2020": {"fecha": "2020-03-11", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/cmce2020-1.pdf"},
+  "2/2020": {"fecha": "2020-09-30", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/cmce2020-2.pdf"},
+  "1/2021": {"fecha": "2021-07-29", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/cmce2021-1.pdf"},
+  "1/2022": {"fecha": "2022-11-17", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/2022-17-11-2022-.pdf"},
+  "2/2022": {"fecha": "2022-12-27", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/2022-27-12-2022.pdf"},
+  "1/2024": {"fecha": "2024-11-13", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2024.pdf"},
+  "2/2024": {"fecha": "2024-12-23", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__02_2024.pdf"},
+  "1/2025": {"fecha": "2025-02-06", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2025.pdf"},
+  "2/2025": {"fecha": "2025-04-10", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__02_2025.pdf"},
+  "1/2026": {"fecha": "2026-03-25", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__01_2026.pdf"},
+  "2/2026": {"fecha": "2026-07-09", "url": "https://www.euskadi.eus/contenidos/informacion/comision_mixta/es_14815/adjuntos/Acta_CMCE__02_2026.pdf"}
+ },
+ "leyes": [
+  {"quinquenio": "2017–2021", "nombre": "Ley 11/2017, de 28 de diciembre", "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2017-15714"},
+  {"quinquenio": "2022–2026", "nombre": "Ley 10/2023, de 3 de abril", "url": "https://www.boe.es/buscar/doc.php?id=BOE-A-2023-8456"}
+ ],
+ "compensaciones": {
+  "alava": "Compensación a Álava (disposición transitoria cuarta del Concierto)",
+  "saad": "Dependencia (SAAD), nivel acordado"
+ },
+ "años_base": [
+  {"año": 2017, "acta": "2/2017", "pagina": 47, "presupuesto": "Presupuestos Generales del Estado para 2017",
+   "gastos_estado": 276152254.24, "cargas_asumidas": 89966505.13, "cargas_no_asumidas": 186185749.11, "indice_imputacion": 6.24,
+   "imputacion": 11617990.74, "ajustes": -10313455.24,
+   "ajustes_detalle": {"tributos_no_concertados": -539702.10, "ingresos_no_tributarios": -595209.88, "deficit": -8781465.54, "directos_concertados": -397077.72},
+   "cupo": 1304535.50, "alava": -4426.53, "a_pagar": 1300108.97},
+  {"año": 2022, "acta": "1/2022", "pagina": 33, "presupuesto": "Presupuestos Generales del Estado para 2022",
+   "gastos_estado": 347486096.54, "cargas_asumidas": 114775397.82, "cargas_no_asumidas": 232710698.72, "indice_imputacion": 6.24,
+   "imputacion": 14521147.60, "ajustes": -13048983.92,
+   "ajustes_detalle": {"tributos_no_concertados": -746921.43, "ingresos_no_tributarios": -2654165.64, "deficit": -9361627.50, "directos_concertados": -286269.35},
+   "cupo": 1472163.68, "alava": -4426.53, "a_pagar": 1467737.15}
+ ],
+ "años": [
+  {"año": 2017,
+   "provisional": {"base": null, "indice": null, "cupo": 1304535.50, "compensaciones": {"alava": -4426.53}, "a_pagar": 1300108.97, "acta": "2/2017", "pagina": 47, "nota": "Año base del quinquenio 2017–2021."},
+   "definitivo": {"base": 1304535.50, "indice": 0.9307422, "cupo": 1214186.24, "compensaciones": {"alava": -4426.53}, "a_pagar": 1209759.71, "acta": "1/2020", "pagina": 17}},
+  {"año": 2018,
+   "provisional": null,
+   "definitivo": {"base": 1214158.98, "indice": 1.1045233, "cupo": 1341066.88, "compensaciones": {"alava": -4426.53}, "a_pagar": 1336640.35, "acta": "1/2020", "pagina": 27}},
+  {"año": 2019,
+   "provisional": {"base": 1302900.46, "indice": 1.0385286, "cupo": 1353099.39, "compensaciones": {"alava": -4426.53}, "a_pagar": 1348672.86, "acta": "1/2020", "pagina": 37},
+   "definitivo": {"base": 1212664.44, "indice": 1.1085442, "cupo": 1344292.13, "compensaciones": {"alava": -4426.53}, "a_pagar": 1339865.60, "acta": "1/2021", "pagina": 45, "nota": "El acta 2/2020 (página 17) ya daba estas cifras, pendientes del traspaso de carreteras; el acta 1/2021 las aprobó en firme."}},
+  {"año": 2020,
+   "provisional": {"base": 1302046.97, "indice": 1.0385286, "cupo": 1352213.02, "compensaciones": {"alava": -4426.53}, "a_pagar": 1347786.49, "acta": "2/2020", "pagina": 27},
+   "definitivo": {"base": 1211870.06, "indice": 0.8687513, "cupo": 1052813.69, "compensaciones": {"alava": -4426.53}, "a_pagar": 1048387.16, "acta": "1/2021", "pagina": 49}},
+  {"año": 2021,
+   "provisional": {"base": 1301804.81, "indice": 1.0534618, "cupo": 1371401.64, "compensaciones": {"alava": -4426.53}, "a_pagar": 1366975.11, "acta": "1/2021", "pagina": 56},
+   "definitivo": {"base": 1196305.94, "indice": 1.1733601, "cupo": 1403697.66, "compensaciones": {"alava": -4426.53, "saad": -18847.61}, "a_pagar": 1380423.52, "acta": "1/2022", "pagina": 36}},
+  {"año": 2022,
+   "provisional": {"base": null, "indice": null, "cupo": 1472163.68, "compensaciones": {"alava": -4426.53}, "a_pagar": 1467737.15, "acta": "1/2022", "pagina": 33, "nota": "Año base del quinquenio 2022–2026."},
+   "definitivo": {"base": 1472163.68, "indice": 1.1877580, "cupo": 1748574.19, "compensaciones": {"alava": -4426.53, "saad": -32158.19}, "a_pagar": 1711989.47, "acta": "1/2024", "pagina": 46}},
+  {"año": 2023,
+   "provisional": null,
+   "definitivo": {"base": 1748574.19, "indice": 0.9584834, "cupo": 1675979.33, "compensaciones": {"alava": -4426.53, "saad": -53004.20}, "a_pagar": 1618548.60, "acta": "1/2024", "pagina": 52}},
+  {"año": 2024,
+   "provisional": {"base": 1472163.68, "indice": 1.0610193, "cupo": 1561994.08, "compensaciones": {"alava": -4426.53, "saad": -53028.99}, "a_pagar": 1504538.56, "acta": "1/2024", "pagina": 58},
+   "definitivo": {"base": 1748574.19, "indice": 0.9925909, "cupo": 1735618.83, "compensaciones": {"alava": -4426.53, "saad": -53001.54}, "a_pagar": 1678190.76, "acta": "1/2026", "pagina": 10}},
+  {"año": 2025,
+   "provisional": {"base": 1380503.63, "indice": 1.0610193, "cupo": 1464741.00, "compensaciones": {"alava": -4426.53, "saad": -53028.99}, "a_pagar": 1407285.48, "acta": "1/2026", "pagina": 16, "nota": "La base es la del año 2022 rebajada en 91.660,05 miles por competencias nuevas traspasadas en 2025."},
+   "definitivo": null}
+ ]
+}

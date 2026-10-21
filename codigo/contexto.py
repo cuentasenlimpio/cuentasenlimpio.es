@@ -742,6 +742,37 @@ def beneficios_fiscales(D):
     return md
 
 
+def cupo_vasco(D):
+    s = D.get("cupo_vasco") or {}
+    if not s:
+        return cabecera("Cupo vasco", "cupo-vasco.html", "Sin datos en esta construcción.")
+    md = cabecera("Cupo del País Vasco: lo que paga al Estado", "cupo-vasco.html",
+                  "Actas de la Comisión Mixta del Concierto Económico (Gobierno Vasco y Ministerio de Hacienda), desde 2017. Miles de euros "
+                  "en las actas; aquí, millones. Cupo líquido = cupo del año base × índice de actualización; a pagar = cupo menos "
+                  "compensaciones (Álava y, desde 2021, dependencia). Provisional: al empezar el año; definitivo: al liquidarlo. Las cifras "
+                  "se copian a mano de cada acta (las de 2017–2022 son escaneos) y se comprueba cada día que cuadran entre sí. No es una "
+                  "balanza fiscal ni incluye los ajustes por IVA e impuestos especiales.")
+    filas = []
+    for a in s["detalle"]:
+        p, d_ = a["provisional"], a["definitivo"]
+        fin = d_ or p
+        filas.append([a["año"], n(p["cupo"] / 1000, 1) if p else "—", n(d_["cupo"] / 1000, 1) if d_ else "—",
+                      n(sum(fin["compensaciones"].values()) / 1000, 1), n(fin["a_pagar"] / 1000, 1),
+                      "; ".join(f"acta {t['acta']}, p. {t['pagina']}" for t in (p, d_) if t)])
+    md += "\n## Millones de euros\n\n" + tabla(["Año", "Cupo provisional", "Cupo definitivo", "Compensaciones", "A pagar", "Fuente"], filas)
+    b = s["años_base"][-1]
+    md += (f"\n\nAño base {b['año']} (acta {b['acta']}, p. {b['pagina']}): gastos del Estado {n(b['gastos_estado'] / 1000)}; cargas asumidas "
+           f"{n(b['cargas_asumidas'] / 1000)}; no asumidas {n(b['cargas_no_asumidas'] / 1000)}; {n(b['indice_imputacion'], 2)} % = {n(b['imputacion'] / 1000)}; "
+           f"ajustes y compensaciones {n(b['ajustes'] / 1000)}; cupo {n(b['cupo'] / 1000)}.\n")
+    md += ("\nLo que anota el Estado como ingreso (concepto 45000, «Cupo del País Vasco») no coincide año a año con las actas: ver "
+           "«Lo que no cuadra» (caso cupo-vasco-acta-estado).\n")
+    md += "\n" + tabla(["Año", "Anotado por el Estado", "Cupo provisional del acta menos Álava"],
+                       [[x["año"], n(x["estado"]), n(x["acta_provisional"]) if x["acta_provisional"] is not None else "—"] for x in s["estado"]])
+    md += "\n\nActas: " + "; ".join(f"{k} ({v['fecha']}): {v['url']}" for k, v in s["actas"].items()) + "\n"
+    md += "Leyes: " + "; ".join(f"{l['nombre']} ({l['quinquenio']}): {l['url']}" for l in s["leyes"]) + "\n"
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -753,6 +784,7 @@ FICHEROS = [
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("beneficios-fiscales", beneficios_fiscales, "Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF."),
+    ("cupo-vasco", cupo_vasco, "Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base."),
     ("union-europea", union_europea, "España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
@@ -845,7 +877,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

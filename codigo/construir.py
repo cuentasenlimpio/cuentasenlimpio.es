@@ -1496,7 +1496,7 @@ def construir_deuda_local(descargas):
     print(f"deuda local: {años[0]}–{ultimo}, {salida['serie']['meur'][-1]} M€; ayuntamientos {m_.get('año')}: {m_.get('n')}, sin deuda {m_.get('sin_deuda')}")
 
 
-def construir_descuadres(gasto, pmp=None):
+def construir_descuadres(gasto, pmp=None, cupo=None):
     """Lo que no cuadra: los casos de datos/descuadres.json más los automáticos (hoy, el desfase de versiones entre el
     gasto por funciones y el gasto total de Eurostat, que aparece y desaparece solo). Lo leen descuadres.html y las
     marcas de aviso junto a las fuentes (comun.js)."""
@@ -1529,6 +1529,31 @@ def construir_descuadres(gasto, pmp=None):
             "falta": "Saber cuál de las cifras es la correcta en cada caso. Solo Hacienda puede corregir el fichero.",
             "en_la_web": "Esos meses no entran en las medias de doce meses. El caso desaparece solo si Hacienda corrige el fichero.",
             "marcas": [{"pagina": "pago-proveedores.html", "id": "g1-fuente"}, {"pagina": "pago-proveedores.html", "id": "g3-fuente"}],
+        })
+    if cupo and cupo.get("estado"):
+        filas = cupo["estado"]
+        lineas = [f"{x['año']}: el Estado anota {es(x['estado'])} millones" +
+                  (f"; el acta fija {es(x['acta_provisional'])} millones de cupo provisional (menos la compensación a Álava)" if x["acta_provisional"] is not None
+                   else "; no hay acta publicada con el cupo provisional de ese año") for x in filas]
+        cerca = [x for x in filas if x["acta_provisional"] is not None and abs(x["estado"] - x["acta_provisional"]) < 1]
+        casos.append({
+            "id": "cupo-vasco-acta-estado", "estado": "sin_explicar", "anotado": "2026-10-22", "automatico": True,
+            "titulo": "Cupo vasco: lo que anota el Estado cada año no es la cifra del acta de ese año",
+            "resumen": "El ingreso que anota el Estado por el cupo («Cupo del País Vasco», concepto 45000) solo casa con el acta "
+                       + (f"en {' y '.join(str(x['año']) for x in cerca)}" if cerca else "en ningún año") + "; en los demás hay diferencias que no hemos podido desglosar.",
+            "cifras": lineas,
+            "explicado": [
+                "Cada año el Estado anota lo que cobra ese año, no el cupo de ese año: los plazos del cupo provisional y, cuando la Comisión Mixta "
+                "aprueba la liquidación de años anteriores, la diferencia entre lo provisional y lo definitivo. Esas liquidaciones llegan con años de "
+                "retraso (las de 2017 y 2018 se aprobaron en marzo de 2020).",
+                "Al pago se le restan además compensaciones por programas del Estado que gestiona el País Vasco (educación, salud mental y otros), "
+                "que las actas aplican en el primer plazo del cupo del año siguiente.",
+                "En 2017 la Comisión Mixta aprobó de una vez las liquidaciones de 2007 a 2016.",
+            ],
+            "falta": "Cuadrar año a año lo anotado por el Estado con las actas: haría falta saber qué regularizaciones y compensaciones entran en "
+                     "cada año, y no hay acta publicada con el cupo provisional de 2018 ni de 2023.",
+            "en_la_web": "La página del cupo usa las cifras de las actas, que cuadran entre sí al céntimo, y muestra aparte lo que anota el Estado.",
+            "marcas": [{"pagina": "cupo-vasco.html", "id": "estado-fuente"}],
         })
     orden = {"sin_explicar": 0, "transitorio": 1, "explicado": 2}
     casos.sort(key=lambda c: orden[c["estado"]])
@@ -2042,6 +2067,108 @@ def construir_beneficios_fiscales():
     for c_ in comprobaciones:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     print(f"beneficios fiscales: {len(memorias)} memorias; {ultima['año']}: {ultima['partidas']['total']} M€")
+
+
+def _cupo_estado(descargas):
+    """Lo que el Estado anota cada año como ingreso por el cupo vasco (derechos reconocidos netos del concepto 45000,
+    «Cupo del País Vasco»), en miles de euros: de la liquidación de cada año y, si aún no la hay, del avance a 31 de
+    diciembre (fila «País Vasco» de las contribuciones concertadas). {año: (miles, tabla)}."""
+    salida = {}
+    for k in sorted(descargas):
+        if not k.startswith("liq_estado_"):
+            continue
+        a = int(k[-4:])
+        for fila in hojas(AQUI / descargas[k]["fichero"]).get("LIQ 046", []):
+            if fila and isinstance(fila[0], str) and re.search(r"45000\.\s*Cupo del Pa[ií]s Vasco", fila[0]):
+                nums = [x for x in fila[1:] if isinstance(x, (int, float))]
+                salida[a] = (nums[1], k)  # previsiones, derechos reconocidos netos, recaudación, %
+                break
+    for k in sorted(descargas):
+        if not k.startswith("ejec_dic_") or int(k[-4:]) in salida:
+            continue
+        filas = hojas(AQUI / descargas[k]["fichero"]).get("ING 004", [])
+        for i, fila in enumerate(filas):
+            if fila and isinstance(fila[0], str) and fila[0].strip() == "Contribuciones concertadas":
+                sig = filas[i + 1]
+                if sig and str(sig[0]).strip() == "País Vasco":
+                    nums = [x for x in sig[1:] if isinstance(x, (int, float))]
+                    salida[int(k[-4:])] = (nums[1], k)  # previsiones, derechos reconocidos netos (año), …
+                break
+    return salida
+
+
+def construir_cupo_vasco(descargas):
+    """Cupo del País Vasco: lo que fija cada año la Comisión Mixta del Concierto Económico (provisional al empezar el
+    año, definitivo al liquidarlo), copiado a mano de las actas en datos/cupo_vasco.json. Aquí se comprueba cada día que
+    las cifras cuadran entre sí, que no hay actas nuevas sin incorporar, y se compara con lo que el Estado anota como
+    ingreso. Devuelve lo necesario para el caso de «Lo que no cuadra»."""
+    ruta = CODIGO / "cupo_vasco.json"
+    if not ruta.exists():
+        return None
+    d = json.loads(ruta.read_text())
+    mal_producto, mal_suma, mal_base = [], [], []
+    for a in d["años"]:
+        for tipo in ("provisional", "definitivo"):
+            t = a[tipo]
+            if not t:
+                continue
+            if t["base"] is not None and abs(t["base"] * t["indice"] - t["cupo"]) > 0.01:
+                mal_producto.append(f"{a['año']} {tipo}")
+            if abs(t["cupo"] + sum(t["compensaciones"].values()) - t["a_pagar"]) > 0.005:
+                mal_suma.append(f"{a['año']} {tipo}")
+    for b in d["años_base"]:
+        if (abs(b["gastos_estado"] - b["cargas_asumidas"] - b["cargas_no_asumidas"]) > 0.005
+                or abs(b["cargas_no_asumidas"] * b["indice_imputacion"] / 100 - b["imputacion"]) > 0.01
+                or abs(sum(b["ajustes_detalle"].values()) - b["ajustes"]) > 0.005
+                or abs(b["imputacion"] + b["ajustes"] - b["cupo"]) > 0.005
+                or abs(b["cupo"] + b["alava"] - b["a_pagar"]) > 0.005):
+            mal_base.append(b["año"])
+    # Actas publicadas que no están en el fichero (la lista de euskadi.eus se descarga cada día)
+    nuevas = None
+    if "cmce_actas" in descargas:
+        pagina = (AQUI / descargas["cmce_actas"]["fichero"]).read_bytes().decode("latin-1")
+        publicadas = {re.sub(r"^https?://[^/]+", "", u) for u in re.findall(r'href="([^"]*(?:comision_mixta|concierto_quinquenal)[^"]*\.pdf)"', pagina)}
+        conocidas = {re.sub(r"^https?://[^/]+", "", x["url"]) for x in d["actas"].values()}
+        nuevas = sorted(publicadas - conocidas) if publicadas else None
+    tablas = sum(1 for a in d["años"] for t in ("provisional", "definitivo") if a[t])
+    comprobaciones = [
+        {"que": "¿El cupo de cada acta es el del año base multiplicado por el índice de actualización?",
+         "resultado": f"Sí, al céntimo en las {tablas - len(d['años_base'])} tablas que lo calculan así" if not mal_producto else f"No en {mal_producto}",
+         "ok": not mal_producto},
+        {"que": "¿El cupo menos las compensaciones da el líquido a pagar de cada acta?",
+         "resultado": f"Sí, al céntimo en las {tablas} tablas" if not mal_suma else f"No en {mal_suma}", "ok": not mal_suma},
+        {"que": "¿Cuadra el cálculo de cada año base (gastos del Estado, cargas no asumidas, 6,24 %, ajustes)?",
+         "resultado": f"Sí, al céntimo en {' y '.join(str(b['año']) for b in d['años_base'])}" if not mal_base else f"No en {mal_base}",
+         "ok": not mal_base},
+        {"que": "¿Están incorporadas todas las actas publicadas por el Gobierno Vasco?",
+         "resultado": ("No se ha podido leer la lista de actas" if nuevas is None else
+                       f"Sí, las {len(d['actas'])}" if not nuevas else f"No: hay {len(nuevas)} acta(s) nueva(s) por revisar ({', '.join(nuevas)})"),
+         "ok": nuevas == []},
+    ]
+    # Lo que anota el Estado como ingreso, frente a lo que fija el acta para el mismo año (cupo menos la compensación a
+    # Álava: la de la dependencia se paga aparte desde 2024, según cuadran ese año las dos cifras)
+    estado = _cupo_estado(descargas)
+    por_año = {a["año"]: a for a in d["años"]}
+    comparacion = []
+    for año in sorted(estado):
+        if año < d["años"][0]["año"]:
+            continue
+        a = por_año.get(año, {})
+        prov = a.get("provisional")
+        comparacion.append({"año": año, "estado": round(estado[año][0] / 1000, 1), "tabla": estado[año][1],
+                            "acta_provisional": round((prov["cupo"] + prov["compensaciones"]["alava"]) / 1000, 1) if prov else None})
+    años = [a["año"] for a in d["años"]]
+    serie = {t: [round(a[t]["cupo"] / 1000, 1) if a[t] else None for a in d["años"]] for t in ("provisional", "definitivo")}
+    serie["a_pagar"] = [round((a["definitivo"] or a["provisional"])["a_pagar"] / 1000, 1) if (a["definitivo"] or a["provisional"]) else None for a in d["años"]]
+    salida = {"años": años, "serie": serie, "detalle": d["años"], "años_base": d["años_base"], "actas": d["actas"], "leyes": d["leyes"],
+              "compensaciones": d["compensaciones"], "listado": d["listado"], "estado": comparacion,
+              "tabla": "cmce_actas", "comprobaciones": comprobaciones}
+    (WEB / "datos" / "cupo_vasco.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    ult = next(a for a in reversed(d["años"]) if a["definitivo"])
+    print(f"cupo vasco: {len(d['años'])} años; definitivo {ult['año']}: {ult['definitivo']['cupo']} miles")
+    return salida
 
 
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
@@ -3423,7 +3550,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3453,7 +3580,8 @@ def main():
                "airef_ejecucion_2026": "Previsiones de saldo y deuda de la AIReF, con su abanico de incertidumbre; las cifras copiadas se comprueban contra este fichero.",
                "airef_fichas_2026_08": "Última previsión de saldo de la AIReF para el año en curso (PDF; cifra copiada de la página 2).",
                "bde_proyecciones_2026t3": "Proyecciones del Banco de España (PDF; cifras copiadas del Cuadro 1).",
-               "hacienda_objetivos_2027": "Objetivos de déficit y deuda del Gobierno (PDF; cifras copiadas de las páginas 7 y 9)."}.get(nombre) or \
+               "hacienda_objetivos_2027": "Objetivos de déficit y deuda del Gobierno (PDF; cifras copiadas de las páginas 7 y 9).",
+               "cmce_actas": "Lista de actas de la Comisión Mixta: sirve para avisar de las nuevas. Las cifras del cupo se copian a mano de cada acta, enlazada en la página del cupo."}.get(nombre) or \
               ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
               ({"ss_afiliados_medios": "Afiliados medios por régimen y edad; con ellos se calculan los afiliados por pensión.",
                 "ss_afiliados_desest": "Serie desestacionalizada oficial desde 2021.",
@@ -3482,7 +3610,7 @@ def main():
                 "ine_epa_t65327": "Peso del sector público en los asalariados de cada comunidad autónoma."}.get(nombre)) or \
               ("Asalariados del sector público por tipo de administración, de la EPA." if nombre.startswith("ine_epa416") or nombre == "ine_epa450290" else None) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
-              ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto."
+              ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto; y lo ingresado por el cupo del País Vasco (concepto 45000)."
                if nombre.startswith("liq_estado_") else
                "Avance: ejecución a 31 de diciembre por políticas de gasto (hoja GTOS 008)." if nombre.startswith("ejec_dic_") else None)
         fuentes.append({
@@ -3580,7 +3708,8 @@ def main():
     construir_modificaciones(descargas, hacienda_capitulos(descargas))
     construir_ue_saldo(descargas)
     construir_beneficios_fiscales()
-    construir_descuadres(gasto, pmp)
+    cupo = construir_cupo_vasco(descargas)
+    construir_descuadres(gasto, pmp, cupo)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:
