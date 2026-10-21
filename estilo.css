@@ -586,3 +586,14 @@ body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 
 .fuente-facil, .seguir-facil { font-size: 1rem; color: var(--tinta-suave); margin-top: 1.5rem !important; }
 .pasar-facil { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 2rem 0 1rem; font-size: 1.1rem; }
 .enlace-facil { font-size: 1.05rem; margin: 0 0 1rem; }
+
+/* Las cuentas en cinco minutos */
+.paso-recorrido { border-top: 1px solid var(--linea); margin-top: 2.5rem; max-width: 46rem; }
+.visual-recorrido svg { width: 100%; height: auto; display: block; margin: 0.5rem 0; }
+.linea-recorrido { fill: none; stroke: var(--c-primario); stroke-width: 2.5; stroke-linejoin: round; }
+.punto-recorrido { fill: var(--c-primario); stroke: var(--fondo); stroke-width: 2; }
+.ref-recorrido { stroke: var(--linea-fuerte); stroke-dasharray: 4 4; }
+.eje-recorrido { stroke: var(--linea-fuerte); }
+.rotulo-recorrido { font-size: 11px; fill: var(--tinta-suave); }
+.dato-recorrido { font-size: 13px; font-weight: 600; fill: var(--tinta); }
+.seguir-recorrido { font-size: 0.9375rem; }

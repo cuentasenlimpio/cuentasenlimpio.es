@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Las cuentas en cinco minutos · Cuentas en limpio</title>
+  <meta name="description" content="Un recorrido de seis pasos por las cuentas públicas de España: de dónde sale el dinero, a qué se dedica, qué falta, qué se debe, cuánto cuesta deberlo y quién decide cada cosa.">
+  <link rel="stylesheet" href="estilo.css?v=eb023b2f87">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=a6a79b8632" defer></script>
+  <script src="recorrido.js?v=e7091e23ea" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html" aria-current="page">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="pregunta">Las cuentas en cinco minutos</h1>
+    <p class="respuesta">Seis preguntas, una detrás de otra, para hacerse una idea de las cuentas públicas de España sin saber nada de antes. Cada paso tiene una frase, un gráfico sencillo y un enlace para quien quiera más.</p>
+    <p class="contabilidad">«Las administraciones» son todas juntas: el Estado, las comunidades autónomas, los ayuntamientos y la Seguridad Social. Las cifras son las últimas publicadas y se ponen al día solas.</p>
+    <nav class="indice" aria-label="Pasos"><ol><li><a href="#entra">¿De dónde sale el dinero?</a></li><li><a href="#va">¿A qué se dedica?</a></li><li><a href="#falta">¿Llega para todo?</a></li><li><a href="#debe">¿Cuánto se debe?</a></li><li><a href="#cuesta">¿Cuánto cuesta deberlo?</a></li><li><a href="#decide">¿Quién gasta cada cosa?</a></li></ol></nav>
+    <section class="paso-recorrido" id="entra" aria-labelledby="entra-t">
+      <p class="antetitulo">Paso 1 de 6</p>
+      <h2 class="pregunta" id="entra-t">¿De dónde sale el dinero?</h2>
+      <p class="respuesta" id="entra-frase"></p>
+      <div class="visual-recorrido" id="entra-visual"></div>
+      <p class="fuente-grafico" id="entra-fuente"></p>
+      <p class="seguir-recorrido"><a href="ingresos.html">Ingresos, partida por partida →</a> · <a href="#va">Siguiente paso ↓</a></p>
+    </section>
+    <section class="paso-recorrido" id="va" aria-labelledby="va-t">
+      <p class="antetitulo">Paso 2 de 6</p>
+      <h2 class="pregunta" id="va-t">¿A qué se dedica?</h2>
+      <p class="respuesta" id="va-frase"></p>
+      <div class="visual-recorrido" id="va-visual"></div>
+      <p class="fuente-grafico" id="va-fuente"></p>
+      <p class="seguir-recorrido"><a href="gasto.html">En qué se gasta, partida por partida →</a> · <a href="#falta">Siguiente paso ↓</a></p>
+    </section>
+    <section class="paso-recorrido" id="falta" aria-labelledby="falta-t">
+      <p class="antetitulo">Paso 3 de 6</p>
+      <h2 class="pregunta" id="falta-t">¿Llega para todo?</h2>
+      <p class="respuesta" id="falta-frase"></p>
+      <div class="visual-recorrido" id="falta-visual"></div>
+      <p class="fuente-grafico" id="falta-fuente"></p>
+      <p class="seguir-recorrido"><a href="cuentas.html#g1-titulo">Lo que entra y lo que sale, año a año →</a> · <a href="#debe">Siguiente paso ↓</a></p>
+    </section>
+    <section class="paso-recorrido" id="debe" aria-labelledby="debe-t">
+      <p class="antetitulo">Paso 4 de 6</p>
+      <h2 class="pregunta" id="debe-t">¿Cuánto se debe?</h2>
+      <p class="respuesta" id="debe-frase"></p>
+      <div class="visual-recorrido" id="debe-visual"></div>
+      <p class="fuente-grafico" id="debe-fuente"></p>
+      <p class="seguir-recorrido"><a href="cuentas.html#g2-titulo">La deuda, año a año →</a> · <a href="#cuesta">Siguiente paso ↓</a></p>
+    </section>
+    <section class="paso-recorrido" id="cuesta" aria-labelledby="cuesta-t">
+      <p class="antetitulo">Paso 5 de 6</p>
+      <h2 class="pregunta" id="cuesta-t">¿Cuánto cuesta deberlo?</h2>
+      <p class="respuesta" id="cuesta-frase"></p>
+      <div class="visual-recorrido" id="cuesta-visual"></div>
+      <p class="fuente-grafico" id="cuesta-fuente"></p>
+      <p class="seguir-recorrido"><a href="economia.html#b4">Lo que cuesta pedir prestado →</a> · <a href="#decide">Siguiente paso ↓</a></p>
+    </section>
+    <section class="paso-recorrido" id="decide" aria-labelledby="decide-t">
+      <p class="antetitulo">Paso 6 de 6</p>
+      <h2 class="pregunta" id="decide-t">¿Quién gasta cada cosa?</h2>
+      <p class="respuesta" id="decide-frase"></p>
+      <div class="visual-recorrido" id="decide-visual"></div>
+      <p class="fuente-grafico" id="decide-fuente"></p>
+      <p class="seguir-recorrido"><a href="gasto.html#q-titulo">Quién paga cada partida →</a></p>
+    </section>
+    <section class="entender entender-ancho" aria-labelledby="seguir-t">
+      <div><p class="rotulo">Para seguir</p><h2 id="seguir-t">Y ahora, ¿qué?</h2></div>
+      <ul>
+        <li><a href="aprende.html">Once ideas para leer cualquier cifra de las cuentas</a></li>
+        <li><a href="preguntas.html">Preguntas que se hace la gente: pensiones, deuda, impuestos, IVA</a></li>
+        <li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li>
+        <li><a href="facil.html">Las cuentas públicas, en lectura fácil</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>
