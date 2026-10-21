@@ -125,6 +125,15 @@ PAGINAS = [
     {"fuente": "IGAE", "tabla": "igae_a_aapp_imp", "opcional": True,
      "nombre": "Impuestos y cotizaciones sociales de las Administraciones públicas, anuales (contabilidad nacional)",
      "url": IGAE_CN + "AAPP_A/A_AAPP_Imp.xlsx", "extension": "xlsx"},
+    # «Cómo va este año»: contabilidad nacional mensual (Estado, comunidades y Seguridad Social, sin ayuntamientos), un
+    # fichero por año que se sobrescribe cada mes; se guardan los tres últimos años para comparar con el anterior.
+    *[{"fuente": "IGAE", "tabla": f"igae_m_aapp_{a}", "opcional": True, "si_existe": True,
+       "nombre": f"Operaciones no financieras mensuales de las administraciones sin las locales, {a} (contabilidad nacional)",
+       "url": IGAE_CN + f"AAPP-M/M_CONSOLIDADO_{a}.xlsx", "extension": "xlsx"} for a in range(dt.date.today().year - 2, dt.date.today().year + 1)],
+    {"fuente": "Agencia Tributaria", "tabla": "aeat_recaudacion_series", "opcional": True,
+     "nombre": "Informe mensual de recaudación tributaria: series de ingresos tributarios por mes desde 1995",
+     "url": "https://sede.agenciatributaria.gob.es/static_files/Sede/Tema/Estadisticas/Recaudacion_Tributaria/Informes_mensuales/Cuadros_estadisticos_series_es_es.xlsx",
+     "extension": "xlsx"},
     {"fuente": "Banco de España", "tabla": "bde_be1107", "opcional": True,
      "nombre": "Deuda según el Procedimiento de Déficit Excesivo, en porcentaje del PIB (Boletín Estadístico, cuadro 11.7)",
      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1107.csv", "extension": "csv"},

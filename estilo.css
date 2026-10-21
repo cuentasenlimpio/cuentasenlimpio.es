@@ -842,3 +842,15 @@ header.sitio { position: relative; }
   .boton-buscar { position: absolute; top: 0.45rem; right: 4.1rem; padding: 0; width: 2.75rem; justify-content: center; }
   .boton-buscar-texto { display: none; }
 }
+
+/* ¿Cómo va este año? */
+.rejilla-ea { stroke: var(--linea); stroke-width: 1; }
+.linea-recorrido.serie-actual { stroke: var(--c-primario); stroke-width: 3.5; }
+.linea-recorrido.serie-anterior { stroke: var(--tinta); stroke-width: 2.5; }
+.linea-recorrido.serie-antigua { stroke: var(--linea-fuerte); stroke-width: 2; stroke-dasharray: 5 5; }
+.punto-ea { fill: var(--superficie); stroke-width: 2.5; stroke: var(--tinta); }
+.punto-ea.serie-actual { stroke: var(--c-primario); }
+.punto-ea.serie-antigua { stroke: var(--linea-fuerte); }
+.cifras-clave .caja-destacada { background: var(--entender); }
+#d-cifras > div { display: flex; flex-direction: column; gap: 0.3rem; }
+#d-cifras .valor { font-size: clamp(1.35rem, 2.3vw, 1.75rem); white-space: nowrap; }

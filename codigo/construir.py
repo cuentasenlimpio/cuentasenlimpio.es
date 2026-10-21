@@ -1128,6 +1128,89 @@ def construir_territorio(descargas):
 
 
 # ---- Desigualdad (desde el 20/10/2026). En EU-SILC/ECV, el año es el de la encuesta; la renta, la del año anterior. ----
+# ---- «Cómo va este año» (desde el 22/10/2026): el año en curso, mes a mes, frente al mismo mes del año anterior ----
+MESES_NOMBRE = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre",
+                "noviembre", "diciembre"]
+
+
+def _igae_mensual(ruta):
+    """{fila: [12 valores acumulados o None]} de Tabla1a (millones) y Tabla1b (% del PIB) de un fichero mensual."""
+    libro = hojas(ruta)
+    salida = {}
+    for hoja, sufijo in (("Tabla1a", ""), ("Tabla1b", "_pib")):
+        if hoja not in libro:
+            continue
+        fecha = next((str(f[0]) for f in libro[hoja][:8] if f and isinstance(f[0], str) and f[0].startswith("Fecha de actualizaci")), "")
+        salida["actualizado" + sufijo] = fecha.split(":")[-1].strip()
+        for f in libro[hoja]:
+            f = (f or []) + [None] * 14
+            codigo, concepto = (str(f[0] or "").strip(), str(f[1] or "").strip())
+            clave = {"Total de ingresos": "ingresos", "Total de gastos": "gastos"}.get(concepto) or ("saldo" if codigo == "B.9" else None)
+            if codigo == "D.41" and concepto == "Intereses":
+                clave = "intereses"
+            if clave and clave + sufijo not in salida:
+                salida[clave + sufijo] = [v if isinstance(v, float) else None for v in f[2:14]]
+    return salida
+
+
+def construir_este_ano(descargas):
+    salida = {}
+    # 1) Déficit acumulado: administraciones sin las locales (IGAE, contabilidad nacional mensual)
+    años = sorted(int(k[-4:]) for k in descargas if k.startswith("igae_m_aapp_"))
+    mensual = {a: _igae_mensual(AQUI / descargas[f"igae_m_aapp_{a}"]["fichero"]) for a in años}
+    con_dato = [a for a in años if any(v is not None for v in mensual[a].get("saldo", []))]
+    if len(con_dato) >= 2:
+        a = con_dato[-1]
+        m = max(i for i, v in enumerate(mensual[a]["saldo"]) if v is not None)
+        previo = mensual[a - 1] if a - 1 in mensual else None
+        if previo:
+            def corte(d, k):
+                return d.get(k, [None] * 12)[m]
+            salida["deficit"] = {
+                "año": a, "mes": m + 1, "mes_nombre": MESES_NOMBRE[m], "actualizado": mensual[a].get("actualizado", ""),
+                "ambito": "Estado, comunidades autónomas y Seguridad Social (sin ayuntamientos)",
+                "actual": {k: corte(mensual[a], k) for k in ("ingresos", "gastos", "saldo", "intereses", "saldo_pib")},
+                "anterior": {k: corte(previo, k) for k in ("ingresos", "gastos", "saldo", "intereses", "saldo_pib")},
+                "serie_actual": mensual[a]["saldo"][: m + 1], "serie_anterior": previo["saldo"],
+                "tabla": f"igae_m_aapp_{a}",
+            }
+    # 2) Recaudación tributaria acumulada (Agencia Tributaria, criterio de caja, miles de euros → millones)
+    if "aeat_recaudacion_series" in descargas:
+        libro = hojas(AQUI / descargas["aeat_recaudacion_series"]["fichero"])
+        filas = libro.get("Ingresos tributarios", [])
+        columnas = {"total": 6, "irpf": 29, "sociedades": 65, "no_residentes": 83, "iva": 108, "especiales": 138, "resto": 179}
+        por_mes = {}
+        for f in filas:
+            f = (f or []) + [None] * 200
+            try:
+                año, mes = int(float(f[0])), int(float(f[1]))
+            except (TypeError, ValueError):
+                continue
+            if not 1 <= mes <= 12:
+                continue
+            por_mes[(año, mes)] = {k: (f[c] / 1000 if isinstance(f[c], float) else None) for k, c in columnas.items()}
+        if por_mes:
+            ult_a, ult_m = max(k for k, v in por_mes.items() if v["total"] is not None)
+            acum = lambda a, k: sum((por_mes.get((a, mm), {}).get(k) or 0) for mm in range(1, ult_m + 1))
+            nombres = {"irpf": "Impuesto sobre la renta (IRPF)", "iva": "IVA", "sociedades": "Impuesto de sociedades",
+                       "especiales": "Impuestos especiales (carburantes, tabaco, alcohol, electricidad…)",
+                       "no_residentes": "Impuesto sobre la renta de no residentes", "resto": "Resto de impuestos y tasas"}
+            serie = lambda a: [round(sum((por_mes.get((a, mm), {}).get("total") or 0) for mm in range(1, h + 1)), 0)
+                               for h in range(1, 13) if (a, h) in por_mes and por_mes[(a, h)]["total"] is not None]
+            salida["recaudacion"] = {
+                "año": ult_a, "mes": ult_m, "mes_nombre": MESES_NOMBRE[ult_m - 1],
+                "ambito": "Ingresos tributarios que gestiona la Agencia Tributaria, incluida la parte que va a comunidades y ayuntamientos; sin cotizaciones sociales ni haciendas forales; criterio de caja",
+                "total": {"actual": round(acum(ult_a, "total"), 0), "anterior": round(acum(ult_a - 1, "total"), 0)},
+                "impuestos": [{"clave": k, "nombre": n, "actual": round(acum(ult_a, k), 0), "anterior": round(acum(ult_a - 1, k), 0)}
+                              for k, n in nombres.items()],
+                "series": {str(a): serie(a) for a in (ult_a - 2, ult_a - 1, ult_a)},
+                "tabla": "aeat_recaudacion_series",
+            }
+    (WEB / "datos" / "este_ano.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for k, v in salida.items():
+        print(f"este año: {k} hasta {v['mes_nombre']} de {v['año']}")
+
+
 def construir_desigualdad(descargas):
     comprobaciones, out = [], {}
 
@@ -2358,7 +2441,8 @@ def main():
                                  "airef_pfemp_2026", "airef_ejecucion_2026", "airef_fichas_2026_08",
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
-                                                       "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_")))):
+                                                       "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
+                                                       "igae_m_aapp_", "aeat_recaudacion_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -2502,6 +2586,7 @@ def main():
                       "iniciativas": CODIGO / "promesas" / "extraccion" / "hechos_iniciativas",
                       "decretos": CODIGO / "promesas" / "extraccion" / "hechos_decretos"})
     construir_datos_promesas(descargas)
+    construir_este_ano(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

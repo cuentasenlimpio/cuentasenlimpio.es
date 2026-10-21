@@ -475,8 +475,32 @@ def glosario(D):
     return md
 
 
+def este_ano(D):
+    e = D.get("este_ano") or {}
+    md = cabecera("Cómo va este año, mes a mes", "este-ano.html",
+                  "Datos provisionales y acumulados desde enero del año en curso, frente a los mismos meses del año anterior. "
+                  "Solo son comparables mes con mes: cada mes trae pagos e ingresos que no se repiten igual.")
+    d = e.get("deficit")
+    if d:
+        a, p = d["actual"], d["anterior"]
+        md += (f"\n## Saldo acumulado ({d['ambito']}), enero–{d['mes_nombre']}\n\n"
+               + tabla(["Concepto", f"{d['año']} (M€)", f"{d['año'] - 1} (M€)"],
+                       [[k, n(a[k]), n(p[k])] for k in ("ingresos", "gastos", "intereses", "saldo")]
+                       + [["saldo (% del PIB)", n(a["saldo_pib"], 2), n(p["saldo_pib"], 2)]])
+               + f"\n\nFuente: IGAE, contabilidad nacional mensual (actualizada el {d['actualizado']}). Faltan los ayuntamientos.\n")
+    r = e.get("recaudacion")
+    if r:
+        md += (f"\n## Recaudación tributaria acumulada, enero–{r['mes_nombre']} de {r['año']}\n\n{r['ambito']}.\n\n"
+               + tabla(["Impuesto", f"{r['año']} (M€)", f"{r['año'] - 1} (M€)"],
+                       [[i["nombre"], n(i["actual"]), n(i["anterior"])] for i in r["impuestos"]]
+                       + [["Total", n(r["total"]["actual"]), n(r["total"]["anterior"])]])
+               + "\n\nFuente: Agencia Tributaria, informe mensual de recaudación tributaria. No coincide con los impuestos en contabilidad nacional de cuentas.md e ingresos.md (otro criterio y otro ámbito).\n")
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
+    ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
     ("gasto", gasto, "En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa."),
     ("presupuesto", presupuesto, "El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto."),
@@ -565,6 +589,7 @@ def construir_contexto(web):
     carga = lambda p: json.loads(p.read_text())
     D = {k: carga(d / f"{k}.json") for k in ("aapp", "escala", "ingresos", "gasto", "presupuesto", "economia", "territorio", "desigualdad", "explicaciones")}
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
+    D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
     D["terminos"] = carga(web / "terminos.json")

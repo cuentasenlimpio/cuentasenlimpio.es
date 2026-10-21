@@ -24,6 +24,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 ## Contexto por tema
 
 - [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
+- [este-ano](https://cuentasenlimpio.es/contexto/este-ano.md) (2 KB): El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior.
 - [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
 - [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
 - [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
@@ -210,6 +211,45 @@ España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurosta
 - Sí: ¿El trimestral de la IGAE (4.º trimestre de 2025) coincide con su dato anual? Sí
 - Sí: ¿Las cifras que copiamos de «AIReF: Informe de seguimiento 2026 del Plan Fiscal-Estructural de Medio Plazo 2025-2028 (cuadros y gráficos)» están en su hoja de cálculo? Sí, las 5
 - Sí: ¿Las cifras que copiamos de «AIReF: Informe sobre la ejecución presupuestaria, la deuda pública y la regla de gasto 2026 (cuadros y gráficos)» están en su hoja de cálculo? Sí, las 16
+
+
+---
+
+# Cómo va este año, mes a mes
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/este-ano.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/este-ano.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Datos provisionales y acumulados desde enero del año en curso, frente a los mismos meses del año anterior. Solo son comparables mes con mes: cada mes trae pagos e ingresos que no se repiten igual.
+
+## Saldo acumulado (Estado, comunidades autónomas y Seguridad Social (sin ayuntamientos)), enero–julio
+
+| Concepto | 2026 (M€) | 2025 (M€) |
+|---|---|---|
+| ingresos | 405.453 | 369.986 |
+| gastos | 438.345 | 402.303 |
+| intereses | 25.740 | 22.970 |
+| saldo | -32.892 | -32.317 |
+| saldo (% del PIB) | -1,84 | -1,91 |
+
+Fuente: IGAE, contabilidad nacional mensual (actualizada el 30/09/2026). Faltan los ayuntamientos.
+
+## Recaudación tributaria acumulada, enero–agosto de 2026
+
+Ingresos tributarios que gestiona la Agencia Tributaria, incluida la parte que va a comunidades y ayuntamientos; sin cotizaciones sociales ni haciendas forales; criterio de caja.
+
+| Impuesto | 2026 (M€) | 2025 (M€) |
+|---|---|---|
+| Impuesto sobre la renta (IRPF) | 109.995 | 98.530 |
+| IVA | 74.555 | 69.393 |
+| Impuesto de sociedades | 19.154 | 15.394 |
+| Impuestos especiales (carburantes, tabaco, alcohol, electricidad…) | 14.020 | 15.216 |
+| Impuesto sobre la renta de no residentes | 4.285 | 3.592 |
+| Resto de impuestos y tasas | 8.269 | 7.726 |
+| Total | 230.277 | 209.851 |
+
+Fuente: Agencia Tributaria, informe mensual de recaudación tributaria. No coincide con los impuestos en contabilidad nacional de cuentas.md e ingresos.md (otro criterio y otro ámbito).
 
 
 ---

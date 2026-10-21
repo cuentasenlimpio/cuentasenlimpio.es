@@ -24,6 +24,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 ## Contexto por tema
 
 - [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
+- [este-ano](https://cuentasenlimpio.es/contexto/este-ano.md) (2 KB): El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior.
 - [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
 - [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
 - [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
