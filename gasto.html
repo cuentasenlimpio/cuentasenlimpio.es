@@ -14,9 +14,9 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=138093b3fe" defer></script>
+  <script src="comun.js?v=49c570b7be" defer></script>
   <script src="ec.js?v=7568c86795" defer></script>
-  <script src="gasto.js?v=e1db79ae75" defer></script>
+  <script src="gasto.js?v=d739e70bfc" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
@@ -33,7 +33,7 @@
   <main>
     <h1 class="pregunta">¿En qué se gasta el dinero público?</h1>
     <p class="respuesta" id="respuesta"></p>
-    <p class="contabilidad">Todas las administraciones juntas, en contabilidad nacional (SEC 2010). <a href="como-se-miente.html#contabilidades">Qué significa</a>.</p>
+    <p class="contabilidad">Todas las administraciones juntas: el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. <a href="como-se-miente.html#contabilidades">Cómo se cuentan</a>.</p>
 
     <p class="ultimo-año" id="ultimo-año"></p>
     <div class="controles">
@@ -85,20 +85,20 @@
         </details>
         <details>
           <summary>Qué cuenta exactamente en cada lado</summary>
-          <p>La inversión es la «formación bruta de capital fijo» (código P.51g). El gasto de capital incluye además las ayudas para que inviertan otros, la compra de terrenos y la variación de existencias. El gasto corriente es todo lo demás. Así se reparten <span class="año-tipo"></span> cada 100 € de gasto:</p>
+          <p>La inversión es lo que se gasta en cosas que duran años: obras, edificios, equipos, programas informáticos. El gasto de capital incluye además las ayudas para que inviertan otros (empresas u otras administraciones), la compra de terrenos y los cambios en lo que se tiene almacenado. El gasto corriente es todo lo demás. Así se reparten <span class="año-tipo"></span> cada 100 € de gasto:</p>
           <div class="tabla"><table id="partes"></table></div>
         </details>
       </div>
 
       <div class="ojo">
         <strong>Ojo con esto</strong>
-        <p>El porcentaje del PIB baja aunque se invierta lo mismo si la economía crece más deprisa, y sube sin invertir más si la economía se encoge. Para ver la cantidad, cambia arriba a «Euros sin inflación». Y un solo año puede subir por una obra o una compra grande: mira la tendencia.</p>
+        <p>El porcentaje del PIB baja aunque se invierta lo mismo si la economía crece más deprisa, y sube sin invertir más si la economía se encoge. Para ver la cantidad, basta con cambiar arriba a «Euros sin inflación». Y un solo año puede subir por una obra o una compra grande: conviene mirar la tendencia.</p>
       </div>
     </section>
 
     <section class="grafico" aria-labelledby="e-titulo">
       <h2 class="pregunta" id="e-titulo">¿Cómo ha cambiado cada partida desde 1995? <button type="button" class="info" data-info="denominador">i</button></h2>
-      <p class="grafico-explica">El punto marca el año elegido; la cifra junto a cada nombre es su valor ese año.</p>
+      <p class="grafico-explica">Aquí cada partida se compara con el PIB, lo que produce el país en un año, y no con el total del gasto. Por eso las cifras no son las de «cada 100 €». El punto marca el año que se lee arriba (al empezar, el último); la cifra junto a cada nombre es su valor ese año.</p>
       <div id="periodo"></div>
       <div class="multiples" id="evolucion"></div>
       <p class="fuente-grafico" id="evolucion-fuente"></p>
@@ -106,7 +106,7 @@
 
     <section class="grafico" aria-labelledby="q-titulo">
       <h2 class="pregunta" id="q-titulo">¿Quién paga cada partida en <span class="año-elegido"></span>? <button type="button" class="info" data-info="quien_gasta">i</button></h2>
-      <p class="grafico-explica">Qué parte del gasto de cada función hace cada nivel de administración. A cada nivel se le quitan las transferencias generales que hace a otros (como la financiación de las comunidades autónomas), porque las gasta quien las recibe. Aun así, las filas pueden sumar algo más de 100: otras transferencias entre niveles cuentan en los dos.</p>
+      <p class="grafico-explica">Qué parte del gasto de cada partida hace cada nivel: el Estado, las comunidades autónomas, los ayuntamientos y la Seguridad Social. Al que da el dinero se le quita lo que transfiere a otros para que lo gasten (como la financiación de las comunidades), porque cuenta en quien lo gasta. Algunas filas suman un poco más de 100, porque otras transferencias más pequeñas entre niveles cuentan en los dos.</p>
       <div class="tabla"><table class="matriz" id="quien"></table></div>
       <p class="fuente-grafico" id="quien-fuente"></p>
     </section>
@@ -117,12 +117,12 @@
         <li>No dice si el dinero se gasta bien o mal: solo en qué y quién.</li>
         <li>No dice quién decidió cada gasto. Una comunidad autónoma gasta en sanidad dinero que en parte le transfiere el Estado.</li>
         <li>Las pensiones van dentro de «protección social», junto con el desempleo y otras prestaciones.</li>
-        <li>Las fechas de los Gobiernos sitúan en el tiempo; no atribuyen resultados.</li>
+        <li>Si se añaden las fechas de los Gobiernos (en «Añadir contexto»), sirven para situar en el tiempo; no atribuyen resultados.</li>
       </ul>
     </div>
 
     <details class="plegable ficha" open>
-      <summary>Comprobaciones</summary>
+      <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
       <p><a href="datos/gasto.csv" download>Todos los números de esta página (CSV)</a></p>
     </details>

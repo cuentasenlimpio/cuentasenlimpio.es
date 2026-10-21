@@ -14,7 +14,8 @@ function pintar(g, aapp, sel) {
   dibujarBarrasH(document.getElementById("reparto"), filas, { formato: (v) => numero(v, 1), sufijo: " €" });
   lineaFuente(document.getElementById("reparto-fuente"), {
     fuentes: aapp.fuentes, tablas: [["gov_10a_exp", "gasto de las administraciones públicas por funciones"]], tipo: "dato",
-    nota: "Porcentaje del total que publica Eurostat (unidad PC_TOT), redondeado a un decimal. Los intereses (grupo 01.7) y el resto de servicios generales son una resta nuestra.",
+    nota: "Los intereses y el resto de servicios generales los separamos nosotros, con una resta.",
+    detalleTecnico: "Porcentaje del total que publica Eurostat (unidad PC_TOT), redondeado a un decimal. Los intereses son el grupo 01.7 de la clasificación COFOG; el resto de servicios generales, la resta del grupo 01 menos el 01.7.",
   });
 
   // Evolución
@@ -75,7 +76,7 @@ function pintar(g, aapp, sel) {
 // Frase de respuesta de la portada de la página: las tres partidas mayores del año más reciente.
 function pintarRespuesta(g, aapp) {
   const r = g.reparto.at(-1);
-  const top = g.funciones.map((f) => ({ nombre: f.nombre.toLowerCase(), valor: r[f.codigo] }))
+  const top = g.funciones.map((f) => ({ nombre: nombreLlano(f.codigo, f.nombre), corto: f.nombre.toLowerCase(), valor: r[f.codigo] }))
     .sort((a, b) => b.valor - a.valor).slice(0, 3);
   const p = document.getElementById("respuesta");
   p.textContent = `De cada 100 € que gastaron las administraciones en ${g.años.at(-1)}, `;
@@ -91,7 +92,7 @@ function pintarRespuesta(g, aapp) {
   if (hab) {
     const q = document.createElement("span");
     q.className = "respuesta-persona";
-    q.textContent = ` En total se gastaron ${eurosHablados(hab)} por habitante en el año: ${lista(top.map((t) => `${eurosHablados((hab * t.valor) / 100)} en ${t.nombre}`))}.`;
+    q.textContent = ` En total se gastaron ${eurosHablados(hab)} por habitante en el año. De ellos, ${lista(top.map((t) => `${eurosHablados((hab * t.valor) / 100)} en ${t.corto}`))}.`;
     p.appendChild(q);
   }
 }
@@ -175,7 +176,7 @@ function pintarTipo(g, aapp, u) {
 
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];
   lineaFuente(document.getElementById("inversion-fuente"), {
-    fuentes: aapp.fuentes, tablas: [["gov_10a_main", "formación bruta de capital fijo, P.51g"], ...extra],
+    fuentes: aapp.fuentes, tablas: [["gov_10a_main", "inversión pública (formación bruta de capital fijo)"], ...extra],
     tipo: UNIDADES[u].tipo, nota: u === "pib" ? "Porcentaje del PIB que publica Eurostat." : texto(UNIDADES[u].explica, g.año_base_constantes),
   });
 
@@ -199,7 +200,8 @@ function pintarTipo(g, aapp, u) {
   }
   lineaFuente(document.getElementById("comparadas-fuente"), {
     fuentes: aapp.fuentes, tablas: [["gov_10a_main", "gasto de las administraciones públicas por tipo"]], tipo: "lectura",
-    nota: "Gasto corriente = gasto total − gasto de capital (P.5 + NP + D.9), como define el SEC 2010; su % del PIB, con el del gasto total que publica Eurostat. La inversión (P.51g) es dato.",
+    nota: "La inversión es dato oficial; el gasto corriente es una resta nuestra: todo el gasto menos el de capital.",
+    detalleTecnico: "Gasto corriente = gasto total − gasto de capital (P.5 + NP + D.9), como define el SEC 2010; su porcentaje del PIB, con el del gasto total que publica Eurostat. La inversión es la formación bruta de capital fijo (P.51g).",
   });
 
   // Las ocho partes del gasto en el último año.
@@ -231,7 +233,7 @@ async function arrancar() {
   EC.capas(document.getElementById("capas"), capas, () => pintarTipo(g, aapp, sel.unidad));
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_exp");
-  pintarUltimoAño(g.años, `Eurostat publica el reparto por funciones más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);
+  pintarUltimoAño(g.años, `Eurostat publica el reparto por partidas más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Lo actualizó por última vez el ${fecha(f.actualizado_fuente)}. Cuando publique un año nuevo, aparecerá aquí solo.`);
   let espera = null;
   window.addEventListener("resize", () => {
     clearTimeout(espera);

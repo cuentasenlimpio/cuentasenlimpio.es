@@ -32,7 +32,8 @@ function pintar(g, aapp, sel) {
     fuentes: aapp.fuentes,
     tablas: [["gov_10a_taxag", "impuestos y cotizaciones sociales"], ["gov_10a_main", "ingresos totales"], ...extra],
     tipo: u === "pib" || u === "corrientes" ? "dato" : "lectura",
-    nota: "Algunas partidas son restas de datos publicados (por ejemplo, «otros impuestos sobre productos» = impuestos sobre productos − IVA); cada fórmula está en el CSV.",
+    nota: "Algunas partidas son restas de datos publicados, por ejemplo los otros impuestos sobre lo que se compra: todos menos el IVA.",
+    detalleTecnico: "«Otros impuestos sobre productos» = impuestos sobre productos − IVA. La fórmula de cada partida está en el fichero de datos de esta página (CSV, «Todos los números de esta página»).",
   });
 }
 
@@ -73,8 +74,8 @@ async function arrancar() {
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_taxag");
   pintarUltimoAño(g.años, g.provisional_igae?.at(-1)
-    ? `${g.años.at(-1)} es provisional: Eurostat publica el detalle por impuestos más tarde (su última actualización es del ${fecha(f.actualizado_fuente)}), así que ese año sale de la IGAE${g.igae_marca_provisional ? ", que también lo marca como provisional" : ""}, sin segunda fuente. Cuando Eurostat lo publique, sustituirá a este.`
-    : `Eurostat publica el detalle por impuestos más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Su última actualización es del ${fecha(f.actualizado_fuente)}; en cuanto publique un año nuevo, aparecerá aquí solo.`);
+    ? `${g.años.at(-1)} es provisional. Eurostat publica el detalle por impuestos más tarde (lo actualizó por última vez el ${fecha(f.actualizado_fuente)}), así que ese año sale de la IGAE.${g.igae_marca_provisional ? " La IGAE también lo marca como provisional." : ""} Cuando Eurostat lo publique, sustituirá a este.`
+    : `Eurostat publica el detalle por impuestos más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Lo actualizó por última vez el ${fecha(f.actualizado_fuente)}. Cuando publique un año nuevo, aparecerá aquí solo.`);
   let espera = null;
   window.addEventListener("resize", () => {
     clearTimeout(espera);

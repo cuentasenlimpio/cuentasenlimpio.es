@@ -91,7 +91,7 @@ function etiquetaTipo(tipo) {
   t.title = tipo === "dato" ? "Cifra publicada tal cual por el organismo oficial" : "Cálculo nuestro sobre cifras oficiales; cómo se hace, en «Cómo trabajamos»";
   return t;
 }
-function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
+function lineaFuente(p, { fuentes, tablas, tipo, nota = "", detalleTecnico = "" }) {
   const porTabla = Object.fromEntries(fuentes.map((f) => [f.tabla, f]));
   p.textContent = "Fuente: ";
   const detalle = document.createElement("details");
@@ -123,6 +123,11 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
     li.appendChild(document.createTextNode("."));
     lista.appendChild(li);
   });
+  if (detalleTecnico) {
+    const li = document.createElement("li");
+    li.textContent = detalleTecnico;
+    lista.appendChild(li);
+  }
   p.appendChild(document.createTextNode(". "));
   p.appendChild(etiquetaTipo(tipo));
   if (nota) p.appendChild(document.createTextNode(` ${nota}`));
@@ -133,6 +138,13 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
 
 function pintarComprobaciones(ul, lista) {
   ul.textContent = "";
+  // Una frase que diga qué es esto, antes de la lista (solo la primera vez).
+  if (!ul.previousElementSibling?.classList.contains("comprobaciones-intro")) {
+    const intro = document.createElement("p");
+    intro.className = "comprobaciones-intro";
+    intro.textContent = "Cada día, antes de publicar, el programa comprueba que las cifras cuadran entre sí y con otras fuentes oficiales. Una marca ✓ quiere decir que cuadran; un «!», que hay una diferencia, y se explica cuál.";
+    ul.before(intro);
+  }
   for (const c of lista) {
     const li = document.createElement("li");
     li.className = c.ok ? "ok" : "aviso";
@@ -179,9 +191,17 @@ function pintarUltimoAño(años, motivo) {
   if (!p) return;
   p.textContent = "";
   const b = document.createElement("strong");
-  b.textContent = `Último año disponible: ${años.at(-1)}. `;
+  b.textContent = `Último año disponible: ${años.at(-1)}.`;
   p.appendChild(b);
-  p.appendChild(document.createTextNode(motivo));
+  // El porqué (quién publica qué y cuándo) interesa a pocos: va plegado.
+  const det = document.createElement("details");
+  det.className = "fuente-detalle";
+  const s = document.createElement("summary");
+  s.textContent = "¿Por qué no hay un año más reciente?";
+  const t = document.createElement("p");
+  t.textContent = motivo;
+  det.append(s, t);
+  p.appendChild(det);
 }
 
 // ---- Botones (i): qué implica un valor, con su fuente ----

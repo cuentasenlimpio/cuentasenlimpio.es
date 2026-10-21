@@ -560,6 +560,50 @@
     "sesiones constitutivas"
    ],
    "def": "La primera sesión del Congreso tras unas elecciones, en la que empieza la legislatura."
+  },
+  {
+   "id": "irpf",
+   "formas": [
+    "impuesto sobre la renta de las personas físicas",
+    "IRPF"
+   ],
+   "def": "El impuesto que se paga por el sueldo, la pensión y otras rentas. Se adelanta cada mes (la retención de la nómina) y se ajusta en la declaración de la renta."
+  },
+  {
+   "id": "gran-recesion",
+   "formas": [
+    "Gran Recesión"
+   ],
+   "def": "La crisis económica que empezó en 2008 con la quiebra de bancos en Estados Unidos. En España duró hasta 2013 y llegó a tener a más de una de cada cuatro personas activas en paro."
+  },
+  {
+   "id": "ajd",
+   "formas": [
+    "actos jurídicos documentados",
+    "actos jurídicos"
+   ],
+   "def": "Un impuesto que se paga al firmar ciertos documentos ante notario, por ejemplo una hipoteca o la compra de una casa nueva."
+  },
+  {
+   "id": "primas",
+   "formas": [
+    "primas de seguros"
+   ],
+   "def": "Un impuesto que va incluido en el precio de los seguros (del coche, de la casa, del negocio…)."
+  },
+  {
+   "id": "provisional",
+   "formas": [
+    "provisional"
+   ],
+   "def": "Una cifra que todavía puede cambiar cuando el organismo que la publica cierre las cuentas del año con todos los datos."
+  },
+  {
+   "id": "dividendos",
+   "formas": [
+    "dividendos"
+   ],
+   "def": "La parte de los beneficios que una empresa reparte entre quienes tienen sus acciones."
   }
  ]
 }
