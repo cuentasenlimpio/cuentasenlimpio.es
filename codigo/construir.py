@@ -1993,6 +1993,57 @@ def construir_ue_saldo(descargas):
     print(f"unión europea: {años[0]}–{años[-1]}; {u['año']}: gasto {u['gasto']}, aportación {u['aportacion']}, NGEU {u['ngeu']}")
 
 
+def construir_beneficios_fiscales():
+    """Beneficios fiscales (lo que se estima que se deja de ingresar por deducciones, exenciones y tipos reducidos) de cada
+    memoria de los Presupuestos, extraídos una vez de los PDF por herramientas/extraer_pbf.py. Aquí se repiten las
+    comprobaciones de sumas cada día y se prepara la serie."""
+    ruta = CODIGO / "beneficios_fiscales.json"
+    if not ruta.exists():
+        return
+    memorias = json.loads(ruta.read_text())["memorias"]
+    partes = ["irpf", "irnr", "sociedades", "patrimonio", "sucesiones", "iva", "gases", "primas", "especiales", "tasas"]
+    directos, indirectos = ["irpf", "irnr", "sociedades", "patrimonio", "sucesiones"], ["iva", "gases", "primas", "especiales"]
+    malos = {"total": [], "directos": [], "indirectos": [], "detalle": [], "cuadros": []}
+    for m in memorias:
+        p = m["partidas"]
+        if abs(sum(p.get(k, 0) for k in partes) - p["total"]) > 0.02:
+            malos["total"].append(m["año"])
+        if abs(sum(p.get(k, 0) for k in directos) - p.get("directos", 0)) > 0.02:
+            malos["directos"].append(m["año"])
+        if abs(sum(p.get(k, 0) for k in indirectos) - p.get("indirectos", 0)) > 0.02:
+            malos["indirectos"].append(m["año"])
+        for imp in ("irpf", "iva"):
+            if m["detalle"][imp] and abs(sum(x["importe"] for x in m["detalle"][imp]) - p[imp]) > 0.02:
+                malos["detalle"].append(f"{imp} {m['año']}")
+        if m["distintas_entre_cuadros"]:
+            malos["cuadros"].append(m["año"])
+    n = f"las {len(memorias)} memorias ({memorias[0]['año']}–{memorias[-1]['año']})"
+    comprobaciones = [
+        {"que": "¿Los impuestos y las tasas suman el total de beneficios fiscales de cada memoria?",
+         "resultado": f"Sí, al céntimo en {n}" if not malos["total"] else f"No en {malos['total']}", "ok": not malos["total"]},
+        {"que": "¿Los impuestos directos y los indirectos suman sus subtotales?",
+         "resultado": f"Sí, en {n}" if not (malos["directos"] or malos["indirectos"]) else f"No en {malos['directos'] + malos['indirectos']}",
+         "ok": not (malos["directos"] or malos["indirectos"])},
+        {"que": "¿Las partidas del IRPF y del IVA suman el total de cada impuesto?",
+         "resultado": "Sí, en todas las memorias en que se ha podido leer el desglose" if not malos["detalle"] else f"No en {malos['detalle']}",
+         "ok": not malos["detalle"]},
+        {"que": "¿Los dos cuadros resumen de cada memoria (el del año y el que lo compara con el anterior) dan las mismas cifras?",
+         "resultado": f"Sí, en {n}, en todas las partidas que aparecen en los dos" if not malos["cuadros"] else f"No en {malos['cuadros']}",
+         "ok": not malos["cuadros"]},
+    ]
+    años = list(range(memorias[0]["año"], memorias[-1]["año"] + 1))
+    por = {m["año"]: m for m in memorias}
+    serie = {k: [round(por[a]["partidas"][k], 1) if a in por and k in por[a]["partidas"] else None for a in años]
+             for k in ("total", "irpf", "sociedades", "iva", "especiales", "tasas")}
+    ultima = memorias[-1]
+    salida = {"años": años, "serie": serie, "ultima": ultima, "memorias": [{"año": m["año"], "url": m["url"], "total": m["partidas"]["total"]} for m in memorias],
+              "tabla": "sepg_pbf_2023", "comprobaciones": comprobaciones}
+    (WEB / "datos" / "beneficios_fiscales.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"beneficios fiscales: {len(memorias)} memorias; {ultima['año']}: {ultima['partidas']['total']} M€")
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -3335,7 +3386,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3491,6 +3542,7 @@ def main():
     pmp = construir_pmp(descargas)
     construir_modificaciones(descargas, hacienda_capitulos(descargas))
     construir_ue_saldo(descargas)
+    construir_beneficios_fiscales()
     construir_descuadres(gasto, pmp)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

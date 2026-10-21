@@ -212,6 +212,9 @@ PAGINAS = [
        "url": f"https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/{c}.csv", "extension": "csv"}
       for c, n in (("be1406", "Deuda PDE de las corporaciones locales por tipo y de los ayuntamientos de más de 300.000 habitantes (Boletín Estadístico, cuadro 14.6)"),
                    ("be1408", "Deuda PDE de las corporaciones locales, en euros y en % del PIB (Boletín Estadístico, cuadro 14.8)"))],
+    {"fuente": "Ministerio de Hacienda", "tabla": "sepg_pbf_2023", "opcional": True,
+     "nombre": "Memoria de Beneficios Fiscales del proyecto de Presupuestos Generales del Estado para 2023 (la última publicada)",
+     "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Proyecto/MaestroTomos/PGE-ROM/doc/L_23_A_A2.PDF", "extension": "pdf"},
     {"fuente": "Ministerio de Hacienda", "tabla": "hacienda_pmp_series", "opcional": True,
      "nombre": "Periodo medio de pago a proveedores de las administraciones públicas: series mensuales desde abril de 2018 (RD 1040/2017)",
      "url": "https://www.hacienda.gob.es/cdi/pmp/pmp-series-rd-1040-2017.xlsx", "extension": "xlsx"},

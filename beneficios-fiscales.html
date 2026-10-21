@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Beneficios fiscales · Cuentas en limpio</title>
+  <meta name="description" content="Cuánto se estima que se deja de recaudar cada año por deducciones, exenciones y tipos reducidos de los impuestos del Estado, según las memorias de beneficios fiscales de los Presupuestos desde 2010.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=294f5582f2">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js?v=ddca3566b1" defer></script>
+  <script src="ec.js?v=8d530b25b8" defer></script>
+  <script src="beneficios-fiscales.js?v=5d820bb187" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="beneficios-fiscales.html" aria-current="page">Beneficios fiscales</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html">Empleo público</a> <a href="fondos-europeos.html">Fondos europeos</a> <a href="union-europea.html">Unión Europea</a> <a href="avales.html">Avales</a> <a href="deuda-local.html">Ayuntamientos</a> <a href="pago-proveedores.html">Pago a proveedores</a> <a href="presupuesto.html">Presupuesto</a> <a href="modificaciones.html">Cambios del presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+      
+  <main>
+    <h1 class="pregunta">¿Cuánto se deja de recaudar por deducciones y exenciones?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Son los beneficios fiscales: deducciones, exenciones, reducciones y tipos rebajados de los impuestos. Cada proyecto de Presupuestos trae una memoria que estima, por adelantado, cuánto dinero se dejará de ingresar por ellos ese año. Es una estimación hecha antes de que empiece el año, no lo que de verdad se dejó de ingresar.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cómo ha cambiado desde 2010?</h2>
+      <p class="grafico-explica">Beneficios fiscales estimados en cada memoria, en millones de euros. En 2019 y 2020, y desde 2024, no hubo presupuestos nuevos ni memoria.</p>
+      <p class="leyenda-linea"><span class="clave-linea clave-tinta"></span> Total <span class="clave-linea clave-primaria"></span> IVA <span class="clave-linea clave-discontinua"></span> IRPF</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿En qué impuestos?</h2>
+      <p class="grafico-explica" id="g2-explica">Beneficios fiscales de la última memoria por impuesto, en millones de euros.</p>
+      <table class="tabla-sueldo" id="impuestos"></table>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Que la comida, las medicinas o la vivienda paguen un IVA más bajo, o que se pueda deducir la aportación a un plan de pensiones, son decisiones de política fiscal. <span class="resalta">La memoria no dice si cada beneficio cumple su objetivo</span>: solo estima cuánto cuesta en recaudación. Esa evaluación es otro trabajo, que ha hecho por ejemplo la AIReF con algunos de ellos.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Lo que se dejó de ingresar de verdad: la cifra es una previsión anterior al año, con el método de cada memoria. Las memorias piden prudencia al comparar años, porque el método cambia.</li>
+        <li>Lo que pasaría si se quitaran: sin una deducción, la gente cambiaría lo que hace, y la recaudación no subiría exactamente esa cantidad.</li>
+        <li>Los beneficios de los impuestos que gestionan las comunidades autónomas y los territorios forales con sus propias normas no están aquí.</li>
+        <li>Desde 2024 los presupuestos están prorrogados y no hay memoria nueva: la última cifra es la estimación para 2023.</li>
+      </ul>
+    </div>
+    <details class="plegable ficha">
+      <summary>Comprobaciones: si las cifras cuadran entre sí</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+    <p class="seguir-recorrido">Para seguir: <a href="ingresos.html">de dónde sale el dinero público</a> · <a href="sueldo.html">cuánto paga un sueldo</a> · <a href="modificaciones.html">cómo cambia el presupuesto durante el año</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="beneficios-fiscales.html">Beneficios fiscales</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="union-europea.html">Unión Europea</a></li><li><a href="avales.html">Avales</a></li><li><a href="deuda-local.html">Ayuntamientos</a></li><li><a href="pago-proveedores.html">Pago a proveedores</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="modificaciones.html">Cambios del presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="descuadres.html">Lo que no cuadra</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

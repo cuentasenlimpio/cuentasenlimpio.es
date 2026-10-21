@@ -1,0 +1,1153 @@
+{
+ "_nota": "Generado por herramientas/extraer_pbf.py a partir de las memorias en PDF de la SEPG. Millones de euros; estimaciones previas (ex ante) de cada proyecto de presupuestos.",
+ "memorias": [
+  {
+   "año": 2010,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2010Proyecto/MaestroTomos/PGE-ROM/doc/L_10_A_A2.PDF",
+   "partidas": {
+    "irpf": 23313.73,
+    "irnr": 863.2,
+    "sociedades": 3640.23,
+    "directos": 27817.16,
+    "iva": 17013.74,
+    "primas": 545.14,
+    "especiales": 2017.88,
+    "indirectos": 19576.76,
+    "total": 47474.73,
+    "tasas": 80.81
+   },
+   "paginas": {
+    "irpf": 248,
+    "irnr": 249,
+    "sociedades": 249,
+    "directos": 249,
+    "iva": 250,
+    "primas": 250,
+    "especiales": 250,
+    "indirectos": 250,
+    "total": 250,
+    "tasas": 254
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 11633.23,
+      "pagina": 248
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 66.88,
+      "pagina": 248
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 8666.11,
+      "pagina": 248
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 2941.07,
+      "pagina": 248
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 6.44,
+      "pagina": 248
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 6623.86,
+      "pagina": 250
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 2580.07,
+      "pagina": 250
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipos reducidos del 7% y del 8% (8)",
+      "importe": 7809.81,
+      "pagina": 250
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 28539.03,
+    "irnr": 675.56,
+    "sociedades": 6761.31,
+    "directos": 35975.9,
+    "iva": 23494.34,
+    "primas": 416.61,
+    "especiales": 1531.04,
+    "indirectos": 25441.99,
+    "tasas": 61.05,
+    "total": 61478.94
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2011,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2011Proyecto/MaestroTomos/PGE-ROM/doc/L_11_A_A2.PDF",
+   "partidas": {
+    "irpf": 16636.9,
+    "irnr": 1121.98,
+    "sociedades": 3763.77,
+    "directos": 21522.65,
+    "iva": 16978.13,
+    "primas": 480.24,
+    "especiales": 1268.05,
+    "indirectos": 18726.42,
+    "total": 40362.97,
+    "tasas": 113.9
+   },
+   "paginas": {
+    "irpf": 274,
+    "irnr": 275,
+    "sociedades": 275,
+    "directos": 275,
+    "iva": 276,
+    "primas": 276,
+    "especiales": 276,
+    "indirectos": 276,
+    "total": 276,
+    "tasas": 280
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 9148.08,
+      "pagina": 274
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 106.12,
+      "pagina": 274
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 5745.22,
+      "pagina": 274
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1632.7,
+      "pagina": 274
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 4.78,
+      "pagina": 274
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 6603.04,
+      "pagina": 276
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 2510.73,
+      "pagina": 276
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 8%",
+      "importe": 7864.36,
+      "pagina": 276
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 23313.73,
+    "irnr": 863.2,
+    "sociedades": 3640.23,
+    "directos": 27817.16,
+    "iva": 17013.74,
+    "primas": 545.14,
+    "especiales": 2017.88,
+    "indirectos": 19576.76,
+    "tasas": 80.81,
+    "total": 47474.73
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2012,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2012Proyecto/MaestroTomos/PGE-ROM/doc/L_12_A_A2.PDF",
+   "partidas": {
+    "irpf": 15108.5,
+    "irnr": 1123.69,
+    "sociedades": 3700.54,
+    "patrimonio": 19.47,
+    "directos": 19952.2,
+    "iva": 16250.63,
+    "primas": 569.05,
+    "especiales": 1248.41,
+    "indirectos": 18068.09,
+    "total": 38102.7,
+    "tasas": 82.41
+   },
+   "paginas": {
+    "irpf": 258,
+    "irnr": 259,
+    "sociedades": 259,
+    "patrimonio": 259,
+    "directos": 259,
+    "iva": 260,
+    "primas": 260,
+    "especiales": 260,
+    "indirectos": 260,
+    "total": 260,
+    "tasas": 264
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 9000.29,
+      "pagina": 258
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 125.99,
+      "pagina": 258
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 4328.66,
+      "pagina": 258
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1648.62,
+      "pagina": 258
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 4.94,
+      "pagina": 258
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 5688.57,
+      "pagina": 260
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 4356.74,
+      "pagina": 260
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 8%",
+      "importe": 6205.32,
+      "pagina": 260
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 16636.9,
+    "irnr": 1121.98,
+    "sociedades": 3763.77,
+    "directos": 21522.65,
+    "iva": 16978.13,
+    "primas": 480.24,
+    "especiales": 1268.05,
+    "indirectos": 18726.42,
+    "tasas": 113.9,
+    "total": 40362.97
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2013,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2013Proyecto/MaestroTomos/PGE-ROM/doc/L_13_A_A2.PDF",
+   "partidas": {
+    "irpf": 16365.97,
+    "irnr": 1300.84,
+    "sociedades": 3084.82,
+    "patrimonio": 13.67,
+    "directos": 20765.3,
+    "iva": 16580.71,
+    "primas": 585.85,
+    "especiales": 953.91,
+    "indirectos": 18120.47,
+    "total": 38986.37,
+    "tasas": 100.6
+   },
+   "paginas": {
+    "irpf": 252,
+    "irnr": 253,
+    "sociedades": 253,
+    "patrimonio": 253,
+    "directos": 253,
+    "iva": 254,
+    "primas": 254,
+    "especiales": 254,
+    "indirectos": 254,
+    "total": 254,
+    "tasas": 258
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 10558.77,
+      "pagina": 252
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 118.35,
+      "pagina": 252
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3711.81,
+      "pagina": 252
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1971.75,
+      "pagina": 252
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 5.29,
+      "pagina": 252
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 6038.88,
+      "pagina": 254
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 4254.73,
+      "pagina": 254
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 6287.1,
+      "pagina": 254
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 15108.5,
+    "irnr": 1123.69,
+    "sociedades": 3700.54,
+    "patrimonio": 19.47,
+    "directos": 19952.2,
+    "iva": 16250.63,
+    "primas": 569.05,
+    "especiales": 1248.41,
+    "indirectos": 18068.09,
+    "tasas": 82.41,
+    "total": 38102.7
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2014,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2014Proyecto/MaestroTomos/PGE-ROM/doc/L_14_A_A2.PDF",
+   "partidas": {
+    "irpf": 15513.65,
+    "irnr": 1410.18,
+    "sociedades": 3309.95,
+    "patrimonio": 13.43,
+    "directos": 20247.21,
+    "iva": 16628.32,
+    "primas": 584.35,
+    "especiales": 826.5,
+    "indirectos": 18039.17,
+    "total": 38360.15,
+    "tasas": 73.77
+   },
+   "paginas": {
+    "irpf": 287,
+    "irnr": 288,
+    "sociedades": 288,
+    "patrimonio": 288,
+    "directos": 288,
+    "iva": 289,
+    "primas": 289,
+    "especiales": 289,
+    "indirectos": 289,
+    "total": 289,
+    "tasas": 293
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 10628.9,
+      "pagina": 287
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 127.09,
+      "pagina": 287
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3529.49,
+      "pagina": 287
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1220.96,
+      "pagina": 287
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 7.21,
+      "pagina": 287
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 6821.44,
+      "pagina": 289
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 2775.94,
+      "pagina": 289
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 7030.94,
+      "pagina": 289
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 16365.97,
+    "irnr": 1300.84,
+    "sociedades": 3084.82,
+    "patrimonio": 13.67,
+    "directos": 20765.3,
+    "iva": 16580.71,
+    "primas": 585.85,
+    "especiales": 953.91,
+    "indirectos": 18120.47,
+    "tasas": 100.6,
+    "total": 38986.37
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2015,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2015Proyecto/MaestroTomos/PGE-ROM/doc/L_15_A_A2.PDF",
+   "partidas": {
+    "irpf": 15216.62,
+    "irnr": 1597.93,
+    "sociedades": 3949.74,
+    "patrimonio": 18.51,
+    "directos": 20782.8,
+    "iva": 18383.92,
+    "primas": 574.15,
+    "especiales": 885.93,
+    "indirectos": 19844.0,
+    "total": 40719.12,
+    "tasas": 92.32
+   },
+   "paginas": {
+    "irpf": 268,
+    "irnr": 269,
+    "sociedades": 269,
+    "patrimonio": 269,
+    "directos": 269,
+    "iva": 270,
+    "primas": 270,
+    "especiales": 270,
+    "indirectos": 270,
+    "total": 270,
+    "tasas": 274
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 10502.92,
+      "pagina": 268
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 131.47,
+      "pagina": 268
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3393.32,
+      "pagina": 268
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1181.82,
+      "pagina": 268
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 7.09,
+      "pagina": 268
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 7449.01,
+      "pagina": 270
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 3134.61,
+      "pagina": 270
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 7800.3,
+      "pagina": 270
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irpf": 15513.65,
+    "irnr": 1410.18,
+    "sociedades": 3309.95,
+    "patrimonio": 13.43,
+    "directos": 20247.21,
+    "iva": 16628.32,
+    "primas": 584.35,
+    "especiales": 826.5,
+    "indirectos": 18039.17,
+    "tasas": 73.77,
+    "total": 38360.15
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2016,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2016Proyecto/MaestroTomos/PGE-ROM/doc/L_16_A_A2.PDF",
+   "partidas": {
+    "irpf": 8309.34,
+    "irnr": 1505.3,
+    "sociedades": 3840.94,
+    "patrimonio": 30.14,
+    "directos": 13685.72,
+    "iva": 19241.27,
+    "primas": 553.79,
+    "especiales": 919.61,
+    "indirectos": 20714.67,
+    "total": 34498.48,
+    "tasas": 98.09
+   },
+   "paginas": {
+    "irpf": 295,
+    "irnr": 296,
+    "sociedades": 296,
+    "patrimonio": 296,
+    "directos": 296,
+    "iva": 297,
+    "primas": 297,
+    "especiales": 297,
+    "indirectos": 297,
+    "total": 297,
+    "tasas": 305
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 3445.09,
+      "pagina": 295
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 133.98,
+      "pagina": 295
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3577.85,
+      "pagina": 295
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1147.12,
+      "pagina": 295
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 5.3,
+      "pagina": 295
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 8074.16,
+      "pagina": 297
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 3249.9,
+      "pagina": 297
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 7916.69,
+      "pagina": 297
+     },
+     {
+      "letra": "d",
+      "nombre": "Reducción del régimen simplificado en Lorca (3)",
+      "importe": 0.52,
+      "pagina": 297
+     }
+    ]
+   },
+   "año_anterior_reestimado": {},
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2017,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2017Proyecto/MaestroTomos/PGE-ROM/doc/L_17_A_A2.PDF",
+   "partidas": {
+    "irpf": 7790.46,
+    "irnr": 1394.41,
+    "sociedades": 2127.32,
+    "patrimonio": 29.09,
+    "directos": 11341.28,
+    "iva": 18944.78,
+    "primas": 580.67,
+    "especiales": 900.75,
+    "indirectos": 20426.2,
+    "total": 31867.6,
+    "tasas": 100.12
+   },
+   "paginas": {
+    "irpf": 271,
+    "irnr": 272,
+    "sociedades": 272,
+    "patrimonio": 272,
+    "directos": 272,
+    "iva": 273,
+    "primas": 273,
+    "especiales": 273,
+    "indirectos": 273,
+    "total": 273,
+    "tasas": 281
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 3021.57,
+      "pagina": 271
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 269.22,
+      "pagina": 271
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3483.18,
+      "pagina": 271
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1011.02,
+      "pagina": 271
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 5.47,
+      "pagina": 271
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 7851.43,
+      "pagina": 273
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo superreducido del 4%",
+      "importe": 2953.05,
+      "pagina": 273
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 8140.05,
+      "pagina": 273
+     },
+     {
+      "letra": "d",
+      "nombre": "Reducción del régimen simplificado en Lorca",
+      "importe": 0.25,
+      "pagina": 273
+     }
+    ]
+   },
+   "año_anterior_reestimado": {},
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2018,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2018Proyecto/MaestroTomos/PGE-ROM/doc/L_18_A_A2.PDF",
+   "partidas": {
+    "irpf": 7846.45,
+    "irnr": 1349.41,
+    "sociedades": 3453.44,
+    "patrimonio": 12.79,
+    "directos": 12662.09,
+    "iva": 20514.03,
+    "primas": 592.95,
+    "especiales": 961.01,
+    "indirectos": 22067.99,
+    "total": 34825.11,
+    "tasas": 95.03
+   },
+   "paginas": {
+    "irpf": 290,
+    "irnr": 291,
+    "sociedades": 291,
+    "patrimonio": 291,
+    "directos": 291,
+    "iva": 292,
+    "primas": 292,
+    "especiales": 292,
+    "indirectos": 292,
+    "total": 292,
+    "tasas": 296
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 3179.25,
+      "pagina": 290
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 271.4,
+      "pagina": 290
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 3299.13,
+      "pagina": 290
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 1086.17,
+      "pagina": 290
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 10.5,
+      "pagina": 290
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 8615.9,
+      "pagina": 292
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo \"superreducido\" del 4%",
+      "importe": 3229.75,
+      "pagina": 292
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10% (14)",
+      "importe": 8668.29,
+      "pagina": 292
+     },
+     {
+      "letra": "d",
+      "nombre": "Reducción del régimen simplificado en Lorca",
+      "importe": 0.09,
+      "pagina": 292
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irnr": 1394.41,
+    "sociedades": 2127.32,
+    "patrimonio": 29.09,
+    "directos": 11341.28,
+    "iva": 18944.78,
+    "primas": 580.67,
+    "especiales": 900.75,
+    "indirectos": 20426.2,
+    "tasas": 100.12,
+    "total": 31867.6
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2021,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2021Proyecto/MaestroTomos/PGE-ROM/doc/L_21_A_A2.PDF",
+   "partidas": {
+    "irnr": 1182.41,
+    "sociedades": 3871.76,
+    "patrimonio": 5.91,
+    "directos": 16238.14,
+    "iva": 20491.46,
+    "primas": 827.84,
+    "especiales": 1408.63,
+    "gases": 1.92,
+    "indirectos": 22729.85,
+    "total": 39049.08,
+    "tasas": 81.09,
+    "irpf": 11178.06
+   },
+   "paginas": {
+    "irnr": 288,
+    "sociedades": 288,
+    "patrimonio": 288,
+    "directos": 288,
+    "iva": 289,
+    "primas": 289,
+    "especiales": 289,
+    "gases": 289,
+    "indirectos": 289,
+    "total": 289,
+    "tasas": 293,
+    "irpf": 297
+   },
+   "detalle": {
+    "irpf": [],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 8510.49,
+      "pagina": 289
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo \"superreducido\" del 4%",
+      "importe": 3411.54,
+      "pagina": 289
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 8569.33,
+      "pagina": 289
+     },
+     {
+      "letra": "d",
+      "nombre": "Reducción del régimen simplificado en Lorca",
+      "importe": 0.1,
+      "pagina": 289
+     }
+    ]
+   },
+   "año_anterior_reestimado": {
+    "irnr": 1180.44,
+    "sociedades": 4912.56,
+    "patrimonio": 5.82,
+    "directos": 17317.8,
+    "iva": 18914.8,
+    "primas": 620.22,
+    "especiales": 998.93,
+    "gases": 1.79,
+    "indirectos": 20535.74,
+    "tasas": 80.77,
+    "total": 37934.31
+   },
+   "rellenadas_del_segundo_cuadro": [
+    "tasas",
+    "irpf"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2022,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2022Proyecto/MaestroTomos/PGE-ROM/doc/L_22_A_A2.PDF",
+   "partidas": {
+    "irnr": 765.28,
+    "sociedades": 5673.95,
+    "patrimonio": 50.37,
+    "directos": 17710.82,
+    "iva": 22400.7,
+    "primas": 868.6,
+    "especiales": 871.6,
+    "gases": 1.6,
+    "indirectos": 24142.5,
+    "total": 41939.14,
+    "irpf": 11221.22,
+    "tasas": 85.82
+   },
+   "paginas": {
+    "irnr": 314,
+    "sociedades": 314,
+    "patrimonio": 314,
+    "directos": 314,
+    "iva": 315,
+    "primas": 315,
+    "especiales": 315,
+    "gases": 315,
+    "indirectos": 315,
+    "total": 315,
+    "irpf": 323,
+    "tasas": 323
+   },
+   "detalle": {
+    "irpf": [],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 9119.27,
+      "pagina": 315
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo \"superreducido\" del 4%",
+      "importe": 3638.25,
+      "pagina": 315
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 9643.0,
+      "pagina": 315
+     },
+     {
+      "letra": "d",
+      "nombre": "Reducción del régimen simplificado en Lorca",
+      "importe": 0.18,
+      "pagina": 315
+     }
+    ]
+   },
+   "año_anterior_reestimado": {},
+   "rellenadas_del_segundo_cuadro": [
+    "irpf",
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  },
+  {
+   "año": 2023,
+   "url": "https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Proyecto/MaestroTomos/PGE-ROM/doc/L_23_A_A2.PDF",
+   "partidas": {
+    "irpf": 11178.88,
+    "irnr": 667.46,
+    "sociedades": 5697.12,
+    "patrimonio": 37.88,
+    "directos": 17581.34,
+    "iva": 25678.56,
+    "primas": 898.2,
+    "especiales": 1014.27,
+    "indirectos": 27591.03,
+    "total": 45268.75,
+    "tasas": 96.38
+   },
+   "paginas": {
+    "irpf": 311,
+    "irnr": 312,
+    "sociedades": 312,
+    "patrimonio": 312,
+    "directos": 312,
+    "iva": 313,
+    "primas": 313,
+    "especiales": 313,
+    "indirectos": 313,
+    "total": 313,
+    "tasas": 321
+   },
+   "detalle": {
+    "irpf": [
+     {
+      "letra": "a",
+      "nombre": "Reducciones en la base imponible",
+      "importe": 3542.1,
+      "pagina": 311
+     },
+     {
+      "letra": "b",
+      "nombre": "Especialidades de las anualidades por alimentos",
+      "importe": 148.81,
+      "pagina": 311
+     },
+     {
+      "letra": "c",
+      "nombre": "Deducciones en la cuota",
+      "importe": 4205.78,
+      "pagina": 311
+     },
+     {
+      "letra": "d",
+      "nombre": "Exenciones",
+      "importe": 3172.55,
+      "pagina": 311
+     },
+     {
+      "letra": "e",
+      "nombre": "Operaciones financieras con bonificación",
+      "importe": 3.86,
+      "pagina": 311
+     },
+     {
+      "letra": "f",
+      "nombre": "Régimen especial de trabajadores desplazados a territorio español",
+      "importe": 105.78,
+      "pagina": 311
+     }
+    ],
+    "iva": [
+     {
+      "letra": "a",
+      "nombre": "Exenciones",
+      "importe": 10285.51,
+      "pagina": 313
+     },
+     {
+      "letra": "b",
+      "nombre": "Tipo reducido del 4%",
+      "importe": 4148.72,
+      "pagina": 313
+     },
+     {
+      "letra": "c",
+      "nombre": "Tipo reducido del 5%",
+      "importe": 284.8,
+      "pagina": 313
+     },
+     {
+      "letra": "d",
+      "nombre": "Tipo reducido del 10%",
+      "importe": 10959.25,
+      "pagina": 313
+     },
+     {
+      "letra": "e",
+      "nombre": "Reducción del régimen simplificado en Lorca",
+      "importe": 0.28,
+      "pagina": 313
+     }
+    ]
+   },
+   "año_anterior_reestimado": {},
+   "rellenadas_del_segundo_cuadro": [
+    "tasas"
+   ],
+   "distintas_entre_cuadros": []
+  }
+ ]
+}

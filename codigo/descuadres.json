@@ -1,0 +1,57 @@
+{
+  "_nota": "Fuente de la página «Lo que no cuadra» (web/descuadres.html) y de las marcas de aviso junto a las fuentes de los gráficos. construir.py la copia a web/datos/descuadres.json y añade los casos automáticos (por ejemplo, el desfase de la tabla por funciones). estado: sin_explicar | transitorio | explicado. marcas: página y id del párrafo de fuente donde se pone el aviso. Al cerrar un caso, se borra de aquí y se dice en el commit cómo se cerró.",
+  "casos": [
+    {
+      "id": "avales-banco-de-espana-eurostat",
+      "estado": "sin_explicar",
+      "anotado": "2026-10-21",
+      "titulo": "Avales del Estado: el Banco de España y Eurostat no dan la misma cifra desde 2021",
+      "resumen": "Eurostat da otra cifra de avales. Con sus distintas reglas, las dos cuadran hasta 2020; desde 2021 queda una diferencia sin explicar.",
+      "cifras": [
+        "Banco de España (avales prestados, diciembre): 191.547 millones de euros en 2021; 192.414 en 2022; 146.376 en 2023; 124.088 en 2024.",
+        "Eurostat (garantías de la Administración central): 119.785 en 2021; 119.281 en 2022; 79.508 en 2023; 71.960 en 2024."
+      ],
+      "explicado": [
+        "El Banco de España cuenta los avales a entidades que ya forman parte de las administraciones y el de la Facilidad Europea de Estabilización Financiera; Eurostat no, porque esas deudas ya cuentan como deuda pública.",
+        "Eurostat cuenta la garantía del Estado a la deuda del ICO; el Banco de España no (AIReF, Opinión sobre riesgos fiscales 2026, nota 47).",
+        "Con esas diferencias, las dos cifras cuadran de 2018 a 2020 con un margen de unos 2.000 millones."
+      ],
+      "falta": "De 2021 a 2024 quedan entre 12.000 y 19.000 millones al año sin explicar. Vienen de los avales COVID del ICO: en la edición de octubre de 2023 Eurostat los contaba igual que el Banco de España (104.096 millones en 2021) y en la de octubre de 2024 los rebajó (85.000 millones en 2021), sin una nota que diga por qué. Queda por aclarar con la Intervención General del Estado, que elabora esas cifras.",
+      "en_la_web": "La página de avales usa solo la serie del Banco de España y no compara las dos cifras.",
+      "marcas": [{"pagina": "avales.html", "id": "g1-fuente"}, {"pagina": "avales.html", "id": "cifras-fuente"}]
+    },
+    {
+      "id": "empresas-publicas-2014",
+      "estado": "sin_explicar",
+      "anotado": "2026-10-21",
+      "titulo": "Lo que deben las empresas públicas: un salto en 2014 que no sabemos explicar",
+      "resumen": "Antes de 2021 la serie de Eurostat tiene saltos sin explicar (de 130.717 a 393.603 millones entre 2013 y 2014); solo se muestra desde 2021.",
+      "cifras": [
+        "Eurostat (pasivos de empresas controladas por las administraciones y clasificadas fuera de ellas, sin consolidar): 130.717 millones de euros en 2013 y 393.603 en 2014; casi todo en las financieras (de 93.688 a 357.237)."
+      ],
+      "explicado": [
+        "La caída de 2021 (de 253.429 a 68.013 millones) es Bankia: dejó de ser empresa pública al fusionarse con CaixaBank, inscrita el 26 de marzo de 2021, con unos 185.000 millones de pasivos a final de 2020."
+      ],
+      "falta": "Por qué 2013 es tan bajo frente a 2014. Puede ser que cada edición de estos datos traiga un solo año y que el de 2013 venga de una edición con otro perímetro, pero no está comprobado.",
+      "en_la_web": "La serie se muestra solo desde 2021, igual que las otras tablas de la misma directiva europea, que Eurostat marca con ruptura de serie hasta 2020.",
+      "marcas": [{"pagina": "avales.html", "id": "g3-fuente"}]
+    },
+    {
+      "id": "deuda-local-hacienda-banco-de-espana",
+      "estado": "explicado",
+      "anotado": "2026-10-21",
+      "titulo": "Deuda de las entidades locales: Hacienda y el Banco de España se separan después de cada revisión",
+      "resumen": "La suma de los ayuntamientos de Hacienda queda algo por debajo del total del Banco de España (0,6 % en 2025) porque el Banco de España revisa su serie después. Está comprobado.",
+      "cifras": [
+        "Total de las entidades locales en 2025: 20.729 millones de euros según Hacienda y 20.851 según el Banco de España hoy (121 millones, el 0,58 %)."
+      ],
+      "explicado": [
+        "Hacienda cuadra sus ficheros con el Banco de España el día en que los publica y no los rehace después. La versión archivada de junio de 2023 del cuadro del Banco de España daba para 2021 y 2022 lo mismo que Hacienda (22.070,6 y 23.019,2 millones); en octubre de 2023 el Banco de España revisó esos años (2021 pasó a 22.779,6).",
+        "Las 13 ciudades de más de 300.000 habitantes dan la misma cifra en las dos fuentes, así que la revisión está en municipios más pequeños."
+      ],
+      "falta": null,
+      "en_la_web": "La serie desde 1995 es la del Banco de España y la deuda de cada ayuntamiento, la de Hacienda. La comprobación diaria lo da por cuadrado si la diferencia es menor del 1 %, y explica la causa.",
+      "marcas": [{"pagina": "deuda-local.html", "id": "buscar-fuente"}, {"pagina": "deuda-local.html", "id": "cifras-fuente"}]
+    }
+  ]
+}

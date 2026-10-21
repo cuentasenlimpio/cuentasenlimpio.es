@@ -723,6 +723,20 @@ def union_europea(D):
     return md
 
 
+def beneficios_fiscales(D):
+    s = D.get("beneficios_fiscales") or {}
+    if not s:
+        return cabecera("Beneficios fiscales", "beneficios-fiscales.html", "Sin datos en esta construcción.")
+    md = cabecera("Beneficios fiscales: lo que se estima que se deja de recaudar", "beneficios-fiscales.html",
+                  "Memorias de Beneficios Fiscales de los proyectos de Presupuestos Generales del Estado (SEPG). Estimaciones previas (ex "
+                  "ante) de lo que se deja de ingresar por deducciones, exenciones, reducciones y tipos reducidos. No hay memoria de 2019, "
+                  "2020 ni desde 2024 (presupuestos prorrogados). Cifras extraídas de los PDF, con comprobación de sumas.")
+    claves = ["total", "irpf", "sociedades", "iva", "especiales", "tasas"]
+    md += "\n## Millones de euros\n\n" + tabla(["Año"] + claves, [[a] + [n(s["serie"][k][i]) for k in claves] for i, a in enumerate(s["años"]) if s["serie"]["total"][i] is not None])
+    md += "\n\nMemorias (PDF): " + "; ".join(f"{m['año']}: {m['url']}" for m in s["memorias"]) + "\n"
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -733,6 +747,7 @@ FICHEROS = [
     ("pago-proveedores", pago_proveedores, "Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones."),
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
+    ("beneficios-fiscales", beneficios_fiscales, "Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF."),
     ("union-europea", union_europea, "España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
@@ -825,7 +840,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
