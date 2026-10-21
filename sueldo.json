@@ -1,0 +1,1277 @@
+{
+ "ejercicio": 2026,
+ "comprobado": "21 de octubre de 2026",
+ "smi": 17094,
+ "cotizaciones": {
+  "base_max_mensual": 5101.2,
+  "base_min_mensual": 1424.4,
+  "trabajador": {
+   "contingencias_comunes": 4.7,
+   "mei": 0.15,
+   "desempleo": {
+    "indefinido": 1.55,
+    "temporal": 1.6
+   },
+   "formacion": 0.1
+  },
+  "empresa": {
+   "contingencias_comunes": 23.6,
+   "mei": 0.75,
+   "desempleo": {
+    "indefinido": 5.5,
+    "temporal": 6.7
+   },
+   "formacion": 0.6,
+   "fogasa": 0.2,
+   "accidentes": 1.5
+  },
+  "solidaridad": [
+   [
+    0.1,
+    0.19,
+    0.96
+   ],
+   [
+    0.5,
+    0.21,
+    1.04
+   ],
+   [
+    null,
+    0.24,
+    1.22
+   ]
+  ]
+ },
+ "irpf_comun": {
+  "gasto_general": 2000,
+  "reduccion": [
+   [
+    14852,
+    7302
+   ],
+   [
+    17673.52,
+    1.75
+   ],
+   [
+    19747.5,
+    2364.34,
+    1.14
+   ]
+  ],
+  "escala_estatal": [
+   [
+    0,
+    9.5
+   ],
+   [
+    12450,
+    12
+   ],
+   [
+    20200,
+    15
+   ],
+   [
+    35200,
+    18.5
+   ],
+   [
+    60000,
+    22.5
+   ],
+   [
+    300000,
+    24.5
+   ]
+  ],
+  "minimos_estatales": {
+   "contribuyente": 5550,
+   "mayor_65": 1150,
+   "mayor_75": 1400,
+   "descendiente_1": 2400,
+   "descendiente_2": 2700,
+   "descendiente_3": 4000,
+   "descendiente_4_y_siguientes": 4500,
+   "descendiente_menor_3": 2800
+  },
+  "smi_deduccion": {
+   "importe": 590.89,
+   "desde": 17094,
+   "pendiente": 0.2
+  },
+  "ceuta_melilla": 0.6
+ },
+ "territorios": {
+  "Andalucía": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     13000.0,
+     12.0
+    ],
+    [
+     21100.0,
+     15.0
+    ],
+    [
+     35200.0,
+     18.5
+    ],
+    [
+     60000.0,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5790,
+    "mayor_65": 1200,
+    "mayor_75": 1460,
+    "descendiente_1": 2510,
+    "descendiente_2": 2820,
+    "descendiente_3": 4170,
+    "descendiente_4_y_siguientes": 4700,
+    "descendiente_menor_3": 2920
+   },
+   "norma": "Ley 5/2021, de 20 de octubre, de Tributos Cedidos de la Comunidad Autónoma de Andalucía (BOJA núm. 206, de 26/10/2021; BOE núm. 263, de 03/11/2021, BOE-A-2021-17915): art. 23 (escala, redacción por art. 1.1 del Decreto-ley 7/2022, de 20 de septiembre, BOJA extraordinario de 21/09/2022) y art. 23 bis (mínimos, añadido por art. 1.2 del mismo Decreto-ley 7/2022). Texto consolidado BOE, última actualización publicada el 31/12/2025 (incluye Ley 8/2025, de 22 de diciembre, de Presupuesto 2026, BOJA núm. 251 de 31/12/2025, que no toca arts. 23 ni 23 bis).",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2021-17915",
+   "ceuta_melilla": false
+  },
+  "Aragón": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     13072.5,
+     12.0
+    ],
+    [
+     21210.0,
+     15.0
+    ],
+    [
+     36960.0,
+     18.5
+    ],
+    [
+     52500.0,
+     20.5
+    ],
+    [
+     60000.0,
+     23.0
+    ],
+    [
+     80000.0,
+     24.0
+    ],
+    [
+     90000.0,
+     25.0
+    ],
+    [
+     130000.0,
+     25.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2005, de 26 de septiembre, del Gobierno de Aragón, TR de las disposiciones dictadas por la Comunidad Autónoma de Aragón en materia de tributos cedidos (BOA núm. 128, de 28/10/2005), art. 110-1 (redacción por art. 64.1 de la Ley 17/2023, de 22 de diciembre, de Presupuestos de Aragón para 2024, BOA de 29/12/2023; BOE-A-2024-903, con efectos desde 1/1/2023). Texto consolidado BOE BOA-d-2005-90006, última actualización publicada el 07/07/2025 (Ley 3/2025, solo ISD).",
+   "url": "https://www.boe.es/buscar/act.php?id=BOA-d-2005-90006",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "edad",
+     "desde": 70,
+     "importe": 75,
+     "bi_max": 23000,
+     "nombre": "mayores de 70 años"
+    }
+   ]
+  },
+  "Asturias": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.0
+    ],
+    [
+     12450.0,
+     12.0
+    ],
+    [
+     17707.2,
+     14.0
+    ],
+    [
+     33007.2,
+     19.2
+    ],
+    [
+     53407.2,
+     21.5
+    ],
+    [
+     70000.0,
+     22.5
+    ],
+    [
+     90000.0,
+     25.0
+    ],
+    [
+     175000.0,
+     26.0
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 6105,
+    "mayor_65": 1265,
+    "mayor_75": 1540,
+    "descendiente_1": 2640,
+    "descendiente_2": 2970,
+    "descendiente_3": 4400,
+    "descendiente_4_y_siguientes": 4950,
+    "descendiente_menor_3": 3080
+   },
+   "norma": "Decreto Legislativo 2/2014, de 22 de octubre, TR de las disposiciones legales del Principado de Asturias en materia de tributos cedidos por el Estado (BOPA núm. 251, de 29/10/2014; BOE núm. 29, de 03/02/2015, BOE-A-2015-945): art. 2 (escala) y arts. 2 bis a 2 quinquies (mínimos), redacción por la Ley del Principado de Asturias 3/2025, de 19 de noviembre (BOPA núm. 232, de 02/12/2025; BOE-A-2025-25707), en vigor el 03/12/2025 y aplicable ya al ejercicio 2025. Texto consolidado BOE, última actualización 31/12/2025.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-945",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "por_hijo",
+     "importe": 600,
+     "bi_max": 35000,
+     "nombre": "cuidado de descendientes"
+    },
+    {
+     "tipo": "dos_hijos",
+     "importe": 1000,
+     "bi_max": 35000,
+     "nombre": "familias con dos hijos (equiparadas a numerosas)"
+    }
+   ]
+  },
+  "Illes Balears": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9
+    ],
+    [
+     10000,
+     11.25
+    ],
+    [
+     18000,
+     14.25
+    ],
+    [
+     30000,
+     17.5
+    ],
+    [
+     48000,
+     19
+    ],
+    [
+     70000,
+     21.75
+    ],
+    [
+     90000,
+     22.75
+    ],
+    [
+     120000,
+     23.75
+    ],
+    [
+     175000,
+     24.75
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1265,
+    "mayor_75": 1540,
+    "descendiente_1": 2400,
+    "descendiente_2": 2970,
+    "descendiente_3": 4400,
+    "descendiente_4_y_siguientes": 4950,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2014, de 6 de junio, TR tributos cedidos (BOIB n.º 77, 7/6/2014; BOE-A-2014-6925), art. 1 en la redacción de la disp. final 2.1 de la Ley 12/2023, de 29 de diciembre, de Presupuestos Generales de la CAIB para 2024 (BOIB n.º 176, 30/12/2023; BOE n.º 25, 29/1/2024, BOE-A-2024-1569), en vigor desde 1/1/2024. Mínimos: art. 2 en la redacción del art. 1 de la Ley 11/2023, de 23 de noviembre (BOIB n.º 161, 25/11/2023; BOE-A-2023-24913).",
+   "url": "https://www.boe.es/eli/es-ib/dlg/2014/06/06/1/con",
+   "ceuta_melilla": false
+  },
+  "Canarias": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9
+    ],
+    [
+     13748,
+     11.5
+    ],
+    [
+     19422,
+     14
+    ],
+    [
+     35924,
+     18.5
+    ],
+    [
+     57566,
+     23.5
+    ],
+    [
+     93268,
+     25
+    ],
+    [
+     123745,
+     26
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5606,
+    "mayor_65": 1162,
+    "mayor_75": 1414,
+    "descendiente_1": 2424,
+    "descendiente_2": 2727,
+    "descendiente_3": 4040,
+    "descendiente_4_y_siguientes": 4545,
+    "descendiente_menor_3": 2828
+   },
+   "norma": "Decreto Legislativo 1/2009, de 21 de abril, TR tributos cedidos de Canarias (BOC n.º 77, 23/4/2009; consolidado BOE BOC-j-2009-90008), art. 18 bis en la redacción de la disp. final 11.17 de la Ley 9/2025, de 23 de diciembre, de Presupuestos Generales de la CA de Canarias para 2026 (BOC n.º 256, 29/12/2025; BOE n.º 82, 3/4/2026, BOE-A-2026-7560), «con efecto desde el día 1 de enero de 2025 y vigencia indefinida». Mínimos: art. 18 quater, añadido por la disp. final 10.24 de la Ley 5/2024, de 26 de diciembre (BOC n.º 260, 30/12/2024; BOE-A-2025-4913), con la corrección de errores del BOC n.º 38, de 24/2/2025.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOC-j-2009-90008",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "edad",
+     "desde": 65,
+     "importe": 160,
+     "bi_max": 46455,
+     "nombre": "mayores de 65 años"
+    }
+   ]
+  },
+  "Cantabria": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     8.5
+    ],
+    [
+     13000,
+     11
+    ],
+    [
+     21000,
+     14.5
+    ],
+    [
+     35200,
+     18
+    ],
+    [
+     60000,
+     22.5
+    ],
+    [
+     90000,
+     24.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 62/2008, de 19 de junio, TR de la Ley de Medidas Fiscales en materia de Tributos cedidos por el Estado (BOC n.º 128, 2/7/2008; consolidado BOE BOCT-c-2008-90028), art. 1 en la redacción del art. 3.1 de la Ley de Cantabria 3/2023, de 26 de diciembre, de Medidas Fiscales y Administrativas (BOC extraordinario n.º 87, 29/12/2023; BOE n.º 22, 25/1/2024, BOE-A-2024-1373), en vigor desde 1/1/2024.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOCT-c-2008-90028",
+   "ceuta_melilla": false
+  },
+  "Castilla-La Mancha": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     12450,
+     12
+    ],
+    [
+     20200,
+     15
+    ],
+    [
+     35200,
+     18.5
+    ],
+    [
+     60000,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Ley 8/2013, de 21 de noviembre, de Medidas Tributarias de Castilla-La Mancha, art. 13 bis, añadido por el art. 1 de la Ley 9/2014, de 4 de diciembre (DOCM n.º 241, 15/12/2014; BOE n.º 42, 18/2/2015, BOE-A-2015-1628), en vigor desde 1/1/2015 y sin cambios desde entonces.",
+   "url": "https://www.boe.es/eli/es-cm/l/2013/11/21/8/con",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "edad",
+     "desde": 75,
+     "importe": 150,
+     "bi_max": 27000,
+     "nombre": "mayores de 75 años"
+    }
+   ]
+  },
+  "Castilla y León": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.0
+    ],
+    [
+     12450.0,
+     12.0
+    ],
+    [
+     20200.0,
+     14.0
+    ],
+    [
+     35200.0,
+     18.5
+    ],
+    [
+     53407.2,
+     21.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2013, de 12 de septiembre, texto refundido de las disposiciones legales de Castilla y León en materia de tributos propios y cedidos (BOCYL núm. 180, de 18/09/2013; ref. BOE BOCL-h-2013-90254), art. 1 (redacción por Ley 2/2022, de 1 de diciembre, BOE-A-2022-21578, con efectos 01/01/2022); mínimos en art. 1 bis.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOCL-h-2013-90254",
+   "ceuta_melilla": false
+  },
+  "Cataluña": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     12500.0,
+     12.5
+    ],
+    [
+     22000.0,
+     16.0
+    ],
+    [
+     33000.0,
+     19.0
+    ],
+    [
+     53000.0,
+     21.5
+    ],
+    [
+     90000.0,
+     23.5
+    ],
+    [
+     120000.0,
+     24.5
+    ],
+    [
+     175000.0,
+     25.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2024, de 12 de marzo, libro sexto del Código tributario de Cataluña (DOGC núm. 9122; BOE-A-2024-6951), art. 611-1 en la redacción del art. 3.1 del Decreto-ley 5/2025, de 25 de marzo (DOGC núm. 9379; BOE núm. 125, de 24/05/2025, BOE-A-2025-10270), con efectos desde el 1 de enero de 2025; mínimo del contribuyente en art. 611-2.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2024-6951",
+   "ceuta_melilla": false,
+   "no_calculado": "Quien tiene más de un pagador y está obligado a declarar tiene una regla especial: no se calcula."
+  },
+  "Comunitat Valenciana": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     8.8
+    ],
+    [
+     12000.0,
+     11.7
+    ],
+    [
+     22000.0,
+     14.6
+    ],
+    [
+     32000.0,
+     17.0
+    ],
+    [
+     42000.0,
+     19.4
+    ],
+    [
+     52000.0,
+     21.9
+    ],
+    [
+     62000.0,
+     24.4
+    ],
+    [
+     72000.0,
+     26.1
+    ],
+    [
+     100000.0,
+     27.35
+    ],
+    [
+     150000.0,
+     28.35
+    ],
+    [
+     200000.0,
+     29.35
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 6105,
+    "mayor_65": 1265,
+    "mayor_75": 1540,
+    "descendiente_1": 2640,
+    "descendiente_2": 2970,
+    "descendiente_3": 4400,
+    "descendiente_4_y_siguientes": 4950,
+    "descendiente_menor_3": 3080
+   },
+   "norma": "Ley 13/1997, de 23 de diciembre, tramo autonómico del IRPF y restantes tributos cedidos, art. 2 (escala), en la redacción del art. 18 de la Ley 5/2026, de 31 de julio, de medidas fiscales, de gestión administrativa y financiera, y de organización de la Generalitat (DOGV núm. 10425, de 10/08/2026; BOE núm. 230, de 17/09/2026, BOE-A-2026-19331), con efectos para los hechos imponibles devengados desde el 1 de enero de 2026; mínimos en art. 2 bis; deducciones en art. 4.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1998-8202",
+   "ceuta_melilla": false,
+   "no_calculado": "10 % de la cuota con dos o más hijos si la suma de las bases de toda la familia no pasa de 30.000 €: depende de la renta de la otra persona, que no se pregunta."
+  },
+  "Extremadura": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     7.75
+    ],
+    [
+     12450.0,
+     9.75
+    ],
+    [
+     20200.0,
+     16.0
+    ],
+    [
+     24200.0,
+     17.5
+    ],
+    [
+     35200.0,
+     21.0
+    ],
+    [
+     60000.0,
+     23.5
+    ],
+    [
+     80200.0,
+     24.0
+    ],
+    [
+     99200.0,
+     24.5
+    ],
+    [
+     120200.0,
+     25.0
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2018, de 10 de abril, TR de tributos cedidos de Extremadura (DOE n.º 99, de 23/05/2018; BOE-A-2018-8159), art. 1, en la redacción dada por la disposición final segunda, apartado Uno, de la Ley 2/2026, de 3 de agosto, de Presupuestos Generales de la Comunidad Autónoma de Extremadura para 2026 (DOE n.º 149, de 04/08/2026; BOE n.º 201, de 17/08/2026, BOE-A-2026-17839). Disp. final 7.ª: los apartados uno a dieciséis de la DF 2.ª (IRPF) entran en vigor con efectos del 1 de enero de 2026.",
+   "url": "https://www.boe.es/eli/es-ex/dlg/2018/04/10/1/con",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "trabajo",
+     "importe": 75,
+     "bruto_max": 12000,
+     "nombre": "trabajo dependiente"
+    },
+    {
+     "tipo": "por_hijo_escolar",
+     "importe": 30,
+     "bi_max": 30000,
+     "nombre": "material escolar"
+    }
+   ]
+  },
+  "Galicia": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.0
+    ],
+    [
+     12985.35,
+     11.65
+    ],
+    [
+     21068.6,
+     14.9
+    ],
+    [
+     35200.0,
+     18.4
+    ],
+    [
+     60000.0,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5789,
+    "mayor_65": 1199,
+    "mayor_75": 1460,
+    "descendiente_1": 2503,
+    "descendiente_2": 2816,
+    "descendiente_3": 4172,
+    "descendiente_4_y_siguientes": 4694,
+    "descendiente_menor_3": 2920
+   },
+   "norma": "Decreto Legislativo 1/2011, de 28 de julio, TR de tributos cedidos de Galicia (DOG n.º 201, de 20/10/2011; BOE-A-2011-18161), art. 4 (escala) y art. 4 bis (mínimos), en la redacción de la Ley 7/2022, de 27 de diciembre, de medidas fiscales y administrativas (DOG n.º 248, de 30/12/2022; BOE n.º 60, de 11/03/2023, BOE-A-2023-6382), con efectos desde el 1 de enero de 2022. No modificados después (Ley 10/2023, Ley 5/2024 y Ley 5/2025 no tocan los arts. 4 ni 4 bis).",
+   "url": "https://www.boe.es/eli/es-ga/dlg/2011/07/28/1/con",
+   "ceuta_melilla": false,
+   "deducciones": [
+    {
+     "tipo": "dos_hijos",
+     "importe": 250,
+     "bi_max": null,
+     "nombre": "familias con dos hijos"
+    }
+   ]
+  },
+  "La Rioja": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     8.0
+    ],
+    [
+     12450.0,
+     10.6
+    ],
+    [
+     20200.0,
+     13.6
+    ],
+    [
+     35200.0,
+     17.8
+    ],
+    [
+     40000.0,
+     18.3
+    ],
+    [
+     50000.0,
+     19.0
+    ],
+    [
+     60000.0,
+     24.5
+    ],
+    [
+     120000.0,
+     27.0
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Ley 10/2017, de 27 de octubre, por la que se consolidan las disposiciones legales de La Rioja en materia de impuestos propios y tributos cedidos (BOR n.º 126, de 30/10/2017; BOE n.º 289, de 28/11/2017, BOE-A-2017-13750), art. 31 (escala) en la redacción de la Ley 13/2023, de 28 de diciembre, de Medidas Fiscales y Administrativas para 2024 (BOR n.º 259, de 30/12/2023; BOE n.º 27, de 31/01/2024, BOE-A-2024-1778); art. 31 bis (mínimo por discapacidad de descendientes).",
+   "url": "https://www.boe.es/eli/es-ri/l/2017/10/27/10/con",
+   "ceuta_melilla": false
+  },
+  "Comunidad de Madrid": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     8.5
+    ],
+    [
+     13362.22,
+     10.7
+    ],
+    [
+     19004.63,
+     12.8
+    ],
+    [
+     35425.68,
+     17.4
+    ],
+    [
+     57320.4,
+     20.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5956.65,
+    "mayor_65": 1234.26,
+    "mayor_75": 1502.58,
+    "descendiente_1": 2575.85,
+    "descendiente_2": 2897.83,
+    "descendiente_3": 4400,
+    "descendiente_4_y_siguientes": 4950,
+    "descendiente_menor_3": 3005.16
+   },
+   "norma": "Decreto Legislativo 1/2010, de 21 de octubre, TR de tributos cedidos de la Comunidad de Madrid (BOCM n.º 255, de 25/10/2010; ref. BOCM-m-2010-90068), art. 1 (escala) y arts. 2, 2 bis, 2 ter y 2 quater (mínimos), en la redacción de la Ley 13/2023, de 15 de diciembre (BOCM n.º 303, de 21/12/2023; BOE n.º 71, de 21/03/2024, BOE-A-2024-5610), aplicable a los periodos impositivos iniciados desde el 01/01/2023. Sin cambios posteriores en estos artículos (texto consolidado BOE a 10/07/2026).",
+   "url": "https://www.boe.es/buscar/act.php?id=BOCM-m-2010-90068",
+   "ceuta_melilla": false,
+   "no_calculado": "10 % de la cuota con dos o más hijos si la suma de las bases de toda la familia no pasa de 24.744 €: depende de la renta de la otra persona, que no se pregunta."
+  },
+  "Región de Murcia": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     12450.0,
+     11.2
+    ],
+    [
+     20200.0,
+     13.3
+    ],
+    [
+     34000.0,
+     17.9
+    ],
+    [
+     60000.0,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Decreto Legislativo 1/2010, de 5 de noviembre, Texto Refundido de las disposiciones legales vigentes en la Región de Murcia en materia de tributos cedidos (BORM n.º 24, de 31/01/2011; BOE-A-2011-10542, BOE n.º 144, de 17/06/2011), art. 2 «Tarifa autonómica» (OJO: la escala está en el art. 2, no en el art. 1, que son las deducciones), redacción dada por el art. 56.2 de la Ley 14/2018, de 26 de diciembre (BOE-A-2019-2039), en vigor desde el 01/01/2019 y sin cambios posteriores.",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2011-10542",
+   "ceuta_melilla": false,
+   "no_calculado": "Deducción para mujeres trabajadoras con hijos y base de hasta 20.000 €: no se calcula."
+  },
+  "Ceuta": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     12450.0,
+     12.0
+    ],
+    [
+     20200.0,
+     15.0
+    ],
+    [
+     35200.0,
+     18.5
+    ],
+    [
+     60000.0,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "Ceuta no tiene competencias normativas en el IRPF. Disposición adicional trigésima segunda LIRPF: «La escala autonómica aplicable a los contribuyentes que tengan su residencia habitual en Ceuta o Melilla será la prevista en el artículo 65 de esta Ley» (redacción por el art. 1.5 del RDL 9/2015, de 10 de julio, BOE-A-2015-7765, con efectos 01/01/2015). La escala es la del art. 65 LIRPF (redacción por el art. 1.41 de la Ley 26/2014, BOE-A-2014-12327, vigente desde 01/01/2015).",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+   "ceuta_melilla": true
+  },
+  "Melilla": {
+   "regimen": "comun",
+   "escala": [
+    [
+     0,
+     9.5
+    ],
+    [
+     12450.0,
+     12.0
+    ],
+    [
+     20200.0,
+     15.0
+    ],
+    [
+     35200.0,
+     18.5
+    ],
+    [
+     60000.0,
+     22.5
+    ]
+   ],
+   "minimos": {
+    "contribuyente": 5550,
+    "mayor_65": 1150,
+    "mayor_75": 1400,
+    "descendiente_1": 2400,
+    "descendiente_2": 2700,
+    "descendiente_3": 4000,
+    "descendiente_4_y_siguientes": 4500,
+    "descendiente_menor_3": 2800
+   },
+   "norma": "DA 32.ª LIRPF → escala del art. 65 LIRPF (igual que Ceuta).",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764",
+   "ceuta_melilla": true
+  },
+  "Álava": {
+   "regimen": "vasco",
+   "escala": [
+    [
+     0,
+     23
+    ],
+    [
+     18080,
+     28
+    ],
+    [
+     36160,
+     35
+    ],
+    [
+     54240,
+     40
+    ],
+    [
+     77450,
+     45
+    ],
+    [
+     107260,
+     46
+    ],
+    [
+     142960,
+     47
+    ],
+    [
+     208390,
+     49
+    ]
+   ],
+   "bonificacion": {
+    "hasta": 14800,
+    "max": 8000,
+    "pendiente": 0.6098,
+    "tope": 23000,
+    "min": 3000
+   },
+   "minoracion": 1615,
+   "descendientes": [
+    734.8,
+    909.7,
+    1532.3,
+    1811.7,
+    2366.1
+   ],
+   "menor_6": 424.6,
+   "de_6_a_15": 68.2,
+   "edad": {
+    "mayor_65": 393,
+    "mayor_75": 714,
+    "bi_plena": 20000,
+    "bi_cero": 30000
+   },
+   "norma": "Norma Foral 33/2013, de 27 de noviembre, del IRPF (Álava); Norma Foral 33/2013, de 27 de noviembre, del IRPF (Álava), art. 75.1, redaccion de Norma Foral 21/2025, de 19 de diciembre, de medidas tributarias para 2026 (BOTHA n.º 147, 29/12/2025), art. Cuarto (efectos 01/01/2026)",
+   "url": "https://web.araba.eus/documents/d/araba/indice_norma-foral_irpf_cas-4-pdf"
+  },
+  "Bizkaia": {
+   "regimen": "vasco",
+   "escala": [
+    [
+     0,
+     23
+    ],
+    [
+     18080,
+     28
+    ],
+    [
+     36160,
+     35
+    ],
+    [
+     54240,
+     40
+    ],
+    [
+     77450,
+     45
+    ],
+    [
+     107260,
+     46
+    ],
+    [
+     142960,
+     47
+    ],
+    [
+     208390,
+     49
+    ]
+   ],
+   "bonificacion": {
+    "hasta": 14800,
+    "max": 8000,
+    "pendiente": 0.6098,
+    "tope": 23000,
+    "min": 3000
+   },
+   "minoracion": 1615,
+   "descendientes": [
+    682,
+    844,
+    1421,
+    1680,
+    2195
+   ],
+   "menor_6": 394,
+   "de_6_a_15": 0,
+   "edad": {
+    "mayor_65": 393,
+    "mayor_75": 714,
+    "bi_plena": 20000,
+    "bi_cero": 30000
+   },
+   "norma": "Norma Foral 13/2013, de 5 de diciembre, del IRPF (Bizkaia); Norma Foral 13/2013, de 5 de diciembre, del IRPF (Bizkaia), art. 75.1, redaccion de Norma Foral 7/2025, de 29 de diciembre, de Presupuestos Generales del THB para 2026 (BOB n.º 248, 30/12/2025), arts. 47-50 y ss. (efectos 01/01/2026)",
+   "url": "https://www.bizkaia.eus/documents/880307/15187815/ca_13_2013.pdf"
+  },
+  "Gipuzkoa": {
+   "regimen": "vasco",
+   "escala": [
+    [
+     0,
+     23
+    ],
+    [
+     18080,
+     28
+    ],
+    [
+     36160,
+     35
+    ],
+    [
+     54240,
+     40
+    ],
+    [
+     77450,
+     45
+    ],
+    [
+     107260,
+     46
+    ],
+    [
+     142960,
+     47
+    ],
+    [
+     208390,
+     49
+    ]
+   ],
+   "bonificacion": {
+    "hasta": 14800,
+    "max": 8000,
+    "pendiente": 0.6098,
+    "tope": 23000,
+    "min": 3000
+   },
+   "minoracion": 1615,
+   "descendientes": [
+    682,
+    844,
+    1421,
+    1680,
+    2195
+   ],
+   "menor_6": 394,
+   "de_6_a_15": 0,
+   "edad": {
+    "mayor_65": 393,
+    "mayor_75": 714,
+    "bi_plena": 20000,
+    "bi_cero": 30000
+   },
+   "norma": "Norma Foral 3/2014, de 17 de enero, del IRPF (Gipuzkoa); Norma Foral 3/2014, de 17 de enero, del IRPF (Gipuzkoa), art. 75.1, redaccion de Norma Foral 6/2025, de 19 de diciembre, de Presupuestos Generales del THG para 2026 (BOG 31/12/2025), disposicion final primera (efectos 01/01/2026)",
+   "url": "https://www.gipuzkoa.eus/documents/2456431/null/NF%203-2014%20(31-12-2021)%202.pdf/f57832da-7bd7-0d4e-8642-3b2ae7e83889"
+  },
+  "Navarra": {
+   "regimen": "navarra",
+   "escala": [
+    [
+     0,
+     13
+    ],
+    [
+     4458,
+     22
+    ],
+    [
+     10030,
+     25
+    ],
+    [
+     21175,
+     28
+    ],
+    [
+     35663,
+     36.5
+    ],
+    [
+     51266,
+     41.5
+    ],
+    [
+     66869,
+     44
+    ],
+    [
+     89159,
+     47
+    ],
+    [
+     139310,
+     49
+    ],
+    [
+     195034,
+     50.5
+    ],
+    [
+     334344,
+     52
+    ]
+   ],
+   "minimo_personal": 1084,
+   "edad": {
+    "mayor_65": 264,
+    "mayor_75": 585
+   },
+   "descendientes": [
+    483,
+    512,
+    732,
+    981,
+    1111,
+    1286
+   ],
+   "menor_3": 644,
+   "norma": "Texto Refundido de la Ley Foral del IRPF, Decreto Foral Legislativo 4/2008, de 2 de junio (BON n.º 80, 30/06/2008); Ley Foral 17/2025",
+   "url": "https://www.navarra.es/es/web/normativa-hacienda/-/texto-refundido-de-la-ley-foral-del-impuesto-sobre-la-renta-de-las-personas-f%C3%ADsicas-dfl-4/2008-de-2-de-junio-"
+  }
+ },
+ "fuentes": [
+  {
+   "texto": "Ley 35/2006 del IRPF, texto consolidado (escala estatal, art. 63; reducción por trabajo, art. 20; mínimos, arts. 57 y 58; deducción para sueldos bajos, disposición adicional 61.ª)",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-20764"
+  },
+  {
+   "texto": "Real Decreto 126/2026, salario mínimo de 2026 (17.094 € al año)",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-3815"
+  },
+  {
+   "texto": "Orden PJC/297/2026, de cotización a la Seguridad Social para 2026 (tipos y bases)",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2026-7296"
+  },
+  {
+   "texto": "Ley General de la Seguridad Social, texto consolidado (tarifa de accidentes de trabajo, disposición adicional 61.ª; cotización de solidaridad)",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2015-11724"
+  },
+  {
+   "texto": "Ley 37/1992 del IVA, texto consolidado (tipos, arts. 90 y 91; exenciones, art. 20)",
+   "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740"
+  },
+  {
+   "texto": "INE, Encuesta de Presupuestos Familiares 2025, microdatos (gasto de los hogares según su renta)",
+   "url": "https://www.ine.es/dyngs/INEbase/es/operacion.htm?c=Estadistica_C&cid=1254736176806&menu=resultados&secc=1254736195147&idp=1254735976608"
+  }
+ ],
+ "iva": {
+  "puntos": [
+   [
+    7727.8,
+    0.1118,
+    1.2174
+   ],
+   [
+    12028.5,
+    0.0912,
+    0.9286
+   ],
+   [
+    14702.6,
+    0.0842,
+    0.8561
+   ],
+   [
+    17192.2,
+    0.081,
+    0.797
+   ],
+   [
+    19573.7,
+    0.0773,
+    0.7641
+   ],
+   [
+    21796.2,
+    0.0725,
+    0.7206
+   ],
+   [
+    25084.3,
+    0.0706,
+    0.7018
+   ],
+   [
+    28974.2,
+    0.0671,
+    0.6639
+   ],
+   [
+    35251.6,
+    0.0587,
+    0.5921
+   ],
+   [
+    54078.0,
+    0.0466,
+    0.4792
+   ]
+  ],
+  "sin_iva": {
+   "Canarias": "En Canarias no hay IVA: hay IGIC, con un tipo general del 7 %. Aún no lo calculamos.",
+   "Ceuta": "En Ceuta no hay IVA: hay IPSI. No lo calculamos.",
+   "Melilla": "En Melilla no hay IVA: hay IPSI. No lo calculamos."
+  }
+ }
+}

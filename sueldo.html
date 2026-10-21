@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Lo que paga un sueldo · Cuentas en limpio</title>
+  <meta name="description" content="Una estimación de lo que paga un sueldo en IRPF, cotizaciones e IVA en cada comunidad, con la ley de 2026, y cómo se reparte entre pensiones, sanidad, educación y el resto del gasto público.">
+  <link rel="stylesheet" href="estilo.css?v=c437e0950d">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=a6a79b8632" defer></script>
+  <script src="sueldo-calculo.js?v=c2f82217d8" defer></script>
+  <script src="sueldo.js?v=f407333fba" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas en limpio</a>
+    <nav aria-label="Principal">
+      <a href="dinero.html">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="aprende.html" aria-current="page">Aprende</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="pregunta">¿Cuánto paga un sueldo?</h1>
+    <p class="respuesta">Con un sueldo, una comunidad y una edad, una estimación de lo que se va en IRPF, en cotizaciones y en el IVA de lo que se compra, con las leyes de 2026. Y cómo se reparte ese dinero si se mira como se reparte todo el gasto público.</p>
+    <p class="contabilidad">Es una estimación, no una declaración de la renta: supone un solo sueldo, sin otras rentas ni deducciones personales (alquiler, donativos, planes de pensiones…). Lo que se escribe aquí no sale del navegador.</p>
+
+    <form id="sueldo-form" class="calculadora" autocomplete="off">
+      <label>Sueldo bruto al año, en euros
+        <input id="s-bruto" type="number" inputmode="numeric" min="0" max="1000000" step="100" value="30000" required>
+        <span class="ayuda">El que figura en el contrato, antes de impuestos. Con pagas extra incluidas.</span>
+      </label>
+      <label>Dónde vive
+        <select id="s-territorio"></select>
+      </label>
+      <label>Edad
+        <select id="s-edad">
+          <option value="<65">Menos de 65 años</option>
+          <option value="65">De 65 a 69 años</option>
+          <option value="70">De 70 a 74 años</option>
+          <option value="75">75 años o más</option>
+        </select>
+      </label>
+      <label>Contrato
+        <select id="s-contrato">
+          <option value="indefinido">Indefinido</option>
+          <option value="temporal">Temporal</option>
+        </select>
+      </label>
+      <label>Hijos que viven con esa persona (menores de 25 años)
+        <select id="s-hijos">
+          <option value="0">Ninguno</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+        </select>
+      </label>
+      <div id="s-edades-hijos" class="hijos" hidden></div>
+      <label id="s-comparte-et" class="casilla" hidden><input id="s-comparte" type="checkbox" checked> La otra madre o padre también trabaja y declara (las ventajas por los hijos se reparten a medias)</label>
+    </form>
+
+    <section id="sueldo-resultado" aria-live="polite">
+      <p class="respuesta" id="s-frase"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>De un sueldo salen dos cosas antes de cobrarlo: las <strong>cotizaciones</strong> a la Seguridad Social y la <strong>retención del IRPF</strong>, que es un adelanto de lo que se paga en la declaración de la renta. Después, al comprar, una parte del precio es <strong>IVA</strong>. Aparte, la empresa paga sus propias cotizaciones por ese sueldo, que no aparecen en la nómina como descuento.</p>
+      </div>
+      <h2 class="pregunta">Del sueldo a lo que queda</h2>
+      <table class="tabla-sueldo" id="s-tabla"></table>
+      <p class="fuente-grafico" id="s-fuente-tabla"></p>
+      <h2 class="pregunta">¿A qué va ese dinero?</h2>
+      <p id="s-reparto-intro"></p>
+      <table class="tabla-sueldo" id="s-reparto"></table>
+      <p class="fuente-grafico" id="s-fuente-reparto"></p>
+      <div class="sueldo-plegados">
+      <details class="fuente-detalle" id="s-supuestos">
+        <summary>Qué supone este cálculo</summary>
+        <ul id="s-supuestos-lista"></ul>
+      </details>
+      <details class="fuente-detalle">
+        <summary>Normas y datos que usa</summary>
+        <ul id="s-normas"></ul>
+      </details>
+      </div>
+      <p class="comprobado" id="s-comprobado"></p>
+    </section>
+  </main>
+
+  <footer class="sitio">
+    <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
+    <span><a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

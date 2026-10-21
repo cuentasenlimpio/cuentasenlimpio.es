@@ -744,7 +744,7 @@
    "respuesta": "El IVA lo cobran las empresas al vender y lo ingresan en la Agencia Tributaria del Estado; en el País Vasco y Navarra, en sus propias haciendas. Después, la mitad pasa a las comunidades autónomas, según lo que se consume en cada una, y menos de 2 de cada 100 euros a ayuntamientos grandes y diputaciones. No está reservado a ningún gasto: se suma al resto de ingresos y paga todo el presupuesto.",
    "datos": [
     "El impuesto sobre el valor añadido (IVA) lo paga quien compra, pero lo cobran las empresas. Cada empresa ingresa el IVA que ha cobrado a sus clientes menos el que ha pagado a sus proveedores. En casi toda España lo recauda la Agencia Estatal de Administración Tributaria (AEAT). En el País Vasco y Navarra lo recaudan sus haciendas forales, con las mismas normas. En Canarias, Ceuta y Melilla no hay IVA: Canarias tiene su propio impuesto, el IGIC.",
-    "En 2025, el IVA sumó unos 114.400 millones de euros, según la contabilidad nacional (dato provisional). Son unos 2.300 euros por habitante al año, unos 190 al mes. De cada 100 euros que ingresaron las administraciones, unos 16 fueron IVA. El tipo general es el 21 %, pero muchos productos pagan el 10 % o el 4 %. Por eso, según la AEAT, el IVA fue de unos 15 euros por cada 100 de gasto sujeto al impuesto.",
+    "En 2025, el IVA sumó unos 112.000 millones de euros, según la contabilidad nacional (dato provisional; sin el impuesto canario, el IGIC). Son unos 2.300 euros por habitante al año, unos 190 al mes. De cada 100 euros que ingresaron las administraciones, unos 15 fueron IVA. El tipo general es el 21 %, pero muchos productos pagan el 10 % o el 4 %. Por eso, según la AEAT, el IVA fue de unos 15 euros por cada 100 de gasto sujeto al impuesto.",
     "Las comunidades de régimen común (todas menos el País Vasco y Navarra) reciben la mitad del IVA que se atribuye a su territorio. Se atribuye según lo que se consume en cada una, con un índice que calcula el Instituto Nacional de Estadística (INE). En 2024, la AEAT recaudó 90.541 millones de IVA, y a las comunidades les correspondieron 45.270 millones. Las comunidades no pueden cambiar los tipos del IVA ni lo gestionan: eso es del Estado.",
     "De la mitad que se queda el Estado, los municipios grandes reciben el 2,3266 % de lo atribuido a su territorio. Son las capitales de provincia o de comunidad y los de 75.000 habitantes o más. Las diputaciones provinciales reciben el 1,3699 %. En total, de cada 100 euros de IVA, unos 50 van a las comunidades, menos de 2 a ayuntamientos y diputaciones, y el resto al Estado (lectura).",
     "Las comunidades no esperan a fin de año. Reciben adelantos cada mes («entregas a cuenta») y unos dos años después se hace la cuenta final («liquidación»). Del IVA de 2024 recibieron 44.516 millones de adelanto y 754 millones más en la liquidación, publicada en julio de 2026. En el País Vasco funciona de otra forma: cada empresa paga a una u otra hacienda según dónde opera, y después un «ajuste a consumo» corrige el reparto.",
@@ -803,6 +803,10 @@
     }
    ],
    "fuentes": [
+    {
+     "texto": "IGAE, impuestos y cotizaciones sociales de las administraciones públicas (contabilidad nacional), 2025 provisional, fila del IVA (actualizado el 30/09/2026)",
+     "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/AAPP_A/A_AAPP_Imp.xlsx"
+    },
     {
      "texto": "Ley 37/1992 del IVA, artículo 3 (Canarias, Ceuta y Melilla fuera del ámbito del impuesto)",
      "url": "https://www.boe.es/buscar/act.php?id=BOE-A-1992-28740"

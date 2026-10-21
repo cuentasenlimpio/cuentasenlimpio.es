@@ -552,3 +552,22 @@ ul.nota-años li { margin: 0.15rem 0; }
 .pregunta-faq .para-seguir, .pregunta-faq .comprobado { font-size: 0.875rem; color: var(--tinta-suave); }
 .pregunta-faq > h2.pregunta { border-top: 0; margin-top: 0; padding-top: 0; }
 .pregunta-faq:first-child { border-top: 0; margin-top: 1rem; }
+
+/* Lo que paga un sueldo */
+.calculadora { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 0.9rem 1.5rem; max-width: 46rem; margin: 1.5rem 0; padding: 1rem; background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; }
+.calculadora label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.9375rem; font-weight: 600; }
+.calculadora input[type="number"], .calculadora select { font: inherit; font-weight: 400; color: var(--tinta); background: var(--fondo); border: 1px solid var(--linea-fuerte); border-radius: 6px; padding: 0.45rem 0.6rem; }
+.calculadora .ayuda { font-weight: 400; font-size: 0.8125rem; color: var(--tinta-suave); }
+.calculadora .hijos, .calculadora .casilla { grid-column: 1 / -1; }
+.calculadora .hijos { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.calculadora .casilla { flex-direction: row; align-items: flex-start; font-weight: 400; }
+.tabla-sueldo { width: 100%; max-width: 46rem; border-collapse: collapse; font-size: 0.9375rem; margin: 0.5rem 0; }
+.tabla-sueldo td { padding: 0.45rem 0.4rem; border-bottom: 1px solid var(--linea); vertical-align: top; }
+.tabla-sueldo td.cifra { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tabla-sueldo tr.fila-total td { font-weight: 600; border-top: 2px solid var(--linea-fuerte); }
+.tabla-sueldo tr.aparte td { color: var(--tinta-suave); }
+.tabla-sueldo .detalle { display: block; font-size: 0.8125rem; color: var(--tinta-suave); }
+.tabla-sueldo .barra { display: block; height: 4px; margin-top: 0.3rem; background: var(--c-primario); opacity: 0.55; border-radius: 2px; }
+.calculadora [hidden] { display: none; }
+.tabla-sueldo .detalle { font-weight: 400; }
+#s-comprobado { font-size: 0.875rem; color: var(--tinta-suave); }
