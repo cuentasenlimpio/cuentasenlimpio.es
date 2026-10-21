@@ -1912,6 +1912,87 @@ def construir_ss_este_ano(descargas):
     return salida
 
 
+def _ue_numero(v):
+    if isinstance(v, (int, float)):
+        return float(v)
+    try:
+        return float(str(v).strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def _ue_hoja(filas, pais="ES"):
+    """Una hoja (un año) del fichero de la Comisión: {partida: valor del país}. La columna del país es la de la última
+    fila de cabecera que aparece por encima (el gasto y los ingresos tienen cabeceras distintas); en los años antiguos
+    el nombre va en otra columna y los números, como texto."""
+    col, salida = None, {}
+    for f in filas:
+        celdas = [str(v).strip() if v is not None else "" for v in f]
+        if pais in celdas:
+            col = celdas.index(pais)
+            continue
+        etiqueta = next((" ".join(v.split()) for v in f[:6] if isinstance(v, str) and v.strip() and _ue_numero(v) is None), None)
+        if col is not None and col < len(f) and etiqueta and _ue_numero(f[col]) is not None:
+            salida.setdefault(etiqueta, _ue_numero(f[col]))
+    return salida
+
+
+def construir_ue_saldo(descargas):
+    """Lo que el presupuesto de la UE gasta en España y lo que España le aporta (Comisión Europea), contrastado con lo que
+    la IGAE registra como pagado a la UE (D.76). La Comisión ya no publica un saldo oficial por país: la diferencia es un
+    cálculo nuestro, y NextGenerationEU va aparte (no se resta ni se suma)."""
+    if "ce_gasto_ingresos_ue" not in descargas:
+        return
+    libro = hojas(AQUI / descargas["ce_gasto_ingresos_ue"]["fichero"])
+    años = sorted(int(n) for n in libro if n.strip().isdigit())
+    comprobaciones, serie = [], []
+    aport_nac = re.compile(r"^(VAT-based own resource|GNP-based own resource|GNI-based own resource|Own resources based on (VAT|GNI|plastic))", re.I)
+    malos_total = []
+    for a in años:
+        h = _ue_hoja(libro[str(a)])
+        nacional = sum(v for k, v in h.items() if aport_nac.match(k))
+        if "TOTAL national contribution" in h:   # hasta 2020: la Comisión da el total
+            # Las correcciones (del Reino Unido, reducciones, ajustes…) cambian de nombre según el año: son todas las
+            # filas entre el primer recurso nacional y el total.
+            claves = list(h)
+            i0 = next(k for k, x in enumerate(claves) if aport_nac.match(x))
+            calculado = sum(h[x] for x in claves[i0:claves.index("TOTAL national contribution")])
+            if abs(calculado - h["TOTAL national contribution"]) > 1:
+                malos_total.append(a)
+            aportacion = h["TOTAL national contribution"]
+        else:                                     # desde 2021: recursos nacionales + reducciones brutas + balances y ajustes
+            aportacion = nacional + sum(v for k, v in h.items() if k.startswith("Gross reduction")) + h.get("TOTAL Balances and adjustments", 0.0)
+        aranceles = next((v for k, v in h.items() if k.startswith(("Traditional own resources", "Customs duties"))), None)
+        serie.append({"año": a, "gasto": round(h.get("TOTAL EXPENDITURE", 0.0), 1), "ngeu": round(h["TOTAL NGEU"], 1) if "TOTAL NGEU" in h else None,
+                      "aportacion": round(aportacion, 1), "aranceles": None if aranceles is None else round(aranceles, 1),
+                      "rnb": next((round(v) for k, v in h.items() if k.startswith(("Gross National Income", "Gross National Product"))), None)})
+    comprobaciones.append({"que": "¿Las partes de la aportación nacional suman el total que da la Comisión (2000–2020)?",
+                           "resultado": "Sí, en todos los años" if not malos_total else f"No en {', '.join(map(str, malos_total))}",
+                           "ok": not malos_total})
+    # Contraste con la IGAE: D.76 (recursos propios de la UE basados en el IVA y la RNB), en contabilidad nacional
+    igae = leer_igae(descargas)
+    comunes = [x for x in serie if x["año"] in igae and igae[x["año"]]["e"].get("D.76") is not None]
+    difs = {x["año"]: round(igae[x["año"]]["e"]["D.76"] - x["aportacion"], 1) for x in comunes}
+    iguales = [a for a, v in difs.items() if abs(v) < 2]
+    acumulada = sum(difs.values())
+    total_ap = sum(x["aportacion"] for x in comunes)
+    comprobaciones.append({
+        "que": "¿Lo que España aporta a la UE según la Comisión es lo que la IGAE registra como pagado (recursos propios IVA y RNB)?",
+        "resultado": (f"Coincide al millón en {len(iguales)} de {len(comunes)} años; en los demás, la diferencia es de calendario (la UE "
+                      f"cuenta lo cobrado en su ejercicio y la contabilidad nacional lo devengado) y se compensa entre años: sumadas "
+                      f"de {comunes[0]['año']} a {comunes[-1]['año']}, las diferencias se quedan en {es(abs(acumulada))} millones de "
+                      f"{es(total_ap)} ({es(abs(100 * acumulada / total_ap), 2)} %). La mayor, en un año: {es(max(abs(v) for v in difs.values()))} millones"),
+        "ok": abs(acumulada) < 0.01 * total_ap,
+        "nota": "Los aranceles que recauda España para la UE no entran: en contabilidad nacional son impuestos que cobra directamente la UE.",
+    })
+    salida = {"serie": serie, "tabla": "ce_gasto_ingresos_ue", "comprobaciones": comprobaciones, "difs_igae": difs}
+    (WEB / "datos" / "union_europea.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"][:160])
+    u = serie[-1]
+    print(f"unión europea: {años[0]}–{años[-1]}; {u['año']}: gasto {u['gasto']}, aportación {u['aportacion']}, NGEU {u['ngeu']}")
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -3254,7 +3335,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3409,6 +3490,7 @@ def main():
     construir_deuda_local(descargas)
     pmp = construir_pmp(descargas)
     construir_modificaciones(descargas, hacienda_capitulos(descargas))
+    construir_ue_saldo(descargas)
     construir_descuadres(gasto, pmp)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

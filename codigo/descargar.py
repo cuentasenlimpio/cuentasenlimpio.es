@@ -365,6 +365,24 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO ss_pensiones_avance: no se pudo leer la página ({error})")
 
+    # Gasto de la UE en cada país y recursos propios aportados (Comisión Europea): el enlace cambia con cada edición
+    try:
+        import html as html_
+        import re
+        pag_ue = "https://commission.europa.eu/strategy-and-policy/eu-budget/long-term-eu-budget/2021-2027/spending-and-revenue_en"
+        with urllib.request.urlopen(urllib.request.Request(pag_ue, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+            texto_ue = r.read().decode("utf-8", errors="replace")
+        m_ue = re.search(r'href="([^"]*spending_and_revenue_2000-(\d{4})\.xlsx)"', texto_ue)
+        if m_ue:
+            ruta_ue = html_.unescape(m_ue.group(1))
+            PAGINAS.append({"fuente": "Comisión Europea", "tabla": "ce_gasto_ingresos_ue", "opcional": True,
+                            "nombre": f"Gasto y recursos propios del presupuesto de la UE por Estado miembro, 2000–{m_ue.group(2)}",
+                            "url": ("https://commission.europa.eu" + ruta_ue) if ruta_ue.startswith("/") else ruta_ue, "extension": "xlsx"})
+        else:
+            print("AVISO ce_gasto_ingresos_ue: no se encontró el enlace en la página")
+    except (urllib.error.URLError, TimeoutError) as error:
+        print(f"AVISO ce_gasto_ingresos_ue: no se pudo leer la página ({error})")
+
     # Ejecución mensual del presupuesto de la Seguridad Social: «ResSISTEMA_<Mes>_<Año>.xlsx». Si el mes no existe, el
     # servidor devuelve un fichero vacío (no un error), así que se prueba hacia atrás hasta dar con un Excel de verdad.
     meses_ss = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]

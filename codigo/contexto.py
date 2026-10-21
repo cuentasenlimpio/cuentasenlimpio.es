@@ -707,6 +707,22 @@ def modificaciones(D):
     return md
 
 
+def union_europea(D):
+    s = D.get("union_europea") or {}
+    if not s:
+        return cabecera("España y el presupuesto de la UE", "union-europea.html", "Sin datos en esta construcción.")
+    md = cabecera("España y el presupuesto de la UE: gasto en España y aportación española", "union-europea.html",
+                  "Comisión Europea (EU spending and revenue 2000–). Gasto: lo que el presupuesto de la UE gasta en España, sin "
+                  "NextGenerationEU (aparte, financiado con deuda de la UE). Aportación: recursos propios basados en el IVA, la RNB y el "
+                  "plástico, con correcciones y ajustes; contrastada con la D.76 de la IGAE (diferencias de calendario que se compensan "
+                  "entre años). Aranceles: de la UE, recaudados por España; no se cuentan como aportación. La diferencia gasto − "
+                  "aportación es un cálculo nuestro: la Comisión ya no publica un saldo por país.")
+    md += "\n## Millones de euros\n\n" + tabla(["Año", "Gasto de la UE en España", "Aportación de España", "Diferencia (cálculo nuestro)", "NextGenerationEU (aparte)", "Aranceles recaudados"],
+                                            [[x["año"], n(x["gasto"]), n(x["aportacion"]), n(x["gasto"] - x["aportacion"]), n(x["ngeu"]), n(x["aranceles"])] for x in s["serie"]])
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], "ce_gasto_ingresos_ue")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -717,6 +733,7 @@ FICHEROS = [
     ("pago-proveedores", pago_proveedores, "Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones."),
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
+    ("union-europea", union_europea, "España y el presupuesto de la UE desde 2000: gasto de la UE en España, aportación española, NextGenerationEU y aranceles."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
     ("gasto", gasto, "En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa."),
@@ -808,7 +825,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
