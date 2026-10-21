@@ -4,9 +4,10 @@
   (lo más prudente); el motivo, el de la primera pasada.
 - Pares en desacuerdo: la decisión del árbitro.
 - Auditoría: una tercera pasada independiente sobre una muestra al azar de pares en que las dos coincidían; mide
-  cuántos enlaces publicados sobran y cuántos descartados faltan.
+  cuántos enlaces publicados sobran y cuántos descartados faltan. Si hubo criba previa, la misma auditoría lleva
+  mezclada una muestra de los pares que la criba apartó (lista aparte), y mide cuántos de ellos se habrían enlazado.
 
-Uso: python3 aplicar_hechos.py <dir A> <dir B> <arbitraje.json> <resumen comparación.json> <auditoría clave> <auditoría respuestas> <salida dir>
+Uso: python3 aplicar_hechos.py <dir A> <dir B> <arbitraje.json> <resumen comparación.json> <auditoría clave> <auditoría respuestas> <salida dir> [<auditoría criba>]
 """
 import glob
 import json
@@ -40,6 +41,9 @@ def main():
                         "motivo": x["motivo"], "origen": "arbitraje"})
     clave = json.load(open(aud_clave))
     resp = json.load(open(aud_resp))
+    criba = set(json.load(open(sys.argv[8]))) if len(sys.argv) > 8 else set()
+    apartados = [r for r in resp if f"{r['hecho']}|{r['promesa']}" in criba]
+    resp = [r for r in resp if f"{r['hecho']}|{r['promesa']}" in clave]
     enlazados = [r for r in resp if clave[f"{r['hecho']}|{r['promesa']}"] != "no"]
     descartados = [r for r in resp if clave[f"{r['hecho']}|{r['promesa']}"] == "no"]
     sobran = sum(r["clase"] == "no" for r in enlazados)
@@ -49,6 +53,8 @@ def main():
             "acuerdo_en_enlazados": comp["acuerdo_en_enlazados"], "desacuerdos": comp["desacuerdos"], "arbitraje": elige,
             "auditoria": {"enlazados_revisados": len(enlazados), "enlazados_que_la_auditoria_no_enlaza": sobran,
                           "descartados_revisados": len(descartados), "descartados_que_la_auditoria_enlaza": faltan},
+            **({"criba": {"pares_candidatos": comp.get("pares_antes_de_criba"), "apartados_revisados": len(apartados),
+                          "apartados_que_la_auditoria_enlaza": sum(r["clase"] != "no" for r in apartados)}} if criba else {}),
             "relaciones": len(rel), "misma": sum(r["clase"] == "misma" for r in rel), "contraria": sum(r["clase"] == "contraria" for r in rel)}
     d = pathlib.Path(salida)
     d.mkdir(parents=True, exist_ok=True)

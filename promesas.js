@@ -146,7 +146,8 @@ const EN_VOTACION = { PP: ["PP"], PSOE: ["PSOE"], Vox: ["Vox"], Sumar: ["Sumar"]
   "EAJ-PNV": ["PNV"], BNG: ["Grupo Mixto", "BNG"], UPN: ["Grupo Mixto", "UPN"], "Coalición Canaria": ["Grupo Mixto", "CCa"] };
 const CLASE = { misma: "Trata la misma medida", contraria: "Regula la misma medida en sentido contrario" };
 const CLASE_PROPUESTA = { misma: "Propone la misma medida", contraria: "Propone la misma medida en sentido contrario" };
-const RANGO = { LO: "Ley orgánica", L: "Ley", RDL: "Real decreto-ley" };
+const CLASE_PLAN = { misma: "Planea la misma medida", contraria: "Planea la misma medida en sentido contrario" };
+const RANGO = { LO: "Ley orgánica", L: "Ley", RDL: "Real decreto-ley", RD: "Real decreto" };
 
 function votoDe(v, partido) {
   const [g, f] = EN_VOTACION[partido] || [];
@@ -181,6 +182,19 @@ function pasosConsejo(pasos, padre) {
   p.appendChild(document.createTextNode("."));
 }
 
+// Si estaba en el Plan Anual Normativo del Gobierno: en qué plan, con la página enlazada.
+function pasosPlan(pasos, padre) {
+  if (!pasos?.length) return;
+  const p = nuevo("p", { className: "hecho-voto" }, padre);
+  pasos.forEach((x, k) => {
+    if (k) p.appendChild(document.createTextNode(" · "));
+    p.appendChild(document.createTextNode(`${x.paso} (`));
+    enlace(x.url, "ver en el plan", p);
+    p.appendChild(document.createTextNode(")"));
+  });
+  p.appendChild(document.createTextNode("."));
+}
+
 // La última votación decisiva en el Congreso y cómo votaron los partidos de la promesa.
 function ultimaVotacion(vs, d, padre) {
   const v = vs.at(-1);
@@ -202,25 +216,29 @@ function bloqueHechos(rels, h, d, padre) {
   const caja = nuevo("div", { className: "hechos" }, padre);
   nuevo("p", { className: "hechos-titulo", textContent: "Hechos encontrados" }, caja);
   const ol = nuevo("ol", { className: "hechos-lista" }, caja);
-  const cuando = (r) => iso(h.normas[r.hecho]?.publicada || h.iniciativas[r.hecho]?.presentada || h.consejo[r.hecho]?.fecha);
+  const cuando = (r) => iso(h.normas[r.hecho]?.publicada || h.iniciativas[r.hecho]?.presentada || h.consejo[r.hecho]?.fecha || h.plan[r.hecho]?.fecha);
   for (const r of rels.sort((a, b) => cuando(a).localeCompare(cuando(b)))) {
-    const n = h.normas[r.hecho], ini = h.iniciativas[r.hecho], cm = h.consejo[r.hecho];
-    if (!n && !ini && !cm) continue;
+    const n = h.normas[r.hecho], ini = h.iniciativas[r.hecho], cm = h.consejo[r.hecho], pl = h.plan[r.hecho];
+    if (!n && !ini && !cm && !pl) continue;
     const li = nuevo("li", { className: `hecho hecho-${r.clase}` }, ol);
     const t = nuevo("p", { className: "hecho-norma" }, li);
-    const propuesta = !n;
-    nuevo("strong", { textContent: `${propuesta ? CLASE_PROPUESTA[r.clase] : CLASE[r.clase]}${r.parcial ? ", en parte" : ""}: ` }, t);
+    const clases = n ? CLASE : pl ? CLASE_PLAN : CLASE_PROPUESTA;
+    nuevo("strong", { textContent: `${clases[r.clase]}${r.parcial ? ", en parte" : ""}: ` }, t);
     if (n) {
       enlace(n.url, n.titulo, t);
       t.appendChild(document.createTextNode(` Publicado en el BOE el ${fecha(n.publicada)}.`));
     } else if (ini) {
       enlace(ini.url, ini.titulo, t);
       t.appendChild(document.createTextNode(` Presentada en el Congreso el ${ini.presentada} por ${ini.autor.join(", ")}. Cómo acabó: ${finIniciativa(ini)}.`));
-    } else {
+    } else if (cm) {
       enlace(cm.url, cm.texto.length > 220 ? cm.texto.slice(0, 220).replace(/\s\S*$/, "") + "…" : cm.texto, t);
       t.appendChild(document.createTextNode(` ${cm.paso} el ${fecha(cm.fecha)}. No lo hemos enlazado con ningún expediente del Congreso.`));
+    } else {
+      enlace(pl.url, pl.texto.length > 220 ? pl.texto.slice(0, 220).replace(/\s\S*$/, "") + "…" : pl.texto, t);
+      t.appendChild(document.createTextNode(` ${pl.paso} (${pl.ministerio}). No lo hemos enlazado con ninguna norma, anteproyecto ni expediente del Congreso.`));
     }
     nuevo("p", { className: "hecho-motivo", textContent: `Por qué la enlazamos: ${r.motivo}` }, li);
+    pasosPlan((n || ini || cm)?.plan, li);
     pasosConsejo((n || ini)?.consejo, li);
     const vs = n ? n.tramitacion.flatMap((tr) => tr.votaciones.map((v) => ({ ...v, expediente: tr.expediente, ficha: tr.url })))
       : ini ? ini.votaciones.map((v) => ({ ...v, expediente: ini.clave, ficha: ini.url })) : [];
@@ -236,12 +254,14 @@ function bloqueHechos(rels, h, d, padre) {
 
 // Último paso documentado de una promesa, de más a menos avanzado. Es un hecho (qué documento existe), no un veredicto.
 const PASOS = { boe: "Publicada en el BOE", votada: "Votada en el Congreso, sin llegar a ley", propuesta: "Propuesta en el Congreso, sin votarse",
-  gobierno: "Anteproyecto del Gobierno, sin expediente enlazado en el Congreso" };
+  gobierno: "Anteproyecto del Gobierno, sin expediente enlazado en el Congreso",
+  planificada: "Planificada por el Gobierno, sin más pasos documentados" };
 function ultimoPaso(rels, h) {
   if (rels.some((r) => h.normas[r.hecho])) return "boe";
   if (rels.some((r) => h.iniciativas[r.hecho]?.votaciones.length)) return "votada";
   if (rels.some((r) => h.iniciativas[r.hecho])) return "propuesta";
   if (rels.some((r) => h.consejo[r.hecho])) return "gobierno";
+  if (rels.some((r) => h.plan[r.hecho])) return "planificada";
   return "";
 }
 
@@ -258,7 +278,8 @@ async function arrancarPromesas() {
   const docs = Object.fromEntries(datos.documentos.map((d) => [d.id, d]));
   // Hechos: relaciones por promesa (las de cualquier promesa de la misma frase se muestran juntas).
   const porClave = (l) => Object.fromEntries((l || []).map((x) => [x.clave, x]));
-  const h = { normas: porClave(hechos?.normas), iniciativas: porClave(hechos?.iniciativas), consejo: porClave(hechos?.consejo) };
+  const h = { normas: porClave(hechos?.normas), iniciativas: porClave(hechos?.iniciativas), consejo: porClave(hechos?.consejo),
+    plan: porClave(hechos?.plan) };
   const relaciones = {};
   for (const r of hechos?.relaciones || []) (relaciones[r.promesa] ||= []).push(r);
   for (const p of datos.promesas) {
@@ -318,7 +339,7 @@ async function arrancarPromesas() {
       const vistos = new Set();
       const unicas = rels.filter((r) => !vistos.has(r.hecho) && vistos.add(r.hecho));
       if (unicas.length) bloqueHechos(unicas, h, d, li);
-      else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas y reales decretos-leyes de la legislatura, en las iniciativas del Congreso que no llegaron a ley ni en los anteproyectos y proyectos del Consejo de Ministros. Aún no hemos revisado los reales decretos ni el Plan Anual Normativo." }, li);
+      else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas, reales decretos-leyes y reales decretos de la legislatura, en las iniciativas del Congreso que no llegaron a ley, en los anteproyectos y proyectos del Consejo de Ministros ni en los Planes Anuales Normativos 2024 y 2025." }, li);
     }
     return li;
   }
@@ -377,10 +398,12 @@ async function arrancarPromesas() {
   pintarRespuesta(datos);
   // Fiabilidad de la relación hechos–promesas, en el método.
   const m = document.getElementById("hechos-metodo");
-  const NOMBRE_TANDA = { normas: "norma–promesa", iniciativas: "iniciativa–promesa (iniciativas sin ley y Consejo de Ministros)" };
+  const NOMBRE_TANDA = { normas: "norma–promesa", iniciativas: "iniciativa–promesa (iniciativas sin ley y Consejo de Ministros)",
+    decretos: "decreto o plan–promesa (reales decretos y Plan Anual Normativo)" };
   for (const [tanda, fh] of Object.entries(hechos?.fiabilidad || {})) {
     if (!m) break;
-    const a = fh.auditoria;
+    const a = fh.auditoria, c = fh.criba;
+    if (c) m.appendChild(document.createTextNode(` De ${numero(c.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} posibles, la criba apartó ${numero(c.pares_candidatos - fh.pares_candidatos, 0)}; de ${numero(c.apartados_revisados, 0)} apartados revisados al azar, la revisión independiente habría enlazado ${numero(c.apartados_que_la_auditoria_enlaza, 0)}.`));
     m.appendChild(document.createTextNode(` De ${numero(fh.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} revisados, las dos clasificaciones coincidieron en el ${numero(fh.acuerdo, 1)} % (kappa ${numero(fh.kappa, 2)}; ${numero(fh.acuerdo_en_enlazados, 1)} % en los pares que alguna enlazó); los ${numero(fh.desacuerdos, 0)} desacuerdos se arbitraron. Una cuarta revisión independiente de una muestra al azar no enlazó ${numero(a.enlazados_que_la_auditoria_no_enlaza, 0)} de ${numero(a.enlazados_revisados, 0)} relaciones publicadas y sí enlazó ${numero(a.descartados_que_la_auditoria_enlaza, 0)} de ${numero(a.descartados_revisados, 0)} pares descartados: es la medida de cuánto puede sobrar o faltar. Resultado: ${numero(fh.misma, 0)} relaciones «trata (o propone) la misma medida» y ${numero(fh.contraria, 0)} «en sentido contrario».`));
   }
 }

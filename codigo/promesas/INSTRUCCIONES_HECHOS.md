@@ -13,6 +13,9 @@ Estas son las reglas con las que se decide si un hecho oficial (una norma del BO
     del texto que se presentó (la exposición de motivos);
   - un **anteproyecto o proyecto de ley aprobado por el Consejo de Ministros** que no consta en el Congreso (`CM`): lo
     que dice de él la referencia del Consejo.
+  - un **real decreto** publicado en el BOE (`RD`): número, título, materias y el comienzo de su texto;
+  - una **iniciativa del Plan Anual Normativo** del Gobierno que no consta aprobada (`PAN`): el título y el objetivo
+    que da el plan.
 - Una lista de **promesas candidatas**, cada una con su documento, su etiqueta (en castellano) y su cita literal (en el
   idioma original del documento: castellano, catalán o gallego). Las candidatas salen de una búsqueda automática por
   palabras: la mayoría **no** tendrán relación.
@@ -45,7 +48,10 @@ Una de tres clases:
    es `misma`.
 7. **Da igual quién la presentó y cómo acabó.** Una proposición de un grupo se relaciona con las promesas de cualquier
    partido, y una iniciativa rechazada o caducada cuenta igual que una que siguió adelante: solo importa qué propone.
-8. **Ante la duda, `no`.** Es preferible no enlazar a enlazar mal. El objetivo es que cada enlace publicado se pueda
+8. **Reales decretos y Plan.** Un real decreto que solo regula subvenciones, nombramientos o la estructura interna de
+   un ministerio casi nunca es la misma medida que una promesa; puede serlo si la promesa pide exactamente eso. Una
+   iniciativa del Plan es solo una intención del Gobierno: es `misma` si lo que planea es la medida de la promesa.
+9. **Ante la duda, `no`.** Es preferible no enlazar a enlazar mal. El objetivo es que cada enlace publicado se pueda
    defender leyendo la norma y la promesa.
 
 ## Qué devuelves
@@ -64,6 +70,10 @@ Un JSON con una entrada por cada par que **no** sea `no`:
 - Los pares `no` no se devuelven: se entiende que todos los demás candidatos son `no`.
 
 ## Cómo se comprueba
+
+Con los reales decretos y las iniciativas del Plan, que dan muchos más pares, antes hay una **criba**: una pasada
+rápida que solo aparta los pares que claramente no tratan la misma medida (ante la duda, el par sigue). Una muestra al
+azar de lo apartado se revisa después para medir cuántos enlaces se pierden en ella.
 
 Cada par lo deciden dos pasadas independientes, que no ven la decisión de la otra. Los desacuerdos los resuelve una
 tercera, a ciegas (sin saber qué pasada dijo qué). Se publica el porcentaje de acuerdo y una muestra al azar revisada

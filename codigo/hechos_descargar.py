@@ -153,8 +153,10 @@ def ficha(expediente):
     if not titulo:
         # Sin bloque B.O.E. (por ejemplo, un decreto-ley aún sin convalidar): el título que precede al expediente.
         titulo = re.search(r"((?:Ley Orgánica|Real Decreto-ley|Real Decreto|Ley) \d+/\d{4}, de [^.]+\.) \(" + re.escape(expediente) + r"\)", plano)
+    # Del Congreso no sale ningún real decreto: los que aparecen son menciones dentro del título de otra norma.
     normas = sorted(set(f"{dict(RANGOS)[r]} {int(n)}/{a}" for r, n, a in
-                        re.findall(r"(Ley Orgánica|Real Decreto-ley|Real Decreto|Ley) (\d+)/(\d{4})", tras_boe[:600] or (titulo.group(1) if titulo else ""))))
+                        re.findall(r"(Ley Orgánica|Real Decreto-ley|Real Decreto|Ley) (\d+)/(\d{4})", tras_boe[:600] or (titulo.group(1) if titulo else ""))
+                        if r != "Real Decreto"))
     votaciones = sorted(set(re.findall(r"href=['\"](https?://[^'\"]*?/opendata/votaciones/Leg15/Sesion\d+/\d{8}/Votacion\d+/VOT_\d+\.json)['\"]", texto)))
     # Publicaciones en el Boletín de las Cortes, en orden: la primera es el texto presentado (con su exposición de motivos).
     textos = list(dict.fromkeys(re.findall(r"_publicaciones_id_texto=\((BOCG-15-[A-D]-[\w-]+?)\.CODI\.\)", texto)))
@@ -357,8 +359,7 @@ def main():
     DIR.mkdir(parents=True, exist_ok=True)
     normas = normas_estatales(hoy)
     for n in normas.values():
-        if n["rango"] in ("LO", "L", "RDL"):
-            n.update(detalle_boe(n))
+        n.update(detalle_boe(n))
     print(f"BOE: {sum(n['rango'] == 'LO' for n in normas.values())} LO, {sum(n['rango'] == 'L' for n in normas.values())} leyes, "
           f"{sum(n['rango'] == 'RDL' for n in normas.values())} RDL, {sum(n['rango'] == 'RD' for n in normas.values())} RD")
 

@@ -1282,6 +1282,67 @@ def _apartado_ampliacion(ampliacion, titulo):
     return re.sub(r"\s*\n\s*", " ", mejor)[:4000] if puntos[0] >= 0.6 else ""
 
 
+def _palabras_pan(texto):
+    """Palabras de un título para enlazar el Plan Anual Normativo (sin el rango, el número ni las fórmulas de siempre)."""
+    t = unicodedata.normalize("NFKD", texto.lower())
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    t = re.sub(r"^.*?\b(ley organica|ley|real decreto legislativo|real decreto-ley|real decreto)( \d+/\d{4})?(, de \d+ de [a-z]+)?",
+               "", t, count=1)
+    t = re.sub(r",? a los efectos previstos en el articulo 26\.4.*$", "", t)
+    return {w for w in re.findall(r"[a-z0-9/]{4,}", t)} - {
+        "para", "sobre", "como", "entre", "desde", "establece", "aprueba", "modifica", "modifican", "regula", "regulan",
+        "medidas", "real", "decreto", "texto", "refundido", "aprobado", "determinadas", "enero", "febrero", "marzo", "abril",
+        "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre", "proyecto", "anteproyecto"}
+
+
+def enlazar_pan(planes, cat, iniciativas, sueltos):
+    """Enlaza cada iniciativa del Plan Anual Normativo con lo que salió de ella, sin IA: la norma del BOE publicada desde
+    el 1 de enero del año del plan (mismo rango, o decreto-ley para una ley), o si no la hay, el expediente del Congreso
+    o el anteproyecto del Consejo de Ministros (desde el año anterior). Hace falta que casi todas las palabras del título más corto estén en el otro (≥ 0,85) y que
+    los dos títulos se parezcan en conjunto (Jaccard ≥ 0,4): un título corto encaja en casi cualquiera."""
+    # Una ley planificada a veces sale como real decreto-ley (p. ej., el subsidio por desempleo, RDL 2/2024).
+    rangos = {"LEY ORGÁNICA": ("LO",), "LEY": ("L", "RDL"), "REAL DECRETO": ("RD",), "REAL DECRETO LEGISLATIVO": ("RDLeg",),
+              "REAL DECRETO-LEY": ("RDL",)}
+    destinos = ([("norma", n["clave"], n["rango"], n["publicada"], _palabras_pan(n["titulo"])) for n in cat["normas"]]
+                + [("iniciativa", i["clave"], "INI", iso_es(i["presentada"]), _palabras_pan(i["titulo"]))
+                   for i in iniciativas if i["clave"].startswith("121/")]
+                + [("consejo", c["clave"], "CM", c["fecha"], _palabras_pan(c["texto"])) for c in sueltos])
+    por_hecho, sueltos_pan = {}, []
+    for e in planes:
+        w = _palabras_pan(e["titulo"])
+        mejor = None
+        for tipo, clave, rango, fecha, w2 in destinos:
+            # La norma, desde el año del plan; el anteproyecto o el expediente pueden ser del año anterior (el plan
+            # recoge lo que se quiere aprobar ese año, aunque su tramitación empezara antes).
+            desde = f"{e['plan']}-01-01" if tipo == "norma" else f"{e['plan'] - 1}-01-01"
+            if not w or not w2 or not fecha or fecha < desde:
+                continue
+            if tipo == "norma" and rango not in rangos[e["rango"]]:
+                continue
+            if tipo != "norma" and e["rango"] not in ("LEY", "LEY ORGÁNICA"):
+                continue
+            comun = len(w & w2)
+            contencion, jaccard = comun / min(len(w), len(w2)), comun / len(w | w2)
+            if contencion >= 0.85 and jaccard >= 0.4 and (mejor is None or (jaccard, tipo == "norma") > mejor[0]):
+                mejor = ((jaccard, tipo == "norma"), clave)
+        paso = {"paso": f"Planificado en el Plan Anual Normativo {e['plan']}", "fecha": f"{e['plan']}-01-01",
+                "texto": e["titulo"], "url": e["url"]}
+        if mejor:
+            por_hecho.setdefault(mejor[1], []).append(paso)
+        else:
+            sueltos_pan.append(paso | {"clave": f"PAN {e['plan']} {hashlib.sha1(e['titulo'].encode()).hexdigest()[:6]}",
+                                       "rango": e["rango"], "ministerio": e["ministerio"], "objetivo": e["objetivo"]})
+    return por_hecho, sueltos_pan
+
+
+def iso_es(f):
+    """d/m/aaaa → aaaa-mm-dd."""
+    if not f:
+        return None
+    d, m, a = f.strip()[:10].split("/")
+    return f"{a}-{int(m):02d}-{int(d):02d}"
+
+
 def enlazar_consejo(cat, expedientes):
     """Enlaza las referencias del Consejo de Ministros con el Congreso y el BOE, sin IA: por parecido del título y por
     fechas. Anteproyecto (primera vuelta) → proyecto (segunda vuelta) → expediente 121/ del Congreso → ley; y real
@@ -1440,7 +1501,7 @@ def construir_hechos(relaciones_dirs=None):
     consejo = enlazar_consejo(cat, expedientes)
     normas = []
     for n in cat["normas"]:
-        if n["rango"] not in ("LO", "L", "RDL"):
+        if n["rango"] not in ("LO", "L", "RDL", "RD"):
             continue
         tram = [{k: e[k] for k in ("expediente", "tipo", "autor", "presentada", "url")} | {"votaciones": votaciones_de(e["expediente"], e["votaciones"])}
                 for e in expedientes.get(n["clave"], [])]
@@ -1459,6 +1520,11 @@ def construir_hechos(relaciones_dirs=None):
                             "situacion": i["situacion"], "url": url,
                             "votaciones": votaciones_de(i["expediente"], (i.get("ficha") or {}).get("votaciones", [])),
                             "consejo": consejo["por_expediente"].get(i["expediente"], [])})
+    # Plan Anual Normativo: cada iniciativa del plan, enlazada con lo que salió de ella; las que no, hechos por sí mismas.
+    planes = [e for f in sorted((AQUI / "pan").glob("pan_*.json")) for e in json.loads(f.read_text())]
+    por_plan, plan_sueltos = enlazar_pan(planes, cat, iniciativas, consejo["sueltos"])
+    for h_ in normas + iniciativas + consejo["sueltos"]:
+        h_["plan"] = por_plan.get(h_["clave"], [])
     # Cada tanda de la relación hechos–promesas (normas; iniciativas y Consejo de Ministros) tiene su carpeta y su fiabilidad.
     relaciones, fiabilidad = [], {}
     for tanda, carpeta in (relaciones_dirs or {}).items():
@@ -1468,26 +1534,35 @@ def construir_hechos(relaciones_dirs=None):
             fiabilidad[tanda] = json.loads((carpeta / "fiabilidad.json").read_text())
     # En la web solo hacen falta las iniciativas y los anteproyectos enlazados con alguna promesa (el resto pesa y no se ve).
     enlazados = {r["hecho"] for r in relaciones}
-    salida = {"generado": cat["generado"], "normas": normas, "iniciativas": [i for i in iniciativas if i["clave"] in enlazados],
+    # Las normas con rango de ley, todas; los reales decretos, solo los enlazados (son 950).
+    salida = {"generado": cat["generado"], "normas": [n for n in normas if n["rango"] != "RD" or n["clave"] in enlazados],
+              "iniciativas": [i for i in iniciativas if i["clave"] in enlazados],
               "consejo": [c_ for c_ in consejo["sueltos"] if c_["clave"] in enlazados],
+              "plan": [p_ for p_ in plan_sueltos if p_["clave"] in enlazados],
               "relaciones": relaciones, "fiabilidad": fiabilidad,
               "fuentes": {"boe": "https://www.boe.es/datosabiertos/", "congreso": "https://www.congreso.es/es/datos-abiertos",
-                          "consejo": "https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/index.aspx"}}
+                          "consejo": "https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/index.aspx",
+                          "plan": "https://transparencia.gob.es/transparencia/es/Catalogo/normativa/plan-anual-normativo.html"}}
     # Para relacionarlos con promesas (no se publica en la web: lleva el comienzo del texto de cada hecho).
     textos = {i["expediente"]: i.get("texto", "") for i in cat["iniciativas"]}
     para_promesas = ([{"clave": n["clave"], "tipo": n["rango"], "titulo": n["titulo"], "fecha": n["publicada"], "referencia": n["id"],
-                       "materias": n.get("materias", []), "inicio": n.get("inicio", "")} for n in cat["normas"] if n["rango"] in ("LO", "L", "RDL")]
+                       "materias": n.get("materias", []), "inicio": n.get("inicio", "")} for n in cat["normas"] if n["rango"] in ("LO", "L", "RDL", "RD")]
                      + [{"clave": i["clave"], "tipo": "INI", "titulo": i["titulo"], "fecha": i["presentada"], "referencia": i["clave"],
                          "autor": i["autor"], "materias": [], "inicio": textos.get(i["clave"], "")} for i in iniciativas]
                      + [{"clave": c["clave"], "tipo": "CM", "titulo": c["texto"][:300], "fecha": c["fecha"], "referencia": c["url"],
-                         "materias": [], "inicio": c["texto"] + "\n\n" + c.pop("_detalle", "")} for c in consejo["sueltos"]])
+                         "materias": [], "inicio": c["texto"] + "\n\n" + c.pop("_detalle", "")} for c in consejo["sueltos"]]
+                     + [{"clave": p_["clave"], "tipo": "PAN", "titulo": p_["texto"], "fecha": p_["fecha"], "referencia": p_["url"],
+                         "materias": [], "inicio": p_["texto"] + "\n\nObjetivo: " + p_["objetivo"]} for p_ in plan_sueltos])
     (AQUI / "hechos" / "para_promesas.json").write_text(json.dumps(para_promesas, ensure_ascii=False))
     (WEB / "datos" / "hechos.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
-    sin_tram = [n["clave"] for n in normas if not n["tramitacion"]]
-    print(f"Hechos: {len(normas)} normas con rango de ley, {sum(bool(n['tramitacion']) for n in normas)} con su tramitación en el Congreso"
+    sin_tram = [n["clave"] for n in normas if not n["tramitacion"] and n["rango"] != "RD"]
+    leyes = [n for n in normas if n["rango"] != "RD"]
+    print(f"Hechos: {len(leyes)} normas con rango de ley, {sum(bool(n['tramitacion']) for n in leyes)} con su tramitación en el Congreso"
+          f" y {len(normas) - len(leyes)} reales decretos"
           f"{'; sin ella: ' + ', '.join(sin_tram) if sin_tram else ''}; {len(iniciativas)} iniciativas sin ley; Consejo de Ministros: "
           f"{sum(bool(n['consejo']) for n in normas)} normas con su aprobación, {len(consejo['sueltos'])} anteproyectos o proyectos sin"
-          f" expediente en el Congreso, {consejo['sin_enlace_rdl']} decretos-leyes sin enlazar; {len(relaciones)} relaciones con promesas")
+          f" expediente en el Congreso, {consejo['sin_enlace_rdl']} decretos-leyes sin enlazar; Plan Anual Normativo: "
+          f"{len(planes) - len(plan_sueltos)} iniciativas enlazadas y {len(plan_sueltos)} sin hecho; {len(relaciones)} relaciones con promesas")
 
 
 def escribir_csv_paginas(gasto, ingresos):
@@ -2233,7 +2308,8 @@ def main():
     (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
     construir_promesas(documentos)
     construir_hechos({"normas": CODIGO / "promesas" / "extraccion" / "hechos",
-                      "iniciativas": CODIGO / "promesas" / "extraccion" / "hechos_iniciativas"})
+                      "iniciativas": CODIGO / "promesas" / "extraccion" / "hechos_iniciativas",
+                      "decretos": CODIGO / "promesas" / "extraccion" / "hechos_decretos"})
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

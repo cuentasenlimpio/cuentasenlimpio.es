@@ -13,7 +13,8 @@ otras fuentes. Son exactamente los que han construido la versión publicada en e
 | `promesas/INSTRUCCIONES.md` | Las reglas exactas con las que se clasifican las frases de esos documentos (promesa o no, y por qué). |
 | `promesas/INSTRUCCIONES_HECHOS.md` | Las reglas con las que se decide si una norma trata la misma medida que una promesa. |
 | `promesas/candidatos_hechos.py`, `comparar_hechos.py`, `aplicar_hechos.py` | Búsqueda de candidatos por palabras, comparación de las dos pasadas independientes con su arbitraje y su auditoría. |
-| `hechos_descargar.py` | Descarga del BOE (sumario diario) y del Congreso (iniciativas, fichas y votaciones). |
+| `hechos_descargar.py` | Descarga del BOE (sumario diario), del Congreso (iniciativas, textos presentados, fichas y votaciones) y de La Moncloa (referencias del Consejo de Ministros). |
+| `extraer_pan.py`, `pan/` | Extracción de las iniciativas de los Planes Anuales Normativos (el PDF del Portal de Transparencia se enlaza, no se republica) y su resultado. |
 | `xls.py` | Lector de los libros .xls antiguos del SEPE (paro registrado), sin dependencias. |
 | `px.py` | Lector de los ficheros PC-Axis de la Seguridad Social (afiliación), sin dependencias. |
 | `acontecimientos.json` | Los acontecimientos que se marcan en los gráficos, con su fuente y el criterio para elegirlos. |
