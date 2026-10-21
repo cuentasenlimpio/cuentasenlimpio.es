@@ -32,9 +32,9 @@ function piezasRecientes(claves, colores, ultimosValores) {
   const series = [{
     id: "tramos", type: "line", data: [], silent: true, z: 0,
     markArea: { silent: true, data: [
-      [{ xAxis: desde, itemStyle: { color: "rgba(29,29,27,0.05)" }, label: rotulo() }, { xAxis: ult }],
-      [{ xAxis: ult, itemStyle: { color: "rgba(29,29,27,0.11)" }, label: rotulo() }, { xAxis: ult + 1 }],
-      [{ xAxis: ult + 1, itemStyle: { color: "rgba(0,0,0,0)" }, label: rotulo() }, { xAxis: hasta }],
+      [{ xAxis: desde, itemStyle: { color: EC.css("--sombra-tenue") }, label: rotulo() }, { xAxis: ult }],
+      [{ xAxis: ult, itemStyle: { color: EC.css("--sombra-fuerte") }, label: rotulo() }, { xAxis: ult + 1 }],
+      [{ xAxis: ult + 1, itemStyle: { color: "transparent" }, label: rotulo() }, { xAxis: hasta }],
     ] },
   }];
   claves.forEach((clave, k) => {
@@ -67,7 +67,7 @@ function piezasRecientes(claves, colores, ultimosValores) {
     const base = [ult, ultimosValores[claves.indexOf("deuda")]];
     const contorno = [base, ...años.map((a) => [a, ab.deuda.p90[a]]), ...años.reverse().map((a) => [a, ab.deuda.p10[a]])];
     series.push({ id: "abanico", type: "custom", data: [0], silent: true, clip: true, z: 1,
-      renderItem: (_p, api) => ({ type: "polygon", shape: { points: contorno.map((q) => api.coord(q)) }, style: { fill: "rgba(29,29,27,0.07)" } }) });
+      renderItem: (_p, api) => ({ type: "polygon", shape: { points: contorno.map((q) => api.coord(q)) }, style: { fill: EC.css("--hueco") } }) });
   }
   return series;
 }
@@ -732,20 +732,32 @@ function pintarRespuesta() {
   const peso = deuda >= 100 ? "ya supera todo lo que produce el país en un año" : deuda >= 90 ? "ya equivale a casi todo lo que produce el país en un año"
     : `equivale a ${numero(Math.round(deuda), 0)} de cada 100 € de lo que produce el país en un año`;
   p.append(b, ` y se sumó a la deuda, que ${peso}.`);
-  const cifras = document.createElement("span");
+  // Las cifras exactas, plegadas debajo de la frase: la respuesta se lee primero en llano.
+  let plegadas = document.getElementById("respuesta-cifras");
+  if (!plegadas) {
+    plegadas = document.createElement("details");
+    plegadas.id = "respuesta-cifras";
+    plegadas.className = "fuente-detalle respuesta-cifras";
+    p.after(plegadas);
+  }
+  plegadas.textContent = "";
+  const resumen = document.createElement("summary");
+  resumen.textContent = "Las cifras exactas, por habitante y frente a la Unión Europea";
+  plegadas.appendChild(resumen);
+  const cifras = document.createElement("p");
   cifras.className = "respuesta-persona";
   const ue = (k) => d.ue?.indicadores?.[k]?.EU27_2020?.[i];
   cifras.textContent = `En cifras: ingresos, ${v("ingresos")} % del PIB; gastos, ${v("gastos")} %; ${saldo < 0 ? "déficit" : "superávit"}, ${numero(Math.abs(saldo), 1)} %; deuda, ${v("deuda")} %.`
     + (ue("deuda") !== undefined && ue("deuda") !== null ? ` En la Unión Europea, de media: ${ue("saldo") < 0 ? "déficit" : "superávit"} del ${numero(Math.abs(ue("saldo")), 1)} % y deuda del ${numero(ue("deuda"), 1)} %.` : "");
-  p.appendChild(cifras);
+  plegadas.appendChild(cifras);
   // A escala de persona (lectura: euros de cada serie entre la población media del año, de Eurostat).
   const h = (k) => s[k].habitante[i];
   if (h("gastos")) {
-    const q = document.createElement("span");
+    const q = document.createElement("p");
     q.className = "respuesta-persona";
     q.textContent = `Por habitante: entraron ${eurosHablados(h("ingresos"))} y se gastaron ${eurosHablados(h("gastos"))} en el año, `
       + `${saldo < 0 ? "faltaron" : "sobraron"} ${eurosHablados(Math.abs(h("saldo")))}, y la deuda equivale a ${eurosHablados(h("deuda"))} por cada habitante. No es lo que debe cada persona: es la deuda dividida entre todos, para hacerse una idea de su tamaño.`;
-    p.appendChild(q);
+    plegadas.appendChild(q);
   }
   const con = d.años.filter((a, k) => s.saldo.pib[k] !== null && s.saldo.pib[k] >= 0);
   const t = document.getElementById("superavit");

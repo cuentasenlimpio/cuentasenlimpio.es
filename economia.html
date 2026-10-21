@@ -8,40 +8,45 @@
   <meta name="referrer" content="no-referrer">
   <title>La economía detrás de las cuentas · Cuentas en limpio</title>
   <meta name="description" content="Empleo, pensiones, precios, coste de la deuda, crecimiento y envejecimiento: los datos de la economía que mueven las cuentas públicas, con la fuente de cada cifra.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=a6a79b8632" defer></script>
-  <script src="ec.js?v=7568c86795" defer></script>
-  <script src="economia.js?v=a966a9ca58" defer></script>
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="ec.js?v=c15c2a70d7" defer></script>
+  <script src="economia.js?v=d77ba9b4b6" defer></script>
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html" aria-current="page">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
 
   <main>
     <p class="antetitulo">El dinero · el contexto</p>
     <h1 class="pregunta">¿Qué pasa en la economía que mueve las cuentas?</h1>
-    <p class="respuesta">Las cuentas públicas dependen de cinco cosas que pasan fuera de ellas:</p>
-    <ul class="respuesta-lista">
-      <li>cuánta gente trabaja, porque de eso salen las cotizaciones;</li>
-      <li>cuánta gente está en paro, por lo que se paga en prestaciones;</li>
-      <li>cuántas personas se jubilan, por las pensiones;</li>
-      <li>a qué interés se pide prestado, por lo que cuesta la deuda;</li>
-      <li>y cuánto crece la economía, porque cuanto más crece, menos pesa la deuda.</li>
-    </ul>
-    <p class="respuesta">Estos son esos datos, con la fuente de cada cifra.</p>
+    <p class="respuesta">Las cuentas públicas dependen de cosas que pasan fuera de ellas. Estas son, con la fuente de cada cifra:</p>
+    <nav class="indice" aria-label="En esta página"><ol>
+      <li><a href="#b1">¿Cuánta gente trabaja y cuánta está en paro?</a> De ahí salen las cotizaciones y lo que se paga en prestaciones.</li>
+      <li><a href="#b2">¿Cuántas pensiones hay y cuánto cuestan?</a></li>
+      <li><a href="#b3">¿Suben los precios?</a> Las pensiones suben con ellos.</li>
+      <li><a href="#b4">¿Cuánto cuesta pedir prestado?</a> Lo que cuesta la deuda.</li>
+      <li><a href="#b5">¿Cuánto crece la economía?</a> Cuanto más crece, menos pesa la deuda.</li>
+      <li><a href="#b6">¿Cómo envejece la población?</a></li>
+    </ol></nav>
     <p class="contabilidad">Son datos de encuestas y registros oficiales, no de las cuentas públicas. Que dos cosas pasen a la vez no quiere decir que una cause la otra: <a href="como-se-miente.html#causa">por qué</a>.</p>
     <div id="capas"></div>
     <div class="nota-capas" id="nota-capas"></div>
@@ -212,15 +217,20 @@
 
     </section>
 
-    <details class="plegable ficha" open>
+    <details class="plegable ficha">
       <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
     </details>
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

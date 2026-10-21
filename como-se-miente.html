@@ -8,22 +8,26 @@
   <meta name="referrer" content="no-referrer">
   <title>Cómo se miente con datos verdaderos · Cuentas en limpio</title>
   <meta name="description" content="Cinco distinciones para leer cifras públicas sin que te engañen: contabilidades, perímetro, presupuesto frente a ejecución, unidades y causalidad.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=a6a79b8632" defer></script>
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html">El dinero</a>
       <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html" aria-current="true">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
 
@@ -39,7 +43,7 @@
       <p>Una misma administración cuenta su dinero de tres maneras. Ninguna miente: cada una responde a una pregunta diferente.</p>
 
       <div class="tabla">
-        <table>
+        <table class="tabla-fichas">
           <thead><tr><th scope="col">Contabilidad</th><th scope="col">Qué pregunta responde</th><th scope="col">Quién la publica</th></tr></thead>
           <tbody>
             <tr><td>Presupuestaria</td><td>¿Cuánto autorizó el Parlamento a gastar y cuánto se comprometió de verdad?</td><td>Ministerio de Hacienda (los presupuestos) e Intervención General del Estado, IGAE (lo ejecutado)</td></tr>
@@ -79,7 +83,7 @@
         <figcaption>Lo que un nivel transfiere a otro (del Estado a una comunidad, por ejemplo) se cuenta una sola vez al sumar. A eso se le llama <em>consolidar</em>.</figcaption>
 
       </figure>
-      <p class="fuente-grafico">Fuente: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=es" data-d="@exp_navegador">gasto de las administraciones públicas por funciones y nivel de administración</a> (tabla gov_10a_exp, actualizada el <!--d:exp_actualizada-->16 de septiembre de 2026<!--/d-->), año <!--d:perimetro_año-->2023<!--/d-->, el último definitivo. Porcentajes: <span class="etiqueta-tipo lectura">cálculo nuestro</span> gasto del nivel ÷ gasto de todas las administraciones en esa función. <a href="crudo/gov_10a_exp-2026-10-21-c39d77b54ad8.json.gz" data-d="@exp_copia">Fichero descargado</a>.</p>
+      <p class="fuente-grafico">Fuente: Eurostat, <a href="https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=es" data-d="@exp_navegador">gasto de las administraciones públicas por funciones y nivel de administración</a> (tabla gov_10a_exp, actualizada el <!--d:exp_actualizada-->21 de octubre de 2026<!--/d-->), año <!--d:perimetro_año-->2023<!--/d-->, el último definitivo. Porcentajes: <span class="etiqueta-tipo lectura">cálculo nuestro</span> gasto del nivel ÷ gasto de todas las administraciones en esa función. <a href="crudo/gov_10a_exp-2026-10-21-a5f5df5071b9.json.gz" data-d="@exp_copia">Fichero descargado</a>.</p>
 
       <p>De esta distinción salen tres trampas habituales:</p>
       <ul>
@@ -124,7 +128,7 @@
       </ul>
 
       <div class="tabla">
-        <table>
+        <table class="tabla-fichas">
           <thead><tr><th scope="col">Año</th><th scope="col">Presupuesto con el que se gastó</th></tr></thead>
           <tbody>
             <tr><td>1996</td><td>Los de 1995 (Ley 41/1994), prorrogados todo el año</td></tr>
@@ -161,7 +165,7 @@
       <p>La misma serie de datos cuenta historias opuestas según la unidad en la que se exprese:</p>
 
       <div class="tabla">
-        <table>
+        <table class="tabla-fichas">
           <thead><tr><th scope="col">Unidad</th><th scope="col">Qué responde</th><th scope="col">La trampa típica</th></tr></thead>
           <tbody>
             <tr><td>Euros corrientes</td><td>¿Cuántos euros de cada año?</td><td>Con inflación, casi cualquier partida bate un «récord histórico» cada año.</td></tr>
@@ -219,8 +223,13 @@
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

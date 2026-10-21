@@ -74,11 +74,19 @@ function listaSupuestos(ul, frases) {
 // Un deslizador con su valor a la vista y botones de ejemplo que lo mueven.
 function mando(id, mostrar, alCambiar) {
   const r = document.getElementById(id), o = document.getElementById(`${id}-v`);
-  const pintar = () => { o.textContent = mostrar(+r.value); alCambiar(); };
+  const pintar = () => { o.textContent = mostrar(+r.value); r.setAttribute("aria-valuetext", mostrar(+r.value)); alCambiar(); };
+  if (!r.nextElementSibling?.classList.contains("extremos")) {
+    const ex = document.createElement("div");
+    ex.className = "extremos";
+    ex.setAttribute("aria-hidden", "true");
+    for (const v of [r.min, r.max]) { const s = document.createElement("span"); s.textContent = mostrar(+v); ex.appendChild(s); }
+    r.after(ex);
+  }
   r.addEventListener("input", pintar);
   r.closest("form").querySelectorAll("[data-valor]").forEach((b) => b.addEventListener("click", () => { r.value = b.dataset.valor; pintar(); }));
   r.closest("form").addEventListener("submit", (e) => e.preventDefault());
   o.textContent = mostrar(+r.value);
+  r.setAttribute("aria-valuetext", mostrar(+r.value));
   return r;
 }
 

@@ -21,6 +21,37 @@ async function arrancar() {
   pon("k-deuda", `${numero(v("deuda"), 1)} %`);
   const saldo = v("saldo");
   pon("k-saldo", `${numero(Math.abs(saldo), 1)} %`);
+  // La respuesta en una frase, con lo relevante subrayado
+  const resp = document.getElementById("portada-respuesta");
+  if (resp) {
+    const de100 = Math.round((100 * aapp.series.gastos.corrientes[i]) / aapp.series.ingresos.corrientes[i]);
+    resp.textContent = `En ${año}, `;
+    const s1 = document.createElement("strong");
+    s1.textContent = saldo < 0 ? `por cada 100 € que entraron, salieron unos ${de100}` : `por cada 100 € que entraron, salieron unos ${de100} y sobró el resto`;
+    resp.append(s1, saldo < 0 ? ". Lo que faltó se pidió prestado y se sumó a la deuda, que " : ". La deuda ");
+    const s2 = document.createElement("strong");
+    s2.textContent = v("deuda") >= 100 ? "ya supera todo lo que produce el país en un año" : `equivale a ${numero(Math.round(v("deuda")), 0)} de cada 100 € de lo que produce el país en un año`;
+    resp.append(s2, ".");
+  }
+  // De cada 100 € que entraron: las cinco partes mayores
+  const caja = document.getElementById("portada-reparto");
+  if (caja && ingresos) {
+    const r = ingresos.reparto.at(-1);
+    const NOMBRES = { cotizaciones: "Cotizaciones", renta: "Impuesto sobre la renta", iva: "IVA", otros_ingresos: "Otros ingresos", sociedades: "Impuesto de sociedades", productos: "Impuestos especiales" };
+    const filas = Object.entries(NOMBRES).map(([k, n]) => [n, r[k]]).filter(([, x]) => x).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const max = filas[0][1];
+    caja.textContent = "";
+    for (const [n, x] of filas) {
+      const a = document.createElement("span"); a.textContent = n;
+      const b = document.createElement("span"); b.className = "b"; b.style.width = `${(100 * x) / max}%`;
+      const c = document.createElement("span"); c.className = "n"; c.textContent = numero(Math.round(x), 0);
+      caja.append(a, b, c);
+    }
+    caja.setAttribute("aria-label", `De cada 100 € que entraron en ${ingresos.años.at(-1)}: ${filas.map(([n, x]) => `${n}, ${Math.round(x)}`).join("; ")}.`);
+    const f = document.getElementById("reparto-fuente");
+    f.textContent = "Fuente: Eurostat e IGAE. ";
+    f.appendChild(etiquetaTipo("lectura"));
+  }
   if (saldo >= 0) {
     pon("k-saldo-nombre", "Superávit");
     pon("k-saldo-explica", "del PIB. Lo que sobra tras cubrir el gasto.");

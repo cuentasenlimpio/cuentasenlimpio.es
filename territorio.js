@@ -9,7 +9,7 @@ const estado = { t: null, aapp: null, sel: null };
 function linea(id, series, { formato, eje, min = null, alto = 280 }) {
   const caja = document.getElementById(id);
   const xs = series.flatMap((s) => s.x);
-  const xmin = Math.floor(Math.min(...xs)), xmax = Math.ceil(Math.max(...xs) + 1e-9);
+  const xmin = Math.floor(Math.min(...xs)), xmax = Math.ceil(Math.max(...xs));
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, alto);
   const g = caja.cuentasGrafico;
   const op = EC.tiempo({ min: xmin, max: xmax, marcasArriba: false, aria: caja.getAttribute("aria-label") });
@@ -17,7 +17,7 @@ function linea(id, series, { formato, eje, min = null, alto = 280 }) {
   op.yAxis = EC.ejeY({ nombre: eje, formato: (v) => formato(v, true), min: min ?? undefined });
   op.yAxis.scale = min === null;
   op.series = series.map((s, k) => EC.linea(`s${k}`, s.x.map((x, i) => [x, s.v[i]]), s.color,
-    { connectNulls: false, lineStyle: { color: s.color, width: s.ancho ?? 2 } }));
+    { connectNulls: false, lineStyle: { color: s.color, width: s.ancho ?? 3 } }));
   if (series.some((s) => s.cero)) {
     op.series.push({ type: "line", data: [], silent: true, markLine: { silent: true, symbol: "none", label: { show: false },
       lineStyle: { color: EC.css("--linea-fuerte"), type: "solid", width: 1 }, data: [{ yAxis: 0 }] } });
@@ -38,9 +38,14 @@ function linea(id, series, { formato, eje, min = null, alto = 280 }) {
       if (j < 0 || s.v[j] === null || s.v[j] === undefined) continue;
       const f = document.createElement("span");
       f.className = "lectura-fila";
+      const clave = document.createElement("span");
+      clave.className = "clave-linea";
+      clave.style.borderColor = s.color;
+      if (s.ancho && s.ancho < 2) clave.style.borderTopWidth = `${s.ancho}px`;
+      f.appendChild(clave);
       const b = document.createElement("b");
       b.textContent = formato(s.v[j]);
-      f.append(b, ` ${s.nombre}`);
+      f.append(" ", b, ` ${s.nombre}`);
       c.appendChild(f);
     }
   };
@@ -59,7 +64,7 @@ function pintarFicha() {
   const { t } = estado;
   const c = t.ccaa.find((x) => x.id === estado.sel);
   const T = t.total;
-  const c1 = EC.css("--serie-gastos"), c2 = EC.css("--linea-fuerte"), c3 = EC.css("--tinta");
+  const c1 = EC.css("--serie-gastos"), c2 = EC.css("--tinta-suave"), c3 = EC.css("--tinta");
   const pct = (d) => (v) => `${numero(v, d)} %`;
   document.getElementById("ficha-t").textContent = c.nombre;
 
@@ -103,8 +108,8 @@ function pintarFicha() {
 
   // Déficit
   linea("g-def", [
-    { nombre: c.nombre, x: c.deficit.años, v: c.deficit.pib, etiquetas: c.deficit.años.map(String), color: c1, ancho: 2.5, cero: true },
-    { nombre: "conjunto de las comunidades", x: T.deficit.años, v: T.deficit.pib, etiquetas: T.deficit.años.map(String), color: c2, ancho: 1.5 },
+    { nombre: c.nombre, x: c.deficit.años, v: c.deficit.pib, etiquetas: c.deficit.años.map(String), color: c1, ancho: 3.5, cero: true },
+    { nombre: "conjunto de las comunidades", x: T.deficit.años, v: T.deficit.pib, etiquetas: T.deficit.años.map(String), color: c2, ancho: 2 },
   ], { formato: pct(2), eje: "% del PIB" });
   fuente("g-def-fuente", [[`igae_ccaa_${c.deficit.años[n]}`, "operaciones no financieras por comunidad"]], "dato",
     "Un fichero por año; el último, provisional. En contabilidad nacional, que es la que cuenta para las reglas.");
@@ -112,12 +117,12 @@ function pintarFicha() {
   // Deuda en % del PIB y con el Estado
   const xq = c.deuda.trimestres.map(xTrim), et = c.deuda.trimestres.map(nombreTrim);
   linea("g-deu", [
-    { nombre: c.nombre, x: xq, v: c.deuda.pib, etiquetas: et, color: c1, ancho: 2.5 },
-    { nombre: "conjunto de las comunidades", x: T.deuda.trimestres.map(xTrim), v: T.deuda.pib, etiquetas: T.deuda.trimestres.map(nombreTrim), color: c2, ancho: 1.5 },
+    { nombre: c.nombre, x: xq, v: c.deuda.pib, etiquetas: et, color: c1, ancho: 3.5 },
+    { nombre: "conjunto de las comunidades", x: T.deuda.trimestres.map(xTrim), v: T.deuda.pib, etiquetas: T.deuda.trimestres.map(nombreTrim), color: c2, ancho: 2 },
   ], { formato: pct(1), eje: "% del PIB", min: 0 });
   fuente("g-deu-fuente", [["bde_be1310", "deuda según el Procedimiento de Déficit Excesivo, % del PIB regional"]], "dato");
   linea("g-est", [
-    { nombre: "deuda total", x: xq, v: c.deuda.meur, etiquetas: et, color: c1, ancho: 2.5 },
+    { nombre: "deuda total", x: xq, v: c.deuda.meur, etiquetas: et, color: c1, ancho: 3.5 },
     { nombre: "de ella, con el Estado", x: xq, v: c.deuda.estado_meur, etiquetas: et, color: c3 },
   ], { formato: (v) => `${numero(v, 0)} M€`, eje: "millones de €", min: 0 });
   fuente("g-est-fuente", [["bde_be1309", "deuda en miles de euros"], ["bde_be1306", "préstamos del fondo de financiación"]], "dato",
@@ -138,8 +143,8 @@ function pintarFicha() {
   fin.hidden = !c.financiacion;
   if (c.financiacion) {
     linea("g-fin", [
-      { nombre: c.nombre, x: c.financiacion.años, v: c.financiacion.por_hab_ajustado, etiquetas: c.financiacion.años.map(String), color: c1, ancho: 2.5 },
-      { nombre: "media del régimen común", x: T.financiacion.años, v: T.financiacion.por_hab_ajustado, etiquetas: T.financiacion.años.map(String), color: c2, ancho: 1.5 },
+      { nombre: c.nombre, x: c.financiacion.años, v: c.financiacion.por_hab_ajustado, etiquetas: c.financiacion.años.map(String), color: c1, ancho: 3.5 },
+      { nombre: "media del régimen común", x: T.financiacion.años, v: T.financiacion.por_hab_ajustado, etiquetas: T.financiacion.años.map(String), color: c2, ancho: 2 },
     ], { formato: (v) => `${numero(Math.round(v), 0)} €`, eje: "€", min: 0, alto: 240 });
     fuente("g-fin-fuente", [[`hacienda_liquidacion_${c.financiacion.años.at(-1)}`, "cuadros de la liquidación, cuadro 2.2.3"]], "dato",
       "Financiación homogénea (sin las competencias que solo tienen algunas comunidades) por habitante ajustado. Cada año se publica dos años después.");
@@ -161,8 +166,15 @@ function pintarTodas() {
   fuente("m-def-fuente", [[`igae_ccaa_${a.at(-1)}`, "operaciones no financieras por comunidad"]], "dato", "Un fichero de la IGAE por año.");
 }
 
+const CORTOS = { "Principado de Asturias": "Asturias", "Illes Balears": "Baleares (Illes Balears)", "Comunidad de Madrid": "Madrid",
+  "Región de Murcia": "Murcia", "Comunidad Foral de Navarra": "Navarra" };
+const nombreCorto = (n) => CORTOS[n] || n;
+const claveOrden = (n) => (n === "Comunitat Valenciana" ? "Valenciana" : nombreCorto(n));
+
 async function arrancar() {
   const [t, aapp] = await Promise.all([fetch("datos/territorio.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  // Orden alfabético por el nombre de todos los días (Asturias, Baleares, Madrid…), no por el oficial.
+  t.ccaa.sort((x, y) => claveOrden(x.nombre).localeCompare(claveOrden(y.nombre), "es"));
   Object.assign(estado, { t, aapp, sel: t.ccaa[0].id });
   const T = t.total, q = T.deuda.trimestres.length - 1, n = T.deficit.años.length - 1;
   const p = document.getElementById("respuesta");
@@ -175,7 +187,7 @@ async function arrancar() {
   for (const c of t.ccaa) {
     const o = document.createElement("option");
     o.value = c.id;
-    o.textContent = c.nombre;
+    o.textContent = nombreCorto(c.nombre);
     sel.appendChild(o);
   }
   sel.addEventListener("change", () => { estado.sel = sel.value; pintarFicha(); });

@@ -34,7 +34,7 @@ function lineas(id, series, { formato, eje = "", min = null, alto = 300 }) {
   op.series = [
     EC.marcas(estado.d, { min: xmin, max: xmax, capas }),
     ...series.map((s, k) => EC.linea(`s${k}`, s.periodos.map((p, i) => [x(p), s.valores[i]]), s.color,
-      { connectNulls: false, lineStyle: { color: s.color, width: s.ancho ?? 2, type: s.discontinua ? [5, 4] : "solid" } })),
+      { connectNulls: false, lineStyle: { color: s.color, width: s.ancho ?? 3, type: s.discontinua ? [5, 4] : "solid" } })),
   ];
   g.setOption(op, { notMerge: true });
   if (zoomAntes) g.dispatchAction({ type: "dataZoom", start: zoomAntes.start, end: zoomAntes.end });
@@ -97,7 +97,7 @@ function pintar(e) {
       } else p.append(t);
     }
   };
-  const millones = (v, corto) => `${numero(v / 1e6, corto ? 0 : 2)}${corto ? "" : " millones"}`;
+  const millones = (v, corto) => `${numero(v / 1e6, corto ? 1 : 2)}${corto ? "" : " millones"}`;
   const pct = (dec) => (v) => `${numero(v, dec)} %`;
 
   // 1. Empleo
@@ -111,7 +111,7 @@ function pintar(e) {
       `En ${nombrePeriodo(a.ultimo)} había unos ${numero(a.bruta[n] / 1e6, 1)} millones de afiliados a la Seguridad Social, que cuentan empleos, no personas`,
       ...(e.paro_registrado ? [`, y unos ${numero(e.paro_registrado.total.at(-1) / 1e6, 2)} millones de personas apuntadas como paradas en las oficinas de empleo: tres cifras que miden cosas distintas`] : []), "."]);
     lineas("g-afi", [
-      { nombre: "afiliados sin estacionalidad (oficial)", periodos: a.meses, valores: a.desest, color: c1, ancho: 2.5 },
+      { nombre: "afiliados sin estacionalidad (oficial)", periodos: a.meses, valores: a.desest, color: c1, ancho: 3.5 },
       { nombre: "afiliados tal cual", periodos: a.meses, valores: a.bruta, color: suave, ancho: 1.2 },
     ], { formato: millones, eje: "millones" });
     fuente("g-afi", [["ss_afiliados_medios", "afiliados medios"], ["ss_afiliados_desest_09", "desestacionalizados 2008-2020"], ["ss_afiliados_desest", "desestacionalizados desde 2021"]],
@@ -128,7 +128,7 @@ function pintar(e) {
     lineas("g-epa", [
       { nombre: "tasa de actividad", periodos: epa.trimestres, valores: epa.tasa_actividad, color: c2 },
       { nombre: "tasa de empleo", periodos: epa.trimestres, valores: epa.tasa_empleo, color: c3 },
-      { nombre: "tasa de paro", periodos: epa.trimestres, valores: epa.tasa_paro, color: c1, ancho: 2.5 },
+      { nombre: "tasa de paro", periodos: epa.trimestres, valores: epa.tasa_paro, color: c1, ancho: 3.5 },
     ], { formato: pct(2), eje: "%", min: 0 });
     fuente("g-epa", [["ine_epa423474", "tasa de paro"], ["ine_epa441060", "tasa de empleo"], ["ine_epa388079", "tasa de actividad"]], "dato",
       "Actividad y empleo, sobre la población de 16 y más años; paro, sobre los activos.");
@@ -174,7 +174,7 @@ function pintar(e) {
     pon("r-ipc", [`En ${nombrePeriodo(ipc.meses[n])}, los precios eran un `, [`${numero(ipc.general[n], 1)} % más altos`],
       ` que un año antes. Sin los alimentos no elaborados ni los productos energéticos (la inflación subyacente), un ${numero(ipc.subyacente[n], 1)} %. Desde ${ipc.meses[0].slice(0, 4)}, la media ha sido de un ${numero(ipc.general.filter((v) => v !== null).reduce((s, v) => s + v, 0) / ipc.general.filter((v) => v !== null).length, 1)} %. Desde 2022, las pensiones contributivas suben cada enero lo que subieron de media los precios en los doce meses que acaban en noviembre.`]);
     lineas("g-ipc", [
-      { nombre: "general", periodos: ipc.meses, valores: ipc.general, color: c1, ancho: 2.5 },
+      { nombre: "general", periodos: ipc.meses, valores: ipc.general, color: c1, ancho: 3.5 },
       { nombre: "subyacente", periodos: ipc.meses, valores: ipc.subyacente, color: c2 },
     ], { formato: pct(1), eje: "%" });
     fuente("g-ipc", [["ine_ipc290750", "IPC general"], ["ine_ipc292510", "IPC subyacente"]], "dato");
@@ -194,14 +194,14 @@ function pintar(e) {
       ` de media, ${numero(bo.prima_pb[n], 0)} puntos básicos más que el alemán (la prima de riesgo; 100 puntos básicos son un 1 %)${maxPrima(bo)}. Pero el tipo medio de toda la deuda que el Estado aún debe era del `,
       [`${numero(te.total[m], 2)} %`], te.vida_media ? `, porque la deuda vence poco a poco: de media, en ${numero(te.vida_media.años, 2)} años.` : "."]);
     lineas("g-bono", [
-      { nombre: "España", periodos: bo.meses, valores: bo.espana, color: c1, ancho: 2.5 },
+      { nombre: "España", periodos: bo.meses, valores: bo.espana, color: c1, ancho: 3.5 },
       { nombre: "Alemania", periodos: bo.meses, valores: bo.alemania, color: c3 },
     ], { formato: pct(2), eje: "%" });
     fuente("g-bono", [["bce_bono_10", "tipos de interés a largo plazo (criterio de convergencia)"]], "dato", "Media mensual. La misma definición para los dos países.");
     lineas("g-prima", [{ nombre: "prima de riesgo", periodos: bo.meses, valores: bo.prima_pb, color: c1 }], { formato: (v) => `${numero(v, 0)} pb`, eje: "pb", min: 0, alto: 240 });
     fuente("g-prima", [["bce_bono_10", "tipos de interés a largo plazo"]], "lectura", "España menos Alemania; 100 puntos básicos son 1 punto porcentual.");
     lineas("g-tesoro", [
-      { nombre: "toda la deuda viva", periodos: te.meses, valores: te.total, color: c1, ancho: 2.5 },
+      { nombre: "toda la deuda viva", periodos: te.meses, valores: te.total, color: c1, ancho: 3.5 },
       { nombre: "letras (menos de un año)", periodos: te.meses, valores: te.letras, color: c2 },
     ], { formato: pct(2), eje: "%", min: 0 });
     fuente("g-tesoro", [["tesoro_tipo_medio_historico", "tipo medio de la deuda en circulación"], ["tesoro_tipo_medio", "últimos meses"], ["tesoro_vida_media", "vida media"]],
@@ -227,7 +227,7 @@ function pintar(e) {
     pon("r-dep", [`En ${dp.años[n]} había `, [`unos ${numero(Math.round(dp.total[n]), 0)} menores de 16 y mayores de 64`],
       ` por cada 100 personas de 16 a 64 años. Solo mayores de 64, unos ${numero(Math.round(dp.mayores[n]), 0)} por cada 100; en ${dp.años[0]} eran unos ${numero(Math.round(dp.mayores[0]), 0)}. Según la proyección del INE, en ${ult} habría unos ${numero(Math.round(pr.total.at(-1)), 0)} menores y mayores por cada 100.`]);
     lineas("g-dep", [
-      { nombre: "total", periodos: dp.años, valores: dp.total, color: c1, ancho: 2.5 },
+      { nombre: "total", periodos: dp.años, valores: dp.total, color: c1, ancho: 3.5 },
       { nombre: "solo mayores de 64", periodos: dp.años, valores: dp.mayores, color: c3 },
       { nombre: "total, proyección", periodos: pr.años, valores: pr.total, color: c1, discontinua: true },
       { nombre: "mayores, proyección", periodos: pr.años, valores: pr.mayores, color: c3, discontinua: true },

@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", montarInfo);
 // pulsarlo, una ficha con su explicación en una frase y el enlace al glosario. No se marcan títulos, enlaces,
 // controles, tablas, citas literales ni fuentes. El contenido que las páginas pintan después también se revisa.
 const NO_MARCAR = "a, button, select, option, label, h1, h2, h3, summary, dt, script, style, svg, canvas, table, blockquote, code, "
-  + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, [data-sin-terminos]";
+  + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, .promesa-etiqueta, .hecho, .hechos, .lectura-año, .fuente-detalle, .antetitulo, .portada-reparto, .cifras-clave .nombre, [data-sin-terminos]";
 async function montarTerminos() {
   if (/glosario\.html$/.test(location.pathname)) return;
   const main = document.querySelector("main");
@@ -425,7 +425,8 @@ function plegarControles() {
     el.before(d);
     d.append(s, el);
     // Su nota y su ayuda, si van justo detrás, entran con él.
-    for (let sig = d.nextElementSibling; sig && (sig.id === "nota-capas" || sig.classList.contains("ayuda-grafico")); sig = d.nextElementSibling) d.appendChild(sig);
+    // Su nota, si va justo detrás, entra con él; la ayuda de cómo leer los gráficos se queda a la vista.
+    for (let sig = d.nextElementSibling; sig && sig.id === "nota-capas"; sig = d.nextElementSibling) d.appendChild(sig);
   }
 }
 document.addEventListener("DOMContentLoaded", plegarControles);
@@ -446,3 +447,36 @@ const NOMBRE_LLANO = {
   GF10: "pensiones, paro y otras ayudas (protección social)",
 };
 const nombreLlano = (codigo, nombre) => NOMBRE_LLANO[codigo] || nombre.toLowerCase();
+
+// Tablas en el móvil: cada celda lleva el nombre de su columna (data-etiqueta) para poder pintarse como ficha, y si una
+// tabla ancha no cabe, se avisa de que se puede deslizar.
+function prepararTablas(raiz = document) {
+  for (const tabla of raiz.querySelectorAll(".tabla table, table.tabla-fichas")) {
+    const cab = [...tabla.querySelectorAll("thead th")].map((th) => th.textContent.trim());
+    if (cab.length) for (const tr of tabla.querySelectorAll("tbody tr")) [...tr.children].forEach((td, k) => { if (cab[k]) td.dataset.etiqueta = cab[k]; });
+    const caja = tabla.closest(".tabla");
+    if (!caja) continue;
+    const sobra = caja.scrollWidth > caja.clientWidth + 4 && !tabla.classList.contains("tabla-fichas");
+    let aviso = caja.previousElementSibling?.classList.contains("desliza") ? caja.previousElementSibling : null;
+    if (sobra && !aviso) {
+      aviso = document.createElement("p");
+      aviso.className = "desliza";
+      aviso.textContent = "La tabla sigue a la derecha: se puede deslizar →";
+      caja.before(aviso);
+    } else if (!sobra && aviso) aviso.remove();
+  }
+}
+// Si no llegan los datos, que se diga en vez de dejar la página a medias.
+function avisoSinDatos() {
+  if (document.querySelector(".aviso-error")) return;
+  const p = document.createElement("p");
+  p.className = "aviso-error";
+  p.setAttribute("role", "alert");
+  p.textContent = "No se han podido cargar los datos de esta página. Al recargarla suele resolverse; si no, los datos están en revisión.";
+  document.querySelector("main")?.prepend(p);
+}
+window.addEventListener("unhandledrejection", avisoSinDatos);
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(prepararTablas, 1500);
+  new ResizeObserver(() => prepararTablas()).observe(document.body);
+});

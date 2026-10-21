@@ -8,32 +8,40 @@
   <meta name="referrer" content="no-referrer">
   <title>Las cuentas de cada comunidad · Cuentas en limpio</title>
   <meta name="description" content="Déficit, deuda, financiación y gasto de cada comunidad autónoma, con la fuente de cada cifra y el contexto para compararlas.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=a6a79b8632" defer></script>
-  <script src="ec.js?v=7568c86795" defer></script>
-  <script src="territorio.js?v=cdb08b1567" defer></script>
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="ec.js?v=c15c2a70d7" defer></script>
+  <script src="territorio.js?v=cd8f61afd5" defer></script>
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html" aria-current="page">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
 
   <main>
     <p class="antetitulo">El dinero · por comunidades</p>
     <h1 class="pregunta">¿Cómo están las cuentas de cada comunidad?</h1>
     <p class="respuesta" id="respuesta"></p>
+    <div class="controles">
+      <label>Elegir comunidad <select id="selector-ccaa"></select></label>
+    </div>
     <p class="contabilidad">Comunidades por orden alfabético: esta página no las ordena de mejor a peor. Ceuta y Melilla no aparecen en el detalle por comunidad de las fuentes.</p>
 
     <div class="ojo">
@@ -45,11 +53,6 @@
         <li>El reparto tiene en cuenta si una comunidad es una isla, su tamaño y lo repartida que está su población. Canarias tiene su propio impuesto en lugar del IVA, el IGIC.</li>
         <li>Una misma cifra cambia de un informe a otro: cada dato lleva su fecha.</li>
       </ul>
-      <p>Al entrar sale la primera comunidad por orden alfabético; cualquier otra se elige en la lista de abajo.</p>
-    </div>
-
-    <div class="controles">
-      <label>Comunidad <select id="selector-ccaa"></select></label>
     </div>
 
     <section aria-labelledby="ficha-t">
@@ -145,15 +148,20 @@
       <p class="fuente-grafico">Fuente: Ministerio de Hacienda, <a href="https://www.hacienda.gob.es/cdi/estabilidad%20presupuestaria/serie-objetivos-ep.xlsx">serie de objetivos de estabilidad y deuda</a> (notas del fichero).</p>
     </section>
 
-    <details class="plegable ficha" open>
+    <details class="plegable ficha">
       <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
     </details>
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

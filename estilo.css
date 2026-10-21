@@ -1,29 +1,53 @@
-/* Cuentas en limpio — estilo común. Solo tema claro.
-   Paleta neutra a propósito: ningún color de partido. El único acento es un ocre. */
+/* Cuentas en limpio — estilo común, temas claro y oscuro (desde el 22/10/2026).
+   Paleta neutra a propósito: ningún color de partido. Acento ocre y amarillo de subrayar. */
 
+/* Tipografía alojada en la web (IBM Plex, licencia SIL OFL 1.1: fuentes/LICENSE) */
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("fuentes/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: italic; font-weight: 400; font-display: swap; src: url("fuentes/ibm-plex-sans-latin-400-italic.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("fuentes/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("fuentes/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 700; font-display: swap; src: url("fuentes/ibm-plex-sans-latin-700-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("fuentes/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("fuentes/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 600; font-display: swap; src: url("fuentes/ibm-plex-mono-latin-600-normal.woff2") format("woff2"); }
+
+/* Tema claro (por defecto). El oscuro redefine los mismos tokens más abajo. Ningún color de partido: tinta, ocre, arena
+   y el amarillo de subrayar. */
 :root {
-  --fondo: #faf9f6;
+  --fondo: #f3f3ef;
+  --cuadricula: #e7e7e0;
   --superficie: #ffffff;
-  --tinta: #1d1d1b;
-  --tinta-suave: #5c5b57;
-  --linea: #dedbd3;
-  --linea-fuerte: #b9b5aa;
+  --tinta: #141414;
+  --tinta-suave: #4f4f4b;
+  --texto-respuesta: #2b2b28;
+  --linea: #d3d3cb;
+  --linea-fuerte: #8c8a82;
   --acento: #8a5a12;
-  --acento-tenue: #f3eadb;
-  --nota: #f1efe9;
-  --serie-ingresos: #00879f;
-  --serie-gastos: #a8680f;
-  --serie-deuda: #1d1d1b;
-  --hueco: rgba(29, 29, 27, 0.07);
-  --franja: rgba(29, 29, 27, 0.035);
+  --acento-tenue: #f3e7cf;
+  --nota: #ecebe5;
+  --marca: #f4dd5c;
+  --cabecera: #141414;
+  --sobre-cabecera: #f3f3ef;
+  --cabecera-suave: #b8b2a6;
+  --cabecera-acento: #e2b862;
+  --serie-ingresos: #a8680f;
+  --serie-gastos: #141414;
+  --serie-deuda: #141414;
+  --hueco: rgba(20, 20, 20, 0.07);
+  --franja: rgba(20, 20, 20, 0.035);
+  --sombra-tenue: rgba(20, 20, 20, 0.05);
+  --sombra-fuerte: rgba(20, 20, 20, 0.11);
+  --relleno-zoom: rgba(138, 90, 18, 0.12);
   --c-primario: #a8680f;
   --c-intereses: #00879f;
   --c-activos: #8a6d00;
   --c-ajustes: #9a4d7a;
   --c-crecimiento: #5a7d00;
   --ancho: 64rem;
-  --serif: "Iowan Old Style", "Charter", "Palatino Linotype", Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radio: 16px;
+  --serif: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   color-scheme: light;
 }
 
@@ -397,12 +421,12 @@ table.presupuesto th { white-space: normal; }
 /* ---- Una pregunta, una respuesta (desde el 20/10/2026) ----
    Cada página y cada bloque abren con una pregunta y una cifra; debajo, el gráfico, la fuente y la explicación. */
 :root {
-  --entender: #f5eee1;  /* arena: sin asociación con ningún partido (decisión del 21/10/2026) */
-  --entender-tinta: #6b5326;
+  --entender: #efe4cf;  /* arena: sin asociación con ningún partido (decisión del 21/10/2026) */
+  --entender-tinta: #6b4a12;
 }
 h1.pregunta { font: 600 clamp(2rem, 5.5vw, 2.85rem)/1.12 var(--serif); letter-spacing: -0.005em; margin: 1.75rem 0 1rem; max-width: 46rem; }
 h2.pregunta { font: 600 clamp(1.45rem, 4vw, 1.75rem)/1.2 var(--serif); }
-.respuesta { font-size: 1.125rem; line-height: 1.6; color: #3d3f43; margin: 0 0 1.25rem; max-width: 46rem; }
+.respuesta { font-size: 1.125rem; line-height: 1.6; color: var(--texto-respuesta); margin: 0 0 1.25rem; max-width: 46rem; }
 .respuesta strong { color: var(--tinta); font-weight: 600; }
 .cifra-grande { display: block; font: 700 clamp(2.5rem, 9vw, 3.75rem)/1 var(--sans); letter-spacing: -0.02em; color: var(--acento); margin: 0.5rem 0 0.35rem; font-variant-numeric: tabular-nums; }
 .paso-de { font: 700 0.8125rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--acento); margin: 0 0 0.6rem; }
@@ -458,12 +482,12 @@ h2.pregunta { font: 600 clamp(1.45rem, 4vw, 1.75rem)/1.2 var(--serif); }
 .cifras-clave .valor { font: 600 2.4rem/1.05 var(--serif); font-variant-numeric: tabular-nums; }
 .cifras-clave .valor.ingresos { color: var(--serie-ingresos); }
 .cifras-clave .valor.gastos { color: var(--serie-gastos); }
-.cifras-clave .explica { font-size: 0.875rem; line-height: 1.5; color: #3d3f43; }
+.cifras-clave .explica { font-size: 0.875rem; line-height: 1.5; color: var(--texto-respuesta); }
 .preguntas { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 0.5rem 1.5rem; margin: 1rem 0 2rem; }
 .preguntas a { display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none; color: inherit; border-top: 2px solid var(--tinta); padding: 0.9rem 0 0.6rem; }
 .preguntas a:hover strong { color: var(--acento); }
 .preguntas strong { font: 600 1.2rem/1.3 var(--serif); }
-.preguntas span { font-size: 0.9375rem; line-height: 1.55; color: #3d3f43; }
+.preguntas span { font-size: 0.9375rem; line-height: 1.55; color: var(--texto-respuesta); }
 main > .entender-ancho, .entender-ancho { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 1.5rem; max-width: none; }
 .entender-ancho h2 { font-size: 1.6rem; margin: 0 0 0.75rem; padding: 0; border: 0; }
 .entender-ancho ol { margin: 0; padding-left: 1.2rem; }
@@ -489,11 +513,11 @@ button.info:focus-visible { outline: 2px solid var(--acento); outline-offset: 2p
 .recientes p { font-size: 0.9375rem; max-width: 46rem; }
 table.previsiones td:not(:first-child) { font-variant-numeric: tabular-nums; }
 table.previsiones td:first-child { font-weight: 600; }
-.clave-area.tenue { background: rgba(29,29,27,0.05); border: 1px solid var(--linea); }
+.clave-area.tenue { background: var(--sombra-tenue); border: 1px solid var(--linea); }
 .clave-discontinua { display: inline-block; width: 1.3rem; height: 0; border-top: 2px dashed var(--tinta-suave); vertical-align: middle; }
-.clave-area.oscura { background: rgba(29,29,27,0.11); }
+.clave-area.oscura { background: var(--sombra-fuerte); }
 .cifras-clave .reciente { font-size: 0.8125rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); padding-top: 0.35rem; margin-top: auto; }
-.aviso-provisional { font-size: 0.875rem; background: rgba(29,29,27,0.05); border-left: 3px solid var(--linea-fuerte); padding: 0.4rem 0.7rem; margin: 0 0 0.75rem; }
+.aviso-provisional { font-size: 0.875rem; background: var(--sombra-tenue); border-left: 3px solid var(--linea-fuerte); padding: 0.4rem 0.7rem; margin: 0 0 0.75rem; }
 .como-leer { font-size: 0.9375rem; margin: 0.25rem 0 0; color: var(--tinta-suave); }
 .multiples > .info-panel { grid-column: 1 / -1; max-width: none; margin: 0; }
 .multiple figcaption button.info { width: 1.15rem; height: 1.15rem; font-size: 0.75rem; vertical-align: 0.1em; margin-left: 0.2rem; }
@@ -517,7 +541,7 @@ button.termino { font: inherit; color: inherit; background: none; border: 0; pad
 button.termino:hover, button.termino[aria-expanded="true"] { background: var(--entender); }
 button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
 .termino-ficha { position: absolute; z-index: 50; background: var(--entender); color: var(--tinta); border: 1px solid var(--linea-fuerte);
-  border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.9375rem; line-height: 1.5; box-shadow: 0 4px 16px rgba(29, 29, 27, 0.12); }
+  border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.9375rem; line-height: 1.5; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16); }
 .termino-ficha p { margin: 0 0 0.4rem; }
 .termino-ficha p:last-child { margin-bottom: 0; }
 .termino-ficha .termino-titulo { font: 700 0.75rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--entender-tinta); }
@@ -602,7 +626,7 @@ body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 
 .escenario { border-top: 1px solid var(--linea); margin-top: 2.5rem; max-width: 46rem; }
 .mandos { display: grid; gap: 0.6rem; margin: 1rem 0; padding: 1rem; background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; }
 .mandos label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; font-weight: 600; font-size: 0.9375rem; }
-.mandos output { font-variant-numeric: tabular-nums; font-size: 1.15rem; color: var(--c-primario); }
+.mandos output { font-variant-numeric: tabular-nums; font-size: 1.15rem; color: var(--acento); }
 .mandos input[type="range"] { width: 100%; accent-color: var(--c-primario); height: 2rem; }
 .mandos-tres > div { display: grid; gap: 0.2rem; }
 .atajos { display: flex; flex-wrap: wrap; gap: 0.5rem; }
@@ -617,3 +641,192 @@ body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 
 .linea-escenario { stroke-dasharray: 6 5; }
 .barra-escenario.barra-elegida { opacity: 1; fill: var(--tinta); }
 .figura-escenario svg, .visual-recorrido svg { max-width: 34rem; }
+
+/* Mapa de secciones en el pie: cualquier página a un clic */
+footer.sitio .mapa { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem 2rem; width: 100%; margin-bottom: 1rem; }
+footer.sitio .mapa ul { list-style: none; margin: 0; padding: 0; }
+footer.sitio .mapa li { margin: 0 0 0.35rem; }
+footer.sitio .mapa a { text-decoration: none; }
+footer.sitio .mapa a:hover { text-decoration: underline; }
+.mapa-titulo { font-weight: 600; color: var(--tinta); margin: 0 0 0.4rem; }
+
+/* ---- Revisión de uso (22/10/2026) ---- */
+@media (max-width: 700px) { main > .entender-ancho, .entender-ancho { grid-template-columns: minmax(0, 1fr); } }
+button.termino { display: inline; text-align: inherit; white-space: normal; line-height: inherit; }
+button.info { width: 1.75rem; height: 1.75rem; font-size: 0.9375rem; }
+.fuente-detalle summary, .plegable summary, details > summary { padding-block: 0.45rem; }
+.fuente-grafico .etiqueta-tipo { font-size: 0.6875rem; padding: 0.2rem 0.4rem; }
+header.sitio nav a { padding-block: 0.35rem; }
+footer.sitio .mapa { font-size: 0.875rem; }
+footer.sitio .mapa li { margin: 0 0 0.55rem; }
+@media (max-width: 40rem) {
+  .filtros-promesas { position: static; }
+  .aviso-preliminar { font-size: 0.8125rem; padding-block: 0.35rem; }
+  /* Tablas como fichas: cada fila es un bloque y cada dato lleva su columna delante */
+  .tabla-fichas thead { display: none; }
+  .tabla-fichas, .tabla-fichas tbody, .tabla-fichas tr, .tabla-fichas td { display: block; width: auto; min-width: 0 !important; white-space: normal; }
+  .tabla-fichas tr { border-bottom: 1px solid var(--linea); padding: 0.6rem 0; }
+  .tabla-fichas td { border: 0 !important; padding: 0.15rem 0 !important; }
+  .tabla-fichas td[data-etiqueta]::before { content: attr(data-etiqueta); display: block; font-weight: 600; font-size: 0.8125rem; color: var(--tinta-suave); }
+}
+/* Tablas que se deslizan: la primera columna se queda fija */
+.tabla-fija th:first-child, .tabla-fija td:first-child { position: sticky; left: 0; background: var(--fondo); z-index: 1; }
+.desliza { font-size: 0.8125rem; color: var(--tinta-suave); margin: 0.25rem 0; }
+.aviso-error { background: var(--nota); border-left: 3px solid var(--tinta); padding: 0.6rem 0.9rem; font-size: 0.9375rem; }
+.subnav { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; font-size: 0.9375rem; padding-block: 0.6rem; border-bottom: 1px solid var(--linea); margin-bottom: 0.5rem; }
+.subnav a { color: var(--tinta-suave); text-decoration: none; padding-block: 0.25rem; }
+.subnav a[aria-current="page"] { color: var(--tinta); font-weight: 600; text-decoration: underline; text-underline-offset: 0.3em; }
+.subnav .subnav-titulo { font-weight: 600; color: var(--tinta); }
+@media (max-width: 40rem) { .subnav { flex-wrap: nowrap; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; } }
+.extremos { display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--tinta-suave); margin-top: -0.3rem; }
+.volver { font-size: 0.875rem; margin-top: 1rem; }
+.facil-texto h3 { font-size: 1.2rem; margin: 1.5rem 0 0.4rem; }
+.pasar-facil { flex-direction: column; gap: 0.6rem; }
+@media (min-width: 40rem) { .pasar-facil { flex-direction: row; justify-content: space-between; } }
+.hecho-para { font-size: 0.8125rem; font-weight: 600; color: var(--tinta-suave); margin: 0 0 0.15rem; }
+.hechos-mas > summary { font-size: 0.9375rem; color: var(--acento); }
+.subnav { max-width: var(--ancho); margin: 0 auto 0.5rem; padding-inline: 1rem; }
+.respuesta-cifras { margin: -0.5rem 0 1.25rem; }
+
+/* ======================================================================================================
+   Estilo D (22/10/2026): estructura de cuaderno técnico, subrayado de rotulador, gráficos de línea gruesa
+   y esquinas redondeadas. Tema oscuro con los mismos tokens.
+   ====================================================================================================== */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fondo: #161513; --cuadricula: #1d1c19; --superficie: #22201d; --tinta: #f2efe8; --tinta-suave: #b8b2a6;
+    --texto-respuesta: #ddd8ce; --linea: #3a3732; --linea-fuerte: #77736a; --acento: #e2b862; --acento-tenue: #3a3020;
+    --nota: #2a2824; --marca: #6a5c1c; --cabecera: #0e0d0c; --entender: #2c271e; --entender-tinta: #e2c48a;
+    --serie-ingresos: #e2b862; --serie-gastos: #f2efe8; --serie-deuda: #f2efe8;
+    --hueco: rgba(255, 255, 255, 0.08); --franja: rgba(255, 255, 255, 0.035); --sombra-tenue: rgba(255, 255, 255, 0.05);
+    --sombra-fuerte: rgba(255, 255, 255, 0.11); --relleno-zoom: rgba(226, 184, 98, 0.18);
+    --c-primario: #e2b862; --c-intereses: #4fb8c9; --c-activos: #d0b24a; --c-ajustes: #c98bb3; --c-crecimiento: #9cc04a;
+    --p-aprobado: #3f7f8a; --p-definitivo: #5fb3c2; --p-gastado: #a6dde6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fondo: #161513; --cuadricula: #1d1c19; --superficie: #22201d; --tinta: #f2efe8; --tinta-suave: #b8b2a6;
+  --texto-respuesta: #ddd8ce; --linea: #3a3732; --linea-fuerte: #77736a; --acento: #e2b862; --acento-tenue: #3a3020;
+  --nota: #2a2824; --marca: #6a5c1c; --cabecera: #0e0d0c; --entender: #2c271e; --entender-tinta: #e2c48a;
+  --serie-ingresos: #e2b862; --serie-gastos: #f2efe8; --serie-deuda: #f2efe8;
+  --hueco: rgba(255, 255, 255, 0.08); --franja: rgba(255, 255, 255, 0.035); --sombra-tenue: rgba(255, 255, 255, 0.05);
+  --sombra-fuerte: rgba(255, 255, 255, 0.11); --relleno-zoom: rgba(226, 184, 98, 0.18);
+  --c-primario: #e2b862; --c-intereses: #4fb8c9; --c-activos: #d0b24a; --c-ajustes: #c98bb3; --c-crecimiento: #9cc04a;
+  --p-aprobado: #3f7f8a; --p-definitivo: #5fb3c2; --p-gastado: #a6dde6;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--fondo);
+  background-image: linear-gradient(var(--cuadricula) 1px, transparent 1px), linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font-family: var(--sans);
+}
+
+/* Cabecera: banda oscura de lado a lado */
+header.sitio {
+  max-width: none; background: var(--cabecera); color: var(--sobre-cabecera); align-items: center;
+  padding: 0.6rem max(1rem, calc((100% - var(--ancho)) / 2 + 1rem));
+}
+header.sitio .marca { font: 700 1.25rem/1.2 var(--sans); color: var(--sobre-cabecera); }
+.logo-limpio { background: #f4dd5c; color: #141414; padding: 1px 7px 3px; border-radius: 6px; }
+header.sitio nav { align-items: center; }
+header.sitio nav a { color: var(--sobre-cabecera); opacity: 0.85; padding-block: 0.55rem; }
+header.sitio nav a:hover { opacity: 1; }
+header.sitio nav a[aria-current] { color: var(--sobre-cabecera); opacity: 1; font-weight: 600; text-decoration: underline; text-decoration-color: #f4dd5c; text-decoration-thickness: 3px; text-underline-offset: 0.35em; }
+.boton-tema { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.5rem; padding: 0 0.9rem; border-radius: 999px;
+  border: 1px solid #6b6760; background: transparent; color: var(--sobre-cabecera); font: 500 0.875rem var(--sans); cursor: pointer; }
+.boton-tema:hover { border-color: var(--sobre-cabecera); }
+.boton-tema:focus-visible { outline: 2px solid #f4dd5c; outline-offset: 2px; }
+.boton-tema svg { width: 1rem; height: 1rem; }
+.aviso-preliminar { background: var(--cabecera); color: var(--cabecera-suave); border-bottom: 1px solid #2a2824; }
+
+/* Pie: también banda oscura */
+footer.sitio { max-width: none; background: var(--cabecera); color: var(--cabecera-suave); border-top: 0;
+  padding: 2rem max(1rem, calc((100% - var(--ancho)) / 2 + 1rem)) 2.5rem; margin-top: 3rem; }
+footer.sitio a, footer.sitio .mapa a { color: var(--cabecera-acento); }
+footer.sitio .mapa-titulo { color: var(--sobre-cabecera); font: 600 0.75rem/1.2 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* Subrayado de rotulador para lo relevante de un texto largo */
+.resalta, .respuesta strong {
+  background: linear-gradient(transparent 52%, var(--marca) 52%, var(--marca) 94%, transparent 94%);
+  padding: 0 2px; color: var(--tinta); font-weight: 600; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+}
+
+/* Títulos: sans de la familia Plex, sin filete encima */
+h1, h2, h3 { font-family: var(--sans); }
+h1.pregunta { font: 600 clamp(2rem, 5.5vw, 3.25rem)/1.07 var(--sans); letter-spacing: -0.02em; }
+h2.pregunta { font: 600 clamp(1.4rem, 3.6vw, 1.65rem)/1.2 var(--sans); letter-spacing: -0.01em; }
+.antetitulo, .paso-de, .rotulo, .entender .rotulo, .info-panel .rotulo, .hechos-titulo, .mapa-titulo, .selector-etiqueta {
+  font-family: var(--mono); letter-spacing: 0.04em; }
+
+/* Cifras en monoespaciada */
+.cifra-grande, .cifras-clave .valor, .tabla-sueldo td.cifra, .num, .lectura-año b, .lectura-anio, .mandos output, .celda-barra .cifra {
+  font-family: var(--mono); font-variant-numeric: tabular-nums; }
+.cifras-clave .valor { font-weight: 500; }
+.cifra-grande { font-weight: 500; letter-spacing: -0.03em; }
+
+/* Cajas con esquinas redondeadas */
+.grafico, .tarjeta, .indice, .calculadora, .mandos, .entender, .cifras-clave > *, .info-panel, .termino-ficha, .tabla,
+.lista-comprobaciones, .plegable, .palabra-facil { border-radius: var(--radio); }
+.grafico, .tarjeta, .indice, .calculadora, .mandos { background: var(--superficie); border: 1px solid var(--linea); }
+.cifras-clave > * { background: var(--superficie); border: 1px solid var(--linea); padding: 1.1rem 1.2rem; }
+.entender { padding: 1.4rem 1.6rem; }
+.ojo { border-left: 0; background: var(--nota); border-radius: var(--radio); padding: 1rem 1.2rem; }
+.aviso-error, .aviso-provisional { border-left: 0; border-radius: 10px; }
+
+/* Tarjetas de preguntas de la portada, como cajas */
+.preguntas { gap: 0.9rem; }
+.preguntas a { background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); padding: 1rem 1.2rem 1.1rem; }
+.preguntas a:hover { border-color: var(--acento); }
+.preguntas strong { font: 600 1.15rem/1.3 var(--sans); }
+.preguntas a::after { content: "→"; color: var(--acento); font-weight: 600; margin-top: auto; }
+
+/* Botones de selección y campos: píldoras con borde visible (3:1) */
+.selector button, .atajos button { border-color: var(--linea-fuerte); }
+.calculadora input[type="number"], .calculadora select, .controles select { border-color: var(--linea-fuerte); border-radius: 10px; min-height: 2.75rem; }
+.etiqueta-tipo { font-family: var(--mono); border-radius: 999px; padding: 0.2rem 0.55rem; }
+
+/* Barras de las tablas de cifras: extremos redondeados */
+.tabla-sueldo .barra, .barra-facil, .celda-barra .relleno { border-radius: 999px; height: 6px; opacity: 0.9; }
+.tabla-sueldo .barra { background: var(--c-primario); }
+
+/* Fondo de las tablas */
+.tabla { background: var(--superficie); border: 1px solid var(--linea); }
+.tabla-fija th:first-child, .tabla-fija td:first-child { background: var(--superficie); }
+
+/* Barra de sección dentro de «El dinero» y «Calcular»: píldoras */
+.subnav { gap: 0.4rem; padding-block: 0.75rem; border-bottom: 0; }
+.subnav a { padding: 0.35rem 0.85rem; border-radius: 999px; border: 1px solid var(--linea); background: var(--superficie); color: var(--tinta); }
+.subnav a[aria-current="page"] { background: var(--tinta); color: var(--fondo); border-color: var(--tinta); text-decoration: none; }
+.subnav .subnav-titulo { font-family: var(--mono); font-size: 0.8125rem; color: var(--tinta-suave); align-self: center; }
+
+/* Portada: título y gráfico, lado a lado */
+.portada-cabeza { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2.5rem; align-items: center; margin: 1.5rem 0 1rem; }
+.portada-cabeza h1.pregunta { margin-top: 0; }
+@media (max-width: 900px) { .portada-cabeza { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; } }
+.portada-reparto { background: var(--superficie); border: 1px solid var(--linea); border-radius: var(--radio); padding: 1.1rem 1.25rem; }
+.portada-reparto .etiqueta { font: 500 0.75rem/1.3 var(--mono); letter-spacing: 0.04em; color: var(--tinta-suave); margin: 0 0 0.6rem; text-transform: uppercase; }
+.reparto-filas { display: grid; grid-template-columns: auto minmax(0, 1fr) 2.2rem; gap: 0.55rem 0.75rem; align-items: center; font-size: 0.9375rem; margin: 0; }
+.reparto-filas .b { height: 14px; border-radius: 999px; background: var(--c-primario); }
+.reparto-filas .n { font-family: var(--mono); text-align: right; }
+.botones-portada { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.25rem 0 0; }
+.boton-pildora { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 1.1rem; border-radius: 999px; font-weight: 600; text-decoration: none; border: 1px solid var(--tinta); color: var(--tinta); }
+.boton-pildora.lleno { background: var(--tinta); color: var(--fondo); }
+.boton-pildora:hover { text-decoration: none; opacity: 0.9; }
+.enlace-facil { display: none; }
+/* Cabecera en el móvil: marca y botón de tema en la primera línea; el menú, una línea que se desliza */
+header.sitio { position: relative; }
+@media (max-width: 40rem) {
+  header.sitio { padding-block: 0.6rem 0.2rem; gap: 0.3rem; }
+  header.sitio nav { flex-wrap: nowrap; overflow-x: auto; width: 100%; gap: 1.1rem; scrollbar-width: none; }
+  header.sitio nav::-webkit-scrollbar { display: none; }
+  header.sitio nav a { white-space: nowrap; }
+  .boton-tema { position: absolute; top: 0.45rem; right: 1rem; padding: 0; width: 2.75rem; justify-content: center; }
+  .boton-tema-texto { display: none; }
+  .aviso-preliminar { padding-block: 0.25rem; }
+}
+/* Una sola raya entre bloques: la de la sección, no también la del título */
+.escenario > h2.pregunta, .paso-recorrido > h2.pregunta, .pregunta-faq > h2.pregunta, .paso-recorrido > .antetitulo + h2.pregunta { border-top: 0; padding-top: 0; margin-top: 0.6rem; }
+.escenario, .paso-recorrido { padding-top: 1.5rem; }

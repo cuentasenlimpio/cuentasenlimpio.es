@@ -51,6 +51,8 @@ async function arrancarPreguntas() {
     const ul = el("ul", {}, det);
     for (const f of q.fuentes) enlace(el("li", {}, ul), f.url, f.texto);
     if (q.comprobado) el("p", { className: "comprobado", textContent: `Comprobado el ${q.comprobado}.` }, art);
+    const volver = el("p", { className: "volver" }, art);
+    enlace(volver, "#preguntas-indice", "↑ Volver a todas las preguntas");
   }
   if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
 }

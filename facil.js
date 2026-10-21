@@ -26,6 +26,7 @@ function pintarLista(id, verbo, filas) {
     n.textContent = f.n === 1 ? "1 euro" : `${f.n} euros`;
     const barra = document.createElement("span");
     barra.className = "barra-facil";
+    barra.setAttribute("aria-hidden", "true");
     barra.style.width = `${f.n}%`;
     li.append(n, ` ${f.n === 1 ? verbo[0] : verbo[1]} ${f.texto}.`, barra);
     ul.appendChild(li);

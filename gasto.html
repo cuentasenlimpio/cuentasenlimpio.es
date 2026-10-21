@@ -8,27 +8,32 @@
   <meta name="referrer" content="no-referrer">
   <title>En qué se gasta y cuánto se invierte · Cuentas en limpio</title>
   <meta name="description" content="En qué gastan las administraciones públicas españolas desde 1995, cuánto invierten y qué parte paga cada nivel de administración, con la fuente de cada cifra.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=a6a79b8632" defer></script>
-  <script src="ec.js?v=7568c86795" defer></script>
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="ec.js?v=c15c2a70d7" defer></script>
   <script src="gasto.js?v=d739e70bfc" defer></script>
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html" aria-current="true">El dinero</a>
       <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html" aria-current="page">Gasto</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
 
   <main>
     <h1 class="pregunta">¿En qué se gasta el dinero público?</h1>
@@ -38,13 +43,6 @@
     <p class="ultimo-año" id="ultimo-año"></p>
     <div class="controles">
       <label>Año <select id="selector-año"></select></label>
-      <div class="selector" role="group" aria-label="Unidad de los gráficos de evolución">
-        <span class="selector-etiqueta">Ver la evolución en</span>
-        <button type="button" data-unidad="pib" aria-pressed="true">% del PIB</button>
-        <button type="button" data-unidad="corrientes" aria-pressed="false">Euros</button>
-        <button type="button" data-unidad="constantes" aria-pressed="false">Euros sin inflación</button>
-        <button type="button" data-unidad="habitante" aria-pressed="false">Por habitante</button>
-      </div>
     </div>
 
     <section class="grafico" aria-labelledby="r-titulo">
@@ -99,6 +97,13 @@
     <section class="grafico" aria-labelledby="e-titulo">
       <h2 class="pregunta" id="e-titulo">¿Cómo ha cambiado cada partida desde 1995? <button type="button" class="info" data-info="denominador">i</button></h2>
       <p class="grafico-explica">Aquí cada partida se compara con el PIB, lo que produce el país en un año, y no con el total del gasto. Por eso las cifras no son las de «cada 100 €». El punto marca el año que se lee arriba (al empezar, el último); la cifra junto a cada nombre es su valor ese año.</p>
+      <div class="selector" role="group" aria-label="Unidad de los gráficos de evolución">
+        <span class="selector-etiqueta">Ver la evolución en</span>
+        <button type="button" data-unidad="pib" aria-pressed="true">% del PIB</button>
+        <button type="button" data-unidad="corrientes" aria-pressed="false">Euros</button>
+        <button type="button" data-unidad="constantes" aria-pressed="false">Euros sin inflación</button>
+        <button type="button" data-unidad="habitante" aria-pressed="false">Por habitante</button>
+      </div>
       <div id="periodo"></div>
       <div class="multiples" id="evolucion"></div>
       <p class="fuente-grafico" id="evolucion-fuente"></p>
@@ -107,7 +112,7 @@
     <section class="grafico" aria-labelledby="q-titulo">
       <h2 class="pregunta" id="q-titulo">¿Quién paga cada partida en <span class="año-elegido"></span>? <button type="button" class="info" data-info="quien_gasta">i</button></h2>
       <p class="grafico-explica">Qué parte del gasto de cada partida hace cada nivel: el Estado, las comunidades autónomas, los ayuntamientos y la Seguridad Social. Al que da el dinero se le quita lo que transfiere a otros para que lo gasten (como la financiación de las comunidades), porque cuenta en quien lo gasta. Algunas filas suman un poco más de 100, porque otras transferencias más pequeñas entre niveles cuentan en los dos.</p>
-      <div class="tabla"><table class="matriz" id="quien"></table></div>
+      <div class="tabla"><table class="matriz tabla-fija" id="quien"></table></div>
       <p class="fuente-grafico" id="quien-fuente"></p>
     </section>
 
@@ -121,7 +126,7 @@
       </ul>
     </div>
 
-    <details class="plegable ficha" open>
+    <details class="plegable ficha">
       <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
       <p><a href="datos/gasto.csv" download>Todos los números de esta página (CSV)</a></p>
@@ -129,8 +134,13 @@
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

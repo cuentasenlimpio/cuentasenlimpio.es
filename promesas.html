@@ -8,23 +8,27 @@
   <meta name="referrer" content="no-referrer">
   <title>Promesas · Cuentas en limpio</title>
   <meta name="description" content="Cómo seguimos las promesas electorales: el texto literal de cada promesa y los hechos documentados que vinieron después, sin veredicto.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
-  <script src="comun.js?v=a6a79b8632" defer></script>
-  <script src="promesas.js?v=f4f0e57222" defer></script>
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="promesas.js?v=0826b609e9" defer></script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html">El dinero</a>
       <a href="promesas.html" aria-current="page">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
       <a href="aprende.html">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
 
@@ -223,8 +227,13 @@
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

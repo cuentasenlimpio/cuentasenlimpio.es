@@ -8,23 +8,27 @@
   <meta name="referrer" content="no-referrer">
   <title>Preguntas · Cuentas en limpio</title>
   <meta name="description" content="Las preguntas que más se hace la gente sobre las cuentas públicas, respondidas con datos oficiales: lo que dicen, lo que no dicen y en qué discrepan los expertos.">
-  <link rel="stylesheet" href="estilo.css?v=00ec013a21">
+  <script src="tema.js?v=b440ddf1b6"></script>
+  <link rel="stylesheet" href="estilo.css?v=8737c42bbc">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=a6a79b8632" defer></script>
-  <script src="preguntas.js?v=d375beb71a" defer></script>
+  <script src="comun.js?v=e4f1e3fdf0" defer></script>
+  <script src="preguntas.js?v=1331b40155" defer></script>
 </head>
 <body>
-  <div class="aviso-preliminar">Versión preliminar, en construcción. Puede cambiar sin aviso.</div>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
 
   <header class="sitio">
-    <a class="marca" href="./">Cuentas en limpio</a>
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
     <nav aria-label="Principal">
       <a href="dinero.html">El dinero</a>
       <a href="promesas.html">Promesas</a>
-      <a href="aprende.html" aria-current="page">Aprende</a>
+      <a href="preguntas.html" aria-current="page">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
     </nav>
   </header>
 
@@ -32,14 +36,19 @@
     <h1 class="pregunta">Preguntas que se hace la gente</h1>
     <p class="respuesta">Respondidas con datos oficiales. En cada una: la respuesta corta, lo que dicen los datos, lo que no dicen y si los expertos están de acuerdo.</p>
     <p class="contabilidad">No damos la razón a nadie. Cuando los expertos discrepan, se dice qué sostiene cada parte y con qué estudio, para que cada cual saque sus conclusiones.</p>
-    <nav class="indice" aria-label="Preguntas"><ol id="preguntas-indice"></ol></nav>
+    <nav class="indice" aria-label="Preguntas" style="scroll-margin-top:1rem"><ol id="preguntas-indice"></ol></nav>
     <div id="preguntas-lista"><p>Cargando las preguntas…</p></div>
     <p class="fuente-grafico" id="preguntas-fuente">Cada cifra lleva su fuente. Las respuestas se comprobaron en la fecha que figura en cada una; si una fuente se actualiza, la cifra puede haber cambiado.</p>
   </main>
 
   <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
     <span>Cuentas en limpio · hecha por Sendoa Sola · versión preliminar</span>
-    <span><a href="facil.html">Lectura fácil</a> · <a href="metodologia.html">Cómo trabajamos</a> · <a href="glosario.html">Glosario</a> · <a href="correcciones.html">Correcciones</a></span>
     <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
   </footer>
 </body>

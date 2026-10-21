@@ -212,20 +212,31 @@ function ultimaVotacion(vs, d, padre) {
   enlace(v.ficha, `expediente ${v.expediente}`, p);
 }
 
+// Títulos del BOE que llegan en mayúsculas: en tipo frase, que se leen mejor.
+const tipoFrase = (s) => (s && s === s.toUpperCase() && /[A-ZÁÉÍÓÚÑ]{4}/.test(s) ? s.charAt(0) + s.slice(1).toLowerCase() : s);
 function bloqueHechos(rels, h, d, padre) {
   const caja = nuevo("div", { className: "hechos" }, padre);
   nuevo("p", { className: "hechos-titulo", textContent: "Hechos encontrados" }, caja);
-  const ol = nuevo("ol", { className: "hechos-lista" }, caja);
+  let ol = nuevo("ol", { className: "hechos-lista" }, caja);
+  let pintados = 0;
   const cuando = (r) => iso(h.normas[r.hecho]?.publicada || h.iniciativas[r.hecho]?.presentada || h.consejo[r.hecho]?.fecha || h.plan[r.hecho]?.fecha);
   for (const r of rels.sort((a, b) => cuando(a).localeCompare(cuando(b)))) {
     const n = h.normas[r.hecho], ini = h.iniciativas[r.hecho], cm = h.consejo[r.hecho], pl = h.plan[r.hecho];
     if (!n && !ini && !cm && !pl) continue;
+    // A partir del tercero, los demás van plegados.
+    if (pintados === 2 && rels.length > 3) {
+      const mas = nuevo("details", { className: "hechos-mas" }, caja);
+      nuevo("summary", { textContent: `Ver los otros ${rels.length - 2} hechos` }, mas);
+      ol = nuevo("ol", { className: "hechos-lista", start: 3 }, mas);
+    }
+    pintados++;
     const li = nuevo("li", { className: `hecho hecho-${r.clase}` }, ol);
+    if (r.etiquetas?.length) nuevo("p", { className: "hecho-para", textContent: `Para: ${r.etiquetas.join(" · ")}` }, li);
     const t = nuevo("p", { className: "hecho-norma" }, li);
     const clases = n ? CLASE : pl ? CLASE_PLAN : CLASE_PROPUESTA;
     nuevo("strong", { textContent: `${r.parcial ? clases[r.clase].replace("la misma medida", "una parte de la medida") : clases[r.clase]}: ` }, t);
     if (n) {
-      enlace(n.url, n.titulo, t);
+      enlace(n.url, tipoFrase(n.titulo), t);
       t.appendChild(document.createTextNode(` Publicado en el BOE el ${fecha(n.publicada)}.`));
     } else if (ini) {
       enlace(ini.url, ini.titulo, t);
@@ -391,9 +402,13 @@ async function arrancarPromesas() {
       .replace(/\s*(Repetición detectada|Primera aparición|Etiquetas corregidas|Clasificada a mano|Continuación)[^.]*\./g, "").trim()).filter(Boolean).map(notaLlana))];
     for (const n of notas) nuevo("p", { className: "promesa-nota", textContent: n }, li);
     if (hechos) {
-      const rels = grupo.flatMap((q) => q.hechos);
-      const vistos = new Set();
-      const unicas = rels.filter((r) => !vistos.has(r.hecho) && vistos.add(r.hecho));
+      // Cada hecho, con la promesa (o promesas) de la frase a la que corresponde, si la frase da más de una.
+      const porHecho = new Map();
+      for (const q of grupo) for (const r of q.hechos) {
+        if (!porHecho.has(r.hecho)) porHecho.set(r.hecho, { ...r, etiquetas: [] });
+        if (grupo.length > 1 && q.e && !porHecho.get(r.hecho).etiquetas.includes(q.e)) porHecho.get(r.hecho).etiquetas.push(q.e);
+      }
+      const unicas = [...porHecho.values()];
       if (unicas.length) bloqueHechos(unicas, h, d, li);
       else {
         const p = nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados. " }, li);

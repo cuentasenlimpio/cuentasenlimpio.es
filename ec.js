@@ -40,7 +40,7 @@ const EC = (() => {
         {
           name: l.nombre,
           xAxis: l.desde,
-          itemStyle: { color: esta ? css("--acento-tenue") : k % 2 ? "rgba(0,0,0,0)" : css("--franja") },
+          itemStyle: { color: esta ? css("--acento-tenue") : k % 2 ? "transparent" : css("--franja") },
           label: { color: esta ? css("--acento") : css("--tinta-suave"), fontWeight: esta ? 600 : 400 },
         },
         { xAxis: l.hasta },
@@ -104,7 +104,7 @@ const EC = (() => {
     if (slider) {
       dataZoom.push({
         type: "slider", xAxisIndex: 0, filterMode: "none", minValueSpan: 3, height: 22, bottom: 8, showDataShadow: silueta,
-        borderColor: linea, fillerColor: "rgba(138,90,18,0.12)", backgroundColor: css("--superficie"),
+        borderColor: linea, fillerColor: css("--relleno-zoom"), backgroundColor: css("--superficie"),
         handleStyle: { color: css("--superficie"), borderColor: css("--acento") },
         moveHandleStyle: { color: css("--acento-tenue") },
         dataBackground: { lineStyle: { color: css("--linea-fuerte") }, areaStyle: { color: css("--nota") } },
@@ -149,15 +149,18 @@ const EC = (() => {
   function linea(id, datos, color, extra = {}) {
     return {
       id, type: "line", data: datos, symbol: "none", z: 3, silent: true,
-      lineStyle: { width: 2, color }, itemStyle: { color }, emphasis: { disabled: true }, ...extra,
+      itemStyle: { color }, emphasis: { disabled: true }, ...extra,
+      // Línea gruesa con extremos y uniones redondeadas (estilo de la web desde el 22/10/2026)
+      lineStyle: { width: 3, color, cap: "round", join: "round", ...(extra.lineStyle || {}) },
     };
   }
 
   // Punto del año elegido sobre cada línea: borde del color de la superficie, como en el resto de la web.
   function puntos(id, puntosXY, colores) {
     return {
-      id, type: "scatter", silent: true, z: 4, symbolSize: 9, animation: false,
-      data: puntosXY.map((p, k) => ({ value: p, itemStyle: { color: colores[k], borderColor: css("--superficie"), borderWidth: 2 } })),
+      id, type: "scatter", silent: true, z: 4, symbolSize: 11, animation: false,
+      // Punto hueco: relleno de la superficie y borde del color de su línea
+      data: puntosXY.map((p, k) => ({ value: p, itemStyle: { color: css("--superficie"), borderColor: colores[k], borderWidth: 2.5 } })),
     };
   }
 
@@ -345,14 +348,26 @@ const EC = (() => {
 
   // ---- Barras horizontales ordenadas de mayor a menor, con el valor al final de cada barra ----
   // `filas`: [{nombre, valor}]. En pantallas estrechas el nombre va encima de la barra.
+  // Ancho en píxeles de un texto con la letra de la página (para que nombres y cifras no se corten).
+  const lienzoMedida = document.createElement("canvas").getContext("2d");
+  function medir(texto, font) { lienzoMedida.font = font; return lienzoMedida.measureText(texto).width; }
+
   function barrasH(contenedor, filas, { formato, sufijo = "", ordenar = true }) {
-    const estrecho = contenedor.clientWidth < 520;
-    const fila = estrecho ? 40 : 30;
+    const fuenteM = letra();
+    const anchoNombres = Math.max(...filas.map((f) => medir(f.nombre, `13px ${fuenteM}`)), 0);
+    const anchoCifras = Math.max(...filas.map((f) => medir(`${formato(f.valor)}${sufijo}`, `600 13px ${fuenteM}`)), 0);
+    // Si los nombres no caben a la izquierda (más del 45 % del ancho), van encima de su barra.
+    const estrecho = contenedor.clientWidth < 520 || anchoNombres + 14 > contenedor.clientWidth * 0.45;
     const orden = ordenar ? [...filas].sort((a, b) => b.valor - a.valor) : [...filas];
+    // Alto de cada fila: con los nombres encima, tantas líneas como necesite el nombre más el hueco de la barra.
+    const W = Math.max(contenedor.clientWidth, 200);
+    const lineas = orden.map((f) => (estrecho ? Math.max(1, Math.ceil(medir(f.nombre, `13px ${fuenteM}`) / ((W - 4) * 0.82))) : 1));
+    const altos = lineas.map((l) => (estrecho ? 24 + 16 * l : 30));
+    const ys = altos.map((_, k) => 6 + altos.slice(0, k).reduce((a, b) => a + b, 0));
     // Para lectores de pantalla: el gráfico es una imagen, así que su nombre lleva todas las partidas con su valor.
     const base = contenedor.dataset.etiqueta || (contenedor.dataset.etiqueta = contenedor.getAttribute("aria-label") || "");
     contenedor.setAttribute("aria-label", `${base}: ${orden.map((f) => `${f.nombre}, ${formato(f.valor)}${sufijo}`).join("; ")}.`);
-    const alto = 12 + orden.length * fila;
+    const alto = 12 + altos.reduce((a, b) => a + b, 0);
     if (!contenedor.cuentasGrafico) contenedor.cuentasGrafico = crear(contenedor, alto);
     const g = contenedor.cuentasGrafico;
     if (contenedor.style.height !== `${alto}px`) {
@@ -370,16 +385,17 @@ const EC = (() => {
         renderItem: (params, api) => {
           const k = params.dataIndex, f = orden[k];
           const ancho = api.getWidth();
-          const izq = estrecho ? 0 : 300, der = 64;
-          const y = 6 + k * fila;
-          const yb = estrecho ? y + 18 : y + fila / 2 - 7;
+          const izq = estrecho ? 0 : Math.ceil(anchoNombres) + 14, der = Math.ceil(anchoCifras) + 10;
+          const y = ys[k], fila = altos[k];
+          const yb = estrecho ? y + 2 + 16 * lineas[k] : y + fila / 2 - 7;
           const largo = Math.max(0, (Math.max(f.valor, 0) / maximo) * (ancho - izq - der));
           return {
             type: "group",
             children: [
               { type: "text", x: estrecho ? 0 : izq - 10, y: estrecho ? y + 2 : y + fila / 2,
-                style: { text: f.nombre, fill: suave, font: `13px ${fuente}`, align: estrecho ? "left" : "right", verticalAlign: estrecho ? "top" : "middle" } },
-              { type: "rect", shape: { x: izq, y: yb, width: largo, height: 14, r: [0, 3, 3, 0] }, style: { fill: relleno } },
+                style: { text: f.nombre, fill: suave, font: `13px ${fuente}`, lineHeight: 16, align: estrecho ? "left" : "right", verticalAlign: estrecho ? "top" : "middle",
+                  ...(estrecho ? { width: ancho - 4, overflow: "break" } : {}) } },
+              { type: "rect", shape: { x: izq, y: yb, width: largo, height: 14, r: 7 }, style: { fill: relleno } },
               { type: "text", x: izq + largo + 6, y: yb + 7,
                 style: { text: `${formato(f.valor)}${sufijo}`, fill: tinta, font: `600 13px ${fuente}`, verticalAlign: "middle" } },
             ],

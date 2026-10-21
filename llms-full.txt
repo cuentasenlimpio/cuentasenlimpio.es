@@ -24,7 +24,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 ## Contexto por tema
 
 - [cuentas](https://cuentasenlimpio.es/contexto/cuentas.md) (9 KB): Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE.
-- [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (5 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
+- [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
 - [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
 - [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
 - [economia](https://cuentasenlimpio.es/contexto/economia.md) (4 KB): Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento.
@@ -222,20 +222,20 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 
 Ingresos de todas las administraciones públicas, por tipo. «De cada 100 €» es la parte de cada tipo en el total de ingresos (cálculo nuestro sobre datos oficiales).
 
-## 2025 (provisional, IGAE)
+## 2025
 
 | Tipo de ingreso | Millones de € | % del PIB | De cada 100 € de ingresos |
 |---|---|---|---|
-| IVA | 114.428 | 6,77 | 15,8 |
-| Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…) | 52.504 | 3,11 | 7,2 |
-| Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…) | 24.626 | 1,46 | 3,4 |
-| Impuestos sobre la renta de los hogares | 161.400 | 9,55 | 22,2 |
-| Impuestos sobre los beneficios de las empresas | 53.623 | 3,17 | 7,4 |
-| Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…) | 5.630 | 0,33 | 0,8 |
-| Impuestos sobre el capital (sucesiones, donaciones…) | 6.047 | 0,36 | 0,8 |
-| Cotizaciones sociales | 223.230 | 13,21 | 30,8 |
+| IVA | 114.428 | 6,80 | 15,8 |
+| Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…) | 52.504 | 3,10 | 7,2 |
+| Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…) | 24.626 | 1,50 | 3,4 |
+| Impuestos sobre la renta de los hogares | 161.400 | 9,60 | 22,2 |
+| Impuestos sobre los beneficios de las empresas | 53.623 | 3,20 | 7,4 |
+| Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…) | 5.630 | 0,30 | 0,8 |
+| Impuestos sobre el capital (sucesiones, donaciones…) | 6.047 | 0,40 | 0,8 |
+| Cotizaciones sociales | 223.230 | 13,20 | 30,8 |
 | Menos lo liquidado que no se espera cobrar | 0 | 0,00 | 0,0 |
-| Otros ingresos (ventas, rentas de la propiedad, transferencias…) | 84.167 | 4,98 | 11,6 |
+| Otros ingresos (ventas, rentas de la propiedad, transferencias…) | 84.167 | 4,90 | 11,6 |
 
 ## Evolución: de cada 100 € de ingresos
 
@@ -262,9 +262,9 @@ Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye tambi�
 
 ## Comprobaciones automáticas de esta construcción
 
-- Sí: ¿Las partes de los impuestos y cotizaciones suman su total publicado? Sí, en los 30 años
-- Sí: ¿Los impuestos y las cotizaciones coinciden con la IGAE? Sí: IVA, impuestos sobre la producción, sobre la renta, sobre el capital y cotizaciones coinciden al millón de euros en los 30 años (1995–2024). El reparto entre renta de los hogares y beneficios de empresas solo lo publica Eurostat
-- Sí: ¿El desglose de impuestos de la IGAE coincide con el de Eurostat? Coincide al millón de euros en 29 de los 30 años que publican los dos; no en 2024, que la IGAE revisó después. Por eso usamos el de la IGAE para el año que Eurostat aún no tiene
+- Sí: ¿Las partes de los impuestos y cotizaciones suman su total publicado? Sí, en los 31 años
+- NO: ¿Los impuestos y las cotizaciones coinciden con la IGAE? No del todo: 6 cifras no coinciden (por ejemplo, D211 en 2024)
+- Sí: ¿El desglose de impuestos de la IGAE coincide con el de Eurostat? Coincide al millón de euros en 31 de los 31 años que publican los dos. Por eso usamos el de la IGAE para el año que Eurostat aún no tiene
 
 
 ---
