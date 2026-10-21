@@ -397,8 +397,8 @@ table.presupuesto th { white-space: normal; }
 /* ---- Una pregunta, una respuesta (desde el 20/10/2026) ----
    Cada página y cada bloque abren con una pregunta y una cifra; debajo, el gráfico, la fuente y la explicación. */
 :root {
-  --entender: #eef1f6;
-  --entender-tinta: #3e4a5c;
+  --entender: #f5eee1;  /* arena: sin asociación con ningún partido (decisión del 21/10/2026) */
+  --entender-tinta: #6b5326;
 }
 h1.pregunta { font: 600 clamp(2rem, 5.5vw, 2.85rem)/1.12 var(--serif); letter-spacing: -0.005em; margin: 1.75rem 0 1rem; max-width: 46rem; }
 h2.pregunta { font: 600 clamp(1.45rem, 4vw, 1.75rem)/1.2 var(--serif); }
@@ -510,3 +510,29 @@ table.previsiones td:first-child { font-weight: 600; }
 .hecho p { margin: 0 0 0.25rem; font-size: 0.9375rem; }
 .hecho-motivo, .hecho-voto { color: var(--tinta-suave); }
 .hechos-ninguno { font-size: 0.875rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); margin-top: 0.75rem; padding-top: 0.5rem; }
+
+/* Palabras técnicas que se explican al pulsarlas */
+button.termino { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: help;
+  text-decoration: underline dotted var(--entender-tinta); text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; }
+button.termino:hover, button.termino[aria-expanded="true"] { background: var(--entender); }
+button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.termino-ficha { position: absolute; z-index: 50; background: var(--entender); color: var(--tinta); border: 1px solid var(--linea-fuerte);
+  border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.9375rem; line-height: 1.5; box-shadow: 0 4px 16px rgba(29, 29, 27, 0.12); }
+.termino-ficha p { margin: 0 0 0.4rem; }
+.termino-ficha p:last-child { margin-bottom: 0; }
+.termino-ficha .termino-titulo { font: 700 0.75rem/1.2 var(--sans); letter-spacing: 0.06em; text-transform: uppercase; color: var(--entender-tinta); }
+
+/* Cifras a escala de persona */
+.respuesta-persona { display: block; margin-top: 0.5rem; font-size: 0.9em; color: var(--tinta-suave); }
+.cifras-clave .persona { font-size: 0.875rem; color: var(--tinta); font-weight: 600; }
+
+/* Detalle técnico de la fuente, plegado */
+.fuente-detalle { margin-top: 0.35rem; }
+.fuente-detalle summary { cursor: pointer; color: var(--tinta-suave); font-size: 0.8125rem; }
+.fuente-detalle ul { margin: 0.35rem 0 0; padding-left: 1.1rem; }
+
+/* Controles plegados */
+.plegable-controles { margin: 0.75rem 0; }
+.plegable-controles > summary { cursor: pointer; font-weight: 600; color: var(--acento); padding: 0.35rem 0; }
+.plegable-controles > summary:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.plegable-controles[open] > summary { margin-bottom: 0.5rem; }

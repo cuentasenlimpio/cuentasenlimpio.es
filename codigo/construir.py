@@ -2455,6 +2455,13 @@ def main():
     }
     (WEB / "datos").mkdir(parents=True, exist_ok=True)
     (WEB / "datos" / "aapp.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
+    # Escala de persona (desde el 21/10/2026): población media y PIB de cada año, para que cualquier página pueda decir
+    # una cifra en euros por habitante. Población: Eurostat nama_10_pe (POP_NC, miles); PIB: nama_10_gdp (B1GQ, millones).
+    escala = {"años": [a for a in años if valor(poblacion, a) and valor(pib_nama, a)],
+              "fuentes": "Eurostat: nama_10_pe (población media, POP_NC) y nama_10_gdp (PIB a precios corrientes, B1GQ)"}
+    escala["poblacion"] = [round(valor(poblacion, a) * 1000) for a in escala["años"]]
+    escala["pib_meur"] = [valor(pib_nama, a) for a in escala["años"]]
+    (WEB / "datos" / "escala.json").write_text(json.dumps(escala, ensure_ascii=False, separators=(",", ":")))
     gasto, comprobaciones_gasto = construir_gasto(descargas, tablas["gov_10a_main"], deflactor, base, poblacion)
     gasto["tipo"], comprobacion_tipo = construir_tipo(tablas["gov_10a_main"], años, deflactor, base, poblacion)
     comprobaciones_gasto.append(comprobacion_tipo)

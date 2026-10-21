@@ -74,28 +74,45 @@ const FORMATO = {
 };
 
 
-// Línea de fuente: «Fuente: <institución>, <tabla enlazada> (tabla X, actualizada el …), …. <dato|lectura> nota».
+// Línea de fuente, en dos capas (desde el 21/10/2026): arriba, quién publica el dato, dicho en llano, con enlace a su
+// tabla; plegado, el detalle técnico (código de la tabla, fecha de actualización y copia del fichero descargado).
+const QUIEN = {
+  Eurostat: "Eurostat, la oficina de estadística de la Unión Europea",
+  IGAE: "la Intervención General del Estado (IGAE), que lleva las cuentas del sector público",
+  INE: "el Instituto Nacional de Estadística (INE)",
+  AIReF: "la AIReF, el organismo independiente que vigila las cuentas públicas",
+};
 function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
   const porTabla = Object.fromEntries(fuentes.map((f) => [f.tabla, f]));
   p.textContent = "Fuente: ";
+  const detalle = document.createElement("details");
+  detalle.className = "fuente-detalle";
+  const resumen = document.createElement("summary");
+  resumen.textContent = "Detalle de la fuente";
+  const lista = document.createElement("ul");
+  detalle.append(resumen, lista);
+  const vistas = new Set();
   tablas.forEach(([clave, texto], k) => {
     const f = porTabla[clave];
     if (k) p.appendChild(document.createTextNode("; "));
-    p.appendChild(document.createTextNode(`${f.fuente}, `));
+    p.appendChild(document.createTextNode(`${vistas.has(f.fuente) ? f.fuente : QUIEN[f.fuente] || f.fuente}, `));
+    vistas.add(f.fuente);
     const a = document.createElement("a");
     a.href = f.url_navegador;
     a.textContent = texto || f.nombre.charAt(0).toLowerCase() + f.nombre.slice(1);
     p.appendChild(a);
+    const li = document.createElement("li");
     const cuando = f.actualizado_fuente ? `actualizada el ${fecha(f.actualizado_fuente)}` : `descargada el ${fecha(f.descargado)}`;
-    p.appendChild(document.createTextNode(` (${f.fuente === "Eurostat" ? `tabla ${f.dataset}, ` : ""}${cuando}`));
+    li.textContent = `${f.fuente}, ${f.nombre}: ${f.fuente === "Eurostat" ? `tabla ${f.dataset}, ` : ""}${cuando}`;
     if (f.copia) {
-      p.appendChild(document.createTextNode(", "));
+      li.appendChild(document.createTextNode(" ("));
       const c = document.createElement("a");
       c.href = f.copia;
-      c.textContent = "fichero descargado";
-      p.appendChild(c);
+      c.textContent = "fichero tal como se descargó";
+      li.append(c, ")");
     }
-    p.appendChild(document.createTextNode(")"));
+    li.appendChild(document.createTextNode("."));
+    lista.appendChild(li);
   });
   p.appendChild(document.createTextNode(". "));
   const t = document.createElement("span");
@@ -103,6 +120,9 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
   t.textContent = tipo;
   p.appendChild(t);
   if (nota) p.appendChild(document.createTextNode(` ${nota}`));
+  // Va detrás del párrafo (un <details> no cabe dentro de un <p>); si la página repinta la fuente, sustituye al anterior.
+  if (p.nextElementSibling?.classList.contains("fuente-detalle")) p.nextElementSibling.remove();
+  p.after(detalle);
 }
 
 function pintarComprobaciones(ul, lista) {
@@ -219,3 +239,160 @@ async function montarInfo() {
   });
 }
 document.addEventListener("DOMContentLoaded", montarInfo);
+
+// ---- Palabras técnicas que se explican al pulsarlas (desde el 21/10/2026) ----
+// La primera vez que una palabra de terminos.json aparece en el texto de la página, se convierte en un botón; al
+// pulsarlo, una ficha con su explicación en una frase y el enlace al glosario. No se marcan títulos, enlaces,
+// controles, tablas, citas literales ni fuentes. El contenido que las páginas pintan después también se revisa.
+const NO_MARCAR = "a, button, select, option, label, h1, h2, h3, summary, dt, script, style, svg, canvas, table, blockquote, code, "
+  + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, [data-sin-terminos]";
+async function montarTerminos() {
+  if (/glosario\.html$/.test(location.pathname)) return;
+  const main = document.querySelector("main");
+  if (!main) return;
+  let datos;
+  try { datos = await fetch("terminos.json").then((r) => r.json()); } catch { return; }
+  const porForma = new Map();
+  for (const t of datos.terminos) for (const f of t.formas) porForma.set(f.toLowerCase(), t);
+  const formas = [...porForma.keys()].sort((a, b) => b.length - a.length)
+    .map((f) => f.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&"));
+  const patron = new RegExp(`(?<![\\p{L}\\p{N}])(${formas.join("|")})(?![\\p{L}\\p{N}])`, "giu");
+  const marcados = new Set();
+
+  const ficha = document.createElement("div");
+  ficha.className = "termino-ficha";
+  ficha.id = "termino-ficha";
+  ficha.setAttribute("role", "dialog");
+  ficha.hidden = true;
+  document.body.appendChild(ficha);
+  let abierto = null;
+  const cerrar = () => {
+    if (!abierto) return;
+    abierto.setAttribute("aria-expanded", "false");
+    ficha.hidden = true;
+    abierto = null;
+  };
+  const abrir = (b, t) => {
+    if (abierto === b) return cerrar();
+    cerrar();
+    ficha.textContent = "";
+    const titulo = document.createElement("p");
+    titulo.className = "termino-titulo";
+    titulo.id = "termino-ficha-titulo";
+    titulo.textContent = b.textContent;
+    const def = document.createElement("p");
+    def.textContent = t.def;
+    ficha.append(titulo, def);
+    if (t.glosario) {
+      const p = document.createElement("p");
+      const a = document.createElement("a");
+      a.href = `glosario.html#${t.glosario}`;
+      a.textContent = "Más en el glosario";
+      p.appendChild(a);
+      ficha.appendChild(p);
+    }
+    ficha.setAttribute("aria-labelledby", titulo.id);
+    ficha.hidden = false;
+    const r = b.getBoundingClientRect();
+    const ancho = Math.min(352, document.documentElement.clientWidth - 32);
+    ficha.style.width = `${ancho}px`;
+    ficha.style.left = `${Math.max(16, Math.min(r.left + scrollX, scrollX + document.documentElement.clientWidth - ancho - 16))}px`;
+    ficha.style.top = `${r.bottom + scrollY + 6}px`;
+    b.setAttribute("aria-expanded", "true");
+    abierto = b;
+  };
+  document.addEventListener("click", (ev) => {
+    if (abierto && !ficha.contains(ev.target) && ev.target !== abierto) cerrar();
+  });
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Escape" && abierto) { const b = abierto; cerrar(); b.focus(); }
+  });
+
+  function marcar() {
+    // Lo que una página vuelve a pintar pierde su marca: cuenta como marcado solo lo que sigue en la página.
+    marcados.clear();
+    for (const b of main.querySelectorAll("button.termino")) marcados.add(b.dataset.termino);
+    const recorrido = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => (n.nodeValue.trim() && !n.parentElement.closest(NO_MARCAR) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT),
+    });
+    const nodos = [];
+    while (recorrido.nextNode()) nodos.push(recorrido.currentNode);
+    for (let nodo of nodos) {
+      patron.lastIndex = 0;
+      let m;
+      while ((m = patron.exec(nodo.nodeValue))) {
+        const t = porForma.get(m[1].toLowerCase());
+        if (marcados.has(t.id)) continue;
+        marcados.add(t.id);
+        const resto = nodo.splitText(m.index);
+        nodo = resto.splitText(m[1].length);
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "termino";
+        b.dataset.termino = t.id;
+        b.textContent = resto.nodeValue;
+        b.setAttribute("aria-expanded", "false");
+        b.setAttribute("aria-controls", "termino-ficha");
+        b.addEventListener("click", (ev) => { ev.stopPropagation(); abrir(b, t); });
+        resto.replaceWith(b);
+        patron.lastIndex = 0;
+      }
+    }
+  }
+  marcar();
+  let espera = null;
+  new MutationObserver((cambios) => {
+    if (cambios.every((c) => [...c.addedNodes].every((n) => n.nodeType === 1 && n.classList?.contains("termino")) || c.target === ficha)) return;
+    clearTimeout(espera);
+    espera = setTimeout(marcar, 300);
+  }).observe(main, { childList: true, subtree: true, characterData: true });
+}
+document.addEventListener("DOMContentLoaded", montarTerminos);
+
+// ---- Escala de persona (desde el 21/10/2026) ----
+// Pasa una cifra a euros por habitante, con la población media del año (datos/escala.json, de Eurostat). Es una
+// lectura: aritmética sobre datos publicados. Devuelve null si falta el año.
+let escala = null;
+async function porHabitante({ millones, pctPib, año }) {
+  escala ??= fetch("datos/escala.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const e = await escala;
+  const i = e ? e.años.indexOf(año) : -1;
+  if (i < 0) return null;
+  const euros = millones !== undefined ? millones : (pctPib / 100) * e.pib_meur[i];
+  const anual = (euros * 1e6) / e.poblacion[i];
+  return { anual, mensual: anual / 12 };
+}
+// «unos 15.500 € por habitante»: a la centena desde mil euros y a la decena por debajo, para que cifras cercanas
+// (ingresos y gastos de un mismo año) no salgan iguales y su diferencia cuadre a la vista.
+function redondeoHablado(v) {
+  const paso = Math.abs(v) >= 1000 ? 100 : Math.abs(v) >= 100 ? 10 : 1;
+  return Math.round(v / paso) * paso;
+}
+const lista = (p) => (p.length > 1 ? `${p.slice(0, -1).join(", ")} y ${p.at(-1)}` : p[0]);
+const eurosHablados = (v) => `unos ${numero(redondeoHablado(v), 0)} €`;
+function textoPorHabitante(h) {
+  if (!h) return "";
+  return `unos ${numero(redondeoHablado(h.anual), 0)} € por habitante al año (unos ${numero(redondeoHablado(h.mensual), 0)} € al mes)`;
+}
+
+// ---- Controles plegados (desde el 21/10/2026) ----
+// El periodo y las capas de contexto ocupaban la primera pantalla del móvil antes de llegar al dato. Van en un
+// desplegable con un rótulo que dice qué hay dentro: cerrado en pantallas estrechas y abierto en las anchas.
+function plegarControles() {
+  const ancho = matchMedia("(min-width: 900px)").matches;
+  const PLEGABLES = [["periodo", "Cambiar el periodo de los gráficos"], ["capas", "Añadir contexto: Gobiernos, legislaturas y crisis"]];
+  for (const [id, rotulo] of PLEGABLES) {
+    const el = document.getElementById(id);
+    if (!el || el.closest("details")) continue;
+    const d = document.createElement("details");
+    d.className = "plegable-controles";
+    d.open = ancho;
+    const s = document.createElement("summary");
+    s.textContent = rotulo;
+    el.before(d);
+    d.append(s, el);
+    // Su nota y su ayuda, si van justo detrás, entran con él.
+    for (let sig = d.nextElementSibling; sig && (sig.id === "nota-capas" || sig.classList.contains("ayuda-grafico")); sig = d.nextElementSibling) d.appendChild(sig);
+  }
+}
+document.addEventListener("DOMContentLoaded", plegarControles);

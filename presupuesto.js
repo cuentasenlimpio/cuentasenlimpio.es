@@ -173,6 +173,14 @@ function pintarRespuesta(d) {
   b.textContent = `${numero(Math.round((100 * t.obligaciones) / t.definitivos), 0)} de cada 100 €`;
   const prorroga = d.vigencia.filter((v) => v.tipo === "prorrogado" || v.tipo === "mitad").length;
   p.append(b, ` que tenía autorizados al final del año. En ${numero(prorroga, 0)} de los ${numero(d.años.length, 0)} años desde ${d.años[0]}, el presupuesto estuvo prorrogado todo el año o parte de él.`);
+  // A escala de persona: lo gastado por el Estado (millones de euros) entre la población media del año.
+  porHabitante({ millones: t.obligaciones, año: d.años[k] }).then((h) => {
+    if (!h) return;
+    const q = document.createElement("span");
+    q.className = "respuesta-persona";
+    q.textContent = ` Lo gastado ese año, ${numero(Math.round(t.obligaciones / 1000), 0)} mil millones de euros, son ${eurosHablados(h.anual)} por habitante. Es solo el presupuesto del Estado.`;
+    p.appendChild(q);
+  });
 }
 
 async function arrancar() {

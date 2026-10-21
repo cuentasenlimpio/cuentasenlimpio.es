@@ -749,6 +749,15 @@ function pintarRespuesta() {
   const b = document.createElement("strong");
   b.textContent = saldo < 0 ? `faltó un ${numero(-saldo, 1)} %, el déficit` : `sobró un ${numero(saldo, 1)} %, el superávit`;
   p.append(b, `. La deuda acumulada llegó al ${v("deuda")} % del PIB.`);
+  // A escala de persona (lectura: euros de cada serie entre la población media del año, de Eurostat).
+  const h = (k) => s[k].habitante[i];
+  if (h("gastos")) {
+    const q = document.createElement("span");
+    q.className = "respuesta-persona";
+    q.textContent = ` Por habitante: entraron ${eurosHablados(h("ingresos"))} y se gastaron ${eurosHablados(h("gastos"))} en el año, `
+      + `${saldo < 0 ? "faltaron" : "sobraron"} ${eurosHablados(Math.abs(h("saldo")))}, y la deuda equivale a ${eurosHablados(h("deuda"))} por cada habitante.`;
+    p.appendChild(q);
+  }
   const con = d.años.filter((a, k) => s.saldo.pib[k] !== null && s.saldo.pib[k] >= 0);
   const t = document.getElementById("superavit");
   if (t) {

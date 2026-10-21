@@ -43,7 +43,7 @@ const NOMBRES_CORTOS = {
 };
 
 // Respuesta corta: las tres mayores fuentes de ingresos del último año.
-function pintarRespuesta(g) {
+function pintarRespuesta(g, aapp) {
   const r = g.reparto.at(-1);
   const top = Object.entries(r).filter(([k]) => NOMBRES_CORTOS[k]).sort((a, b) => b[1] - a[1]).slice(0, 3);
   const p = document.getElementById("respuesta");
@@ -52,9 +52,16 @@ function pintarRespuesta(g) {
     if (j) p.append(j === 2 ? " y " : ", ");
     const b = document.createElement("strong");
     b.textContent = numero(Math.round(v), 0);
-    p.append(b, ` ${j ? "" : "salieron de "}${NOMBRES_CORTOS[k]}`);
+    p.append(b, ` ${j ? "de " : "salieron de "}${NOMBRES_CORTOS[k]}`);
   });
   p.append(".");
+  const i = aapp.años.indexOf(g.años.at(-1)), hab = i >= 0 ? aapp.series.ingresos.habitante[i] : null;
+  if (hab) {
+    const q = document.createElement("span");
+    q.className = "respuesta-persona";
+    q.textContent = ` En total entraron ${eurosHablados(hab)} por habitante en el año, contando niños y jubilados.`;
+    p.appendChild(q);
+  }
 }
 
 async function arrancar() {
@@ -62,7 +69,7 @@ async function arrancar() {
   const sel = montarSelectores({ años: g.años, alCambiar: (s) => pintar(g, aapp, s) });
   sel.periodo = EC.periodo(document.getElementById("periodo"), aapp, g.años);
   pintar(g, aapp, sel);
-  pintarRespuesta(g);
+  pintarRespuesta(g, aapp);
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_taxag");
   pintarUltimoAño(g.años, g.provisional_igae?.at(-1)

@@ -6,7 +6,6 @@ const NOMBRES_INGRESOS = {
   productos: "otros impuestos sobre lo que se compra", sociedades: "impuesto de sociedades", produccion: "impuestos sobre la producción",
 };
 
-const lista = (p) => (p.length > 1 ? `${p.slice(0, -1).join(", ")} y ${p.at(-1)}` : p[0]);
 
 async function arrancar() {
   const leer = (f) => fetch(f).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -25,6 +24,21 @@ async function arrancar() {
   if (saldo >= 0) {
     pon("k-saldo-nombre", "Superávit");
     pon("k-saldo-explica", "del PIB. Lo que sobra tras cubrir el gasto.");
+  }
+
+  // A escala de persona, debajo de cada cifra (lectura: euros entre la población media del año, de Eurostat).
+  const h = (k) => aapp.series[k].habitante[i];
+  const persona = (id, t) => {
+    const s = document.createElement("span");
+    s.className = "persona";
+    s.textContent = t;
+    document.getElementById(id).parentElement.querySelector(".explica").after(s);
+  };
+  if (h("gastos")) {
+    persona("k-ingresos", `${eurosHablados(h("ingresos"))} por habitante en el año.`);
+    persona("k-gastos", `${eurosHablados(h("gastos"))} por habitante en el año.`);
+    persona("k-saldo", `${eurosHablados(Math.abs(h("saldo")))} por habitante en el año.`);
+    persona("k-deuda", `${eurosHablados(h("deuda"))} por habitante, en total.`);
   }
 
   // Año en curso, debajo de las cifras de déficit y deuda.

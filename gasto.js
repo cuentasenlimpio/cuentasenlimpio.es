@@ -73,7 +73,7 @@ function pintar(g, aapp, sel) {
 }
 
 // Frase de respuesta de la portada de la página: las tres partidas mayores del año más reciente.
-function pintarRespuesta(g) {
+function pintarRespuesta(g, aapp) {
   const r = g.reparto.at(-1);
   const top = g.funciones.map((f) => ({ nombre: f.nombre.toLowerCase(), valor: r[f.codigo] }))
     .sort((a, b) => b.valor - a.valor).slice(0, 3);
@@ -86,6 +86,14 @@ function pintarRespuesta(g) {
     p.append(b, ` a ${t.nombre}`);
   });
   p.append(".");
+  // A escala de persona: el gasto total por habitante de ese año (Eurostat) repartido igual que los 100 €.
+  const k = aapp.años.indexOf(g.años.at(-1)), hab = k >= 0 ? aapp.series.gastos.habitante[k] : null;
+  if (hab) {
+    const q = document.createElement("span");
+    q.className = "respuesta-persona";
+    q.textContent = ` En total se gastaron ${eurosHablados(hab)} por habitante en el año: ${lista(top.map((t) => `${eurosHablados((hab * t.valor) / 100)} en ${t.nombre}`))}.`;
+    p.appendChild(q);
+  }
 }
 
 // ---- ¿Cuánto se invierte? (gasto por tipo, gov_10a_main) ----
@@ -217,7 +225,7 @@ async function arrancar() {
   const sel = montarSelectores({ años: g.años, alCambiar: (s) => { pintar(g, aapp, s); pintarTipo(g, aapp, s.unidad); } });
   sel.periodo = EC.periodo(document.getElementById("periodo"), aapp, g.años);
   pintar(g, aapp, sel);
-  pintarRespuesta(g);
+  pintarRespuesta(g, aapp);
   montarInfo();
   pintarTipo(g, aapp, sel.unidad);
   EC.capas(document.getElementById("capas"), capas, () => pintarTipo(g, aapp, sel.unidad));
