@@ -1358,6 +1358,143 @@ def construir_avales(descargas):
           f"desglose desde {desde}; {len(avisos)} avisos")
 
 
+# Ayuntamientos de más de 300.000 habitantes del cuadro 14.6 del Banco de España, con su código de municipio del INE
+# (el Banco de España llama «Comunidad de Madrid» al de Madrid y «Región de Murcia» al de Murcia).
+CIUDADES_BDE = {"Alicante": "03014", "Barcelona": "08019", "Bilbao": "48020", "Córdoba": "14021", "Comunidad de Madrid": "28079",
+                "Málaga": "29067", "Región de Murcia": "30030", "Palma": "07040", "Las Palmas": "35016", "Sevilla": "41091",
+                "Valencia": "46250", "Valladolid": "47186", "Zaragoza": "50297"}
+
+
+def construir_deuda_local(descargas):
+    """Deuda de las entidades locales: serie del Banco de España desde 1995 y deuda viva de cada ayuntamiento (Hacienda)
+    con su población (INE). Hacienda concilia sus ficheros con el Banco de España del día en que los publica; el Banco de
+    España revisa después la serie (comprobado: su versión de junio de 2023 daba para 2021 y 2022 lo mismo que Hacienda)."""
+    if not all(k in descargas for k in ("bde_be1406", "bde_be1408")):
+        return
+    comprobaciones, salida = [], {}
+    b6 = _bde_csv_mensual(AQUI / descargas["bde_be1406"]["fichero"])
+    b8 = _bde_csv_mensual(AQUI / descargas["bde_be1408"]["fichero"])
+    filas6 = list(csv.reader((AQUI / descargas["bde_be1406"]["fichero"]).read_bytes().decode("latin-1").splitlines()))
+    alias6 = dict(zip(next(f for f in filas6 if f and f[0] == "DESCRIPCIÓN DE LA SERIE")[1:], next(f for f in filas6 if f and f[0] == "ALIAS DE LA SERIE")[1:]))
+
+    def serie6(descripcion):
+        return b6[alias6[f"PDE (SEC 2010). CCLL. {descripcion}"]]
+    total = serie6("Deuda PDE. Total pasivos")
+    pib_alias = next(a for a, s in b8.items() if s and max(s.values()) < 100 and a.endswith(".2"))
+    años = [a for a in range(1995, 2100) if (a, 12) in total]
+    partes = {"capitales": "Ayuntamientos capitales de provincia. Deuda PDE. Total",
+              "no_capitales": "Ayuntamientos no capitales de provincia. Deuda PDE. Total",
+              "diputaciones_comun": "Diputaciones de régimen común. Deuda PDE. Total",
+              "diputaciones_forales": "Diputaciones de régimen foral. Deuda PDE. Total",
+              "consejos_cabildos": "Consejos y cabildos insulares. Deuda PDE. Total",
+              "ciudades_autonomas": "Ciudades autónomas. Deuda PDE. Total"}
+    ultimo = años[-1]
+    reparto = {k: round(serie6(d).get((ultimo, 12), 0.0) / 1000, 1) for k, d in partes.items()}
+    suma = round(sum(reparto.values()), 1)
+    comprobaciones.append({"que": "¿Ayuntamientos, diputaciones, consejos y cabildos y ciudades autónomas suman la deuda local del Banco de España?",
+                           "resultado": f"Sí, en {ultimo}" if abs(suma - total[(ultimo, 12)] / 1000) < 1 else
+                           f"No: suman {es(suma, 1)} millones y el total es {es(total[(ultimo, 12)] / 1000, 1)}",
+                           "ok": abs(suma - total[(ultimo, 12)] / 1000) < 1})
+    salida["serie"] = {"años": años, "meur": [round(total[(a, 12)] / 1000) for a in años],
+                       "pib": [b8[pib_alias].get((a, 12)) for a in años], "reparto": {"año": ultimo, **reparto},
+                       "tablas": ["bde_be1406", "bde_be1408"]}
+
+    # Ayuntamiento por ayuntamiento (Hacienda) con su población (INE)
+    if "hacienda_deuda_viva_aytos" in descargas and "ine_padron_municipios" in descargas:
+        pob, nombres = {}, {}
+        año_pob = None
+        for s_ in json.loads((AQUI / descargas["ine_padron_municipios"]["fichero"]).read_text()):
+            md = {m["T3_Variable"]: m for m in s_["MetaData"]}
+            if md.get("Sexo", {}).get("Codigo") == "0" and s_["Data"] and "Municipios" in md:
+                pob[md["Municipios"]["Codigo"]] = s_["Data"][0]["Valor"]
+                nombres[md["Municipios"]["Codigo"]] = md["Municipios"]["Nombre"]
+                año_pob = s_["Data"][0]["Anyo"]
+        hoja = hojas(AQUI / descargas["hacienda_deuda_viva_aytos"]["fichero"])["Datos"]
+        cab = next(i for i, f in enumerate(hoja) if f and f[0] == "Ejercicio")
+        deuda, conciliacion, total_h, año_h, provincia = {}, 0.0, None, None, {}
+        for f in hoja[cab + 1:]:
+            if not f:
+                continue
+            # La etiqueta de las filas de conciliación y total puede ir en cualquier columna (celdas combinadas)
+            etiqueta = next((str(x).strip() for x in f if isinstance(x, str) and x.strip()), "")
+            if str(f[0]).strip().isdigit() and len(f) > 7 and isinstance(f[7], float):
+                etiqueta = str(f[0]).strip()
+                cod = str(f[3]).zfill(2) + str(f[5]).zfill(3)
+                deuda[cod] = f[7] / 1000
+                provincia[cod] = str(f[4]).strip()
+                año_h = int(etiqueta)
+            elif etiqueta.lower().startswith("diferencias de conciliaci"):
+                conciliacion = next(x for x in f[1:] if isinstance(x, float)) / 1000
+            elif etiqueta.upper() == "TOTAL":
+                total_h = next(x for x in f[1:] if isinstance(x, float)) / 1000
+        suma_h = sum(deuda.values()) + conciliacion
+        comprobaciones.append({"que": "¿Los ayuntamientos de Hacienda, uno a uno, suman su total?",
+                               "resultado": (f"Sí: {len(deuda)} ayuntamientos más {es(conciliacion, 1)} millones de «diferencias de conciliación con el "
+                                             f"Banco de España» que el propio fichero no reparte") if total_h and abs(suma_h - total_h) < 1 else
+                               f"No: suman {es(suma_h, 1)} millones y el total del fichero es {es(total_h or 0, 1)}",
+                               "ok": bool(total_h) and abs(suma_h - total_h) < 1})
+        falta_pob = [c for c in deuda if c not in pob]
+        comprobaciones.append({"que": "¿Cada ayuntamiento de Hacienda tiene su población en el INE?",
+                               "resultado": f"Sí, los {len(deuda)}" if not falta_pob else f"No: faltan {len(falta_pob)} (por ejemplo, {falta_pob[0]})",
+                               "ok": not falta_pob})
+        # Las grandes ciudades: Hacienda y el Banco de España, una a una
+        distintas = []
+        ciudades = []
+        for nombre_bde, cod in CIUDADES_BDE.items():
+            v = serie6(f"Ayuntamiento de {nombre_bde}. Deuda PDE. Total").get((año_h, 12))
+            if v is None or cod not in deuda:
+                continue
+            if abs(v / 1000 - deuda[cod]) >= 0.1:
+                distintas.append(nombres.get(cod, nombre_bde))
+            ciudades.append({"cod": cod, "nombre": nombres.get(cod, nombre_bde), "meur": round(v / 1000, 1),
+                             "habitante": round(v * 1000 / pob[cod]) if pob.get(cod) else None})
+        comprobaciones.append({"que": f"¿La deuda de las ciudades de más de 300.000 habitantes es la misma en Hacienda y en el Banco de España ({año_h})?",
+                               "resultado": f"Sí, en las {len(ciudades)}" if not distintas else f"No en {len(distintas)}: {', '.join(distintas)}",
+                               "ok": not distintas})
+        # Hacienda frente al Banco de España hoy: Hacienda pone Ceuta y Melilla con los ayuntamientos y aparte las entidades
+        # menores y mancomunidades; el total de las entidades locales se compara con el del Banco de España del mismo año.
+        # Hacienda frente al Banco de España de hoy, en el total de las entidades locales (el reparto entre tipos no es el
+        # mismo: Hacienda pone Ceuta y Melilla con los ayuntamientos y aparte las entidades menores y mancomunidades).
+        bde_aytos = total.get((año_h, 12), 0) / 1000
+        total_eell = None
+        if "hacienda_deuda_viva_resumen" in descargas:
+            for f in next(iter(hojas(AQUI / descargas["hacienda_deuda_viva_resumen"]["fichero"]).values())):
+                textos = [x for x in f if isinstance(x, str)]
+                numeros_ = [x for x in f if isinstance(x, float)]
+                if textos and numeros_ and textos[0].strip().upper().startswith("TOTAL DEUDA"):
+                    total_eell = numeros_[-1] / 1000
+        if total_eell is not None:
+            dif = bde_aytos - total_eell
+            comprobaciones.append({
+                "que": f"¿La deuda de todas las entidades locales de Hacienda es la del Banco de España ({año_h})?",
+                "resultado": (f"Sí, al millón de euros" if abs(dif) < 1 else
+                              f"Casi: el Banco de España da hoy {es(abs(dif), 1)} millones {'más' if dif > 0 else 'menos'} "
+                              f"({es(abs(100 * dif / bde_aytos), 2)} %). Hacienda concilia sus cifras con el Banco de España del día en que "
+                              f"las publica y no las rehace cuando el Banco de España revisa la serie (comprobado con la versión archivada "
+                              f"de junio de 2023 del cuadro 14.6, que daba para 2021 y 2022 lo mismo que Hacienda). Las cifras de cada "
+                              f"ayuntamiento son las de Hacienda; la serie, las del Banco de España"),
+                "ok": abs(dif) < 1 or abs(dif / bde_aytos) < 0.01,
+            })
+        salida["municipios"] = {
+            "año": año_h, "año_poblacion": año_pob, "conciliacion": round(conciliacion, 1), "total": round(total_h or 0, 1),
+            "bde_mismo_año": round(bde_aytos, 1), "hacienda_total_eell": None if total_eell is None else round(total_eell, 1), "sin_deuda": sum(1 for v in deuda.values() if v == 0),
+            "n": len(deuda), "poblacion": int(sum(pob.get(c, 0) for c in deuda)),
+            "ciudades": sorted(ciudades, key=lambda c: c["nombre"]),
+            "tabla": "hacienda_deuda_viva_aytos", "tabla_poblacion": "ine_padron_municipios",
+        }
+        # Fichero aparte para el buscador: código, nombre, provincia, deuda (miles de euros) y población
+        (WEB / "datos" / "municipios.json").write_text(json.dumps(
+            {"año": año_h, "año_poblacion": año_pob,
+             "m": [[c, nombres.get(c, ""), provincia.get(c, ""), round(deuda[c] * 1000), int(pob.get(c, 0))] for c in sorted(deuda)]},
+            ensure_ascii=False, separators=(",", ":")))
+    salida["comprobaciones"] = comprobaciones
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    (WEB / "datos" / "deuda_local.json").write_text(json.dumps(salida, ensure_ascii=False))
+    m_ = salida.get("municipios") or {}
+    print(f"deuda local: {años[0]}–{ultimo}, {salida['serie']['meur'][-1]} M€; ayuntamientos {m_.get('año')}: {m_.get('n')}, sin deuda {m_.get('sin_deuda')}")
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -2693,7 +2830,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -2845,6 +2982,7 @@ def main():
     construir_empleo_publico(descargas)
     construir_fondos_europeos(descargas)
     construir_avales(descargas)
+    construir_deuda_local(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

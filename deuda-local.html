@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>La deuda de los ayuntamientos · Cuentas en limpio</title>
+  <meta name="description" content="Cuánto deben los ayuntamientos, diputaciones y cabildos desde 1995, y la deuda de cada uno de los 8.132 municipios con su deuda por habitante, con datos del Banco de España, Hacienda y el INE.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=f567a88122">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=21c529621e" defer></script>
+  <script src="deuda-local.js?v=cca71d6235" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html">Empleo público</a> <a href="fondos-europeos.html">Fondos europeos</a> <a href="avales.html">Avales</a> <a href="deuda-local.html" aria-current="page">Ayuntamientos</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+    
+  <main>
+    <h1 class="pregunta">¿Cuánto deben los ayuntamientos?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Entidades locales: ayuntamientos, diputaciones, consejos y cabildos insulares, Ceuta y Melilla, mancomunidades y entidades locales menores. La deuda es la del Procedimiento de Déficit Excesivo, la misma definición que la de todas las administraciones: no incluye la de las empresas municipales que venden en el mercado.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="buscar-t">
+      <h2 class="pregunta" id="buscar-t">¿Y mi ayuntamiento?</h2>
+      <p class="grafico-explica" id="buscar-explica">La deuda de cada ayuntamiento a final de año, en total y por habitante.</p>
+      <label class="campo-municipio">Municipio <input type="search" id="municipio" autocomplete="off" placeholder="Escribe el nombre" aria-describedby="buscar-explica"></label>
+      <div id="resultados-municipio" aria-live="polite"></div>
+      <p class="fuente-grafico" id="buscar-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cómo ha cambiado desde 1995?</h2>
+      <p class="grafico-explica">Deuda de todas las entidades locales a final de cada año, en porcentaje del PIB.</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿Quién la debe?</h2>
+      <p class="grafico-explica" id="g2-explica">Deuda de las entidades locales por tipo, en millones de euros.</p>
+      <table class="tabla-sueldo" id="reparto"></table>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">Las ciudades de más de 300.000 habitantes</h2>
+      <p class="grafico-explica" id="g3-explica">Deuda de cada ayuntamiento, en millones de euros y en euros por habitante, por orden alfabético.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="ciudades"></table></div>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Deber no es en sí bueno ni malo: un ayuntamiento puede pedir prestado para una obra que durará décadas y pagarla poco a poco. <span class="resalta">Lo que dice cuánto pesa una deuda es lo que se debe frente a lo que se ingresa</span>, y eso estas cifras no lo dicen.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>No incluyen la deuda de las empresas municipales que funcionan como empresas de mercado (por ejemplo, algunas de transporte o de vivienda): no forman parte de la administración en contabilidad nacional.</li>
+        <li>No dicen si un ayuntamiento puede pagar lo que debe: para eso habría que mirar sus ingresos y sus gastos.</li>
+        <li>Las cifras de cada ayuntamiento son las que publica Hacienda, que las cuadra con el Banco de España el día en que las publica. Después, el Banco de España puede revisar su serie, y entonces la suma de los ayuntamientos y la cifra total del Banco de España se separan un poco. Lo comprobamos cada día: está en las comprobaciones, al final de esta página.</li>
+        <li>Unos pocos millones de euros de cada año el fichero de Hacienda no los reparte entre ayuntamientos («diferencias de conciliación con el Banco de España»).</li>
+      </ul>
+    </div>
+    <details class="plegable ficha">
+      <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+    <p class="seguir-recorrido">Para seguir: <a href="territorio.html">las cuentas de cada comunidad</a> · <a href="cuentas.html">la deuda de todas las administraciones</a> · <a href="avales.html">avales y otros riesgos</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="avales.html">Avales</a></li><li><a href="deuda-local.html">Ayuntamientos</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

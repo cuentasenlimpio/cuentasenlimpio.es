@@ -611,11 +611,40 @@ def avales(D):
     return md
 
 
+def deuda_local(D):
+    s = D.get("deuda_local") or {}
+    if not s.get("serie"):
+        return cabecera("La deuda de los ayuntamientos", "deuda-local.html", "Sin datos en esta construcción.")
+    se, mu = s["serie"], s.get("municipios") or {}
+    md = cabecera("La deuda de las entidades locales (ayuntamientos, diputaciones, cabildos)", "deuda-local.html",
+                  "Deuda PDE (la misma definición que la de todas las administraciones) de las corporaciones locales: serie del Banco de "
+                  "España (Boletín Estadístico, cuadros 14.6 y 14.8). Cada ayuntamiento: deuda viva de Hacienda, conciliada con el Banco de "
+                  "España el día en que se publica; el Banco de España revisa después la serie y la suma de Hacienda puede quedar algo por "
+                  "debajo o por encima. Población: cifras oficiales del padrón (INE). No incluye las empresas municipales de mercado.")
+    md += "\n## Deuda de las entidades locales a final de año\n\n" + tabla(["Año", "Millones de euros", "% del PIB"],
+                                                                         [[a, n(se["meur"][i]), n(se["pib"][i], 1)] for i, a in enumerate(se["años"])])
+    rp = se["reparto"]
+    md += (f"\n\n## Por tipo de entidad ({rp['año']}, millones de euros)\n\n"
+           + tabla(["Tipo", "Millones de euros"], [["Ayuntamientos capitales de provincia", n(rp["capitales"], 1)], ["Resto de ayuntamientos (con mancomunidades y entidades menores)", n(rp["no_capitales"], 1)],
+                                                    ["Diputaciones forales", n(rp["diputaciones_forales"], 1)], ["Diputaciones de régimen común", n(rp["diputaciones_comun"], 1)],
+                                                    ["Consejos y cabildos insulares", n(rp["consejos_cabildos"], 1)], ["Ceuta y Melilla", n(rp["ciudades_autonomas"], 1)]]))
+    if mu:
+        md += (f"\n\n## Ayuntamientos ({mu['año']})\n\n{n(mu['n'])} ayuntamientos; {n(mu['sin_deuda'])} sin deuda a 31 de diciembre. Deuda de todos "
+               f"(Hacienda): {n(mu['total'], 1)} M€, de ellos {n(mu['conciliacion'], 1)} M€ sin repartir («diferencias de conciliación con el Banco de España»). "
+               f"La deuda de cada municipio, con su población, está en https://cuentasenlimpio.es/datos/municipios.json "
+               f"([código INE, nombre, provincia, deuda en miles de euros, habitantes]).\n\n"
+               + tabla(["Ciudad de más de 300.000 habitantes", "Millones de euros", "€ por habitante (cálculo nuestro)"],
+                       [[c["nombre"], n(c["meur"], 1), n(c["habitante"])] for c in mu["ciudades"]]))
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], k) for k in ("bde_be1408", "bde_be1406", "hacienda_deuda_viva_aytos", "ine_padron_municipios")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
+    ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
@@ -708,7 +737,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

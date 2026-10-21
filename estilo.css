@@ -874,3 +874,9 @@ header.sitio { position: relative; }
   .pista-desliza { display: block; }
   .tabla-años td, .tabla-años th { font-size: 0.8125rem; padding: 0.4rem 0.3rem; }
 }
+.campo-municipio { display: flex; flex-direction: column; gap: 0.35rem; font-weight: 600; max-width: 28rem; }
+.campo-municipio input { font: inherit; font-weight: 400; padding: 0.6rem 0.8rem; border: 1px solid var(--linea-fuerte); border-radius: 999px; background: var(--superficie); color: var(--tinta); }
+.lista-municipios { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+.lista-municipios li { padding: 0.6rem 0; border-bottom: 1px solid var(--linea); }
+.lista-municipios .cifra-municipio { display: block; font-variant-numeric: tabular-nums; margin-top: 0.15rem; }
+.lista-municipios .detalle { display: block; color: var(--tinta-suave); font-size: 0.875rem; }

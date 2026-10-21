@@ -208,6 +208,13 @@ PAGINAS = [
     {"fuente": "Banco de España", "tabla": "bde_be1208", "opcional": True,
      "nombre": "Deuda PDE del Estado y avales prestados por el Estado (Boletín Estadístico, cuadro 12.8)",
      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1208.csv", "extension": "csv"},
+    *[{"fuente": "Banco de España", "tabla": f"bde_{c}", "opcional": True, "nombre": n,
+       "url": f"https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/{c}.csv", "extension": "csv"}
+      for c, n in (("be1406", "Deuda PDE de las corporaciones locales por tipo y de los ayuntamientos de más de 300.000 habitantes (Boletín Estadístico, cuadro 14.6)"),
+                   ("be1408", "Deuda PDE de las corporaciones locales, en euros y en % del PIB (Boletín Estadístico, cuadro 14.8)"))],
+    {"fuente": "INE", "tabla": "ine_padron_municipios", "opcional": True,
+     "nombre": "Cifras oficiales de población de los municipios (revisión del padrón, tabla 29005)",
+     "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/29005?nult=1&tip=AM", "extension": "json"},
     {"fuente": "Banco de España", "tabla": "bde_be12c", "opcional": True,
      "nombre": "Avales prestados por el Estado, por destino: otras administraciones, programas de la UE, entidades de crédito y COVID (Boletín Estadístico, cuadro 12.c)",
      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be12c.csv", "extension": "csv"},
@@ -354,6 +361,32 @@ def main():
             print("AVISO ss_pensiones_avance: no se encontró el enlace en la página")
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO ss_pensiones_avance: no se pudo leer la página ({error})")
+
+    # Deuda viva de cada ayuntamiento (Hacienda): un fichero por año con un nombre que cambia de convención; se busca en su
+    # página el del último año publicado.
+    try:
+        import html as html_
+        import re
+        pagina_dv = "https://www.hacienda.gob.es/es-ES/CDI/Paginas/SistemasFinanciacionDeuda/InformacionEELLs/DeudaViva.aspx"
+        with urllib.request.urlopen(urllib.request.Request(pagina_dv, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+            texto = r.read().decode("utf-8", errors="replace")
+        enlaces = sorted({(int(m.group(1)), html_.unescape(m.group(0))) for m in
+                          re.finditer(r"/cdi/sist[^\"]*?informacioneells/(\d{4})/deuda-viva-ayuntamientos-\d{6}\.xlsx", texto, re.I)})
+        if enlaces:
+            año_dv, ruta_dv = enlaces[-1]
+            PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": "hacienda_deuda_viva_aytos", "opcional": True,
+                            "nombre": f"Deuda viva de cada ayuntamiento a 31 de diciembre de {año_dv}",
+                            "url": "https://www.hacienda.gob.es" + ruta_dv.replace(" ", "%20"), "extension": "xlsx"})
+            resumen = sorted({html_.unescape(m.group(0)) for m in re.finditer(
+                rf"/cdi/sist[^\"]*?informacioneells/{año_dv}/[^\"]*resumen[^\"]*\.xlsx", texto, re.I)})
+            if resumen:
+                PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": "hacienda_deuda_viva_resumen", "opcional": True,
+                                "nombre": f"Deuda viva de las entidades locales a 31 de diciembre de {año_dv}: resumen por tipo de entidad",
+                                "url": "https://www.hacienda.gob.es" + resumen[0].replace(" ", "%20"), "extension": "xlsx"})
+        else:
+            print("AVISO hacienda_deuda_viva_aytos: no se encontró el enlace en la página")
+    except (urllib.error.URLError, TimeoutError) as error:
+        print(f"AVISO hacienda_deuda_viva_aytos: no se pudo leer la página ({error})")
 
     # Comunidades autónomas: un fichero por año en la IGAE y en Hacienda. Los años que aún no existen se saltan sin aviso.
     hoy_año = ahora.year
