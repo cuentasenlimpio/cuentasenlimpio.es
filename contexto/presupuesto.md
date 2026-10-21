@@ -57,6 +57,6 @@ Todas las políticas y años: https://cuentasenlimpio.es/datos/presupuesto.csv
 
 - Sí: ¿Las políticas de gasto suman su área y las áreas el total? Sí, en los 11 años
 - Sí: ¿Los créditos definitivos son los mismos en las dos tablas de la liquidación? Sí, en todas las políticas de los 11 años
-- NO: ¿Lo aprobado coincide con la estadística de presupuestos del Ministerio de Hacienda, capítulo a capítulo? Cuadran en 9 años (2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2025 (avance: solo el total)); difieren en 2024 (15,0 millones en transferencias de capital), sin explicación localizada todavía. Para 2020 Hacienda no publica la estadística en un formato que podamos leer
+- Sí: ¿Lo aprobado coincide con la estadística de presupuestos del Ministerio de Hacienda, capítulo a capítulo? Cuadran en 11 años (2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 (avance: solo el total))
 - Sí: ¿El avance a 31 de diciembre de 2024 coincidió con la liquidación definitiva? Sí: lo aprobado, lo autorizado y lo gastado de las 32 áreas y políticas coinciden al millón de euros. Por eso mostramos 2025 como avance
 - Sí: ¿Está comprobado en el BOE qué presupuesto rigió cada año? Sí, en los 11 años

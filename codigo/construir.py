@@ -320,6 +320,21 @@ def construir_gasto(descargas, tabla_main, deflactor, base, poblacion):
     te = serie(mc, md, geo="ES", sector="S13", na_item="TE", unit="MIO_NAC")
     suma = max(abs(sum(val("S13", f, "MIO_NAC", a) for f, _ in FUNCIONES) - val("S13", "TOTAL", "MIO_NAC", a)) for a in años)
     contra_te = max(abs(val("S13", "TOTAL", "MIO_NAC", a) - te[a][0]) for a in años)
+    # Si no cuadra, puede ser un desfase de versiones: Eurostat revisa el gasto total (gov_10a_main) en cada notificación
+    # y la tabla por funciones (gov_10a_exp) bastante después. Se busca con qué versión anterior del gasto total cuadra.
+    desfase = None
+    if contra_te >= 1:
+        difs = {a: round(val("S13", "TOTAL", "MIO_NAC", a) - te[a][0]) for a in años if abs(val("S13", "TOTAL", "MIO_NAC", a) - te[a][0]) >= 1}
+        vistas = set()
+        for m_ in reversed(json.loads(MANIFIESTO.read_text())):
+            if m_["tabla"] != "gov_10a_main" or m_["sha256"] in vistas or not (AQUI / m_["fichero"]).exists():
+                continue
+            vistas.add(m_["sha256"])
+            vc, vd = leer_jsonstat(AQUI / m_["fichero"])
+            te_v = serie(vc, vd, geo="ES", sector="S13", na_item="TE", unit="MIO_NAC")
+            if all(a in te_v and te_v[a][0] is not None and abs(val("S13", "TOTAL", "MIO_NAC", a) - te_v[a][0]) < 1 for a in años):
+                desfase = {"version": m_.get("actualizado_fuente") or m_["descargado"], "difs": difs}
+                break
     libro = hojas(AQUI / descargas["igae_cofog"]["fichero"])
     igae = {}
     for nombre, filas in libro.items():
@@ -341,7 +356,12 @@ def construir_gasto(descargas, tabla_main, deflactor, base, poblacion):
          "resultado": f"Sí, en los {len(años)} años" if suma < 1 else f"No: diferencia máxima de {es(suma)} millones",
          "ok": suma < 1},
         {"que": "¿El total del gasto por funciones es el mismo gasto total de la página de cuentas?",
-         "resultado": f"Sí, en los {len(años)} años" if contra_te < 1 else f"No: diferencia máxima de {es(contra_te)} millones",
+         "resultado": (f"Sí, en los {len(años)} años" if contra_te < 1 else
+                       f"Todavía no, por un desfase de versiones de Eurostat: la tabla por funciones cuadra al millón con el gasto "
+                       f"total de la versión del {fecha_es(desfase['version'][:10])}, pero Eurostat ha revisado después el gasto total "
+                       f"y aún no ha actualizado la tabla por funciones. Diferencia: "
+                       + "; ".join(f"{es(abs(v))} millones en {a} ({es(abs(100 * v / te[a][0]), 2)} %)" for a, v in desfase["difs"].items())
+                       if desfase else f"No: diferencia máxima de {es(contra_te)} millones"),
          "ok": contra_te < 1},
         {"que": "¿El gasto de cada función coincide con la serie de la IGAE?",
          "resultado": (f"Sí: las diez funciones coinciden al millón de euros en los {len(comunes)} años ({comunes[0]}–{comunes[-1]})"
@@ -646,13 +666,14 @@ def construir_ingresos(descargas, tabla_main, deflactor, base, poblacion):
     # Contraste con la IGAE: las operaciones que también publica en su secuencia de cuentas.
     igae = leer_igae(descargas)
     # Se comparan las operaciones que usa la web (D.21 y D.29, no su suma D.2, que a Eurostat le falta en 1995).
-    pares = {"D211": "D.211", "D21": "D.21", "D29": "D.29", "D5": "D.5", "D61": "D.61", "D91": "D.91r"}
+    pares = {"D211": ["D.211"], "D21": ["D.211", "D.212", "D.214"], "D29": ["D.29"], "D5": ["D.51", "D.59"],
+             "D61": ["D.611", "D.612", "D.613"], "D91": ["D.91"]}
     comunes = sorted(set(igae) & set(años))
     fallos = []
-    for item, cod in pares.items():
+    for item, cods in pares.items():
         for a in comunes:
-            _, recursos = igae[a]
-            ref = recursos.get(cod)
+            recursos = igae[a]["r"]
+            ref = sum(recursos[c_] for c_ in cods) if all(c_ in recursos for c_ in cods) else None
             if ref is None or abs(ref - val(item, "MIO_NAC", a)) >= 1:
                 fallos.append((item, a))
     comprobaciones = [
@@ -1962,7 +1983,9 @@ def construir_presupuesto(descargas):
     cuadran, difieren = [], []
     for a in años:
         tipo = VIGENCIA.get(a, ("propio",))[0]
-        col = f"{a}-P" if tipo == "prorrogado" and (f"{a}-P", "TOTAL PRESUPUESTO") in hacienda else str(a)
+        # Hacienda etiqueta el presupuesto prorrogado con el año anterior al de su vigencia: el que rigió en 2024 es la
+        # columna «2023-P» (comprobado: 2019 → «2018-P», 2020 → «2019-P», 2024 → «2023-P» cuadran capítulo a capítulo).
+        col = f"{a - 1}-P" if tipo == "prorrogado" else str(a)
         if (col, "TOTAL PRESUPUESTO") not in hacienda:
             continue
         if a in avances:
@@ -2054,16 +2077,8 @@ def comprobar_ine(descargas, pib_eurostat, poblacion_eurostat):
 
 
 def comprobar_saldo_igae(descargas, saldo_eurostat):
-    """Saldo (B.9) de la IGAE, hoja «TablaNa AAPP <año>» del Excel de cuentas anuales, frente al de Eurostat."""
-    libro = hojas(AQUI / descargas["igae_cap_serie"]["fichero"])
-    igae = {}
-    for nombre, filas in libro.items():
-        m = re.match(r"Tabla\d+a AAPP (\d{4})(_P)?$", nombre)
-        if not m:
-            continue
-        for f in filas:
-            if len(f) > 6 and isinstance(f[6], str) and f[6].strip() == "B.9" and isinstance(f[1], float):
-                igae[int(m.group(1))] = f[1]
+    """Saldo (B.9) de la serie anual de la IGAE frente al de Eurostat."""
+    igae = {a: x["B.9"] for a, x in leer_igae(descargas).items() if x["B.9"] is not None}
     comunes = sorted(a for a in igae if a in saldo_eurostat)
     peor = max(abs(igae[a] - saldo_eurostat[a][0]) for a in comunes)
     ok = peor < 1
@@ -2075,40 +2090,50 @@ def comprobar_saldo_igae(descargas, saldo_eurostat):
     }
 
 
-# Operaciones que forman los totales europeos de ingresos (TR) y gastos (TE), y dónde está cada una en la hoja de la
-# IGAE: ("e", código) = columna de empleos, ("r", código) = columna de recursos; signo −1 si la IGAE la anota en negativo.
+# Operaciones que forman los totales europeos de ingresos (TR) y gastos (TE), y qué filas de la serie anual de la IGAE
+# (A_AAPP.xlsx, Tabla1a) las forman: ("r", código) = bloque de recursos, ("e", código) = bloque de empleos.
 GASTOS = {
-    "P2": [("e", "P.2", 1)], "P5": [("e", "P.51g", 1), ("e", "P.52", 1), ("e", "P.53", 1)], "NP": [("e", "NP", 1)],
-    "D1PAY": [("e", "D.1", 1)], "D29PAY": [("e", "D.29", 1)], "D3PAY": [("r", "D.3", -1)], "D4PAY": [("e", "D.4", 1)],
-    "D5PAY": [("e", "D.5", 1)], "D62PAY": [("e", "D.62", 1)], "D632PAY": [("e", "D.632", 1)], "D7PAY": [("e", "D.7", 1)],
-    "D8": [("e", "D.8", 1)], "D9PAY": [("r", "D.9p", -1)],
+    "P2": [("e", "P.2")], "P5": [("e", "P.51g"), ("e", "P.52+P.53")], "NP": [("e", "NP")],
+    "D1PAY": [("e", "D.1")], "D29PAY": [("e", "D.29")], "D3PAY": [("e", "D.31"), ("e", "D.39")],
+    "D4PAY": [("e", "D.41"), ("e", "D.42+..+D.45")], "D5PAY": [("e", "D.51")], "D62PAY": [("e", "D.62")],
+    "D632PAY": [("e", "D.632")], "D7PAY": [("e", "D.71"), ("e", "D.72"), ("e", "D.73"), ("e", "D.74"), ("e", "D.75"), ("e", "D.76")],
+    "D8": [("e", "D.8")], "D9PAY": [("e", "D.9_S.13"), ("e", "D.92"), ("e", "D.99")],
 }
 INGRESOS = {
-    "P11_P12": [("r", "P.11", 1), ("r", "P.12", 1)], "P131": None, "D2REC": [("r", "D.2", 1)],
-    "D39REC": [("e", "D.39", -1)], "D4REC": [("r", "D.4", 1)], "D5REC": [("r", "D.5", 1)], "D61REC": [("r", "D.61", 1)],
-    "D7REC": [("r", "D.7", 1)], "D9REC": [("r", "D.9r", 1)],
+    "P11_P12": [("r", "P.11"), ("r", "P.12")], "P131": [("r", "P.131")],
+    "D2REC": [("r", "D.211"), ("r", "D.212"), ("r", "D.214"), ("r", "D.29")], "D39REC": [("r", "D.39")],
+    "D4REC": [("r", "D.41"), ("r", "D.42"), ("r", "D.43+..+D.45")], "D5REC": [("r", "D.51"), ("r", "D.59")],
+    "D61REC": [("r", "D.611"), ("r", "D.612"), ("r", "D.613")],
+    "D7REC": [("r", "D.71"), ("r", "D.72"), ("r", "D.73"), ("r", "D.74"), ("r", "D.75")],
+    "D9REC": [("r", "D.91"), ("r", "D.9_S.13"), ("r", "D.92"), ("r", "D.99")],
 }
 
 
 def leer_igae(descargas):
-    """{año: (empleos, recursos)} del total de las AAPP, primera aparición de cada código en la hoja del año."""
-    libro = hojas(AQUI / descargas["igae_cap_serie"]["fichero"])
-    salida = {}
-    for nombre, filas in libro.items():
-        m = re.match(r"Tabla\d+a AAPP (\d{4})(_P)?$", nombre)
-        if not m:
+    """{año: {"r": {código: valor}, "e": {código: valor}, "B.9": saldo}} de la serie anual de las AAPP de la IGAE.
+
+    Es la publicación más reciente de la IGAE (la secuencia completa de cuentas, CAP_Serie.xlsx, solo se rehace una vez al
+    año y se queda atrás cuando Eurostat publica una revisión). En la hoja, los recursos van primero y los empleos empiezan
+    en la remuneración de asalariados (D.1); el código es lo que hay antes del primer espacio («D.92 (exc. …)» → «D.92»)."""
+    filas = hojas(AQUI / descargas["igae_a_aapp"]["fichero"])["Tabla1a"]
+    cab = next(f for f in filas if f and f[0] == "CÓDIGO")
+    columnas = {k: int(str(v)[:4]) for k, v in enumerate(cab) if v and str(v)[:4].isdigit()}
+    salida = {a: {"r": {}, "e": {}, "B.9": None} for a in columnas.values()}
+    lado = "r"
+    for f in filas:
+        if not f or not isinstance(f[0], str):
             continue
-        empleos, recursos = {}, {}
-        for f in filas:
-            f = f + [None] * 13
-            codigo = f[6].strip() if isinstance(f[6], str) else None
-            if not codigo:
-                continue
-            if isinstance(f[1], float):
-                empleos.setdefault(codigo, f[1])
-            if isinstance(f[8], float):
-                recursos.setdefault(codigo, f[8])
-        salida[int(m.group(1))] = (empleos, recursos)
+        codigo = f[0].strip().split(" ")[0]
+        if codigo == "D.1":
+            lado = "e"
+        for k, a in columnas.items():
+            if k < len(f) and isinstance(f[k], float):
+                if codigo == "B.9":
+                    salida[a]["B.9"] = f[k]
+                else:
+                    salida[a][lado][codigo] = salida[a][lado].get(codigo, 0.0) + f[k]
+        if codigo == "B.9":
+            break
     return salida
 
 
@@ -2121,44 +2146,29 @@ def comprobar_totales_igae(descargas, tabla_main):
         if x["geo"] == "ES" and x["sector"] == "S13" and x["unit"] == "MIO_NAC":
             eu[(x["na_item"], int(x["time"]))] = v or 0.0
     igae = leer_igae(descargas)
-    años = sorted(igae)
+    años = sorted(a for a in igae if ("TE", a) in eu)
 
     def valor_igae(partes, a):
-        empleos, recursos = igae[a]
-        return sum(s * ((empleos if lado == "e" else recursos).get(cod) or 0.0) for lado, cod, s in partes)
+        return sum(igae[a][lado].get(cod) or 0.0 for lado, cod in partes)
 
     def revisar(mapa, total):
-        coinciden, faltan = [], []
-        for item, partes in mapa.items():
-            if partes is None:
-                faltan.append(item)
-            elif all(abs(eu.get((item, a), 0.0) - valor_igae(partes, a)) < 1 for a in años):
-                coinciden.append(item)
+        coinciden = [item for item, partes in mapa.items()
+                     if all(abs(eu.get((item, a), 0.0) - valor_igae(partes, a)) < 1 for a in años)]
         suma_ok = all(abs(eu[(total, a)] - sum(eu.get((k, a), 0.0) for k in mapa)) < 1 for a in años)
-        return coinciden, faltan, suma_ok
+        return coinciden, suma_ok
 
-    g_ok, g_faltan, g_suma = revisar(GASTOS, "TE")
-    i_ok, i_faltan, i_suma = revisar(INGRESOS, "TR")
+    g_ok, g_suma = revisar(GASTOS, "TE")
+    i_ok, i_suma = revisar(INGRESOS, "TR")
     ultimo = años[-1]
-    peso_p131 = 100 * eu[("P131", ultimo)] / eu[("TR", ultimo)]
-    gastos = {
-        "que": "¿El total de gastos coincide con el de la IGAE?",
-        "resultado": (f"Sí: el total es la suma de {len(GASTOS)} operaciones y las {len(g_ok)} coinciden al millón de euros con "
-                      f"la IGAE en los {len(años)} años ({años[0]}–{ultimo})" if len(g_ok) == len(GASTOS) and g_suma else
-                      f"No del todo: coinciden {len(g_ok)} de {len(GASTOS)} operaciones"),
-        "ok": len(g_ok) == len(GASTOS) and g_suma,
-    }
-    ingresos = {
-        "que": "¿El total de ingresos coincide con el de la IGAE?",
-        "resultado": (f"Casi entero: el total es la suma de {len(INGRESOS)} operaciones; {len(i_ok)} coinciden al millón de euros "
-                      f"con la IGAE en los {len(años)} años, y la que falta (pagos por la producción no de mercado, P.131: el "
-                      f"{es(peso_p131, 1)} % de los ingresos en {ultimo}) la IGAE no la publica por separado, así que solo "
-                      f"tenemos la cifra de Eurostat" if len(i_ok) == len(INGRESOS) - len(i_faltan) and i_suma else
-                      f"No del todo: coinciden {len(i_ok)} de {len(INGRESOS)} operaciones"),
-        "ok": len(i_ok) == len(INGRESOS) - len(i_faltan) and i_suma,
-        "nota": "La IGAE publica la secuencia completa de cuentas, no los totales con la definición europea; por eso se comparan las operaciones que los forman.",
-    }
-    return [gastos, ingresos]
+    nota = "La IGAE no publica los totales con la definición europea; por eso se comparan las operaciones que los forman."
+    return [{
+        "que": f"¿El total de {que} coincide con el de la IGAE?",
+        "resultado": (f"Sí: el total es la suma de {len(mapa)} operaciones y las {len(ok)} coinciden al millón de euros con "
+                      f"la IGAE en los {len(años)} años ({años[0]}–{ultimo})" if len(ok) == len(mapa) and suma else
+                      f"No del todo: coinciden {len(ok)} de {len(mapa)} operaciones"
+                      + ("" if suma else "; y las operaciones no suman el total de Eurostat")),
+        "ok": len(ok) == len(mapa) and suma, "nota": nota,
+    } for que, mapa, ok, suma in (("gastos", GASTOS, g_ok, g_suma), ("ingresos", INGRESOS, i_ok, i_suma))]
 
 
 def comprobar_deuda_bde(descargas, deuda_eurostat, años):
@@ -2559,9 +2569,11 @@ def main():
     a_peor, d_peor = max(difs, key=lambda x: abs(x[1]))
     comprobaciones.append({
         "que": "¿Los porcentajes del PIB de la deuda usan el PIB más reciente?",
-        "resultado": f"No del todo: el PIB se ha revisado después; la mayor diferencia es de {es(abs(d_peor))} millones de euros, en {a_peor} ({es(100 * d_peor / valor(pib_edp, a_peor), 2)} %)",
+        "resultado": (f"Sí: el PIB de la notificación de déficit y deuda es el mismo que el de la contabilidad nacional en los {len(difs)} años"
+                      if abs(d_peor) < 1 else
+                      f"No del todo: el PIB se ha revisado después; la mayor diferencia es de {es(abs(d_peor))} millones de euros, en {a_peor} ({es(100 * d_peor / valor(pib_edp, a_peor), 2)} %)"),
         "ok": abs(d_peor) < 1,
-        "nota": "Mostramos el porcentaje del PIB tal como lo publica Eurostat, aunque su PIB sea anterior a la última revisión.",
+        **({} if abs(d_peor) < 1 else {"nota": "Mostramos el porcentaje del PIB tal como lo publica Eurostat, aunque su PIB sea anterior a la última revisión."}),
     })
 
     comprobaciones.append(comprobar_deuda_bde(descargas, datos["deuda"]["meur"], años))
@@ -2572,7 +2584,7 @@ def main():
 
     fuentes = []
     (WEB / "crudo").mkdir(parents=True, exist_ok=True)
-    for nombre in ("gov_10a_main", "gov_10dd_edpt1", "nama_10_gdp", "nama_10_pe", "gov_10a_exp", "legislaturas", "bde_be1106", "ert_h_eur_a", "igae_cap_serie", "gov_10dd_edpt3",
+    for nombre in ("gov_10a_main", "gov_10dd_edpt1", "nama_10_gdp", "nama_10_pe", "gov_10a_exp", "legislaturas", "bde_be1106", "ert_h_eur_a", "gov_10dd_edpt3",
                    "ue_gov_10a_main", "ue_gov_10dd_edpt1", "ine_pib", "ine_poblacion",
                    "gov_10a_taxag", "igae_cofog", "sepg_estado_2023", "sepg_estado_2025p",
                    *sorted(k for k in descargas if k.startswith(("liq_estado_", "ejec_dic_"))),
@@ -2597,14 +2609,13 @@ def main():
         eurostat = m.get("fuente", "Eurostat") == "Eurostat"
         uso = {"legislaturas": "De ella se extraen las fechas de las sesiones constitutivas.",
                "bde_be1106": "Se usa para comprobar la deuda de Eurostat (dato de diciembre de cada año).",
-               "igae_cap_serie": "Se usa para comprobar el saldo y las operaciones que forman los totales de Eurostat.",
                "ine_pib": "Se usa para comprobar el PIB de Eurostat (suma de los cuatro trimestres).",
                "ine_poblacion": "Se usa para comprobar la población de Eurostat.",
                "igae_cofog": "Se usa para comprobar el gasto de cada función.",
                "sepg_estado_2023": "Se usa para comprobar los créditos iniciales por capítulos.",
                "sepg_estado_2025p": "Se usa para comprobar los créditos iniciales por capítulos.",
                "igae_t_aapp": "Ingresos, gastos y saldo del año en curso, acumulados trimestre a trimestre.",
-               "igae_a_aapp": "Segunda fuente del saldo de los últimos años.",
+               "igae_a_aapp": "Serie anual de la IGAE: con ella se comprueban el saldo y cada operación de ingresos y gastos, año a año desde 1995.",
                "igae_a_aapp_imp": "Impuestos y cotizaciones del último año, antes de que los publique Eurostat.",
                "bde_be1107": "Deuda del último trimestre publicado, en porcentaje del PIB.",
                "ameco16": "Previsiones de la Comisión Europea: ingresos, gastos y saldo.",

@@ -47,5 +47,5 @@ Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye tambi�
 ## Comprobaciones automáticas de esta construcción
 
 - Sí: ¿Las partes de los impuestos y cotizaciones suman su total publicado? Sí, en los 31 años
-- NO: ¿Los impuestos y las cotizaciones coinciden con la IGAE? No del todo: 6 cifras no coinciden (por ejemplo, D211 en 2024)
+- Sí: ¿Los impuestos y las cotizaciones coinciden con la IGAE? Sí: IVA, impuestos sobre la producción, sobre la renta, sobre el capital y cotizaciones coinciden al millón de euros en los 31 años (1995–2025). El reparto entre renta de los hogares y beneficios de empresas solo lo publica Eurostat
 - Sí: ¿El desglose de impuestos de la IGAE coincide con el de Eurostat? Coincide al millón de euros en 31 de los 31 años que publican los dos. Por eso usamos el de la IGAE para el año que Eurostat aún no tiene

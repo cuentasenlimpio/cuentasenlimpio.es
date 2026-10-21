@@ -51,6 +51,6 @@ Serie completa por años, funciones y unidades: https://cuentasenlimpio.es/datos
 ## Comprobaciones automáticas de esta construcción
 
 - Sí: ¿Las diez funciones suman el gasto total? Sí, en los 30 años
-- NO: ¿El total del gasto por funciones es el mismo gasto total de la página de cuentas? No: diferencia máxima de 121 millones
+- NO: ¿El total del gasto por funciones es el mismo gasto total de la página de cuentas? Todavía no, por un desfase de versiones de Eurostat: la tabla por funciones cuadra al millón con el gasto total de la versión del 21 de julio de 2026, pero Eurostat ha revisado después el gasto total y aún no ha actualizado la tabla por funciones. Diferencia: 121 millones en 2024 (0,02 %)
 - Sí: ¿El gasto de cada función coincide con la serie de la IGAE? Sí: las diez funciones coinciden al millón de euros en los 30 años (1995–2024)
 - Sí: ¿Las ocho partes del gasto por tipo suman exactamente el gasto total? Sí, en los 31 años (1995–2025)

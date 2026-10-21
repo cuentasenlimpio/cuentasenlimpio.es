@@ -239,10 +239,6 @@ PAGINAS = [
     {"fuente": "Tesoro Público", "tabla": "tesoro_vida_media", "opcional": True,
      "nombre": "Vida media de la deuda del Estado",
      "url": "https://www.tesoro.es/documents/d/tesoro/02-xlsx", "extension": "xlsx"},
-    {"fuente": "IGAE", "tabla": "igae_cap_serie",
-     "nombre": "Cuentas de las Administraciones públicas, serie anual desde 1995",
-     "url": "https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadNacional/Publicaciones/Documents/CAAP/CAP_Serie.xlsx",
-     "extension": "xlsx"},
 ]
 
 

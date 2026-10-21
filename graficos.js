@@ -656,7 +656,7 @@ function pintarFicha() {
   unidades.appendChild(lista);
 
   const fuentes = document.getElementById("ficha-fuentes");
-  const deEstaPagina = ["gov_10a_main", "gov_10dd_edpt1", "gov_10dd_edpt3", "ue_gov_10a_main", "ue_gov_10dd_edpt1", "nama_10_gdp", "nama_10_pe", "ert_h_eur_a", "legislaturas", "bde_be1106", "igae_cap_serie", "ine_pib", "ine_poblacion"];
+  const deEstaPagina = ["gov_10a_main", "gov_10dd_edpt1", "gov_10dd_edpt3", "ue_gov_10a_main", "ue_gov_10dd_edpt1", "nama_10_gdp", "nama_10_pe", "ert_h_eur_a", "legislaturas", "bde_be1106", "igae_a_aapp", "ine_pib", "ine_poblacion"];
   for (const f of d.fuentes.filter((x) => deEstaPagina.includes(x.tabla))) {
     const li = document.createElement("li");
     const nombre = document.createElement("strong");

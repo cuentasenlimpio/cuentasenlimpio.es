@@ -200,12 +200,12 @@ España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurosta
 
 - Sí: ¿Ingresos menos gastos da exactamente el saldo publicado en la misma tabla? Sí, en los 31 años
 - Sí: ¿El saldo de la tabla de cuentas coincide con el de la notificación oficial de déficit? Sí, en los 31 años
-- Sí: ¿Los porcentajes del PIB de la deuda usan el PIB más reciente? No del todo: el PIB se ha revisado después; la mayor diferencia es de 0 millones de euros, en 1995 (0,00 %)
+- Sí: ¿Los porcentajes del PIB de la deuda usan el PIB más reciente? Sí: el PIB de la notificación de déficit y deuda es el mismo que el de la contabilidad nacional en los 31 años
 - Sí: ¿La deuda que publica Eurostat coincide con la del Banco de España? Coinciden al millón de euros en 31 de 31 años
 - Sí: ¿Por qué la deuda en euros de 1995 a 1998 no es igual en todas las fuentes? Porque entonces la moneda era la peseta y hay dos formas de pasarla a euros. Eurostat, en su unidad «euros», usa el tipo de cambio de cierre del ECU de cada año (1995: 159,549, 1996: 164,167, 1997: 167,388, 1998: 166,386 pesetas); el Banco de España y la unidad «moneda nacional» de Eurostat usan el tipo fijo de 166,386. Con esos tipos, las dos versiones cuadran (diferencia máxima: 0,0 millones de euros). En esta web usamos el tipo fijo, que es el que permite comparar años
-- NO: ¿El saldo coincide con el que publica la IGAE, la Intervención General del Estado? No: diferencia máxima de 460 millones de euros
-- NO: ¿El total de gastos coincide con el de la IGAE? No del todo: coinciden 1 de 13 operaciones
-- NO: ¿El total de ingresos coincide con el de la IGAE? No del todo: coinciden 1 de 9 operaciones
+- Sí: ¿El saldo coincide con el que publica la IGAE, la Intervención General del Estado? Sí, al millón de euros en los 31 años que publica (1995–2025)
+- Sí: ¿El total de gastos coincide con el de la IGAE? Sí: el total es la suma de 13 operaciones y las 13 coinciden al millón de euros con la IGAE en los 31 años (1995–2025)
+- Sí: ¿El total de ingresos coincide con el de la IGAE? Sí: el total es la suma de 9 operaciones y las 9 coinciden al millón de euros con la IGAE en los 31 años (1995–2025)
 - Sí: ¿El PIB que usamos coincide con el del INE? Sí, al millón de euros en los 31 años (1995–2025), sumando los cuatro trimestres de la Contabilidad Nacional Trimestral
 - Sí: ¿La población que usamos para las cifras por habitante coincide con la del INE? Casi: de 1995 a 2025 la diferencia máxima es del 0,21 % (en 2001). Eurostat usa la población media de todo el año de la contabilidad nacional y el INE la publica a 1 de enero, así que comparamos con la media de dos 1 de enero seguidos
 - Sí: ¿Las cifras de España en la comparación europea son las mismas que las del resto de la página? Sí, en los cuatro indicadores y todos los años
@@ -506,7 +506,7 @@ Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye tambi�
 ## Comprobaciones automáticas de esta construcción
 
 - Sí: ¿Las partes de los impuestos y cotizaciones suman su total publicado? Sí, en los 31 años
-- NO: ¿Los impuestos y las cotizaciones coinciden con la IGAE? No del todo: 6 cifras no coinciden (por ejemplo, D211 en 2024)
+- Sí: ¿Los impuestos y las cotizaciones coinciden con la IGAE? Sí: IVA, impuestos sobre la producción, sobre la renta, sobre el capital y cotizaciones coinciden al millón de euros en los 31 años (1995–2025). El reparto entre renta de los hogares y beneficios de empresas solo lo publica Eurostat
 - Sí: ¿El desglose de impuestos de la IGAE coincide con el de Eurostat? Coincide al millón de euros en 31 de los 31 años que publican los dos. Por eso usamos el de la IGAE para el año que Eurostat aún no tiene
 
 
@@ -565,7 +565,7 @@ Serie completa por años, funciones y unidades: https://cuentasenlimpio.es/datos
 ## Comprobaciones automáticas de esta construcción
 
 - Sí: ¿Las diez funciones suman el gasto total? Sí, en los 30 años
-- NO: ¿El total del gasto por funciones es el mismo gasto total de la página de cuentas? No: diferencia máxima de 121 millones
+- NO: ¿El total del gasto por funciones es el mismo gasto total de la página de cuentas? Todavía no, por un desfase de versiones de Eurostat: la tabla por funciones cuadra al millón con el gasto total de la versión del 21 de julio de 2026, pero Eurostat ha revisado después el gasto total y aún no ha actualizado la tabla por funciones. Diferencia: 121 millones en 2024 (0,02 %)
 - Sí: ¿El gasto de cada función coincide con la serie de la IGAE? Sí: las diez funciones coinciden al millón de euros en los 30 años (1995–2024)
 - Sí: ¿Las ocho partes del gasto por tipo suman exactamente el gasto total? Sí, en los 31 años (1995–2025)
 
@@ -631,7 +631,7 @@ Todas las políticas y años: https://cuentasenlimpio.es/datos/presupuesto.csv
 
 - Sí: ¿Las políticas de gasto suman su área y las áreas el total? Sí, en los 11 años
 - Sí: ¿Los créditos definitivos son los mismos en las dos tablas de la liquidación? Sí, en todas las políticas de los 11 años
-- NO: ¿Lo aprobado coincide con la estadística de presupuestos del Ministerio de Hacienda, capítulo a capítulo? Cuadran en 9 años (2015, 2016, 2017, 2018, 2019, 2021, 2022, 2023, 2025 (avance: solo el total)); difieren en 2024 (15,0 millones en transferencias de capital), sin explicación localizada todavía. Para 2020 Hacienda no publica la estadística en un formato que podamos leer
+- Sí: ¿Lo aprobado coincide con la estadística de presupuestos del Ministerio de Hacienda, capítulo a capítulo? Cuadran en 11 años (2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025 (avance: solo el total))
 - Sí: ¿El avance a 31 de diciembre de 2024 coincidió con la liquidación definitiva? Sí: lo aprobado, lo autorizado y lo gastado de las 32 áreas y políticas coinciden al millón de euros. Por eso mostramos 2025 como avance
 - Sí: ¿Está comprobado en el BOE qué presupuesto rigió cada año? Sí, en los 11 años
 

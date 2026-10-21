@@ -136,12 +136,12 @@ España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurosta
 
 - Sí: ¿Ingresos menos gastos da exactamente el saldo publicado en la misma tabla? Sí, en los 31 años
 - Sí: ¿El saldo de la tabla de cuentas coincide con el de la notificación oficial de déficit? Sí, en los 31 años
-- Sí: ¿Los porcentajes del PIB de la deuda usan el PIB más reciente? No del todo: el PIB se ha revisado después; la mayor diferencia es de 0 millones de euros, en 1995 (0,00 %)
+- Sí: ¿Los porcentajes del PIB de la deuda usan el PIB más reciente? Sí: el PIB de la notificación de déficit y deuda es el mismo que el de la contabilidad nacional en los 31 años
 - Sí: ¿La deuda que publica Eurostat coincide con la del Banco de España? Coinciden al millón de euros en 31 de 31 años
 - Sí: ¿Por qué la deuda en euros de 1995 a 1998 no es igual en todas las fuentes? Porque entonces la moneda era la peseta y hay dos formas de pasarla a euros. Eurostat, en su unidad «euros», usa el tipo de cambio de cierre del ECU de cada año (1995: 159,549, 1996: 164,167, 1997: 167,388, 1998: 166,386 pesetas); el Banco de España y la unidad «moneda nacional» de Eurostat usan el tipo fijo de 166,386. Con esos tipos, las dos versiones cuadran (diferencia máxima: 0,0 millones de euros). En esta web usamos el tipo fijo, que es el que permite comparar años
-- NO: ¿El saldo coincide con el que publica la IGAE, la Intervención General del Estado? No: diferencia máxima de 460 millones de euros
-- NO: ¿El total de gastos coincide con el de la IGAE? No del todo: coinciden 1 de 13 operaciones
-- NO: ¿El total de ingresos coincide con el de la IGAE? No del todo: coinciden 1 de 9 operaciones
+- Sí: ¿El saldo coincide con el que publica la IGAE, la Intervención General del Estado? Sí, al millón de euros en los 31 años que publica (1995–2025)
+- Sí: ¿El total de gastos coincide con el de la IGAE? Sí: el total es la suma de 13 operaciones y las 13 coinciden al millón de euros con la IGAE en los 31 años (1995–2025)
+- Sí: ¿El total de ingresos coincide con el de la IGAE? Sí: el total es la suma de 9 operaciones y las 9 coinciden al millón de euros con la IGAE en los 31 años (1995–2025)
 - Sí: ¿El PIB que usamos coincide con el del INE? Sí, al millón de euros en los 31 años (1995–2025), sumando los cuatro trimestres de la Contabilidad Nacional Trimestral
 - Sí: ¿La población que usamos para las cifras por habitante coincide con la del INE? Casi: de 1995 a 2025 la diferencia máxima es del 0,21 % (en 2001). Eurostat usa la población media de todo el año de la contabilidad nacional y el INE la publica a 1 de enero, así que comparamos con la media de dos 1 de enero seguidos
 - Sí: ¿Las cifras de España en la comparación europea son las mismas que las del resto de la página? Sí, en los cuatro indicadores y todos los años
