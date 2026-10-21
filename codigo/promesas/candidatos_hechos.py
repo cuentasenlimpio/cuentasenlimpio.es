@@ -1,10 +1,13 @@
-"""Candidatos para relacionar hechos (normas) con promesas, por coincidencia de palabras (TF-IDF, sin dependencias).
+"""Candidatos para relacionar hechos con promesas, por coincidencia de palabras (TF-IDF, sin dependencias).
 
-Es solo un filtro para no comparar 5.000 promesas con cada norma: decide quién se mira, no quién se enlaza. Por
-cada norma se toman las K promesas más parecidas y, por cada promesa, las 2 normas más parecidas; la unión pasa a la
+Es solo un filtro para no comparar 5.000 promesas con cada hecho: decide quién se mira, no quién se enlaza. Por
+cada hecho se toman las K promesas más parecidas y, por cada promesa, los 2 hechos más parecidos; la unión pasa a la
 clasificación (INSTRUCCIONES_HECHOS.md).
 
-Uso: python3 candidatos_hechos.py <catalogo.json> <promesas.json> <salida.json> [rangos=LO,L,RDL] [K=40]
+Los hechos salen de datos/hechos/para_promesas.json (lo escribe construir.py): normas (LO, L, RDL), iniciativas del
+Congreso que no llegaron a ley (INI) y anteproyectos o proyectos del Consejo de Ministros sin expediente (CM).
+
+Uso: python3 candidatos_hechos.py <para_promesas.json> <promesas.json> <salida.json> [tipos=LO,L,RDL] [K=40]
 """
 import collections
 import json
@@ -36,17 +39,16 @@ def vector(ws, idf):
 
 
 def main():
-    catalogo, promesas, salida = sys.argv[1:4]
+    hechos, promesas, salida = sys.argv[1:4]
     rangos = set((sys.argv[4] if len(sys.argv) > 4 else "LO,L,RDL").split(","))
     k = int(sys.argv[5]) if len(sys.argv) > 5 else 40
-    cat = json.load(open(catalogo))
     pr = json.load(open(promesas))
     idioma = {d["id"]: d["idioma"] for d in pr["documentos"]}
-    normas = [n for n in cat["normas"] if n["rango"] in rangos]
+    hs = [n for n in json.load(open(hechos)) if n["tipo"] in rangos]
     # Una promesa por frase distinta: las repeticiones dentro de un documento no se miran dos veces.
     ps = [p for p in pr["promesas"] if not p.get("r")]
     textos_p = [palabras(p["e"] + " " + (p["c"] if idioma.get(p["d"]) == "es" else "")) for p in ps]
-    textos_n = [palabras(" ".join([n["titulo"], " ".join(n.get("materias", [])), n.get("inicio", "")[:1500]])) for n in normas]
+    textos_n = [palabras(" ".join([n["titulo"], " ".join(n.get("materias", [])), n.get("inicio", "")[:1500]])) for n in hs]
     df = collections.Counter(w for t in textos_p + textos_n for w in set(t))
     total = len(textos_p) + len(textos_n)
     idf = {w: math.log(total / c) for w, c in df.items()}
@@ -79,13 +81,14 @@ def main():
     salida_ = collections.defaultdict(list)
     for j, i in sorted(pares):
         p = ps[i]
-        salida_[normas[j]["clave"]].append({"promesa": f"{p['d']}:{p['id']}", "documento": p["d"], "etiqueta": p["e"], "cita": p["c"],
+        salida_[hs[j]["clave"]].append({"promesa": f"{p['d']}:{p['id']}", "documento": p["d"], "etiqueta": p["e"], "cita": p["c"],
                                             "parecido": round(puntos[j].get(i, 0.0), 3)})
-    paquetes = [{"hecho": n["clave"], "tipo": n["rango"], "titulo": n["titulo"], "fecha": n["publicada"], "id_boe": n["id"],
-                 "materias": n.get("materias", []), "inicio": n.get("inicio", "")[:2000],
-                 "candidatas": sorted(salida_[n["clave"]], key=lambda c: -c["parecido"])} for n in normas]
+    paquetes = [{"hecho": n["clave"], "tipo": n["tipo"], "titulo": n["titulo"], "fecha": n["fecha"], "referencia": n["referencia"]}
+                | ({"autor": n["autor"]} if n.get("autor") else {})
+                | {"materias": n.get("materias", []), "inicio": n.get("inicio", "")[:4000],
+                 "candidatas": sorted(salida_[n["clave"]], key=lambda c: -c["parecido"])} for n in hs]
     json.dump(paquetes, open(salida, "w"), ensure_ascii=False, indent=1)
-    print(f"{len(normas)} normas, {len(ps)} promesas, {sum(len(p['candidatas']) for p in paquetes)} pares candidatos")
+    print(f"{len(hs)} hechos, {len(ps)} promesas, {sum(len(p['candidatas']) for p in paquetes)} pares candidatos")
 
 
 if __name__ == "__main__":

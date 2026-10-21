@@ -325,6 +325,13 @@ def main():
                 continue
             print(f"AVISO {t['tabla']}: no se pudo descargar ({error}); se usa la copia anterior")
             continue
+        # Una web caída a veces responde con su página de aviso en lugar del fichero: se comprueba el formato.
+        firma = {"zip": b"PK", "xlsx": b"PK", "xls": b"\xd0\xcf\x11\xe0", "pdf": b"%PDF"}.get(t["extension"])
+        if firma and not cuerpo.startswith(firma):
+            if not t.get("opcional"):
+                raise ValueError(f"{t['tabla']}: lo descargado no es un {t['extension']} (¿web caída?)")
+            print(f"AVISO {t['tabla']}: lo descargado no es un {t['extension']}; se usa la copia anterior")
+            continue
         huella = hashlib.sha256(cuerpo).hexdigest()
         anterior = next((m for m in reversed(manifiesto) if m["tabla"] == t["tabla"]), None)
         novedad = anterior is None or anterior["sha256"] != huella

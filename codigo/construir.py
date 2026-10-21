@@ -13,11 +13,13 @@ Uso:  python3 datos/construir.py
 import csv
 import datetime as dt
 import gzip
+import hashlib
 import json
 import os
 import pathlib
 import re
 import shutil
+import unicodedata
 import zipfile
 
 from xlsx import hojas
@@ -42,10 +44,21 @@ def es(n, decimales=0):
     return texto.replace(",", "\u202f").replace(".", ",")
 
 
+FIRMAS = {".zip": b"PK", ".xlsx": b"PK", ".xls": b"\xd0\xcf\x11\xe0", ".pdf": b"%PDF"}
+
+
 def ultimas_descargas():
+    """La última copia de cada tabla con el formato que toca: si una web caída devolvió su página de aviso en lugar del
+    fichero, se queda la copia buena anterior."""
     manifiesto = json.loads(MANIFIESTO.read_text())
     ultimas = {}
     for m in manifiesto:
+        ruta = AQUI / m["fichero"]
+        firma = FIRMAS.get(ruta.suffix)
+        if firma and ruta.exists():
+            with open(ruta, "rb") as f:
+                if not f.read(len(firma)) == firma:
+                    continue
         ultimas[m["tabla"]] = m
     return ultimas
 
@@ -521,8 +534,12 @@ def construir_recientes(descargas, datos_series, años):
             for clave, (fichero, codigo) in codigos.items():
                 if fichero not in descargas:
                     continue
-                with zipfile.ZipFile(AQUI / descargas[fichero]["fichero"]) as z:
-                    texto = z.read(z.namelist()[0]).decode("latin-1")
+                try:
+                    with zipfile.ZipFile(AQUI / descargas[fichero]["fichero"]) as z:
+                        texto = z.read(z.namelist()[0]).decode("latin-1")
+                except zipfile.BadZipFile:
+                    print(f"AVISO: {fichero} no es un zip válido; se omite esa previsión")
+                    continue
                 lineas = texto.splitlines()
                 cab = lineas[0].split(";")
                 for l in lineas:
@@ -1191,7 +1208,8 @@ def paso_de_votacion(info):
     if t.startswith("Toma en consideración"):
         return "Toma en consideración"
     if t.startswith("Debates de totalidad"):
-        return "Enmienda a la totalidad"
+        # En el mismo debate se vota también si el Pleno avoca la votación final: eso no decide sobre el texto.
+        return None if "avocación" in sub.lower() else "Enmienda a la totalidad"
     if "lectura única" in t:
         return "Votación en lectura única" if not t.startswith("Acuerdo") else None
     if t.startswith("Veto del Senado"):
@@ -1204,7 +1222,138 @@ def paso_de_votacion(info):
     return None
 
 
-def construir_hechos(relaciones_ruta=None):
+CONGRESO_INI = ("https://www.congreso.es/es/busqueda-de-iniciativas?p_p_id=iniciativas&p_p_lifecycle=0&p_p_state=normal"
+                "&p_p_mode=view&_iniciativas_mode=mostrarDetalle&_iniciativas_legislatura=XV&_iniciativas_id=")
+PASO_CM = {"ANTEPROYECTO": "Anteproyecto de ley aprobado por el Consejo de Ministros", "PROYECTO": "Proyecto de ley aprobado por el Consejo de Ministros",
+           "REAL DECRETO-LEY": "Aprobado por el Consejo de Ministros"}
+
+
+def _palabras_titulo(texto):
+    """Palabras de un título de ley para compararlo con otro (sin el tipo de norma ni palabras vacías)."""
+    t = unicodedata.normalize("NFKD", texto.lower())
+    t = "".join(c for c in t if not unicodedata.combining(c))
+    t = re.sub(r"^.*?\b(anteproyecto de ley|proyecto de ley|real decreto-ley(?: \d+/\d{4})?)( organica)?", "", t, count=1)
+    # La coletilla de la primera vuelta la llevan todos los anteproyectos: no dice nada del contenido.
+    t = re.sub(r",? a los efectos previstos en el articulo 26\.4.*$", "", t)
+    return {w for w in re.findall(r"[a-z0-9/]{4,}", t)} - {"para", "sobre", "como", "entre", "desde", "establece", "aprueba",
+                                                         "modifica", "regula", "medidas", "octubre", "noviembre", "diciembre"}
+
+
+def _parecido(a, b):
+    if not a or not b:
+        return 0.0
+    return len(a & b) / min(len(a), len(b)) * min(1.0, 2 * len(a & b) / (len(a) + len(b)) + 0.3)
+
+
+def _fecha(t):
+    if not t:
+        return None
+    t = t.strip()[:10]
+    if "/" in t:
+        d, m, a = t.split("/")
+        return dt.date(int(a), int(m), int(d))
+    return dt.date.fromisoformat(t)
+
+
+def _apartado_ampliacion(ampliacion, titulo):
+    """El apartado de la ampliación de una referencia que explica un anteproyecto: el que comparte más palabras con su
+    título y habla de un (ante)proyecto. Vacío si ninguno se parece lo bastante."""
+    lineas = ampliacion.split("\n")
+    es_titulo = lambda x: len(x) > 15 and sum(c.isupper() for c in x) > 0.8 * sum(c.isalpha() for c in x)
+    apartados, actual = [], []
+    for x in lineas:
+        if es_titulo(x) and actual:
+            apartados.append("\n".join(actual))
+            actual = []
+        actual.append(x)
+    if actual:
+        apartados.append("\n".join(actual))
+    w = _palabras_titulo(titulo)
+    mejor, puntos = "", (0.0, 0.0)
+    for a in apartados:
+        if "proyecto" not in a.lower():
+            continue
+        # Solo el título del apartado y su primera frase, que es donde la referencia nombra el anteproyecto.
+        p = len(w & _palabras_titulo("proyecto de ley " + a[:600])) / max(1, len(w))
+        # A igualdad, gana el apartado cuyo título nombra el anteproyecto (un título corto puede salir de pasada en otro).
+        p_titulo = len(w & _palabras_titulo("proyecto de ley " + a.split("\n", 1)[0])) / max(1, len(w))
+        if (p, p_titulo) > puntos:
+            mejor, puntos = a, (p, p_titulo)
+    return re.sub(r"\s*\n\s*", " ", mejor)[:4000] if puntos[0] >= 0.6 else ""
+
+
+def enlazar_consejo(cat, expedientes):
+    """Enlaza las referencias del Consejo de Ministros con el Congreso y el BOE, sin IA: por parecido del título y por
+    fechas. Anteproyecto (primera vuelta) → proyecto (segunda vuelta) → expediente 121/ del Congreso → ley; y real
+    decreto-ley aprobado → real decreto-ley del BOE (publicado en los tres días siguientes)."""
+    puntos = [p for p in cat.get("consejo", []) if p["fecha"] and p["tipo"] in
+              ("ANTEPROYECTO DE LEY", "ANTEPROYECTO DE LEY ORGÁNICA", "PROYECTO DE LEY", "PROYECTO DE LEY ORGÁNICA", "REAL DECRETO-LEY")]
+    for p in puntos:
+        p["_w"] = _palabras_titulo(p["texto"])
+        p["_f"] = _fecha(p["fecha"])
+        p["_clase"] = "REAL DECRETO-LEY" if p["tipo"] == "REAL DECRETO-LEY" else p["tipo"].split()[0]
+    paso = lambda p: {"paso": PASO_CM[p["_clase"]], "fecha": p["fecha"], "texto": p["texto"][:600], "url": p["url"]}
+    proyectos121 = [i for i in cat["iniciativas"] if i["expediente"].startswith("121/")]
+    for i in proyectos121:
+        i["_w"] = _palabras_titulo(i["objeto"] or "")
+        i["_f"] = _fecha(i["presentada"])
+    exp_a_norma = {e["expediente"]: n for n, es in expedientes.items() for e in es}
+    por_expediente, por_norma, usados = {}, {}, set()
+    # (Ante)proyecto → expediente 121/. La referencia llama «anteproyecto» tanto a la primera vuelta («a los efectos del
+    # artículo 26.4 de la Ley del Gobierno») como, a veces, al texto que se remite a las Cortes; se enlaza en tres pasos:
+    # 1) expediente presentado en los 60 días siguientes; 2) si no, a través de un punto posterior del Consejo con el
+    # mismo título que sí se enlazó; 3) si no, expediente de hasta 400 días después con un título casi idéntico.
+    leyes = sorted((p for p in puntos if p["_clase"] != "REAL DECRETO-LEY"), key=lambda p: p["_f"])
+    destino = {}
+
+    def mejor(p, dias, umbral):
+        cand = [(_parecido(p["_w"], i["_w"]), i) for i in proyectos121 if i["_f"] and 0 <= (i["_f"] - p["_f"]).days <= dias]
+        cand = [c for c in cand if c[0] >= umbral]
+        return max(cand, key=lambda c: c[0])[1]["expediente"] if cand else None
+
+    # Un anteproyecto en primera vuelta no se remite a las Cortes: solo se enlaza a través de un punto posterior.
+    primera = lambda p: "artículo 26.4" in p["texto"]
+    for p in leyes:
+        destino[id(p)] = None if primera(p) else mejor(p, 60, 0.75)
+    for p in reversed(leyes):
+        if not destino[id(p)]:
+            cand = [(_parecido(p["_w"], q["_w"]), q) for q in leyes if q["_f"] > p["_f"] and destino[id(q)]]
+            cand = [c for c in cand if c[0] >= 0.7]
+            destino[id(p)] = (destino[id(max(cand, key=lambda c: c[0])[1])] if cand
+                              else None if primera(p) else mejor(p, 400, 0.9))
+    for p in leyes:
+        if destino[id(p)]:
+            por_expediente.setdefault(destino[id(p)], []).append(paso(p))
+            usados.add(id(p))
+    # Real decreto-ley aprobado → el del BOE.
+    rdl = [n for n in cat["normas"] if n["rango"] == "RDL"]
+    for p in (p for p in puntos if p["_clase"] == "REAL DECRETO-LEY"):
+        # Uno de los dos títulos a veces abrevia el otro: con la ventana de fechas tan estrecha basta con que las palabras
+        # del más corto estén en el más largo.
+        cand = [(len(p["_w"] & w) / max(1, min(len(p["_w"]), len(w))), n) for n in rdl for w in [_palabras_titulo(n["titulo"])]
+                if 0 <= (_fecha(n["publicada"]) - p["_f"]).days <= 3]
+        cand = [c for c in cand if c[0] >= 0.75]
+        if cand:
+            n = max(cand, key=lambda c: c[0])[1]
+            por_norma.setdefault(n["clave"], []).append(paso(p))
+            usados.add(id(p))
+    for exp, pasos in por_expediente.items():
+        pasos.sort(key=lambda x: x["fecha"])
+        if exp in exp_a_norma:
+            por_norma.setdefault(exp_a_norma[exp], []).extend(pasos)
+    # Anteproyectos y proyectos que no llegaron (o aún no) al Congreso: hechos por sí mismos.
+    # La clave sale del texto (no del orden), para que no cambie al añadirse referencias nuevas.
+    sueltos = [paso(p) | {"clave": f"CM {p['fecha']} {hashlib.sha1(p['texto'].encode()).hexdigest()[:6]}", "tipo": p["tipo"]} for p in puntos
+               if id(p) not in usados and p["_clase"] != "REAL DECRETO-LEY"]
+    # Lo que explica la referencia de cada uno (para relacionarlo con promesas; el sumario es solo el título).
+    for c in sueltos:
+        f = AQUI / "hechos" / "moncloa_ampliacion" / (re.sub(r"[^\w.-]", "_", c["url"].rsplit("/", 1)[-1]) + ".txt")
+        c["_detalle"] = _apartado_ampliacion(f.read_text(), c["texto"]) if f.exists() else ""
+    return {"por_expediente": por_expediente, "por_norma": por_norma, "sueltos": sueltos,
+            "sin_enlace_rdl": sum(1 for p in puntos if p["_clase"] == "REAL DECRETO-LEY" and id(p) not in usados)}
+
+
+def construir_hechos(relaciones_dirs=None):
     ruta = AQUI / "hechos" / "catalogo.json"
     if not ruta.exists():
         print("Hechos: no hay catálogo en esta copia; no se genera datos/hechos.json")
@@ -1244,7 +1393,7 @@ def construir_hechos(relaciones_ruta=None):
         f_ = d["informacion"]["fecha"]
         return {"paso": paso, "fecha": f_, "titulo": (d["informacion"].get("textoExpediente") or d["informacion"].get("titulo") or "").strip(),
                 "asentimiento": t.get("asentimiento") == "Sí", "si": t.get("afavor"), "no": t.get("enContra"), "abstencion": t.get("abstenciones"),
-                "grupos": grupos, "mixto_por_formacion": mixto, "url": url.replace(".json", ".pdf") if False else url}
+                "grupos": grupos, "mixto_por_formacion": mixto, "url": url}
 
     expedientes = {}
     for i in cat["iniciativas"]:
@@ -1273,36 +1422,72 @@ def construir_hechos(relaciones_ruta=None):
                 return paso
         return None
 
+    def votaciones_de(expediente, de_ficha):
+        urls = set(de_ficha) | {v["json"] for _, _, v in por_exp.get(expediente, []) if v["json"]}
+        vs = [x for x in (resumen_votacion(u) for u in sorted(urls)) if x]
+        for dia, punto, v in por_exp.get(expediente, []):
+            # Primero lo que dice el propio bloque de la votación; si no, el título del punto del orden del día.
+            paso = paso_de_punto(v.get("texto", "")) or paso_de_punto(punto)
+            if v["json"] or not paso:
+                continue
+            vs.append({"paso": paso, "fecha": f"{int(dia[6:8])}/{int(dia[4:6])}/{dia[:4]}", "titulo": punto,
+                       "asentimiento": v["asentimiento"], "si": v["si"], "no": v["no"], "abstencion": v["abstenciones"],
+                       "grupos": {}, "mixto_por_formacion": {}, "url": v["pdf"],
+                       "nota": "Votación sin fichero de voto por diputado en los datos abiertos del Congreso (por ejemplo, pública por llamamiento): el detalle está en el Diario de Sesiones."})
+        vs.sort(key=lambda x: [int(c) for c in x["fecha"].split("/")[::-1]])
+        return vs
+
+    consejo = enlazar_consejo(cat, expedientes)
     normas = []
     for n in cat["normas"]:
         if n["rango"] not in ("LO", "L", "RDL"):
             continue
-        tram = []
-        for e in expedientes.get(n["clave"], []):
-            urls = set(e["votaciones"]) | {v["json"] for _, _, v in por_exp.get(e["expediente"], []) if v["json"]}
-            vs = [x for x in (resumen_votacion(u) for u in sorted(urls)) if x]
-            for dia, punto, v in por_exp.get(e["expediente"], []):
-                # Primero lo que dice el propio bloque de la votación; si no, el título del punto del orden del día.
-                paso = paso_de_punto(v.get("texto", "")) or paso_de_punto(punto)
-                if v["json"] or not paso:
-                    continue
-                vs.append({"paso": paso, "fecha": f"{int(dia[6:8])}/{int(dia[4:6])}/{dia[:4]}", "titulo": punto,
-                           "asentimiento": v["asentimiento"], "si": v["si"], "no": v["no"], "abstencion": v["abstenciones"],
-                           "grupos": {}, "mixto_por_formacion": {}, "url": v["pdf"],
-                           "nota": "Votación sin fichero de voto por diputado en los datos abiertos del Congreso (por ejemplo, pública por llamamiento): el detalle está en el Diario de Sesiones."})
-            vs.sort(key=lambda x: [int(c) for c in x["fecha"].split("/")[::-1]])
-            tram.append({k: e[k] for k in ("expediente", "tipo", "autor", "presentada", "url")} | {"votaciones": vs})
-        normas.append({k: n[k] for k in ("clave", "rango", "numero", "año", "id", "titulo", "publicada", "url")} | {"tramitacion": tram})
-    relaciones = json.loads(pathlib.Path(relaciones_ruta).read_text()) if relaciones_ruta and pathlib.Path(relaciones_ruta).exists() else []
-    relaciones = [{k: r[k] for k in ("hecho", "promesa", "clase", "parcial", "motivo")} for r in relaciones]
-    fiab_ruta = pathlib.Path(relaciones_ruta).with_name("fiabilidad.json") if relaciones_ruta else None
-    fiabilidad = json.loads(fiab_ruta.read_text()) if fiab_ruta and fiab_ruta.exists() else None
-    salida = {"generado": cat["generado"], "normas": normas, "relaciones": relaciones, "fiabilidad": fiabilidad,
-              "fuentes": {"boe": "https://www.boe.es/datosabiertos/", "congreso": "https://www.congreso.es/es/datos-abiertos"}}
+        tram = [{k: e[k] for k in ("expediente", "tipo", "autor", "presentada", "url")} | {"votaciones": votaciones_de(e["expediente"], e["votaciones"])}
+                for e in expedientes.get(n["clave"], [])]
+        normas.append({k: n[k] for k in ("clave", "rango", "numero", "año", "id", "titulo", "publicada", "url")}
+                      | {"tramitacion": tram, "consejo": consejo["por_norma"].get(n["clave"], [])})
+    # Iniciativas del Congreso que no acabaron en ley (rechazadas, retiradas, caducadas al disolverse las Cortes…).
+    con_ley = {e["expediente"] for es in expedientes.values() for e in es}
+    iniciativas = []
+    for i in cat["iniciativas"]:
+        if i["expediente"] in con_ley or (i.get("ficha") or {}).get("normas"):
+            continue
+        url = (i.get("ficha") or {}).get("url") or (f"{CONGRESO_INI}{i['expediente']}")
+        iniciativas.append({"clave": i["expediente"], "tipo": i["tipo"], "titulo": re.sub(r"\s+", " ", i["objeto"] or "").strip(),
+                            "autor": [a.strip() for a in (i["autor"] or "").split("\n") if a.strip()],
+                            "presentada": i["presentada"], "resultado": re.sub(r"\s+", " ", i["resultado"] or "").strip() or None,
+                            "situacion": i["situacion"], "url": url,
+                            "votaciones": votaciones_de(i["expediente"], (i.get("ficha") or {}).get("votaciones", [])),
+                            "consejo": consejo["por_expediente"].get(i["expediente"], [])})
+    # Cada tanda de la relación hechos–promesas (normas; iniciativas y Consejo de Ministros) tiene su carpeta y su fiabilidad.
+    relaciones, fiabilidad = [], {}
+    for tanda, carpeta in (relaciones_dirs or {}).items():
+        if (carpeta / "relaciones.json").exists():
+            relaciones += [{k: r[k] for k in ("hecho", "promesa", "clase", "parcial", "motivo")}
+                           for r in json.loads((carpeta / "relaciones.json").read_text())]
+            fiabilidad[tanda] = json.loads((carpeta / "fiabilidad.json").read_text())
+    # En la web solo hacen falta las iniciativas y los anteproyectos enlazados con alguna promesa (el resto pesa y no se ve).
+    enlazados = {r["hecho"] for r in relaciones}
+    salida = {"generado": cat["generado"], "normas": normas, "iniciativas": [i for i in iniciativas if i["clave"] in enlazados],
+              "consejo": [c_ for c_ in consejo["sueltos"] if c_["clave"] in enlazados],
+              "relaciones": relaciones, "fiabilidad": fiabilidad,
+              "fuentes": {"boe": "https://www.boe.es/datosabiertos/", "congreso": "https://www.congreso.es/es/datos-abiertos",
+                          "consejo": "https://www.lamoncloa.gob.es/consejodeministros/referencias/Paginas/index.aspx"}}
+    # Para relacionarlos con promesas (no se publica en la web: lleva el comienzo del texto de cada hecho).
+    textos = {i["expediente"]: i.get("texto", "") for i in cat["iniciativas"]}
+    para_promesas = ([{"clave": n["clave"], "tipo": n["rango"], "titulo": n["titulo"], "fecha": n["publicada"], "referencia": n["id"],
+                       "materias": n.get("materias", []), "inicio": n.get("inicio", "")} for n in cat["normas"] if n["rango"] in ("LO", "L", "RDL")]
+                     + [{"clave": i["clave"], "tipo": "INI", "titulo": i["titulo"], "fecha": i["presentada"], "referencia": i["clave"],
+                         "autor": i["autor"], "materias": [], "inicio": textos.get(i["clave"], "")} for i in iniciativas]
+                     + [{"clave": c["clave"], "tipo": "CM", "titulo": c["texto"][:300], "fecha": c["fecha"], "referencia": c["url"],
+                         "materias": [], "inicio": c["texto"] + "\n\n" + c.pop("_detalle", "")} for c in consejo["sueltos"]])
+    (AQUI / "hechos" / "para_promesas.json").write_text(json.dumps(para_promesas, ensure_ascii=False))
     (WEB / "datos" / "hechos.json").write_text(json.dumps(salida, ensure_ascii=False, separators=(",", ":")))
     sin_tram = [n["clave"] for n in normas if not n["tramitacion"]]
     print(f"Hechos: {len(normas)} normas con rango de ley, {sum(bool(n['tramitacion']) for n in normas)} con su tramitación en el Congreso"
-          f"{'; sin ella: ' + ', '.join(sin_tram) if sin_tram else ''}; {len(relaciones)} relaciones con promesas")
+          f"{'; sin ella: ' + ', '.join(sin_tram) if sin_tram else ''}; {len(iniciativas)} iniciativas sin ley; Consejo de Ministros: "
+          f"{sum(bool(n['consejo']) for n in normas)} normas con su aprobación, {len(consejo['sueltos'])} anteproyectos o proyectos sin"
+          f" expediente en el Congreso, {consejo['sin_enlace_rdl']} decretos-leyes sin enlazar; {len(relaciones)} relaciones con promesas")
 
 
 def escribir_csv_paginas(gasto, ingresos):
@@ -2047,7 +2232,8 @@ def main():
     documentos = json.loads((CODIGO / "promesas" / "documentos.json").read_text())
     (WEB / "datos" / "documentos.json").write_text(json.dumps(documentos, ensure_ascii=False, separators=(",", ":")))
     construir_promesas(documentos)
-    construir_hechos(CODIGO / "promesas" / "extraccion" / "hechos" / "relaciones.json")
+    construir_hechos({"normas": CODIGO / "promesas" / "extraccion" / "hechos",
+                      "iniciativas": CODIGO / "promesas" / "extraccion" / "hechos_iniciativas"})
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

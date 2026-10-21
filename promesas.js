@@ -145,6 +145,7 @@ function pintarRecuento(datos) {
 const EN_VOTACION = { PP: ["PP"], PSOE: ["PSOE"], Vox: ["Vox"], Sumar: ["Sumar"], ERC: ["ERC"], Junts: ["Junts"], "EH Bildu": ["EH Bildu"],
   "EAJ-PNV": ["PNV"], BNG: ["Grupo Mixto", "BNG"], UPN: ["Grupo Mixto", "UPN"], "Coalición Canaria": ["Grupo Mixto", "CCa"] };
 const CLASE = { misma: "Trata la misma medida", contraria: "Regula la misma medida en sentido contrario" };
+const CLASE_PROPUESTA = { misma: "Propone la misma medida", contraria: "Propone la misma medida en sentido contrario" };
 const RANGO = { LO: "Ley orgánica", L: "Ley", RDL: "Real decreto-ley" };
 
 function votoDe(v, partido) {
@@ -156,38 +157,92 @@ function votoDe(v, partido) {
   return n === total ? voto : Object.entries(r).filter(([, x]) => x).map(([k, x]) => `${k}: ${x}`).join(", ");
 }
 
-function bloqueHechos(rels, normas, d, padre) {
+// Fecha de un hecho para ordenarlos: las del Congreso vienen como d/m/aaaa.
+const iso = (f) => (f && f.includes("/") ? f.split("/").reverse().map((x) => x.padStart(2, "0")).join("-") : f || "");
+// Cómo acabó una iniciativa que no llegó a ley, con las palabras del Congreso.
+function finIniciativa(i) {
+  const r = (i.resultado || "").replace(/\s*\d{2}\/\d{2}\/\d{4}$/, "");
+  if (r) return r;
+  const m = (i.situacion || "").match(/\(([^)]+)\)/);
+  if (m && /^Caducado/.test(m[1])) return "Caducada al terminar la legislatura";
+  return m ? m[1] : i.situacion || "En tramitación";
+}
+
+// Pasos del Consejo de Ministros (anteproyecto, proyecto, decreto-ley), con su referencia enlazada.
+function pasosConsejo(pasos, padre) {
+  if (!pasos?.length) return;
+  const p = nuevo("p", { className: "hecho-voto" }, padre);
+  pasos.forEach((x, k) => {
+    if (k) p.appendChild(document.createTextNode(" · "));
+    p.appendChild(document.createTextNode(`${x.paso} el ${fecha(x.fecha)} (`));
+    enlace(x.url, "referencia del Consejo de Ministros", p);
+    p.appendChild(document.createTextNode(")"));
+  });
+  p.appendChild(document.createTextNode("."));
+}
+
+// La última votación decisiva en el Congreso y cómo votaron los partidos de la promesa.
+function ultimaVotacion(vs, d, padre) {
+  const v = vs.at(-1);
+  const p = nuevo("p", { className: "hecho-voto" }, padre);
+  p.appendChild(document.createTextNode(`${v.paso} en el Congreso (${v.fecha}): ${v.asentimiento ? "por asentimiento" : `${v.si} sí, ${v.no} no, ${v.abstencion} ${v.abstencion === 1 ? "abstención" : "abstenciones"}`}. `));
+  // En una enmienda a la totalidad, «sí» es apoyar la enmienda: votar contra el texto.
+  if (v.paso === "Enmienda a la totalidad") p.appendChild(document.createTextNode("(Votar sí es apoyar la enmienda, es decir, votar contra el texto). "));
+  const quienes = d.partidos.map((pa) => [pa, votoDe(v, pa)]).filter(([, x]) => x);
+  if (quienes.length) p.appendChild(document.createTextNode(quienes.map(([pa, x]) => `${pa}: ${x}`).join(" · ") + ". "));
+  else if (v.nota) {
+    p.appendChild(document.createTextNode("El voto de cada grupo no está en los datos abiertos: "));
+    enlace(v.url, "ver el Diario de Sesiones", p);
+    p.appendChild(document.createTextNode(". "));
+  }
+  enlace(v.ficha, `expediente ${v.expediente}`, p);
+}
+
+function bloqueHechos(rels, h, d, padre) {
   const caja = nuevo("div", { className: "hechos" }, padre);
   nuevo("p", { className: "hechos-titulo", textContent: "Hechos encontrados" }, caja);
   const ol = nuevo("ol", { className: "hechos-lista" }, caja);
-  for (const r of rels.sort((a, b) => (normas[a.hecho]?.publicada || "").localeCompare(normas[b.hecho]?.publicada || ""))) {
-    const n = normas[r.hecho];
-    if (!n) continue;
+  const cuando = (r) => iso(h.normas[r.hecho]?.publicada || h.iniciativas[r.hecho]?.presentada || h.consejo[r.hecho]?.fecha);
+  for (const r of rels.sort((a, b) => cuando(a).localeCompare(cuando(b)))) {
+    const n = h.normas[r.hecho], ini = h.iniciativas[r.hecho], cm = h.consejo[r.hecho];
+    if (!n && !ini && !cm) continue;
     const li = nuevo("li", { className: `hecho hecho-${r.clase}` }, ol);
     const t = nuevo("p", { className: "hecho-norma" }, li);
-    nuevo("strong", { textContent: `${CLASE[r.clase]}${r.parcial ? ", en parte" : ""}: ` }, t);
-    enlace(n.url, n.titulo, t);
-    t.appendChild(document.createTextNode(` Publicado en el BOE el ${fecha(n.publicada)}.`));
+    const propuesta = !n;
+    nuevo("strong", { textContent: `${propuesta ? CLASE_PROPUESTA[r.clase] : CLASE[r.clase]}${r.parcial ? ", en parte" : ""}: ` }, t);
+    if (n) {
+      enlace(n.url, n.titulo, t);
+      t.appendChild(document.createTextNode(` Publicado en el BOE el ${fecha(n.publicada)}.`));
+    } else if (ini) {
+      enlace(ini.url, ini.titulo, t);
+      t.appendChild(document.createTextNode(` Presentada en el Congreso el ${ini.presentada} por ${ini.autor.join(", ")}. Cómo acabó: ${finIniciativa(ini)}.`));
+    } else {
+      enlace(cm.url, cm.texto.length > 220 ? cm.texto.slice(0, 220).replace(/\s\S*$/, "") + "…" : cm.texto, t);
+      t.appendChild(document.createTextNode(` ${cm.paso} el ${fecha(cm.fecha)}. No lo hemos enlazado con ningún expediente del Congreso.`));
+    }
     nuevo("p", { className: "hecho-motivo", textContent: `Por qué la enlazamos: ${r.motivo}` }, li);
-    // Paso por el Congreso: la última votación decisiva y cómo votó quien hizo la promesa.
-    const vs = n.tramitacion.flatMap((tr) => tr.votaciones.map((v) => ({ ...v, expediente: tr.expediente, ficha: tr.url })));
-    if (vs.length) {
-      const v = vs.at(-1);
-      const p = nuevo("p", { className: "hecho-voto" }, li);
-      p.appendChild(document.createTextNode(`${v.paso} en el Congreso (${v.fecha}): ${v.asentimiento ? "por asentimiento" : `${v.si} sí, ${v.no} no, ${v.abstencion} abstenciones`}. `));
-      const quienes = d.partidos.map((pa) => [pa, votoDe(v, pa)]).filter(([, x]) => x);
-      if (quienes.length) p.appendChild(document.createTextNode(quienes.map(([pa, x]) => `${pa}: ${x}`).join(" · ") + ". "));
-      else if (v.nota) {
-        p.appendChild(document.createTextNode("El voto de cada grupo no está en los datos abiertos: "));
-        enlace(v.url, "ver el Diario de Sesiones", p);
-        p.appendChild(document.createTextNode(". "));
-      }
-      enlace(v.ficha, `expediente ${v.expediente}`, p);
-    } else if (n.rango === "RDL") {
+    pasosConsejo((n || ini)?.consejo, li);
+    const vs = n ? n.tramitacion.flatMap((tr) => tr.votaciones.map((v) => ({ ...v, expediente: tr.expediente, ficha: tr.url })))
+      : ini ? ini.votaciones.map((v) => ({ ...v, expediente: ini.clave, ficha: ini.url })) : [];
+    if (vs.length) ultimaVotacion(vs, d, li);
+    else if (n?.rango === "RDL") {
       nuevo("p", { className: "hecho-voto", textContent: "Sin votación de convalidación en el Pleno en los datos abiertos del Congreso. Con las Cortes disueltas (desde el 6 de octubre de 2026), la convalidación corresponde a la Diputación Permanente (artículo 78 de la Constitución)." }, li);
+    } else if (ini) {
+      nuevo("p", { className: "hecho-voto", textContent: "Sin votación en el Pleno del Congreso." }, li);
     }
   }
   return caja;
+}
+
+// Último paso documentado de una promesa, de más a menos avanzado. Es un hecho (qué documento existe), no un veredicto.
+const PASOS = { boe: "Publicada en el BOE", votada: "Votada en el Congreso, sin llegar a ley", propuesta: "Propuesta en el Congreso, sin votarse",
+  gobierno: "Anteproyecto del Gobierno, sin expediente enlazado en el Congreso" };
+function ultimoPaso(rels, h) {
+  if (rels.some((r) => h.normas[r.hecho])) return "boe";
+  if (rels.some((r) => h.iniciativas[r.hecho]?.votaciones.length)) return "votada";
+  if (rels.some((r) => h.iniciativas[r.hecho])) return "propuesta";
+  if (rels.some((r) => h.consejo[r.hecho])) return "gobierno";
+  return "";
 }
 
 async function arrancarPromesas() {
@@ -202,10 +257,14 @@ async function arrancarPromesas() {
   }
   const docs = Object.fromEntries(datos.documentos.map((d) => [d.id, d]));
   // Hechos: relaciones por promesa (las de cualquier promesa de la misma frase se muestran juntas).
-  const normas = Object.fromEntries((hechos?.normas || []).map((n) => [n.clave, n]));
+  const porClave = (l) => Object.fromEntries((l || []).map((x) => [x.clave, x]));
+  const h = { normas: porClave(hechos?.normas), iniciativas: porClave(hechos?.iniciativas), consejo: porClave(hechos?.consejo) };
   const relaciones = {};
   for (const r of hechos?.relaciones || []) (relaciones[r.promesa] ||= []).push(r);
-  for (const p of datos.promesas) p.hechos = relaciones[`${p.d}:${p.id}`] || [];
+  for (const p of datos.promesas) {
+    p.hechos = relaciones[`${p.d}:${p.id}`] || [];
+    p.paso = ultimoPaso(p.hechos, h);
+  }
   for (const p of datos.promesas) p.buscable = plano(`${p.e} ${p.c} ${p.x}`);
   const distintas = datos.promesas.filter((p) => !p.r).length;
   resumen.textContent = `${numero(distintas, 0)} promesas distintas en ${datos.documentos.length} documentos de la XV Legislatura, cada una con su cita literal y su página.`;
@@ -258,8 +317,8 @@ async function arrancarPromesas() {
       const rels = grupo.flatMap((q) => q.hechos);
       const vistos = new Set();
       const unicas = rels.filter((r) => !vistos.has(r.hecho) && vistos.add(r.hecho));
-      if (unicas.length) bloqueHechos(unicas, normas, d, li);
-      else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas y reales decretos-leyes de la legislatura. Aún no hemos revisado los reales decretos, el Plan Anual Normativo ni las iniciativas que no prosperaron." }, li);
+      if (unicas.length) bloqueHechos(unicas, h, d, li);
+      else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas y reales decretos-leyes de la legislatura, en las iniciativas del Congreso que no llegaron a ley ni en los anteproyectos y proyectos del Consejo de Ministros. Aún no hemos revisado los reales decretos ni el Plan Anual Normativo." }, li);
     }
     return li;
   }
@@ -278,7 +337,7 @@ async function arrancarPromesas() {
     const palabras = plano(estado.texto).split(/\s+/).filter(Boolean);
     const hits = datos.promesas.filter((p) => (estado.repes || !p.r)
       && (!estado.doc || p.d === estado.doc)
-      && (!estado.paso || (estado.paso === "con" ? p.hechos.length > 0 : p.hechos.length === 0))
+      && (!estado.paso || (estado.paso === "sin" ? !p.paso : p.paso === estado.paso))
       && (!estado.quien || (estado.quien === "gobierno") === docs[p.d].gobierno)
       && palabras.every((w) => p.buscable.includes(w)));
     lista.textContent = "";
@@ -301,6 +360,7 @@ async function arrancarPromesas() {
   }
   sel.addEventListener("change", () => { estado.doc = sel.value; estado.vistas = POR_PAGINA; pintar(); });
   const selPaso = document.getElementById("p-paso");
+  for (const [v, t] of Object.entries(PASOS)) selPaso.insertBefore(new Option(t, v), selPaso.lastElementChild);
   if (hechos) selPaso.addEventListener("change", () => { estado.paso = selPaso.value; estado.vistas = POR_PAGINA; pintar(); });
   else selPaso.closest("label").hidden = true;
   document.getElementById("p-repes").addEventListener("change", (ev) => { estado.repes = ev.target.checked; estado.vistas = POR_PAGINA; pintar(); });
@@ -316,10 +376,12 @@ async function arrancarPromesas() {
   pintarRecuento(datos);
   pintarRespuesta(datos);
   // Fiabilidad de la relación hechos–promesas, en el método.
-  const fh = hechos?.fiabilidad, m = document.getElementById("hechos-metodo");
-  if (fh && m) {
+  const m = document.getElementById("hechos-metodo");
+  const NOMBRE_TANDA = { normas: "norma–promesa", iniciativas: "iniciativa–promesa (iniciativas sin ley y Consejo de Ministros)" };
+  for (const [tanda, fh] of Object.entries(hechos?.fiabilidad || {})) {
+    if (!m) break;
     const a = fh.auditoria;
-    m.appendChild(document.createTextNode(` De ${numero(fh.pares_candidatos, 0)} pares norma–promesa revisados, las dos clasificaciones coincidieron en el ${numero(fh.acuerdo, 1)} % (kappa ${numero(fh.kappa, 2)}; ${numero(fh.acuerdo_en_enlazados, 1)} % en los pares que alguna enlazó); los ${numero(fh.desacuerdos, 0)} desacuerdos se arbitraron. Una cuarta revisión independiente de una muestra al azar no enlazó ${numero(a.enlazados_que_la_auditoria_no_enlaza, 0)} de ${numero(a.enlazados_revisados, 0)} relaciones publicadas y sí enlazó ${numero(a.descartados_que_la_auditoria_enlaza, 0)} de ${numero(a.descartados_revisados, 0)} pares descartados: es la medida de cuánto puede sobrar o faltar. Resultado: ${numero(fh.misma, 0)} relaciones «trata la misma medida» y ${numero(fh.contraria, 0)} «en sentido contrario».`));
+    m.appendChild(document.createTextNode(` De ${numero(fh.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} revisados, las dos clasificaciones coincidieron en el ${numero(fh.acuerdo, 1)} % (kappa ${numero(fh.kappa, 2)}; ${numero(fh.acuerdo_en_enlazados, 1)} % en los pares que alguna enlazó); los ${numero(fh.desacuerdos, 0)} desacuerdos se arbitraron. Una cuarta revisión independiente de una muestra al azar no enlazó ${numero(a.enlazados_que_la_auditoria_no_enlaza, 0)} de ${numero(a.enlazados_revisados, 0)} relaciones publicadas y sí enlazó ${numero(a.descartados_que_la_auditoria_enlaza, 0)} de ${numero(a.descartados_revisados, 0)} pares descartados: es la medida de cuánto puede sobrar o faltar. Resultado: ${numero(fh.misma, 0)} relaciones «trata (o propone) la misma medida» y ${numero(fh.contraria, 0)} «en sentido contrario».`));
   }
 }
 

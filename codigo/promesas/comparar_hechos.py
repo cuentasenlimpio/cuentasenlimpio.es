@@ -50,7 +50,7 @@ def main():
         rnd.shuffle(orden)
         h = por_hecho[k[0]]
         c = next(x for x in h["candidatas"] if x["promesa"] == k[1])
-        des.append({"hecho": k[0], "titulo": h["titulo"], "id_boe": h["id_boe"], "inicio": h["inicio"][:1500],
+        des.append({"hecho": k[0], "titulo": h["titulo"], "referencia": h["referencia"], "tipo": h["tipo"], "inicio": h["inicio"][:1500],
                     "promesa": k[1], "documento": c["documento"], "etiqueta": c["etiqueta"], "cita": c["cita"],
                     "opcion_1": {x: opciones[orden[0]].get(x) for x in ("clase", "parcial", "motivo")},
                     "opcion_2": {x: opciones[orden[1]].get(x) for x in ("clase", "parcial", "motivo")},
