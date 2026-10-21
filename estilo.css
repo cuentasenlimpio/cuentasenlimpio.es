@@ -571,3 +571,18 @@ ul.nota-años li { margin: 0.15rem 0; }
 .calculadora [hidden] { display: none; }
 .tabla-sueldo .detalle { font-weight: 400; }
 #s-comprobado { font-size: 0.875rem; color: var(--tinta-suave); }
+
+/* Lectura fácil (UNE 153101 EX): letra grande, una frase por línea, sin justificar ni partir palabras */
+body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 1.75; hyphens: none; }
+.facil-texto p { margin: 0 0 0.6rem; text-align: left; }
+.facil-texto h2 { font-size: 1.4rem; margin: 2rem 0 0.75rem; }
+.facil-migas { font-size: 1rem; }
+.palabra-facil { background: var(--entender); border-left: 4px solid var(--linea-fuerte); border-radius: 6px; padding: 0.75rem 1rem; margin: 0.75rem 0 1.25rem; }
+.palabra-facil p { margin: 0 0 0.25rem; }
+.lista-facil, .indice-facil { padding-left: 1.4rem; }
+.lista-facil li, .indice-facil li { margin: 0 0 0.75rem; }
+.lista-facil { list-style: none; padding-left: 0; }
+.barra-facil { display: block; height: 8px; margin-top: 0.25rem; background: var(--c-primario); opacity: 0.55; border-radius: 4px; min-width: 4px; }
+.fuente-facil, .seguir-facil { font-size: 1rem; color: var(--tinta-suave); margin-top: 1.5rem !important; }
+.pasar-facil { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin: 2rem 0 1rem; font-size: 1.1rem; }
+.enlace-facil { font-size: 1.05rem; margin: 0 0 1rem; }
