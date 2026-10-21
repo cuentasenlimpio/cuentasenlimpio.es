@@ -32,32 +32,35 @@ async function arrancar() {
     const s = document.createElement("span");
     s.className = "persona";
     s.textContent = t;
-    document.getElementById(id).parentElement.querySelector(".explica").after(s);
+    document.getElementById(id).parentElement.appendChild(s);
   };
   if (h("gastos")) {
     persona("k-ingresos", `${eurosHablados(h("ingresos"))} por habitante en el año.`);
     persona("k-gastos", `${eurosHablados(h("gastos"))} por habitante en el año.`);
     persona("k-saldo", `${eurosHablados(Math.abs(h("saldo")))} por habitante en el año.`);
-    persona("k-deuda", `${eurosHablados(h("deuda"))} por habitante, en total.`);
+    persona("k-deuda", `${eurosHablados(h("deuda"))} por habitante, en total. No es lo que debe cada persona: es la deuda dividida entre todos, para hacerse una idea de su tamaño.`);
   }
 
-  // Año en curso, debajo de las cifras de déficit y deuda.
-  const ec = aapp.recientes?.en_curso;
-  const FIN = ["marzo", "junio", "septiembre", "diciembre"];
-  const añadir = (id, texto) => {
-    const span = document.createElement("span");
-    span.className = "reciente";
-    span.textContent = texto;
-    document.getElementById(id).after(span);
+  // ¿Es mucho o poco? La media de la Unión Europea ese mismo año, con las mismas reglas (Eurostat).
+  const ue = (k) => aapp.ue?.indicadores?.[k]?.EU27_2020?.[i];
+  const media = (id, k, signo = 1) => {
+    if (ue(k) === null || ue(k) === undefined) return;
+    const s = document.createElement("span");
+    s.className = "media-ue";
+    s.textContent = `Media de la UE: ${numero(signo * ue(k), 1)} %.`;
+    document.getElementById(id).parentElement.appendChild(s);
   };
-  if (ec?.series?.saldo?.doce_meses_pib !== null && ec?.series?.saldo) {
-    añadir("k-saldo-explica", `${ec.año}, en curso: ${numero(Math.abs(ec.series.saldo.doce_meses_pib), 1)} % en los doce meses hasta ${FIN[ec.trimestre - 1]}.`);
-  }
-  if (ec?.deuda) añadir("k-deuda-explica", `${ec.deuda.año}, en curso: ${numero(ec.deuda.pib, 1)} % a final de ${FIN[ec.deuda.trimestre - 1]}.`);
+  media("k-ingresos", "ingresos");
+  media("k-gastos", "gastos");
+  media("k-saldo", "saldo", saldo < 0 ? -1 : 1);
+  media("k-deuda", "deuda");
+
+  // Lo del año en curso no va en la portada: dos cifras de déficit en la misma tarjeta confundían. Está en cuentas.
+
   if (gasto) {
     const r = gasto.reparto.at(-1);
-    const top = gasto.funciones.map((f) => ({ n: f.nombre.toLowerCase(), v: r[f.codigo] })).sort((a, b) => b.v - a.v);
-    pon("k-gastos-explica", `del PIB. ${numero(Math.round(top[0].v), 0)} de cada 100 € van a ${top[0].n} (${gasto.años.at(-1)}).`);
+    const top = gasto.funciones.map((f) => ({ n: nombreLlano(f.codigo, f.nombre), v: r[f.codigo] })).sort((a, b) => b.v - a.v);
+    pon("k-gastos-explica", `del PIB. En ${gasto.años.at(-1)}, ${numero(Math.round(top[0].v), 0)} de cada 100 € fueron a ${top[0].n}.`);
     pon("q-gasto", `De cada 100 € de gasto: ${lista([...top.slice(0, 3).map((t) => `${numero(Math.round(t.v), 0)} a ${t.n}`),
       `${numero(r.intereses, 1)} a intereses de la deuda`])} (${gasto.años.at(-1)}).`);
     const t = gasto.tipo, n = t.años.length - 1, inv = t.partes.find((p) => p.clave === "inversion").de_cada_100;
@@ -69,7 +72,7 @@ async function arrancar() {
     pon("q-ingresos", `De cada 100 € que ingresan: ${lista(top.map(([k, x]) => `${numero(Math.round(x), 0)} de ${NOMBRES_INGRESOS[k]}`))} (${ingresos.años.at(-1)}${ingresos.provisional_igae?.at(-1) ? ", provisional" : ""}). Y cómo ha cambiado desde 1995.`);
   }
   if (promesas) {
-    pon("q-promesas", `${numero(promesas.distintas, 0)} promesas de ${promesas.documentos} documentos, con su cita literal. Sin veredicto: la promesa y los hechos.`);
+    pon("q-promesas", `${numero(promesas.distintas, 0)} promesas de ${promesas.documentos} documentos (programas de los partidos y acuerdos para formar Gobierno), con su cita literal y lo que se hizo después. No decimos si se cumplieron: enseñamos los hechos.`);
   }
   lineaFuente(document.getElementById("claves-fuente"), {
     fuentes: aapp.fuentes, tablas: [["gov_10a_main", "ingresos, gastos y saldo"], ["gov_10dd_edpt1", "deuda"]],

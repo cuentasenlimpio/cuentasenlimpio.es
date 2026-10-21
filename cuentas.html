@@ -46,7 +46,7 @@
     <div id="periodo"></div>
     <div id="capas"></div>
     <div class="nota-capas" id="nota-capas"></div>
-    <p class="ayuda-grafico">El periodo vale para los tres gráficos de evolución. Para acercarte también puedes arrastrar los extremos de la barra bajo cada gráfico, pellizcar en el móvil o usar la rueda con la tecla Ctrl. Pasa el dedo o el ratón por un gráfico, o usa las flechas, para leer cada año.</p>
+    <p class="ayuda-grafico">El periodo vale para los tres gráficos de evolución. Al tocar un gráfico (o pasar el ratón por encima) se lee cada año. Para acercar unos años, se arrastran los extremos de la barra de debajo.</p>
 
     <section class="grafico" aria-labelledby="g1-titulo">
       <h2 class="pregunta" id="g1-titulo">¿Llega lo que ingresan para lo que gastan? <button type="button" class="info" data-info="deficit">i</button></h2>
@@ -56,7 +56,7 @@
         <li><span class="clave-area"></span>Hueco entre los dos: déficit (o superávit, si los ingresos quedan por encima)</li>
       </ul>
       <div class="lectura-año" id="g1-lectura" aria-live="polite"></div>
-      <div class="lienzo" id="g1" tabindex="0" role="img" aria-label="Ingresos y gastos de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
+      <div class="lienzo" id="g1" tabindex="0" role="img" aria-label="Ingresos y gastos de las administraciones públicas, de 1995 al último año disponible. Con las flechas del teclado se recorren los años."></div>
       <p class="fuente-grafico" id="g1-fuente"></p>
       <div class="recientes" id="g1-recientes"></div>
       <div class="acontecimientos" id="acontecimientos"></div>
@@ -74,29 +74,30 @@
     <section class="grafico" aria-labelledby="g2-titulo">
       <h2 class="pregunta" id="g2-titulo">¿Cuánto deben al final de cada año? <button type="button" class="info" data-info="deuda">i</button></h2>
       <div class="lectura-año" id="g2-lectura" aria-live="polite"></div>
-      <div class="lienzo" id="g2" tabindex="0" role="img" aria-label="Deuda de las administraciones públicas, de 1995 al último año disponible. Usa las flechas para recorrer los años."></div>
+      <div class="lienzo" id="g2" tabindex="0" role="img" aria-label="Deuda de las administraciones públicas, de 1995 al último año disponible. Con las flechas del teclado se recorren los años."></div>
       <p class="fuente-grafico" id="g2-fuente"></p>
       <div class="recientes" id="g2-recientes"></div>
       <div class="entender">
         <p class="rotulo">Para entenderlo</p>
         <h3>Deber el 100 % del PIB no es tener que pagarlo en un año</h3>
-        <p>La deuda pública se debe a quien compró bonos y letras (bancos, fondos, particulares, el Banco Central Europeo), y no se devuelve de golpe: cuando vence un bono, se suele pagar emitiendo otro. Lo que pesa en las cuentas de cada año son los <strong>intereses</strong>, que se ven separados en el gráfico siguiente.</p>
+        <p>Las administraciones piden prestado vendiendo letras y bonos: papeles que se devuelven con intereses al cabo de un tiempo. Se deben a quien los compró: bancos, fondos de inversión, aseguradoras, particulares e inversores de otros países, y una parte el Banco Central Europeo y el Banco de España. No se devuelven de golpe: cuando vence un bono, se suele pagar vendiendo otro. Lo que pesa en las cuentas de cada año son los <strong>intereses</strong>, que se ven separados en el gráfico siguiente.</p>
         <p>Por eso importa tanto el tipo de interés como la cantidad: la misma deuda cuesta más o menos según a cuánto se pidió prestada.</p>
       </div>
     </section>
 
     <section class="grafico" aria-labelledby="g3-titulo">
       <h2 class="pregunta" id="g3-titulo">¿Por qué cambió la deuda cada año? <button type="button" class="info" data-info="bola_de_nieve">i</button></h2>
-      <p class="grafico-explica">La deuda sube si las administraciones gastan más de lo que ingresan (el déficit, que aquí separamos en intereses y resto), y también cuando prestan, depositan o invierten dinero: eso no cuenta como gasto, pero hay que financiarlo. En porcentaje del PIB, además, la deuda pesa menos cuando la economía crece y más cuando se encoge.</p>
+      <p class="grafico-explica">La deuda sube cuando las administraciones gastan más de lo que ingresan (el déficit, que aquí se separa en intereses y resto). También sube cuando prestan dinero, lo depositan o compran acciones: eso no cuenta como gasto, pero hay que pedirlo prestado. Y comparada con el PIB, la deuda pesa menos cuando la economía crece y más cuando se encoge.</p>
+      <p class="grafico-clave" id="g3-clave"></p>
       <ul class="leyenda-series" id="g3-leyenda"></ul>
       <div class="lectura-año" id="g3-lectura" aria-live="polite"></div>
-      <div class="lienzo" id="g3" tabindex="0" role="img" aria-label="Componentes de la variación anual de la deuda de las administraciones públicas. Usa las flechas para recorrer los años."></div>
+      <div class="lienzo" id="g3" tabindex="0" role="img" aria-label="Componentes de la variación anual de la deuda de las administraciones públicas. Con las flechas del teclado se recorren los años."></div>
       <p class="fuente-grafico" id="g3-fuente"></p>
     </section>
 
     <section class="grafico" aria-labelledby="g4-titulo">
       <h2 class="pregunta" id="g4-titulo">¿Cómo queda España frente al resto de la UE? <button type="button" class="info" data-info="reglas">i</button></h2>
-      <p class="grafico-explica">Los 27 países de la Unión Europea medidos con las mismas reglas, en porcentaje de su PIB. El año es el que elijas en los gráficos de arriba.</p>
+      <p class="grafico-explica">Los 27 países de la Unión Europea medidos con las mismas reglas, en porcentaje de su PIB. El año es el elegido en los gráficos de arriba.</p>
       <div class="selector selector-pequeno" role="group" aria-label="Qué comparar">
         <button type="button" data-ue="ingresos" aria-pressed="false">Ingresos</button>
         <button type="button" data-ue="gastos" aria-pressed="false">Gastos</button>
@@ -104,7 +105,7 @@
         <button type="button" data-ue="deuda" aria-pressed="true">Deuda</button>
       </div>
       <div class="lectura-año" id="g4-lectura" aria-live="polite"></div>
-      <div class="lienzo" id="g4" tabindex="0" role="img" aria-label="Comparación de España con los países de la Unión Europea. Usa las flechas para cambiar de año."></div>
+      <div class="lienzo" id="g4" tabindex="0" role="img" aria-label="Comparación de España con los países de la Unión Europea. Con las flechas del teclado se cambia de año."></div>
       <p class="fuente-grafico" id="g4-fuente"></p>
     </section>
 
@@ -113,8 +114,8 @@
       <ul>
         <li>No dicen quién causó cada subida o bajada. Que algo ocurra con un Gobierno no significa que lo haya provocado él: lo explicamos en <a href="como-se-miente.html#causa">coincidir en el tiempo no es causar</a>.</li>
         <li>No son las cuentas del Gobierno central: incluyen a todas las administraciones, y buena parte del gasto lo hacen las comunidades autónomas.</li>
-        <li>El porcentaje del PIB baja cuando la economía crece, aunque no cambie nada más. Prueba a cambiar de unidad arriba.</li>
-        <li>Comprar activos financieros no es perder el dinero: puede recuperarse, o no. El gráfico dice cuánto se compró, no cuánto se recuperó después.</li>
+        <li>El porcentaje del PIB baja cuando la economía crece, aunque no cambie nada más. Se ve cambiando de unidad arriba, a euros.</li>
+        <li>Prestar dinero o comprar acciones no es perderlo: puede recuperarse, o no. El gráfico dice cuánto se prestó o se compró, no cuánto se recuperó después.</li>
       </ul>
     </div>
 

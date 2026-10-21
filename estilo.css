@@ -525,6 +525,7 @@ button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset:
 /* Cifras a escala de persona */
 .respuesta-persona { display: block; margin-top: 0.5rem; font-size: 0.9em; color: var(--tinta-suave); }
 .cifras-clave .persona { font-size: 0.875rem; color: var(--tinta); font-weight: 600; }
+.cifras-clave .media-ue { font-size: 0.8125rem; color: var(--tinta-suave); }
 
 /* Detalle técnico de la fuente, plegado */
 .fuente-detalle { margin-top: 0.35rem; }
@@ -536,3 +537,6 @@ button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset:
 .plegable-controles > summary { cursor: pointer; font-weight: 600; color: var(--acento); padding: 0.35rem 0; }
 .plegable-controles > summary:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
 .plegable-controles[open] > summary { margin-bottom: 0.5rem; }
+
+.info-fuentes-plegadas summary { cursor: pointer; font-size: 0.8125rem; color: var(--tinta-suave); }
+.grafico-clave { font-weight: 600; max-width: 46rem; }

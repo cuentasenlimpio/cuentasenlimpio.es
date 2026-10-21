@@ -85,11 +85,11 @@ async function arrancar() {
   const fm = nuevo("p", { className: "fuente-grafico", textContent: "Fuente: " }, m);
   enlace(gm.url, gm.fuente, fm);
   fm.appendChild(document.createTextNode(". "));
-  nuevo("span", { className: "etiqueta-tipo dato", textContent: "dato" }, fm);
+  nuevo("span", { className: "etiqueta-tipo dato", textContent: ETIQUETA_TIPO.dato }, fm);
 
   const f = document.getElementById("documentos-fuente");
   f.textContent = `Fuente: la web de cada partido (o el medio que se indica, cuando el partido no lo publicó) y su captura en el Internet Archive. Direcciones, estado y huellas comprobados el ${fecha(datos.comprobado)}. `;
-  nuevo("span", { className: "etiqueta-tipo dato", textContent: "dato" }, f);
+  nuevo("span", { className: "etiqueta-tipo dato", textContent: ETIQUETA_TIPO.dato }, f);
   f.appendChild(document.createTextNode(" "));
   enlace("https://github.com/cuentasenlimpio/cuentasenlimpio.es/blob/main/codigo/promesas/documentos.json", "Catálogo completo (JSON)", f);
   f.appendChild(document.createTextNode("."));
@@ -136,7 +136,7 @@ function pintarRecuento(datos) {
   }
   const f = document.getElementById("recuento-fuente");
   f.textContent = "Fuente: elaboración propia a partir de los 17 documentos de la lista de abajo. «Frases» no cuenta los títulos; una frase puede contener más de una promesa. ";
-  nuevo("span", { className: "etiqueta-tipo lectura", textContent: "lectura" }, f);
+  nuevo("span", { className: "etiqueta-tipo lectura", textContent: ETIQUETA_TIPO.lectura }, f);
   f.appendChild(document.createTextNode(` Clasificación doble e independiente, con un ${numero(100 * datos.fiabilidad.acuerdo, 1)} % de acuerdo; los ${numero(datos.fiabilidad.desacuerdos, 0)} desacuerdos, arbitrados (ver «Quién clasifica y cómo se comprueba»).`));
 }
 
@@ -444,7 +444,7 @@ async function arrancarPromesas() {
 
   const f = document.getElementById("promesas-fuente");
   f.textContent = "Fuente: los documentos de cada partido (lista y enlaces más abajo); la cita y la página son del documento; «ver en el documento» abre su copia del Internet Archive en esa página. La etiqueta, el verbo y las notas son nuestros. ";
-  nuevo("span", { className: "etiqueta-tipo lectura", textContent: "lectura" }, f);
+  nuevo("span", { className: "etiqueta-tipo lectura", textContent: ETIQUETA_TIPO.lectura }, f);
   f.appendChild(document.createTextNode(" "));
   enlace("datos/promesas.csv", "Todas las promesas en CSV", f);
   f.appendChild(document.createTextNode("."));

@@ -31,13 +31,13 @@
   <main>
     <p class="antetitulo">Las cuentas públicas de España, con la fuente de cada cifra</p>
     <h1 class="pregunta">¿Cuánto ingresan, cuánto gastan y cuánto deben las administraciones?</h1>
-    <p class="respuesta">Sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. Cifras de <span class="año-cuentas">el último año</span>, en porcentaje de lo que produce la economía en un año (el PIB).</p>
+    <p class="respuesta">Sumando el Estado, la Seguridad Social, las comunidades autónomas y los ayuntamientos. Cifras de <span class="año-cuentas">el último año</span>, comparadas con todo lo que produce el país en un año (el PIB), y debajo, en euros por habitante y frente a la media de la Unión Europea.</p>
 
     <section class="cifras-clave" aria-label="Cifras clave">
       <a href="cuentas.html#g1-titulo"><span class="nombre">Ingresos</span><span class="valor ingresos" id="k-ingresos">…</span><span class="explica">del PIB. Sobre todo impuestos y cotizaciones.</span></a>
       <a href="gasto.html"><span class="nombre">Gastos</span><span class="valor gastos" id="k-gastos">…</span><span class="explica" id="k-gastos-explica">del PIB.</span></a>
       <a href="cuentas.html#g1-titulo"><span class="nombre" id="k-saldo-nombre">Déficit</span><span class="valor" id="k-saldo">…</span><span class="explica" id="k-saldo-explica">del PIB. Lo que falta para cubrir el gasto, y se pide prestado.</span></a>
-      <a href="cuentas.html#g2-titulo"><span class="nombre">Deuda acumulada</span><span class="valor" id="k-deuda">…</span><span class="explica" id="k-deuda-explica">del PIB. Lo que se debe de todos los años anteriores.</span></a>
+      <a href="cuentas.html#g2-titulo"><span class="nombre">Deuda acumulada</span><span class="valor" id="k-deuda">…</span><span class="explica" id="k-deuda-explica">del PIB. Lo que se debe de todos los años y aún no se ha devuelto.</span></a>
     </section>
     <p class="como-leer">Cómo leer estas cifras <button type="button" class="info" data-info="cifras_clave">i</button></p>
     <p class="fuente-grafico" id="claves-fuente"></p>
@@ -46,7 +46,7 @@
     <div class="preguntas">
       <a href="gasto.html"><strong>¿En qué se gasta el dinero público?</strong><span id="q-gasto">De cada 100 € de gasto, cuánto va a pensiones, sanidad, educación o intereses.</span></a>
       <a href="ingresos.html"><strong>¿De dónde sale?</strong><span id="q-ingresos">Cotizaciones, IVA e impuestos sobre la renta, y cómo han cambiado desde 1995.</span></a>
-      <a href="cuentas.html#g3-titulo"><strong>¿Por qué sube o baja la deuda?</strong><span>No solo por el déficit: también por los préstamos que se hacen y por lo que crece la economía.</span></a>
+      <a href="cuentas.html#g3-titulo"><strong>¿Por qué sube o baja la deuda?</strong><span>No solo por el déficit: también por el dinero que se presta y por lo que crece la economía.</span></a>
       <a href="promesas.html"><strong>¿Qué se prometió en 2023?</strong><span id="q-promesas">Las promesas de los programas y acuerdos de la XV Legislatura, con su cita literal. Sin veredicto: la promesa y los hechos.</span></a>
       <a href="gasto.html#t-titulo"><strong>¿Cuánto se invierte?</strong><span id="q-inversion">Qué parte del gasto crea algo que dura: carreteras, hospitales, equipos.</span></a>
       <a href="presupuesto.html"><strong>¿Se gastó lo que se aprobó?</strong><span>El presupuesto del Estado frente a lo que de verdad se gastó, política a política.</span></a>
@@ -56,20 +56,20 @@
       <div>
         <p class="rotulo">Para entenderlo</p>
         <h2 id="ideas">Cinco ideas que cambian cómo se leen las cifras</h2>
-        <p><a href="aprende.html">Las once ideas, una a una →</a></p>
+        <p><a href="aprende.html">Aquí van cinco; las once, explicadas una a una, en «Aprende» →</a></p>
       </div>
       <ol>
         <li><strong>Déficit no es deuda.</strong> El déficit es lo que falta en un año; la deuda, lo que se debe sumando todos.</li>
         <li><strong>Gastar no es lo mismo que invertir.</strong> Pagar sueldos y pensiones es gasto del año; una carretera o un hospital duran décadas.</li>
-        <li><strong>Prestar no es gastar.</strong> Comprar activos financieros no cuenta como gasto, pero sí aumenta la deuda.</li>
-        <li><strong>El porcentaje del PIB engaña a la baja</strong> cuando la economía crece, aunque no cambie nada más.</li>
+        <li><strong>Prestar no es gastar.</strong> Si una administración presta dinero (a empresas, a otras administraciones) o compra acciones (de empresas públicas, por ejemplo), no cuenta como gasto, porque puede recuperarlo. Pero tiene que pedirlo prestado, y la deuda sube.</li>
+        <li><strong>Un porcentaje del PIB puede bajar sin que baje nada.</strong> Si la economía crece, la misma deuda pesa menos: es como deber lo mismo y ganar más. Por eso conviene mirar también los euros.</li>
         <li><strong>Coincidir en el tiempo no es causar.</strong> Que algo pase con un Gobierno no significa que lo provocara.</li>
       </ol>
     </section>
 
     <div class="ojo">
       <strong>Cómo trabajamos</strong>
-      <p>Las mismas reglas para todos los años y todos los Gobiernos; el <em>dato</em> oficial, separado de nuestra <em>lectura</em>; sin colores de partido; el <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">código de los cálculos</a> y los ficheros oficiales, públicos; y los errores, en un <a href="correcciones.html">registro de correcciones</a>. Todo el proceso, en <a href="metodologia.html">cómo trabajamos</a>.</p>
+      <p>Las mismas reglas para todos los años y todos los Gobiernos. El <em>dato</em> oficial va separado de nuestra <em>lectura</em> (un cálculo nuestro), y sin colores de partido. El <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">código de los cálculos</a> y los ficheros oficiales son públicos, y los errores quedan en un <a href="correcciones.html">registro de correcciones</a>. Todo el proceso, en <a href="metodologia.html">cómo trabajamos</a>.</p>
     </div>
   </main>
 

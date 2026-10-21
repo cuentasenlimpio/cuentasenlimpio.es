@@ -129,16 +129,16 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
 }
 
 const COMPONENTES = [
-  { clave: "deficit_primario", clase: "c-primario", nombre: "déficit sin intereses", nombreNegativo: "superávit sin intereses" },
-  { clave: "intereses", clase: "c-intereses", nombre: "intereses" },
-  { clave: "activos", clase: "c-activos", nombre: "compra neta de activos financieros" },
-  { clave: "ajustes", clase: "c-ajustes", nombre: "ajustes y discrepancias" },
-  { clave: "crecimiento", clase: "c-crecimiento", nombre: "efecto del crecimiento del PIB", soloPib: true },
+  { clave: "deficit_primario", clase: "c-primario", nombre: "lo que faltó sin contar intereses", nombreNegativo: "lo que sobró sin contar intereses" },
+  { clave: "intereses", clase: "c-intereses", nombre: "intereses de la deuda" },
+  { clave: "activos", clase: "c-activos", nombre: "dinero prestado o invertido (activos financieros)" },
+  { clave: "ajustes", clase: "c-ajustes", nombre: "otros ajustes contables" },
+  { clave: "crecimiento", clase: "c-crecimiento", nombre: "lo que crece la economía (la deuda pesa menos)", soloPib: true },
 ];
 
 function conSigno(v, unidad) {
   if (v === null || v === undefined) return "sin dato";
-  const texto = unidad === "pib" ? `${numero(Math.abs(v), 2)} puntos` : formatear(Math.abs(v), unidad);
+  const texto = unidad === "pib" ? `${numero(Math.abs(v), 2)} puntos del PIB` : formatear(Math.abs(v), unidad);
   return `${v < 0 ? "−" : "+"}${texto}`;
 }
 
@@ -523,7 +523,7 @@ function pintar() {
   explicada.textContent = "";
   const etiqueta = document.createElement("span");
   etiqueta.className = `etiqueta-tipo ${un.tipo}`;
-  etiqueta.textContent = un.tipo;
+  etiqueta.textContent = ETIQUETA_TIPO[un.tipo] || un.tipo;
   explicada.appendChild(etiqueta);
   explicada.appendChild(document.createTextNode(" " + texto(un.explica, d.año_base_constantes)));
 
@@ -541,9 +541,30 @@ function pintar() {
   pintarFuente("g3-fuente", "gov_10dd_edpt3",
     [["gov_10dd_edpt1", u === "pib" ? "intereses y PIB de la misma notificación" : "intereses de la misma notificación"]],
     u === "pib"
-      ? "Cada parte se divide entre el PIB del año; el efecto del crecimiento sale de la identidad exacta: variación del porcentaje = variación de la deuda ÷ PIB − porcentaje del año anterior × crecimiento ÷ (1 + crecimiento)."
-      : "El déficit sin intereses es una resta: déficit − intereses.");
+      ? "Cada parte, dividida entre el PIB del año. «Lo que crece la economía» es lo que baja el porcentaje solo porque la economía es más grande."
+      : "Lo que faltó sin contar intereses es una resta: déficit menos intereses.");
+  // La fórmula exacta, para quien quiera comprobarla, en el detalle de la fuente.
+  const lista3 = document.getElementById("g3-fuente").nextElementSibling?.querySelector("ul");
+  if (u === "pib" && lista3) {
+    const li = document.createElement("li");
+    li.textContent = "Cómo se calcula lo que crece la economía: variación del porcentaje = variación de la deuda ÷ PIB − porcentaje del año anterior × crecimiento ÷ (1 + crecimiento), con el crecimiento del PIB en euros de cada año. Es una igualdad exacta.";
+    lista3.appendChild(li);
+  }
   pintarTabla();
+  pintarClaveDeuda();
+}
+
+// Una frase con lo más llamativo del último año del desglose de la deuda: cuánto del déficit fueron intereses.
+function pintarClaveDeuda() {
+  const c = estado.datos.cambio_deuda?.pib, d = estado.datos;
+  const el = document.getElementById("g3-clave");
+  if (!c || !el) return;
+  const i = d.años.length - 1, int_ = c.intereses[i], prim = c.deficit_primario[i];
+  if (int_ === null || prim === null) return;
+  const total = int_ + prim;
+  el.textContent = prim <= 0.05
+    ? `En ${d.años[i]}, casi todo el déficit fueron intereses de la deuda: ${numero(int_, 1)} puntos del PIB de intereses, y sin contarlos ${prim < -0.05 ? `sobró un ${numero(-prim, 1)} %` : "las cuentas quedaron prácticamente equilibradas"}.`
+    : `En ${d.años[i]}, de un déficit de ${numero(total, 1)} puntos del PIB, ${numero(int_, 1)} fueron intereses de la deuda y ${numero(prim, 1)}, el resto.`;
 }
 
 // Línea de fuente bajo cada gráfico: la tabla de Eurostat de la que sale y, si la unidad es una lectura, las tablas
@@ -551,73 +572,30 @@ function pintar() {
 function pintarFuente(id, tabla, otras = [], nota = "") {
   const d = estado.datos;
   const u = estado.unidad;
-  const porTabla = Object.fromEntries(d.fuentes.map((f) => [f.tabla, f]));
-  const p = document.getElementById(id);
-  p.textContent = "Fuente: Eurostat, ";
-  const enlace = (f, texto) => {
-    const a = document.createElement("a");
-    a.href = f.url_navegador;
-    a.textContent = texto;
-    return a;
-  };
-  const f = porTabla[tabla];
-  p.appendChild(enlace(f, `${f.nombre.charAt(0).toLowerCase()}${f.nombre.slice(1)}`));
-  p.appendChild(document.createTextNode(` (tabla ${tabla}, actualizada el ${fecha(f.actualizado_fuente)})`));
-  for (const [t, texto] of otras) {
-    const g = porTabla[t];
-    p.appendChild(document.createTextNode(", "));
-    p.appendChild(enlace(g, texto));
-    p.appendChild(document.createTextNode(` (tabla ${t}, actualizada el ${fecha(g.actualizado_fuente)})`));
-  }
   const extra = { constantes: ["nama_10_gdp", "deflactor del PIB"], habitante: ["nama_10_pe", "población media"] }[u];
-  if (extra) {
-    p.appendChild(document.createTextNode(" y "));
-    const g = porTabla[extra[0]];
-    p.appendChild(enlace(g, extra[1]));
-    p.appendChild(document.createTextNode(` (tabla ${extra[0]}, actualizada el ${fecha(g.actualizado_fuente)}). `));
-  } else {
-    p.appendChild(document.createTextNode(". "));
+  const p = document.getElementById(id);
+  lineaFuente(p, {
+    fuentes: d.fuentes, tablas: [[tabla, null], ...otras, ...(extra ? [extra] : [])],
+    tipo: nota && u === "pib" ? "lectura" : UNIDADES[u].tipo, nota,
+  });
+  // Las legislaturas y los acontecimientos del gráfico, en el detalle.
+  const c = d.fuentes.find((x) => x.tabla === "legislaturas");
+  const lista = p.nextElementSibling?.querySelector("ul");
+  if (c && lista) {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = c.url_navegador;
+    a.textContent = "Congreso de los Diputados, sesiones constitutivas de cada legislatura";
+    li.append("Legislaturas: ", a, ` (descargada el ${fecha(c.descargado)}). Acontecimientos: el documento oficial de cada uno, en su lista bajo el primer gráfico.`);
+    lista.appendChild(li);
   }
-  const tipoTexto = nota && u === "pib" ? "lectura" : UNIDADES[u].tipo;
-  const tipo = document.createElement("span");
-  tipo.className = `etiqueta-tipo ${tipoTexto}`;
-  tipo.textContent = tipoTexto;
-  p.appendChild(tipo);
-  p.appendChild(document.createTextNode(nota ? ` ${nota} ` : " "));
-  const copia = document.createElement("a");
-  copia.href = f.copia;
-  copia.textContent = "Fichero descargado";
-  p.appendChild(copia);
-  p.appendChild(document.createTextNode(". Legislaturas: "));
-  const c = porTabla.legislaturas;
-  const congreso = document.createElement("a");
-  congreso.href = c.url_navegador;
-  congreso.textContent = "Congreso de los Diputados, sesiones constitutivas";
-  p.appendChild(congreso);
-  p.appendChild(document.createTextNode(` (descargada el ${fecha(c.descargado)}). Acontecimientos numerados: documento oficial de cada uno en la lista bajo el primer gráfico.`));
 }
-
 function pintarFuenteUE() {
   const d = estado.datos;
-  const porTabla = Object.fromEntries(d.fuentes.map((f) => [f.tabla, f]));
-  const f = porTabla[estado.indicadorUE === "deuda" ? "ue_gov_10dd_edpt1" : "ue_gov_10a_main"];
-  const p = document.getElementById("g4-fuente");
-  p.textContent = "Fuente: Eurostat, ";
-  const a = document.createElement("a");
-  a.href = f.url_navegador;
-  a.textContent = f.nombre.charAt(0).toLowerCase() + f.nombre.slice(1);
-  p.appendChild(a);
-  p.appendChild(document.createTextNode(` (tabla ${f.dataset}, actualizada el ${fecha(f.actualizado_fuente)}), en % del PIB. `));
-  const tipo = document.createElement("span");
-  tipo.className = "etiqueta-tipo dato";
-  tipo.textContent = "dato";
-  p.appendChild(tipo);
-  p.appendChild(document.createTextNode(" La media es la de la UE-27 tal como la calcula Eurostat. "));
-  const c = document.createElement("a");
-  c.href = f.copia;
-  c.textContent = "Fichero descargado";
-  p.appendChild(c);
-  p.appendChild(document.createTextNode("."));
+  const tabla = estado.indicadorUE === "deuda" ? "ue_gov_10dd_edpt1" : "ue_gov_10a_main";
+  lineaFuente(document.getElementById("g4-fuente"), {
+    fuentes: d.fuentes, tablas: [[tabla, null]], tipo: "dato", nota: "En porcentaje del PIB de cada país. La media es la de los 27 países de la UE, tal como la calcula Eurostat.",
+  });
 }
 
 function pintarTabla() {
@@ -638,7 +616,8 @@ function pintarTabla() {
   }
   thead.appendChild(cab);
   const leyenda = document.createElement("caption");
-  leyenda.textContent = `En ${texto(UNIDADES[u].eje, d.año_base_constantes)}. Saldo negativo = déficit. «p» = provisional.`;
+  const hayProvisional = ["ingresos", "gastos", "saldo", "deuda"].some((k) => s[k].provisional[u].some(Boolean));
+  leyenda.textContent = `En ${texto(UNIDADES[u].eje, d.año_base_constantes)}. Saldo negativo = déficit.${hayProvisional ? " «p» = provisional." : ""}`;
   tabla.querySelector("caption")?.remove();
   tabla.prepend(leyenda);
   [...d.años.keys()].reverse().forEach((i) => {
@@ -739,23 +718,33 @@ function pintarFicha() {
     .catch(() => {});
 }
 
-// Respuesta corta del último año y cuántos años hubo superávit (todo sale de los datos).
+// Respuesta corta del último año y cuántos años hubo superávit (todo sale de los datos). Primero, en llano; luego,
+// las cifras sobre el PIB, por habitante y frente a la media de la UE.
 function pintarRespuesta() {
   const d = estado.datos, s = d.series, i = d.años.length - 1;
   const v = (k) => numero(s[k].pib[i], 1);
-  const saldo = s.saldo.pib[i];
+  const saldo = s.saldo.pib[i], deuda = s.deuda.pib[i];
+  const de100 = Math.round((100 * s.gastos.corrientes[i]) / s.ingresos.corrientes[i]);
   const p = document.getElementById("respuesta");
-  p.textContent = `En ${d.años[i]}, las administraciones ingresaron el ${v("ingresos")} % del PIB y gastaron el ${v("gastos")} %: `;
+  p.textContent = `En ${d.años[i]}, las administraciones ${saldo < 0 ? "gastaron más de lo que ingresaron" : "ingresaron más de lo que gastaron"}: por cada 100 € que entraron, salieron unos ${numero(de100, 0)}. `;
   const b = document.createElement("strong");
-  b.textContent = saldo < 0 ? `faltó un ${numero(-saldo, 1)} %, el déficit` : `sobró un ${numero(saldo, 1)} %, el superávit`;
-  p.append(b, `. La deuda acumulada llegó al ${v("deuda")} % del PIB.`);
+  b.textContent = saldo < 0 ? "Lo que faltó, el déficit, se pidió prestado" : "Lo que sobró, el superávit, redujo lo que había que pedir prestado";
+  const peso = deuda >= 100 ? "ya supera todo lo que produce el país en un año" : deuda >= 90 ? "ya equivale a casi todo lo que produce el país en un año"
+    : `equivale a ${numero(Math.round(deuda), 0)} de cada 100 € de lo que produce el país en un año`;
+  p.append(b, ` y se sumó a la deuda, que ${peso}.`);
+  const cifras = document.createElement("span");
+  cifras.className = "respuesta-persona";
+  const ue = (k) => d.ue?.indicadores?.[k]?.EU27_2020?.[i];
+  cifras.textContent = `En cifras: ingresos, ${v("ingresos")} % del PIB; gastos, ${v("gastos")} %; ${saldo < 0 ? "déficit" : "superávit"}, ${numero(Math.abs(saldo), 1)} %; deuda, ${v("deuda")} %.`
+    + (ue("deuda") !== undefined && ue("deuda") !== null ? ` En la Unión Europea, de media: ${ue("saldo") < 0 ? "déficit" : "superávit"} del ${numero(Math.abs(ue("saldo")), 1)} % y deuda del ${numero(ue("deuda"), 1)} %.` : "");
+  p.appendChild(cifras);
   // A escala de persona (lectura: euros de cada serie entre la población media del año, de Eurostat).
   const h = (k) => s[k].habitante[i];
   if (h("gastos")) {
     const q = document.createElement("span");
     q.className = "respuesta-persona";
-    q.textContent = ` Por habitante: entraron ${eurosHablados(h("ingresos"))} y se gastaron ${eurosHablados(h("gastos"))} en el año, `
-      + `${saldo < 0 ? "faltaron" : "sobraron"} ${eurosHablados(Math.abs(h("saldo")))}, y la deuda equivale a ${eurosHablados(h("deuda"))} por cada habitante.`;
+    q.textContent = `Por habitante: entraron ${eurosHablados(h("ingresos"))} y se gastaron ${eurosHablados(h("gastos"))} en el año, `
+      + `${saldo < 0 ? "faltaron" : "sobraron"} ${eurosHablados(Math.abs(h("saldo")))}, y la deuda equivale a ${eurosHablados(h("deuda"))} por cada habitante. No es lo que debe cada persona: es la deuda dividida entre todos, para hacerse una idea de su tamaño.`;
     p.appendChild(q);
   }
   const con = d.años.filter((a, k) => s.saldo.pib[k] !== null && s.saldo.pib[k] >= 0);
@@ -776,7 +765,8 @@ function pintarRecientes(id, clave) {
   const r = estado.datos.recientes;
   caja.textContent = "";
   if (!r || !estado.capas.previsiones) return;
-  const el = (tipo, props = {}, padre = caja) => {
+  let destino = caja;
+  const el = (tipo, props = {}, padre = destino) => {
     const e = document.createElement(tipo);
     Object.assign(e, props);
     padre.appendChild(e);
@@ -794,10 +784,13 @@ function pintarRecientes(id, clave) {
   item("clave-area tenue", `Fondo claro: provisional (${sin.length > 1 ? `${sin[0]}–${sin.at(-1)}` : sin[0] ?? ult})`);
   item("clave-area oscura", `Fondo oscuro: ${ult + 1}, en curso (punto hueco: último dato)`);
   item("clave-discontinua", `Discontinuas: previsiones de cada institución; de puntos: objetivo del Gobierno`);
-  const h3 = el("h3", { textContent: clave === "saldo" ? "Lo más reciente y lo que se prevé: el saldo" : "Lo más reciente y lo que se prevé: la deuda" });
-  h3.append(" ");
+  // Lo demás (lo provisional, lo del año en curso y las previsiones), plegado: es para quien quiera el detalle.
+  const det = el("details", { className: "plegable-controles recientes-detalle" });
+  el("summary", { textContent: clave === "saldo" ? "Lo más reciente y lo que prevén las instituciones: el déficit" : "Lo más reciente y lo que prevén las instituciones: la deuda" }, det);
+  destino = det;
+  const h3 = el("p", { className: "como-leer", textContent: "Cómo leer una previsión " });
   el("button", { type: "button", className: "info", textContent: "i" }, h3).dataset.info = "previsiones";
-  const f = r.fiabilidad[String(ult)];
+  const f = clave === "saldo" ? r.fiabilidad[String(ult)] : null;
   if (f) {
     const p = el("p");
     const b = el("strong", { textContent: `${ult}, provisional. ` }, p);
@@ -809,7 +802,7 @@ function pintarRecientes(id, clave) {
     const p = el("p");
     el("strong", { textContent: `${ec.año}, en curso. ` }, p);
     p.append(`De enero a ${mes}, el saldo fue del ${numero(s_.acumulado_pib, 2)} % del PIB de esos meses, frente al ${numero(s_.acumulado_anterior_pib, 2)} % en el mismo periodo de ${ec.año - 1} (dato de la IGAE). ` +
-      `En los doce meses hasta ${mes} de ${ec.año}: ${numero(s_.doce_meses_pib, 1)} % (lectura: suma de los cuatro últimos trimestres ÷ el PIB de esos trimestres, punto hueco del gráfico). ` +
+      `En los doce meses que acaban en ${mes} de ${ec.año}: ${numero(s_.doce_meses_pib, 1)} %. Es el punto hueco del gráfico: lo de los cuatro últimos trimestres, dividido entre lo que produjo la economía en ese tiempo. ` +
       "Un trimestre no anticipa el año: el gasto y los impuestos no se reparten igual entre trimestres.");
   }
   if (ec && clave === "deuda" && ec.deuda) {
@@ -817,8 +810,17 @@ function pintarRecientes(id, clave) {
     el("strong", { textContent: `${ec.deuda.año}, en curso. ` }, p);
     p.append(`A final de ${FIN_TRIMESTRE[ec.deuda.trimestre - 1]} de ${ec.deuda.año}, la deuda era del ${numero(ec.deuda.pib, 1)} % del PIB (dato del Banco de España, punto hueco del gráfico). A mitad de año suele estar más alta que en diciembre.`);
   }
-  // Tabla: una fila por institución, con su publicación.
+  // Tabla: una fila por institución, con su publicación. Antes, en una frase, entre qué cifras se mueven.
   const años = [ult + 1, ult + 2];
+  const prev = r.previsiones.emisores.filter((e) => e.tipo !== "objetivo")
+    .map((e) => e.series[clave]?.find((x) => x.año === ult + 1)?.valor).filter((x) => x !== undefined);
+  if (prev.length > 1) {
+    const lo = Math.min(...prev), hi = Math.max(...prev);
+    const pr = el("p");
+    pr.textContent = clave === "saldo"
+      ? `Para ${ult + 1}, las ${prev.length} instituciones prevén ${hi < 0 ? `un déficit de entre el ${numero(-hi, 1)} % y el ${numero(-lo, 1)} %` : `un saldo de entre el ${numero(lo, 1)} % y el ${numero(hi, 1)} %`} del PIB.`
+      : `Para ${ult + 1}, las ${prev.length} instituciones prevén una deuda de entre el ${numero(lo, 1)} % y el ${numero(hi, 1)} % del PIB.`;
+  }
   const tabla = el("table", { className: "previsiones" }, el("div", { className: "tabla" }));
   const cab = el("tr", {}, el("thead", {}, tabla));
   for (const t of ["Quién", ...años.map(String), "De qué publicación"]) el("th", { scope: "col", textContent: t }, cab);

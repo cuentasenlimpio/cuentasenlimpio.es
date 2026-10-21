@@ -1,5 +1,5 @@
 {
- "criterio": "Previsiones de déficit y deuda de las administraciones públicas de las instituciones que las publican con regularidad, cada una por separado, con la fecha de su publicación. No se promedian ni se empalman con los datos observados. Los objetivos del Gobierno se muestran aparte: un objetivo es una meta que se fija quien gobierna, no una previsión independiente.",
+ "criterio": "Previsiones de déficit y deuda de las administraciones públicas de las instituciones que las publican con regularidad, cada una por separado, con la fecha de su publicación. No se hace la media entre ellas ni se mezclan con los datos ya publicados. Los objetivos del Gobierno se muestran aparte: un objetivo es una meta que se fija quien gobierna, no una previsión independiente.",
  "emisores": [
   {
    "id": "airef", "nombre": "AIReF", "largo": "Autoridad Independiente de Responsabilidad Fiscal", "tipo": "prevision",

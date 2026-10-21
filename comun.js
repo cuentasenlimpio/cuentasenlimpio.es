@@ -82,6 +82,15 @@ const QUIEN = {
   INE: "el Instituto Nacional de Estadística (INE)",
   AIReF: "la AIReF, el organismo independiente que vigila las cuentas públicas",
 };
+// Etiqueta de qué es una cifra: «dato oficial» (publicado tal cual) o «cálculo nuestro» (una lectura sobre datos oficiales).
+const ETIQUETA_TIPO = { dato: "dato oficial", lectura: "cálculo nuestro" };
+function etiquetaTipo(tipo) {
+  const t = document.createElement("span");
+  t.className = `etiqueta-tipo ${tipo}`;
+  t.textContent = ETIQUETA_TIPO[tipo] || tipo;
+  t.title = tipo === "dato" ? "Cifra publicada tal cual por el organismo oficial" : "Cálculo nuestro sobre cifras oficiales; cómo se hace, en «Cómo trabajamos»";
+  return t;
+}
 function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
   const porTabla = Object.fromEntries(fuentes.map((f) => [f.tabla, f]));
   p.textContent = "Fuente: ";
@@ -115,10 +124,7 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "" }) {
     lista.appendChild(li);
   });
   p.appendChild(document.createTextNode(". "));
-  const t = document.createElement("span");
-  t.className = `etiqueta-tipo ${tipo}`;
-  t.textContent = tipo;
-  p.appendChild(t);
+  p.appendChild(etiquetaTipo(tipo));
   if (nota) p.appendChild(document.createTextNode(` ${nota}`));
   // Va detrás del párrafo (un <details> no cabe dentro de un <p>); si la página repinta la fuente, sustituye al anterior.
   if (p.nextElementSibling?.classList.contains("fuente-detalle")) p.nextElementSibling.remove();
@@ -213,6 +219,12 @@ async function montarInfo() {
       panel.appendChild(p);
     }
     if (e.fuentes?.length) {
+      // Las fuentes, plegadas: están para quien quiera comprobar, y abiertas cortaban la lectura.
+      const det = document.createElement("details");
+      det.className = "info-fuentes-plegadas";
+      const sm = document.createElement("summary");
+      sm.textContent = e.fuentes.length > 1 ? `De dónde sale (${e.fuentes.length} fuentes)` : "De dónde sale";
+      det.appendChild(sm);
       const p = document.createElement("p");
       p.className = "info-fuentes";
       p.append("Fuente: ");
@@ -224,7 +236,8 @@ async function montarInfo() {
         p.appendChild(a);
       });
       p.append(".");
-      panel.appendChild(p);
+      det.appendChild(p);
+      panel.appendChild(det);
     }
     b.setAttribute("aria-label", `Qué implica: ${e.titulo || b.dataset.info}`);
     b.setAttribute("aria-expanded", "false");
@@ -396,3 +409,20 @@ function plegarControles() {
   }
 }
 document.addEventListener("DOMContentLoaded", plegarControles);
+
+// ---- Nombres llanos de las funciones de gasto (COFOG) ----
+// El nombre oficial dice poco a quien no lo conoce («protección social», «asuntos económicos»): en las frases se usa
+// lo que hay dentro, con el nombre oficial entre paréntesis la primera vez.
+const NOMBRE_LLANO = {
+  GF01: "funcionamiento de las administraciones e intereses (servicios generales)",
+  GF02: "defensa",
+  GF03: "policía, justicia y prisiones (orden público y seguridad)",
+  GF04: "transporte, energía, agricultura y ayudas a empresas (asuntos económicos)",
+  GF05: "medio ambiente",
+  GF06: "vivienda y servicios de los pueblos y ciudades",
+  GF07: "sanidad",
+  GF08: "deporte, cultura y religión (ocio, cultura y religión)",
+  GF09: "educación",
+  GF10: "pensiones, paro y otras ayudas (protección social)",
+};
+const nombreLlano = (codigo, nombre) => NOMBRE_LLANO[codigo] || nombre.toLowerCase();

@@ -2,34 +2,34 @@
  "deficit": {
   "titulo": "Qué implica el déficit",
   "texto": [
-   "Parte del déficit se mueve sola con la economía. Cuando la actividad cae se recauda menos y se paga más paro, sin que nadie apruebe nada. Para España, la Comisión Europea estima que, si el PIB cae un 1 %, el saldo público empeora unas seis décimas del PIB. Eso amortigua la caída, pero empeora el déficit.",
-   "El efecto contrario, el de gastar más o menos sobre la economía, depende del momento. Para España, el Banco de España estimó que cada euro de gasto público mueve unos 1,4 euros de PIB en tiempos de crisis y unos 0,6 en tiempos tranquilos. En la crisis de 2010-2011, los ajustes frenaron el PIB europeo más de lo que preveían los organismos: alrededor de un 1 % por cada punto de ajuste.",
-   "No hay acuerdo sobre qué frena menos el crecimiento: recortar gasto o subir impuestos. El modelo de la Comisión Europea dice que, a corto plazo, recortar gasto. Varios estudios con datos de Estados Unidos dicen que subir impuestos."
+   "Parte del déficit se mueve sola. Cuando la economía va mal se recauda menos y se paga más paro, sin aprobar nada. La Comisión Europea calcula que en España, si la economía se encoge un 1 %, el déficit crece unas seis décimas: si estaba en el 2,4 % del PIB, pasa a cerca del 3 %. Eso amortigua el golpe para los hogares, pero agranda el déficit.",
+   "Y al contrario: lo que la economía gana o pierde cuando el Estado gasta más o menos depende del momento. El Banco de España estimó que, en una crisis, cada euro de gasto público acaba sumando unos 1,4 euros al PIB, porque quien lo recibe también lo gasta. En tiempos tranquilos, cada euro suma unos 0,6. En la crisis de 2010 y 2011, los recortes frenaron la economía europea bastante más de lo que habían calculado los organismos internacionales. Según el FMI, se quedaron cortos en alrededor de un punto de crecimiento por cada recorte del tamaño de un 1 % del PIB.",
+   "Los expertos no se ponen de acuerdo sobre qué frena menos la economía, recortar gasto o subir impuestos. El modelo de la Comisión Europea dice que, a corto plazo, recortar gasto. Varios estudios con datos de Estados Unidos dicen que subir impuestos."
   ],
-  "decalaje": "Una medida tarda en hacer efecto por tres razones. Los datos llegan tarde y se revisan, aprobar una ley lleva meses y ejecutar el gasto (sobre todo las obras) lleva más todavía. Lo que se mueve solo con la economía (menos recaudación, más paro) no espera a nadie.",
+  "decalaje": "Una medida tarda en notarse por tres motivos: los datos llegan tarde y se corrigen, aprobar una ley lleva meses y hacer el gasto (sobre todo las obras) lleva más. Lo que se mueve solo con la economía, como la recaudación o el paro, se nota enseguida.",
   "fuentes": [
    {
-    "texto": "Comisión Europea, semielasticidades del saldo, Discussion Paper 098 (2019), tabla IV.3",
+    "texto": "Comisión Europea, estudio sobre cuánto se mueve el saldo con la economía (Discussion Paper 098, 2019), tabla IV.3",
     "url": "https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf"
    },
    {
-    "texto": "Banco de España, Documento de Trabajo 1309 (2013)",
+    "texto": "Banco de España, estudio sobre el efecto del gasto público (Documento de Trabajo 1309, 2013)",
     "url": "https://www.bde.es/f/webbde/SES/Secciones/Publicaciones/PublicacionesSeriadas/DocumentosTrabajo/13/Fich/dt1309e.pdf"
    },
    {
-    "texto": "Blanchard y Leigh, FMI WP/13/1 (2013)",
+    "texto": "Blanchard y Leigh, FMI, sobre los errores de previsión en la crisis (WP/13/1, 2013)",
     "url": "https://www.imf.org/external/pubs/ft/wp/2013/wp1301.pdf"
    },
    {
-    "texto": "In 't Veld, Comisión Europea, Economic Papers 506 (2013)",
+    "texto": "In 't Veld, Comisión Europea, modelo de los ajustes en la zona euro (Economic Papers 506, 2013)",
     "url": "https://ec.europa.eu/economy_finance/publications/economic_paper/2013/pdf/ecp506_en.pdf"
    },
    {
-    "texto": "Ramey, Journal of Economic Perspectives 33(2) (2019)",
+    "texto": "Ramey, revisión de estudios sobre gasto e impuestos (Journal of Economic Perspectives, 2019)",
     "url": "https://www.aeaweb.org/articles?id=10.1257/jep.33.2.89"
    },
    {
-    "texto": "FMI, Finance & Development, «Fiscal Policy: Taking and Giving Away»",
+    "texto": "FMI, «Fiscal Policy: Taking and Giving Away», explicación básica de la política fiscal",
     "url": "https://www.imf.org/en/Publications/fandd/issues/Series/Back-to-Basics/Fiscal-Policy"
    }
   ]
@@ -37,13 +37,13 @@
  "deuda": {
   "titulo": "Qué implica la deuda",
   "texto": [
-   "Lo que cuesta la deuda cada año son sus intereses. Como solo se renueva una parte cada año, el coste medio cambia despacio. Tras la subida de tipos del BCE, el tipo de las Letras del Tesoro pasó del 0,73 % en 2022 al 3,48 % en 2023. El tipo medio de toda la deuda del Estado solo subió del 1,73 % al 2,45 % hasta septiembre de 2026.",
-   "Un estudio de 2010 encontró que, con más del 90 % de deuda, el crecimiento caía. Al repetirlo, otros investigadores encontraron errores de cálculo: con los datos corregidos, esos países crecían de media un 2,2 %, no un −0,1 %. El FMI no encuentra un umbral a partir del cual el crecimiento se hunda, y sí que los países con deuda alta pero bajando crecen como los demás. Un trabajo del BCE sí sitúa un punto de inflexión en torno al 90-100 %. Y otros estudios dudan de hacia dónde va la causa: ¿la deuda frena el crecimiento o el crecimiento bajo dispara la deuda?"
+   "Lo que cuesta la deuda cada año son los intereses, como en una hipoteca. Y como cada año solo se renueva una parte, el coste medio cambia despacio. Cuando el Banco Central Europeo subió los tipos de interés, lo que pagan las letras del Tesoro (los préstamos a menos de un año) pasó del 0,73 % en 2022 al 3,48 % en 2023. En cambio, el interés medio de toda la deuda del Estado solo pasó del 1,73 % de 2022 al 2,45 % de septiembre de 2026.",
+   "¿Frena la economía tener mucha deuda? No hay acuerdo. Un estudio de 2010 encontró que, por encima del 90 % del PIB, los países crecían menos. Al repetirlo, otros investigadores encontraron errores de cálculo: con los datos corregidos, esos países crecían de media un 2,2 %, no un −0,1 %. El FMI no encuentra una cifra a partir de la cual el crecimiento se hunda; un trabajo del BCE sí la sitúa hacia el 90-100 %. Y hay quien duda de qué causa qué: si la deuda frena el crecimiento o si crecer poco hace subir la deuda."
   ],
-  "decalaje": "La deuda del Estado tarda de media unos ocho años en vencer (7,85 años en septiembre de 2026). Una subida de los tipos de interés tarda años en notarse entera en lo que se paga.",
+  "decalaje": "La deuda del Estado tarda de media unos ocho años en devolverse (7,85 años en septiembre de 2026). Por eso una subida de los tipos de interés tarda años en notarse del todo en lo que se paga.",
   "fuentes": [
    {
-    "texto": "Tesoro Público, tipo medio de la deuda en circulación",
+    "texto": "Tesoro Público, interés medio de la deuda en circulación",
     "url": "https://www.tesoro.es/documents/d/tesoro/03-pdf"
    },
    {
@@ -51,23 +51,23 @@
     "url": "https://www.tesoro.es/documents/d/tesoro/02-pdf"
    },
    {
-    "texto": "Reinhart y Rogoff, NBER WP 15639 (2010)",
+    "texto": "Reinhart y Rogoff, el estudio de 2010 sobre el umbral del 90 % (NBER WP 15639)",
     "url": "https://www.nber.org/papers/w15639"
    },
    {
-    "texto": "Herndon, Ash y Pollin, PERI (2013)",
+    "texto": "Herndon, Ash y Pollin, la corrección de ese estudio (PERI, 2013)",
     "url": "https://peri.umass.edu/publication/does-high-public-debt-consistently-stifle-economic-growth-a-critique-of-reinhart-and-rogoff/"
    },
    {
-    "texto": "Pescatori, Sandri y Simon, FMI WP/14/34 (2014)",
+    "texto": "Pescatori, Sandri y Simon, FMI (WP/14/34, 2014)",
     "url": "https://www.imf.org/external/pubs/ft/wp/2014/wp1434.pdf"
    },
    {
-    "texto": "Checherita-Westphal y Rother, BCE WP 1237 (2010)",
+    "texto": "Checherita-Westphal y Rother, BCE (WP 1237, 2010)",
     "url": "https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1237.pdf"
    },
    {
-    "texto": "Panizza y Presbitero, Journal of Macroeconomics 41 (2014)",
+    "texto": "Panizza y Presbitero, sobre qué causa qué (Journal of Macroeconomics, 2014)",
     "url": "https://ideas.repec.org/a/eee/jmacro/v41y2014icp21-41.html"
    }
   ]
@@ -75,17 +75,17 @@
  "bola_de_nieve": {
   "titulo": "El efecto bola de nieve",
   "texto": [
-   "La deuda en porcentaje del PIB depende de dos velocidades. Una es a cuánto interés se paga la deuda; la otra, cuánto crece el PIB en euros, contando la inflación.",
-   "Si el interés medio es mayor que ese crecimiento, la deuda sobre el PIB sube sola, salvo que se ingrese más de lo que se gasta sin contar intereses. Si es menor, la ratio puede bajar incluso con algo de déficit. Por eso, en el gráfico, el efecto del crecimiento del PIB resta deuda la mayoría de los años y la suma cuando el PIB en euros cae, como en 2009, 2012 o 2020.",
-   "Hay debate. Olivier Blanchard sostuvo en 2019 que, con tipos por debajo del crecimiento, la deuda puede no tener coste fiscal. Él mismo advierte de los riesgos si los tipos suben."
+   "Que la deuda pese más o menos depende de dos velocidades: a qué interés se paga y cuánto crece la economía en euros, contando la subida de precios.",
+   "Si los intereses crecen más deprisa que la economía, la deuda pesa cada vez más. Para frenarla hace falta ingresar más de lo que se gasta en todo lo demás (pensiones, sanidad, sueldos…), y que lo que sobre ayude a pagar los intereses. Si la economía crece más deprisa que los intereses, la deuda puede pesar menos aunque haya algo de déficit. Por eso, en el gráfico, el crecimiento de la economía resta deuda casi todos los años y la suma cuando la economía en euros se encoge, como en 2009, 2012 o 2020.",
+   "Hay debate. El economista Olivier Blanchard sostuvo en 2019 que, mientras los tipos de interés estén por debajo del crecimiento de la economía, se puede tener deuda sin tener que subir impuestos para pagarla, porque la economía crece más deprisa que los intereses. Él mismo advierte del riesgo si los tipos suben."
   ],
   "fuentes": [
    {
-    "texto": "BCE, Financial Stability Review, noviembre de 2021, recuadro sobre el diferencial i−g",
+    "texto": "BCE, Informe de Estabilidad Financiera de noviembre de 2021, recuadro sobre interés y crecimiento",
     "url": "https://www.ecb.europa.eu/pub/financial-stability/fsr/focus/2021/html/ecb.fsrbox202111_01~f37aaca9fb.en.html"
    },
    {
-    "texto": "Blanchard, American Economic Review 109(4) (2019)",
+    "texto": "Blanchard, «Public Debt and Low Interest Rates» (American Economic Review, 2019)",
     "url": "https://www.aeaweb.org/articles?id=10.1257/aer.109.4.1197"
    }
   ]
@@ -93,20 +93,20 @@
  "reglas": {
   "titulo": "Las reglas europeas",
   "texto": [
-   "Desde el 30 de abril de 2024, cada país presenta un plan de medio plazo con un límite al crecimiento de su «gasto neto». Es el gasto que controla el Gobierno, sin los intereses, lo que paga la UE, el paro que sube por el ciclo y lo extraordinario. Si el Gobierno baja un impuesto, cuenta como más gasto neto.",
-   "El 3 % de déficit y el 60 % de deuda siguen siendo las referencias. Con la deuda por encima del 90 %, debe bajar al menos un punto del PIB al año de media, y el ajuste sigue hasta dejar el déficit 1,5 puntos por debajo del 3 %. El plan de España abarca siete años de ajuste, con el gasto neto creciendo como mucho un 3,5 % en 2026 y un 3,2 % en 2027."
+   "Desde el 30 de abril de 2024, cada país de la Unión Europea presenta un plan para varios años. En él pone un límite a cuánto puede crecer su «gasto neto», el gasto que depende del Gobierno. No cuenta los intereses, lo que paga la Unión Europea, el paro que sube por una crisis ni los gastos extraordinarios. Y una bajada de impuestos cuenta como si fuera más gasto, porque deja el mismo agujero en las cuentas.",
+   "Siguen las referencias de siempre: un déficit del 3 % y una deuda del 60 % del PIB. Si la deuda pasa del 90 %, tiene que bajar al menos un punto al año de media, y el ajuste sigue hasta que el déficit quede en el 1,5 % del PIB. El plan de España dura siete años, con el gasto neto creciendo como mucho un 3,5 % en 2026 y un 3,2 % en 2027."
   ],
   "fuentes": [
    {
-    "texto": "Reglamento (UE) 2024/1263, artículos 2, 6, 7 y 8",
+    "texto": "Reglamento (UE) 2024/1263, las reglas fiscales europeas, artículos 2, 6, 7 y 8",
     "url": "https://www.boe.es/doue/2024/1263/L00001-00021.pdf"
    },
    {
-    "texto": "Comisión Europea, nuevo marco de gobernanza",
+    "texto": "Comisión Europea, el nuevo marco de reglas fiscales",
     "url": "https://economy-finance.ec.europa.eu/economic-and-fiscal-governance/economic-governance-review_en"
    },
    {
-    "texto": "Consejo de la UE, documento 5014/25, plan de España",
+    "texto": "Consejo de la UE, el plan de España (documento 5014/25)",
     "url": "https://data.consilium.europa.eu/doc/document/ST-5014-2025-INIT/en/pdf"
    }
   ]
@@ -114,9 +114,9 @@
  "previsiones": {
   "titulo": "Cómo leer una previsión",
   "texto": [
-   "Una previsión es lo que una institución espera que pase con las leyes y la economía que conoce; un objetivo es una meta que se fija quien gobierna. Por eso los mostramos por separado.",
-   "Las previsiones fallan y se revisan, y las propias instituciones lo dicen. La AIReF publica un abanico: en 8 de cada 10 de sus escenarios, la deuda quedaría dentro de la zona gris. Cuanto más lejos, más ancho.",
-   "También se revisa el pasado. Los países envían a Eurostat sus cifras de déficit y deuda dos veces al año, a finales de marzo y de septiembre. Los años anteriores pueden cambiar cuando llegan cuentas auditadas o se revisa el PIB."
+   "Una previsión es lo que una institución espera que pase con las leyes y la economía que conoce. Un objetivo es la meta que se pone quien gobierna. Por eso van separados.",
+   "Las previsiones fallan y se corrigen, y las propias instituciones lo dicen. La AIReF da un abanico: en 8 de cada 10 de sus cálculos, la deuda queda dentro de la zona gris del gráfico. Cuanto más lejos en el tiempo, más ancha.",
+   "También se corrige el pasado. España envía a Eurostat sus cifras de déficit y deuda dos veces al año, a finales de marzo y de septiembre. Y los años anteriores pueden cambiar cuando se cierran cuentas o se revisa el PIB."
   ],
   "fuentes": [
    {
@@ -260,17 +260,19 @@
  "cifras_clave": {
   "titulo": "Cómo leer estas cuatro cifras",
   "texto": [
-   "Las cuatro van en porcentaje del PIB, es decir, comparadas con todo lo que produce la economía en un año. No son trozos de un mismo pastel: el gasto incluye pensiones y ayudas que luego gastan los hogares.",
-   "Ingresos menos gastos da el saldo; si es negativo, es el déficit de ese año. La deuda es lo que se debe sumando todos los años. Las reglas europeas usan como referencia un déficit del 3 % y una deuda del 60 % del PIB. Con la deuda por encima del 90 %, piden que baje al menos un punto al año de media.",
-   "El déficit se mueve en parte solo con la economía: para España, la Comisión Europea estima que, si el PIB cae un 1 %, el saldo empeora unas seis décimas del PIB."
+   "Las cuatro están comparadas con el PIB, todo lo que produce el país en un año. «45 % del PIB» quiere decir que el gasto público equivale a 45 de cada 100 euros de todo lo que se produce. Debajo de cada una, la misma cifra en euros por habitante.",
+   "Que el gasto público sea el 45 % del PIB no quiere decir que las administraciones se queden con casi la mitad de la economía. Buena parte son pensiones, sueldos y ayudas que llegan a los hogares, y estos los gastan a su vez.",
+   "Ingresos menos gastos es el saldo del año. Si sale negativo, es el déficit: lo que falta, y se pide prestado. La deuda es todo lo prestado en todos los años y aún no devuelto.",
+   "Las reglas de la Unión Europea toman como referencia un déficit del 3 % del PIB y una deuda del 60 %. Cuando la deuda pasa del 90 %, como en España, piden que baje al menos un punto al año de media (unos años puede bajar más y otros menos): por ejemplo, del 100 % al 99 %.",
+   "Parte del déficit sube y baja sola con la economía. Si la economía de España se encoge un 1 %, el déficit crece unas seis décimas, según la Comisión Europea: si estaba en el 2,4 % del PIB, pasa a cerca del 3 %. Se recauda menos y se paga más paro, sin que cambie ninguna ley."
   ],
   "fuentes": [
    {
-    "texto": "Reglamento (UE) 2024/1263, artículos 6 y 7",
+    "texto": "Reglamento (UE) 2024/1263, las reglas fiscales europeas, artículos 6 y 7",
     "url": "https://www.boe.es/doue/2024/1263/L00001-00021.pdf"
    },
    {
-    "texto": "Comisión Europea, Discussion Paper 098 (2019), tabla IV.3",
+    "texto": "Comisión Europea, estudio sobre cuánto se mueve el saldo con la economía (Discussion Paper 098, 2019), tabla IV.3",
     "url": "https://economy-finance.ec.europa.eu/system/files/2019-05/dp098_en.pdf"
    }
   ]

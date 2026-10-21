@@ -462,9 +462,10 @@ def construir_recientes(descargas, datos_series, años):
             salida["fiabilidad"][str(a)] = {
                 "igae_provisional": prov.get(a, False),
                 "cuadra": abs(dif) < 1,
-                "nota": (f"Eurostat y la IGAE dan el mismo saldo ({es(eurostat)} millones)." if abs(dif) < 1 else
-                         f"La IGAE da un saldo de {es(igae)} millones y Eurostat de {es(eurostat)} (diferencia de {es(abs(dif))}): "
-                         f"la IGAE publicó una revisión el {fecha_igae} que Eurostat todavía no ha recogido."),
+                "nota": (f"Las dos fuentes oficiales, Eurostat y la IGAE, dan el mismo saldo ({es(eurostat)} millones)." if abs(dif) < 1 else
+                         f"Las dos fuentes oficiales aún no coinciden del todo: la IGAE da un saldo de {es(igae)} millones y Eurostat, "
+                         f"de {es(eurostat)}. La diferencia, {es(abs(dif))} millones, se debe a que la IGAE revisó sus cifras el "
+                         f"{fecha_igae} y Eurostat todavía no lo ha recogido."),
             }
         a = ultimo
         f = salida["fiabilidad"].get(str(a))
