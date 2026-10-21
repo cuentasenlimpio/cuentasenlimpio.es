@@ -27,6 +27,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [este-ano](https://cuentasenlimpio.es/contexto/este-ano.md) (2 KB): El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior.
 - [seguridad-social](https://cuentasenlimpio.es/contexto/seguridad-social.md) (3 KB): La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo.
 - [empleo-publico](https://cuentasenlimpio.es/contexto/empleo-publico.md) (7 KB): Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea.
+- [avales](https://cuentasenlimpio.es/contexto/avales.md) (1 KB): Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas).
 - [fondos-europeos](https://cuentasenlimpio.es/contexto/fondos-europeos.md) (2 KB): Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional.
 - [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
 - [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (4 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
@@ -424,6 +425,17 @@ Ojo al comparar: depende de cuánto presta la administración con personal propi
 - INE, EPA: asalariados por sector público o privado y comunidad autónoma (tabla 65327): https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA/65327?nult=4
 - Eurostat, Ingresos, gastos y saldo de las administraciones públicas: https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
 - Eurostat, Ingresos, gastos y saldo de las administraciones públicas (UE-27): https://ec.europa.eu/eurostat/databrowser/view/gov_10a_main/default/table?lang=es
+
+
+---
+
+# Avales y otros riesgos
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 21 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/avales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Sin datos en esta construcción.
 
 
 ---

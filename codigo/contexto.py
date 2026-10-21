@@ -579,11 +579,44 @@ def fondos_europeos(D):
     return md
 
 
+def avales(D):
+    s = D.get("avales") or {}
+    if not s.get("avales"):
+        return cabecera("Avales y otros riesgos", "avales.html", "Sin datos en esta construcción.")
+    av, u = s["avales"], s["avales"]["ultimo"]
+    md = cabecera("Avales del Estado y otros pasivos contingentes", "avales.html",
+                  "Avales: saldo vivo de los avales concedidos por el Estado (Banco de España, Boletín Estadístico, cuadros 12.8 y 12.c; datos del "
+                  "Tesoro). Un aval no es deuda: solo cuesta si se ejecuta. Las garantías de Eurostat (gov_cl_guar) dan otra cifra por otras "
+                  "reglas (sin avales a unidades de las AAPP ni a la FEEF, con la garantía al ICO); cuadran con el Banco de España hasta 2020, "
+                  "pero desde 2021 queda una diferencia sin explicar, así que no se comparan. Otros pasivos contingentes (Eurostat, Directiva "
+                  "2011/85) solo desde 2021: los años anteriores vienen de ediciones con otros criterios (hasta 2020 incluían Bankia).")
+    md += (f"\n## Avales del Estado a final de año\n\n"
+           + tabla(["Año", "Millones de euros", "% del PIB"], [[a, n(av["meur"][i]), n(av["pib"][i], 1)] for i, a in enumerate(av["años"])]))
+    md += (f"\n\nÚltimo dato ({u['mes']} de {u['año']}): {n(u['meur'])} M€; programas de la UE {n(u['partes']['ue'])}, líneas COVID del ICO "
+           f"{n(u['partes']['covid'])}, otras administraciones {n(u['partes']['otras_aapp'])}, entidades de crédito {n(u['partes']['credito'])}.\n")
+    ds = av["desglose"]
+    md += ("\n## Avales por destino (millones de euros, diciembre)\n\n"
+           + tabla(["Año", "Entidades de crédito", "Programas UE", "Otras AAPP", "COVID (ICO)", "Otros (cálculo nuestro)"],
+                   [[a, n(ds["credito"][i]), n(ds["ue"][i]), n(ds["otras_aapp"][i]), n(ds["covid"][i]), n(ds["resto"][i])] for i, a in enumerate(ds["años"])]))
+    if s.get("morosos"):
+        a_ = s["morosos"]["años"]
+        def de(b, k):
+            return [n(b[k][b["años"].index(a)]) if a in b["años"] else "—" for a in a_]
+        filas = [["Préstamos impagados de las AAPP (incluye la Sareb)"] + de(s["morosos"], "S13"),
+                 ["Asociaciones público-privadas fuera del balance"] + de(s["ppp"], "S13"),
+                 ["Pasivos de empresas públicas fuera de las AAPP (sin consolidar)"] + de(s["empresas"], "total"),
+                 ["  de ellas, no financieras con pérdidas"] + de(s["empresas"], "con_perdidas")]
+        md += "\n\n## Otros pasivos contingentes (millones de euros)\n\n" + tabla(["Partida"] + [str(a) for a in a_], filas) + "\n"
+    md += fuentes_md([url_tabla(D["aapp"], k) for k in ("bde_be12c", "bde_be1208", "gov_cl_npl", "gov_cl_ppp", "gov_cl_liab")])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
+    ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("fondos-europeos", fondos_europeos, "Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional."),
     ("ingresos", ingresos, "De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año."),
     ("gasto", gasto, "En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa."),
@@ -675,7 +708,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos"):
+    for k in ("empleo_publico", "fondos_europeos", "avales"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

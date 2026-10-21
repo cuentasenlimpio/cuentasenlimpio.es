@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Avales y otros riesgos · Cuentas en limpio</title>
+  <meta name="description" content="Los avales del Estado desde 1995 y los otros riesgos de las cuentas públicas que no cuentan como deuda: préstamos impagados, asociaciones público-privadas y empresas públicas.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=dcd92730bb">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="comun.js?v=21c529621e" defer></script>
+  <script src="avales.js?v=8a365e5234" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html">Empleo público</a> <a href="fondos-europeos.html">Fondos europeos</a> <a href="avales.html" aria-current="page">Avales</a> <a href="presupuesto.html">Presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+  
+  <main>
+    <h1 class="pregunta">¿Qué riesgos tiene el Estado además de su deuda?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">Un aval es una promesa: si quien recibió el préstamo no lo devuelve, paga el Estado. Mientras nadie deje de pagar, no cuesta dinero ni cuenta como deuda. Las cifras de avales son las que publica el Banco de España con datos del Tesoro.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Cuánto ha avalado el Estado cada año?</h2>
+      <p class="grafico-explica">Avales del Estado vivos a final de cada año, en porcentaje del PIB, desde 1995. Los dos picos coinciden con la crisis financiera (avales a bancos, a fondos públicos y a los rescates de la zona euro) y con la pandemia (las líneas de avales del ICO).</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿A quién avala?</h2>
+      <p class="grafico-explica" id="g2-explica">Avales del Estado vivos según a quién se dieron, en millones de euros.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para ver todos los años →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="desglose"></table></div>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+      <ul class="notas-tabla">
+        <li><strong>Programas de la Unión Europea:</strong> la Facilidad Europea de Estabilización Financiera (los rescates de Grecia, Irlanda y Portugal), el instrumento SURE contra el paro en la pandemia (desde noviembre de 2020), el Fondo de Garantía Paneuropeo (desde junio de 2021) y los préstamos de la Comisión Europea a Ucrania (desde enero de 2024).</li>
+        <li><strong>Pandemia:</strong> las líneas de avales del ICO para autónomos y empresas (Real Decreto-ley 8/2020) y para nuevas inversiones (Real Decreto-ley 25/2020).</li>
+        <li><strong>Otros:</strong> entre otros, los avales por la guerra de Ucrania (Reales Decretos-leyes 6/2022 y 19/2022) y por la DANA (Real Decreto-ley 6/2024).</li>
+      </ul>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">¿Qué otros riesgos hay fuera de la deuda?</h2>
+      <p class="grafico-explica">Lo que las administraciones tienen que publicar por una directiva europea (2011/85/UE), además de los avales, en millones de euros. Ninguna de estas cifras es deuda: son pagos que podrían llegar o pérdidas que podrían aparecer.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para ver todos los años →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="otros"></table></div>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Una empresa pública con pérdidas no hace que su deuda cuente como deuda pública, pero <span class="resalta">si la administración que la controla tiene que rescatarla, el rescate sí es gasto público</span>. Por eso se publica cuánto deben esas empresas, y cuánto deben las que pierden dinero.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Cuánto se perderá de verdad: depende de cuántos de los avalados dejen de pagar, y eso no se sabe hasta que pasa.</li>
+        <li>Eurostat publica otra cifra de garantías (72.830 millones de euros en 2024), con otras reglas: deja fuera los avales a entidades que ya forman parte de las administraciones y el de la Facilidad Europea, porque esas deudas ya cuentan como deuda pública, y cuenta la garantía del Estado a la deuda del ICO. Con esas diferencias las dos cifras cuadran hasta 2020, pero desde 2021 queda una diferencia que todavía no hemos podido explicar. Hasta que se aclare, aquí no se comparan.</li>
+        <li>Las tablas de Eurostat solo se muestran desde 2021: cada año se revisan los cuatro últimos y los anteriores vienen de ediciones con otros criterios. Hasta 2020, por ejemplo, contaban Bankia como empresa pública; desde su fusión con CaixaBank, en 2021, ya no.</li>
+        <li>Los préstamos impagados incluyen los de la Sareb, que forma parte de las administraciones públicas desde 2021.</li>
+      </ul>
+    </div>
+    <p class="seguir-recorrido">Para seguir: <a href="cuentas.html">la deuda de todas las administraciones</a> · <a href="preguntas.html">preguntas sobre la deuda</a> · <a href="fondos-europeos.html">los fondos europeos</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="avales.html">Avales</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

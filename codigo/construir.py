@@ -1263,6 +1263,101 @@ def construir_seguridad_social(descargas):
     print(f"seguridad social: {salida['años'][0]}–{a}; saldo {a}: {p['saldo']['meur'][-1]} M€; sin transferencias: {p['saldo_sin_transferencias']['meur'][-1]} M€")
 
 
+MESES_BDE = {"ENE": 1, "FEB": 2, "MAR": 3, "ABR": 4, "MAY": 5, "JUN": 6, "JUL": 7, "AGO": 8, "SEP": 9, "OCT": 10, "NOV": 11, "DIC": 12}
+
+
+def _bde_csv_mensual(ruta):
+    """CSV del Boletín Estadístico del Banco de España: {alias: {(año, mes): valor}} (miles de euros o porcentaje)."""
+    filas = list(csv.reader((ruta.read_bytes().decode("latin-1")).splitlines()))
+    alias = next(f for f in filas if f and f[0] == "ALIAS DE LA SERIE")[1:]
+    salida = {a: {} for a in alias}
+    for f in filas:
+        if f and len(f[0]) == 8 and f[0][:3] in MESES_BDE and f[0][4:].isdigit():
+            for a, v in zip(alias, f[1:]):
+                if v not in ("", "_"):
+                    salida[a][(int(f[0][4:]), MESES_BDE[f[0][:3]])] = float(v)
+    return salida
+
+
+def construir_avales(descargas):
+    """Avales del Estado (Banco de España) y los otros pasivos contingentes de la Directiva 2011/85 (Eurostat).
+
+    La comparación entre los avales del Banco de España y las garantías de Eurostat no se publica: cuadra de 2018 a 2020
+    (avales a unidades de las AAPP y a la FEEF fuera, garantía del ICO dentro) pero de 2021 a 2024 queda una diferencia
+    sin explicar tras la revisión de Eurostat de octubre de 2024 de las garantías estandarizadas (avales COVID)."""
+    if "bde_be12c" not in descargas or "bde_be1208" not in descargas:
+        return
+    salida, avisos = {}, []
+    c12 = _bde_csv_mensual(AQUI / descargas["bde_be12c"]["fichero"])
+    b8 = _bde_csv_mensual(AQUI / descargas["bde_be1208"]["fichero"])
+    total = c12["BE_12_C.11"]
+    ultimo = max(total)
+    años = [a for a in range(1995, ultimo[0] + 1) if (a, 12) in total]
+    # Cuadra: el total del cuadro 12.c es el «avales prestados» del cuadro 12.8 en cada diciembre
+    distintos = [a for a in años if (a, 12) in b8["BE_12_8.10"] and abs(b8["BE_12_8.10"][(a, 12)] - total[(a, 12)]) >= 1]
+    if distintos:
+        avisos.append(f"los avales del cuadro 12.c y del 12.8 no coinciden en {distintos}")
+    partes = {"otras_aapp": "BE_12_C.12", "ue": "BE_12_C.13", "credito": "BE_12_C.14", "covid": "BE_12_C.15"}
+    desde = min(a for a in años if all((a, 12) in c12[k] for k in ("BE_12_C.12", "BE_12_C.13", "BE_12_C.14")))
+    años_d = [a for a in años if a >= desde]
+    desglose = {k: [round(c12[al].get((a, 12), 0.0) / 1000) for a in años_d] for k, al in partes.items()}
+    desglose["resto"] = [round(total[(a, 12)] / 1000) - sum(desglose[k][i] for k in partes) for i, a in enumerate(años_d)]
+    if min(desglose["resto"]) < -1:
+        avisos.append(f"las partes de los avales suman más que el total (resto mínimo {min(desglose['resto'])})")
+    salida["avales"] = {
+        "años": años, "meur": [round(total[(a, 12)] / 1000) for a in años],
+        "pib": [b8["BE_12_8.11"].get((a, 12)) for a in años],
+        "ultimo": {"año": ultimo[0], "mes": MESES[ultimo[1] - 1], "meur": round(total[ultimo] / 1000),
+                   "partes": {k: round(c12[al].get(ultimo, 0.0) / 1000) for k, al in partes.items()}},
+        "desglose": {"años": años_d, **desglose},
+        "tablas": ["bde_be12c", "bde_be1208"],
+    }
+
+    def eu(tabla, sector, **filtro):
+        c_, d_ = leer_jsonstat(AQUI / descargas[tabla]["fichero"])
+        out = {}
+        for k, (v, marca) in c_.items():
+            x = dict(zip(d_["id"], k))
+            if x["sector"] == sector and x["unit"] == "MIO_NAC" and v is not None and all(x.get(a) == b for a, b in filtro.items()):
+                out[int(x["time"])] = (v, marca)
+        return out
+
+    # Asociaciones público-privadas y préstamos morosos: Eurostat marca ruptura de serie en los años que no revisa (los
+    # que vienen de ediciones anteriores de la IGAE); solo se publican los años posteriores a la última ruptura.
+    for clave, tabla, item in (("ppp", "gov_cl_ppp", "OFF_PPP"), ("morosos", "gov_cl_npl", "F4M2")):
+        if tabla not in descargas:
+            continue
+        por = {s: eu(tabla, s, na_item=item) for s in ("S13", "S1311", "S1312", "S1313", "S1314")}
+        rupturas = [a for a, (_, m) in por["S13"].items() if m == "b"]
+        a_ = sorted(a for a in por["S13"] if a > max(rupturas, default=0))
+        bloque = {"años": a_, "rupturas_hasta": max(rupturas, default=None), "tabla": tabla,
+                  **{s: [por[s].get(a, (None,))[0] for a in a_] for s in por}}
+        for i, a in enumerate(a_):
+            suma = sum(bloque[s][i] or 0 for s in ("S1311", "S1312", "S1313", "S1314"))
+            if abs(suma - bloque["S13"][i]) > 1:
+                avisos.append(f"{tabla}: los subsectores ({suma}) no suman el total ({bloque['S13'][i]}) en {a}")
+        salida[clave] = bloque
+    # Pasivos de entidades controladas por las administraciones y clasificadas fuera de ellas (sin consolidar)
+    if "gov_cl_liab" in descargas:
+        tot, fin, otr, perd = (eu("gov_cl_liab", "S13", na_item=i, co_nco="NCO") for i in ("TLGCE", "LIFA", "LIOA", "LIOALM"))
+        # Misma ventana que las otras tablas de la Directiva: antes de 2021 la serie mezcla ediciones (salta de 130.717 M€
+        # en 2013 a 393.603 en 2014 sin explicación localizada); hasta 2020 incluía Bankia, que salió al fusionarse en 2021.
+        ventana = (salida.get("ppp") or {}).get("rupturas_hasta") or 2020
+        a_ = sorted(a for a in tot if a > ventana)
+        for a in a_:
+            if abs(tot[a][0] - (fin.get(a, (0,))[0] or 0) - (otr.get(a, (0,))[0] or 0)) > 1:
+                avisos.append(f"gov_cl_liab: financieras más otras no dan el total en {a}")
+        salida["empresas"] = {"años": a_, "total": [round(tot[a][0]) for a in a_], "financieras": [round(fin.get(a, (0,))[0] or 0) for a in a_],
+                              "otras": [round(otr.get(a, (0,))[0] or 0) for a in a_], "con_perdidas": [round(perd[a][0]) if a in perd else None for a in a_],
+                              "tabla": "gov_cl_liab"}
+    for x in avisos:
+        print("AVISO avales:", x)
+    (WEB / "datos" / "avales.json").write_text(json.dumps(salida, ensure_ascii=False))
+    av = salida["avales"]
+    print(f"avales: {av['años'][0]}–{av['años'][-1]}; {av['ultimo']['mes']} de {av['ultimo']['año']}: {av['ultimo']['meur']} M€; "
+          f"desglose desde {desde}; {len(avisos)} avisos")
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -2598,7 +2693,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -2749,6 +2844,7 @@ def main():
     construir_seguridad_social(descargas)
     construir_empleo_publico(descargas)
     construir_fondos_europeos(descargas)
+    construir_avales(descargas)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
     with open(WEB / "datos" / "presupuesto.csv", "w", newline="") as f:

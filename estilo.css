@@ -862,3 +862,15 @@ header.sitio { position: relative; }
 .cifras-clave > div { display: flex; flex-direction: column; gap: 0.3rem; }
 .cifras-clave > div .valor { font-size: clamp(1.5rem, 2.6vw, 2rem); }
 .leyenda-linea .clave-linea { width: 1.4rem; border-top-width: 3px; margin-left: 0.4rem; }
+
+/* Tablas con una columna por año (avales y otros riesgos): se deslizan en pantallas estrechas */
+.tabla-desliza { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tabla-años th { text-align: right; font-weight: 600; font-size: 0.8125rem; color: var(--tinta-suave); padding: 0.45rem 0.4rem; white-space: nowrap; border-bottom: 1px solid var(--linea-fuerte); }
+.tabla-años th:first-child { text-align: left; }
+.notas-tabla { font-size: 0.8125rem; color: var(--tinta-suave); padding-left: 1.1rem; margin-top: 0.75rem; }
+.notas-tabla li { margin-bottom: 0.35rem; }
+.pista-desliza { display: none; font-size: 0.75rem; color: var(--tinta-suave); margin: 0 0 0.35rem; }
+@media (max-width: 560px) {
+  .pista-desliza { display: block; }
+  .tabla-años td, .tabla-años th { font-size: 0.8125rem; padding: 0.4rem 0.3rem; }
+}

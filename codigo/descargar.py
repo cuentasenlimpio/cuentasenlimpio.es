@@ -198,6 +198,19 @@ PAGINAS = [
                    ("ECP115486", "La Rioja"))],
     {"fuente": "INE", "tabla": "ine_ecv7186", "opcional": True, "nombre": "Encuesta de Condiciones de Vida: índice de Gini",
      "url": "https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/ECV7186?nult=100", "extension": "json"},
+    # ---- Avales y otros pasivos contingentes (desde el 22/10/2026) ----
+    *[{"fuente": "Eurostat", "tabla": t, "opcional": True, "nombre": n, "url": f"{EUROSTAT}{t}?geo=ES&lang=EN", "extension": "json"}
+      for t, n in (("gov_cl_guar", "Garantías de las administraciones públicas (pasivos contingentes, Directiva 2011/85)"),
+                   ("gov_10dd_guar", "Garantías de las administraciones públicas (notificación del Procedimiento de Déficit Excesivo)"),
+                   ("gov_cl_ppp", "Pasivos por asociaciones público-privadas fuera del balance de las administraciones"),
+                   ("gov_cl_npl", "Préstamos morosos concedidos por las administraciones públicas"),
+                   ("gov_cl_liab", "Pasivos de entidades controladas por las administraciones y clasificadas fuera de ellas"))],
+    {"fuente": "Banco de España", "tabla": "bde_be1208", "opcional": True,
+     "nombre": "Deuda PDE del Estado y avales prestados por el Estado (Boletín Estadístico, cuadro 12.8)",
+     "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1208.csv", "extension": "csv"},
+    {"fuente": "Banco de España", "tabla": "bde_be12c", "opcional": True,
+     "nombre": "Avales prestados por el Estado, por destino: otras administraciones, programas de la UE, entidades de crédito y COVID (Boletín Estadístico, cuadro 12.c)",
+     "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be12c.csv", "extension": "csv"},
     # ---- Empleo público y fondos europeos (desde el 21/10/2026) ----
     *[{"fuente": "INE", "tabla": f"ine_{c.lower()}", "opcional": True, "nombre": n,
        "url": f"https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/{c}?nult=400", "extension": "json"}
