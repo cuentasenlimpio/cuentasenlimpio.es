@@ -152,6 +152,11 @@ def gasto(D):
     md = cabecera("En qué se gasta: el gasto público por funciones (COFOG)", "gasto.html",
                   "Gasto de todas las administraciones públicas por funciones (clasificación COFOG de Naciones Unidas). Eurostat "
                   f"publica este desglose más tarde que los totales: el último año es {años[ult]}.")
+    if g.get("desfase"):
+        md += ("\n**Aviso de versiones:** " + "; ".join(f"en {d['año']} las funciones suman {n(abs(d['meur']))} millones de euros "
+                                                       f"{'menos' if d['meur'] < 0 else 'más'} ({n(abs(d['pct']), 2)} %)" for d in g["desfase"]["difs"])
+               + f" que el gasto total de cuentas.md: Eurostat revisó el gasto total después y el reparto por funciones aún cuadra con su "
+                 f"versión del {g['desfase']['version']}. Desaparece cuando Eurostat actualice la tabla COFOG.\n")
     md += f"\n## {años[ult]}\n\nEn la columna «de cada 100 €», servicios generales (GF01) va sin intereses; los intereses aparecen aparte.\n\n"
     md += tabla(["Código", "Función", "Millones de €", "% del PIB", "De cada 100 € de gasto"], filas)
     md += (f"\n\n## Quién gasta cada función ({años[ult]}, % del gasto de esa función)\n\n"

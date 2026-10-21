@@ -234,6 +234,17 @@ async function arrancar() {
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_exp");
   pintarUltimoAño(g.años, `Eurostat publica el reparto por partidas más tarde que los totales, que ya llegan a ${aapp.años.at(-1)} (ver Cuentas). Lo actualizó por última vez el ${fecha(f.actualizado_fuente)}. Cuando publique un año nuevo, aparecerá aquí solo.`);
+  if (g.desfase) {
+    // Eurostat revisa el gasto total antes que su reparto por funciones: se dice en qué años y cuánto, con sus fechas
+    const main = aapp.fuentes.find((x) => x.tabla === "gov_10a_main");
+    const difs = g.desfase.difs;
+    const p = document.getElementById("desfase");
+    p.textContent = `${difs.map((d) => `En ${d.año}, las funciones suman ${numero(Math.abs(Math.round(d.meur)), 0)} millones de euros ${d.meur < 0 ? "menos" : "más"} (el ${numero(Math.abs(d.pct), 2)} %)`).join("; ")} `
+      + `que el gasto total de la página de cuentas: Eurostat revisó el gasto total el ${fecha(main.actualizado_fuente)} y todavía no ha actualizado el reparto por funciones, que cuadra con su versión del ${fecha(g.desfase.version)}. `
+      + (difs.every((d) => Math.abs(d.pct) < 0.05) ? "Con una diferencia así, el porcentaje de cada función no cambia con un decimal. " : "")
+      + "Este aviso desaparecerá cuando Eurostat lo actualice.";
+    p.hidden = false;
+  }
   let espera = null;
   window.addEventListener("resize", () => {
     clearTimeout(espera);

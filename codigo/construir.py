@@ -369,7 +369,11 @@ def construir_gasto(descargas, tabla_main, deflactor, base, poblacion):
          "ok": coinciden == len(comunes)},
     ]
     return {"años": años, "funciones": funciones, "reparto": reparto, "quien": quien,
-            "niveles": [{"codigo": n, "nombre": t} for n, t in NIVELES]}, comprobaciones
+            "niveles": [{"codigo": n, "nombre": t} for n, t in NIVELES],
+            # Mientras la tabla por funciones vaya por detrás del gasto total, la página lo avisa (desaparece sola)
+            "desfase": None if not desfase else {"version": desfase["version"][:10],
+                                                 "difs": [{"año": a, "meur": v, "pct": round(100 * v / te[a][0], 3)} for a, v in desfase["difs"].items()]},
+            }, comprobaciones
 
 
 # Gasto por tipo (clasificación económica de gov_10a_main). Las ocho partes suman exactamente el gasto total (TE);

@@ -29,7 +29,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [empleo-publico](https://cuentasenlimpio.es/contexto/empleo-publico.md) (7 KB): Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea.
 - [fondos-europeos](https://cuentasenlimpio.es/contexto/fondos-europeos.md) (2 KB): Los fondos europeos de recuperación: subvenciones y préstamos recibidos y en qué se han usado, según la contabilidad nacional.
 - [ingresos](https://cuentasenlimpio.es/contexto/ingresos.md) (4 KB): De dónde sale el dinero: impuestos, cotizaciones y otros ingresos, por tipo y año.
-- [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (3 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
+- [gasto](https://cuentasenlimpio.es/contexto/gasto.md) (4 KB): En qué se gasta (funciones COFOG) y qué nivel de administración gasta cada cosa.
 - [presupuesto](https://cuentasenlimpio.es/contexto/presupuesto.md) (5 KB): El presupuesto del Estado: aprobado, modificado y gastado, por política de gasto.
 - [economia](https://cuentasenlimpio.es/contexto/economia.md) (4 KB): Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento.
 - [territorio](https://cuentasenlimpio.es/contexto/territorio.md) (4 KB): Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante.

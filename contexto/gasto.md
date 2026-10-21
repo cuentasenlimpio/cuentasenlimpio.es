@@ -6,6 +6,8 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 
 Gasto de todas las administraciones públicas por funciones (clasificación COFOG de Naciones Unidas). Eurostat publica este desglose más tarde que los totales: el último año es 2024.
 
+**Aviso de versiones:** en 2024 las funciones suman 121 millones de euros menos (0,02 %) que el gasto total de cuentas.md: Eurostat revisó el gasto total después y el reparto por funciones aún cuadra con su versión del 2026-07-21. Desaparece cuando Eurostat actualice la tabla COFOG.
+
 ## 2024
 
 En la columna «de cada 100 €», servicios generales (GF01) va sin intereses; los intereses aparecen aparte.
