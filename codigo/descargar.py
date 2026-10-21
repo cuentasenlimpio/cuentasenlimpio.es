@@ -477,10 +477,52 @@ def main():
                                         "nombre": f"Ejecución presupuestaria del Estado a 31 de diciembre de {año} (avance mensual)",
                                         "url": url, "extension": "xlsx"})
                     break
+    # Ejecución mensual del Estado (modificaciones de crédito): el último mes publicado del año en curso y el mismo mes de
+    # los tres años anteriores, para comparar. El año en curso está en imejecucionpresupuesto.aspx; los demás, en la
+    # página de su año. Los ficheros se llaman «MENSUAL <MES> <AÑO>.xlsx» (algunos años, con « (EXCEL)»).
+    pag_ejec = ("https://www.igae.pap.hacienda.gob.es/sitios/igae/es-ES/Contabilidad/ContabilidadPublica/CPE/"
+                "EjecucionPresupuestaria/Paginas/imejecucionpresupuesto{sufijo}.aspx")
+
+    def mensuales(sufijo):
+        try:
+            peticion = urllib.request.Request(pag_ejec.format(sufijo=sufijo), headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"})
+            with urllib.request.urlopen(peticion, timeout=120) as r:
+                pagina = r.read().decode("utf-8", errors="replace")
+        except (urllib.error.URLError, TimeoutError):
+            return []
+        salida = []
+        for enlace in re.findall(r'href="([^"]+\.xlsx)"', pagina):
+            ruta = html_.unescape(enlace)
+            m = re.search(r"MENSUAL[ %20]+([A-ZÁÉÍÓÚ]+)[ %20]+(\d{4})", urllib.parse.unquote(ruta).upper())
+            if m and "ANEXO" not in ruta.upper():
+                url = "https://www.igae.pap.hacienda.gob.es" + urllib.parse.quote(urllib.parse.unquote(ruta), safe="/%()") if ruta.startswith("/") else ruta
+                salida.append((m.group(1), int(m.group(2)), url))
+        return salida
+    actuales = [x for x in mensuales("") if x[1] == ahora.year] or [x for x in mensuales("") if x[1] == ahora.year - 1]
+    if actuales:
+        mes_ejec, año_ejec, url_ejec = actuales[0]  # la página los lista del más reciente al más antiguo
+        PAGINAS_DIN.append({"fuente": "IGAE", "tabla": f"ejec_mes_{año_ejec}", "opcional": True,
+                            "nombre": f"Ejecución presupuestaria del Estado hasta {mes_ejec.lower()} de {año_ejec} (modificaciones de crédito)",
+                            "url": url_ejec, "extension": "xlsx"})
+        for año in range(año_ejec - 3, año_ejec):
+            igual = [x for x in mensuales(str(año)) if x[0] == mes_ejec and x[1] == año]
+            if igual:
+                PAGINAS_DIN.append({"fuente": "IGAE", "tabla": f"ejec_mes_{año}", "opcional": True,
+                                    "nombre": f"Ejecución presupuestaria del Estado hasta {mes_ejec.lower()} de {año} (modificaciones de crédito)",
+                                    "url": igual[0][2], "extension": "xlsx"})
+    else:
+        print("AVISO ejec_mes: no se encontró la ejecución mensual del año en curso")
     for t in PAGINAS_DIN:
         peticion = urllib.request.Request(t["url"], headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"})
-        with urllib.request.urlopen(peticion, timeout=120) as r:
-            cuerpo = r.read()
+        try:
+            with urllib.request.urlopen(peticion, timeout=120) as r:
+                cuerpo = r.read()
+        except (urllib.error.URLError, TimeoutError) as error:
+            # Las opcionales avisan y se sigue con las demás (antes, un fallo de red aquí cortaba todas las de detrás)
+            if not t.get("opcional"):
+                raise
+            print(f"AVISO {t['tabla']}: no se pudo descargar ({error})")
+            continue
         huella = hashlib.sha256(cuerpo).hexdigest()
         anterior = next((m for m in reversed(manifiesto) if m["tabla"] == t["tabla"]), None)
         novedad = anterior is None or anterior["sha256"] != huella

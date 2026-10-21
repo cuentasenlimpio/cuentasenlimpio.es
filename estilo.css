@@ -906,3 +906,4 @@ header.sitio { position: relative; }
 .clave-linea.clave-roja { border-color: #b3261e; }
 .sin-margen-abajo { margin-bottom: 0; }
 .indice-preguntas { scroll-margin-top: 1rem; }
+.tabla-años tr.fila-area td { font-weight: 700; border-top: 1px solid var(--linea-fuerte); }

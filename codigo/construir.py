@@ -1688,6 +1688,144 @@ def construir_pmp(descargas):
     return salida
 
 
+# Tipos de modificación de crédito, en el orden de las columnas (1)–(9) de las hojas GTOS M01 y M03 de la IGAE
+TIPOS_MOD = [
+    ("extraordinarios", "Créditos extraordinarios", "dinero para un gasto que no tenía partida; lo aprueba una ley o un real decreto-ley"),
+    ("suplementos", "Suplementos de crédito", "más dinero para una partida que se queda corta; también por ley o real decreto-ley"),
+    ("ampliaciones", "Ampliaciones de crédito", "partidas que la ley deja crecer según haga falta, como los intereses de la deuda o las pensiones"),
+    ("transf_mas", "Transferencias recibidas", "dinero que llega desde otra partida del presupuesto"),
+    ("transf_menos", "Transferencias cedidas", "dinero que sale hacia otra partida del presupuesto"),
+    ("incorporaciones", "Incorporación de remanentes", "dinero que sobró el año anterior y se vuelve a usar"),
+    ("generados", "Créditos generados por ingresos", "dinero que llega con un ingreso concreto, por ejemplo de la Unión Europea"),
+    ("bajas", "Bajas por anulación", "partidas que se reducen o anulan, a menudo para pagar otras modificaciones"),
+    ("otras", "Otras modificaciones", ""),
+]
+
+
+def _filas_ejecucion(filas, columnas):
+    """Filas con nombre de una hoja de la ejecución mensual: {nombre: [valores]} en miles de euros («-» es 0)."""
+    salida, orden = {}, []
+    for f in filas:
+        if not f or not isinstance(f[0], str) or not f[0].strip():
+            continue
+        nombre = f[0].rstrip()
+        vals = []
+        for x in f[1:1 + columnas]:
+            vals.append(float(x) if isinstance(x, (int, float)) else 0.0 if str(x).strip() in ("-", "") else None)
+        if len(vals) == columnas and all(v is not None for v in vals):
+            salida[nombre] = vals
+            orden.append(nombre)
+    return salida, orden
+
+
+def _ejecucion_mensual(ruta):
+    libro = hojas(ruta)
+    titulo = next(str(x) for f in libro["GTOS 007"][:5] for x in f if isinstance(x, str) and "HASTA EL" in x)
+    mes = re.search(r"HASTA EL \d+ DE ([A-ZÁÉÍÓÚ]+)", titulo.upper()).group(1).lower()
+    # Las cabeceras deben seguir siendo las esperadas (si la IGAE cambia el formato, mejor parar que leer mal)
+    cab = " ".join(str(x) for f in libro["GTOS M01"][:4] for x in f if x).upper()
+    for palabra in ("EXTRAORDINARIOS", "SUPLEMENTOS", "AMPLIACIONES", "TRANSFERENCIAS", "INCORPOR", "GENERADOS", "BAJAS", "OTRAS", "TOTAL MODIFICACIONES"):
+        if palabra not in cab:
+            raise ValueError(f"ejecución mensual: la hoja GTOS M01 ya no trae «{palabra}»")
+    m01, orden_s = _filas_ejecucion(libro["GTOS M01"], 10)
+    e07, _ = _filas_ejecucion(libro["GTOS 007"], 8)
+    m03, orden_p = _filas_ejecucion(libro["GTOS M03"], 10)
+    e08, _ = _filas_ejecucion(libro["GTOS 008"], 8)
+    return {"mes": mes, "m01": m01, "e07": e07, "m03": m03, "e08": e08, "orden_s": orden_s, "orden_p": orden_p}
+
+
+def construir_modificaciones(descargas, hacienda_capitulos=None):
+    """Cómo cambia el presupuesto del Estado durante el año: modificaciones de crédito por ministerio (sección), por
+    política de gasto y por tipo, hasta el último mes publicado, frente al mismo mes de los años anteriores (IGAE)."""
+    años = sorted(int(k[-4:]) for k in descargas if k.startswith("ejec_mes_"))
+    if not años:
+        return None
+    datos = {a: _ejecucion_mensual(AQUI / descargas[f"ejec_mes_{a}"]["fichero"]) for a in años}
+    comprobaciones = []
+    a = años[-1]
+    d = datos[a]
+    M = 1000.0  # miles de euros → millones
+
+    def tipos_de(v):
+        return {k: round(v[i] / M, 1) for i, (k, _, _) in enumerate(TIPOS_MOD)}
+    # Comprobaciones, en todos los años descargados
+    malos_suma, malos_def, malos_cruce_s, malos_cruce_p = [], [], [], []
+    peor_def = 0.0
+    for año, x in datos.items():
+        for hoja, filas_ in (("por ministerio", x["m01"]), ("por política", x["m03"])):
+            for nombre, v in filas_.items():
+                if abs(sum(v[:9]) - v[9]) > 2:
+                    malos_suma.append(f"{nombre.strip()} ({año}, {hoja})")
+        for nombre, v in list(x["e07"].items()) + list(x["e08"].items()):
+            # La IGAE redondea cada columna al millar de euros por separado: en filas que suman muchas partidas, el
+            # redondeo puede llegar a unas decenas de miles de euros. Más de 50.000 € ya no sería redondeo.
+            peor_def = max(peor_def, abs(v[0] + v[1] - v[2]))
+            if abs(v[0] + v[1] - v[2]) > 50:
+                malos_def.append(f"{nombre.strip()} ({año})")
+        for nombre, v in x["m01"].items():
+            if nombre in x["e07"] and abs(v[9] - x["e07"][nombre][1]) > 2 or nombre not in x["e07"]:
+                malos_cruce_s.append(f"{nombre.strip()} ({año})")
+        for nombre, v in x["m03"].items():
+            if nombre in x["e08"] and abs(v[9] - x["e08"][nombre][1]) > 2 or nombre not in x["e08"]:
+                malos_cruce_p.append(f"{nombre.strip()} ({año})")
+    n_años = ", ".join(map(str, años))
+    comprobaciones.append({"que": "¿Lo aprobado más las modificaciones da el crédito definitivo de cada ministerio y de cada política?",
+                           "resultado": (f"Sí, en todas las filas de {n_años}, salvo el redondeo de la propia tabla (como mucho "
+                                         f"{es(peor_def * 1000)} euros)" if not malos_def else f"No en {len(malos_def)}: {', '.join(malos_def[:5])}"),
+                           "ok": not malos_def})
+    for que, malos in (("¿Los tipos de modificación suman el total de cada ministerio y de cada política?", malos_suma),
+                       ("¿Las modificaciones de cada ministerio son las mismas en la hoja por tipos y en la de ejecución?", malos_cruce_s),
+                       ("¿Las modificaciones de cada política son las mismas en la hoja por tipos y en la de ejecución?", malos_cruce_p)):
+        comprobaciones.append({"que": que, "resultado": f"Sí, en todas las filas de {n_años} (al millar de euros)" if not malos else
+                               f"No en {len(malos)}: {', '.join(malos[:5])}", "ok": not malos})
+    # Lo aprobado frente a la estadística de presupuestos de Hacienda (con la regla de los prorrogados: columna «año−1-P»)
+    if hacienda_capitulos:
+        cuadran, difieren = [], []
+        for año, x in datos.items():
+            tipo = VIGENCIA.get(año, ("propio",))[0]
+            col = f"{año - 1}-P" if tipo == "prorrogado" else str(año)
+            ref = hacienda_capitulos.get((col, "TOTAL PRESUPUESTO"))
+            if ref is None:
+                continue
+            ini = x["e07"]["TOTALES"][0] / M
+            (cuadran if abs(ini - ref) < 0.5 else difieren).append(f"{año} ({es(ini, 1)} frente a {es(ref, 1)})" if abs(ini - ref) >= 0.5 else str(año))
+        if cuadran or difieren:
+            comprobaciones.append({"que": "¿Lo aprobado al empezar el año es el presupuesto que publica Hacienda?",
+                                   "resultado": (f"Sí, en {', '.join(cuadran)}" if not difieren else f"No en {', '.join(difieren)}")
+                                   + " (con la regla de Hacienda para los presupuestos prorrogados)",
+                                   "ok": not difieren})
+
+    def fila(nombre, v07, vM):
+        return {"nombre": nombre.strip(), "iniciales": round(v07[0] / M, 1), "modificaciones": round(v07[1] / M, 1),
+                "definitivos": round(v07[2] / M, 1), "obligaciones": round(v07[4] / M, 1), "tipos": tipos_de(vM)}
+    secciones = [fila(n, d["e07"][n], d["m01"][n]) for n in d["orden_s"] if n != "TOTALES" and n in d["e07"]]
+    politicas = []
+    for n in d["orden_p"]:
+        if n not in d["e08"] or n.strip().upper().startswith("TOTAL"):
+            continue
+        f = fila(n, d["e08"][n], d["m03"][n])
+        f["area"] = not n.startswith(" ")  # las áreas van sin sangría y en mayúsculas; las políticas, con sangría
+        politicas.append(f)
+    anteriores = []
+    for año in años:
+        x = datos[año]
+        if x["mes"] != d["mes"]:
+            continue
+        t07, tM = x["e07"]["TOTALES"], x["m01"]["TOTALES"]
+        anteriores.append({"año": año, "iniciales": round(t07[0] / M, 1), "modificaciones": round(t07[1] / M, 1), "tipos": tipos_de(tM),
+                           "vigencia": VIGENCIA.get(año, ("propio",))[0]})
+    salida = {"año": a, "mes": d["mes"], "tipos": [{"clave": k, "nombre": n, "explica": e} for k, n, e in TIPOS_MOD],
+              "totales": fila("TOTALES", d["e07"]["TOTALES"], d["m01"]["TOTALES"]), "secciones": secciones, "politicas": politicas,
+              "anteriores": anteriores, "vigencia": VIGENCIA.get(a, ("propio", ""))[1] if a in VIGENCIA else None,
+              "tablas": [f"ejec_mes_{x}" for x in años], "comprobaciones": comprobaciones}
+    (WEB / "datos" / "modificaciones.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    t = salida["totales"]
+    print(f"modificaciones: hasta {d['mes']} de {a}: {t['modificaciones']} M€ sobre {t['iniciales']} M€; años {n_años}")
+    return salida
+
+
 EPA_ADMIN = (("comunidades", "EPA416134", "Comunidades autónomas"), ("local", "EPA416135", "Ayuntamientos, diputaciones y cabildos"),
              ("central", "EPA416132", "Administración central"), ("empresas", "EPA416136", "Empresas e instituciones públicas"),
              ("seguridad_social", "EPA416133", "Seguridad Social"), ("otro", "EPA416137", "Otro tipo"), ("no_sabe", "EPA416138", "No sabe"))
@@ -2345,6 +2483,21 @@ def por_politicas(filas, cuantos):
     return salida, total
 
 
+def hacienda_capitulos(descargas):
+    """Estadística de presupuestos de Hacienda (hoja 21): {(columna, capítulo): millones}. Las columnas son años
+    («2023») o presupuestos prorrogados («2023-P»: el que rigió en 2024)."""
+    hacienda = {}
+    for clave in ("sepg_estado_2023", "sepg_estado_2025p"):
+        hoja = hojas(AQUI / descargas[clave]["fichero"])["21"]
+        cab = next(f for f in hoja if f and f[0] == "Capítulos")
+        for f in hoja:
+            if f and isinstance(f[0], str):
+                for i, col in enumerate(cab[1:], 1):
+                    if col is not None and i < len(f) and isinstance(f[i], float):
+                        hacienda[(str(col).strip().replace(".0", ""), f[0].strip())] = f[i]
+    return hacienda
+
+
 def construir_presupuesto(descargas):
     """Presupuesto del Estado frente a su ejecución, por áreas y políticas de gasto (liquidaciones de la IGAE)."""
     liquidados = sorted(int(k[-4:]) for k in descargas if k.startswith("liq_estado_"))
@@ -2397,15 +2550,7 @@ def construir_presupuesto(descargas):
         capitulos_liq[a] = capitulos
 
     # Créditos iniciales por capítulos frente a la estadística de Hacienda (en millones; Hacienda redondea a 0,1)
-    hacienda = {}
-    for clave in ("sepg_estado_2023", "sepg_estado_2025p"):
-        hoja = hojas(AQUI / descargas[clave]["fichero"])["21"]
-        cab = next(f for f in hoja if f and f[0] == "Capítulos")
-        for f in hoja:
-            if f and isinstance(f[0], str):
-                for i, col in enumerate(cab[1:], 1):
-                    if col is not None and i < len(f) and isinstance(f[i], float):
-                        hacienda[(str(col).strip().replace(".0", ""), f[0].strip())] = f[i]
+    hacienda = hacienda_capitulos(descargas)
     pares = {"1": "Gastos de personal", "2": "Gastos corrientes en bienes y servicios", "3": "Gastos financieros",
              "4": "Transferencias corrientes", "5": "Fondo de Contingencia", "6": "Inversiones reales",
              "7": "Transferencias de capital", "8": "Activos financieros", "9": "Pasivos financieros"}
@@ -3023,7 +3168,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3177,6 +3322,7 @@ def main():
     construir_avales(descargas)
     construir_deuda_local(descargas)
     pmp = construir_pmp(descargas)
+    construir_modificaciones(descargas, hacienda_capitulos(descargas))
     construir_descuadres(gasto, pmp)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

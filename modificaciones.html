@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
+  <meta name="referrer" content="no-referrer">
+  <title>Cambios del presupuesto · Cuentas en limpio</title>
+  <meta name="description" content="Cómo cambia el presupuesto del Estado durante el año: modificaciones de crédito por ministerio, por política de gasto y por tipo, frente a los mismos meses de años anteriores, con datos de la IGAE.">
+  <script src="tema.js?v=1988194cbb"></script>
+  <link rel="stylesheet" href="estilo.css?v=294f5582f2">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta name="theme-color" content="#faf9f6">
+  <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
+  <script src="comun.js?v=ddca3566b1" defer></script>
+  <script src="ec.js?v=8d530b25b8" defer></script>
+  <script src="modificaciones.js?v=22610f7cfe" defer></script>
+</head>
+<body>
+  <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
+
+  <header class="sitio">
+    <a class="marca" href="./">Cuentas <span class="logo-limpio">en limpio</span></a>
+    <nav aria-label="Principal">
+      <a href="dinero.html" aria-current="true">El dinero</a>
+      <a href="promesas.html">Promesas</a>
+      <a href="preguntas.html">Preguntas</a>
+      <a href="escenarios.html">Calculadoras</a>
+      <a href="aprende.html">Aprende</a>
+      <a class="boton-buscar" href="buscar.html" aria-label="Buscar en la web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg><span class="boton-buscar-texto">Buscar</span></a>
+      <button type="button" class="boton-tema" aria-pressed="false" aria-label="Cambiar a tema oscuro"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg><span class="boton-tema-texto">Oscuro</span></button>
+    </nav>
+  </header>
+  <nav class="subnav" aria-label="El dinero"><span class="subnav-titulo">El dinero:</span> <a href="dinero.html">Resumen</a> <a href="este-ano.html">Este año</a> <a href="cuentas.html">Cuentas</a> <a href="ingresos.html">Ingresos</a> <a href="gasto.html">Gasto</a> <a href="seguridad-social.html">Seguridad Social</a> <a href="empleo-publico.html">Empleo público</a> <a href="fondos-europeos.html">Fondos europeos</a> <a href="avales.html">Avales</a> <a href="deuda-local.html">Ayuntamientos</a> <a href="pago-proveedores.html">Pago a proveedores</a> <a href="presupuesto.html">Presupuesto</a> <a href="modificaciones.html" aria-current="page">Cambios del presupuesto</a> <a href="economia.html">Economía</a> <a href="territorio.html">Comunidades</a> <a href="desigualdad.html">Desigualdad</a></nav>
+    
+  <main>
+    <h1 class="pregunta">¿Cómo cambia el presupuesto durante el año?</h1>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
+    <p class="contabilidad">El presupuesto que se aprueba (o se prorroga) no es el que se acaba usando: durante el año se le añade dinero, se quita y se pasa de unas partidas a otras. Son las modificaciones de crédito. Aquí van las del Estado (los ministerios y los órganos constitucionales), acumuladas desde enero, tal como las publica cada mes la Intervención General del Estado. Las cifras son de contabilidad presupuestaria: «crédito» es el dinero que se puede gastar, no el que ya se ha gastado.</p>
+    <div class="cifras-clave" id="cifras"></div>
+    <p class="fuente-grafico" id="cifras-fuente"></p>
+
+    <section class="grafico" aria-labelledby="g1-t">
+      <h2 class="pregunta" id="g1-t">¿Es mucho o poco frente a otros años?</h2>
+      <p class="grafico-explica" id="g1-explica">Modificaciones acumuladas desde enero hasta el mismo mes de cada año, en millones de euros.</p>
+      <div id="g1"></div>
+      <p class="fuente-grafico" id="g1-fuente"></p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="tipos"></table></div>
+      <p class="fuente-grafico" id="tipos-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g2-t">
+      <h2 class="pregunta" id="g2-t">¿Qué ministerios ganan y cuáles pierden crédito?</h2>
+      <p class="grafico-explica" id="g2-explica">Crédito con que empezó el año cada ministerio, cambio neto por las modificaciones y transferencias recibidas y cedidas, en millones de euros. Ordenados de más a menos cambio.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="secciones"></table></div>
+      <p class="fuente-grafico" id="g2-fuente"></p>
+    </section>
+
+    <section class="grafico" aria-labelledby="g3-t">
+      <h2 class="pregunta" id="g3-t">¿Y por políticas de gasto?</h2>
+      <p class="grafico-explica" id="g3-explica">Las mismas modificaciones, según a qué se destina el dinero, en millones de euros.</p>
+      <p class="pista-desliza" aria-hidden="true">Desliza la tabla para verla entera →</p>
+      <div class="tabla-desliza"><table class="tabla-sueldo tabla-años" id="politicas"></table></div>
+      <p class="fuente-grafico" id="g3-fuente"></p>
+      <div class="entender">
+        <p class="rotulo">Para entenderlo</p>
+        <p>Un ministerio y una política no son lo mismo: un ministerio puede llevar varias políticas y una política repartirse entre varios ministerios. Por eso <span class="resalta">un ministerio puede perder crédito mientras la política que más se le asocia gana</span>.</p>
+      </div>
+    </section>
+
+    <div class="ojo">
+      <strong>Lo que estos datos no dicen</strong>
+      <ul>
+        <li>Para qué se usa cada transferencia: dicen de qué ministerio sale el dinero y a cuál llega, no a qué gasto concreto va. Ese detalle está en cada expediente de modificación.</li>
+        <li>Si el dinero se gastará: un crédito es un permiso para gastar. Lo gastado de verdad son las obligaciones reconocidas.</li>
+        <li>Algunas modificaciones son casi automáticas: las ampliaciones de la deuda pública cubren los intereses que toque pagar, y la reorganización de ministerios mueve dinero de una sección a otra sin cambiar el gasto.</li>
+        <li>Cuando el presupuesto está prorrogado, hay más modificaciones: es la forma de adaptar a un año nuevo unas cuentas pensadas para otro.</li>
+        <li>No incluyen a la Seguridad Social, las comunidades autónomas ni los ayuntamientos, que tienen sus propios presupuestos.</li>
+      </ul>
+    </div>
+    <details class="plegable ficha">
+      <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
+      <ul class="lista-comprobaciones" id="comprobaciones"></ul>
+    </details>
+    <p class="seguir-recorrido">Para seguir: <a href="presupuesto.html">lo aprobado frente a lo gastado, año a año</a> · <a href="gasto.html">en qué se gasta todo el dinero público</a> · <a href="este-ano.html">cómo va este año</a></p>
+  </main>
+
+  <footer class="sitio">
+    <nav class="mapa" aria-label="Todas las secciones">
+      <div><p class="mapa-titulo">El dinero</p><ul><li><a href="este-ano.html">Este año</a></li><li><a href="cuentas.html">Cuentas</a></li><li><a href="ingresos.html">Ingresos</a></li><li><a href="gasto.html">Gasto</a></li><li><a href="seguridad-social.html">Seguridad Social</a></li><li><a href="empleo-publico.html">Empleo público</a></li><li><a href="fondos-europeos.html">Fondos europeos</a></li><li><a href="avales.html">Avales</a></li><li><a href="deuda-local.html">Ayuntamientos</a></li><li><a href="pago-proveedores.html">Pago a proveedores</a></li><li><a href="presupuesto.html">Presupuesto</a></li><li><a href="modificaciones.html">Cambios del presupuesto</a></li><li><a href="economia.html">Economía</a></li><li><a href="territorio.html">Comunidades</a></li><li><a href="desigualdad.html">Desigualdad</a></li></ul></div>
+      <div><p class="mapa-titulo">Para entender</p><ul><li><a href="recorrido.html">Las cuentas en cinco minutos</a></li><li><a href="preguntas.html">Preguntas</a></li><li><a href="aprende.html">Aprende</a></li><li><a href="como-se-miente.html">Cómo se miente con números</a></li><li><a href="glosario.html">Glosario</a></li><li><a href="facil.html">Lectura fácil</a></li></ul></div>
+      <div><p class="mapa-titulo">Calcular</p><ul><li><a href="sueldo.html">¿Cuánto paga un sueldo?</a></li><li><a href="escenarios.html">¿Qué pasaría si…?</a></li></ul></div>
+      <div><p class="mapa-titulo">La web</p><ul><li><a href="promesas.html">Promesas</a></li><li><a href="metodologia.html">Cómo trabajamos</a></li><li><a href="descuadres.html">Lo que no cuadra</a></li><li><a href="correcciones.html">Correcciones</a></li><li><a href="llms.txt">Para modelos de IA</a></li></ul></div>
+    </nav>
+    <p class="pie-datos"><span id="pie-actualidad">Las fuentes se revisan cada mañana.</span> Las cuentas empiezan en 1995: es el primer año de la contabilidad europea actual (SEC 2010), la que hace comparables todos los años y todos los países. <a href="metodologia.html#fechas">Fechas de cada fuente</a>.</p>
+    <span>Cuentas en limpio · proyecto personal con fines didácticos y de divulgación, hecho por Sendoa Sola · versión preliminar</span>
+    <span class="independencia">Web independiente: ninguna de las instituciones cuyos datos usa la patrocina ni la respalda.</span>
+  </footer>
+</body>
+</html>

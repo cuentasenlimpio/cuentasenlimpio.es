@@ -678,12 +678,37 @@ def pago_proveedores(D):
     return md
 
 
+def modificaciones(D):
+    s = D.get("modificaciones") or {}
+    if not s:
+        return cabecera("Cambios del presupuesto durante el año", "modificaciones.html", "Sin datos en esta construcción.")
+    t = s["totales"]
+    md = cabecera("Cómo cambia el presupuesto del Estado durante el año (modificaciones de crédito)", "modificaciones.html",
+                  f"Modificaciones de crédito del Estado acumuladas de enero a {s['mes']} (IGAE, ejecución presupuestaria mensual; "
+                  "contabilidad presupuestaria, no nacional). Un crédito es un permiso para gastar, no un gasto. Las transferencias "
+                  "dicen de qué ministerio sale el dinero y a cuál llega, no a qué gasto concreto va. Sin valoración.")
+    md += (f"\n## {s['año']}, hasta {s['mes']}\n\nPresupuesto al empezar el año: {n(t['iniciales'])} M€; modificaciones: {n(t['modificaciones'])} M€; "
+           f"crédito actual: {n(t['definitivos'])} M€.\n\n## Por tipo, mismos meses de cada año (M€)\n\n"
+           + tabla(["Tipo"] + [str(x["año"]) for x in s["anteriores"]],
+                   [[tp["nombre"]] + [n(x["tipos"][tp["clave"]]) for x in s["anteriores"]] for tp in s["tipos"]]
+                   + [["Total"] + [n(x["modificaciones"]) for x in s["anteriores"]], ["Presupuesto al empezar"] + [n(x["iniciales"]) for x in s["anteriores"]]]))
+    md += ("\n\n## Por ministerio (sección), M€\n\n"
+           + tabla(["Sección (nombre abreviado de la IGAE)", "Al empezar", "Cambio", "Transferencias recibidas", "Transferencias cedidas", "Ahora"],
+                   [[x["nombre"], n(x["iniciales"]), n(x["modificaciones"]), n(x["tipos"]["transf_mas"]), n(x["tipos"]["transf_menos"]), n(x["definitivos"])]
+                    for x in sorted(s["secciones"], key=lambda x: -x["modificaciones"])]))
+    md += ("\n\n## Por política de gasto, M€ (las áreas en mayúsculas)\n\n"
+           + tabla(["Política", "Al empezar", "Cambio", "Ahora"], [[x["nombre"], n(x["iniciales"]), n(x["modificaciones"]), n(x["definitivos"])] for x in s["politicas"]]))
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], k) for k in s["tablas"]])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
     ("seguridad-social", seguridad_social, "La Seguridad Social por dentro desde 1995: cotizaciones, transferencias del Estado, prestaciones y saldo."),
     ("empleo-publico", empleo_publico, "Empleo público: asalariados del sector público por administración (EPA) y lo que se paga en sueldos públicos, con la comparación europea."),
     ("descuadres", descuadres, "Lo que no cuadra: cifras oficiales que no coinciden entre fuentes, con lo explicado y lo pendiente. Leer antes de citar las cifras afectadas."),
+    ("modificaciones", modificaciones, "Cómo cambia el presupuesto del Estado durante el año: modificaciones de crédito por tipo, ministerio y política, frente a los mismos meses de años anteriores."),
     ("pago-proveedores", pago_proveedores, "Periodo medio de pago a proveedores desde 2018: subsectores, comunidades autónomas y grandes ayuntamientos y diputaciones."),
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
@@ -778,7 +803,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")
