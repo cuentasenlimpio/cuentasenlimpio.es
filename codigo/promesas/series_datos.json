@@ -97,7 +97,7 @@
  {
   "id": "paro-estructural",
   "organismo": "Comisión Europea (DG ECFIN, base AMECO)",
-  "nombre": "Tasa de paro que no acelera los salarios (NAWRU), base de datos AMECO",
+  "nombre": "Paro estructural estimado por la Comisión Europea (base de datos AMECO)",
   "definicion": "Tasa de paro compatible con salarios estables que estima la Comisión con su modelo de producción potencial; es la referencia de 'paro estructural' en la UE.",
   "ficha": "https://economy-finance.ec.europa.eu/economic-research-and-databases/economic-databases/ameco-database_en",
   "coincidencia": "aproximada",

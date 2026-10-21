@@ -725,6 +725,146 @@
     "renta de mercado"
    ],
    "def": "Lo que se gana antes de cualquier ayuda pública: sueldos, lo que ganan los autónomos y lo que dan los ahorros y las inversiones."
+  },
+  {
+   "id": "investidura",
+   "formas": [
+    "acuerdos de investidura",
+    "acuerdo de investidura",
+    "investidura"
+   ],
+   "def": "La votación del Congreso que elige al presidente del Gobierno. Un acuerdo de investidura es un pacto en el que un partido promete votar a favor a cambio de compromisos."
+  },
+  {
+   "id": "libro-verde",
+   "formas": [
+    "Libro Verde"
+   ],
+   "def": "Un documento de debate que publica una administración antes de proponer una norma, para recoger opiniones."
+  },
+  {
+   "id": "pilar",
+   "formas": [
+    "segundo pilar"
+   ],
+   "def": "Las pensiones se suelen ordenar en tres «pilares»: el primero, las públicas; el segundo, los planes de pensiones de empresa; el tercero, los planes privados de cada persona."
+  },
+  {
+   "id": "mei",
+   "formas": [
+    "Mecanismo de Equidad Intergeneracional"
+   ],
+   "def": "Una cotización adicional a la Seguridad Social, en vigor desde 2023, cuyo dinero va al Fondo de Reserva, la «hucha de las pensiones»."
+  },
+  {
+   "id": "pan",
+   "formas": [
+    "Planes Anuales Normativos",
+    "Plan Anual Normativo"
+   ],
+   "def": "La lista que publica cada año el Gobierno con las leyes y reales decretos que piensa aprobar ese año."
+  },
+  {
+   "id": "ley-organica",
+   "formas": [
+    "leyes orgánicas",
+    "ley orgánica"
+   ],
+   "def": "Una ley sobre materias que la Constitución considera básicas (derechos fundamentales, elecciones, autonomías…). Para aprobarla hace falta la mayoría absoluta del Congreso."
+  },
+  {
+   "id": "real-decreto",
+   "formas": [
+    "reales decretos",
+    "real decreto"
+   ],
+   "def": "Una norma que aprueba el Gobierno, por debajo de la ley: desarrolla o aplica lo que dicen las leyes."
+  },
+  {
+   "id": "sha",
+   "formas": [
+    "huella sha256",
+    "huella digital (SHA-256)",
+    "SHA-256",
+    "sha256"
+   ],
+   "def": "Un código que se calcula a partir de un fichero. Si alguien cambia una sola letra del fichero, el código cambia. Sirve para comprobar que es el mismo documento."
+  },
+  {
+   "id": "csv",
+   "formas": [
+    "CSV"
+   ],
+   "def": "Un fichero de datos que se abre con cualquier hoja de cálculo (Excel, LibreOffice…)."
+  },
+  {
+   "id": "repositorio",
+   "formas": [
+    "repositorio público",
+    "repositorio"
+   ],
+   "def": "El lugar de internet donde está guardado el código de esta web, a la vista de cualquiera."
+  },
+  {
+   "id": "ccby",
+   "formas": [
+    "CC BY 4.0"
+   ],
+   "def": "Una licencia que permite reutilizar los datos con la única condición de citar de dónde salen."
+  },
+  {
+   "id": "internet-archive",
+   "formas": [
+    "Internet Archive"
+   ],
+   "def": "Una biblioteca digital sin ánimo de lucro que guarda copias de páginas y documentos de internet, para que se puedan consultar aunque desaparezcan."
+  },
+  {
+   "id": "ocr",
+   "formas": [
+    "OCR"
+   ],
+   "def": "Reconocimiento de texto: el programa que convierte una imagen escaneada en letras que se pueden copiar. A veces se equivoca en alguna letra."
+  },
+  {
+   "id": "agentes-sociales",
+   "formas": [
+    "agentes sociales"
+   ],
+   "def": "Los sindicatos y las organizaciones de empresarios, que negocian con el Gobierno asuntos de trabajo y pensiones."
+  },
+  {
+   "id": "dotar",
+   "formas": [
+    "dotación",
+    "dotando",
+    "dotar"
+   ],
+   "def": "Poner dinero en un fondo o en una partida."
+  },
+  {
+   "id": "excedentes",
+   "formas": [
+    "excedentes"
+   ],
+   "def": "Lo que sobra cuando se ingresa más de lo que se gasta."
+  },
+  {
+   "id": "boe",
+   "formas": [
+    "Boletín Oficial del Estado",
+    "BOE"
+   ],
+   "def": "El diario oficial donde se publican las leyes y las normas. Una norma vale desde que sale en él (o desde la fecha que diga)."
+  },
+  {
+   "id": "gravar",
+   "formas": [
+    "gravan",
+    "grava",
+    "gravar"
+   ],
+   "def": "Poner un impuesto sobre algo."
   }
  ]
 }

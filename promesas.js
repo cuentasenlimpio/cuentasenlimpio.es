@@ -223,7 +223,7 @@ function bloqueHechos(rels, h, d, padre) {
     const li = nuevo("li", { className: `hecho hecho-${r.clase}` }, ol);
     const t = nuevo("p", { className: "hecho-norma" }, li);
     const clases = n ? CLASE : pl ? CLASE_PLAN : CLASE_PROPUESTA;
-    nuevo("strong", { textContent: `${clases[r.clase]}${r.parcial ? ", en parte" : ""}: ` }, t);
+    nuevo("strong", { textContent: `${r.parcial ? clases[r.clase].replace("la misma medida", "una parte de la medida") : clases[r.clase]}: ` }, t);
     if (n) {
       enlace(n.url, n.titulo, t);
       t.appendChild(document.createTextNode(` Publicado en el BOE el ${fecha(n.publicada)}.`));
@@ -253,9 +253,9 @@ function bloqueHechos(rels, h, d, padre) {
 }
 
 // Último paso documentado de una promesa, de más a menos avanzado. Es un hecho (qué documento existe), no un veredicto.
-const PASOS = { boe: "Publicada en el BOE", votada: "Votada en el Congreso, sin llegar a ley", propuesta: "Propuesta en el Congreso, sin votarse",
-  gobierno: "Anteproyecto del Gobierno, sin expediente enlazado en el Congreso",
-  planificada: "Planificada por el Gobierno, sin más pasos documentados" };
+const PASOS = { boe: "Ya es norma: publicada en el BOE", votada: "Votada en el Congreso, sin llegar a ser norma", propuesta: "Presentada en el Congreso, sin votarse",
+  gobierno: "Aprobada por el Gobierno como borrador de ley, sin llegar al Congreso",
+  planificada: "Solo en los planes del Gobierno" };
 function ultimoPaso(rels, h) {
   if (rels.some((r) => h.normas[r.hecho])) return "boe";
   if (rels.some((r) => h.iniciativas[r.hecho]?.votaciones.length)) return "votada";
@@ -294,18 +294,28 @@ function bloqueDatos(metas, dp, padre) {
     const v = (par) => `${numero(par[1], g.decimales)} ${g.unidad}`;
     const cifras = nuevo("p", {}, li);
     if (g.inicio && g.inicio[0] !== g.ultimo[0]) {
-      cifras.appendChild(document.createTextNode(`Al empezar la legislatura (${periodoTexto(g.inicio[0])}): ${v(g.inicio)}. `));
+      cifras.appendChild(document.createTextNode(`Al empezar la legislatura (último dato anterior, de ${periodoTexto(g.inicio[0])}): ${v(g.inicio)}. `));
       cifras.appendChild(document.createTextNode(`Último dato publicado (${periodoTexto(g.ultimo[0])}): ${v(g.ultimo)}.`));
     } else {
       cifras.appendChild(document.createTextNode(`Último dato publicado (${periodoTexto(g.ultimo[0])}): ${v(g.ultimo)}.`));
       if (!g.inicio) cifras.appendChild(document.createTextNode(" No había dato publicado de antes de la legislatura."));
     }
-    if (g.coincidencia === "aproximada" && g.nota) nuevo("p", { className: "hecho-motivo", textContent: `La serie no mide exactamente lo mismo: ${g.nota}` }, li);
+    if (g.coincidencia === "aproximada" && g.nota) nuevo("p", { className: "hecho-motivo", textContent: `La serie no mide exactamente lo mismo: ${g.nota.charAt(0).toLowerCase()}${g.nota.slice(1)}` }, li);
     const f = nuevo("p", { className: "hecho-motivo" }, li);
     f.appendChild(document.createTextNode(`Fuente: ${g.organismo}, `));
     enlace(g.ficha, g.serie, f);
     f.appendChild(document.createTextNode(g.comprobado ? `. Dato comprobado a mano en la publicación oficial el ${periodoTexto(g.comprobado)}.` : "."));
   }
+}
+
+// Las notas de la clasificación, dichas para el lector: «Límite: sin cifra; se mantiene porque…» quiere decir que no
+// da cifras pero se puede comprobar.
+function notaLlana(n) {
+  if (/^Límite: sin cifra\.?$/.test(n)) return "No da cifras.";
+  if (/^Límite: sin cifra; se mantiene porque/.test(n)) return "No da cifras, pero dice sobre qué actúa, así que se puede comprobar.";
+  if (/^Límite: sin detalle; se mantiene porque/.test(n)) return "No da detalles, pero lo que promete se puede comprobar.";
+  if (/^Compromiso de oponerse a una medida\.?$/.test(n)) return "Es un compromiso de no hacer algo o de oponerse a que se haga.";
+  return n;
 }
 
 async function arrancarPromesas() {
@@ -358,6 +368,7 @@ async function arrancarPromesas() {
     const li = nuevo("li", { className: "promesa" });
     if (grupo.length === 1) nuevo("p", { className: "promesa-etiqueta", textContent: p.e }, li);
     else {
+      nuevo("p", { className: "promesa-varias", textContent: `De esta frase salen ${grupo.length} promesas:` }, li);
       const ul = nuevo("ul", { className: "promesa-etiquetas" }, li);
       for (const q of grupo) nuevo("li", { className: "promesa-etiqueta", textContent: q.e }, ul);
     }
@@ -369,23 +380,25 @@ async function arrancarPromesas() {
       const b = nuevo("button", { type: "button", className: "ver-entera", textContent: "Ver la frase entera" }, li);
       b.addEventListener("click", () => { cita.textContent = `«${p.c}»`; b.remove(); });
     } else cita.textContent = `«${p.c}»`;
-    if (p.x) nuevo("p", { className: "promesa-contexto", textContent: `Dentro de la lista que empieza: «${p.x}»` }, li);
+    if (p.x) nuevo("p", { className: "promesa-contexto", textContent: `Forma parte de una lista; en el documento, la frase que la introduce dice: «${p.x}»` }, li);
     const meta = nuevo("p", { className: "promesa-meta" }, li);
     nuevo("span", { className: "promesa-doc", textContent: docNombre(d) }, meta);
     meta.appendChild(document.createTextNode(` · página ${p.p} · `));
     enlace(`${d.archivo_crudo}#page=${p.p}`, "ver en el documento", meta);
-    if (p.v) meta.appendChild(document.createTextNode(` · verbo: «${p.v}»`));
     if (grupo.some((q) => q.r)) meta.appendChild(document.createTextNode(" · repite una promesa anterior del mismo documento"));
     // Notas para el lector (límites, quién decide…); las notas de trabajo internas no se muestran.
     const notas = [...new Set(grupo.map((q) => (q.n || "").replace(/\s*Arbitrada:.*$/, "")
-      .replace(/\s*(Repetición detectada|Primera aparición|Etiquetas corregidas|Clasificada a mano|Continuación)[^.]*\./g, "").trim()).filter(Boolean))];
+      .replace(/\s*(Repetición detectada|Primera aparición|Etiquetas corregidas|Clasificada a mano|Continuación)[^.]*\./g, "").trim()).filter(Boolean).map(notaLlana))];
     for (const n of notas) nuevo("p", { className: "promesa-nota", textContent: n }, li);
     if (hechos) {
       const rels = grupo.flatMap((q) => q.hechos);
       const vistos = new Set();
       const unicas = rels.filter((r) => !vistos.has(r.hecho) && vistos.add(r.hecho));
       if (unicas.length) bloqueHechos(unicas, h, d, li);
-      else nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados en las leyes, leyes orgánicas, reales decretos-leyes y reales decretos de la legislatura, en las iniciativas del Congreso que no llegaron a ley, en los anteproyectos y proyectos del Consejo de Ministros ni en los Planes Anuales Normativos 2024 y 2025." }, li);
+      else {
+        const p = nuevo("p", { className: "hechos-ninguno", textContent: "Sin hechos encontrados. " }, li);
+        nuevo("a", { href: "#hechos", textContent: "Dónde hemos buscado" }, p);
+      }
     }
     if (dp) {
       const metas = grupo.flatMap((q) => q.metas);
@@ -456,17 +469,35 @@ async function arrancarPromesas() {
     const r = dp.fiabilidad.resumen, a = dp.fiabilidad.auditoria;
     const mags = Object.values(dp.magnitudes);
     const con = mags.filter((g) => !g.sin_dato);
-    dm.appendChild(document.createTextNode(` De ${numero(r.promesas, 0)} promesas con alguna cifra, las dos clasificaciones coincidieron en el ${numero(r.acuerdo, 1)} % (kappa ${numero(r.kappa, 2)}); los ${numero(r.desacuerdos, 0)} desacuerdos se arbitraron. Una revisión independiente de una muestra al azar no vio meta medible en ${numero(a.metas_que_la_auditoria_no_ve, 0)} de ${numero(a.metas_revisadas, 0)} promesas que la tienen y sí la vio en ${numero(a.descartadas_que_la_auditoria_ve_meta, 0)} de ${numero(a.descartadas_revisadas, 0)} descartadas. Resultado: ${numero(Object.keys(dp.metas).length, 0)} promesas con meta medible, sobre ${numero(mags.length, 0)} magnitudes; ${numero(con.length, 0)} tienen serie oficial (${numero(con.filter((g) => g.coincidencia === "aproximada").length, 0)} de ellas aproximada, con su diferencia explicada) y ${numero(mags.length - con.length, 0)} no.`));
+    const detDm = document.createElement("details");
+    detDm.className = "fuente-detalle";
+    const sDm = document.createElement("summary");
+    sDm.textContent = "Cuánto coincidieron las clasificaciones de las metas";
+    const pDm = document.createElement("p");
+    detDm.append(sDm, pDm);
+    dm.after(detDm);
+    pDm.appendChild(document.createTextNode(`De ${numero(r.promesas, 0)} promesas con alguna cifra, las dos clasificaciones coincidieron en el ${numero(r.acuerdo, 1)} % (kappa ${numero(r.kappa, 2)}); los ${numero(r.desacuerdos, 0)} desacuerdos se arbitraron. Una revisión independiente de una muestra al azar no vio meta medible en ${numero(a.metas_que_la_auditoria_no_ve, 0)} de ${numero(a.metas_revisadas, 0)} promesas que la tienen y sí la vio en ${numero(a.descartadas_que_la_auditoria_ve_meta, 0)} de ${numero(a.descartadas_revisadas, 0)} descartadas. Resultado: ${numero(Object.keys(dp.metas).length, 0)} promesas con meta medible, sobre ${numero(mags.length, 0)} magnitudes; ${numero(con.length, 0)} tienen serie oficial (${numero(con.filter((g) => g.coincidencia === "aproximada").length, 0)} de ellas aproximada, con su diferencia explicada) y ${numero(mags.length - con.length, 0)} no.`));
   }
   // Fiabilidad de la relación hechos–promesas, en el método.
   const m = document.getElementById("hechos-metodo");
   const NOMBRE_TANDA = { normas: "norma–promesa", iniciativas: "iniciativa–promesa (iniciativas sin ley y Consejo de Ministros)",
     decretos: "decreto o plan–promesa (reales decretos y Plan Anual Normativo)" };
+  // Las cifras de fiabilidad, en un desplegable: son para quien quiera comprobar.
+  let destinoFiab = null;
+  if (m && hechos?.fiabilidad) {
+    const det = document.createElement("details");
+    det.className = "fuente-detalle";
+    const s = document.createElement("summary");
+    s.textContent = "Cuánto coincidieron las clasificaciones y cuánto se equivocan";
+    destinoFiab = document.createElement("p");
+    det.append(s, destinoFiab);
+    m.after(det);
+  }
   for (const [tanda, fh] of Object.entries(hechos?.fiabilidad || {})) {
-    if (!m) break;
+    if (!destinoFiab) break;
     const a = fh.auditoria, c = fh.criba;
-    if (c) m.appendChild(document.createTextNode(` De ${numero(c.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} posibles, la criba apartó ${numero(c.pares_candidatos - fh.pares_candidatos, 0)}; de ${numero(c.apartados_revisados, 0)} apartados revisados al azar, la revisión independiente habría enlazado ${numero(c.apartados_que_la_auditoria_enlaza, 0)}.`));
-    m.appendChild(document.createTextNode(` De ${numero(fh.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} revisados, las dos clasificaciones coincidieron en el ${numero(fh.acuerdo, 1)} % (kappa ${numero(fh.kappa, 2)}; ${numero(fh.acuerdo_en_enlazados, 1)} % en los pares que alguna enlazó); los ${numero(fh.desacuerdos, 0)} desacuerdos se arbitraron. Una cuarta revisión independiente de una muestra al azar no enlazó ${numero(a.enlazados_que_la_auditoria_no_enlaza, 0)} de ${numero(a.enlazados_revisados, 0)} relaciones publicadas y sí enlazó ${numero(a.descartados_que_la_auditoria_enlaza, 0)} de ${numero(a.descartados_revisados, 0)} pares descartados: es la medida de cuánto puede sobrar o faltar. Resultado: ${numero(fh.misma, 0)} relaciones «trata (o propone) la misma medida» y ${numero(fh.contraria, 0)} «en sentido contrario».`));
+    if (c) destinoFiab.appendChild(document.createTextNode(` De ${numero(c.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} posibles, la criba apartó ${numero(c.pares_candidatos - fh.pares_candidatos, 0)}; de ${numero(c.apartados_revisados, 0)} apartados revisados al azar, la revisión independiente habría enlazado ${numero(c.apartados_que_la_auditoria_enlaza, 0)}.`));
+    destinoFiab.appendChild(document.createTextNode(` De ${numero(fh.pares_candidatos, 0)} pares ${NOMBRE_TANDA[tanda] || tanda} revisados, las dos clasificaciones coincidieron en el ${numero(fh.acuerdo, 1)} % (kappa ${numero(fh.kappa, 2)}; ${numero(fh.acuerdo_en_enlazados, 1)} % en los pares que alguna enlazó); los ${numero(fh.desacuerdos, 0)} desacuerdos se arbitraron. Una cuarta revisión independiente de una muestra al azar no enlazó ${numero(a.enlazados_que_la_auditoria_no_enlaza, 0)} de ${numero(a.enlazados_revisados, 0)} relaciones publicadas y sí enlazó ${numero(a.descartados_que_la_auditoria_enlaza, 0)} de ${numero(a.descartados_revisados, 0)} pares descartados: es la medida de cuánto puede sobrar o faltar. Resultado: ${numero(fh.misma, 0)} relaciones «trata (o propone) la misma medida» y ${numero(fh.contraria, 0)} «en sentido contrario».`));
   }
 }
 
