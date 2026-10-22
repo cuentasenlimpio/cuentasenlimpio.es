@@ -120,6 +120,17 @@ async function arrancarFacil() {
     ingresos_letras: `Se lee así: ${millonesEnLetras(s.ingresos.corrientes[i])}.`,
     deuda_letras: `Se lee así: ${millonesEnLetras(s.deuda.corrientes[i])}.`,
   };
+  // A quién se debe (Banco de España, cuadro 11.13): fichero aparte; si no carga, el apartado dice que no hay dato
+  const ten = await fetch("datos/tenedores.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (ten) {
+    D.tenedores_fecha = `${ten.mes_nombre} de ${ten.año}`;
+    pintarLista("lista-tenedores", ["se debía", "se debían"], [
+      { v: ten.resto_mundo, texto: "a bancos, empresas y personas de otros países" },
+      { v: ten.financieras, texto: "a bancos y otras empresas de España" },
+      { v: ten.banco_espana, texto: "al Banco de España" },
+      { v: ten.otros, texto: "a familias y empresas de España" },
+    ]);
+  }
   for (const h of huecos) {
     const v = D[h.dataset.f];
     h.textContent = v ?? "";

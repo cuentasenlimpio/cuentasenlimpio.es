@@ -1280,6 +1280,29 @@ def _bde_csv_mensual(ruta):
     return salida
 
 
+def construir_tenedores(descargas):
+    """A quién se debe la deuda de las administraciones (Banco de España, cuadro 11.13): último trimestre, en porcentaje
+    del total. Lo usa la lectura fácil (capítulo de la deuda). Comprueba que las partes suman el total."""
+    if "bde_be1113" not in descargas:
+        return None
+    c = _bde_csv_mensual(AQUI / descargas["bde_be1113"]["fichero"])
+    total, resid, fin, bde, otros, rm = (c[f"BE_11_13.{k}"] for k in (1, 2, 3, 4, 5, 6))
+    ult = max(k for k in total if k in rm and k in fin)
+    suma1 = abs(resid[ult] + rm[ult] - total[ult]) / total[ult]
+    suma2 = abs(fin[ult] + otros[ult] - resid[ult]) / total[ult]
+    pct = lambda v: round(100 * v / total[ult], 1)
+    salida = {"año": ult[0], "mes": ult[1], "mes_nombre": MESES_NOMBRE[ult[1] - 1],
+              "resto_mundo": pct(rm[ult]), "financieras": pct(fin[ult] - bde[ult]), "banco_espana": pct(bde[ult]), "otros": pct(otros[ult]),
+              "tabla": "bde_be1113",
+              "comprobaciones": [{"que": "¿Los tenedores suman el total de la deuda?",
+                                  "resultado": "Sí" if max(suma1, suma2) < 0.001 else f"No: {round(100 * max(suma1, suma2), 2)} % de diferencia",
+                                  "ok": max(suma1, suma2) < 0.001}]}
+    (WEB / "datos" / "tenedores.json").write_text(json.dumps(salida, ensure_ascii=False))
+    print(("OK    " if salida["comprobaciones"][0]["ok"] else "AVISO ") + f"tenedores de la deuda: {salida['mes_nombre']} de {ult[0]}: "
+          f"fuera {salida['resto_mundo']} %, BdE {salida['banco_espana']} %, financieras {salida['financieras']} %, otros {salida['otros']} %")
+    return salida
+
+
 def construir_avales(descargas):
     """Avales del Estado (Banco de España) y los otros pasivos contingentes de la Directiva 2011/85 (Eurostat).
 
@@ -3908,7 +3931,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras", "conprel_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1113", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras", "conprel_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -4078,6 +4101,7 @@ def main():
     construir_recaudacion(descargas)
     construir_contratacion(descargas)
     construir_presupuestos_locales(descargas)
+    construir_tenedores(descargas)
     construir_descuadres(gasto, pmp, cupo)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

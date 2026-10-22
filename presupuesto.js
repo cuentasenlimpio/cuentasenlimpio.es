@@ -29,6 +29,11 @@ const nombrePolitica = (p) => NOMBRE_POLITICA[p.codigo] || p.nombre;
 const marcaVigencia = (v) => (v.tipo === "prorrogado" ? "*" : v.tipo === "mitad" ? "†" : v.tipo === "sin_confirmar" ? "?" : "");
 // Año con avance (ejecución a 31 de diciembre) en lugar de liquidación definitiva
 const marcaAño = (d, i) => `${marcaVigencia(d.vigencia[i])}${d.avance[i] ? "a" : ""}`;
+// La leyenda de las marcas solo explica las que salen en algún año
+function podarNotaAños(d) {
+  const usadas = new Set(d.años.flatMap((_, i) => [...marcaAño(d, i)]));
+  for (const li of document.querySelectorAll("#nota-años li[data-marca]")) li.hidden = !usadas.has(li.dataset.marca);
+}
 const fuenteAño = (d, i) => (d.avance[i] ? [`ejec_dic_${d.años[i]}`, `ejecución del presupuesto del Estado a 31 de diciembre de ${d.años[i]} (avance)`]
   : [`liq_estado_${d.años[i]}`, `liquidación del presupuesto del Estado de ${d.años[i]}`]);
 
@@ -205,7 +210,14 @@ function pintarRespuesta(d) {
 }
 
 async function arrancar() {
-  const [d, aapp] = await Promise.all([fetch("datos/presupuesto.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  let d, aapp;
+  try {
+    [d, aapp] = await Promise.all([fetch("datos/presupuesto.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  } catch {
+    document.getElementById("respuesta").textContent = "No se han podido cargar los datos. Prueba a recargar la página.";
+    return;
+  }
+  podarNotaAños(d);
   const sel = montarSelectores({ años: d.años, alCambiar: (s) => pintar(d, aapp, s) });
   pintar(d, aapp, sel);
   pintarRespuesta(d);

@@ -366,7 +366,7 @@ async function arrancarPromesas() {
   const orden = datos.documentos.slice().sort((a, b) => (b.gobierno - a.gobierno) || ordenAlfabetico(a, b)).map((d) => d.id);
   datos.promesas.sort((a, b) => orden.indexOf(a.d) - orden.indexOf(b.d) || a.p - b.p);
 
-  const estado = { texto: "", quien: "", doc: "", paso: "", dato: "", repes: false, vistas: POR_PAGINA };
+  const estado = { texto: "", quien: "", doc: "", paso: "", dato: "", repes: false, vistas: POR_PAGINA, mostradas: 0 };
   const lista = document.getElementById("promesas-lista");
   const cuenta = document.getElementById("promesas-cuenta");
   const mas = document.getElementById("promesas-mas");
@@ -432,7 +432,8 @@ async function arrancarPromesas() {
     return grupos;
   }
 
-  function pintar() {
+  // `añadir`: «Mostrar más» solo añade las tarjetas nuevas (no rehace las que ya se ven, ni cierra sus citas abiertas)
+  function pintar(añadir = false) {
     const palabras = plano(estado.texto).split(/\s+/).filter(Boolean);
     const hits = datos.promesas.filter((p) => (estado.repes || !p.r)
       && (!estado.doc || p.d === estado.doc)
@@ -440,10 +441,17 @@ async function arrancarPromesas() {
       && (!estado.dato || (estado.dato === "meta" ? p.dato : p.dato === estado.dato))
       && (!estado.quien || (estado.quien === "gobierno") === docs[p.d].gobierno)
       && palabras.every((w) => p.buscable.includes(w)));
-    lista.textContent = "";
-    for (const g of agrupar(hits.slice(0, estado.vistas))) lista.appendChild(tarjeta(g));
-    cuenta.textContent = hits.length ? `${numero(hits.length, 0)} promesas${hits.length > estado.vistas ? ` · se muestran las ${numero(estado.vistas, 0)} primeras` : ""}` : "Ninguna promesa coincide con la búsqueda.";
-    mas.hidden = hits.length <= estado.vistas;
+    // El corte nunca parte un grupo de promesas del mismo documento y apartado
+    let fin = Math.min(estado.vistas, hits.length);
+    while (fin > 0 && fin < hits.length && hits[fin].d === hits[fin - 1].d && unidad(hits[fin]) === unidad(hits[fin - 1])) fin++;
+    const desde = añadir ? estado.mostradas : 0;
+    if (!añadir) lista.textContent = "";
+    let primera = null;
+    for (const g of agrupar(hits.slice(desde, fin))) { const t = tarjeta(g); primera ??= t; lista.appendChild(t); }
+    if (añadir && primera) { primera.tabIndex = -1; primera.focus(); }
+    estado.mostradas = fin;
+    cuenta.textContent = hits.length ? `${numero(hits.length, 0)} promesas${hits.length > fin ? ` · se muestran las ${numero(fin, 0)} primeras` : ""}` : "Ninguna promesa coincide con la búsqueda.";
+    mas.hidden = hits.length <= fin;
   }
 
   let espera = null;
@@ -467,7 +475,7 @@ async function arrancarPromesas() {
   if (dp) selDato.addEventListener("change", () => { estado.dato = selDato.value; estado.vistas = POR_PAGINA; pintar(); });
   else selDato.closest("label").hidden = true;
   document.getElementById("p-repes").addEventListener("change", (ev) => { estado.repes = ev.target.checked; estado.vistas = POR_PAGINA; pintar(); });
-  mas.addEventListener("click", () => { estado.vistas += POR_PAGINA; pintar(); });
+  mas.addEventListener("click", () => { estado.vistas = estado.mostradas + POR_PAGINA; pintar(true); });
   pintar();
 
   const f = document.getElementById("promesas-fuente");

@@ -17,7 +17,7 @@
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
   <script src="comun.js?v=9e7e6e4ec2" defer></script>
   <script src="ec.js?v=bffebede28" defer></script>
-  <script src="presupuesto.js?v=b399f96540" defer></script>
+  <script src="presupuesto.js?v=2a690a334f" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -38,7 +38,7 @@
 
   <main>
     <h1 class="pregunta">¿Se gastó lo que se aprobó?</h1>
-    <p class="respuesta" id="respuesta"></p>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
     <p class="contabilidad">El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto. Solo está el presupuesto del Estado: los ministerios, el Gobierno, las Cortes y los demás órganos que fija la Constitución. La Seguridad Social, las comunidades autónomas, los ayuntamientos y los organismos que dependen del Estado tienen presupuestos propios y no están aquí.</p>
     <p class="como-leer">Por eso estas cifras no son las del resto de la web, que suma todas las administraciones con otras reglas <button type="button" class="info" data-info="contabilidad">i</button></p>
 
@@ -57,11 +57,11 @@
       <div class="lectura-año" id="t-lectura" aria-live="polite"></div>
       <div class="lienzo" id="totales" tabindex="0" role="img" aria-label="Presupuesto aprobado, autorizado y gastado del Estado por año. Usa las flechas para recorrer los años."></div>
       <p class="nota-años">Las marcas junto al año quieren decir:</p>
-      <ul class="nota-años">
-        <li><span>*</span> no se aprobó presupuesto ese año: siguió el del año anterior (prorrogado).</li>
-        <li><span>†</span> siguió el del año anterior hasta que se aprobó el nuevo, a mitad de año. En esos años, «aprobado» es lo que fijó la ley nueva.</li>
-        <li><span>a</span> avance: lo gastado hasta el 31 de diciembre, a falta del cierre definitivo de las cuentas.</li>
-        <li><span>?</span> falta confirmar en el Boletín Oficial del Estado si hubo presupuesto nuevo.</li>
+      <ul class="nota-años" id="nota-años">
+        <li data-marca="*"><span>*</span> no se aprobó presupuesto ese año: siguió el del año anterior (prorrogado).</li>
+        <li data-marca="†"><span>†</span> siguió el del año anterior hasta que se aprobó el nuevo, a mitad de año. En esos años, «aprobado» es lo que fijó la ley nueva.</li>
+        <li data-marca="a"><span>a</span> avance: lo gastado hasta el 31 de diciembre, a falta del cierre definitivo de las cuentas.</li>
+        <li data-marca="?"><span>?</span> falta confirmar en el Boletín Oficial del Estado si hubo presupuesto nuevo.</li>
       </ul>
       <p class="fuente-grafico" id="totales-fuente"></p>
       <div class="entender">

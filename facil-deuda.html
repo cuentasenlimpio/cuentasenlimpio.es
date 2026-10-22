@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="comun.js?v=9e7e6e4ec2" defer></script>
-  <script src="facil.js?v=9ec898ce40" defer></script>
+  <script src="facil.js?v=3533ff8461" defer></script>
 </head>
 <body class="facil">
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -45,9 +45,9 @@
     <p>Cuando un préstamo llega a su fecha, se devuelve.</p>
     <p>Muchas veces, para devolverlo, se pide otro préstamo.</p>
     <h2>¿A quién se le debe?</h2>
-    <p>Los datos de a quién se debe son más nuevos: de junio de 2026.</p>
+    <p>Los datos de a quién se debe son más nuevos: de <span data-f="tenedores_fecha">…</span>.</p>
     <p>De cada 100 euros de deuda:</p>
-    <ul class="lista-facil"><li><strong>51 euros</strong> se debían a bancos, empresas y personas de otros países.<span class="barra-facil" aria-hidden="true" data-ancho="51"></span></li><li><strong>29 euros</strong> se debían a bancos y otras empresas de España.<span class="barra-facil" aria-hidden="true" data-ancho="29"></span></li><li><strong>18 euros</strong> se debían al Banco de España.<span class="barra-facil" aria-hidden="true" data-ancho="18"></span></li><li><strong>Menos de 2 euros</strong> se debían a familias y empresas de España.<span class="barra-facil" aria-hidden="true" data-ancho="2"></span></li></ul>
+    <ul class="lista-facil" id="lista-tenedores"></ul>
     <aside class="palabra-facil"><p><strong>Banco de España</strong></p><p>Es un banco público. Compró deuda para bajar el precio de los préstamos.</p></aside>
     <h2>¿Cuánto cuesta deber dinero?</h2>
     <p>Cada año hay que pagar intereses por la deuda.</p>

@@ -210,7 +210,8 @@ PAGINAS = [
      "url": "https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/be1208.csv", "extension": "csv"},
     *[{"fuente": "Banco de España", "tabla": f"bde_{c}", "opcional": True, "nombre": n,
        "url": f"https://www.bde.es/webbe/es/estadisticas/compartido/datos/csv/{c}.csv", "extension": "csv"}
-      for c, n in (("be1406", "Deuda PDE de las corporaciones locales por tipo y de los ayuntamientos de más de 300.000 habitantes (Boletín Estadístico, cuadro 14.6)"),
+      for c, n in (("be1113", "Deuda PDE de las administraciones públicas por sectores tenedores (Boletín Estadístico, cuadro 11.13)"),
+                   ("be1406", "Deuda PDE de las corporaciones locales por tipo y de los ayuntamientos de más de 300.000 habitantes (Boletín Estadístico, cuadro 14.6)"),
                    ("be1408", "Deuda PDE de las corporaciones locales, en euros y en % del PIB (Boletín Estadístico, cuadro 14.8)"))],
     {"fuente": "Ministerio de Hacienda", "tabla": "sepg_pbf_2023", "opcional": True,
      "nombre": "Memoria de Beneficios Fiscales del proyecto de Presupuestos Generales del Estado para 2023 (la última publicada)",
