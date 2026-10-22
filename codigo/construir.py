@@ -4013,7 +4013,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1113", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras", "conprel_")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1113", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "aeat_irpf_", "oirescon_infocifras", "conprel_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -4047,6 +4047,9 @@ def main():
                "aeat_iart_1_3": "Bases imponibles, tipos efectivos e impuestos devengados de los principales impuestos desde 1995.",
                "aeat_iart_1_5": "Impacto estimado de los cambios normativos y de gestión en la recaudación de cada año, por impuesto.",
                "aeat_iart_1_6": "Ingresos tributarios totales por concepto; se comprueba que cada año es la suma de los meses de la serie mensual.",
+               "aeat_irpf_505": "Base liquidable general sometida a gravamen por tramos de rendimiento: base de la calculadora «¿Y si sube el IRPF?».",
+               "aeat_irpf_521": "Parte estatal del mínimo personal y familiar que se resta de la base general, por tramos de rendimiento.",
+               "aeat_irpf_523": "Parte autonómica del mínimo personal y familiar que se resta de la base general, por tramos de rendimiento.",
                "conprel_avance": "Avance de la liquidación del último año: total nacional estimado a partir de una parte de las entidades.",
                "conprel_avance_2022": "Avance de 2022: se usa para comprobar cuánto se desvía el avance de la liquidación definitiva.",
                "oirescon_infocifras": "Lista de ediciones de Infocifras: sirve para avisar de las nuevas. Las cifras se extraen de cada PDF, enlazado en la página de contratación.",
