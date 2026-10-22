@@ -45,7 +45,8 @@ async function arrancarSueldo() {
   };
 
   const calcular = () => {
-    const bruto = Math.max(0, +$("s-bruto").value || 0);
+    // Se acepta «30000», «30.000» o «30.000 €»: solo cuentan las cifras (los céntimos no hacen falta)
+    const bruto = Math.min(1e6, Math.max(0, +$("s-bruto").value.split(",")[0].replace(/[^\d]/g, "") || 0));
     const territorio = sel.value;
     const entrada = {
       bruto, territorio, edad: $("s-edad").value, contrato: $("s-contrato").value,
@@ -57,6 +58,11 @@ async function arrancarSueldo() {
 
   $("s-hijos").addEventListener("change", () => { pintarHijos(); calcular(); });
   $("sueldo-form").addEventListener("input", calcular);
+  // Al salir del campo, el sueldo se vuelve a escribir con el punto de los miles
+  $("s-bruto").addEventListener("blur", () => {
+    const v = +$("s-bruto").value.split(",")[0].replace(/[^\d]/g, "");
+    if (v) $("s-bruto").value = numero(v, 0);
+  });
   $("sueldo-form").addEventListener("submit", (ev) => ev.preventDefault());
   $("s-comprobado").textContent = `Leyes y tipos de ${P.ejercicio}, comprobados el ${P.comprobado}.`;
   calcular();

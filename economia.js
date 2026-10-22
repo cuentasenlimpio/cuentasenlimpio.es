@@ -23,7 +23,7 @@ function nombrePeriodo(p) {
 function lineas(id, series, { formato, eje = "", min = null, alto = 300 }) {
   const caja = document.getElementById(id);
   const todos = series.flatMap((s) => s.periodos.map(x));
-  const xmin = Math.floor(Math.min(...todos)), xmax = Math.ceil(Math.max(...todos) + 1e-9);
+  const xmin = Math.floor(Math.min(...todos)), xmax = Math.max(...todos);
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, document.querySelector("main").clientWidth < 520 ? alto - 40 : alto);
   const g = caja.cuentasGrafico;
   const zoomAntes = g.getOption()?.dataZoom?.[0];
@@ -98,7 +98,7 @@ function pintar(e) {
     }
   };
   const millones = (v, corto) => `${numero(v / 1e6, corto ? 1 : 2)}${corto ? "" : " millones"}`;
-  const pct = (dec) => (v) => `${numero(v, dec)} %`;
+  const pct = (dec) => (v, corto) => `${numero(v, corto ? 0 : dec)} %`;
 
   // 1. Empleo
   const a = e.afiliacion, epa = e.epa;
@@ -144,7 +144,7 @@ function pintar(e) {
       lineas("g-cruce-afi", [{ nombre: "afiliados medios", periodos: cr.años, valores: cr.afiliados, color: c1 }], { formato: millones, eje: "millones", alto: 240 });
       fuente("g-cruce-afi", [["ss_afiliados_medios", "afiliados medios"]], "lectura", "Media de los doce meses de cada año.");
       lineas("g-cruce-cot", [{ nombre: `cotizaciones (miles de millones de euros, a precios de ${cr.base_constantes})`, periodos: cr.años,
-        valores: cr.cotizaciones_constantes.map((v) => v / 1000), color: c2 }], { formato: (v) => `${numero(v, 0)} mil millones €`, eje: "mil millones €", alto: 240 });
+        valores: cr.cotizaciones_constantes.map((v) => v / 1000), color: c2 }], { formato: (v, corto) => (corto ? numero(v, 0) : `${numero(v, 0)} mil millones €`), eje: "mil millones €", alto: 240 });
       fuente("g-cruce-cot", [["gov_10a_taxag", "cotizaciones sociales"], ["nama_10_gdp", "deflactor del PIB"]], "lectura",
         "Las cotizaciones dependen también de los salarios y de los tipos de cotización, no solo de cuántos afiliados hay.");
     }

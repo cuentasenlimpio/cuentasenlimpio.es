@@ -9,13 +9,13 @@
   <title>Cuentas en limpio</title>
   <meta name="description" content="Cuánto ingresan y gastan las administraciones públicas españolas, cuánto se endeudan y qué se prometió frente a lo que se hizo, con la fuente oficial de cada cifra.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=64328d0c70" defer></script>
-  <script src="inicio.js?v=4559418373" defer></script>
+  <script src="comun.js?v=9e7e6e4ec2" defer></script>
+  <script src="inicio.js?v=249885d1f8" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -51,13 +51,13 @@
       </aside>
     </div>
 
-    <section class="cifras-clave" aria-label="Cifras clave">
-      <a href="cuentas.html#g1-titulo"><span class="nombre">Ingresos</span><span class="valor ingresos" id="k-ingresos">…</span><span class="explica">del PIB. Sobre todo impuestos y cotizaciones.</span></a>
-      <a href="gasto.html"><span class="nombre">Gastos</span><span class="valor gastos" id="k-gastos">…</span><span class="explica" id="k-gastos-explica">del PIB.</span></a>
-      <a href="cuentas.html#g1-titulo"><span class="nombre" id="k-saldo-nombre">Déficit</span><span class="valor" id="k-saldo">…</span><span class="explica" id="k-saldo-explica">del PIB. Lo que falta para cubrir el gasto, y se pide prestado.</span></a>
-      <a href="cuentas.html#g2-titulo"><span class="nombre">Deuda acumulada</span><span class="valor" id="k-deuda">…</span><span class="explica" id="k-deuda-explica">del PIB. Lo que se debe de todos los años y aún no se ha devuelto.</span></a>
-    </section>
     <p class="como-leer">Cómo leer estas cifras <button type="button" class="info" data-info="cifras_clave">i</button></p>
+    <section class="cifras-clave" aria-label="Cifras clave">
+      <a href="ingresos.html"><span class="nombre">Ingresos</span><span class="valor ingresos" id="k-ingresos">…</span><span class="explica">del PIB. Sobre todo impuestos y cotizaciones.</span><span class="mas" aria-hidden="true">De dónde sale →</span></a>
+      <a href="gasto.html"><span class="nombre">Gastos</span><span class="valor gastos" id="k-gastos">…</span><span class="explica" id="k-gastos-explica">del PIB.</span><span class="mas" aria-hidden="true">En qué se gasta →</span></a>
+      <a href="cuentas.html#g1-titulo"><span class="nombre" id="k-saldo-nombre">Déficit</span><span class="valor" id="k-saldo">…</span><span class="explica" id="k-saldo-explica">del PIB. Lo que falta para cubrir el gasto, y se pide prestado.</span><span class="mas" aria-hidden="true">Cómo ha cambiado →</span></a>
+      <a href="cuentas.html#g2-titulo"><span class="nombre">Deuda acumulada</span><span class="valor" id="k-deuda">…</span><span class="explica" id="k-deuda-explica">del PIB. Lo que se debe de todos los años y aún no se ha devuelto.</span><span class="mas" aria-hidden="true">Cómo ha cambiado →</span></a>
+    </section>
     <p class="fuente-grafico" id="claves-fuente"></p>
 
     <h2 class="pregunta">Empieza por una pregunta</h2>
@@ -90,11 +90,11 @@
         <p><a href="aprende.html">Aquí van cinco; las once, explicadas una a una, en «Aprende» →</a></p>
       </div>
       <ol>
-        <li><strong>Déficit no es deuda.</strong> El déficit es lo que falta en un año; la deuda, lo que se debe sumando todos.</li>
-        <li><strong>Gastar no es lo mismo que invertir.</strong> Pagar sueldos y pensiones es gasto del año; una carretera o un hospital duran décadas.</li>
-        <li><strong>Prestar no es gastar.</strong> Si una administración presta dinero (a empresas, a otras administraciones) o compra acciones (de empresas públicas, por ejemplo), no cuenta como gasto, porque puede recuperarlo. Pero tiene que pedirlo prestado, y la deuda sube.</li>
-        <li><strong>Un porcentaje del PIB puede bajar sin que baje nada.</strong> Si la economía crece, la misma deuda pesa menos: es como deber lo mismo y ganar más. Por eso conviene mirar también los euros.</li>
-        <li><strong>Coincidir en el tiempo no es causar.</strong> Que algo pase con un Gobierno no significa que lo provocara.</li>
+        <li><strong><a href="aprende.html#deficit">Déficit no es deuda.</a></strong> El déficit es lo que falta en un año; la deuda, lo que se debe sumando todos.</li>
+        <li><strong><a href="aprende.html#invertir">Gastar no es lo mismo que invertir.</a></strong> Pagar sueldos y pensiones es gasto del año; una carretera o un hospital duran décadas.</li>
+        <li><strong><a href="aprende.html#prestar">Prestar no es gastar.</a></strong> Si una administración presta dinero (a empresas, a otras administraciones) o compra acciones (de empresas públicas, por ejemplo), no cuenta como gasto, porque puede recuperarlo. Pero tiene que pedirlo prestado, y la deuda sube.</li>
+        <li><strong><a href="aprende.html#pib">Un porcentaje del PIB puede bajar sin que baje nada.</a></strong> Si la economía crece, la misma deuda pesa menos: es como deber lo mismo y ganar más. Por eso conviene mirar también los euros.</li>
+        <li><strong><a href="aprende.html#causa">Coincidir en el tiempo no es causar.</a></strong> Que algo pase con un Gobierno no significa que lo provocara.</li>
       </ol>
     </section>
 

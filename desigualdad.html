@@ -9,15 +9,15 @@
   <title>Las cuentas y la desigualdad · Cuentas en limpio</title>
   <meta name="description" content="Desigualdad de renta y riqueza en España y la UE, y cuánto la reducen las pensiones, las prestaciones y los impuestos, con la fuente de cada cifra.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=64328d0c70" defer></script>
-  <script src="ec.js?v=3919f7e251" defer></script>
-  <script src="desigualdad.js?v=ff083a8044" defer></script>
+  <script src="comun.js?v=9e7e6e4ec2" defer></script>
+  <script src="ec.js?v=bffebede28" defer></script>
+  <script src="desigualdad.js?v=8d0ecc3ac3" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -39,14 +39,14 @@
   <main>
     <p class="antetitulo">El dinero · el reparto</p>
     <h1 class="pregunta">¿Qué hacen las cuentas sobre la desigualdad?</h1>
-    <p class="respuesta" id="respuesta"></p>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
     <p class="contabilidad">Datos de la encuesta europea de ingresos (en España, la Encuesta de Condiciones de Vida del INE). Cada encuesta pregunta por la renta del año anterior: la de 2025 habla de la renta de 2024. <button type="button" class="info" data-info="año_renta">i</button></p>
 
     <section aria-labelledby="b1">
       <h2 class="pregunta" id="b1">¿Cuánta desigualdad de renta hay?</h2>
       <section class="grafico" aria-labelledby="g-gini-t">
         <h3 class="grafico-titulo" id="g-gini-t">Índice de Gini de la renta disponible, España y UE <button type="button" class="info" data-info="gini">i</button></h3>
-        <p class="grafico-explica">0 sería que todos tienen la misma renta; 100, que una sola persona lo tiene todo.</p>
+        <p class="grafico-explica">0 sería que todos tienen la misma renta; 100, que una sola persona lo tiene todo. El eje no empieza en cero, para que se vean los cambios.</p>
         <div class="lectura-año" id="g-gini-lectura" aria-live="polite"></div>
         <div class="lienzo" id="g-gini" role="img" aria-label="Índice de Gini de la renta disponible, España y UE"></div>
         <p class="fuente-grafico" id="g-gini-fuente"></p>
@@ -54,6 +54,7 @@
 
       <section class="grafico" aria-labelledby="g-s80-t">
         <h3 class="grafico-titulo" id="g-s80-t">Ratio S80/S20: renta del 20 % que más tiene ÷ la del 20 % que menos <button type="button" class="info" data-info="renta_equivalente">i</button></h3>
+        <p class="grafico-explica">Cuántas veces la renta del 20 % con más ingresos supera la del 20 % con menos. El eje no empieza en cero.</p>
 
         <div class="lectura-año" id="g-s80-lectura" aria-live="polite"></div>
         <div class="lienzo" id="g-s80" role="img" aria-label="Ratio S80/S20: renta del 20 % que más tiene ÷ la del 20 % que menos"></div>
@@ -65,6 +66,10 @@
     <section aria-labelledby="b2">
       <h2 class="pregunta" id="b2">¿Cuánto la reducen las pensiones y las prestaciones?</h2>
       <p class="respuesta" id="r-transf"></p>
+      <div class="ojo">
+        <strong>Ojo con esto</strong>
+        <p>«Sin transferencias» es un supuesto: Eurostat lo describe como si las transferencias no existieran. Resta las prestaciones sin cambiar nada más (ni siquiera el umbral de pobreza). Sirve para ver el tamaño de las transferencias, no para saber qué pasaría sin ellas.</p>
+      </div>
       <section class="grafico" aria-labelledby="g-escalones-t">
         <h3 class="grafico-titulo" id="g-escalones-t">Índice de Gini en España, en tres escalones <button type="button" class="info" data-info="antes_transferencias">i</button></h3>
         <p class="grafico-explica">Arriba, sin ninguna transferencia social; en medio, con las pensiones pero sin el resto de prestaciones; abajo, con todas (la renta disponible).</p>
@@ -92,10 +97,6 @@
       </section>
       </details>
 
-      <div class="ojo">
-        <strong>Ojo con esto</strong>
-        <p>«Sin transferencias» es un supuesto: Eurostat lo describe como si las transferencias no existieran. Resta las prestaciones sin cambiar nada más (ni siquiera el umbral de pobreza). Sirve para ver el tamaño de las transferencias, no para saber qué pasaría sin ellas.</p>
-      </div>
     </section>
 
     <section aria-labelledby="b3">
@@ -128,6 +129,7 @@
       <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
     </details>
+    <p class="seguir-recorrido">Para seguir: <a href="economia.html">la economía detrás de las cuentas</a> · <a href="seguridad-social.html">cómo se pagan las pensiones</a> · <a href="recaudacion.html">recaudación</a></p>
   </main>
 
   <footer class="sitio">

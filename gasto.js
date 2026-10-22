@@ -20,7 +20,9 @@ function pintar(g, aapp, sel) {
 
   // Evolución
   const esc = ESCALA[u];
-  const paneles = g.funciones.map((f) => ({ nombre: f.nombre, info: `cofog_${f.codigo}`, valores: f[u].map((v) => (v === null ? null : v * esc)) }));
+  // Orden fijo, de mayor a menor peso en el último año con datos (como las barras de arriba), sea cual sea la unidad
+  const peso = (f) => [...f.pib].reverse().find((v) => v !== null) ?? 0;
+  const paneles = [...g.funciones].sort((x, y) => peso(y) - peso(x)).map((f) => ({ nombre: f.nombre, info: `cofog_${f.codigo}`, valores: f[u].map((v) => (v === null ? null : v * esc)) }));
   dibujarMultiples(document.getElementById("evolucion"), paneles, g.años, i,
     { formato: FORMATO[u], unidadEje: texto(UNIDADES[u].eje, g.año_base_constantes), periodo: sel.periodo });
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];

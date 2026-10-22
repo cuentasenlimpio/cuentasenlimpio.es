@@ -9,15 +9,15 @@
   <title>Las cuentas de cada comunidad · Cuentas en limpio</title>
   <meta name="description" content="Déficit, deuda, financiación y gasto de cada comunidad autónoma, con la fuente de cada cifra y el contexto para compararlas.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=64328d0c70" defer></script>
-  <script src="ec.js?v=3919f7e251" defer></script>
-  <script src="territorio.js?v=cd8f61afd5" defer></script>
+  <script src="comun.js?v=9e7e6e4ec2" defer></script>
+  <script src="ec.js?v=bffebede28" defer></script>
+  <script src="territorio.js?v=37a2e35419" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -39,7 +39,7 @@
   <main>
     <p class="antetitulo">El dinero · por comunidades</p>
     <h1 class="pregunta">¿Cómo están las cuentas de cada comunidad?</h1>
-    <p class="respuesta" id="respuesta"></p>
+    <p class="respuesta" id="respuesta">Cargando los datos…</p>
     <div class="controles">
       <label>Elegir comunidad <select id="selector-ccaa"></select></label>
     </div>
@@ -153,6 +153,7 @@
       <summary>Comprobaciones: si las cifras cuadran entre sí y con otras fuentes</summary>
       <ul class="lista-comprobaciones" id="comprobaciones"></ul>
     </details>
+    <p class="seguir-recorrido">Para seguir: <a href="cupo-vasco.html">el cupo vasco</a> · <a href="deuda-local.html">la deuda de cada ayuntamiento</a> · <a href="presupuestos-locales.html">los presupuestos locales</a></p>
   </main>
 
   <footer class="sitio">

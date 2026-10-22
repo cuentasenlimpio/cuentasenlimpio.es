@@ -504,6 +504,10 @@ section > .antetitulo:first-child { border-top: 1px solid var(--linea); padding-
 button.info { font: italic 600 0.8125rem/1 var(--serif); width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1px solid var(--entender-tinta); background: var(--superficie); color: var(--entender-tinta); cursor: pointer; vertical-align: 0.25em; margin-left: 0.35rem; padding: 0; }
 button.info:hover, button.info[aria-expanded="true"] { background: var(--entender-tinta); color: var(--superficie); }
 button.info:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+/* Zona de toque de unos 44 px sin agrandar el círculo */
+button.info { position: relative; }
+button.info::after { content: ""; position: absolute; inset: -11px; }
+.multiple figcaption button.info::after { inset: -8px; }
 .info-panel { background: var(--entender); border-radius: 8px; padding: 0.9rem 1.1rem; margin: 0.25rem 0 1rem; font-size: 0.9375rem; max-width: 46rem; }
 .info-panel .rotulo { font: 700 0.75rem/1 var(--sans); letter-spacing: 0.08em; text-transform: uppercase; color: var(--entender-tinta); margin: 0 0 0.5rem; }
 .info-panel p:last-child { margin-bottom: 0; }
@@ -916,3 +920,24 @@ header.sitio { position: relative; }
   .subnav-dinero { flex-wrap: wrap; overflow-x: visible; white-space: normal; }
   .subnav-dinero a { white-space: nowrap; }
 }
+.aviso-carga { font-weight: 600; color: var(--tinta); }
+
+/* Revisión de usabilidad (22/10/2026): enlaces que se notan, toques de 44 px, columnas de lectura y paneles en el móvil */
+.preguntas a strong::after, .sigue a strong::after { content: " →"; color: var(--acento); }
+.cifras-clave a .mas { display: block; margin-top: 0.4rem; font-size: 0.875rem; color: var(--acento); }
+@media (max-width: 40rem) {
+  .selector button { min-height: 44px; }
+  .selector-pequeno button { min-height: 40px; }
+  .atajos button { min-height: 44px; padding: 0.5rem 0.9rem; }
+  .multiples { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+  .filtros-promesas .filtro { display: grid; width: 100%; gap: 0.25rem; }
+  .filtros-promesas .filtro select { width: 100%; min-height: 44px; }
+  .filtro-casilla input { width: 1.25rem; height: 1.25rem; }
+}
+.dos-columnas { align-items: start; }
+.fuente-detalle summary { font-size: 0.875rem; }
+.glosario, .indice, main > section > ul, main > section > ol, .ejemplo, .regla, .promesa > * { max-width: 46rem; }
+.indice ol { max-width: none; }
+.indice.letras { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.indice.letras a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-weight: 600; text-decoration: none; border-radius: 6px; }
+.indice.letras a:hover, .indice.letras a:focus-visible { background: var(--nota); }

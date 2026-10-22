@@ -305,7 +305,7 @@ document.addEventListener("DOMContentLoaded", montarInfo);
 // pulsarlo, una ficha con su explicación en una frase y el enlace al glosario. No se marcan títulos, enlaces,
 // controles, tablas, citas literales ni fuentes. El contenido que las páginas pintan después también se revisa.
 const NO_MARCAR = "a, button, select, option, label, h1, h2, h3, summary, dt, script, style, svg, canvas, table, blockquote, code, "
-  + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, .promesa-etiqueta, .hecho, .hechos, .lectura-año, .fuente-detalle, .antetitulo, .portada-reparto, .cifras-clave .nombre, [data-sin-terminos]";
+  + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, .promesa-etiqueta, .promesa-etiquetas, .ficha-datos, .lista-fuentes, li > strong:first-child, .hecho, .hechos, .lectura-año, .fuente-detalle, .antetitulo, .portada-reparto, .cifras-clave .nombre, [data-sin-terminos]";
 async function montarTerminos() {
   if (/glosario\.html$/.test(location.pathname)) return;
   const main = document.querySelector("main");
@@ -446,7 +446,7 @@ function plegarControles() {
     if (!el || el.closest("details")) continue;
     const d = document.createElement("details");
     d.className = "plegable-controles";
-    d.open = ancho;
+    d.open = ancho && id === "periodo";  // el contexto (Gobiernos, crisis) se añade a propósito
     const s = document.createElement("summary");
     s.textContent = rotulo;
     el.before(d);

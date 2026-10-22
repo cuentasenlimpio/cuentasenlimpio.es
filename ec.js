@@ -97,13 +97,15 @@ const EC = (() => {
   // números de los acontecimientos.
   function tiempo({ min, max, aria, slider = true, marcasArriba = true, zoom = true, silueta = true }) {
     const suave = css("--tinta-suave"), linea = css("--linea");
+    // En el móvil, sin barra de zoom: sus asas no se pueden usar con el dedo. Para acotar años están los botones de periodo.
+    if (slider && matchMedia("(max-width: 40rem)").matches) slider = false;
     const dataZoom = [{
       type: "inside", xAxisIndex: 0, filterMode: "none", minValueSpan: 3, disabled: !zoom,
       zoomOnMouseWheel: "ctrl", moveOnMouseWheel: false, moveOnMouseMove: false,
     }];
     if (slider) {
       dataZoom.push({
-        type: "slider", xAxisIndex: 0, filterMode: "none", minValueSpan: 3, height: 22, bottom: 8, showDataShadow: silueta,
+        type: "slider", xAxisIndex: 0, filterMode: "none", minValueSpan: 3, height: 26, bottom: 8, showDataShadow: silueta, handleSize: "130%", brushSelect: false,
         borderColor: linea, fillerColor: css("--relleno-zoom"), backgroundColor: css("--superficie"),
         handleStyle: { color: css("--superficie"), borderColor: css("--acento") },
         moveHandleStyle: { color: css("--acento-tenue") },
@@ -118,7 +120,7 @@ const EC = (() => {
       animationDurationUpdate: 250,
       textStyle: { fontFamily: letra(), color: suave },
       aria: { enabled: true, label: { description: aria } },
-      grid: { left: 4, right: 14, top: marcasArriba ? 84 : 16, bottom: slider ? 50 : 8, containLabel: true },
+      grid: { left: 4, right: 14, top: marcasArriba ? 84 : 16, bottom: slider ? 54 : 8, containLabel: true },
       xAxis: {
         type: "value", min, max, minInterval: 1,
         axisLine: { lineStyle: { color: css("--linea-fuerte") } },

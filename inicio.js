@@ -11,7 +11,14 @@ async function arrancar() {
   const leer = (f) => fetch(f).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const [aapp, gasto, ingresos, promesas] = await Promise.all(
     ["datos/aapp.json", "datos/gasto.json", "datos/ingresos.json", "datos/promesas-resumen.json"].map(leer));
-  if (!aapp) return;
+  if (!aapp) {
+    for (const id of ["k-ingresos", "k-gastos", "k-saldo", "k-deuda"]) { const e = document.getElementById(id); if (e) e.textContent = "—"; }
+    const aviso = document.createElement("p");
+    aviso.className = "aviso-carga";
+    aviso.textContent = "No se han podido cargar las cifras. Prueba a recargar la página.";
+    document.querySelector(".cifras-clave")?.before(aviso);
+    return;
+  }
   const i = aapp.años.length - 1, año = aapp.años[i];
   const v = (k) => aapp.series[k].pib[i];
   for (const s of document.querySelectorAll(".año-cuentas")) s.textContent = String(año);

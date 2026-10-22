@@ -9,7 +9,7 @@ const estado = { t: null, aapp: null, sel: null };
 function linea(id, series, { formato, eje, min = null, alto = 280 }) {
   const caja = document.getElementById(id);
   const xs = series.flatMap((s) => s.x);
-  const xmin = Math.floor(Math.min(...xs)), xmax = Math.ceil(Math.max(...xs));
+  const xmin = Math.floor(Math.min(...xs)), xmax = Math.max(...xs);
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, alto);
   const g = caja.cuentasGrafico;
   const op = EC.tiempo({ min: xmin, max: xmax, marcasArriba: false, aria: caja.getAttribute("aria-label") });
@@ -93,7 +93,7 @@ function pintarFicha() {
   const hab = c.poblacion ? (meur * 1e6) / c.poblacion.valor : null;
   tarjeta(`Deuda, ${nombreTrim(c.deuda.trimestres[q])}`, `${numero(deu, 1)} %`,
     `de su PIB: ${numero(meur, 0)} millones de euros${hab ? `, unos ${numero(Math.round(hab / 10) * 10, 0)} € por habitante` : ""}.`);
-  tarjeta("Deuda con el Estado", est ? `${numero((100 * est) / meur, 0)} %` : "0 %",
+  tarjeta("De su deuda, prestado por el Estado", est ? `${numero((100 * est) / meur, 0)} %` : "0 %",
     est ? `de su deuda (${numero(est, 0)} millones): dinero que le ha prestado el Estado desde 2012.` : "No ha pedido préstamos al Estado, o ya los ha devuelto.");
   if (c.financiacion) {
     const f = c.financiacion, k = f.años.length - 1, media = T.financiacion.por_hab_ajustado[T.financiacion.años.indexOf(f.años[k])];
@@ -172,7 +172,13 @@ const nombreCorto = (n) => CORTOS[n] || n;
 const claveOrden = (n) => (n === "Comunitat Valenciana" ? "Valenciana" : nombreCorto(n));
 
 async function arrancar() {
-  const [t, aapp] = await Promise.all([fetch("datos/territorio.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  let t, aapp;
+  try {
+    [t, aapp] = await Promise.all([fetch("datos/territorio.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  } catch {
+    document.getElementById("respuesta").textContent = "No se han podido cargar los datos. Prueba a recargar la página.";
+    return;
+  }
   // Orden alfabético por el nombre de todos los días (Asturias, Baleares, Madrid…), no por el oficial.
   t.ccaa.sort((x, y) => claveOrden(x.nombre).localeCompare(claveOrden(y.nombre), "es"));
   Object.assign(estado, { t, aapp, sel: t.ccaa[0].id });
@@ -190,7 +196,15 @@ async function arrancar() {
     o.textContent = nombreCorto(c.nombre);
     sel.appendChild(o);
   }
-  sel.addEventListener("change", () => { estado.sel = sel.value; pintarFicha(); });
+  // La comunidad elegida va en la dirección (#galicia), para poder recargar o compartir la página con ella
+  const slug = (c) => nombreCorto(c.nombre).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const deHash = t.ccaa.find((c) => slug(c) === decodeURIComponent(location.hash.slice(1)));
+  if (deHash) { estado.sel = deHash.id; sel.value = deHash.id; }
+  sel.addEventListener("change", () => {
+    estado.sel = sel.value;
+    try { history.replaceState(null, "", `#${slug(t.ccaa.find((c) => c.id === sel.value))}`); } catch { /* sin historial: no pasa nada */ }
+    pintarFicha();
+  });
   pintarFicha();
   pintarTodas();
   pintarComprobaciones(document.getElementById("comprobaciones"), t.comprobaciones);

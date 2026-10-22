@@ -24,7 +24,9 @@ function pintar(g, aapp, sel) {
   });
 
   const esc = ESCALA[u];
-  const paneles = visibles.map((p) => ({ nombre: p.nombre, valores: p[u].map((v) => (v === null ? null : v * esc)) }));
+  // Orden fijo, de mayor a menor peso en el último año con datos (el mismo que las barras), sea cual sea la unidad
+  const peso = (p) => [...p.pib].reverse().find((v) => v !== null) ?? 0;
+  const paneles = [...visibles].sort((x, y) => peso(y) - peso(x)).map((p) => ({ nombre: p.nombre, valores: p[u].map((v) => (v === null ? null : v * esc)) }));
   dibujarMultiples(document.getElementById("evolucion"), paneles, g.años, i,
     { formato: FORMATO[u], unidadEje: texto(UNIDADES[u].eje, g.año_base_constantes), periodo: sel.periodo });
   const extra = { constantes: [["nama_10_gdp", "deflactor del PIB"]], habitante: [["nama_10_pe", "población media"]] }[u] || [];

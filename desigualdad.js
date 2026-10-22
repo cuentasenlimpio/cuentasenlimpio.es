@@ -9,7 +9,7 @@ const nombreTrim = (t) => `${TRIM[Number(t.slice(5)) - 1]} de ${t.slice(0, 4)}`;
 function linea(id, series, { formato, eje, min = null, alto = 280 }) {
   const caja = document.getElementById(id);
   const xs = series.flatMap((s) => s.x);
-  const xmin = Math.floor(Math.min(...xs)), xmax = Math.ceil(Math.max(...xs));
+  const xmin = Math.floor(Math.min(...xs)), xmax = Math.max(...xs);
   if (!caja.cuentasGrafico) caja.cuentasGrafico = EC.crear(caja, alto);
   const g = caja.cuentasGrafico;
   const op = EC.tiempo({ min: xmin, max: xmax, marcasArriba: false, aria: caja.getAttribute("aria-label") });
@@ -138,13 +138,19 @@ function pintar(d) {
       { nombre: "el 10 % con más riqueza", x: xs, v: q.top10, etiquetas: et, color: c1, ancho: 3.5 },
       { nombre: "el 50 % con menos riqueza", x: xs, v: q.bottom50, etiquetas: et, color: c2 },
     ], { formato: pct(1), eje: "% de la riqueza neta", min: 0 });
-    fuente("g-riq", [["bce_dwa_top10", "cuentas distributivas de la riqueza"], ["bce_dwa_bottom50", "cuentas distributivas de la riqueza"], ["bce_dwa_gini", "Gini de la riqueza"]],
+    fuente("g-riq", [["bce_dwa_top10", "parte del 10 % con más riqueza"], ["bce_dwa_bottom50", "parte del 50 % con menos riqueza"], ["bce_dwa_gini", "Gini de la riqueza"]],
       "dato", "Estadística experimental: combina las cuentas nacionales con la Encuesta Financiera de las Familias del Banco de España.");
   }
 }
 
 async function arrancar() {
-  const [d, aapp] = await Promise.all([fetch("datos/desigualdad.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  let d, aapp;
+  try {
+    [d, aapp] = await Promise.all([fetch("datos/desigualdad.json").then((r) => r.json()), fetch("datos/aapp.json").then((r) => r.json())]);
+  } catch {
+    document.getElementById("respuesta").textContent = "No se han podido cargar los datos. Prueba a recargar la página.";
+    return;
+  }
   estado.aapp = aapp;
   pintar(d);
   pintarComprobaciones(document.getElementById("comprobaciones"), d.comprobaciones);

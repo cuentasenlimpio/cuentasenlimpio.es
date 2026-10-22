@@ -57,7 +57,7 @@ function piezasRecientes(claves, colores, ultimosValores) {
         symbol: objetivo ? "diamond" : "none", symbolSize: 6, showSymbol: objetivo,
         itemStyle: { color }, lineStyle: { color, width: 1.5, type: objetivo ? [1, 3] : [5, 4], opacity: 0.8 },
         endLabel: { show: true, formatter: CORTO[e.id], color: css("--tinta-suave"), fontSize: 10, distance: 4 },
-        labelLayout: { hideOverlap: true }, emphasis: { disabled: true },
+        labelLayout: { hideOverlap: true, moveOverlap: "shiftY" }, emphasis: { disabled: true },
       });
     }
   });
@@ -115,6 +115,8 @@ function graficoLineas(id, { series, hueco, alto, alMarcar }) {
     const n = años.length - 1;
     opciones.series.push(...piezasRecientes(lineas.map((s) => s.clave), lineas.map((s) => s.color), lineas.map((s) => s.datos[n][1])));
   }
+  // Los rótulos al final de las previsiones (FMI, CE…) no caben en el margen normal: containLabel no los cuenta
+  if (opciones.series.some((s) => s.endLabel?.show)) opciones.grid = { ...opciones.grid, right: 36 };
   g.setOption(opciones, { notMerge: true });
   if (!g.cuentasListo) {
     g.cuentasListo = true;
@@ -889,8 +891,14 @@ function teclado(ev) {
 }
 
 async function arrancar() {
-  const r = await fetch("datos/aapp.json");
-  estado.datos = await r.json();
+  try {
+    const r = await fetch("datos/aapp.json");
+    if (!r.ok) throw new Error(r.status);
+    estado.datos = await r.json();
+  } catch {
+    document.getElementById("respuesta").textContent = "No se han podido cargar los datos. Prueba a recargar la página.";
+    return;
+  }
   estado.indice = estado.datos.años.length - 1;
   // Si el periodo elegido deja fuera el año que se está leyendo, se pasa al último año del periodo.
   estado.periodo = EC.periodo(document.getElementById("periodo"), estado.datos, estado.datos.años, {

@@ -9,14 +9,14 @@
   <title>Lo que paga un sueldo · Cuentas en limpio</title>
   <meta name="description" content="Una estimación de lo que paga un sueldo en IRPF, cotizaciones e IVA en cada comunidad, con la ley de 2026, y cómo se reparte entre pensiones, sanidad, educación y el resto del gasto público.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=4a0bd5e8d9">
+  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=64328d0c70" defer></script>
+  <script src="comun.js?v=9e7e6e4ec2" defer></script>
   <script src="sueldo-calculo.js?v=c2f82217d8" defer></script>
-  <script src="sueldo.js?v=f407333fba" defer></script>
+  <script src="sueldo.js?v=621ad5db13" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -42,7 +42,7 @@
 
     <form id="sueldo-form" class="calculadora" autocomplete="off">
       <label>Sueldo bruto al año, en euros
-        <input id="s-bruto" type="number" inputmode="numeric" min="0" max="1000000" step="100" value="30000" required>
+        <input id="s-bruto" type="text" inputmode="numeric" autocomplete="off" value="30.000" required>
         <span class="ayuda">El que figura en el contrato, antes de impuestos. Con pagas extra incluidas.</span>
       </label>
       <label>Dónde vive
@@ -71,8 +71,8 @@
       <label id="s-comparte-et" class="casilla" hidden><input id="s-comparte" type="checkbox" checked> La otra madre o padre también trabaja y declara (las ventajas por los hijos se reparten a medias)</label>
     </form>
 
-    <section id="sueldo-resultado" aria-live="polite">
-      <p class="respuesta" id="s-frase"></p>
+    <section id="sueldo-resultado">
+      <p class="respuesta" id="s-frase" aria-live="polite" aria-atomic="true"></p>
       <div class="entender">
         <p class="rotulo">Para entenderlo</p>
         <p>De un sueldo salen dos cosas antes de cobrarlo: las <strong>cotizaciones</strong> a la Seguridad Social y la <strong>retención del IRPF</strong>, que es un adelanto de lo que se paga en la declaración de la renta. Después, al comprar, una parte del precio es <strong>IVA</strong>. Aparte, la empresa paga sus propias cotizaciones por ese sueldo, que no aparecen en la nómina como descuento.</p>
