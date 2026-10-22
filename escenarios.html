@@ -7,15 +7,15 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
   <meta name="referrer" content="no-referrer">
   <title>¿Qué pasaría si…? · Cuentas en limpio</title>
-  <meta name="description" content="Tres calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: una subida de los tipos de interés, más inflación y pensiones, y hacia dónde va la deuda.">
+  <meta name="description" content="Siete calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: tipos de interés, inflación y pensiones, la deuda, los sueldos públicos, el número de pensiones, el empleo y el gasto en cada partida.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=7ef1824409">
+  <link rel="stylesheet" href="estilo.css?v=634b227d38">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="comun.js?v=64e5751b5d" defer></script>
-  <script src="escenarios.js?v=4729af80ac" defer></script>
+  <script src="escenarios.js?v=e502ed6a65" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -36,12 +36,16 @@
 
   <main>
     <h1 class="pregunta">¿Qué pasaría si…?</h1>
-    <p class="respuesta">Tres calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas, con las cifras de hoy. Se mueve una cosa y se ve qué cambia.</p>
+    <p class="respuesta">Siete calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas, con las cifras de hoy. Se mueve una cosa y se ve qué cambia.</p>
     <p class="contabilidad">No son previsiones. Cada calculadora cambia una sola cosa y deja quieto todo lo demás, y en la realidad todo se mueve a la vez. Los supuestos de cada una están debajo de su resultado.</p>
     <nav class="indice" aria-label="Calculadoras"><ol>
       <li><a href="#tipos">¿Y si suben los tipos de interés?</a></li>
       <li><a href="#inflacion">¿Y si la inflación es más alta?</a></li>
       <li><a href="#deuda">¿Hacia dónde va la deuda?</a></li>
+      <li><a href="#sueldos">¿Y si suben los sueldos públicos?</a></li>
+      <li><a href="#pensionistas">¿Y si hay más pensiones?</a></li>
+      <li><a href="#empleo">¿Y si hay más o menos empleo?</a></li>
+      <li><a href="#partida">¿Y si se gasta más (o menos) en algo?</a></li>
     </ol></nav>
     <p class="como-leer">Otra calculadora, en su propia página: <a href="sueldo.html">¿Cuánto paga un sueldo? →</a></p>
 
@@ -120,6 +124,96 @@
       </div>
       <p class="fuente-grafico" id="deuda-fuente"></p>
       <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="deuda-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="sueldos" aria-labelledby="sueldos-t">
+      <h2 class="pregunta" id="sueldos-t">¿Y si suben los sueldos públicos?</h2>
+      <form class="mandos" id="sueldos-form" autocomplete="off">
+        <label for="sueldos-p">Subida de los sueldos de todo el personal de las administraciones
+          <output id="sueldos-p-v" for="sueldos-p"></output></label>
+        <input id="sueldos-p" type="range" min="-5" max="10" step="0.5" value="2">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="-5">−5 % (el recorte medio de 2010, Real Decreto-ley 8/2010)</button>
+          <button type="button" data-valor="1">+1 %</button>
+          <button type="button" data-valor="2">Volver al valor inicial</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="sueldos-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption id="sueldos-pie"></figcaption>
+        <div id="sueldos-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>Los sueldos del personal público son algo menos de la cuarta parte de todo el gasto de las administraciones. La mayor parte la pagan las comunidades autónomas, porque son las que tienen a casi todo el personal de sanidad y educación. Una subida pactada para todo el sector público la paga cada administración con su propio presupuesto. Parte de lo que se paga de más vuelve en impuestos y cotizaciones, porque sobre el sueldo más alto se paga más IRPF y se cotiza más.</p>
+      </div>
+      <p class="fuente-grafico" id="sueldos-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="sueldos-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="pensionistas" aria-labelledby="pensionistas-t">
+      <h2 class="pregunta" id="pensionistas-t">¿Y si hay más pensiones?</h2>
+      <form class="mandos" id="pensionistas-form" autocomplete="off">
+        <label for="pensionistas-p">Pensiones contributivas más que hoy
+          <output id="pensionistas-p-v" for="pensionistas-p"></output></label>
+        <input id="pensionistas-p" type="range" min="0" max="3000000" step="50000" value="500000">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo" id="pensionistas-atajos"></div>
+      </form>
+      <p class="respuesta resultado" id="pensionistas-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption>Afiliados a la Seguridad Social por cada pensión contributiva: media de cada año y, en la barra «Cálculo», con las pensiones elegidas</figcaption>
+        <div id="pensionistas-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>Las pensiones contributivas se pagan sobre todo con las cotizaciones de quienes trabajan ahora: no se guardan las de cada persona para su jubilación. Por eso se mira cuántas personas cotizan por cada pensión. Cuando las pensiones crecen más deprisa que el empleo, ese número baja. Lo que falta lo pone el Estado con transferencias a la Seguridad Social, que salen de los impuestos.</p>
+        <p id="pensionistas-ine"></p>
+      </div>
+      <p class="fuente-grafico" id="pensionistas-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="pensionistas-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="empleo" aria-labelledby="empleo-t">
+      <h2 class="pregunta" id="empleo-t">¿Y si hay más o menos empleo?</h2>
+      <form class="mandos" id="empleo-form" autocomplete="off">
+        <label for="empleo-p">Afiliados a la Seguridad Social más (o menos) que la media del último año
+          <output id="empleo-p-v" for="empleo-p"></output></label>
+        <input id="empleo-p" type="range" min="-2000000" max="2000000" step="50000" value="500000">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo" id="empleo-atajos"></div>
+      </form>
+      <p class="respuesta resultado" id="empleo-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption>Cotizaciones de más (o de menos) en un año, en millones de euros, según cuántos afiliados más (o menos) haya</figcaption>
+        <div id="empleo-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>Cada persona afiliada cotiza a la Seguridad Social por su trabajo: una parte la paga la empresa y otra sale de su nómina; los autónomos pagan su propia cuota. Con más empleo entran más cotizaciones, y además suele haber menos gasto en paro y más ingresos por IRPF e IVA. Con menos empleo pasa lo contrario. Esta calculadora solo cuenta las cotizaciones.</p>
+      </div>
+      <p class="fuente-grafico" id="empleo-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="empleo-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="partida" aria-labelledby="partida-t">
+      <h2 class="pregunta" id="partida-t">¿Y si se gasta más (o menos) en algo?</h2>
+      <form class="mandos" id="partida-form" autocomplete="off">
+        <label for="partida-f">En qué <select id="partida-f"></select></label>
+        <label for="partida-p">Cambio del gasto
+          <output id="partida-p-v" for="partida-p"></output></label>
+        <input id="partida-p" type="range" min="-20" max="30" step="1" value="10">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="-10">−10 %</button>
+          <button type="button" data-valor="20">+20 %</button>
+          <button type="button" data-valor="10">Volver al valor inicial</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="partida-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption id="partida-pie"></figcaption>
+        <div id="partida-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>Si se gasta más y no entra más dinero, falta más: sube el déficit, y con él la deuda. Para que no fuera así, habría que gastar menos en otra cosa o recaudar más. Un porcentaje pequeño de una partida grande puede ser mucho dinero, y uno grande de una partida pequeña, poco: por eso se da también en euros por habitante y en % del PIB.</p>
+      </div>
+      <p class="fuente-grafico" id="partida-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="partida-supuestos"></ul></details>
     </section>
 
     <p class="seguir-recorrido">Las cifras de partida y las reglas de estas calculadoras están escritas en <a href="contexto/mecanismos.md">un texto sin formato</a>. Para escenarios oficiales completos: la <a href="https://www.airef.es/">Autoridad Independiente de Responsabilidad Fiscal (AIReF)</a>, la Comisión Europea y el Banco de España.</p>

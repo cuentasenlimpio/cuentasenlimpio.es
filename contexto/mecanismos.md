@@ -41,4 +41,12 @@ Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (
 
 **Peso de cada ingreso.** De cada 100 € de ingresos de 2025: IVA (incluye el IGIC canario), 15,8; Otros impuestos sobre productos (especiales, actos jurídicos, primas de seguros…), 7,2; Otros impuestos sobre la producción (sobre inmuebles de empresas, licencias de actividad, contaminación…), 3,4; Impuestos sobre la renta de los hogares, 22,2; Impuestos sobre los beneficios de las empresas, 7,4; Otros impuestos corrientes (sobre el capital y el patrimonio, premios de juego, licencias…), 0,8; Impuestos sobre el capital (sucesiones, donaciones…), 0,8; Cotizaciones sociales, 30,8; Otros ingresos (ventas, rentas de la propiedad, transferencias…), 11,6. Un cambio del X % en la recaudación de un impuesto mueve los ingresos totales en X × su peso / 100 %, si lo demás no cambia (1 % de ingresos totales ≈ 7.257 millones de €).
 
+**Sueldos públicos.** Remuneración de asalariados de las administraciones en 2025 (D.1, sueldos y cotizaciones del empleador): 181.502 millones de € (23,7 % de su gasto); Estado 32.574, comunidades 113.282, local 32.491, fondos de la Seguridad Social 3.155. Una subida del X % de todos los sueldos cuesta X % de esas cifras al año (mismo personal; sin contar lo que vuelve en IRPF y cotizaciones del trabajador).
+
+**Número de pensiones.** 10.547.417 pensiones contributivas con una media de 1.374,57 € al mes (septiembre de 2026); cada 100.000 pensiones más a esa media cuestan unos 1.924 millones de € al año (14 pagas). Afiliados por pensión: 2,13; con N pensiones más y el mismo empleo, pasa a afiliados por pensión × pensiones ÷ (pensiones + N).
+
+**Empleo y cotizaciones.** Cotizaciones de los fondos de la Seguridad Social en 2025: 212.754 millones de €; afiliados medios: 21.635.194; cotización media por afiliado (cálculo nuestro): 9.834 € al año. Cada 100.000 afiliados más que coticen la media: unos 983 millones de € al año. No incluye el ahorro en paro ni el IRPF o el IVA.
+
+**Gasto en una partida.** Un cambio del X % en el gasto de una función (tabla por funciones en gasto.md) mueve el saldo en X % de ese gasto, en millones de € o en % del PIB, si no cambia nada más.
+
 **Lo que estas reglas no recogen.** Efectos de segunda vuelta (un cambio de impuestos cambia el consumo, el empleo y la recaudación de otros impuestos), reacciones de los mercados y decisiones de política. Para escenarios oficiales completos: AIReF (https://www.airef.es/), Comisión Europea (Debt Sustainability Monitor) y Banco de España.

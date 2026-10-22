@@ -1,4 +1,4 @@
-// Cuentas en limpio: «¿Qué pasaría si…?». Tres calculadoras de mecanismos con las cifras de hoy (las mismas reglas que
+// Cuentas en limpio: «¿Qué pasaría si…?». Siete calculadoras de mecanismos con las cifras de hoy (las mismas reglas que
 // contexto/mecanismos.md). No son previsiones: cada una cambia una cosa y deja quieto todo lo demás.
 "use strict";
 
@@ -17,17 +17,19 @@ function nodo(tipo, attrs, texto, padre) {
   return e;
 }
 
-// Barras verticales sencillas (un solo color), con el valor encima de la primera, la última y la mayor.
-function barras(caja, etiquetas, valores, { formato, resalta = [] } = {}) {
+// Barras verticales sencillas (un solo color), con el valor encima de la primera, la última, las resaltadas (en otro
+// tono) y las de `rotula`. Con valores negativos, el cero se coloca según la proporción de positivos y negativos.
+function barras(caja, etiquetas, valores, { formato, resalta = [], rotula = [] } = {}) {
   const W = 420, H = 190, m = { i: 8, d: 8, a: 22, b: 22 };
-  const max = Math.max(...valores.map(Math.abs), 1);
+  const pos = Math.max(0, ...valores), neg = Math.max(0, ...valores.map((v) => -v));
+  const util = H - m.a - m.b - (neg > 0 ? 16 : 0), total = pos + neg || 1;
   const ancho = (W - m.i - m.d) / valores.length;
-  const cero = valores.some((v) => v < 0) ? m.a + (H - m.a - m.b) / 2 : H - m.b;
-  const alto = (v) => (Math.abs(v) * (valores.some((x) => x < 0) ? (H - m.a - m.b) / 2 : H - m.a - m.b)) / max;
+  const cero = m.a + (util * pos) / total;
+  const alto = (v) => (Math.abs(v) * util) / total;
   const svg = nodo("svg", { viewBox: `0 0 ${W} ${H}`, role: "img" });
   svg.setAttribute("aria-label", etiquetas.map((e, k) => `${e}: ${formato(valores[k])}`).join("; "));
   nodo("line", { x1: m.i, x2: W - m.d, y1: cero, y2: cero, class: "eje-recorrido" }, undefined, svg);
-  const marcar = new Set([0, valores.length - 1, ...resalta]);
+  const marcar = new Set([0, valores.length - 1, ...resalta, ...rotula]);
   valores.forEach((v, k) => {
     const x = m.i + k * ancho + 2, h = alto(v);
     const r = nodo("rect", { x, y: v >= 0 ? cero - h : cero, width: Math.max(1, ancho - 4), height: Math.max(h, 0.5), rx: 2, class: resalta.includes(k) ? "barra-escenario barra-elegida" : "barra-escenario" }, undefined, svg);
@@ -35,7 +37,7 @@ function barras(caja, etiquetas, valores, { formato, resalta = [] } = {}) {
     if (valores.length <= 12 || k % 2 === 0 || k === valores.length - 1)
       nodo("text", { x: x + ancho / 2 - 2, y: H - 6, "text-anchor": "middle", class: "rotulo-recorrido" }, etiquetas[k], svg);
     if (marcar.has(k) && v !== 0)
-      nodo("text", { x: x + ancho / 2 - 2, y: v >= 0 ? cero - h - 6 : cero + h + 14, "text-anchor": "middle", class: "dato-recorrido" }, formato(v), svg);
+      nodo("text", { x: x + ancho / 2 - 2, y: v >= 0 ? cero - h - 6 : cero + h + 13, "text-anchor": "middle", class: "dato-recorrido" }, formato(v), svg);
   });
   caja.textContent = "";
   caja.appendChild(svg);
@@ -91,9 +93,10 @@ function mando(id, mostrar, alCambiar) {
 }
 
 async function arrancarEscenarios() {
-  let a, e, eco, g;
+  let a, e, eco, g, ep, ss;
   try {
-    [a, e, eco, g] = await Promise.all(["aapp", "escala", "economia", "gasto"].map((n) => fetch(`datos/${n}.json`).then((r) => r.json())));
+    [a, e, eco, g, ep, ss] = await Promise.all(["aapp", "escala", "economia", "gasto", "empleo_publico", "seguridad_social"]
+      .map((n) => fetch(`datos/${n}.json`).then((r) => r.json())));
   } catch {
     for (const p of document.querySelectorAll(".resultado")) p.textContent = "No se han podido cargar los datos.";
     return;
@@ -220,6 +223,151 @@ async function arrancarEscenarios() {
     nota: "La línea continua es lo publicado; la discontinua, una aproximación nuestra con los valores elegidos.",
   });
   hoy();
+
+  // Atajos que salen de los datos (se crean antes de enlazar el mando, que les pone el clic)
+  const atajo = (caja, valor, texto) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.dataset.valor = valor; b.textContent = texto;
+    $(caja).appendChild(b);
+  };
+  const miles = (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${numero(Math.abs(v), 0)}`;
+  const pibDe = (a_) => e.pib_meur[e.años.indexOf(a_)], pobDe = (a_) => e.poblacion[e.años.indexOf(a_)];
+
+  // 4. Sueldos públicos
+  const R = ep.remuneracion, añoR = R.años.at(-1), iR = R.años.length - 1;
+  const niveles = [["Estado", "estado"], ["Comunidades", "comunidades"], ["Ayuntamientos", "local"], ["Seg. Social", "seguridad_social"]];
+  const pintarSueldos = () => {
+    const p = +$("sueldos-p").value;
+    const total = (R.total.meur[iR] * p) / 100;
+    const por = niveles.map(([, k]) => (R[k].meur[iR] * p) / 100);
+    const cc = por[1];
+    $("sueldos-frase").textContent = p === 0 ? "Sin cambio de sueldos no hay coste extra. Con el mando se elige un cambio."
+      : `Con los sueldos un ${pct(Math.abs(p), Number.isInteger(p) ? 0 : 1)} ${p > 0 ? "más altos" : "más bajos"}, las administraciones ${p > 0 ? "pagarían" : "se ahorrarían"} ${millonesHablados(Math.abs(total))} al año: `
+        + `${eurosHablados(Math.abs(total * 1e6) / pobDe(añoR))} por habitante y ${pct((100 * Math.abs(total)) / pibDe(añoR), 2)} del PIB. `
+        + `De eso, ${millonesHablados(Math.abs(cc))} ${p > 0 ? "los pagarían" : "se los ahorrarían"} las comunidades autónomas.` + (p > 0 ? comoPartida(total) : "");
+    $("sueldos-pie").textContent = `${p >= 0 ? "Coste extra" : "Ahorro"} de cada año por administración, en millones de euros (sueldos de ${añoR})`;
+    barras($("sueldos-grafico"), niveles.map(([n]) => n), por.map(Math.abs), { formato: (v) => numero(Math.round(v), 0), rotula: [1, 2] });
+    listaSupuestos($("sueldos-supuestos"), [
+      `Sueldos de partida: la remuneración de todo el personal de las administraciones en ${añoR}, ${millones(R.total.meur[iR])} (sueldos y cotizaciones que paga el empleador), el ${pct(R.pct_gasto.at(-1))} de todo su gasto.`,
+      "Sube lo mismo el sueldo de todo el personal, y en la misma proporción las cotizaciones que paga la administración. No cambia el número de personas.",
+      "No se cuenta lo que vuelve en IRPF y en cotizaciones del propio trabajador, ni el efecto en el consumo.",
+      "Cada administración paga a su personal: Estado incluye ministerios y sus organismos; Seguridad Social, sus fondos (sin el personal sanitario, que es de las comunidades).",
+    ]);
+  };
+  mando("sueldos-p", (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${pct(Math.abs(v), Number.isInteger(v) ? 0 : 1)}`, pintarSueldos);
+  lineaFuente($("sueldos-fuente"), {
+    fuentes: F, tablas: [["gov_10a_main", "remuneración de asalariados de cada administración (D.1)"]], tipo: "lectura",
+    nota: "Aproximación nuestra con los supuestos de abajo.",
+  });
+  pintarSueldos();
+
+  // 5. Más pensiones
+  const crecPens = Math.round((pe.numero_anual.at(-1) - pe.numero_anual.at(-2)) / 1000) * 1000;
+  const afPorPens = pe.afiliados_por_pension_meses.at(-1);
+  const mesPens = fecha(pe.meses.at(-1) + "-01").replace(/^1 de /, "");
+  atajo("pensionistas-atajos", crecPens, `+${numero(crecPens, 0)} (lo que crecieron en ${pe.años.at(-1)})`);
+  atajo("pensionistas-atajos", crecPens * 10, `+${numero(crecPens * 10, 0)} (diez años creciendo igual)`);
+  atajo("pensionistas-atajos", 500000, "Volver al valor inicial");
+  const pintarPensionistas = () => {
+    const n = +$("pensionistas-p").value;
+    const coste = (n * media * 14) / 1e6;
+    const ratio = (afPorPens * numPens) / (numPens + n);
+    $("pensionistas-frase").textContent = n === 0 ? `Con las pensiones de hoy, hay ${numero(afPorPens, 2)} afiliados por cada pensión.`
+      : `Con ${numero(n, 0)} pensiones más y la pensión media de hoy (${numero(media, 0)} € al mes), el gasto subiría ${millonesHablados(coste)} al año: `
+        + `${eurosHablados((coste * 1e6) / pob)} por habitante y ${pct((100 * coste) / pib, 2)} del PIB.` + comoPartida(coste)
+        + ` Si el empleo no cambia, habría ${numero(ratio, 2)} afiliados por cada pensión, frente a ${numero(afPorPens, 2)} hoy.`;
+    const añosP = pe.años, hist = pe.afiliados_por_pension_años;
+    barras($("pensionistas-grafico"), [...añosP.map(String), "Cálculo"], [...hist, ratio],
+      { formato: (v) => numero(v, 2), resalta: [hist.length] });
+    listaSupuestos($("pensionistas-supuestos"), [
+      `Pensiones contributivas en vigor: ${numero(numPens, 0)}, con una pensión media de ${numero(media, 2)} € al mes (Seguridad Social, ${mesPens}). Las nuevas cobran esa media, 14 pagas al año.`,
+      `Afiliados por pensión: ${numero(afPorPens, 2)} (${mesPens}), el dato que publica la Seguridad Social. Con más pensiones y el mismo número de afiliados, baja en proporción.`,
+      "Las pensiones nuevas de jubilación suelen ser más altas que la media, porque los sueldos de ahora son más altos que los de hace décadas: con eso el coste sería mayor.",
+      "No cuenta las pensiones no contributivas ni las de los funcionarios del Estado (clases pasivas), ni que dejen de cobrarse otras pensiones.",
+    ]);
+  };
+  mando("pensionistas-p", (v) => `+${numero(v, 0)}`, pintarPensionistas);
+  const dep = eco.dependencia, pr = dep.proyeccion;
+  const iDep = dep.mayores.findLastIndex((v) => v != null);
+  const año50 = pr.años.includes(2050) ? 2050 : pr.años.at(-1);
+  $("pensionistas-ine").textContent = `Por cada 100 personas de 16 a 64 años había ${numero(dep.mayores[iDep], 0)} de 65 o más en ${dep.años[iDep]}. `
+    + `Según la proyección del INE, serían ${numero(pr.mayores[pr.años.indexOf(año50)], 0)} en ${año50}. La proyección cuenta personas, no pensiones: no se puede pasar directamente a esta calculadora.`;
+  lineaFuente($("pensionistas-fuente"), {
+    fuentes: F, tablas: [["ss_pensiones_avance", "pensiones contributivas en vigor y afiliados por pensión"], ["ine_idb53262", "tasa de dependencia de mayores de 64 años"], ["ine_prop7467", "su proyección"]], tipo: "lectura",
+    nota: "La última barra es una aproximación nuestra con los supuestos de abajo; las demás, datos publicados.",
+  });
+  pintarPensionistas();
+
+  // 6. Empleo y cotizaciones
+  const AF = eco.afiliacion.anual, cot = ss.partidas.cotizaciones;
+  const añoE = Math.min(AF.años.at(-1), ss.años.at(-1));
+  const afil = AF.afiliados[AF.años.indexOf(añoE)], cotE = cot.meur[ss.años.indexOf(añoE)];
+  const cotMedia = (cotE * 1e6) / afil;
+  const crecAf = Math.round((afil - AF.afiliados[AF.años.indexOf(añoE - 1)]) / 1000) * 1000;
+  const peorAf = AF.años.slice(1).map((y, k) => [y, AF.afiliados[k + 1] - AF.afiliados[k]]).sort((x, y) => x[1] - y[1])[0];
+  atajo("empleo-atajos", crecAf, `${miles(crecAf)} (lo que creció la afiliación media en ${añoE})`);
+  atajo("empleo-atajos", Math.round(peorAf[1] / 1000) * 1000, `${miles(Math.round(peorAf[1] / 1000) * 1000)} (lo que cayó en ${peorAf[0]})`);
+  atajo("empleo-atajos", 500000, "Volver al valor inicial");
+  const escalaE = [-2000000, -1500000, -1000000, -500000, 0, 500000, 1000000, 1500000, 2000000];
+  const pintarEmpleo = () => {
+    const n = +$("empleo-p").value;
+    const extra = (n * cotMedia) / 1e6;
+    $("empleo-frase").textContent = n === 0 ? `Con el empleo de ${añoE}, la Seguridad Social ingresó ${millonesHablados(cotE)} en cotizaciones.`
+      : `Con ${numero(Math.abs(n), 0)} afiliados ${n > 0 ? "más" : "menos"}, que cotizaran lo mismo que la media (${numero(Math.round(cotMedia), 0)} € al año cada uno), `
+        + `${n > 0 ? "entrarían" : "dejarían de entrar"} ${millonesHablados(Math.abs(extra))} al año en cotizaciones: ${pct((100 * Math.abs(extra)) / cotE, 1)} de lo que se ingresó en ${añoE} `
+        + `y ${pct((100 * Math.abs(extra)) / pibDe(añoE), 2)} del PIB.`;
+    barras($("empleo-grafico"), escalaE.map((x) => `${x > 0 ? "+" : x < 0 ? "−" : ""}${numero(Math.abs(x) / 1e6, 1).replace(/,0$/, "")} M`), escalaE.map((x) => (x * cotMedia) / 1e6),
+      { formato: (v) => `${v < 0 ? "−" : ""}${numero(Math.round(Math.abs(v) / 100) * 100, 0)}`, resalta: [escalaE.reduce((m, x, k) => (Math.abs(x - n) < Math.abs(escalaE[m] - n) ? k : m), 0)] });
+    listaSupuestos($("empleo-supuestos"), [
+      `Cotizaciones de ${añoE}: ${millones(cotE)}, todas las que ingresaron los fondos de la Seguridad Social (también el paro, que cobra el SEPE).`,
+      `Afiliados: ${numero(afil, 0)}, la media de los doce meses de ${añoE}. Cotización media por afiliado: cotizaciones ÷ afiliados, ${numero(Math.round(cotMedia), 0)} € al año.`,
+      "Los afiliados de más cotizan lo mismo que la media. Si son empleos con menos sueldo o a tiempo parcial, cotizan menos; si son autónomos, pagan su propia cuota.",
+      "No se cuenta lo que cambia el gasto en paro (no hay una serie separada en estos datos) ni el IRPF o el IVA de más o de menos.",
+    ]);
+  };
+  mando("empleo-p", (v) => miles(v), pintarEmpleo);
+  lineaFuente($("empleo-fuente"), {
+    fuentes: F, tablas: [["ss_afiliados_medios", "afiliados medios a la Seguridad Social"], ["gov_10a_main", "cotizaciones de los fondos de la Seguridad Social (D.61, sector S1314)"]], tipo: "lectura",
+    nota: "Aproximación nuestra con los supuestos de abajo.",
+  });
+  pintarEmpleo();
+
+  // 7. Más o menos gasto en una partida
+  const iG = g.años.length - 1, iA = a.años.indexOf(añoG);
+  const pibG = pibDe(añoG), pobG = pobDe(añoG), saldoG = s.saldo.pib[iA];
+  const sel = $("partida-f");
+  for (const f of g.funciones) {
+    const o = document.createElement("option");
+    o.value = f.codigo; o.textContent = nombreLlano(f.codigo, f.nombre).replace(/^./, (c) => c.toUpperCase());
+    sel.appendChild(o);
+  }
+  sel.value = "GF07";
+  const pintarPartida = () => {
+    const f = g.funciones.find((x) => x.codigo === sel.value), p = +$("partida-p").value;
+    const base = f.corrientes[iG], extra = (base * p) / 100;
+    const nuevoSaldo = saldoG - (100 * extra) / pibG;
+    const nombre = nombreLlano(f.codigo, f.nombre);
+    $("partida-frase").textContent = p === 0 ? `En ${añoG} se gastaron ${millonesHablados(base)} en ${nombre}. Con el mando se elige un cambio.`
+      : `En ${añoG} se gastaron ${millonesHablados(base)} en ${nombre}. Un ${pct(Math.abs(p), 0)} ${p > 0 ? "más" : "menos"} son ${millonesHablados(Math.abs(extra))} al año: `
+        + `${eurosHablados(Math.abs(extra * 1e6) / pobG)} por habitante y ${pct((100 * Math.abs(extra)) / pibG, 2)} del PIB. `
+        + `Si no cambiara nada más, ${saldoG < 0 ? "el déficit" : "el saldo"} de ${añoG} habría pasado del ${pct(Math.abs(saldoG))} al ${pct(Math.abs(nuevoSaldo))} del PIB`
+        + (Math.sign(nuevoSaldo) !== Math.sign(saldoG) && nuevoSaldo !== 0 ? (nuevoSaldo > 0 ? ", con superávit." : ", con déficit.") : ".");
+    $("partida-pie").textContent = `Saldo de todas las administraciones en ${añoG}, en % del PIB: el publicado y con el cambio (negativo = déficit)`;
+    barras($("partida-grafico"), [`Publicado`, "Con el cambio"], [saldoG, nuevoSaldo], { formato: (v) => `${v < 0 ? "−" : ""}${numero(Math.abs(v), 2)} %`, resalta: [1] });
+    listaSupuestos($("partida-supuestos"), [
+      `Gasto de partida: el de todas las administraciones en ${nombre} en ${añoG} (${millones(base)}), según la clasificación por funciones de Eurostat.`,
+      "Cambia solo esa partida y todo lo demás se queda igual: los ingresos, las otras partidas y el PIB.",
+      "En la realidad, más gasto puede mover la economía y los ingresos, y un cambio grande no se hace de un año para otro.",
+      `Saldo de ${añoG}: ${pct(saldoG)} del PIB (Eurostat).`,
+    ]);
+  };
+  sel.addEventListener("change", pintarPartida);
+  mando("partida-p", (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${pct(Math.abs(v), 0)}`, pintarPartida);
+  lineaFuente($("partida-fuente"), {
+    fuentes: F, tablas: [["gov_10a_exp", "gasto de las administraciones por funciones"], ["gov_10a_main", "saldo"]], tipo: "lectura",
+    nota: "La barra «Con el cambio» es una aproximación nuestra con los supuestos de abajo.",
+  });
+  pintarPartida();
 }
 
 document.addEventListener("DOMContentLoaded", arrancarEscenarios);

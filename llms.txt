@@ -45,7 +45,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [economia](https://cuentasenlimpio.es/contexto/economia.md) (4 KB): Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento.
 - [territorio](https://cuentasenlimpio.es/contexto/territorio.md) (4 KB): Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante.
 - [desigualdad](https://cuentasenlimpio.es/contexto/desigualdad.md) (2 KB): Gini, pobreza, efecto de pensiones y transferencias, riqueza.
-- [mecanismos](https://cuentasenlimpio.es/contexto/mecanismos.md) (5 KB): Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto.
+- [mecanismos](https://cuentasenlimpio.es/contexto/mecanismos.md) (7 KB): Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto, sueldos públicos, número de pensiones, empleo y cotizaciones, gasto en una partida.
 - [preguntas](https://cuentasenlimpio.es/contexto/preguntas.md) (56 KB): Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido.
 - [sueldo](https://cuentasenlimpio.es/contexto/sueldo.md) (9 KB): Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026.
 - [promesas](https://cuentasenlimpio.es/contexto/promesas.md) (2 KB): Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo.

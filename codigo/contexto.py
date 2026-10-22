@@ -348,6 +348,32 @@ def mecanismos(D):
            + "; ".join(f"{p['nombre'] + (' (incluye el IGIC canario)' if p['clave'] == 'iva' else '')}, {n(reparto[p['clave']], 1)}" for p in i["partes"] if reparto.get(p["clave"])) + ". "
            f"Un cambio del X % en la recaudación de un impuesto mueve los ingresos totales en X × su peso / 100 %, si lo demás no cambia "
            f"(1 % de ingresos totales ≈ {n(ing / 100)} millones de €).\n\n")
+    ep = (D.get("empleo_publico") or {}).get("remuneracion")
+    if ep:
+        aR = ep["años"][-1]
+        md += (f"**Sueldos públicos.** Remuneración de asalariados de las administraciones en {aR} (D.1, sueldos y cotizaciones del "
+               f"empleador): {n(ep['total']['meur'][-1])} millones de € ({n(ep['pct_gasto'][-1], 1)} % de su gasto); Estado "
+               f"{n(ep['estado']['meur'][-1])}, comunidades {n(ep['comunidades']['meur'][-1])}, local {n(ep['local']['meur'][-1])}, fondos de la "
+               f"Seguridad Social {n(ep['seguridad_social']['meur'][-1])}. Una subida del X % de todos los sueldos cuesta X % de esas cifras al año "
+               "(mismo personal; sin contar lo que vuelve en IRPF y cotizaciones del trabajador).\n\n")
+    pe = eco.get("pensiones") or {}
+    if pe.get("numero"):
+        md += (f"**Número de pensiones.** {n(pe['numero'][-1])} pensiones contributivas con una media de {n(pe['media'][-1], 2)} € al mes "
+               f"({mes(pe['meses'][-1])}); cada 100.000 pensiones más a esa media cuestan unos {n(100000 * pe['media'][-1] * 14 / 1e6)} millones de € al año "
+               f"(14 pagas). Afiliados por pensión: {n(pe['afiliados_por_pension_meses'][-1], 2)}; con N pensiones más y el mismo empleo, "
+               "pasa a afiliados por pensión × pensiones ÷ (pensiones + N).\n\n")
+    ss = D.get("seguridad_social") or {}
+    af = (eco.get("afiliacion") or {}).get("anual")
+    if ss.get("años") and af:
+        aE = min(ss["años"][-1], af["años"][-1])
+        cotE = ss["partidas"]["cotizaciones"]["meur"][ss["años"].index(aE)]
+        afE = af["afiliados"][af["años"].index(aE)]
+        md += (f"**Empleo y cotizaciones.** Cotizaciones de los fondos de la Seguridad Social en {aE}: {n(cotE)} millones de €; "
+               f"afiliados medios: {n(afE)}; cotización media por afiliado (cálculo nuestro): {n(cotE * 1e6 / afE)} € al año. "
+               f"Cada 100.000 afiliados más que coticen la media: unos {n(cotE * 1e5 / afE)} millones de € al año. No incluye el ahorro en paro "
+               "ni el IRPF o el IVA.\n\n")
+    md += (f"**Gasto en una partida.** Un cambio del X % en el gasto de una función (tabla por funciones en gasto.md) mueve el saldo "
+           "en X % de ese gasto, en millones de € o en % del PIB, si no cambia nada más.\n\n")
     md += ("**Lo que estas reglas no recogen.** Efectos de segunda vuelta (un cambio de impuestos cambia el consumo, el empleo y "
            "la recaudación de otros impuestos), reacciones de los mercados y decisiones de política. Para escenarios oficiales "
            "completos: AIReF (https://www.airef.es/), Comisión Europea (Debt Sustainability Monitor) y Banco de España.\n")
@@ -851,7 +877,7 @@ FICHEROS = [
     ("economia", economia, "Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento."),
     ("territorio", territorio, "Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante."),
     ("desigualdad", desigualdad, "Gini, pobreza, efecto de pensiones y transferencias, riqueza."),
-    ("mecanismos", mecanismos, "Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto."),
+    ("mecanismos", mecanismos, "Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto, sueldos públicos, número de pensiones, empleo y cotizaciones, gasto en una partida."),
     ("preguntas", preguntas, "Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido."),
     ("sueldo", sueldo, "Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026."),
     ("promesas", promesas, "Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo."),

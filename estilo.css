@@ -636,6 +636,7 @@ body.facil main.facil-texto { max-width: 40rem; font-size: 1.2rem; line-height: 
 .mandos output { font-variant-numeric: tabular-nums; font-size: 1.15rem; color: var(--acento); }
 .mandos input[type="range"] { width: 100%; accent-color: var(--c-primario); height: 2rem; }
 .mandos-tres > div { display: grid; gap: 0.2rem; }
+.mandos select { font: inherit; font-weight: 400; color: var(--tinta); background: var(--superficie); border: 1px solid var(--linea-fuerte); border-radius: 6px; padding: 0.4rem 0.5rem; min-height: 44px; width: 100%; max-width: 28rem; }
 .atajos { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 .atajos button { font: inherit; font-size: 0.875rem; padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid var(--linea-fuerte); background: var(--fondo); color: var(--tinta); cursor: pointer; }
 .atajos button:hover { border-color: var(--acento); }
