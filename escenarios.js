@@ -435,6 +435,7 @@ async function arrancarEscenarios() {
         `Base de partida: la base liquidable general sometida a gravamen menos la parte del mínimo personal y familiar que se le resta (media de la parte estatal y la autonómica), ${millones(total)} en total. Los tramos en que el mínimo es mayor que la base (${IR.sin_cuota.map(corto).join(", ")} mil €) cuentan como cero: ahí casi nadie paga cuota.`,
         "Suben por igual todos los tipos de la escala general, la estatal y la autonómica sumadas. No cambian las rentas del ahorro (intereses, dividendos y ganancias), que tienen su propia escala, ni las deducciones.",
         "Se declara lo mismo con los tipos nuevos: no se cuenta que algunas personas trabajen, declaren o se organicen de otra forma, que pesa más en las rentas altas.",
+        "Por qué no hay una opción de subir solo los tramos altos de la escala (por ejemplo, a partir de 60.000 €): la Agencia Tributaria agrupa las declaraciones por rendimientos, no por la base a la que se aplica la escala, y dentro de cada grupo no se sabe qué parte de la base cae en cada tramo de la escala. Repartirla habría que inventarlo, y la cifra que saldría no sería fiable. Subir todos los tramos por igual no necesita ese reparto.",
         `Para comparar: el IRPF devengado de ${IR.año} fue de ${millones(devIR)} (Informe Anual de Recaudación, todo el territorio común).`,
       ]);
     };
