@@ -133,7 +133,9 @@ function lineaFuente(p, { fuentes, tablas, tipo, nota = "", detalleTecnico = "" 
   p.appendChild(etiquetaTipo(tipo));
   if (nota) p.appendChild(document.createTextNode(` ${nota}`));
   // Va detrás del párrafo (un <details> no cabe dentro de un <p>); si la página repinta la fuente, sustituye al anterior.
-  if (p.nextElementSibling?.classList.contains("fuente-detalle")) p.nextElementSibling.remove();
+  // Solo el que pintó esta misma función: detrás puede haber otros plegables de la página («Qué supone este cálculo»)
+  if (p.nextElementSibling?.dataset.deFuente) p.nextElementSibling.remove();
+  detalle.dataset.deFuente = "1";
   p.after(detalle);
   marcarDescuadre(p);
 }
@@ -304,7 +306,7 @@ document.addEventListener("DOMContentLoaded", montarInfo);
 // La primera vez que una palabra de terminos.json aparece en el texto de la página, se convierte en un botón; al
 // pulsarlo, una ficha con su explicación en una frase y el enlace al glosario. No se marcan títulos, enlaces,
 // controles, tablas, citas literales ni fuentes. El contenido que las páginas pintan después también se revisa.
-const NO_MARCAR = "a, button, select, option, label, h1, h2, h3, summary, dt, script, style, svg, canvas, table, blockquote, code, "
+const NO_MARCAR = "a, button, .termino, select, option, label, h1, h2, h3, summary, dt, script, style, svg, canvas, table, blockquote, code, "
   + ".grafico, .selector, .filtros, .fuente-grafico, .termino-ficha, .promesa-etiqueta, .promesa-etiquetas, .ficha-datos, .lista-fuentes, li > strong:first-child, .hecho, .hechos, .lectura-año, .fuente-detalle, .antetitulo, .portada-reparto, .cifras-clave .nombre, [data-sin-terminos]";
 async function montarTerminos() {
   if (/glosario\.html$/.test(location.pathname)) return;
@@ -343,10 +345,10 @@ async function montarTerminos() {
     const def = document.createElement("p");
     def.textContent = t.def;
     ficha.append(titulo, def);
-    if (t.glosario) {
+    {  // toda palabra tiene entrada en el glosario: propia (t.glosario) o generada con su id
       const p = document.createElement("p");
       const a = document.createElement("a");
-      a.href = `glosario.html#${t.glosario}`;
+      a.href = `glosario.html#${t.glosario || t.id}`;
       a.textContent = "Más en el glosario";
       p.appendChild(a);
       ficha.appendChild(p);
@@ -370,8 +372,10 @@ async function montarTerminos() {
 
   function marcar() {
     // Lo que una página vuelve a pintar pierde su marca: cuenta como marcado solo lo que sigue en la página.
+    // Cada palabra se marca una vez por bloque (cada pregunta, cada sección con id), no una vez por página
+    const bloque = (n) => (n.closest?.("article[id], section[id]") || n.parentElement?.closest("article[id], section[id]"))?.id || "";
     marcados.clear();
-    for (const b of main.querySelectorAll("button.termino")) marcados.add(b.dataset.termino);
+    for (const b of main.querySelectorAll(".termino")) marcados.add(`${b.dataset.termino}|${bloque(b)}`);
     const recorrido = document.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
       acceptNode: (n) => (n.nodeValue.trim() && !n.parentElement.closest(NO_MARCAR) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT),
     });
@@ -382,18 +386,22 @@ async function montarTerminos() {
       let m;
       while ((m = patron.exec(nodo.nodeValue))) {
         const t = porForma.get(m[1].toLowerCase());
-        if (marcados.has(t.id)) continue;
-        marcados.add(t.id);
+        const clave = `${t.id}|${bloque(nodo.parentElement)}`;
+        if (marcados.has(clave)) continue;
+        marcados.add(clave);
         const resto = nodo.splitText(m.index);
         nodo = resto.splitText(m[1].length);
-        const b = document.createElement("button");
-        b.type = "button";
+        // Un <span role="button"> y no un <button>: así una palabra larga («Autoridad Independiente…») parte línea como texto
+        const b = document.createElement("span");
+        b.setAttribute("role", "button");
+        b.tabIndex = 0;
         b.className = "termino";
         b.dataset.termino = t.id;
         b.textContent = resto.nodeValue;
         b.setAttribute("aria-expanded", "false");
         b.setAttribute("aria-controls", "termino-ficha");
         b.addEventListener("click", (ev) => { ev.stopPropagation(); abrir(b, t); });
+        b.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); ev.stopPropagation(); abrir(b, t); } });
         resto.replaceWith(b);
         patron.lastIndex = 0;
       }

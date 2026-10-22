@@ -156,12 +156,12 @@ function pintarTodas() {
   const q = t.total.deuda.trimestres;
   const xq = q.map(xTrim);
   dibujarMultiples(document.getElementById("m-deu"),
-    t.ccaa.map((c) => ({ nombre: c.nombre, valores: q.map((x) => c.deuda.pib[c.deuda.trimestres.indexOf(x)] ?? null) })),
+    t.ccaa.map((c) => ({ nombre: nombreCorto(c.nombre), valores: q.map((x) => c.deuda.pib[c.deuda.trimestres.indexOf(x)] ?? null) })),
     xq, xq.length - 1, { formato: (v) => `${numero(v, 1)} %`, unidadEje: "% del PIB de cada comunidad" });
   fuente("m-deu-fuente", [["bde_be1310", "deuda según el Procedimiento de Déficit Excesivo, % del PIB regional"]], "dato");
   const a = t.total.deficit.años;
   dibujarMultiples(document.getElementById("m-def"),
-    t.ccaa.map((c) => ({ nombre: c.nombre, valores: a.map((x) => c.deficit.pib[c.deficit.años.indexOf(x)] ?? null) })),
+    t.ccaa.map((c) => ({ nombre: nombreCorto(c.nombre), valores: a.map((x) => c.deficit.pib[c.deficit.años.indexOf(x)] ?? null) })),
     a, a.length - 1, { formato: (v) => `${numero(v, 2)} %`, unidadEje: "% del PIB de cada comunidad" });
   fuente("m-def-fuente", [[`igae_ccaa_${a.at(-1)}`, "operaciones no financieras por comunidad"]], "dato", "Un fichero de la IGAE por año.");
 }

@@ -9,9 +9,9 @@
   <title>Promesas · Cuentas en limpio</title>
   <meta name="description" content="Cómo seguimos las promesas electorales: el texto literal de cada promesa y los hechos documentados que vinieron después, sin veredicto.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
-  <script src="comun.js?v=9e7e6e4ec2" defer></script>
-  <script src="promesas.js?v=96a430fd06" defer></script>
+  <link rel="stylesheet" href="estilo.css?v=7ef1824409">
+  <script src="comun.js?v=64e5751b5d" defer></script>
+  <script src="promesas.js?v=56a8f1dc78" defer></script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -34,10 +34,10 @@
   </header>
 
   <main>
-    <p class="borrador"><strong>Primera versión.</strong> Ya están las promesas de los 17 documentos de la XV Legislatura, la actual, que empezó en agosto de 2023. Y lo que se hizo después: planes del Gobierno, Consejo de Ministros, votaciones, normas del BOE y datos oficiales.</p>
     <h1 class="pregunta">¿Qué se prometió en 2023?</h1>
     <p class="respuesta" id="respuesta">Las promesas de los programas electorales, el acuerdo de coalición y los acuerdos de investidura de la XV Legislatura, con su cita literal.</p>
-    <p class="contabilidad">Para cada promesa electoral, el texto literal de quien la hizo. Y, al lado, lo que pasó después: si se pactó, si el Gobierno la aprobó, cómo se votó, si llegó al BOE y qué dicen los datos. No decimos si una promesa se cumplió: ponemos la promesa y los hechos, y cada cual saca su conclusión.</p>
+    <p class="contabilidad">Para cada promesa electoral, el texto literal de quien la hizo. Y, al lado, lo que pasó después: si se pactó, si el Gobierno la aprobó, cómo se votó, si llegó al BOE y qué dicen los datos. No decimos si una promesa se cumplió: ponemos la promesa y los hechos, y cada cual saca su conclusión. <a href="#metodo">Cómo lo hacemos →</a></p>
+    <p class="borrador"><strong>Primera versión.</strong> Ya están las promesas de los 17 documentos de la XV Legislatura, la actual, que empezó en agosto de 2023. Y lo que se hizo después: planes del Gobierno, Consejo de Ministros, votaciones, normas del BOE y datos oficiales.</p>
 
     <section id="buscador" aria-labelledby="buscador-titulo">
       <h2 id="buscador-titulo">Las promesas</h2>
@@ -55,7 +55,7 @@
         <label class="filtro filtro-casilla"><input type="checkbox" id="p-repes"> Mostrar también las promesas repetidas dentro de un mismo documento</label>
       </div>
       <p class="ayuda-grafico">«Gobierno» reúne lo que prometieron los partidos que lo formaron (los programas de PSOE y Sumar y su acuerdo de coalición) y lo que el PSOE pactó en los acuerdos de investidura. Dentro de cada bloque, los documentos van por orden alfabético. La etiqueta en negrita es nuestra; lo que vale es la cita literal.</p>
-      <p class="promesas-cuenta" id="promesas-cuenta" aria-live="polite"></p>
+      <p class="promesas-cuenta"><span id="promesas-cuenta" aria-live="polite"></span> <button type="button" class="boton-texto" id="p-quitar" hidden>Quitar filtros</button></p>
       <ol class="promesas" id="promesas-lista"></ol>
       <button type="button" class="mas" id="promesas-mas" hidden>Mostrar más</button>
       <p class="fuente-grafico" id="promesas-fuente"></p>
@@ -71,20 +71,6 @@
       <p class="fuente-grafico" id="recuento-fuente"></p>
     </section>
 
-    <nav class="indice" aria-label="Contenido de esta página">
-      <ol>
-        <li><a href="#que">Qué legislatura y qué documentos</a></li>
-        <li><a href="#documentos">Los documentos, uno por uno</a></li>
-        <li><a href="#promesa">Qué cuenta como promesa</a></li>
-        <li><a href="#clasificacion">Quién clasifica y cómo se comprueba</a></li>
-        <li><a href="#hechos">Qué hechos se muestran</a></li>
-        <li><a href="#relacion">Cómo se relaciona un hecho con una promesa</a></li>
-        <li><a href="#sin-veredicto">Por qué no hay veredicto</a></li>
-        <li><a href="#igualdad">Las mismas reglas para todos</a></li>
-        <li><a href="#limites">Límites</a></li>
-      </ol>
-    </nav>
-
     <div class="entender">
       <p class="rotulo">Para entenderlo</p>
       <h3>Una promesa no es una ley</h3>
@@ -96,6 +82,19 @@
     </div>
 
     <h2 id="metodo">Cómo lo hacemos</h2>
+    <nav class="indice" aria-label="Contenido de esta página">
+      <ul>
+        <li><a href="#que">Qué legislatura y qué documentos</a></li>
+        <li><a href="#documentos">Los documentos, uno por uno</a></li>
+        <li><a href="#promesa">Qué cuenta como promesa</a></li>
+        <li><a href="#clasificacion">Quién clasifica y cómo se comprueba</a></li>
+        <li><a href="#hechos">Qué hechos se muestran</a></li>
+        <li><a href="#relacion">Cómo se relaciona un hecho con una promesa</a></li>
+        <li><a href="#sin-veredicto">Por qué no hay veredicto</a></li>
+        <li><a href="#igualdad">Las mismas reglas para todos</a></li>
+        <li><a href="#limites">Límites</a></li>
+      </ul>
+    </nav>
     <div class="entender">
       <p class="rotulo">En cinco líneas</p>
       <ul>

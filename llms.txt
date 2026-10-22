@@ -49,7 +49,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [preguntas](https://cuentasenlimpio.es/contexto/preguntas.md) (56 KB): Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido.
 - [sueldo](https://cuentasenlimpio.es/contexto/sueldo.md) (9 KB): Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026.
 - [promesas](https://cuentasenlimpio.es/contexto/promesas.md) (2 KB): Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo.
-- [explicaciones](https://cuentasenlimpio.es/contexto/explicaciones.md) (64 KB): Los textos explicativos de cada concepto y gráfico, con sus matices y fuentes.
+- [explicaciones](https://cuentasenlimpio.es/contexto/explicaciones.md) (66 KB): Los textos explicativos de cada concepto y gráfico, con sus matices y fuentes.
 - [glosario](https://cuentasenlimpio.es/contexto/glosario.md) (19 KB): Definiciones llanas de los términos técnicos.
 
 ## Datos descargables (CSV y JSON)

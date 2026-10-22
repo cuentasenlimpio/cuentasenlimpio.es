@@ -9,15 +9,15 @@
   <title>Presupuesto y ejecución · Cuentas en limpio</title>
   <meta name="description" content="El presupuesto del Estado de cada año frente a lo que de verdad se gastó, por políticas de gasto, con la fuente de cada cifra.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
+  <link rel="stylesheet" href="estilo.css?v=7ef1824409">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="lib/echarts-6.0.0/echarts.cuentas.min.js" defer></script>
-  <script src="comun.js?v=9e7e6e4ec2" defer></script>
-  <script src="ec.js?v=bffebede28" defer></script>
-  <script src="presupuesto.js?v=2a690a334f" defer></script>
+  <script src="comun.js?v=64e5751b5d" defer></script>
+  <script src="ec.js?v=22d63d6221" defer></script>
+  <script src="presupuesto.js?v=59c812b456" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -51,9 +51,15 @@
       </ol>
     </div>
 
+    <p class="ultimo-año" id="ultimo-año"></p>
+    <div class="controles">
+      <label>Año <select id="selector-año"></select></label>
+      <span class="vigencia" id="vigencia"></span>
+    </div>
+
     <section class="grafico" aria-labelledby="t-titulo">
       <h2 class="pregunta" id="t-titulo">¿Cuánto se aprobó, se autorizó y se gastó cada año? <button type="button" class="info" data-info="presupuesto">i</button></h2>
-      <p class="grafico-explica">En miles de millones de euros.</p>
+      <p class="grafico-explica">En miles de millones de euros. En cada año, de izquierda a derecha: aprobado, autorizado al final y gastado. Toca una columna para ver ese año en toda la página.</p>
       <div class="lectura-año" id="t-lectura" aria-live="polite"></div>
       <div class="lienzo" id="totales" tabindex="0" role="img" aria-label="Presupuesto aprobado, autorizado y gastado del Estado por año. Usa las flechas para recorrer los años."></div>
       <p class="nota-años">Las marcas junto al año quieren decir:</p>
@@ -64,23 +70,18 @@
         <li data-marca="?"><span>?</span> falta confirmar en el Boletín Oficial del Estado si hubo presupuesto nuevo.</li>
       </ul>
       <p class="fuente-grafico" id="totales-fuente"></p>
-      <div class="entender">
-        <p class="rotulo">Para entenderlo</p>
-        <h3>Qué pasa cuando no se aprueba un presupuesto</h3>
-        <p>Si la ley de presupuestos no está aprobada el 1 de enero, la Constitución prorroga automáticamente la del año anterior hasta que se apruebe una nueva (artículo 134.4). El Estado sigue pagando nóminas, pensiones y deuda, pero con las cifras del año anterior: lo nuevo se tiene que hacer con modificaciones durante el año.</p>
-        <p>La distancia entre lo «aprobado» y lo «autorizado al final» mide cuánto se cambió el presupuesto sobre la marcha, sea prorrogado o no: el gráfico de arriba la enseña año a año.</p>
-        <details>
-          <summary>Un paso más: el presupuesto es un límite, no una obligación</summary>
-          <p>Los créditos de gasto son el máximo que se puede gastar en cada cosa, no lo que hay que gastar. Lo que queda sin gastar a final de año, en general, no pasa al siguiente.</p>
-        </details>
-      </div>
     </section>
-
-    <p class="ultimo-año" id="ultimo-año"></p>
-    <div class="controles">
-      <label>Año <select id="selector-año"></select></label>
-      <span class="vigencia" id="vigencia"></span>
+    <div class="entender">
+      <p class="rotulo">Para entenderlo</p>
+      <h3>Qué pasa cuando no se aprueba un presupuesto</h3>
+      <p>Si la ley de presupuestos no está aprobada el 1 de enero, la Constitución prorroga automáticamente la del año anterior hasta que se apruebe una nueva (artículo 134.4). El Estado sigue pagando nóminas, pensiones y deuda, pero con las cifras del año anterior: lo nuevo se tiene que hacer con modificaciones durante el año.</p>
+      <p>La distancia entre lo «aprobado» y lo «autorizado al final» mide cuánto se cambió el presupuesto sobre la marcha, sea prorrogado o no: el gráfico de arriba la enseña año a año.</p>
+      <details>
+        <summary>Un paso más: el presupuesto es un límite, no una obligación</summary>
+        <p>Los créditos de gasto son el máximo que se puede gastar en cada cosa, no lo que hay que gastar. Lo que queda sin gastar a final de año, en general, no pasa al siguiente.</p>
+      </details>
     </div>
+
 
     <section class="grafico" aria-labelledby="e-titulo">
       <h2 class="pregunta" id="e-titulo">¿Qué parte de lo autorizado se gastó en <span class="año-elegido"></span>?</h2>

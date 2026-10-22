@@ -531,7 +531,7 @@ const EC = (() => {
     const valores = paneles.flatMap((p) => p.valores).filter((v) => v !== null && v !== undefined);
     // Si hay valores negativos (por ejemplo, déficit), el eje baja de cero con el mismo paso.
     const maximo = Math.max(...valores, 0), minimo = Math.min(...valores, 0);
-    const ticks = pasos(Math.max(maximo, -minimo), 2);
+    const ticks = pasos(Math.max(maximo, -minimo), 3);  // tres pasos: la escala se ajusta más a los datos
     const ymax = maximo > 0 ? ticks.at(-1) : 0;
     const ymin = minimo < 0 ? -ticks.at(-1) : 0;
     const clave = paneles.map((p) => p.nombre).join("|");
@@ -551,7 +551,7 @@ const EC = (() => {
           b.className = "info";
           b.dataset.info = p.info;
           b.textContent = "i";
-          nombre.append(" ", b);
+          nombre.append("\u00a0", b);  // el (i) no se queda solo en otra línea
         }
         const valor = document.createElement("b");
         titulo.append(nombre, valor);

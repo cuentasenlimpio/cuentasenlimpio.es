@@ -6,15 +6,15 @@
   <meta name="robots" content="noindex, nofollow">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
   <meta name="referrer" content="no-referrer">
-  <title>Metodología · Cuentas en limpio</title>
+  <title>Cómo trabajamos · Cuentas en limpio</title>
   <meta name="description" content="De dónde sale cada cifra, cómo se trata, qué es dato y qué es lectura, cómo se comprueba y qué decisiones de método tomamos.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
+  <link rel="stylesheet" href="estilo.css?v=7ef1824409">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=9e7e6e4ec2" defer></script>
+  <script src="comun.js?v=64e5751b5d" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -33,7 +33,7 @@
   </header>
 
   <main>
-    <h1>Metodología</h1>
+    <h1>Cómo trabajamos</h1>
     <p class="entradilla">Cada cifra de esta web sale de un fichero oficial descargado tal cual, se calcula con reglas publicadas aquí y se contrasta con una segunda fuente cuando existe. Esta página explica todo el proceso para que cualquiera pueda rehacerlo.</p>
     <div class="entender">
       <p class="rotulo">Si no se quiere entrar en detalles</p>
@@ -46,7 +46,7 @@
       <p>El resto de esta página es el detalle técnico, para quien quiera comprobarlo o rehacerlo.</p>
     </div>
 
-    <nav class="indice" aria-label="Contenido de esta página">
+    <nav class="indice" id="indice" aria-label="Contenido de esta página">
       <ol>
         <li><a href="#fuentes">De dónde salen los datos</a></li>
         <li><a href="#proceso">Cómo se tratan</a></li>
@@ -78,6 +78,7 @@
         </table>
       </div>
       <p class="fuente-grafico">Fuente: avisos legales y condiciones de reutilización de cada institución, enlazados en la tabla y consultados el 19 de octubre de 2026.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="proceso">
@@ -90,6 +91,7 @@
         <li><strong>Trazabilidad.</strong> Junto a cada gráfico se puede descargar el fichero oficial exacto que se usó, y todos los números de la página en CSV.</li>
         <li><strong>Historial público.</strong> La web se publica desde un <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es">repositorio público</a> en el que cada publicación es un cambio con fecha. Ahí se puede ver qué decía la web cualquier día.</li>
       </ol>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="dato-lectura">
@@ -116,6 +118,7 @@
         </table>
       </div>
       <p class="fuente-grafico">Fuente: elaboración propia. Las tablas de Eurostat citadas se enlazan en cada gráfico que las usa.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="decisiones">
@@ -133,6 +136,7 @@
         <li><strong>Avances, solo si se ha comprobado que valen.</strong> Un año sin liquidación del presupuesto se muestra con su ejecución a 31 de diciembre, marcada como avance, porque comprobamos cada día que el avance del último año liquidado coincide con su liquidación. Si deja de coincidir, el aviso salta.</li>
         <li><strong>Sin adjetivos ni colores con carga.</strong> Los títulos son preguntas o hechos medidos, y el déficit no se pinta de rojo.</li>
       </ul>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="comprobaciones">
@@ -144,6 +148,7 @@
         <li><strong>Diferencias explicadas.</strong> Cuando dos cifras no coinciden, buscamos la causa y la contamos. Si no la encontramos, lo decimos y no damos por buena ninguna de las dos. Todos esos casos están en <a href="descuadres.html">Lo que no cuadra</a>, y junto a cada gráfico afectado hay un aviso que lleva a su caso.</li>
       </ul>
       <p>Lo que todavía no tiene segunda fuente se dice en la página donde aparece.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="limites">
@@ -153,11 +158,13 @@
         <li><strong>No valora.</strong> No decimos si un déficit o una deuda son buenos o malos: damos las cifras y su contexto.</li>
         <li><strong>No da veredictos sobre promesas.</strong> En <a href="promesas.html">promesas</a> pone el texto literal de cada una y los hechos documentados que vinieron después; la conclusión es del lector.</li>
       </ul>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="errores">
       <h2>7. Errores y correcciones</h2>
       <p>Todo error corregido queda en el <a href="correcciones.html">registro de correcciones</a>, con la fecha, lo que decía, lo que dice ahora y por qué. Un dato corregido no se borra sin dejar rastro.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
 
     <section id="independencia">
@@ -165,6 +172,7 @@
       <p>Cuentas en limpio es un proyecto personal de Sendoa Sola. No está vinculado a ningún partido ni a ninguna de las instituciones cuyos datos usa, y ninguna de ellas lo patrocina ni lo respalda.</p>
       <p>Todo lo necesario para rehacer los cálculos es público: el método completo en esta página, <a href="https://github.com/cuentasenlimpio/cuentasenlimpio.es/tree/main/codigo">el código que descarga las fuentes, calcula cada cifra y la comprueba</a>, los ficheros oficiales tal como se descargaron y todos los números de cada página en CSV.</p>
       <p>Los gráficos se dibujan con <a href="https://echarts.apache.org/">Apache ECharts</a> 6.0.0, una biblioteca de código abierto (<a href="lib/echarts-6.0.0/LICENSE">licencia Apache 2.0</a>) que se sirve desde esta misma web, en una versión reducida a las piezas que usamos. No carga nada de otros sitios.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
     <section aria-labelledby="fechas">
       <h2 id="fechas">Desde cuándo y hasta cuándo</h2>
@@ -175,11 +183,13 @@
         <tbody><tr><td colspan="4">Cargando las fechas…</td></tr></tbody>
       </table></div>
       <p class="fuente-grafico">Fuente: registro de descargas de esta web (la huella de cada fichero dice si cambió). Los ficheros que llevan la hora dentro y cambian en cada descarga, como los del FMI, no tienen fecha de dato nuevo.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
     <section aria-labelledby="llm-t">
       <h2 id="llm-t">Para modelos de inteligencia artificial</h2>
       <p>Las cifras de estas páginas se dibujan en el navegador, así que un programa que solo descarga el HTML no las ve. Para quien quiera preguntar a un modelo de lenguaje (ChatGPT, Claude, Gemini u otro) usando esta web, hay una zona de contexto con todo escrito, por temas, con año, fuente y enlace: <a href="llms.txt">llms.txt</a> es el índice y <a href="llms-full.txt">llms-full.txt</a>, todo en un fichero. Se genera cada día con los mismos datos que la web.</p>
       <p>Incluye cómo citar: la web («Cuentas en limpio», con enlace a la página) y la fuente oficial de cada dato. Lo que un modelo calcule o estime a partir de aquí es suyo, no de esta web.</p>
+      <p class="volver-indice"><a href="#indice">↑ Índice</a></p>
     </section>
   </main>
 

@@ -275,6 +275,7 @@ function pintarLeyendaBarras() {
   ul.textContent = "";
   for (const comp of COMPONENTES.filter((c) => !c.soloPib || u === "pib")) {
     const li = document.createElement("li");
+    li.className = "en-lectura";  // la lectura del año ya lleva estas claves con su color: en el móvil no se repiten
     const k = document.createElement("span");
     k.className = `clave-barra ${comp.clase}`;
     li.appendChild(k);
@@ -405,7 +406,11 @@ function lecturaUE(pais, media, paises) {
   s.appendChild(b);
   s.appendChild(document.createTextNode(" media de la UE-27"));
   c.appendChild(s);
-  c.appendChild(document.createTextNode(` · ${INDICADORES_UE[estado.indicadorUE]}, en % del PIB`));
+  // El separador lo pone el CSS solo cuando va en la misma línea (en el móvil la lectura va en columna)
+  const unidad = document.createElement("span");
+  unidad.className = "lectura-unidad";
+  unidad.textContent = `${INDICADORES_UE[estado.indicadorUE]}, en % del PIB`;
+  c.appendChild(unidad);
 }
 
 function pintarAcontecimientos() {
@@ -778,6 +783,7 @@ function pintarRecientes(id, clave) {
   const caja = document.getElementById(id);
   const r = estado.datos.recientes;
   caja.textContent = "";
+  document.getElementById(`${id}-franjas`)?.remove();
   if (!r || !estado.capas.previsiones) return;
   let destino = caja;
   const el = (tipo, props = {}, padre = destino) => {
@@ -798,6 +804,13 @@ function pintarRecientes(id, clave) {
   item("clave-area tenue", `Fondo claro: provisional (${sin.length > 1 ? `${sin[0]}–${sin.at(-1)}` : sin[0] ?? ult})`);
   item("clave-area oscura", `Fondo oscuro: ${ult + 1}, en curso (punto hueco: último dato)`);
   item("clave-discontinua", `Discontinuas: previsiones de cada institución; de puntos: objetivo del Gobierno`);
+  // La leyenda de las franjas va encima del gráfico, junto a la otra leyenda (no debajo de la fuente)
+  const lienzo = caja.closest("section")?.querySelector(".lienzo");
+  if (lienzo) {
+    document.getElementById(`${id}-franjas`)?.remove();
+    ley.id = `${id}-franjas`;
+    lienzo.before(ley);
+  }
   // Lo demás (lo provisional, lo del año en curso y las previsiones), plegado: es para quien quiera el detalle.
   const det = el("details", { className: "plegable-controles recientes-detalle" });
   el("summary", { textContent: clave === "saldo" ? "Lo más reciente y lo que prevén las instituciones: el déficit" : "Lo más reciente y lo que prevén las instituciones: la deuda" }, det);

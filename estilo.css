@@ -40,7 +40,7 @@
   --relleno-zoom: rgba(138, 90, 18, 0.12);
   --c-primario: #a8680f;
   --c-intereses: #00879f;
-  --c-activos: #8a6d00;
+  --c-activos: #6d5fd0;
   --c-ajustes: #9a4d7a;
   --c-crecimiento: #5a7d00;
   --ancho: 64rem;
@@ -543,10 +543,10 @@ table.previsiones td:first-child { font-weight: 600; }
 .hechos-ninguno { font-size: 0.875rem; color: var(--tinta-suave); border-top: 1px dashed var(--linea); margin-top: 0.75rem; padding-top: 0.5rem; }
 
 /* Palabras técnicas que se explican al pulsarlas */
-button.termino { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: help;
+.termino { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: help;
   text-decoration: underline dotted var(--entender-tinta); text-decoration-thickness: 1.5px; text-underline-offset: 0.2em; }
-button.termino:hover, button.termino[aria-expanded="true"] { background: var(--entender); }
-button.termino:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.termino:hover, .termino[aria-expanded="true"] { background: var(--entender); }
+.termino:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
 .termino-ficha { position: absolute; z-index: 50; background: var(--entender); color: var(--tinta); border: 1px solid var(--linea-fuerte);
   border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.9375rem; line-height: 1.5; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16); }
 .termino-ficha p { margin: 0 0 0.4rem; }
@@ -659,7 +659,7 @@ footer.sitio .mapa a:hover { text-decoration: underline; }
 
 /* ---- Revisión de uso (22/10/2026) ---- */
 @media (max-width: 700px) { main > .entender-ancho, .entender-ancho { grid-template-columns: minmax(0, 1fr); } }
-button.termino { display: inline; text-align: inherit; white-space: normal; line-height: inherit; }
+.termino { display: inline; text-align: inherit; white-space: normal; line-height: inherit; }
 button.info { width: 1.75rem; height: 1.75rem; font-size: 0.9375rem; }
 .fuente-detalle summary, .plegable summary, details > summary { padding-block: 0.45rem; }
 .fuente-grafico .etiqueta-tipo { font-size: 0.6875rem; padding: 0.2rem 0.4rem; }
@@ -707,7 +707,7 @@ footer.sitio .mapa li { margin: 0 0 0.55rem; }
   --serie-ingresos: #e2b862; --serie-gastos: #f2efe8; --serie-deuda: #f2efe8;
   --hueco: rgba(255, 255, 255, 0.08); --franja: rgba(255, 255, 255, 0.035); --sombra-tenue: rgba(255, 255, 255, 0.05);
   --sombra-fuerte: rgba(255, 255, 255, 0.11); --relleno-zoom: rgba(226, 184, 98, 0.18);
-  --c-primario: #e2b862; --c-intereses: #4fb8c9; --c-activos: #d0b24a; --c-ajustes: #c98bb3; --c-crecimiento: #9cc04a;
+  --c-primario: #e2b862; --c-intereses: #4fb8c9; --c-activos: #7462e8; --c-ajustes: #c98bb3; --c-crecimiento: #9cc04a;
   --p-aprobado: #3f7f8a; --p-definitivo: #5fb3c2; --p-gastado: #a6dde6;
   color-scheme: dark;
 }
@@ -941,3 +941,53 @@ header.sitio { position: relative; }
 .indice.letras { display: flex; flex-wrap: wrap; gap: 0.25rem; }
 .indice.letras a { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; font-weight: 600; text-decoration: none; border-radius: 6px; }
 .indice.letras a:hover, .indice.letras a:focus-visible { background: var(--nota); }
+.barra-facil { min-width: 8px; }
+.aviso-facil { background: var(--nota); border-radius: 8px; padding: 0.75rem 1rem; font-weight: 600; }
+.boton-texto { font: inherit; background: none; border: 0; padding: 0.6rem 0.25rem; min-height: 44px; color: var(--acento); text-decoration: underline; cursor: pointer; }
+.ver-entera { padding: 0.6rem 0; min-height: 44px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.volver-indice { font-size: 0.875rem; margin-top: 1rem; }
+/* Perímetro (Cómo se miente, distinción 2) en el móvil: una columna unida por una línea a la izquierda */
+@media (max-width: 40rem) {
+  .perimetro-niveles { grid-template-columns: 1fr; padding: 0.6rem 0 0 1.1rem; border-left: 1.5px solid var(--linea-fuerte); margin-left: 1rem; }
+  .perimetro-niveles::before, .perimetro-niveles::after { display: none; }
+  .perimetro-niveles li::before, .perimetro-niveles li:nth-child(n+3)::before { display: block; top: 50%; left: -1.1rem; width: 1.1rem; height: 0; border-left: 0; border-top: 1.5px solid var(--linea-fuerte); }
+}
+.para-seguir { margin-bottom: 0.25rem; }
+.para-seguir-lista { margin: 0 0 1rem; padding-left: 1.2rem; }
+.para-seguir-lista li { margin-bottom: 0.5rem; }
+.mas-datos { max-width: 46rem; }
+/* La cifra ocupa lo justo y la barra se mide contra casi todo el ancho de la fila */
+.tabla-sueldo td.cifra { width: 1%; }
+@media (max-width: 30rem) {
+  .rotulo-recorrido { font-size: 13px; }
+  .dato-recorrido { font-size: 15px; }
+}
+.clave-linea.clave-discontinua.clave-discontinua-primaria { border-top-color: var(--c-primario); }
+#sueldo-resultado h2.pregunta { max-width: 46rem; }
+.sueldo-plegados .fuente-detalle summary { font-size: 0.9375rem; padding: 0.5rem 0; }
+#s-comprobado { margin-top: 1.25rem; }
+.fuente-grafico .etiqueta-tipo { font-size: 0.6875rem; }
+/* Índice de «El dinero», por grupos (lo genera herramientas/navegacion.py) */
+.grupo-indice { font: 600 1.5rem/1.2 var(--serif); margin: 2.5rem 0 0; }
+.grupo-indice + .pasos { margin-top: 0.75rem; }
+.pasos h3.pregunta { font: 600 1.25rem/1.25 var(--serif); margin: 0.2rem 0 0.4rem; }
+.pasos .antetitulo { margin: 0; }
+.pasos h3.pregunta a { text-decoration: none; }
+.pasos h3.pregunta a:hover { text-decoration: underline; }
+@media (max-width: 40rem) { #g3-leyenda li.en-lectura { display: none; } }
+.lectura-unidad::before { content: " · "; }
+@media (max-width: 40rem) { .lectura-unidad::before { content: ""; } }
+/* Paneles pequeños: los títulos de una misma fila miden lo mismo, y los gráficos empiezan a la misma altura */
+@supports (grid-template-rows: subgrid) {
+  .multiples { grid-auto-rows: auto auto; }
+  .multiple { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
+  .multiple figcaption { min-height: 0; align-items: end; }
+}
+.nota-multiples { grid-column: 1 / -1; }
+.clave-barra.p-aprobado { background: transparent; box-shadow: inset 0 0 0 2px var(--p-aprobado); }
+/* «Añadir contexto» de Economía: abierto, se queda a mano al bajar por la página (en escritorio, donde ocupa una línea) */
+@media (min-width: 900px) {
+  details.plegable-controles[open]:has(#capas) { position: sticky; top: 0; z-index: 5; background: var(--fondo); padding-block: 0.4rem; box-shadow: 0 1px 0 var(--linea); }
+}
+@media (max-width: 40rem) { .lectura-año:not(:has(> :nth-child(2))) { min-height: 0; } }  /* si solo dice la fecha, sin hueco reservado */

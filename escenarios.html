@@ -9,12 +9,12 @@
   <title>¿Qué pasaría si…? · Cuentas en limpio</title>
   <meta name="description" content="Tres calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: una subida de los tipos de interés, más inflación y pensiones, y hacia dónde va la deuda.">
   <script src="tema.js?v=1988194cbb"></script>
-  <link rel="stylesheet" href="estilo.css?v=197b9d493f">
+  <link rel="stylesheet" href="estilo.css?v=7ef1824409">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
-  <script src="comun.js?v=9e7e6e4ec2" defer></script>
+  <script src="comun.js?v=64e5751b5d" defer></script>
   <script src="escenarios.js?v=4729af80ac" defer></script>
 </head>
 <body>
@@ -55,6 +55,7 @@
           <button type="button" data-valor="-1">−1 punto</button>
           <button type="button" data-valor="1">+1 punto</button>
           <button type="button" data-valor="3">+3 puntos (lo que subió el bono a 10 años de 2021 a 2023)</button>
+          <button type="button" data-valor="1">Volver al valor inicial</button>
         </div>
       </form>
       <p class="respuesta resultado" id="tipos-frase" aria-live="polite"></p>
@@ -65,8 +66,8 @@
       <div class="entender"><p class="rotulo">Para entenderlo</p>
         <p>La deuda no se pide toda de golpe: es como muchos préstamos que vencen en fechas distintas. Cada año vence una parte y se vuelve a pedir prestada al tipo de interés de ese momento. Por eso una subida de tipos no se nota entera el primer año: se va notando a medida que se renueva la deuda, hasta que toda se ha pedido al tipo nuevo.</p>
       </div>
-      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="tipos-supuestos"></ul></details>
       <p class="fuente-grafico" id="tipos-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="tipos-supuestos"></ul></details>
     </section>
 
     <section class="escenario" id="inflacion" aria-labelledby="inflacion-t">
@@ -78,6 +79,7 @@
         <div class="atajos" role="group" aria-label="Valores de ejemplo">
           <button type="button" data-valor="2">2 % (el objetivo del Banco Central Europeo)</button>
           <button type="button" data-valor="8.5">8,5 % (lo que subieron las pensiones en 2023)</button>
+          <button type="button" data-valor="3">Volver al valor inicial</button>
         </div>
       </form>
       <p class="respuesta resultado" id="inflacion-frase" aria-live="polite"></p>
@@ -88,8 +90,8 @@
       <div class="entender"><p class="rotulo">Para entenderlo</p>
         <p>Desde 2022, las pensiones contributivas suben cada enero lo mismo que subieron los precios de media entre diciembre y noviembre (Ley 21/2021). Así, la pensión compra lo mismo que antes. La subida se paga cada mes y en las pagas extra, todos los años siguientes. La inflación también sube algunos ingresos, porque las cosas cuestan más y los sueldos suelen subir, pero cuánto depende de muchas cosas y aquí no se calcula.</p>
       </div>
-      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="inflacion-supuestos"></ul></details>
       <p class="fuente-grafico" id="inflacion-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="inflacion-supuestos"></ul></details>
     </section>
 
     <section class="escenario" id="deuda" aria-labelledby="deuda-t">
@@ -110,14 +112,14 @@
       </form>
       <p class="respuesta resultado" id="deuda-frase" aria-live="polite"></p>
       <figure class="figura-escenario">
-        <figcaption>Deuda de las administraciones en % del PIB: lo publicado y lo que saldría con estos valores</figcaption>
+        <figcaption>Deuda de las administraciones en % del PIB: lo publicado y lo que saldría con estos valores <span class="leyenda-linea"><span class="clave-linea clave-primaria"></span> publicado <span class="clave-linea clave-discontinua clave-discontinua-primaria"></span> con estos valores</span></figcaption>
         <div id="deuda-grafico"></div>
       </figure>
       <div class="entender"><p class="rotulo">Para entenderlo</p>
         <p>La deuda se mide frente al tamaño de la economía (el PIB). Cada año cambia por dos cosas: lo que falta o sobra sin contar intereses (el saldo primario) y la carrera entre el interés de la deuda y el crecimiento de la economía. Si la economía crece más deprisa que el interés, la deuda pesa cada vez menos aunque falte un poco de dinero; si crece más despacio, pesa cada vez más aunque sobre un poco.</p>
       </div>
-      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="deuda-supuestos"></ul></details>
       <p class="fuente-grafico" id="deuda-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="deuda-supuestos"></ul></details>
     </section>
 
     <p class="seguir-recorrido">Las cifras de partida y las reglas de estas calculadoras están escritas en <a href="contexto/mecanismos.md">un texto sin formato</a>. Para escenarios oficiales completos: la <a href="https://www.airef.es/">Autoridad Independiente de Responsabilidad Fiscal (AIReF)</a>, la Comisión Europea y el Banco de España.</p>

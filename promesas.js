@@ -355,7 +355,7 @@ async function arrancarPromesas() {
   }
   for (const p of datos.promesas) p.buscable = plano(`${p.e} ${p.c} ${p.x}`);
   const distintas = datos.promesas.filter((p) => !p.r).length;
-  resumen.textContent = `${numero(distintas, 0)} promesas distintas en ${datos.documentos.length} documentos de la XV Legislatura, cada una con su cita literal y su página.`;
+  resumen.hidden = true;  // la respuesta de arriba ya lo dice
 
   const sel = document.getElementById("p-doc");
   for (const [bloque, nombre] of [[true, "Gobierno"], [false, "Demás partidos"]]) {
@@ -389,7 +389,12 @@ async function arrancarPromesas() {
       const corta = p.c.slice(0, LARGA).replace(/\s+\S*$/, "");
       cita.textContent = `«${corta}…»`;
       const b = nuevo("button", { type: "button", className: "ver-entera", textContent: "Ver la frase entera" }, li);
-      b.addEventListener("click", () => { cita.textContent = `«${p.c}»`; b.remove(); });
+      b.addEventListener("click", () => {
+        const abierta = b.textContent === "Ver menos";
+        cita.textContent = abierta ? `«${corta}…»` : `«${p.c}»`;
+        b.textContent = abierta ? "Ver la frase entera" : "Ver menos";
+        b.setAttribute("aria-expanded", String(!abierta));
+      });
     } else cita.textContent = `«${p.c}»`;
     if (p.x) nuevo("p", { className: "promesa-contexto", textContent: `Forma parte de una lista; en el documento, la frase que la introduce dice: «${p.x}»` }, li);
     const meta = nuevo("p", { className: "promesa-meta" }, li);
@@ -433,7 +438,7 @@ async function arrancarPromesas() {
   }
 
   // `añadir`: «Mostrar más» solo añade las tarjetas nuevas (no rehace las que ya se ven, ni cierra sus citas abiertas)
-  function pintar(añadir = false) {
+  let pintar = function (añadir = false) {
     const palabras = plano(estado.texto).split(/\s+/).filter(Boolean);
     const hits = datos.promesas.filter((p) => (estado.repes || !p.r)
       && (!estado.doc || p.d === estado.doc)
@@ -452,7 +457,7 @@ async function arrancarPromesas() {
     estado.mostradas = fin;
     cuenta.textContent = hits.length ? `${numero(hits.length, 0)} promesas${hits.length > fin ? ` · se muestran las ${numero(fin, 0)} primeras` : ""}` : "Ninguna promesa coincide con la búsqueda.";
     mas.hidden = hits.length <= fin;
-  }
+  };
 
   let espera = null;
   document.getElementById("p-texto").addEventListener("input", (ev) => {
@@ -476,6 +481,34 @@ async function arrancarPromesas() {
   else selDato.closest("label").hidden = true;
   document.getElementById("p-repes").addEventListener("change", (ev) => { estado.repes = ev.target.checked; estado.vistas = POR_PAGINA; pintar(); });
   mas.addEventListener("click", () => { estado.vistas = estado.mostradas + POR_PAGINA; pintar(true); });
+
+  // Los filtros van en la dirección (?q=vivienda&doc=…), para poder recargar o compartir una búsqueda
+  const CLAVES = { q: "texto", quien: "quien", doc: "doc", paso: "paso", meta: "dato" };
+  const quitar = document.getElementById("p-quitar");
+  const reflejar = () => {
+    const u = new URLSearchParams();
+    for (const [k, campo] of Object.entries(CLAVES)) if (estado[campo]) u.set(k, estado[campo]);
+    if (estado.repes) u.set("repes", "1");
+    quitar.hidden = ![...u.keys()].length;
+    try { history.replaceState(null, "", `${location.pathname}${u.toString() ? `?${u}` : ""}${location.hash}`); } catch { /* sin historial */ }
+  };
+  const pintarBase = pintar;
+  pintar = (añadir) => { pintarBase(añadir); if (!añadir) reflejar(); };
+  const leer = new URLSearchParams(location.search);
+  for (const [k, campo] of Object.entries(CLAVES)) if (leer.get(k)) estado[campo] = leer.get(k);
+  estado.repes = leer.get("repes") === "1";
+  document.getElementById("p-texto").value = estado.texto;
+  sel.value = estado.doc; selPaso.value = estado.paso; selDato.value = estado.dato;
+  document.getElementById("p-repes").checked = estado.repes;
+  for (const o of document.querySelectorAll("[data-quien]")) o.setAttribute("aria-pressed", String(o.dataset.quien === estado.quien));
+  quitar.addEventListener("click", () => {
+    Object.assign(estado, { texto: "", quien: "", doc: "", paso: "", dato: "", repes: false, vistas: POR_PAGINA });
+    document.getElementById("p-texto").value = ""; sel.value = ""; selPaso.value = ""; selDato.value = "";
+    document.getElementById("p-repes").checked = false;
+    for (const o of document.querySelectorAll("[data-quien]")) o.setAttribute("aria-pressed", String(o.dataset.quien === ""));
+    pintar();
+    document.getElementById("p-texto").focus();
+  });
   pintar();
 
   const f = document.getElementById("promesas-fuente");

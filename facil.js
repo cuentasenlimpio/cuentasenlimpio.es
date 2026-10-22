@@ -88,7 +88,15 @@ async function arrancarFacil() {
   try {
     [a, e, g, ing] = await Promise.all(["aapp", "escala", "gasto", "ingresos"].map((n) => fetch(`datos/${n}.json`).then((r) => r.json())));
   } catch {
-    for (const h of huecos) h.textContent = "(no se ha podido cargar el dato)";
+    // Un solo aviso arriba, y fuera los párrafos que solo eran un hueco (no seis avisos de error seguidos)
+    const aviso = document.createElement("p");
+    aviso.className = "aviso-facil";
+    aviso.textContent = "Ahora no se pueden ver los números. Prueba más tarde.";
+    document.querySelector("main h1")?.after(aviso);
+    for (const h of huecos) {
+      const p = h.closest("p");
+      if (p && p.textContent.trim() === h.textContent.trim()) p.remove(); else h.textContent = "—";
+    }
     return;
   }
   const i = a.años.length - 1, año = a.años[i];

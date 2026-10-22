@@ -38,13 +38,17 @@ const fuenteAño = (d, i) => (d.avance[i] ? [`ejec_dic_${d.años[i]}`, `ejecuci�
   : [`liq_estado_${d.años[i]}`, `liquidación del presupuesto del Estado de ${d.años[i]}`]);
 
 // Columnas agrupadas: tres por año, desde cero. Cada año ocupa su banda, centrada en el año; el elegido se resalta y
-// se lee arriba. Al pasar el ratón o el dedo se elige el año.
+// se lee arriba. Se elige el año tocando una columna, con las flechas o con el selector.
 function dibujarTotales(contenedor, d, sel, alCambiar) {
   const estrecho = contenedor.clientWidth < 520;
   const alto = estrecho ? 260 : 320;
   if (!contenedor.cuentasGrafico) {
     contenedor.cuentasGrafico = EC.crear(contenedor, alto);
-    EC.alPasar(contenedor.cuentasGrafico, (x) => {
+    // El año de toda la página cambia al tocar o hacer clic en una columna, no al pasar por encima: en el móvil, al
+    // desplazarse con el dedo sobre el gráfico se cambiaba sin querer
+    const g0 = contenedor.cuentasGrafico;
+    g0.getZr().on("click", (e) => {
+      const [x] = g0.convertFromPixel({ gridIndex: 0 }, [e.offsetX, e.offsetY]);
       const i = Math.max(0, Math.min(d.años.length - 1, Math.round(x) - d.años[0]));
       if (i === sel.indice) return;
       sel.indice = i;
@@ -92,7 +96,7 @@ function dibujarTotales(contenedor, d, sel, alCambiar) {
           const v = d.totales[i][s.clave] / 1000;
           const [, y] = api.coord([0, v]);
           const [, y0] = api.coord([0, 0]);
-          return { type: "rect", shape: { x: x0 + k * (grosor + 2), y, width: grosor, height: y0 - y }, style: { fill: colores[k] } };
+          return { type: "rect", shape: { x: x0 + k * (grosor + 2), y, width: grosor, height: y0 - y }, style: k === 0 ? { fill: EC.css("--superficie"), stroke: colores[0], lineWidth: 2 } : { fill: colores[k] } };  // «aprobado», solo contorno: se distingue por algo más que el tono
         }),
       };
     },
@@ -198,7 +202,9 @@ function pintarRespuesta(d) {
   const b = document.createElement("strong");
   b.textContent = `${numero(Math.round((100 * t.obligaciones) / t.definitivos), 0)} de cada 100 €`;
   const prorroga = d.vigencia.filter((v) => v.tipo === "prorrogado" || v.tipo === "mitad").length;
-  p.append(b, ` que tenía autorizados al final del año. En ${numero(prorroga, 0)} de los ${numero(d.años.length, 0)} años desde ${d.años[0]}, el presupuesto estuvo prorrogado todo el año o parte de él.`);
+  const ult = d.años.length - 1;
+  const avance = d.avance[ult] ? ` (${d.años[ult]} todavía es un avance: ${numero(Math.round((100 * d.totales[ult].obligaciones) / d.totales[ult].definitivos), 0)} de cada 100)` : "";
+  p.append(b, ` que tenía autorizados al final del año${avance}. En ${numero(prorroga, 0)} de los ${numero(d.años.length, 0)} años desde ${d.años[0]}, el presupuesto estuvo prorrogado todo el año o parte de él.`);
   // A escala de persona: lo gastado por el Estado (millones de euros) entre la población media del año.
   porHabitante({ millones: t.obligaciones, año: d.años[k] }).then((h) => {
     if (!h) return;

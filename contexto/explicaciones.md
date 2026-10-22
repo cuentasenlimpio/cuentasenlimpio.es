@@ -487,3 +487,35 @@ Los activos son los que trabajan más los que buscan trabajo. La tasa de activid
 Por eso la tasa de empleo parece baja: en la población de 16 años o más entran también los jubilados y los estudiantes.
 
 Fuentes: Seguridad Social, informe sobre cómo se hace la estadística de afiliación (Informe Metodológico Estandarizado, 2026) (https://www.seg-social.es/wps/portal/wss/internet/EstadisticasPresupuestosEstudios/Estadisticas/EST8/EST293); INE, resumen de cómo se hace la EPA (https://www.ine.es/inebaseDYN/epa30308/docs/resumetepa.pdf); SEPE, introducción a la estadística de empleo (septiembre de 2026) (https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_estadisticos/empleo/datos/2026/Septiembre_2026/Intro.pdf)
+
+## Por qué prestar no es gastar (`activos_financieros`)
+
+Cuando una administración presta dinero o compra acciones, en contabilidad nacional no gasta: cambia un dinero que tenía por un préstamo que le deben o por unas acciones. Por eso no sube el déficit.
+
+Pero ese dinero hay que tenerlo. Si no sobra, se pide prestado, y la deuda sube. Por eso la deuda puede crecer más de lo que dice el déficit.
+
+Si después se da por perdido el préstamo, o se aporta dinero a una empresa que no lo va a devolver, entonces sí cuenta como gasto, el año en que se reconoce.
+
+## Qué son los euros sin inflación (`inflacion`)
+
+Un euro de 1995 compraba más cosas que un euro de hoy. Para comparar años, la web puede pasar los euros de cada año a euros del último año, con el deflactor del PIB: el índice de precios de todo lo que produce la economía.
+
+No es el IPC. El IPC mide los precios de lo que compran los hogares; el deflactor, los de todo lo que se produce. Suelen moverse parecido, pero no igual.
+
+Quitar la inflación no quita el crecimiento: una economía más grande gasta más euros aunque no cambie nada. Para ver el peso de un gasto, el porcentaje del PIB sigue siendo la mejor medida.
+
+## Por qué coincidir no es causar (`causa`)
+
+El dato de un año depende de decisiones tomadas años antes: una ley de pensiones, la deuda emitida hace una década a un tipo de interés fijo, una reforma fiscal que tarda en notarse.
+
+También depende de otras administraciones, como las comunidades autónomas y los ayuntamientos, y de la economía mundial: una crisis, el precio de la energía o los tipos del Banco Central Europeo.
+
+Por eso esta web no atribuye resultados a ningún Gobierno. Las fechas de los Gobiernos se pueden añadir a los gráficos para situarse en el tiempo, no para repartir méritos ni culpas.
+
+## Por qué tantas cifras van en porcentaje del PIB (`pib`)
+
+El PIB es el valor de todo lo que produce la economía en un año. Dar una cifra en porcentaje del PIB dice qué parte de ese total representa.
+
+Sirve para comparar años lejanos y países distintos: en 1995 la economía española era mucho más pequeña que hoy, y Alemania es mucho más grande que Portugal.
+
+Tiene una trampa: el porcentaje baja si el PIB crece, aunque la cifra en euros no cambie, y sube si el PIB cae. En 2020 casi todos los gastos subieron en porcentaje porque el PIB se hundió. Por eso conviene mirar también los euros.

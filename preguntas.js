@@ -14,14 +14,20 @@ async function arrancarPreguntas() {
     return e;
   };
   const enlace = (padre, href, texto) => el("a", { href, textContent: texto }, padre);
-  for (const q of d.preguntas) {
+  d.preguntas.forEach((q, n) => {
     const li = el("li", {}, indice);
     enlace(li, `#${q.id}`, q.pregunta);
     const art = el("article", { className: "pregunta-faq", id: q.id }, lista);
-    el("h2", { className: "pregunta", textContent: q.pregunta }, art);
+    el("h2", { className: "pregunta", textContent: `${n + 1}. ${q.pregunta}` }, art);
     el("p", { className: "respuesta", textContent: q.respuesta }, art);
     el("h3", { textContent: "Lo que dicen los datos" }, art);
-    for (const p of q.datos) el("p", { textContent: p }, art);
+    // Los dos primeros párrafos a la vista; el resto, plegado (son párrafos con muchas cifras)
+    q.datos.slice(0, 2).forEach((p) => el("p", { textContent: p }, art));
+    if (q.datos.length > 2) {
+      const mas = el("details", { className: "plegable mas-datos" }, art);
+      el("summary", { textContent: `Más datos (${q.datos.length - 2})` }, mas);
+      q.datos.slice(2).forEach((p) => el("p", { textContent: p }, mas));
+    }
     if (q.no_dicen?.length) {
       const ojo = el("div", { className: "ojo" }, art);
       el("strong", { textContent: "Lo que los datos no dicen" }, ojo);
@@ -42,9 +48,9 @@ async function arrancarPreguntas() {
       }
     }
     if (q.para_seguir?.length) {
-      const p = el("p", { className: "para-seguir" }, art);
-      p.append("Para verlo en la web: ");
-      q.para_seguir.forEach((s, k) => { if (k) p.append(" · "); enlace(p, s.url, s.texto); });
+      el("p", { className: "para-seguir", textContent: "Para verlo en la web:" }, art);
+      const ul = el("ul", { className: "para-seguir-lista" }, art);
+      for (const x of q.para_seguir) enlace(el("li", {}, ul), x.url, x.texto);
     }
     const det = el("details", { className: "fuente-detalle" }, art);
     el("summary", { textContent: `Fuentes (${q.fuentes.length})` }, det);
@@ -53,7 +59,7 @@ async function arrancarPreguntas() {
     if (q.comprobado) el("p", { className: "comprobado", textContent: `Comprobado el ${q.comprobado}.` }, art);
     const volver = el("p", { className: "volver" }, art);
     enlace(volver, "#preguntas-indice", "↑ Volver a todas las preguntas");
-  }
+  });
   if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
 }
 document.addEventListener("DOMContentLoaded", arrancarPreguntas);

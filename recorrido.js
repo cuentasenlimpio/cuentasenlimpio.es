@@ -11,7 +11,7 @@ function filasCien(caja, filas, { decimales = 0, maximo } = {}) {
   const tabla = document.createElement("table");
   tabla.className = "tabla-sueldo";
   const max = maximo ?? Math.max(...filas.map((f) => f.v));
-  for (const f of filas) {
+  filas.forEach((f, k) => {
     const tr = tabla.insertRow();
     const a = tr.insertCell();
     a.textContent = f.nombre.charAt(0).toUpperCase() + f.nombre.slice(1);
@@ -21,8 +21,9 @@ function filasCien(caja, filas, { decimales = 0, maximo } = {}) {
     a.appendChild(b);
     const c = tr.insertCell();
     c.className = "cifra";
-    c.textContent = f.cifra ?? `${numero(f.v, decimales)} €`;
-  }
+    // La primera cifra dice qué es: «31 € de cada 100»
+    c.textContent = f.cifra ?? `${numero(f.v, decimales)} €${k === 0 ? " de cada 100" : ""}`;
+  });
   caja.appendChild(tabla);
 }
 
@@ -46,7 +47,8 @@ function lineaDeuda(caja, años, valores, referencia) {
     return e;
   };
   el("line", { x1: m.i, x2: W - m.d, y1: y(referencia), y2: y(referencia), class: "ref-recorrido" });
-  el("text", { x: W - m.d, y: y(referencia) + 15, "text-anchor": "end", class: "rotulo-recorrido" }, `${referencia} %: referencia de las reglas europeas`);
+  // Encima de la línea y a la derecha, donde la deuda va muy por encima: no se pisa con la serie
+  el("text", { x: W - m.d, y: y(referencia) - 6, "text-anchor": "end", class: "rotulo-recorrido" }, `${referencia} %: referencia europea`);
   el("line", { x1: m.i, x2: W - m.d, y1: H - m.b, y2: H - m.b, class: "eje-recorrido" });
   el("polyline", { points: valores.map((v, k) => `${x(k)},${y(v)}`).join(" "), class: "linea-recorrido" });
   for (const k of [k0, kmin, kn]) {

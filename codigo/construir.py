@@ -10,6 +10,7 @@ Distingue siempre entre DATO (tal cual lo publica la fuente) y LECTURA (un cálc
 
 Uso:  python3 datos/construir.py
 """
+import collections
 import csv
 import datetime as dt
 import gzip
@@ -3629,6 +3630,26 @@ def construir_promesas(documentos):
         for p in r["promesas"]:
             filas.append({"d": d["id"], "id": p["id"], "p": p["pagina"], "e": p["etiqueta"], "v": p["verbo"], "c": p["cita"],
                           "x": p["contexto"], "n": p["nota"], "r": p["repite"]})
+    # Palabras partidas por un espacio al extraer el texto del PDF («má s», «pla zo»): se unen solo si juntas forman una
+    # palabra que sale al menos tres veces en las citas y uno de los dos trozos casi no sale suelto. La extracción no cambia.
+    vocab = collections.Counter(w.lower() for x in filas for w in re.findall(r"[a-záéíóúüñàèòïç·]+", x["c"] + " " + (x["x"] or ""), re.I))
+    unidas = 0
+
+    def unir(texto):
+        nonlocal unidas
+        if not texto:
+            return texto
+        def cambio(m):
+            nonlocal unidas
+            a, b = m.group(1), m.group(2)
+            if vocab[(a + b).lower()] >= 3 and min(vocab[a.lower()], vocab[b.lower()]) <= 1:
+                unidas += 1
+                return a + b
+            return m.group(0)
+        return re.sub(r"\b([a-záéíóúüñàèòïç]{1,6}) ([a-záéíóúüñàèòïç]{1,8})\b", cambio, texto, flags=re.I)
+    for x in filas:
+        x["c"], x["x"] = unir(x["c"]), unir(x["x"])
+    print(f"Promesas: {unidas} palabras partidas por la extracción, unidas")
     fiab = json.loads((carpeta / "fiabilidad.json").read_text())
     salida = {"fiabilidad": fiab,
               "clases": json.loads((carpeta / ("bildu_resultado.json")).read_text())["clases"], "documentos": docs, "promesas": filas}

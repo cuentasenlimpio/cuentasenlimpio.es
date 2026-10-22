@@ -114,6 +114,8 @@ function pintarTipo(g, aapp, u) {
   const b = document.createElement("strong");
   b.textContent = `${numero(de100.inversion[n], 1)} de cada 100 €`;
   resp.append(b, ` de gasto público fueron inversión: obras, edificios, equipos y programas. En ${primero} eran ${numero(de100.inversion[0], 1)}.`);
+  // Este bloque va siempre al último año con datos, que puede ser uno más que el reparto por funciones de arriba
+  if (ultimo !== g.años.at(-1)) resp.append(` Este bloque llega a ${ultimo}, un año más que el reparto por funciones, y no cambia con el selector de año.`);
 
   // Línea de la inversión, con el primer año, el máximo, el mínimo y el último rotulados.
   const esc = ESCALA[u], fmt = FORMATO[u];
@@ -232,6 +234,13 @@ async function arrancar() {
   pintarRespuesta(g, aapp);
   montarInfo();
   pintarTipo(g, aapp, sel.unidad);
+  // «Ver en euros sin inflación» desde el recuadro «Ojo con esto»: pulsa el selector de unidad de arriba y vuelve al gráfico
+  for (const b of document.querySelectorAll("[data-ir-unidad]")) {
+    b.addEventListener("click", () => {
+      document.querySelector(`.controles [data-unidad="${b.dataset.irUnidad}"], [data-unidad="${b.dataset.irUnidad}"]`)?.click();
+      document.getElementById("inversion")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  }
   EC.capas(document.getElementById("capas"), capas, () => pintarTipo(g, aapp, sel.unidad));
   pintarComprobaciones(document.getElementById("comprobaciones"), g.comprobaciones);
   const f = aapp.fuentes.find((x) => x.tabla === "gov_10a_exp");
