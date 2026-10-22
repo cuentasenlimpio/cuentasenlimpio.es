@@ -2117,6 +2117,23 @@ def _iart_cuadro(ruta):
     return sorted(cols.values()), provisionales, salida
 
 
+def _aeat_jrubik(ruta):
+    """Tabla de la Estadística de los declarantes del IRPF (página HTML «jrubik»): (ejercicio, [(tramo, liquidaciones,
+    liquidaciones con la partida, importe en euros)], fila Total)."""
+    import html as html_
+    t = ruta.read_text(encoding="utf-8", errors="replace")
+    m = re.search(r"Ejercicio\s+(\d{4})", re.sub(r"<[^>]+>", " ", t))
+    filas = []
+    for th, tds in re.findall(r"<tr><th[^>]*>(.*?)</th>(.*?)</tr>", t, re.S):
+        celdas = [html_.unescape(re.sub(r"<[^>]+>", "", x)).strip() for x in re.findall(r"<td[^>]*>(.*?)</td>", tds, re.S)]
+        if len(celdas) < 5:
+            continue
+        num = lambda s: float(s.replace(".", "").replace(",", ".")) if s not in ("", "-") else 0.0
+        filas.append((html_.unescape(re.sub(r"<[^>]+>", "", th)).strip(), num(celdas[0]), num(celdas[2]), num(celdas[4])))
+    total = next((f for f in filas if f[0] == "Total"), None)
+    return (int(m.group(1)) if m else None), [f for f in filas if f[0] != "Total"], total
+
+
 def construir_recaudacion(descargas):
     """¿Sube la recaudación por la economía o por las normas? Informe Anual de Recaudación Tributaria de la Agencia
     Tributaria: ingresos tributarios totales (cuadro 1.6), bases imponibles y tipos efectivos (1.3) e impacto de los
@@ -2215,6 +2232,50 @@ def construir_recaudacion(descargas):
         "tablas": {"total": "aeat_iart_1_6", "normativo": "aeat_iart_1_5", "bases": "aeat_iart_1_3"},
         "comprobaciones": comprobaciones,
     }
+    # Calculadora «¿Y si sube el IVA?»: base de cada tipo. El informe da el gasto final sujeto a IVA y su tipo efectivo,
+    # pero no lo reparte por tipos. La memoria de beneficios fiscales da lo que se deja de ingresar por cada tipo
+    # reducido frente al general (base × (21 − tipo)), de donde sale la base de cada uno; la del general es lo que queda
+    # del IVA devengado ese año. Ese reparto se lleva al último año en proporción al IVA devengado.
+    ruta_bf = CODIGO / "beneficios_fiscales.json"
+    if ruta_bf.exists():
+        mem = next((m for m in reversed(json.loads(ruta_bf.read_text())["memorias"]) if (m.get("detalle") or {}).get("iva")), None)
+        dv_iva = dv["Impuesto sobre el Valor Añadido"]
+        if mem and mem["año"] in años3:
+            M, L = mem["año"], años3[-1]
+            red = {}
+            for x in mem["detalle"]["iva"]:
+                mt = re.match(r"Tipo (?:super)?reducido del (\d+(?:,\d+)?)\s*%", x["nombre"])
+                if mt:
+                    red[float(mt.group(1).replace(",", "."))] = 100 * x["importe"] / (21 - float(mt.group(1).replace(",", ".")))
+            base21 = (dv_iva[M] - sum(t * b / 100 for t, b in red.items())) / 0.21
+            suma = base21 + sum(red.values())
+            cabe = 0 < suma <= b["Gasto final sujeto a IVA"][M]
+            comprobaciones.append({"que": f"¿Las bases por tipo de IVA que salen de la memoria de beneficios fiscales de {M} caben en el gasto final sujeto a IVA de ese año?",
+                                   "resultado": (f"Sí: suman el {es(100 * suma / b['Gasto final sujeto a IVA'][M], 1)} % del gasto final sujeto (el resto son compras exentas)"
+                                                 if cabe else f"No: suman {es(suma)} millones frente a {es(b['Gasto final sujeto a IVA'][M])}"), "ok": cabe})
+            f_ = dv_iva[L] / dv_iva[M]
+            salida["iva_tipos"] = {"año": L, "año_reparto": M, "memoria_url": mem["url"], "memoria_pagina": mem["paginas"]["iva"],
+                                   "devengado": r1(dv_iva[L]), "gasto": r1(b["Gasto final sujeto a IVA"][L]), "tipo_efectivo": round(t["Gasto final sujeto a IVA"][L], 2),
+                                   "bases": {"21": r1(base21 * f_), **{(str(int(k)) if k == int(k) else str(k)): r1(v * f_) for k, v in red.items() if k in (4, 10)}},
+                                   "otros_reducidos": [k for k in red if k not in (4, 10)]}
+    # Calculadora «¿Y si sube el IRPF?»: base liquidable general sometida a gravamen menos la parte del mínimo personal y
+    # familiar que se resta de ella, por tramos de rendimiento (Estadística de los declarantes del IRPF).
+    if all(f"aeat_irpf_{k}" in descargas for k in ("505", "521", "523")):
+        tabs = {k: _aeat_jrubik(AQUI / descargas[f"aeat_irpf_{k}"]["fichero"]) for k in ("505", "521", "523")}
+        ej = {v[0] for v in tabs.values()}
+        etiquetas = [[f[0] for f in v[1]] for v in tabs.values()]
+        malas = [k for k, (_, filas, tot) in tabs.items() if not tot or abs(sum(f[3] for f in filas) - tot[3]) > 1000 or abs(sum(f[1] for f in filas) - tot[1]) > 1]
+        iguales = len(ej) == 1 and all(e == etiquetas[0] for e in etiquetas)
+        comprobaciones.append({"que": "¿Los tramos de las tablas del IRPF (base sometida a gravamen y mínimo personal y familiar) suman su total y son los mismos?",
+                               "resultado": "Sí" if not malas and iguales else f"No: {', '.join(malas) or 'tramos o ejercicios distintos'}", "ok": not malas and iguales})
+        if not malas and iguales:
+            filas = []
+            for (tr, n, _, base), (_, _, _, m1), (_, _, _, m2) in zip(tabs["505"][1], tabs["521"][1], tabs["523"][1]):
+                filas.append({"tramo": tr, "declaraciones": int(n), "base": r1(base / 1e6), "minimo": r1((m1 + m2) / 2e6)})
+            # En los tramos más bajos el mínimo supera a la base: ahí no se paga cuota y la calculadora cuenta cero.
+            exceso = [f["tramo"] for f in filas if f["minimo"] >= f["base"]]
+            salida["irpf_tramos"] = {"año": ej.pop(), "tramos": filas, "sin_cuota": exceso, "urls": {k: descargas[f"aeat_irpf_{k}"]["url"] for k in ("505", "521", "523")},
+                                     "devengado": {str(a): r1(dv["Impuesto sobre la Renta de las Personas Físicas"][a]) for a in años3[-3:]}}
     (WEB / "datos" / "recaudacion.json").write_text(json.dumps(salida, ensure_ascii=False))
     for c_ in comprobaciones:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

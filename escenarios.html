@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'">
   <meta name="referrer" content="no-referrer">
   <title>¿Qué pasaría si…? · Cuentas en limpio</title>
-  <meta name="description" content="Siete calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: tipos de interés, inflación y pensiones, la deuda, los sueldos públicos, el número de pensiones, el empleo y el gasto en cada partida.">
+  <meta name="description" content="Nueve calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas con las cifras de hoy: tipos de interés, inflación y pensiones, la deuda, los sueldos públicos, el número de pensiones, el empleo, el gasto en cada partida, el IVA y el IRPF.">
   <script src="tema.js?v=1988194cbb"></script>
   <link rel="stylesheet" href="estilo.css?v=634b227d38">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -15,7 +15,7 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta name="theme-color" content="#faf9f6">
   <script src="comun.js?v=64e5751b5d" defer></script>
-  <script src="escenarios.js?v=e502ed6a65" defer></script>
+  <script src="escenarios.js?v=d79d35d82e" defer></script>
 </head>
 <body>
   <div class="aviso-preliminar">Versión preliminar: puede cambiar sin aviso.</div>
@@ -36,7 +36,7 @@
 
   <main>
     <h1 class="pregunta">¿Qué pasaría si…?</h1>
-    <p class="respuesta">Siete calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas, con las cifras de hoy. Se mueve una cosa y se ve qué cambia.</p>
+    <p class="respuesta">Nueve calculadoras para ver cómo funcionan algunos mecanismos de las cuentas públicas, con las cifras de hoy. Se mueve una cosa y se ve qué cambia.</p>
     <p class="contabilidad">No son previsiones. Cada calculadora cambia una sola cosa y deja quieto todo lo demás, y en la realidad todo se mueve a la vez. Los supuestos de cada una están debajo de su resultado.</p>
     <nav class="indice" aria-label="Calculadoras"><ol>
       <li><a href="#tipos">¿Y si suben los tipos de interés?</a></li>
@@ -46,6 +46,8 @@
       <li><a href="#pensionistas">¿Y si hay más pensiones?</a></li>
       <li><a href="#empleo">¿Y si hay más o menos empleo?</a></li>
       <li><a href="#partida">¿Y si se gasta más (o menos) en algo?</a></li>
+      <li><a href="#iva">¿Y si sube el IVA?</a></li>
+      <li><a href="#irpf">¿Y si sube el IRPF?</a></li>
     </ol></nav>
     <p class="como-leer">Otra calculadora, en su propia página: <a href="sueldo.html">¿Cuánto paga un sueldo? →</a></p>
 
@@ -214,6 +216,60 @@
       </div>
       <p class="fuente-grafico" id="partida-fuente"></p>
       <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="partida-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="iva" aria-labelledby="iva-t">
+      <h2 class="pregunta" id="iva-t">¿Y si sube el IVA?</h2>
+      <form class="mandos" id="iva-form" autocomplete="off">
+        <label for="iva-tipo">Qué tipo cambia <select id="iva-tipo">
+          <option value="21">El general (21 %): casi todo</option>
+          <option value="10">El reducido (10 %): hostelería, transporte, vivienda nueva…</option>
+          <option value="4">El superreducido (4 %): pan, leche, libros, medicinas…</option>
+          <option value="todos">Los tres a la vez</option>
+        </select></label>
+        <label for="iva-p">Cambio del tipo
+          <output id="iva-p-v" for="iva-p"></output></label>
+        <input id="iva-p" type="range" min="-3" max="5" step="0.5" value="1">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="-1">−1 punto</button>
+          <button type="button" data-valor="3">+3 puntos (lo que subió el tipo general en 2012, del 18 % al 21 %)</button>
+          <button type="button" data-valor="1">Volver al valor inicial</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="iva-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption id="iva-pie"></figcaption>
+        <div id="iva-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>El IVA lo cobran las empresas en cada venta y lo ingresan en Hacienda, pero lo que paga de verdad es quien compra para consumir: las familias, y también las administraciones cuando compran. Por eso se calcula sobre lo que se gasta en consumo y en vivienda nueva. Hay tres tipos: el general, para casi todo, y dos reducidos para cosas que la ley considera básicas o quiere abaratar. Un punto del tipo general mueve mucho más dinero que uno de los reducidos porque se aplica a mucho más gasto.</p>
+      </div>
+      <p class="fuente-grafico" id="iva-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="iva-supuestos"></ul></details>
+    </section>
+
+    <section class="escenario" id="irpf" aria-labelledby="irpf-t">
+      <h2 class="pregunta" id="irpf-t">¿Y si sube el IRPF?</h2>
+      <form class="mandos" id="irpf-form" autocomplete="off">
+        <label for="irpf-p">Cambio de todos los tipos de la escala general (la de los sueldos, pensiones y negocios)
+          <output id="irpf-p-v" for="irpf-p"></output></label>
+        <input id="irpf-p" type="range" min="-3" max="5" step="0.5" value="1">
+        <div class="atajos" role="group" aria-label="Valores de ejemplo">
+          <button type="button" data-valor="-1">−1 punto</button>
+          <button type="button" data-valor="2">+2 puntos</button>
+          <button type="button" data-valor="1">Volver al valor inicial</button>
+        </div>
+      </form>
+      <p class="respuesta resultado" id="irpf-frase" aria-live="polite"></p>
+      <figure class="figura-escenario">
+        <figcaption id="irpf-pie"></figcaption>
+        <div id="irpf-grafico"></div>
+      </figure>
+      <div class="entender"><p class="rotulo">Para entenderlo</p>
+        <p>El IRPF se paga sobre la renta de cada persona: sueldos, pensiones, negocios y alquileres van a la «base general», con tipos que suben por tramos; los intereses, dividendos y ganancias van aparte, con su propia escala. Antes de aplicar los tipos se descuenta el mínimo personal y familiar, una cantidad que no paga impuesto y que es mayor si hay hijos o mayores a cargo. Por eso quien gana muy poco no paga nada, y subir los tipos no le cambia nada. Lo que se recauda se reparte a medias entre el Estado y las comunidades autónomas.</p>
+      </div>
+      <p class="fuente-grafico" id="irpf-fuente"></p>
+      <details class="fuente-detalle"><summary>Qué supone este cálculo</summary><ul id="irpf-supuestos"></ul></details>
     </section>
 
     <p class="seguir-recorrido">Las cifras de partida y las reglas de estas calculadoras están escritas en <a href="contexto/mecanismos.md">un texto sin formato</a>. Para escenarios oficiales completos: la <a href="https://www.airef.es/">Autoridad Independiente de Responsabilidad Fiscal (AIReF)</a>, la Comisión Europea y el Banco de España.</p>

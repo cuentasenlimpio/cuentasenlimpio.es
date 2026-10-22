@@ -47,6 +47,10 @@ Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (
 
 **Empleo y cotizaciones.** Cotizaciones de los fondos de la Seguridad Social en 2025: 212.754 millones de €; afiliados medios: 21.635.194; cotización media por afiliado (cálculo nuestro): 9.834 € al año. Cada 100.000 afiliados más que coticen la media: unos 983 millones de € al año. No incluye el ahorro en paro ni el IRPF o el IVA.
 
+**Un punto de IVA.** Gasto final sujeto a IVA de 2025: 695.436 millones de € (tipo efectivo 15,08 %, IVA devengado 104.847; Informe Anual de Recaudación, cuadro 1.3). Base aproximada de cada tipo, repartida con la memoria de beneficios fiscales de 2023 y llevada a 2025 en proporción al IVA devengado (cálculo nuestro): general 437.299, reducido 117.573, superreducido 28.800 millones de €. Un punto más en un tipo recauda el 1 % de su base, si se compra lo mismo.
+
+**Un punto de IRPF.** Declarantes de 2024 (territorio común): base liquidable general sometida a gravamen menos el mínimo personal y familiar, 426.937 millones de € (cálculo nuestro sobre la Estadística de los declarantes del IRPF, partidas 505, 521 y 523, por tramos de rendimiento, contando cero donde el mínimo supera la base). Un punto más en todos los tipos de la escala general recauda unos 4.269 millones de € al año, si se declara lo mismo; no incluye las rentas del ahorro.
+
 **Gasto en una partida.** Un cambio del X % en el gasto de una función (tabla por funciones en gasto.md) mueve el saldo en X % de ese gasto, en millones de € o en % del PIB, si no cambia nada más.
 
 **Lo que estas reglas no recogen.** Efectos de segunda vuelta (un cambio de impuestos cambia el consumo, el empleo y la recaudación de otros impuestos), reacciones de los mercados y decisiones de política. Para escenarios oficiales completos: AIReF (https://www.airef.es/), Comisión Europea (Debt Sustainability Monitor) y Banco de España.

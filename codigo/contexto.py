@@ -372,6 +372,20 @@ def mecanismos(D):
                f"afiliados medios: {n(afE)}; cotización media por afiliado (cálculo nuestro): {n(cotE * 1e6 / afE)} € al año. "
                f"Cada 100.000 afiliados más que coticen la media: unos {n(cotE * 1e5 / afE)} millones de € al año. No incluye el ahorro en paro "
                "ni el IRPF o el IVA.\n\n")
+    rc = D.get("recaudacion") or {}
+    iv, ir = rc.get("iva_tipos"), rc.get("irpf_tramos")
+    if iv:
+        md += (f"**Un punto de IVA.** Gasto final sujeto a IVA de {iv['año']}: {n(iv['gasto'])} millones de € (tipo efectivo {n(iv['tipo_efectivo'], 2)} %, "
+               f"IVA devengado {n(iv['devengado'])}; Informe Anual de Recaudación, cuadro 1.3). Base aproximada de cada tipo, repartida con la memoria de "
+               f"beneficios fiscales de {iv['año_reparto']} y llevada a {iv['año']} en proporción al IVA devengado (cálculo nuestro): general "
+               f"{n(iv['bases']['21'])}, reducido {n(iv['bases']['10'])}, superreducido {n(iv['bases']['4'])} millones de €. Un punto más en un tipo "
+               "recauda el 1 % de su base, si se compra lo mismo.\n\n")
+    if ir:
+        grav = sum(max(0, f["base"] - f["minimo"]) for f in ir["tramos"])
+        md += (f"**Un punto de IRPF.** Declarantes de {ir['año']} (territorio común): base liquidable general sometida a gravamen menos el mínimo "
+               f"personal y familiar, {n(grav)} millones de € (cálculo nuestro sobre la Estadística de los declarantes del IRPF, partidas 505, 521 y 523, "
+               "por tramos de rendimiento, contando cero donde el mínimo supera la base). Un punto más en todos los tipos de la escala general "
+               f"recauda unos {n(grav / 100)} millones de € al año, si se declara lo mismo; no incluye las rentas del ahorro.\n\n")
     md += (f"**Gasto en una partida.** Un cambio del X % en el gasto de una función (tabla por funciones en gasto.md) mueve el saldo "
            "en X % de ese gasto, en millones de € o en % del PIB, si no cambia nada más.\n\n")
     md += ("**Lo que estas reglas no recogen.** Efectos de segunda vuelta (un cambio de impuestos cambia el consumo, el empleo y "
@@ -877,7 +891,7 @@ FICHEROS = [
     ("economia", economia, "Empleo, paro, inflación, PIB, pensiones, bono a 10 años, prima de riesgo, tipo medio y vida media de la deuda, envejecimiento."),
     ("territorio", territorio, "Comunidades autónomas: saldo, deuda (y la debida al Estado) y financiación por habitante."),
     ("desigualdad", desigualdad, "Gini, pobreza, efecto de pensiones y transferencias, riqueza."),
-    ("mecanismos", mecanismos, "Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto, sueldos públicos, número de pensiones, empleo y cotizaciones, gasto en una partida."),
+    ("mecanismos", mecanismos, "Valores de partida y reglas aritméticas para razonar escenarios («¿qué pasaría si…?»): tipos de interés, dinámica de la deuda, inflación y pensiones, peso de cada impuesto, sueldos públicos, número de pensiones, empleo y cotizaciones, gasto en una partida, un punto de IVA o de IRPF."),
     ("preguntas", preguntas, "Ocho preguntas frecuentes (pensiones, empleados públicos, a quién se debe, quién paga la deuda, intereses, reglas europeas, presión fiscal, IVA) con datos, límites y debate atribuido."),
     ("sueldo", sueldo, "Cómo se calcula lo que paga un sueldo en IRPF (21 haciendas), cotizaciones e IVA estimado en 2026."),
     ("promesas", promesas, "Promesas de la XV Legislatura: qué ficheros hay y reglas para usarlas sin sesgo."),

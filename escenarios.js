@@ -1,4 +1,4 @@
-// Cuentas en limpio: «¿Qué pasaría si…?». Siete calculadoras de mecanismos con las cifras de hoy (las mismas reglas que
+// Cuentas en limpio: «¿Qué pasaría si…?». Nueve calculadoras de mecanismos con las cifras de hoy (las mismas reglas que
 // contexto/mecanismos.md). No son previsiones: cada una cambia una cosa y deja quieto todo lo demás.
 "use strict";
 
@@ -93,9 +93,9 @@ function mando(id, mostrar, alCambiar) {
 }
 
 async function arrancarEscenarios() {
-  let a, e, eco, g, ep, ss;
+  let a, e, eco, g, ep, ss, rec, bf;
   try {
-    [a, e, eco, g, ep, ss] = await Promise.all(["aapp", "escala", "economia", "gasto", "empleo_publico", "seguridad_social"]
+    [a, e, eco, g, ep, ss, rec, bf] = await Promise.all(["aapp", "escala", "economia", "gasto", "empleo_publico", "seguridad_social", "recaudacion", "beneficios_fiscales"]
       .map((n) => fetch(`datos/${n}.json`).then((r) => r.json())));
   } catch {
     for (const p of document.querySelectorAll(".resultado")) p.textContent = "No se han podido cargar los datos.";
@@ -368,6 +368,83 @@ async function arrancarEscenarios() {
     nota: "La barra «Con el cambio» es una aproximación nuestra con los supuestos de abajo.",
   });
   pintarPartida();
+
+  // Solo las tablas que están en la lista de fuentes (si una descarga falla un día, la página no se rompe)
+  const enF = (ts) => ts.filter(([t_]) => F.some((f) => f.tabla === t_));
+
+  // 8. IVA: base de cada tipo (preparada en construir.py a partir del informe de recaudación y la memoria de beneficios fiscales)
+  const IV = rec.iva_tipos, ptos = (v) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${numero(Math.abs(v), 1).replace(/,0$/, "")} ${Math.abs(v) === 1 ? "punto" : "puntos"}`;
+  if (IV) {
+    const tiposIVA = [["21", "General (21 %)"], ["10", "Reducido (10 %)"], ["4", "Superreducido (4 %)"]];
+    const nomTipo = { 21: "el tipo general", 10: "el tipo reducido", 4: "el tipo superreducido", todos: "los tres tipos" };
+    const pibI = pibDe(IV.año), pobI = pobDe(IV.año);
+    const pintarIVA = () => {
+      const x = +$("iva-p").value, sel = $("iva-tipo").value;
+      const por = tiposIVA.map(([k]) => (IV.bases[k] * x) / 100);
+      const extra = sel === "todos" ? por.reduce((s_, v) => s_ + v, 0) : por[tiposIVA.findIndex(([k]) => k === sel)];
+      const desde = sel === "todos" ? "" : ` (del ${sel} % al ${numero(+sel + x, 1).replace(/,0$/, "")} %)`;
+      $("iva-frase").textContent = x === 0 ? `En ${IV.año}, el IVA devengado fue de ${millonesHablados(IV.devengado)}. Con el mando se elige un cambio.`
+        : `Con ${ptos(Math.abs(x)).replace("+", "")} ${x > 0 ? "más" : "menos"} en ${nomTipo[sel]}${desde}, se ${x > 0 ? "ingresarían" : "dejarían de ingresar"} ${millonesHablados(Math.abs(extra))} al año: `
+          + `${eurosHablados(Math.abs(extra * 1e6) / pobI)} por habitante y ${pct((100 * Math.abs(extra)) / pibI, 2)} del PIB, un ${pct((100 * Math.abs(extra)) / IV.devengado, 1)} ${x > 0 ? "más" : "menos"} de IVA que en ${IV.año}.`
+          + (x > 0 ? comoPartida(Math.abs(extra)) : "");
+      $("iva-pie").textContent = `${x >= 0 ? "Recaudación de más" : "Recaudación de menos"} al año si cambia cada tipo ${ptos(Math.abs(x)).replace("+", "")}, en millones de euros (${IV.año})`;
+      barras($("iva-grafico"), tiposIVA.map(([, n]) => n), por.map(Math.abs), { formato: (v) => numero(Math.round(v), 0),
+        resalta: sel === "todos" ? [0, 1, 2] : [tiposIVA.findIndex(([k]) => k === sel)], rotula: [0, 1, 2] });
+      listaSupuestos($("iva-supuestos"), [
+        `Base de partida: el gasto final sujeto a IVA de ${IV.año}, ${millones(IV.gasto)} (consumo de los hogares, compras de las administraciones y vivienda nueva), con un tipo efectivo del ${pct(IV.tipo_efectivo)}: ${millones(IV.devengado)} de IVA.`,
+        `El informe de recaudación no reparte esa base por tipos. Se reparte con la memoria de beneficios fiscales de ${IV.año_reparto} (la del último presupuesto aprobado), que dice cuánto se deja de ingresar por cada tipo reducido frente al general; de ahí sale la base de cada uno, y la del general es lo que queda del IVA de ese año. Ese reparto se lleva a ${IV.año} en proporción al IVA devengado.`,
+        `Bases resultantes en ${IV.año}: ${tiposIVA.map(([k, n]) => `${n.replace(/ \(.*/, "").toLowerCase()}, ${millones(IV.bases[k])}`).join("; ")}.`,
+        "Se compra lo mismo con el tipo nuevo: no se cuenta que suban los precios y se compre menos, ni el fraude. A corto plazo, el consumo cambia poco con el IVA; a más plazo, algo más.",
+        "Las cifras son las de la Agencia Tributaria, que no recauda el IVA de las haciendas forales del País Vasco y Navarra; Canarias (IGIC), Ceuta y Melilla tienen otros impuestos.",
+      ]);
+    };
+    $("iva-tipo").addEventListener("change", pintarIVA);
+    mando("iva-p", ptos, pintarIVA);
+    lineaFuente($("iva-fuente"), {
+      fuentes: F, tablas: enF([[rec.tablas.bases, "Informe Anual de Recaudación Tributaria: base, tipo efectivo e IVA devengado (cuadro 1.3)"], [bf.tabla, `Memoria de Beneficios Fiscales de ${IV.año_reparto}, página ${IV.memoria_pagina}`]]), tipo: "lectura",
+      nota: "El reparto por tipos y el cálculo son una aproximación nuestra con los supuestos de abajo.",
+    });
+    pintarIVA();
+  } else document.getElementById("iva").hidden = true;
+
+  // 9. IRPF: base general menos el mínimo personal y familiar, por tramos de rendimiento (Estadística de declarantes)
+  const IR = rec.irpf_tramos;
+  if (IR) {
+    const corto = (t) => t.replace("Negativo y Cero", "≤0").replace("Mayor de ", ">").replace(/^\((.*) - (.*)\]$/, "$1–$2");
+    const techo = (t) => t.replace("Negativo y Cero", "≤0").replace("Mayor de ", ">").replace(/^\((.*) - (.*)\]$/, "$2");
+    const gravable = IR.tramos.map((f) => Math.max(0, f.base - f.minimo));
+    const total = gravable.reduce((s_, v) => s_ + v, 0);
+    const devIR = IR.devengado[String(IR.año)];
+    const pibR = pibDe(IR.año), pobR = pobDe(IR.año);
+    const k30 = IR.tramos.findIndex((f) => f.tramo.startsWith("(30 "));
+    const desde60 = IR.tramos.map((f, k) => (/^\((60|150) |^Mayor/.test(f.tramo) ? gravable[k] : 0)).reduce((s_, v) => s_ + v, 0);
+    const pintarIRPF = () => {
+      const x = +$("irpf-p").value;
+      const por = gravable.map((v) => (v * x) / 100), extra = (total * x) / 100;
+      const media30 = k30 >= 0 ? (por[k30] * 1e6) / IR.tramos[k30].declaraciones : null;
+      $("irpf-frase").textContent = x === 0 ? `Sin cambio de tipos no cambia nada. Con el mando se elige un cambio.`
+        : `Con ${ptos(Math.abs(x)).replace("+", "")} ${x > 0 ? "más" : "menos"} en todos los tramos, se ${x > 0 ? "ingresarían" : "dejarían de ingresar"} ${millonesHablados(Math.abs(extra))} al año: `
+          + `${eurosHablados(Math.abs(extra * 1e6) / pobR)} por habitante, ${pct((100 * Math.abs(extra)) / pibR, 2)} del PIB y un ${pct((100 * Math.abs(extra)) / devIR, 1)} ${x > 0 ? "más" : "menos"} de IRPF que en ${IR.año}. `
+          + `De cada 100 € de diferencia, ${numero(Math.round((100 * desde60) / total), 0)} corresponderían a declaraciones con más de 60.000 € de rendimientos`
+          + (media30 ? `; una declaración media de 30.000 a 60.000 € ${x > 0 ? "pagaría" : "se ahorraría"} unos ${numero(Math.round(Math.abs(media30) / 10) * 10, 0)} € al año.` : ".")
+          + (x > 0 ? comoPartida(Math.abs(extra)) : "");
+      $("irpf-pie").textContent = `${x >= 0 ? "Recaudación de más" : "Recaudación de menos"} al año por tramo de rendimientos de la declaración, en millones de euros, ${IR.año}. Debajo de cada barra, hasta cuántos miles de euros de rendimientos tiene la declaración`;
+      barras($("irpf-grafico"), IR.tramos.map((f) => techo(f.tramo)), por.map(Math.abs), { formato: (v) => numero(Math.round(v), 0), rotula: [k30] });
+      listaSupuestos($("irpf-supuestos"), [
+        `Declaraciones del IRPF de ${IR.año} (las últimas con estadística), del territorio común: sin País Vasco ni Navarra, que tienen su propio IRPF.`,
+        `Base de partida: la base liquidable general sometida a gravamen menos la parte del mínimo personal y familiar que se le resta (media de la parte estatal y la autonómica), ${millones(total)} en total. Los tramos en que el mínimo es mayor que la base (${IR.sin_cuota.map(corto).join(", ")} mil €) cuentan como cero: ahí casi nadie paga cuota.`,
+        "Suben por igual todos los tipos de la escala general, la estatal y la autonómica sumadas. No cambian las rentas del ahorro (intereses, dividendos y ganancias), que tienen su propia escala, ni las deducciones.",
+        "Se declara lo mismo con los tipos nuevos: no se cuenta que algunas personas trabajen, declaren o se organicen de otra forma, que pesa más en las rentas altas.",
+        `Para comparar: el IRPF devengado de ${IR.año} fue de ${millones(devIR)} (Informe Anual de Recaudación, todo el territorio común).`,
+      ]);
+    };
+    mando("irpf-p", ptos, pintarIRPF);
+    lineaFuente($("irpf-fuente"), {
+      fuentes: F, tablas: enF([["aeat_irpf_505", `Estadística de los declarantes del IRPF ${IR.año}: base liquidable general sometida a gravamen`], ["aeat_irpf_521", "mínimo personal y familiar (estatal)"], ["aeat_irpf_523", "mínimo personal y familiar (autonómico)"], [rec.tablas.bases, "IRPF devengado (cuadro 1.3 del Informe Anual de Recaudación)"]]), tipo: "lectura",
+      nota: "Aproximación nuestra con los supuestos de abajo.",
+    });
+    pintarIRPF();
+  } else document.getElementById("irpf").hidden = true;
 }
 
 document.addEventListener("DOMContentLoaded", arrancarEscenarios);

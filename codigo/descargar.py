@@ -472,6 +472,36 @@ def main():
     else:
         print("AVISO aeat_iart: no se encontró el informe anual de recaudación")
 
+    # Estadística de los declarantes del IRPF (Agencia Tributaria): base liquidable general sometida a gravamen (partida
+    # 505) y la parte del mínimo personal y familiar que se resta de ella (521 estatal, 523 autonómica), por tramos de
+    # rendimiento, para la calculadora «¿Y si sube el IRPF?». Sale hacia el verano del año siguiente al de la declaración
+    # (ejercicio = año − 2). Las tablas son páginas HTML con nombre cifrado: se buscan en el mapa de la publicación.
+    import html as html_
+    import re
+    base_irpf = "https://sede.agenciatributaria.gob.es/AEAT/Contenidos_Comunes/La_Agencia_Tributaria/Estadisticas/Publicaciones/sites/irpf/{año}/"
+    leer = lambda u: urllib.request.urlopen(urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120).read().decode("utf-8", errors="replace")
+    for año_irpf in (ahora.year - 2, ahora.year - 3):
+        try:
+            casa = leer(base_irpf.format(año=año_irpf) + "home.html")
+            m = re.search(r'href="(mapa[^"]+\.html)"', casa)
+            if not m:
+                continue
+            enlaces = [(h, html_.unescape(re.sub(r"<[^>]+>", "", t)).strip())
+                       for h, t in re.findall(r'href="(jrubik[^"]+\.html)"[^>]*>(.*?)</a>', leer(base_irpf.format(año=año_irpf) + m.group(1)), re.S)]
+        except (urllib.error.URLError, TimeoutError):
+            continue
+        buscadas = {"505": "base liquidable general sometida a gravamen", "521": "mínimo personal y familiar de la b.l.general (estatal)",
+                    "523": "mínimo personal y familiar de la b.l.general (autonómico)"}
+        halladas = {k: next((h for h, t in enlaces if t.startswith(f"{k}. ")), None) for k in buscadas}
+        if all(halladas.values()):
+            for k, h in halladas.items():
+                PAGINAS.append({"fuente": "Agencia Tributaria", "tabla": f"aeat_irpf_{k}", "opcional": True,
+                                "nombre": f"Estadística de los declarantes del IRPF {año_irpf}: partida {k}, {buscadas[k]}, por tramos de rendimiento",
+                                "url": base_irpf.format(año=año_irpf) + h, "extension": "html"})
+            break
+    else:
+        print("AVISO aeat_irpf: no se encontró la estadística de declarantes del IRPF")
+
     # Ejecución mensual del presupuesto de la Seguridad Social: «ResSISTEMA_<Mes>_<Año>.xlsx». Si el mes no existe, el
     # servidor devuelve un fichero vacío (no un error), así que se prueba hacia atrás hasta dar con un Excel de verdad.
     meses_ss = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
