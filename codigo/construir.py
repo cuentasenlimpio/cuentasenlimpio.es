@@ -2198,6 +2198,170 @@ def construir_recaudacion(descargas):
     return salida
 
 
+def _conprel_capitulos(filas):
+    """Tabla de capítulos de una liquidación de CONPREL (la primera de la hoja): {"ingresos"|"gastos": {clave: {nombre,
+    inicial, definitivo, reconocido, cobrado}}}. Las columnas se asignan por su cabecera porque cambian con los años (antes
+    de 2010 no hay presupuesto inicial). La clave es el número de capítulo o la etiqueta del subtotal en minúsculas."""
+    sal, sec, roles, cab = {"ingresos": {}, "gastos": {}}, None, {}, {}
+    for r in filas:
+        r = r or []
+        textos = {i: c.strip().lower() for i, c in enumerate(r) if isinstance(c, str) and c.strip()}
+        con_cifras = any(isinstance(c, (int, float)) and abs(c) > 9 for c in r)
+        if any(t.startswith(("derechos", "obligaciones")) for t in textos.values()) and not con_cifras:
+            nuevo = "gastos" if any("obligaciones" in t or "créditos" in t for t in textos.values()) else "ingresos"
+            if nuevo == "ingresos" and sal["gastos"]:
+                break  # empieza otra tabla en la misma hoja (municipios, diputaciones…): solo vale la primera
+            sec, cab, roles = nuevo, dict(textos), {}
+            continue
+        if sec and textos and not con_cifras and not roles:
+            for i, t in textos.items():
+                cab[i] = cab.get(i, "") + " " + t
+            continue
+        if not sec or not textos or sum(1 for c in r if isinstance(c, (int, float)) and abs(c) > 9) < 2:
+            continue
+        if not roles:
+            for i, t in cab.items():
+                if "inicial" in t:
+                    roles["inicial"] = i
+                elif "definitiv" in t or "definivo" in t:
+                    roles["definitivo"] = i
+                elif "reconocid" in t or "derechos" in t or "obligaciones" in t:
+                    roles["reconocido"] = i
+                elif ("líquid" in t or "liquid" in t) and "cerrado" not in t and "cobrado" not in roles:
+                    roles["cobrado"] = i
+        k = min(textos)
+        etiqueta = re.sub(r"\s+", " ", r[k].strip())
+        cap = next((int(c) for i, c in enumerate(r[:k]) if isinstance(c, (int, float)) and 1 <= c <= 9), None)
+        sal[sec][str(cap) if cap else etiqueta.lower()] = {
+            "nombre": etiqueta, **{rol: (r[i] if i < len(r) and isinstance(r[i], (int, float)) else None) for rol, i in roles.items()}}
+    return sal
+
+
+def _conprel_programas(filas):
+    """Tabla 4 de CONPREL (gasto por programas, desde 2010): ({código: {nombre, total}}, {capítulo: total de la fila «Total»})."""
+    i_cab = next(i for i, r in enumerate(filas) if r and any(isinstance(c, str) and c.strip() == "Ctas" for c in r))
+    cab = {}
+    for r in filas[i_cab:i_cab + 3]:
+        for k, c in enumerate(r or []):
+            if isinstance(c, str) and c.strip():
+                cab[k] = (cab.get(k, "") + " " + c.strip().lower()).strip()
+    col_total = next(k for k, t in cab.items() if t.startswith("total"))
+    nombres_cap = {"gastos de personal": 1, "gastos corrientes en bienes": 2, "gastos financieros": 3, "transferencias corrientes": 4,
+                   "fondo de contingencia": 5, "inversiones reales": 6, "transferencias de capital": 7, "activos financieros": 8, "pasivos financieros": 9}
+    cols_cap = {next(v for n, v in nombres_cap.items() if t.startswith(n)): k for k, t in cab.items() if any(t.startswith(n) for n in nombres_cap)}
+    programas, total = {}, {}
+    for r in filas[i_cab + 3:]:
+        r = r or []
+        codigo = next((str(c).strip() for c in r[:2] if isinstance(c, str) and re.fullmatch(r"\d{1,2}", str(c).strip())), None)
+        etiqueta = next((c.strip() for c in r[1:4] if isinstance(c, str) and c.strip() and not re.fullmatch(r"\d{1,2}", c.strip())), None)
+        if codigo and etiqueta and col_total < len(r) and isinstance(r[col_total], (int, float)):
+            programas[codigo] = {"nombre": re.sub(r"\s+", " ", etiqueta), "total": r[col_total]}
+        elif etiqueta and etiqueta.lower() == "total":
+            total = {c: r[k] for c, k in cols_cap.items() if k < len(r) and isinstance(r[k], (int, float))}
+            total["total"] = r[col_total]
+            break
+    return programas, total
+
+
+def construir_presupuestos_locales(descargas):
+    """Presupuestos de las entidades locales (CONPREL, Hacienda): liquidación consolidada de todas las entidades locales
+    por capítulos desde 2003 y por programas desde 2010, más el avance del último año."""
+    años = sorted(int(k[-4:]) for k in descargas if re.fullmatch(r"conprel_liq_\d{4}", k))
+    if not años:
+        return None
+    caps, progs, totales_t4, perimetros, forales_94 = {}, {}, {}, {}, {}
+    for a in años:
+        libro = hojas(AQUI / descargas[f"conprel_liq_{a}"]["fichero"]) if descargas[f"conprel_liq_{a}"]["fichero"].endswith("xlsx") \
+            else hojas_xls(AQUI / descargas[f"conprel_liq_{a}"]["fichero"])
+        cabecera = lambda f: " ".join(str(c) for r in f[:8] for c in (r or []) if isinstance(c, str)).lower()
+        hoja = next(n for n, f in libro.items() if n.lower().startswith("tabla") and "consolidad" in cabecera(f)
+                    and not any(x in cabecera(f) for x in ("programa", "funcional", "artículo")))
+        caps[a] = _conprel_capitulos(libro[hoja])
+        perimetros[a] = next((re.sub(r"\s+", " ", c.strip()) for r in libro[hoja][:8] for c in (r or [])
+                              if isinstance(c, str) and c.strip().startswith("(") and "+" in c), None)
+        if a >= 2010 and "Tabla 4" in libro:
+            progs[a], totales_t4[a] = _conprel_programas(libro["Tabla 4"])
+            # Diputaciones forales (Tabla 4.3): casi todas las transferencias a otras administraciones son suyas
+            if "Tabla 4.3" in libro and "foral" in " ".join(str(c) for r in libro["Tabla 4.3"][:4] for c in (r or []) if isinstance(c, str)).lower():
+                forales_94[a] = (_conprel_programas(libro["Tabla 4.3"])[0].get("94") or {}).get("total")
+    avance = None
+    if "conprel_avance" in descargas:
+        libro = hojas(AQUI / descargas["conprel_avance"]["fichero"])
+        titulo = " ".join(str(c) for r in libro.get("Nacional", [])[:4] for c in (r or []) if isinstance(c, str))
+        m = re.search(r"(20\d\d)", titulo)
+        if m and "Nacional" in libro:
+            avance = {"año": int(m.group(1)), **_conprel_capitulos(libro["Nacional"])}
+    tot = lambda d: next(v for k, v in d.items() if k.startswith("total"))
+    nofin = lambda d: next((v for k, v in d.items() if k.startswith("operaciones no financieras")), None)
+    rec = lambda d, c: (d.get(str(c)) or {}).get("reconocido") or 0
+
+    comprobaciones = []
+    malos = [f"{a} {s_}" for a in años for s_ in ("ingresos", "gastos") if abs(sum(rec(caps[a][s_], c) for c in range(1, 10)) - tot(caps[a][s_])["reconocido"]) > 1]
+    comprobaciones.append({"que": "¿Los capítulos suman el total de ingresos y de gastos de cada liquidación?",
+                           "resultado": f"Sí, en los {len(años)} años ({años[0]}–{años[-1]})" if not malos else f"No en {malos}", "ok": not malos})
+    malos = [f"{a} {s_}" for a in años for s_ in ("ingresos", "gastos") if nofin(caps[a][s_])
+             and abs(sum(rec(caps[a][s_], c) for c in range(1, 8)) - nofin(caps[a][s_])["reconocido"]) > 1]
+    con_nofin = [a for a in años if nofin(caps[a]["ingresos"])]
+    comprobaciones.append({"que": "¿Los capítulos 1 a 7 suman las operaciones no financieras?",
+                           "resultado": f"Sí, en los {len(con_nofin)} años que traen ese subtotal ({con_nofin[0]}–{con_nofin[-1]})" if not malos else f"No en {malos}",
+                           "ok": not malos})
+    malos_p, malos_t = [], []
+    for a, p in progs.items():
+        areas = {c: v for c, v in p.items() if len(c) == 1}
+        for c, v in areas.items():
+            hijos = [x["total"] for k, x in p.items() if len(k) == 2 and k[0] == c]
+            if hijos and abs(sum(hijos) - v["total"]) > 1:
+                malos_p.append(f"{a} área {c}")
+        if abs(sum(v["total"] for v in areas.values()) - totales_t4[a]["total"]) > 1:
+            malos_p.append(f"{a} total")
+        if any(abs(totales_t4[a].get(c, 0) - rec(caps[a]["gastos"], c)) > 1 for c in range(1, 10)):
+            malos_t.append(a)
+    comprobaciones.append({"que": "¿Las políticas de gasto suman sus áreas, y las áreas el total, en el gasto por programas?",
+                           "resultado": f"Sí, en los {len(progs)} años ({min(progs)}–{max(progs)})" if not malos_p else f"No en {malos_p}", "ok": not malos_p})
+    comprobaciones.append({"que": "¿El gasto por programas da, capítulo a capítulo, lo mismo que la tabla por capítulos?",
+                           "resultado": f"Sí, en los {len(progs)} años" if not malos_t else f"No en {malos_t}", "ok": not malos_t})
+    if "conprel_avance_2022" in descargas and 2022 in caps:
+        a22 = _conprel_capitulos(hojas(AQUI / descargas["conprel_avance_2022"]["fichero"])["Nacional"])
+        difs = {s_: 100 * (tot(a22[s_])["reconocido"] / tot(caps[2022][s_])["reconocido"] - 1) for s_ in ("ingresos", "gastos")}
+        comprobaciones.append({"que": "¿Se parece el avance a la liquidación definitiva? (el último año comparable es 2022)",
+                               "resultado": "El avance de 2022 se desvió " + " y ".join(f"{'+' if difs[k] >= 0 else '−'}{es(abs(difs[k]), 1)} % en {k}" for k in ("ingresos", "gastos")) + " frente a la liquidación definitiva",
+                               "ok": all(abs(x) < 5 for x in difs.values()), "nota": "El avance eleva al total nacional una parte de las entidades, según su población."})
+
+    r1 = lambda v: None if v is None else round(v / 1000, 1)  # miles → millones
+    ult = años[-1]
+    def capitulos_de(d, s_):
+        return [{"cap": c, "nombre": d[s_][str(c)]["nombre"], "reconocido": r1(rec(d[s_], c)),
+                 "definitivo": r1(d[s_][str(c)].get("definitivo")), "inicial": r1(d[s_][str(c)].get("inicial"))} for c in range(1, 10) if str(c) in d[s_]]
+    p_ult = progs.get(ult, {})
+    p_ini = progs.get(min(progs)) if progs else {}
+    salida = {
+        "años": años,
+        "ingresos": [r1(tot(caps[a]["ingresos"])["reconocido"]) for a in años],
+        "gastos": [r1(tot(caps[a]["gastos"])["reconocido"]) for a in años],
+        "ingresos_nofin": [r1(sum(rec(caps[a]["ingresos"], c) for c in range(1, 8))) for a in años],
+        "gastos_nofin": [r1(sum(rec(caps[a]["gastos"], c) for c in range(1, 8))) for a in años],
+        "personal": [r1(rec(caps[a]["gastos"], 1)) for a in años],
+        "inversion": [r1(rec(caps[a]["gastos"], 6)) for a in años],
+        "perimetros": {str(a): perimetros[a] for a in años},
+        "ultimo": {"año": ult, "ingresos": capitulos_de(caps[ult], "ingresos"), "gastos": capitulos_de(caps[ult], "gastos")},
+        "programas": {"año": ult, "inicial": min(progs) if progs else None,
+                      "politicas": [{"codigo": c, "nombre": v["nombre"], "total": r1(v["total"]),
+                                     "inicial": r1((p_ini.get(c) or {}).get("total"))} for c, v in p_ult.items() if len(c) == 2],
+                      "total": r1(totales_t4.get(ult, {}).get("total")), "forales_94": r1(forales_94.get(ult))},
+        "avance": None if not avance else {"año": avance["año"], "ingresos": r1(tot(avance["ingresos"])["reconocido"]), "gastos": r1(tot(avance["gastos"])["reconocido"]),
+                                           "ingresos_nofin": r1(sum(rec(avance["ingresos"], c) for c in range(1, 8))),
+                                           "gastos_nofin": r1(sum(rec(avance["gastos"], c) for c in range(1, 8)))},
+        "tablas": {"liquidacion": f"conprel_liq_{ult}", "avance": "conprel_avance" if avance else None},
+        "comprobaciones": comprobaciones,
+    }
+    (WEB / "datos" / "presupuestos_locales.json").write_text(json.dumps(salida, ensure_ascii=False))
+    for c_ in comprobaciones:
+        print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])
+    print(f"presupuestos locales: {años[0]}–{ult}; {ult}: ingresos {salida['ingresos'][-1]} M€, gastos {salida['gastos'][-1]} M€"
+          + (f"; avance {avance['año']}" if avance else ""))
+    return salida
+
+
 def construir_contratacion(descargas):
     """Contratación pública: Infocifras de la OIReScon (licitado y adjudicado por trimestre, sin impuestos, de todas las
     plataformas de contratación), extraído de los PDF por herramientas/extraer_infocifras.py. Se usa la última edición
@@ -3744,7 +3908,7 @@ def main():
                                  "bde_proyecciones_2026t3", "hacienda_objetivos_2027") if k in descargas],
                    *sorted(k for k in descargas if k.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop", "ss_", "bce_", "tesoro_", "sepe_", "igae_ccaa_", "igae_cofog_ccaa_",
                                                        "hacienda_liquidacion_", "bde_be13", "ine_ecp11", "ilc_", "ine_ecv", "ocde_", "bce_dwa_",
-                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras")))):
+                                                       "igae_m_aapp_", "aeat_recaudacion_", "gov_rrf_", "gov_cl_ppp", "gov_cl_npl", "gov_cl_liab", "bde_be12c", "bde_be1208", "bde_be1406", "bde_be1408", "hacienda_deuda_viva_aytos", "hacienda_deuda_viva_resumen", "ine_padron_municipios", "hacienda_pmp_series", "ejec_mes_", "ss_ejecucion_mensual", "ce_gasto_ingresos_ue", "sepg_pbf_", "rcp_epsap_", "cmce_actas", "aeat_iart_", "oirescon_infocifras", "conprel_")))):
         m = descargas[nombre]
         fecha = m["descargado"][:10]
         extension = pathlib.Path(m["fichero"]).suffix
@@ -3778,6 +3942,8 @@ def main():
                "aeat_iart_1_3": "Bases imponibles, tipos efectivos e impuestos devengados de los principales impuestos desde 1995.",
                "aeat_iart_1_5": "Impacto estimado de los cambios normativos y de gestión en la recaudación de cada año, por impuesto.",
                "aeat_iart_1_6": "Ingresos tributarios totales por concepto; se comprueba que cada año es la suma de los meses de la serie mensual.",
+               "conprel_avance": "Avance de la liquidación del último año: total nacional estimado a partir de una parte de las entidades.",
+               "conprel_avance_2022": "Avance de 2022: se usa para comprobar cuánto se desvía el avance de la liquidación definitiva.",
                "oirescon_infocifras": "Lista de ediciones de Infocifras: sirve para avisar de las nuevas. Las cifras se extraen de cada PDF, enlazado en la página de contratación.",
                "cmce_actas": "Lista de actas de la Comisión Mixta: sirve para avisar de las nuevas. Las cifras del cupo se copian a mano de cada acta, enlazada en la página del cupo."}.get(nombre) or \
               ("Previsiones del FMI." if nombre.startswith("fmi_weo_") else None) or \
@@ -3808,6 +3974,8 @@ def main():
                 "ine_epa_t65327": "Peso del sector público en los asalariados de cada comunidad autónoma."}.get(nombre)) or \
               ("Asalariados del sector público por tipo de administración, de la EPA." if nombre.startswith("ine_epa416") or nombre == "ine_epa450290" else None) or \
               ("Serie del INE usada en «La economía detrás de las cuentas»." if nombre.startswith(("ine_epa", "ine_ipc", "ine_cntr", "ine_idb", "ine_prop")) else None) or \
+              ("Liquidación consolidada de todas las entidades locales: capítulos de ingresos y gastos y, desde 2010, gasto por programas."
+               if nombre.startswith("conprel_liq_") else None) or \
               ("Créditos iniciales, modificaciones, créditos definitivos y obligaciones reconocidas por políticas de gasto; y lo ingresado por el cupo del País Vasco (concepto 45000)."
                if nombre.startswith("liq_estado_") else
                "Avance: ejecución a 31 de diciembre por políticas de gasto (hoja GTOS 008)." if nombre.startswith("ejec_dic_") else None)
@@ -3909,6 +4077,7 @@ def main():
     cupo = construir_cupo_vasco(descargas)
     construir_recaudacion(descargas)
     construir_contratacion(descargas)
+    construir_presupuestos_locales(descargas)
     construir_descuadres(gasto, pmp, cupo)
     for c_ in comprobaciones_presupuesto:
         print(("OK    " if c_["ok"] else "AVISO ") + c_["que"] + " " + c_["resultado"])

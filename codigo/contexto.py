@@ -809,6 +809,25 @@ def contratacion(D):
     return md
 
 
+def presupuestos_locales(D):
+    s = D.get("presupuestos_locales") or {}
+    if not s:
+        return cabecera("Presupuestos locales", "presupuestos-locales.html", "Sin datos en esta construcción.")
+    md = cabecera("Presupuestos de las entidades locales: ingresos y gastos", "presupuestos-locales.html",
+                  "Liquidación consolidada de los presupuestos de todas las entidades locales (CONPREL, Ministerio de Hacienda), desde "
+                  "2003. Derechos y obligaciones reconocidos, en millones de euros. No financieros = capítulos 1 a 7. El conjunto de "
+                  "entidades se amplía en 2006, 2012 y 2013. Contabilidad presupuestaria: no coincide con el déficit de contabilidad nacional.")
+    md += "\n## Millones de euros\n\n" + tabla(["Año", "Ingresos no financieros", "Gastos no financieros", "Personal", "Inversiones"],
+        [[a, n(s["ingresos_nofin"][i]), n(s["gastos_nofin"][i]), n(s["personal"][i]), n(s["inversion"][i])] for i, a in enumerate(s["años"])])
+    if s.get("avance"):
+        md += f"\n\nAvance {s['avance']['año']} (provisional, elevado a total nacional): ingresos no financieros {n(s['avance']['ingresos_nofin'])}, gastos no financieros {n(s['avance']['gastos_nofin'])}.\n"
+    P = s["programas"]
+    md += f"\n## Gasto por políticas, {P['año']} y {P['inicial']} (millones de euros)\n\n" + tabla(["Política", str(P["año"]), str(P["inicial"])],
+        [[p["nombre"].strip(), n(p["total"]), n(p["inicial"])] for p in sorted(P["politicas"], key=lambda x: -x["total"])])
+    md += "\n" + fuentes_md([url_tabla(D["aapp"], s["tablas"]["liquidacion"])])
+    return md
+
+
 FICHEROS = [
     ("cuentas", cuentas, "Ingresos, gastos, saldo (déficit) y deuda de todas las administraciones; por qué cambia la deuda; España frente a la UE."),
     ("este-ano", este_ano, "El año en curso, mes a mes: déficit acumulado y recaudación frente a los mismos meses del año anterior."),
@@ -820,6 +839,7 @@ FICHEROS = [
     ("deuda-local", deuda_local, "Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio."),
     ("avales", avales, "Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas)."),
     ("beneficios-fiscales", beneficios_fiscales, "Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF."),
+    ("presupuestos-locales", presupuestos_locales, "Presupuestos de las entidades locales desde 2003 (CONPREL): ingresos y gastos por capítulos, gasto por políticas desde 2010 y ejecución."),
     ("contratacion", contratacion, "Contratación pública desde 2022 (OIReScon): importe licitado y adjudicado por trimestre y empresas por contrato."),
     ("recaudacion", recaudacion, "Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos."),
     ("cupo-vasco", cupo_vasco, "Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base."),
@@ -915,7 +935,7 @@ def construir_contexto(web):
     D["promesas_resumen"] = carga(d / "promesas-resumen.json")
     D["este_ano"] = carga(d / "este_ano.json") if (d / "este_ano.json").exists() else {}
     D["seguridad_social"] = carga(d / "seguridad_social.json") if (d / "seguridad_social.json").exists() else {}
-    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco", "recaudacion", "contratacion"):
+    for k in ("empleo_publico", "fondos_europeos", "avales", "deuda_local", "descuadres", "pmp", "modificaciones", "union_europea", "beneficios_fiscales", "cupo_vasco", "recaudacion", "contratacion", "presupuestos_locales"):
         D[k] = carga(d / f"{k}.json") if (d / f"{k}.json").exists() else {}
     D["preguntas"] = carga(web / "preguntas.json")
     D["sueldo"] = carga(web / "sueldo.json")

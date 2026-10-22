@@ -33,6 +33,7 @@ Esta es la zona de contexto para modelos de lenguaje y otros programas. Las pág
 - [deuda-local](https://cuentasenlimpio.es/contexto/deuda-local.md) (4 KB): Deuda de ayuntamientos, diputaciones y cabildos desde 1995, por tipo de entidad, grandes ciudades y enlace a la deuda de cada municipio.
 - [avales](https://cuentasenlimpio.es/contexto/avales.md) (4 KB): Avales del Estado desde 1995 por destino y otros pasivos contingentes (préstamos impagados, asociaciones público-privadas, empresas públicas).
 - [beneficios-fiscales](https://cuentasenlimpio.es/contexto/beneficios-fiscales.md) (3 KB): Beneficios fiscales estimados en las memorias de los Presupuestos (2010–2023): por impuesto, con el detalle del IVA y del IRPF.
+- [presupuestos-locales](https://cuentasenlimpio.es/contexto/presupuestos-locales.md) (3 KB): Presupuestos de las entidades locales desde 2003 (CONPREL): ingresos y gastos por capítulos, gasto por políticas desde 2010 y ejecución.
 - [contratacion](https://cuentasenlimpio.es/contexto/contratacion.md) (2 KB): Contratación pública desde 2022 (OIReScon): importe licitado y adjudicado por trimestre y empresas por contrato.
 - [recaudacion](https://cuentasenlimpio.es/contexto/recaudacion.md) (5 KB): Recaudación de la Agencia Tributaria desde 1995: cuánto cambia por las normas (estimación oficial) y tipos efectivos de los principales impuestos.
 - [cupo-vasco](https://cuentasenlimpio.es/contexto/cupo-vasco.md) (4 KB): Cupo del País Vasco desde 2017 según las actas de la Comisión Mixta: provisional, definitivo, compensaciones y cálculo del año base.
@@ -1116,6 +1117,79 @@ Memorias de Beneficios Fiscales de los proyectos de Presupuestos Generales del E
 | 2023 | 45.269 | 11.179 | 5.697 | 25.679 | 1.014 | 96 |
 
 Memorias (PDF): 2010: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2010Proyecto/MaestroTomos/PGE-ROM/doc/L_10_A_A2.PDF; 2011: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2011Proyecto/MaestroTomos/PGE-ROM/doc/L_11_A_A2.PDF; 2012: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2012Proyecto/MaestroTomos/PGE-ROM/doc/L_12_A_A2.PDF; 2013: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2013Proyecto/MaestroTomos/PGE-ROM/doc/L_13_A_A2.PDF; 2014: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2014Proyecto/MaestroTomos/PGE-ROM/doc/L_14_A_A2.PDF; 2015: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2015Proyecto/MaestroTomos/PGE-ROM/doc/L_15_A_A2.PDF; 2016: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2016Proyecto/MaestroTomos/PGE-ROM/doc/L_16_A_A2.PDF; 2017: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2017Proyecto/MaestroTomos/PGE-ROM/doc/L_17_A_A2.PDF; 2018: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2018Proyecto/MaestroTomos/PGE-ROM/doc/L_18_A_A2.PDF; 2021: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2021Proyecto/MaestroTomos/PGE-ROM/doc/L_21_A_A2.PDF; 2022: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2022Proyecto/MaestroTomos/PGE-ROM/doc/L_22_A_A2.PDF; 2023: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2023Proyecto/MaestroTomos/PGE-ROM/doc/L_23_A_A2.PDF
+
+
+---
+
+# Presupuestos de las entidades locales: ingresos y gastos
+
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
+
+**Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuestos-locales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
+
+Liquidación consolidada de los presupuestos de todas las entidades locales (CONPREL, Ministerio de Hacienda), desde 2003. Derechos y obligaciones reconocidos, en millones de euros. No financieros = capítulos 1 a 7. El conjunto de entidades se amplía en 2006, 2012 y 2013. Contabilidad presupuestaria: no coincide con el déficit de contabilidad nacional.
+
+## Millones de euros
+
+| Año | Ingresos no financieros | Gastos no financieros | Personal | Inversiones |
+|---|---|---|---|---|
+| 2003 | 47.285 | 48.221 | 13.303 | 10.498 |
+| 2004 | 51.546 | 49.913 | 14.184 | 9.670 |
+| 2005 | 57.502 | 54.565 | 15.302 | 10.525 |
+| 2006 | 66.392 | 62.113 | 16.569 | 12.716 |
+| 2007 | 69.208 | 68.512 | 18.087 | 14.064 |
+| 2008 | 69.451 | 71.241 | 19.554 | 12.910 |
+| 2009 | 75.173 | 75.949 | 20.669 | 18.253 |
+| 2010 | 71.034 | 72.633 | 20.480 | 15.011 |
+| 2011 | 65.849 | 66.116 | 20.099 | 9.900 |
+| 2012 | 64.906 | 60.417 | 18.284 | 6.017 |
+| 2013 | 65.037 | 55.858 | 17.782 | 4.779 |
+| 2014 | 66.687 | 57.914 | 17.997 | 5.528 |
+| 2015 | 69.353 | 61.640 | 19.554 | 6.515 |
+| 2016 | 70.359 | 61.450 | 19.656 | 5.293 |
+| 2017 | 73.866 | 64.532 | 20.082 | 5.725 |
+| 2018 | 75.894 | 67.513 | 20.794 | 6.867 |
+| 2019 | 77.225 | 70.823 | 21.932 | 7.715 |
+| 2020 | 74.394 | 69.126 | 22.319 | 6.608 |
+| 2021 | 80.685 | 75.450 | 23.318 | 7.962 |
+| 2022 | 86.442 | 82.598 | 24.396 | 9.744 |
+| 2023 | 92.217 | 90.047 | 25.887 | 11.963 |
+| 2024 | 99.600 | 91.457 | 26.878 | 10.413 |
+
+Avance 2025 (provisional, elevado a total nacional): ingresos no financieros 107.365, gastos no financieros 99.747.
+
+## Gasto por políticas, 2024 y 2010 (millones de euros)
+
+| Política | 2024 | 2010 |
+|---|---|---|
+| Transferencias a otras Administraciones Públicas | 13.777 | 9.612 |
+| Bienestar comunitario | 11.280 | 8.438 |
+| Servicios Sociales y promoción social | 9.832 | 6.418 |
+| Servicios de carácter general | 9.802 | 7.625 |
+| Seguridad y movilidad ciudadana | 7.304 | 5.214 |
+| Vivienda y urbanismo | 6.549 | 8.034 |
+| Cultura | 5.159 | 4.326 |
+| Administración financiera y tributaria | 3.942 | 2.661 |
+| Educación | 3.704 | 3.020 |
+| Deuda Pública | 3.502 | 3.988 |
+| Deporte | 3.349 | 3.057 |
+| Medio ambiente | 3.200 | 2.072 |
+| Transporte público | 3.099 | 1.521 |
+| Infraestructuras | 2.583 | 3.081 |
+| Fomento del Empleo | 1.981 | 1.603 |
+| Comercio, turismo y pequeñas y medianas empresas | 1.980 | 1.153 |
+| Órganos de gobierno | 1.459 | 1.504 |
+| Sanidad | 895 | 1.010 |
+| Otras actuaciones de carácter económico | 676 | 483 |
+| Agricultura, Ganadería y Pesca | 416 | 439 |
+| Otras prestaciones económicas a favor de empleados | 310 | 370 |
+| Pensiones | 197 | 392 |
+| Industria y energía | 156 | 302 |
+| Investigación, desarrollo e innovación | 90 | 46 |
+
+## Fuentes
+
+- Ministerio de Hacienda, Liquidación de los presupuestos de las entidades locales 2024: total nacional (CONPREL): https://serviciostelematicosext.hacienda.gob.es/SGFAL/CONPREL/Consulta/DescargaFichero?CCAA=&TipoDato=Liquidaciones&Ejercicio=2024&TipoPublicacion=Definitiva
 
 
 ---

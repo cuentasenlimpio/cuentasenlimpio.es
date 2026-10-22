@@ -419,6 +419,37 @@ def main():
     except (urllib.error.URLError, TimeoutError) as error:
         print(f"AVISO rcp_epsap: no se pudo leer la página ({error})")
 
+    # Liquidación de los presupuestos de las entidades locales (CONPREL, Hacienda): un Excel nacional por año con la
+    # definitiva (desde 2003) y otro con el avance del último año. Si un año no existe, el servidor devuelve una página
+    # HTML en lugar de un error, así que los años recientes se prueban mirando la firma del fichero.
+    base_conprel = ("https://serviciostelematicosext.hacienda.gob.es/SGFAL/CONPREL/Consulta/DescargaFichero"
+                    "?CCAA=&TipoDato=Liquidaciones&Ejercicio={año}&TipoPublicacion={tipo}")
+
+    def es_excel(url):
+        try:
+            with urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (cuentas en limpio)"}), timeout=120) as r:
+                return r.read(4) in (b"PK\x03\x04", b"\xd0\xcf\x11\xe0")
+        except (urllib.error.URLError, TimeoutError):
+            return False
+    for año_c in range(2003, ahora.year):
+        url_c = base_conprel.format(año=año_c, tipo="Definitiva")
+        if año_c >= ahora.year - 3 and not es_excel(url_c):
+            continue
+        PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": f"conprel_liq_{año_c}", "opcional": True,
+                        "nombre": f"Liquidación de los presupuestos de las entidades locales {año_c}: total nacional (CONPREL)",
+                        "url": url_c, "extension": "xlsx" if año_c >= 2024 else "xls"})
+    # El avance de 2022 se queda fijo: es el último año con avance y definitiva, y sirve para medir cuánto se desvía uno de otra
+    PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": "conprel_avance_2022", "opcional": True,
+                    "nombre": "Liquidación de los presupuestos de las entidades locales 2022: avance (CONPREL)",
+                    "url": base_conprel.format(año=2022, tipo="Avance"), "extension": "xlsx"})
+    for año_c in (ahora.year - 1, ahora.year - 2):
+        url_c = base_conprel.format(año=año_c, tipo="Avance")
+        if es_excel(url_c):
+            PAGINAS.append({"fuente": "Ministerio de Hacienda", "tabla": "conprel_avance", "opcional": True,
+                            "nombre": f"Liquidación de los presupuestos de las entidades locales {año_c}: avance (CONPREL)",
+                            "url": url_c, "extension": "xlsx"})
+            break
+
     # Informe Anual de Recaudación Tributaria (Agencia Tributaria): cuadros en Excel del último ejercicio publicado (sale
     # hacia junio). Se prueba el año anterior y, si aún no está, el de antes.
     base_iart = ("https://sede.agenciatributaria.gob.es/static_files/AEAT/Estudios/Estadisticas/Informes_Estadisticos/"
