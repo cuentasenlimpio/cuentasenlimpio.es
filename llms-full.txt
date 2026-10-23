@@ -2,7 +2,7 @@
 
 > Las cuentas públicas de España explicadas con datos oficiales, sin opinión política. Todas las cifras salen de fuentes oficiales (Eurostat, INE, IGAE, Banco de España, Tesoro, Seguridad Social, AIReF…) y se actualizan solas cada día.
 
-Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 22 de octubre de 2026.
+Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 23 de octubre de 2026.
 
 ## Cómo citar (obligatorio al reutilizar esta información)
 
@@ -75,7 +75,7 @@ Spanish public finances from official sources, no political opinion. Attribute t
 
 # Cuentas de las administraciones públicas: ingresos, gastos, saldo y deuda
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -231,7 +231,7 @@ España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurosta
 
 # Cómo va este año, mes a mes
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/este-ano.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/este-ano.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/este-ano.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -270,7 +270,7 @@ Fuente: Agencia Tributaria, informe mensual de recaudación tributaria. No coinc
 
 # La Seguridad Social por dentro: cotizaciones, transferencias y prestaciones
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/seguridad-social.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/seguridad-social.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/seguridad-social.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -329,7 +329,7 @@ Fondo de Reserva a final de 2025: 14.070 millones de euros (Seguridad Social, in
 
 # El empleo público: cuánta gente trabaja en lo público y cuánto se paga
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/empleo-publico.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/empleo-publico.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/empleo-publico.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -473,7 +473,7 @@ No es comparable con la EPA: la EPA es una encuesta e incluye empresas públicas
 
 # Lo que no cuadra
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/descuadres.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -592,7 +592,7 @@ En la web:
 
 # Cómo cambia el presupuesto del Estado durante el año (modificaciones de crédito)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/modificaciones.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/modificaciones.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/modificaciones.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -709,7 +709,7 @@ Presupuesto al empezar el año: 380.822 M€; modificaciones: 81.340 M€; créd
 
 # El periodo medio de pago a proveedores de las administraciones
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/pago-proveedores.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -721,193 +721,193 @@ Días que tardan de media en pagar las facturas comerciales desde que se aprueba
 |---|---|---|---|
 | ADMINISTRACIÓN CENTRAL | 2026-08 | 26,5 | 1.122 |
 | FONDOS DE LA SEGURIDAD SOCIAL | 2026-08 | 9,5 | 28 |
-| ADMINISTRACIÓN REGIONAL | 2026-07 | 25,4 | 4.912 |
-| ADMINISTRACIÓN LOCAL (Cesión) | 2026-07 | 26,5 | 1.190 |
+| ADMINISTRACIÓN REGIONAL | 2026-08 | 27,0 | 4.818 |
+| ADMINISTRACIÓN LOCAL (Cesión) | 2026-08 | 30,1 | 1.196 |
 
-## Comunidades autónomas (2026-07)
+## Comunidades autónomas (2026-08)
 
 | Comunidad | Días en el mes | Media 12 meses |
 |---|---|---|
-| ANDALUCÍA | 16,7 | 18,9 |
-| ARAGÓN | 23,8 | 20,6 |
-| ASTURIAS | 27,8 | 29,5 |
-| C. VALENCIANA | 30,2 | 30,9 |
-| C.F. DE NAVARRA | 23,9 | 26,4 |
-| CANARIAS | 20,4 | 17,0 |
-| CANTABRIA | 29,5 | 28,6 |
-| CASTILLA Y LEÓN | 24,8 | 43,9 |
-| CASTILLA-LA MANCHA | 18,6 | 30,7 |
-| CATALUÑA | 30,5 | 28,5 |
-| EXTREMADURA | 22,0 | 19,3 |
-| GALICIA | 17,6 | 17,3 |
-| ISLAS BALEARES | 54,1 | 48,2 |
-| LA RIOJA | 21,9 | 24,5 |
-| MADRID | 17,5 | 19,0 |
-| PAÍS VASCO | 22,2 | 21,8 |
-| REGIÓN DE MURCIA | 35,3 | 34,9 |
+| ANDALUCÍA | 22,1 | 19,1 |
+| ARAGÓN | 17,5 | 20,3 |
+| ASTURIAS | 32,9 | 29,5 |
+| C. VALENCIANA | 28,3 | 30,4 |
+| C.F. DE NAVARRA | 25,2 | 26,0 |
+| CANARIAS | 23,0 | 17,4 |
+| CANTABRIA | 38,5 | 29,2 |
+| CASTILLA Y LEÓN | 28,4 | 43,6 |
+| CASTILLA-LA MANCHA | 24,1 | 30,8 |
+| CATALUÑA | 32,0 | 28,5 |
+| EXTREMADURA | 20,2 | 19,5 |
+| GALICIA | 18,9 | 17,7 |
+| ISLAS BALEARES | 53,4 | 49,3 |
+| LA RIOJA | 26,6 | 24,6 |
+| MADRID | 18,5 | 18,6 |
+| PAÍS VASCO | 24,9 | 21,7 |
+| REGIÓN DE MURCIA | 42,4 | 30,7 |
 
-## Grandes ayuntamientos y diputaciones (2026-07)
+## Grandes ayuntamientos y diputaciones (2026-08)
 
 | Entidad | Días en el mes | Media 12 meses |
 |---|---|---|
-| Albacete | 18,9 | 18,8 |
-| Alcalá de Guadaíra | 26,9 | 21,4 |
-| Alcalá de Henares | 21,3 | 22,1 |
-| Alcobendas | 33,1 | 32,5 |
-| Alcorcón | 8,3 | 8,6 |
-| Algeciras | 25,6 | 21,2 |
-| Alicante/Alacant | 12,6 | 28,4 |
-| Almería | 16,8 | 20,4 |
-| Arona | 24,8 | 32,6 |
-| Avilés | 26,3 | 14,2 |
-| Badajoz | 28,7 | 37,4 |
-| Badalona | 193,2 | 178,5 |
-| Barcelona | 8,7 | 11,3 |
-| Benalmádena | 18,2 | 17,0 |
-| Burgos | 17,0 | 14,8 |
-| Cabildo Insular de El Hierro | 9,4 | 11,0 |
-| Cabildo Insular de Fuerteventura | 13,8 | 11,6 |
-| Cabildo Insular de Gran Canaria | 6,3 | 9,5 |
-| Cabildo Insular de La Gomera | 25,8 | 23,2 |
-| Cabildo Insular de La Palma | 54,4 | 62,3 |
-| Cabildo Insular de Lanzarote | 37,9 | 31,5 |
-| Cabildo Insular de Tenerife | 16,5 | 16,1 |
-| Cartagena | 19,0 | 18,1 |
-| Castellón de la Plana/Castelló de la Plana | 9,0 | 13,8 |
-| Chiclana de la Frontera | 20,8 | 16,2 |
-| Ciudad Real | 13,1 | 17,8 |
+| Albacete | 28,3 | 19,5 |
+| Alcalá de Guadaíra | 37,1 | 22,2 |
+| Alcalá de Henares | 26,8 | 22,3 |
+| Alcobendas | 41,0 | 33,2 |
+| Alcorcón | 10,3 | 8,8 |
+| Algeciras | 23,9 | 21,4 |
+| Alicante/Alacant | 11,4 | 26,1 |
+| Almería | 13,5 | 19,6 |
+| Arona | 43,4 | 34,0 |
+| Avilés | 32,9 | 15,6 |
+| Badajoz | 53,5 | 36,1 |
+| Badalona | 168,7 | 176,3 |
+| Barcelona | 11,7 | 11,2 |
+| Benalmádena | 25,3 | 17,4 |
+| Burgos | 20,9 | 15,4 |
+| Cabildo Insular de El Hierro | 7,4 | 10,7 |
+| Cabildo Insular de Fuerteventura | 13,2 | 11,5 |
+| Cabildo Insular de Gran Canaria | 7,3 | 9,5 |
+| Cabildo Insular de La Gomera | 17,1 | 22,7 |
+| Cabildo Insular de La Palma | 53,5 | 61,8 |
+| Cabildo Insular de Lanzarote | 48,3 | 33,0 |
+| Cabildo Insular de Tenerife | 12,3 | 15,9 |
+| Cartagena | 21,1 | 18,2 |
+| Castellón de la Plana/Castelló de la Plana | 12,7 | 13,5 |
+| Chiclana de la Frontera | 20,6 | 16,4 |
+| Ciudad Real | 16,6 | 17,3 |
 | Consejo Insular de Formentera | — | — |
-| Consejo Insular de Ibiza | 9,7 | 10,9 |
-| Consejo Insular de Mallorca | 9,6 | 14,0 |
-| Consejo Insular de Menorca | 14,5 | 16,3 |
-| Cornellà de Llobregat | 10,2 | 10,8 |
-| Coruña (A) | 27,3 | 27,8 |
-| Coslada | 7,3 | 11,4 |
-| Cuenca | 26,3 | 21,2 |
-| Cáceres | 37,2 | 30,7 |
-| Cádiz | 22,2 | 21,8 |
-| Córdoba | 52,5 | 41,3 |
-| Diputación Foral de Araba/Álava | 14,2 | 17,3 |
-| Diputación Foral de Bizkaia | 20,9 | 21,9 |
-| Diputación Foral de Gipuzkoa | 21,8 | 21,6 |
-| Diputación Prov. de A Coruña | 22,2 | 22,6 |
-| Diputación Prov. de Albacete | 9,3 | 12,7 |
-| Diputación Prov. de Alicante | 6,5 | 9,3 |
-| Diputación Prov. de Almería | 18,3 | 24,3 |
-| Diputación Prov. de Avila | 20,8 | 27,4 |
-| Diputación Prov. de Badajoz | 11,7 | 7,2 |
-| Diputación Prov. de Barcelona | 14,2 | 15,7 |
-| Diputación Prov. de Burgos | 8,5 | 9,5 |
-| Diputación Prov. de Castellón | 22,3 | 16,0 |
-| Diputación Prov. de Ciudad Real | 5,4 | 14,1 |
-| Diputación Prov. de Cuenca | 25,4 | 24,8 |
-| Diputación Prov. de Cáceres | 19,6 | 20,4 |
-| Diputación Prov. de Cádiz | 81,8 | 81,2 |
-| Diputación Prov. de Córdoba | 14,3 | 15,6 |
-| Diputación Prov. de Girona | 16,3 | 20,9 |
-| Diputación Prov. de Granada | 30,0 | 22,9 |
-| Diputación Prov. de Guadalajara | 11,0 | 13,5 |
-| Diputación Prov. de Huelva | 8,5 | 8,9 |
-| Diputación Prov. de Huesca | 4,9 | 10,1 |
-| Diputación Prov. de Jaén | 24,1 | 22,2 |
-| Diputación Prov. de León | 14,0 | 13,8 |
-| Diputación Prov. de Lleida | 10,8 | 13,4 |
-| Diputación Prov. de Lugo | 17,0 | 14,5 |
-| Diputación Prov. de Málaga | 33,5 | 37,8 |
-| Diputación Prov. de Ourense | 96,2 | 57,4 |
-| Diputación Prov. de Palencia | 8,6 | 9,4 |
-| Diputación Prov. de Pontevedra | 15,1 | 14,8 |
-| Diputación Prov. de Salamanca | 15,9 | 19,5 |
-| Diputación Prov. de Segovia | 4,9 | 6,1 |
-| Diputación Prov. de Sevilla | 10,3 | 11,0 |
-| Diputación Prov. de Soria | 19,4 | 17,1 |
-| Diputación Prov. de Tarragona | 22,7 | 22,0 |
-| Diputación Prov. de Teruel | 12,4 | 7,5 |
-| Diputación Prov. de Toledo | 12,5 | 15,0 |
-| Diputación Prov. de Valencia | 10,1 | 14,4 |
-| Diputación Prov. de Valladolid | 19,9 | 17,0 |
-| Diputación Prov. de Zamora | 9,3 | 8,5 |
-| Diputación Prov. de Zaragoza | 9,5 | 9,9 |
-| Dos Hermanas | 12,6 | 12,1 |
-| Ejido (El) | 18,2 | 13,8 |
-| Elche/Elx | 30,6 | 28,0 |
-| Estepona | 16,8 | 17,8 |
-| Fuengirola | 16,2 | 19,4 |
-| Fuenlabrada | 12,7 | 12,9 |
-| Gandia | 14,3 | 16,1 |
-| Getafe | 24,1 | 41,7 |
-| Gijón/Xixón | 26,4 | 24,7 |
-| Girona | 19,2 | 20,6 |
-| Granada | 20,3 | 24,9 |
-| Guadalajara | 29,5 | 28,7 |
-| Hospitalet de Llobregat (L') | 20,1 | 21,5 |
-| Huelva | 6,6 | 14,4 |
-| Huesca | 15,1 | 15,8 |
-| Jaén | 103,7 | 167,4 |
-| Jerez de la Frontera | 53,2 | 88,2 |
-| Leganés | 43,4 | 56,5 |
-| León | 32,9 | 24,5 |
-| Lleida | 16,2 | 18,6 |
-| Logroño | 20,6 | 18,5 |
-| Lorca | 49,4 | 38,4 |
-| Lugo | 6,8 | 7,0 |
-| Madrid | 12,9 | 13,0 |
-| Manresa | 17,5 | 16,4 |
-| Marbella | 28,4 | 33,0 |
-| Mataró | 17,1 | 18,8 |
-| Mijas | 27,3 | 107,5 |
-| Molina de Segura | 11,2 | 14,9 |
-| Murcia | 27,2 | 35,0 |
-| Málaga | 23,2 | 23,5 |
-| Mérida | 17,4 | 14,8 |
-| Móstoles | 25,8 | 29,1 |
-| Orihuela | 113,1 | 49,3 |
-| Ourense | 119,3 | 73,7 |
-| Oviedo | 11,6 | 19,1 |
-| Palencia | 15,0 | 14,2 |
-| Palma de Mallorca | 48,2 | 54,2 |
-| Palmas de Gran Canaria (Las) | 57,5 | 52,3 |
-| Parla | 155,5 | 158,9 |
-| Pontevedra | 43,6 | 28,5 |
-| Pozuelo de Alarcón | 8,8 | 10,6 |
-| Puerto de Santa María (El) | 126,2 | 147,5 |
-| Reus | 16,5 | 14,0 |
-| Rivas-Vaciamadrid | 11,8 | 16,1 |
-| Roquetas de Mar | 9,8 | 7,0 |
-| Rozas de Madrid (Las) | 9,1 | 13,3 |
-| Rubí | 43,9 | 36,5 |
-| Sabadell | 24,1 | 23,1 |
-| Salamanca | 17,1 | 19,1 |
-| San Cristóbal de La Laguna | 14,7 | 17,0 |
-| San Fernando | 28,0 | 36,3 |
-| San Sebastián de los Reyes | 14,6 | 16,3 |
-| Sant Boi de Llobregat | 24,8 | 21,0 |
-| Sant Cugat del Vallès | 21,0 | 29,2 |
-| Santa Coloma de Gramenet | 18,9 | 16,4 |
-| Santa Cruz de Tenerife | 7,1 | 10,4 |
-| Santa Lucía de Tarajana | 29,4 | 34,5 |
-| Santander | 27,1 | 10,5 |
-| Santiago de Compostela | 123,2 | 87,1 |
-| Segovia | 18,2 | 29,5 |
-| Sevilla | 27,4 | 28,5 |
-| Soria | 32,5 | 28,5 |
-| Talavera de la Reina | 35,1 | 29,5 |
-| Tarragona | 19,6 | 22,0 |
-| Telde | 24,2 | 17,2 |
-| Terrassa | 11,7 | 14,5 |
-| Teruel | 17,5 | 15,7 |
-| Toledo | 24,8 | 21,7 |
-| Torrejón de Ardoz | 32,3 | 28,2 |
-| Torrent | 20,1 | 27,6 |
-| Torrevieja | 9,8 | 10,3 |
-| Valdemoro | 87,5 | 39,5 |
-| Valencia | 22,9 | 25,8 |
-| Valladolid | 16,7 | 21,9 |
-| Vigo | 20,5 | 9,3 |
-| Vélez-Málaga | 41,3 | 77,3 |
-| Zamora | 10,3 | 13,8 |
-| Zaragoza | 16,1 | 20,0 |
-| Ávila | 23,1 | 23,5 |
+| Consejo Insular de Ibiza | 6,4 | 10,1 |
+| Consejo Insular de Mallorca | 12,1 | 13,6 |
+| Consejo Insular de Menorca | 20,9 | 16,9 |
+| Cornellà de Llobregat | 12,1 | 11,0 |
+| Coruña (A) | 30,6 | 26,2 |
+| Coslada | 10,6 | 11,5 |
+| Cuenca | 20,3 | 21,2 |
+| Cáceres | 41,9 | 31,1 |
+| Cádiz | 25,0 | 21,6 |
+| Córdoba | 56,3 | 43,4 |
+| Diputación Foral de Araba/Álava | 18,4 | 17,3 |
+| Diputación Foral de Bizkaia | 26,0 | 22,1 |
+| Diputación Foral de Gipuzkoa | 21,1 | 21,3 |
+| Diputación Prov. de A Coruña | 22,8 | 21,8 |
+| Diputación Prov. de Albacete | 13,6 | 12,5 |
+| Diputación Prov. de Alicante | 7,3 | 9,1 |
+| Diputación Prov. de Almería | 18,3 | 23,9 |
+| Diputación Prov. de Avila | 22,7 | 27,2 |
+| Diputación Prov. de Badajoz | 8,0 | 7,4 |
+| Diputación Prov. de Barcelona | 21,9 | 15,9 |
+| Diputación Prov. de Burgos | 11,7 | 9,7 |
+| Diputación Prov. de Castellón | 23,8 | 16,5 |
+| Diputación Prov. de Ciudad Real | 5,7 | 13,8 |
+| Diputación Prov. de Cuenca | 50,5 | 29,8 |
+| Diputación Prov. de Cáceres | 22,3 | 20,2 |
+| Diputación Prov. de Cádiz | 78,1 | 81,2 |
+| Diputación Prov. de Córdoba | 21,4 | 15,5 |
+| Diputación Prov. de Girona | 21,1 | 20,9 |
+| Diputación Prov. de Granada | 26,6 | 22,2 |
+| Diputación Prov. de Guadalajara | 13,1 | 13,4 |
+| Diputación Prov. de Huelva | 4,3 | 8,5 |
+| Diputación Prov. de Huesca | 8,1 | 9,9 |
+| Diputación Prov. de Jaén | 35,4 | 22,6 |
+| Diputación Prov. de León | 19,0 | 13,9 |
+| Diputación Prov. de Lleida | 13,9 | 13,3 |
+| Diputación Prov. de Lugo | 20,1 | 15,3 |
+| Diputación Prov. de Málaga | 39,9 | 36,7 |
+| Diputación Prov. de Ourense | 12,2 | 56,7 |
+| Diputación Prov. de Palencia | 6,5 | 9,1 |
+| Diputación Prov. de Pontevedra | 13,5 | 14,5 |
+| Diputación Prov. de Salamanca | 18,4 | 18,7 |
+| Diputación Prov. de Segovia | 7,3 | 6,3 |
+| Diputación Prov. de Sevilla | 10,2 | 11,2 |
+| Diputación Prov. de Soria | 20,6 | 17,5 |
+| Diputación Prov. de Tarragona | 31,2 | 22,6 |
+| Diputación Prov. de Teruel | 8,4 | 7,7 |
+| Diputación Prov. de Toledo | 24,9 | 15,4 |
+| Diputación Prov. de Valencia | 14,2 | 15,1 |
+| Diputación Prov. de Valladolid | 21,7 | 16,9 |
+| Diputación Prov. de Zamora | 14,1 | 9,1 |
+| Diputación Prov. de Zaragoza | 11,0 | 10,4 |
+| Dos Hermanas | 18,7 | 12,5 |
+| Ejido (El) | 15,3 | 13,4 |
+| Elche/Elx | 28,5 | 28,1 |
+| Estepona | 26,6 | 18,5 |
+| Fuengirola | 22,6 | 19,1 |
+| Fuenlabrada | 11,2 | 13,0 |
+| Gandia | 23,2 | 16,3 |
+| Getafe | 23,4 | 40,0 |
+| Gijón/Xixón | 20,7 | 24,6 |
+| Girona | 19,9 | 20,4 |
+| Granada | 24,3 | 24,8 |
+| Guadalajara | 26,9 | 27,0 |
+| Hospitalet de Llobregat (L') | 31,9 | 22,0 |
+| Huelva | 14,3 | 13,7 |
+| Huesca | 18,6 | 16,1 |
+| Jaén | 138,3 | 159,0 |
+| Jerez de la Frontera | 63,4 | 85,9 |
+| Leganés | 67,4 | 56,9 |
+| León | 26,2 | 24,9 |
+| Lleida | 27,4 | 18,7 |
+| Logroño | 25,6 | 19,2 |
+| Lorca | 65,3 | 36,1 |
+| Lugo | 7,5 | 6,6 |
+| Madrid | 16,3 | 13,2 |
+| Manresa | 10,8 | 15,7 |
+| Marbella | 29,4 | 31,4 |
+| Mataró | 19,6 | 19,0 |
+| Mijas | 23,7 | 93,2 |
+| Molina de Segura | 10,4 | 14,6 |
+| Murcia | 36,4 | 33,7 |
+| Málaga | 20,0 | 23,1 |
+| Mérida | 6,3 | 14,5 |
+| Móstoles | 26,2 | 28,8 |
+| Orihuela | 118,7 | 54,2 |
+| Ourense | 115,3 | 77,8 |
+| Oviedo | 12,3 | 17,9 |
+| Palencia | 13,3 | 14,0 |
+| Palma de Mallorca | 51,7 | 53,3 |
+| Palmas de Gran Canaria (Las) | 48,4 | 52,5 |
+| Parla | 179,3 | 160,2 |
+| Pontevedra | 35,4 | 29,2 |
+| Pozuelo de Alarcón | 8,9 | 10,4 |
+| Puerto de Santa María (El) | 154,4 | 150,2 |
+| Reus | 16,7 | 14,5 |
+| Rivas-Vaciamadrid | 19,8 | 16,5 |
+| Roquetas de Mar | 6,7 | 6,9 |
+| Rozas de Madrid (Las) | 10,0 | 13,1 |
+| Rubí | 50,0 | 37,1 |
+| Sabadell | 29,7 | 23,2 |
+| Salamanca | 15,5 | 18,7 |
+| San Cristóbal de La Laguna | 13,4 | 16,9 |
+| San Fernando | 29,3 | 34,9 |
+| San Sebastián de los Reyes | 17,4 | 16,6 |
+| Sant Boi de Llobregat | 22,5 | 21,4 |
+| Sant Cugat del Vallès | 24,7 | 28,8 |
+| Santa Coloma de Gramenet | 23,6 | 16,7 |
+| Santa Cruz de Tenerife | 8,2 | 10,2 |
+| Santa Lucía de Tarajana | 39,3 | 34,0 |
+| Santander | 11,3 | 10,6 |
+| Santiago de Compostela | 120,8 | 89,0 |
+| Segovia | 35,9 | 28,6 |
+| Sevilla | 30,4 | 28,0 |
+| Soria | 39,6 | 30,2 |
+| Talavera de la Reina | 40,3 | 29,9 |
+| Tarragona | 22,9 | 22,1 |
+| Telde | 23,9 | 16,2 |
+| Terrassa | 17,4 | 14,6 |
+| Teruel | 23,4 | 16,2 |
+| Toledo | 31,1 | 22,8 |
+| Torrejón de Ardoz | 13,5 | 27,1 |
+| Torrent | 18,4 | 27,1 |
+| Torrevieja | 17,6 | 11,6 |
+| Valdemoro | 44,6 | 39,7 |
+| Valencia | 27,2 | 25,5 |
+| Valladolid | 21,3 | 21,5 |
+| Vigo | 23,7 | 10,8 |
+| Vélez-Málaga | 52,4 | 77,0 |
+| Zamora | 16,6 | 14,2 |
+| Zaragoza | 19,4 | 19,6 |
+| Ávila | 31,1 | 23,8 |
 
 ## Fuentes
 
@@ -918,7 +918,7 @@ Días que tardan de media en pagar las facturas comerciales desde que se aprueba
 
 # La deuda de las entidades locales (ayuntamientos, diputaciones, cabildos)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/deuda-local.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1003,7 +1003,7 @@ Deuda PDE (la misma definición que la de todas las administraciones) de las cor
 
 # Avales del Estado y otros pasivos contingentes
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/avales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1093,7 +1093,7 @@ Avales: saldo vivo de los avales concedidos por el Estado (Banco de España, Bol
 
 # Beneficios fiscales: lo que se estima que se deja de recaudar
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/beneficios-fiscales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/beneficios-fiscales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/beneficios-fiscales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1123,7 +1123,7 @@ Memorias (PDF): 2010: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2010Proyect
 
 # Presupuestos de las entidades locales: ingresos y gastos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuestos-locales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1196,7 +1196,7 @@ Avance 2025 (provisional, elevado a total nacional): ingresos no financieros 107
 
 # Contratación pública: licitado y adjudicado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/contratacion.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/contratacion.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/contratacion.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1241,7 +1241,7 @@ Licitadores medios por contrato: 4T 2022: 2,99; 2T 2023: 3,05; 3T 2023: 3,22; 4T
 
 # Recaudación: ¿sube por la economía o por los impuestos?
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/recaudacion.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/recaudacion.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/recaudacion.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1330,7 +1330,7 @@ Informe Anual de Recaudación Tributaria de la Agencia Tributaria: ingresos trib
 
 # Cupo del País Vasco: lo que paga al Estado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cupo-vasco.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1374,7 +1374,7 @@ Leyes: Ley 11/2017, de 28 de diciembre (2017–2021): https://www.boe.es/buscar/
 
 # España y el presupuesto de la UE: gasto en España y aportación española
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/union-europea.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/union-europea.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/union-europea.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1420,7 +1420,7 @@ Comisión Europea (EU spending and revenue 2000–). Gasto: lo que el presupuest
 
 # Los fondos europeos de recuperación (Mecanismo de Recuperación y Resiliencia)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/fondos-europeos.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/fondos-europeos.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/fondos-europeos.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1449,7 +1449,7 @@ Acumulado 2020–2025 (cálculo nuestro): subvenciones recibidas 55.092 M€, us
 
 # De dónde sale el dinero: impuestos, cotizaciones y otros ingresos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/ingresos.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/ingresos.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/ingresos.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1504,7 +1504,7 @@ Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye tambi�
 
 # En qué se gasta: el gasto público por funciones (COFOG)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/gasto.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/gasto.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/gasto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1566,7 +1566,7 @@ Serie completa por años, funciones y unidades: https://cuentasenlimpio.es/datos
 
 # El presupuesto del Estado: lo aprobado y lo gastado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuesto.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuesto.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuesto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1632,7 +1632,7 @@ Todas las políticas y años: https://cuentasenlimpio.es/datos/presupuesto.csv
 
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1685,7 +1685,7 @@ Cuál usar para el paro: la EPA (encuesta del INE, trimestral) es la cifra inter
 
 # Comunidades autónomas: saldo, deuda y financiación
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/territorio.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/territorio.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/territorio.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1730,7 +1730,7 @@ La deuda «debida al Estado» son los préstamos de los mecanismos de financiaci
 
 # Desigualdad: renta, pobreza y riqueza
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/desigualdad.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1768,7 +1768,7 @@ En 2025, las ayudas distintas de las pensiones bajaron el riesgo de pobreza del 
 
 # Mecanismos y órdenes de magnitud para razonar escenarios
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1828,7 +1828,7 @@ Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (
 
 # Preguntas que se hace la gente, respondidas con datos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/preguntas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/preguntas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/preguntas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2161,7 +2161,7 @@ Enlace: https://cuentasenlimpio.es/preguntas.html#a-donde-va-el-iva (comprobado 
 
 # Lo que paga un sueldo: IRPF, cotizaciones e IVA (2026)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/sueldo.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/sueldo.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/sueldo.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2252,7 +2252,7 @@ Ejemplo resuelto: persona sola con 1.500 € netos al mes. Con 12 pagas (18.000 
 
 # Promesas de la XV Legislatura y lo que ha pasado con ellas
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/promesas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/promesas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/promesas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2277,7 +2277,7 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 
 # Explicaciones de cada concepto y cada gráfico
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/aprende.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/aprende.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/aprende.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2802,7 +2802,7 @@ Tiene una trampa: el porcentaje baja si el PIB crece, aunque la cifra en euros n
 
 # Glosario
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 22 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 23 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/glosario.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
