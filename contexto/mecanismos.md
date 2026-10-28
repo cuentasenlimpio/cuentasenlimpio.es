@@ -1,6 +1,6 @@
 # Mecanismos y órdenes de magnitud para razonar escenarios
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 27 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -43,7 +43,7 @@ Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (
 
 **Sueldos públicos.** Remuneración de asalariados de las administraciones en 2025 (D.1, sueldos y cotizaciones del empleador): 181.502 millones de € (23,7 % de su gasto); Estado 32.574, comunidades 113.282, local 32.491, fondos de la Seguridad Social 3.155. Una subida del X % de todos los sueldos cuesta X % de esas cifras al año (mismo personal; sin contar lo que vuelve en IRPF y cotizaciones del trabajador).
 
-**Número de pensiones.** 10.547.417 pensiones contributivas con una media de 1.374,57 € al mes (septiembre de 2026); cada 100.000 pensiones más a esa media cuestan unos 1.924 millones de € al año (14 pagas). Afiliados por pensión: 2,13; con N pensiones más y el mismo empleo, pasa a afiliados por pensión × pensiones ÷ (pensiones + N).
+**Número de pensiones.** 10.565.782 pensiones contributivas con una media de 1.376,14 € al mes (octubre de 2026); cada 100.000 pensiones más a esa media cuestan unos 1.927 millones de € al año (14 pagas). Afiliados por pensión: —; con N pensiones más y el mismo empleo, pasa a afiliados por pensión × pensiones ÷ (pensiones + N).
 
 **Empleo y cotizaciones.** Cotizaciones de los fondos de la Seguridad Social en 2025: 212.754 millones de €; afiliados medios: 21.635.194; cotización media por afiliado (cálculo nuestro): 9.834 € al año. Cada 100.000 afiliados más que coticen la media: unos 983 millones de € al año. No incluye el ahorro en paro ni el IRPF o el IVA.
 

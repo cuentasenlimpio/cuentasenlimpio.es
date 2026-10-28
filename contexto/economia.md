@@ -1,6 +1,6 @@
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 27 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -10,15 +10,15 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 |---|---|---|
 | Afiliados a la Seguridad Social (media, sin estacionalidad) | 22.480.796 | septiembre de 2026 |
 | Paro registrado (SEPE) | 2.379.505 | septiembre de 2026 |
-| Tasa de paro (EPA, %) | 9,87 | 2026T2 |
-| Ocupados (EPA, miles) | 22.779,0 | 2026T2 |
+| Tasa de paro (EPA, %) | 10,18 | 2026T3 |
+| Ocupados (EPA, miles) | 22.852,6 | 2026T3 |
 | IPC general, variación anual (%) | 4,9 | septiembre de 2026 |
 | IPC subyacente, variación anual (%) | 3,1 | septiembre de 2026 |
 | PIB real, variación interanual (%) | 2,64 | 2026T2 |
-| Pensiones contributivas en vigor | 10.547.417 | septiembre de 2026 |
-| Nómina mensual de pensiones contributivas (millones de €) | 14.498 | septiembre de 2026 |
-| Pensión contributiva media (€/mes) | 1.374,57 | septiembre de 2026 |
-| Afiliados por pensión | 2,13 | septiembre de 2026 |
+| Pensiones contributivas en vigor | 10.565.782 | octubre de 2026 |
+| Nómina mensual de pensiones contributivas (millones de €) | 14.540 | octubre de 2026 |
+| Pensión contributiva media (€/mes) | 1.376,14 | octubre de 2026 |
+| Afiliados por pensión | — | octubre de 2026 |
 | Rentabilidad del bono a 10 años (%) | 3,927 | septiembre de 2026 |
 | Prima de riesgo frente a Alemania (puntos básicos) | 45 | septiembre de 2026 |
 | Tipo de interés medio de la deuda del Estado en circulación (%) | 2,453 | septiembre de 2026 |
@@ -35,7 +35,7 @@ Cuál usar para el paro: la EPA (encuesta del INE, trimestral) es la cifra inter
 - SEPE, Paro registrado por sectores, últimos diez años (datos de avance): https://www.sepe.es/SiteSepe/contenidos/que_es_el_sepe/estadisticas/datos_avance/xls/empleo/evolparoseries.xls
 - INE, EPA: ocupados (miles): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/EPA387796?nult=5000
 - INE, IPC: índice general, variación anual (%): https://servicios.ine.es/wstempus/js/ES/DATOS_SERIE/IPC290750?nult=5000
-- Seguridad Social, Evolución mensual de las pensiones del sistema (avance mensual del INSS): https://www.seg-social.es/wps/wcm/connect/wss/d8a9c4fd-04ac-4814-9bae-6971cdb35250/202609_Avance+mensual.xlsx?MOD=AJPERES
+- Seguridad Social, Evolución mensual de las pensiones del sistema (avance mensual del INSS): https://www.seg-social.es/wps/wcm/connect/wss/d8a9c4fd-04ac-4814-9bae-6971cdb35250/202610_Avance+mensual.xlsx?MOD=AJPERES
 - BCE, Rentabilidad de la deuda pública a 10 años, España y Alemania (criterio de convergencia, media mensual): https://data-api.ecb.europa.eu/service/data/IRS/M.ES+DE.L.L40.CI.0000.EUR.N.Z?format=csvdata&detail=dataonly
 - Tesoro Público, Tipo de interés medio de la deuda del Estado en circulación (último año): https://www.tesoro.es/documents/d/tesoro/03-xlsx
 - Tesoro Público, Vida media de la deuda del Estado: https://www.tesoro.es/documents/d/tesoro/02-xlsx
