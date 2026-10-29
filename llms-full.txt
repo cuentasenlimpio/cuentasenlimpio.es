@@ -2,7 +2,7 @@
 
 > Las cuentas públicas de España explicadas con datos oficiales, sin opinión política. Todas las cifras salen de fuentes oficiales (Eurostat, INE, IGAE, Banco de España, Tesoro, Seguridad Social, AIReF…) y se actualizan solas cada día.
 
-Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 28 de octubre de 2026.
+Esta es la zona de contexto para modelos de lenguaje y otros programas. Las páginas de la web dibujan sus cifras en el navegador: si se descarga su HTML no se ven. Aquí están escritas, con año, unidad, fuente y enlace, en un fichero por tema. Generado el 29 de octubre de 2026.
 
 ## Cómo citar (obligatorio al reutilizar esta información)
 
@@ -75,7 +75,7 @@ Spanish public finances from official sources, no political opinion. Attribute t
 
 # Cuentas de las administraciones públicas: ingresos, gastos, saldo y deuda
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -231,7 +231,7 @@ España ocupa el puesto 15 de 26. Ordenación nuestra sobre los datos de Eurosta
 
 # Cómo va este año, mes a mes
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/este-ano.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/este-ano.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/este-ano.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -270,7 +270,7 @@ Fuente: Agencia Tributaria, informe mensual de recaudación tributaria. No coinc
 
 # La Seguridad Social por dentro: cotizaciones, transferencias y prestaciones
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/seguridad-social.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/seguridad-social.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/seguridad-social.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -329,7 +329,7 @@ Fondo de Reserva a final de 2025: 14.070 millones de euros (Seguridad Social, in
 
 # El empleo público: cuánta gente trabaja en lo público y cuánto se paga
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/empleo-publico.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/empleo-publico.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/empleo-publico.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -473,7 +473,7 @@ No es comparable con la EPA: la EPA es una encuesta e incluye empresas públicas
 
 # Lo que no cuadra
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/descuadres.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/descuadres.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -592,7 +592,7 @@ En la web:
 
 # Cómo cambia el presupuesto del Estado durante el año (modificaciones de crédito)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/modificaciones.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/modificaciones.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/modificaciones.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -709,7 +709,7 @@ Presupuesto al empezar el año: 380.822 M€; modificaciones: 81.340 M€; créd
 
 # El periodo medio de pago a proveedores de las administraciones
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/pago-proveedores.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -918,7 +918,7 @@ Días que tardan de media en pagar las facturas comerciales desde que se aprueba
 
 # La deuda de las entidades locales (ayuntamientos, diputaciones, cabildos)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/deuda-local.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/deuda-local.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1003,7 +1003,7 @@ Deuda PDE (la misma definición que la de todas las administraciones) de las cor
 
 # Avales del Estado y otros pasivos contingentes
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/avales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1093,7 +1093,7 @@ Avales: saldo vivo de los avales concedidos por el Estado (Banco de España, Bol
 
 # Beneficios fiscales: lo que se estima que se deja de recaudar
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/beneficios-fiscales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/beneficios-fiscales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/beneficios-fiscales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1123,7 +1123,7 @@ Memorias (PDF): 2010: https://www.sepg.pap.hacienda.gob.es/Presup/PGE2010Proyect
 
 # Presupuestos de las entidades locales: ingresos y gastos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuestos-locales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1196,7 +1196,7 @@ Avance 2025 (provisional, elevado a total nacional): ingresos no financieros 107
 
 # Contratación pública: licitado y adjudicado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/contratacion.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/contratacion.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/contratacion.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1241,7 +1241,7 @@ Licitadores medios por contrato: 4T 2022: 2,99; 2T 2023: 3,05; 3T 2023: 3,22; 4T
 
 # Recaudación: ¿sube por la economía o por los impuestos?
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/recaudacion.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/recaudacion.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/recaudacion.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1330,7 +1330,7 @@ Informe Anual de Recaudación Tributaria de la Agencia Tributaria: ingresos trib
 
 # Cupo del País Vasco: lo que paga al Estado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cupo-vasco.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1374,7 +1374,7 @@ Leyes: Ley 11/2017, de 28 de diciembre (2017–2021): https://www.boe.es/buscar/
 
 # España y el presupuesto de la UE: gasto en España y aportación española
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/union-europea.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/union-europea.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/union-europea.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1420,7 +1420,7 @@ Comisión Europea (EU spending and revenue 2000–). Gasto: lo que el presupuest
 
 # Los fondos europeos de recuperación (Mecanismo de Recuperación y Resiliencia)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/fondos-europeos.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/fondos-europeos.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/fondos-europeos.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1449,7 +1449,7 @@ Acumulado 2020–2025 (cálculo nuestro): subvenciones recibidas 55.092 M€, us
 
 # De dónde sale el dinero: impuestos, cotizaciones y otros ingresos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/ingresos.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/ingresos.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/ingresos.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1504,7 +1504,7 @@ Nota: «IVA» es el código D211 de la contabilidad nacional, que incluye tambi�
 
 # En qué se gasta: el gasto público por funciones (COFOG)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/gasto.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/gasto.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/gasto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1566,7 +1566,7 @@ Serie completa por años, funciones y unidades: https://cuentasenlimpio.es/datos
 
 # El presupuesto del Estado: lo aprobado y lo gastado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuesto.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuesto.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuesto.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1632,7 +1632,7 @@ Todas las políticas y años: https://cuentasenlimpio.es/datos/presupuesto.csv
 
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1685,7 +1685,7 @@ Cuál usar para el paro: la EPA (encuesta del INE, trimestral) es la cifra inter
 
 # Comunidades autónomas: saldo, deuda y financiación
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/territorio.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/territorio.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/territorio.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1730,7 +1730,7 @@ La deuda «debida al Estado» son los préstamos de los mecanismos de financiaci
 
 # Desigualdad: renta, pobreza y riqueza
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/desigualdad.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1768,7 +1768,7 @@ En 2025, las ayudas distintas de las pensiones bajaron el riesgo de pobreza del 
 
 # Mecanismos y órdenes de magnitud para razonar escenarios
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cuentas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cuentas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -1828,7 +1828,7 @@ Acumulado en los diez primeros años: unos 103.199 millones de €. Las letras (
 
 # Preguntas que se hace la gente, respondidas con datos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/preguntas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/preguntas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/preguntas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2161,7 +2161,7 @@ Enlace: https://cuentasenlimpio.es/preguntas.html#a-donde-va-el-iva (comprobado 
 
 # Lo que paga un sueldo: IRPF, cotizaciones e IVA (2026)
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/sueldo.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/sueldo.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/sueldo.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2252,7 +2252,7 @@ Ejemplo resuelto: persona sola con 1.500 € netos al mes. Con 12 pagas (18.000 
 
 # Promesas de la XV Legislatura y lo que ha pasado con ellas
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/promesas.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/promesas.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/promesas.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2277,7 +2277,7 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 
 # Explicaciones de cada concepto y cada gráfico
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/aprende.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/aprende.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/aprende.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -2802,7 +2802,7 @@ Tiene una trampa: el porcentaje baja si el PIB crece, aunque la cifra en euros n
 
 # Glosario
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 28 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/glosario.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/glosario.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
