@@ -1,6 +1,6 @@
 # El periodo medio de pago a proveedores de las administraciones
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 30 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/pago-proveedores.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/pago-proveedores.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -10,8 +10,8 @@ Días que tardan de media en pagar las facturas comerciales desde que se aprueba
 
 | Subsector | Mes | Días | Facturas pendientes (M€) |
 |---|---|---|---|
-| ADMINISTRACIÓN CENTRAL | 2026-08 | 26,5 | 1.122 |
-| FONDOS DE LA SEGURIDAD SOCIAL | 2026-08 | 9,5 | 28 |
+| ADMINISTRACIÓN CENTRAL | 2026-09 | 24,5 | 1.582 |
+| FONDOS DE LA SEGURIDAD SOCIAL | 2026-09 | 8,3 | 41 |
 | ADMINISTRACIÓN REGIONAL | 2026-08 | 27,0 | 4.818 |
 | ADMINISTRACIÓN LOCAL (Cesión) | 2026-08 | 30,1 | 1.196 |
 

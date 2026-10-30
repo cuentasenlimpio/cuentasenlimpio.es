@@ -1,6 +1,6 @@
 # Cupo del País Vasco: lo que paga al Estado
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 29 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 30 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/cupo-vasco.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/cupo-vasco.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
