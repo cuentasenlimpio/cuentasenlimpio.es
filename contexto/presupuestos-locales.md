@@ -1,6 +1,6 @@
 # Presupuestos de las entidades locales: ingresos y gastos
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 30 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 31 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/presupuestos-locales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/presupuestos-locales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -33,7 +33,7 @@ Liquidación consolidada de los presupuestos de todas las entidades locales (CON
 | 2023 | 92.217 | 90.047 | 25.887 | 11.963 |
 | 2024 | 99.600 | 91.457 | 26.878 | 10.413 |
 
-Avance 2025 (provisional, elevado a total nacional): ingresos no financieros 107.365, gastos no financieros 99.747.
+Avance 2025 (provisional, elevado a total nacional): ingresos no financieros 107.412, gastos no financieros 99.847.
 
 ## Gasto por políticas, 2024 y 2010 (millones de euros)
 

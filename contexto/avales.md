@@ -1,6 +1,6 @@
 # Avales del Estado y otros pasivos contingentes
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 30 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 31 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/avales.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/avales.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -42,7 +42,7 @@ Avales: saldo vivo de los avales concedidos por el Estado (Banco de España, Bol
 | 2024 | 124.088 | 7,8 |
 | 2025 | 102.717 | 6,1 |
 
-Último dato (agosto de 2026): 93.491 M€; programas de la UE 41.113, líneas COVID del ICO 18.721, otras administraciones 28.921, entidades de crédito 0.
+Último dato (septiembre de 2026): 92.763 M€; programas de la UE 41.101, líneas COVID del ICO 18.466, otras administraciones 28.721, entidades de crédito 0.
 
 ## Avales por destino (millones de euros, diciembre)
 

@@ -1,6 +1,6 @@
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 30 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 31 de octubre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -12,9 +12,9 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 | Paro registrado (SEPE) | 2.379.505 | septiembre de 2026 |
 | Tasa de paro (EPA, %) | 10,18 | 2026T3 |
 | Ocupados (EPA, miles) | 22.852,6 | 2026T3 |
-| IPC general, variación anual (%) | 4,9 | septiembre de 2026 |
-| IPC subyacente, variación anual (%) | 3,1 | septiembre de 2026 |
-| PIB real, variación interanual (%) | 2,64 | 2026T2 |
+| IPC general, variación anual (%) | 4,9 | octubre de 2026 |
+| IPC subyacente, variación anual (%) | 3,1 | octubre de 2026 |
+| PIB real, variación interanual (%) | 2,66 | 2026T3 |
 | Pensiones contributivas en vigor | 10.565.782 | octubre de 2026 |
 | Nómina mensual de pensiones contributivas (millones de €) | 14.540 | octubre de 2026 |
 | Pensión contributiva media (€/mes) | 1.376,14 | octubre de 2026 |
