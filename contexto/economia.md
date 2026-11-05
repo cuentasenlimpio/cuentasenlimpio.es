@@ -1,6 +1,6 @@
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 4 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 5 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -8,8 +8,8 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 
 | Indicador | Último valor | Periodo |
 |---|---|---|
-| Afiliados a la Seguridad Social (media, sin estacionalidad) | 22.480.796 | septiembre de 2026 |
-| Paro registrado (SEPE) | 2.379.505 | septiembre de 2026 |
+| Afiliados a la Seguridad Social (media, sin estacionalidad) | 22.571.105 | octubre de 2026 |
+| Paro registrado (SEPE) | 2.422.633 | octubre de 2026 |
 | Tasa de paro (EPA, %) | 10,18 | 2026T3 |
 | Ocupados (EPA, miles) | 22.852,6 | 2026T3 |
 | IPC general, variación anual (%) | 4,9 | octubre de 2026 |
@@ -18,7 +18,7 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 | Pensiones contributivas en vigor | 10.565.782 | octubre de 2026 |
 | Nómina mensual de pensiones contributivas (millones de €) | 14.540 | octubre de 2026 |
 | Pensión contributiva media (€/mes) | 1.376,14 | octubre de 2026 |
-| Afiliados por pensión | — | octubre de 2026 |
+| Afiliados por pensión | 2,14 | octubre de 2026 |
 | Rentabilidad del bono a 10 años (%) | 3,927 | septiembre de 2026 |
 | Prima de riesgo frente a Alemania (puntos básicos) | 45 | septiembre de 2026 |
 | Tipo de interés medio de la deuda del Estado en circulación (%) | 2,453 | septiembre de 2026 |
