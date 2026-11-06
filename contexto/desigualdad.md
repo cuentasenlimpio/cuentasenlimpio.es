@@ -1,6 +1,6 @@
 # Desigualdad: renta, pobreza y riqueza
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 5 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 6 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/desigualdad.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -30,5 +30,5 @@ En 2025, las ayudas distintas de las pensiones bajaron el riesgo de pobreza del 
 
 ## Comprobaciones automáticas de esta construcción
 
-- Sí: ¿El índice de Gini del INE y el de Eurostat son el mismo? Sí, en los 12 años comunes; por eso usamos el del INE para 2008-2013
+- Sí: ¿El índice de Gini del INE y el de Eurostat son el mismo? Sí, en los 18 años comunes; por eso usamos el del INE para 2008-2003
 - Sí: ¿Las partes de la riqueza son coherentes (el 10 % más rico más el 50 % menos rico no pasan de 100)? Sí

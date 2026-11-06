@@ -1,6 +1,6 @@
 # Economía: empleo, paro, precios, pensiones, deuda en el mercado y población
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 5 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 6 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/economia.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/economia.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -21,8 +21,8 @@ Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). 
 | Afiliados por pensión | 2,14 | octubre de 2026 |
 | Rentabilidad del bono a 10 años (%) | 3,927 | septiembre de 2026 |
 | Prima de riesgo frente a Alemania (puntos básicos) | 45 | septiembre de 2026 |
-| Tipo de interés medio de la deuda del Estado en circulación (%) | 2,453 | septiembre de 2026 |
-| Vida media de la deuda del Estado (años) | 7,85 | septiembre de 2026 |
+| Tipo de interés medio de la deuda del Estado en circulación (%) | 2,489 | octubre de 2026 |
+| Vida media de la deuda del Estado (años) | 7,92 | octubre de 2026 |
 | Mayores de 64 por cada 100 personas de 16 a 64 (dependencia) | 31,7 | 2025 |
 
 Proyección del INE de la dependencia de mayores: 53,5 en 2076 (serie año a año en https://cuentasenlimpio.es/economia.html).
