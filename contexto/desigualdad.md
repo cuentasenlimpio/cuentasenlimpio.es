@@ -1,6 +1,6 @@
 # Desigualdad: renta, pobreza y riqueza
 
-Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 25 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
+Parte de la zona de contexto de Cuentas en limpio (https://cuentasenlimpio.es). Índice: https://cuentasenlimpio.es/llms.txt. Generado el 26 de noviembre de 2026 con los mismos datos que la página https://cuentasenlimpio.es/desigualdad.html.
 
 **Cómo citar:** «Cuentas en limpio (https://cuentasenlimpio.es)», con enlace a https://cuentasenlimpio.es/desigualdad.html y la fecha de consulta, y además la fuente oficial que figura junto a cada dato.
 
@@ -19,7 +19,7 @@ Encuesta de Condiciones de Vida (INE/Eurostat): el año de la encuesta mide la r
 | Carencia material y social severa (%) | 2025 | 8,1 | 6,3 |
 | Umbral de pobreza, una persona (€/año) | 2025 | 12.220 | — |
 
-Riqueza (cuentas distributivas del BCE, experimentales), 2026T1: Gini de la riqueza neta 68,9; el 10 % más rico tiene el 54,9 % y la mitad con menos, el 7,6 %.
+Riqueza (cuentas distributivas del BCE, experimentales), 2026T2: Gini de la riqueza neta 68,2; el 10 % más rico tiene el 54,3 % y la mitad con menos, el 8,0 %.
 
 En 2025, las ayudas distintas de las pensiones bajaron el riesgo de pobreza del 25,4 % (contando solo pensiones) al 19,5 %: un 23,2 % menos.
 
